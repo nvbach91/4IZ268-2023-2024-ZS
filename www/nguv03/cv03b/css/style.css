@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+.top-panel {
+    background-image: url(../img/pokemon-wallpaper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+.top-panel h1 {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    text-align: center;
+}
+.navigation {
+    background-color: #c85e58;
+    text-align: center;
+}
+.navigation a {
+    display: inline-block;
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+}
+.content h2 {
+    text-align: center;
+    padding: 20px;
+    border: 10px solid #c85e58;
+}
+.page-article h3 {
+    color: #c85e58;
+    font-size: 32px;
+}
+.page-article p {
+    text-align: justify;
+    line-height: 28px;
+}
+.page-article img {
+    float: left;
+    margin-right: 20px;
+    width: 120px;
+}
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.page-panel, .page-footer {
+    background-color: #c85e58;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+.absolute-box {
+    width: 100px;
+    height: 200px;
+    background-color: blue;
+    position: absolute;
+    top: 500px;
+    left: 50px;
+}
+.absolute-box:hover {
+    background-color: #c85e58;
+}
+
+
+
+.page-header {
+    height: 100px;
+    background-color: rgb(42, 194, 44);
+    border: 10px solid blue;
+}
