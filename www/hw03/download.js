@@ -128,11 +128,11 @@ const urls = [
     // 'https://eso.vse.cz/~bobd03/DU3/',
     // 'https://eso.vse.cz/~bobd03/DU3/blog/',
 ].map((url) => {
-        if (url.endsWith('.html')) {
-            return url;
-        }
-        return `${url.endsWith('/') ? url : `${url}/`}index.html`;
-    });
+    if (url.endsWith('.html')) {
+        return url;
+    }
+    return `${url.endsWith('/') ? url : `${url}/`}index.html`;
+});
 
 bluebird.each(urls, (url) => {
     return axios.get(url).then((resp) => {
