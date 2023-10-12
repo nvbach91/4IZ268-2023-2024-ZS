@@ -1,0 +1,131 @@
+body {
+    font-family: 'Arial', 'sans-serif', 'Tahoma';
+}
+
+.color-red {
+    color: red;
+}
+
+.color-green {
+    color: rgb(5, 92, 5);
+}
+
+.color-blue {
+    color: #1b1baa;
+    font-weight: bold;
+}
+
+.size-18px {
+    font-size: 18px;
+}
+
+.size-24px {
+    font-size: 24px;
+    font-style: italic;
+}
+
+.color-white {
+    color: white;
+    background-color: rgb(105, 51, 6);
+}
+
+.paragraph-1 {
+    text-align: center;
+    line-height: 32px;
+}
+
+.paragraph-2 {
+    text-align: justify;
+    text-transform: uppercase;
+}
+
+.box-1 {
+    width: 400px;
+    height: 300px;
+    border: 1px solid purple;
+    padding: 30px;
+}
+
+.box-2 {
+    width: 500px;
+    height: 200px;
+    background-color: rgb(187, 19, 19);
+    margin: 100px;
+}
+
+.box-3 {
+    display: none;
+}
+
+.box-4 {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #1b1baa;
+    padding: 50px;
+    border: 10px solid yellow;
+}
+
+.box-5 {
+    opacity: 0;
+}
+
+.box-6 {
+    height: 500px;
+    width: 200px;
+    background-color: green;
+    opacity: 0.5;
+}
+
+.box-7 {
+    height: 300px;
+    width: 400px;
+    position: relative;
+    background-color: lightblue;
+}
+
+.box-8 {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 50px;
+    right: 10px;
+    background-color: pink;
+}
+
+.box-9 {
+    height: 400px;
+    width: 200px;
+    border: 20px solid brown;
+    border-radius: 10px;
+}
+
+.btn-1 {
+    width: 300px;
+    height: 100px;
+
+}
+
+.btn-1:focus {
+    color: aquamarine;
+
+}
+
+.btn-2 {
+    width: 200px;
+    height: 50px;
+}
+
+.btn-2:hover {
+    background-color: rgb(94, 40, 10);
+}
+
+.box-10 {
+    background-color: #1b1baa;
+    height: 500px;
+    width: 200px;
+    margin-top: 200px;
+}
+
+.box-10:hover {
+    cursor: grab;
+}

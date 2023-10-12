@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    background-color: white;
+    color: #333;
+}
+
+nav {
+    width: 80%;
+    text-align: left;
+}
+
+header, nav {
+    background-color: white;
+}
+
+header {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.blog-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.blog-logo {
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
+    object-fit: cover;
+}
+
+.blog-title {
+    font-size: 3em;
+    font-weight: 700;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-subtitle {
+    font-weight: 400;
+    font-size: 1.2em;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    color: #777;
+}
+
+nav {
+    text-align: left;
+    padding: 15px;
+    padding-bottom: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 15px;
+    font-size: 0.9em;
+}
+
+nav a:hover {
+    color: green;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 200px;
+    background-color: #f0f0f0;
+}
+
+.blog-wrapper article {
+    margin-bottom: 30px;
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.article-tag {
+    background-color: lightblue;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.article-author {
+    color: black;
+    font-weight: bold;
+}
+
+.article-title a {
+    font-size: 35px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.article-title a:hover {
+    color: green;
+}
+
+.article-text {
+    padding-top: 15px;
+    padding-bottom: 30px;
+    line-height: 1.6;
+    font-size: 0.95em;
+}
+
+footer {
+    background-color: white;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+footer p {
+    font-weight: bold;
+    font-size: 0.8em;
+    color: #555;
+}

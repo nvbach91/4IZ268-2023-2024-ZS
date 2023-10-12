@@ -1,0 +1,89 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.blog-title {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: absolute;
+    right: 200px;
+    top: 40px;
+    font-size: 300%;
+}
+
+.blog-logo {
+    border-radius: 50%;
+    position: absolute;
+    top: 50px;
+    left: 150px;
+}
+
+.blog-subtitle {
+    position: absolute;
+    top: 170px;
+    text-align: center;
+    left: 90px;
+    font-size: 130%;
+    font-weight: 100;
+    color: rgb(154, 154, 154);
+}
+
+.navigation {
+    position: absolute;
+    top: 270px;
+    color: rgb(154, 154, 154);
+    left: 85px;
+    word-spacing: 25px;
+}
+
+.blog-wrapper {
+    position: absolute;
+    top: 350px;
+}
+
+.article-tag {
+    color: rgb(154, 154, 154);
+    background-color: rgba(149, 231, 229, 0.8);
+    border-radius: 5px;
+    padding: 3px;
+    left: 60px;
+    position: relative;
+}
+
+.article-title {
+    position: relative;
+    left: 60px;
+    font-size: 220%;
+    bottom: 30px;
+}
+
+.article-author {
+    position: relative;
+    left: 65px;
+    font-size: 92%;
+}
+
+.article-reading-time {
+    position: relative;
+    left: 615px;
+    bottom: 15px;
+    font-size: 95%;
+    color: rgb(154, 154, 154);
+
+}
+
+.article-text {
+    position: relative;
+    left: 60px;
+    bottom: 50px;
+    color: rgb(154, 154, 154);
+    text-align: justify;
+
+}
+
+.footer {
+    position: absolute;
+    top: 1300px;
+    left: 290px;
+    font-size: 95%;
+    color: #9a9a9a;
+}

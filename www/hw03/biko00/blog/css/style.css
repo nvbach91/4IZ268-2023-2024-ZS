@@ -1,0 +1,114 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+}
+
+main {
+    background-color: #f7f7f7;
+    padding-bottom: 40px;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+}
+
+.blog-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5%;
+}
+
+.blog-logo {
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.blog-title {
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.blog-subtitle {
+    margin-top: 10px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.blog-wrapper {
+    width: 50%;
+    margin: auto;
+    padding-top: 50px;
+}
+
+nav {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: 900px;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    padding: 20px;
+}
+
+article {
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+
+.article-tag {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #b1caeb;
+    font-size: 13px;
+}
+
+.article-author {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.article-reading-time {
+    color: #555;
+    font-size: 13px;
+    text-align: right;
+}
+
+.article-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.article-title a {
+    text-decoration: none;
+    color: #333;
+    font-size: 40px;
+}
+
+.article-text {
+    text-align: justify;
+}
+
+footer {
+    color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 13px;
+}
