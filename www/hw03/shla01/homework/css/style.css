@@ -1,0 +1,150 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+  
+  .red-text {
+    color: red;
+  }
+  
+  .green-text {
+    color: rgb(64, 243, 64);
+  }
+  
+  .blue-text {
+    color: #0000FF;
+    font-weight: bold;
+  }
+  
+  .font-size-18 {
+    font-size: 18px;
+  }
+  
+  .font-size-24-italic {
+    font-size: 24px;
+    font-style: italic;
+  }
+  
+  .white-text {
+    color: white;
+  }
+  
+  .brown-background {
+    background-color: rgb(168, 49, 49);
+    color: white;
+  }
+
+.centered-text {
+    text-align: center;
+    line-height: 32px;
+}
+  
+.justified-content-uppercase {
+    text-align: justify;
+    text-transform: uppercase;
+}
+
+.box {
+    width: 400px;
+    height: 300px;
+    border: 1px solid purple;
+    padding: 30px;
+}
+
+.red-background-box {
+    width: 500px;
+    height: 200px;
+    background-color: rgb(161, 27, 27);
+    margin: 100px;
+}
+
+.no-text {
+    display: none;
+}
+
+.box-background {
+    width: 10px;
+    height: 200px;
+    padding: 50px;
+    border: 1px solid black;
+    border-color: yellow;
+    border-width: 10px;
+    width: 100%;
+    background-color: rgb(52, 52, 158);
+    box-sizing: border-box;
+}
+
+.gap-text {
+    visibility: hidden;
+}
+
+.box-background-green {
+    height: 500px;
+    width: 200px;
+    background-color: green;
+    opacity: 0.5;
+}
+
+.relative {
+    position: relative;
+    width: 400px;
+}
+
+.relative-300 {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    background-color: rgb(103, 184, 238)
+
+}
+
+.absolute {
+    top: 50px;
+    height: 50px;
+    width: 50px;
+    right: 10px;
+    position: absolute;
+    background-color: pink;
+    font-size: 10px;
+}
+
+.box-brown-border {
+    width: 200px;
+    height: 400px;
+    border: 1px solid black;
+    border-width: 20px;
+    border-radius: 10px;
+    border-color: brown;
+}
+
+.text-blue {
+    width: 300px;
+    height: 100px;
+    color: black;
+    background-color: #ccc; 
+    cursor: pointer;
+}
+    
+.text-blue.clicked {
+    color: blue; 
+}
+
+.background-brown {
+  width: 200px;
+  height: 50px;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+
+.background-brown:hover {
+    background-color: brown; 
+  }
+
+.box-200 {
+    margin-top: 200px;
+    height: 500px;
+    width: 200px;
+    background-color: rgb(65, 160, 162);
+
+}

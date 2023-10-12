@@ -1,0 +1,101 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    color: #373636;
+}
+
+.blog-header {
+    max-width: fit-content;
+    margin: 50px auto;
+}
+
+.blog-logo {
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.blog-title {
+    font-size: 55px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.blog-subtitle {
+    color: #151414;
+    text-align: center;
+    margin: 50px auto 20px;
+    font-size: 25px;
+}
+
+nav {
+    max-width: 800px;
+    margin: auto;
+}
+
+nav a {
+    color: #151414;
+    text-decoration: none;
+    display: inline-block;
+    padding: 60px 20px;
+}
+
+main {
+    background-color: #ecececf5;
+}
+
+.blog-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.blog-wrapper article {
+    padding: 40px 0;
+}
+
+.article-meta {
+    font-size: 16px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.article-tags {
+    position: absolute;
+    left: 0;
+}
+
+.article-tag {
+    background-color: #b1efef;
+    padding: 4px 15px;
+    border-radius: 5px;
+}
+
+.article-author {
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.article-reading-time {
+    position: absolute;
+    right: 0;
+}
+
+.article-title a {
+    font-size: 35px;
+    color: #151414;
+    text-decoration: none;
+}
+
+.article-text {
+    text-align: justify;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+footer {
+    text-align: center;
+    font-size: 13px;
+    padding-top: 100px;
+    padding-bottom: 15px;
+}

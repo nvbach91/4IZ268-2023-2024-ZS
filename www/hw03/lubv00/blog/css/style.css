@@ -1,0 +1,95 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.blog-header {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 30px;
+    color: #353535;
+}
+
+.blog-logo {
+    border-radius: 60px;
+}
+
+.blog-subtitle {
+    text-align: center;
+    font-size: 24px;
+    color: #585858;
+    margin-bottom: 3rem;
+}
+
+.menu {
+    width: min(70%, 800px);
+    margin: 0 auto;
+}
+
+.menu > a {
+    margin-right: 2rem;
+    text-decoration: none;
+    color: #353535;
+}
+
+.blog-wrapper {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    background-color: #f4f4f4;
+    padding-top: 0.1rem;
+    padding-bottom: 4rem;
+}
+
+.page-article {
+    width: min(70%, 800px);
+    margin: 4rem auto;
+}
+
+.article-tag,
+.article-reading-time,
+.article-text {
+    color: #585858;
+}
+
+.article-tag {
+    background-color: rgb(172, 207, 182);
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+}
+
+.article-author {
+    font-weight: 700;
+    margin-left: 0.8rem;
+    color: #353535;
+}
+
+h3 {
+    margin: 0;
+}
+
+.article-title {
+    font-size: 36px;
+    margin: 1rem 0;
+}
+
+.article-title > a {
+    text-decoration: none;
+    color: #585858;
+}
+
+.article-text {
+    line-height: 1.5rem;
+}
+
+footer {
+    text-align: center;
+    margin-bottom: 3rem;
+}

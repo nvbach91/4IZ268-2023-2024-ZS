@@ -1,0 +1,116 @@
+* {
+    font-family: Arial, sans-serif, Helvetica
+}
+.o {
+    color: red;
+}
+.i {
+    color: rgb(0, 255, 64);
+}
+.u {
+    color: #0b0bdb;
+    font-weight: bold
+}
+.z {
+    font-size: 18px;
+}
+.t {
+    font-style: italic;
+    font-size: 24px
+}
+.r {
+    color:white;
+    background-color: rgb(139, 79, 44);
+}
+.e {
+    text-align: center;
+    line-height: 32px;
+}
+.w {
+    text-align: justify;
+    text-transform: uppercase;
+}
+.q {
+    height: 300px;
+    width: 400px;
+    padding: 30px;
+    border: solid;
+    border-width: 1px;
+    border-color: purple;
+}
+.l {
+    width: 500px;
+    height: 200px;
+    margin: 100px;
+    background-color: red;
+}
+.k {
+    color: white;
+}
+.j {
+    background-color: aqua;
+    padding: 50px;
+    border: solid;
+    border-width: 10px;
+    border-color: yellow;
+    max-width: fit-content;
+}
+.h {
+    color: white;
+}
+.g {
+    width: 500px;
+    height: 200px;
+    background-color: green;
+    opacity: 0.5;
+    
+}
+.f {
+    height: 300px;
+    width: 400px;
+    position: relative;
+    background-color: lightblue;
+}
+
+
+.d {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 50px;
+    font-size: 5px;
+    right: 10px;
+    background-color: pink;
+}
+.a {
+    height: 400px;
+    width: 200px;
+    border: solid;
+    border-color: brown;
+    border-width: 10px;
+    border-radius: 10px;
+}
+.sindl {
+    width: 300px;
+    height: 100px;
+}
+.sindl:active {
+    color: blue;
+}
+.sicht {
+    width: 200px;
+    height: 50px;
+
+}
+.sicht:hover {
+    background-color: brown;
+}
+.asdf {
+    width: 200px;
+    height: 500px;
+    background-color: aqua;
+    margin-top: 200px;
+}
+.asdf:hover {
+    cursor: grab;
+}

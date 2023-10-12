@@ -1,0 +1,129 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(245, 242, 242);
+}
+
+header {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.blog-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog-logo {
+    border-radius: 100%;
+    width: 90px;
+    height: 90px;
+}
+
+.blog-title {
+    font-size: 48px;
+    color: rgb(64, 63, 63);
+}
+
+.blog-subtitle {
+    text-align: center;
+    font-size: 20px;
+    color: rgb(107, 107, 107)
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: start;
+    width: 40%;
+    margin-bottom: 25px;
+    margin-left: 250px;
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(107, 107, 107)
+}
+
+nav a:hover {
+    color: rgb(64, 63, 63)
+}
+
+nav a:active {
+    opacity: 0.8;
+}
+
+.blog-wrapper {
+    background: rgb(235, 232, 232);
+    max-width: 800px;
+    padding: 50px 150px;
+    align-content: center;
+    margin: 0 auto;
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    align-items: center;
+}
+
+.article-tags {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.article-tag {
+    background: rgb(185, 221, 213);
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+.article-author {
+    color: rgb(29, 25, 25);
+    font-weight: bold;
+}
+
+.article-title a {
+    color: rgb(54, 46, 46);
+    font-size: 36px;
+    text-decoration: none;
+}
+
+.article-title a:hover {
+    color: rgb(36, 31, 31);
+}
+
+.article-title a:active {
+    opacity: 0.8;
+}
+
+.article-reading-time {
+    color: rgb(107, 107, 107)
+}
+
+.article-text {
+    color: rgb(85, 83, 83);
+    line-height: 24px;
+    text-align: justify
+}
+
+article {
+    margin-bottom: 50px;
+}
+
+footer {
+    padding: 25px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    color: rgb(107, 107, 107);
+    font-size: 12px;
+}

@@ -1,0 +1,100 @@
+
+/*----------- BODY -----------*/
+body{
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/*----------- HEADER -----------*/
+header{
+    padding: 55px;
+}
+.blog-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.blog-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.blog-title {
+    font-size: 50px;
+}
+.blog-subtitle {
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.4;
+}
+nav a {
+    font-size: 14px;
+    color: black;
+    margin-right: 25px;
+    text-decoration: none;
+    
+}
+
+nav{
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+/*----------- MAIN -----------*/
+main {
+    background-color: #f7f7f7;
+}
+.blog-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 100px;
+    max-width: 600px;
+    margin: auto;
+}
+article {
+    margin-top: 50px;
+}
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.article-tag {
+    font-size: 12px;
+    padding: 3px 7px;
+    margin-right: 5px;
+    border-radius: 4px;
+    background-color: #c6e4d9;
+}
+.article-author {
+    font-weight: 600;
+}
+h3 {
+    display: block;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.article-title a {
+    color: #000;
+    text-decoration: none;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    line-height: 1.4;
+}
+footer {
+    text-align: center;
+    padding: 30px 0;
+}

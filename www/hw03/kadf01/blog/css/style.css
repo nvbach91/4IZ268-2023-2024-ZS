@@ -1,0 +1,95 @@
+* {
+    color: #363636;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+/*HEADER*/
+.blog-header {
+    max-width: 600px;
+    margin: auto;
+}
+
+.blog-header img{
+    border-radius: 50%;
+    float: left;
+    margin-right: 10px;
+}
+
+.blog-title {
+    font-size: 75px;
+}
+
+.blog-subtitle {
+    text-align: center;
+    font-size: 25px;
+}
+
+/*NAVBAR*/
+nav {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 20px;
+}
+
+/*CONTENT*/
+main {
+    background-color: #f7f7f7;
+}
+
+.blog-wrapper {
+    width: 800px;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 75px;
+}
+
+.article-tags {
+    float: left;
+}
+
+.article-tag {
+    background-color: lightblue;
+    padding-top: 1px;
+    padding-left: 8px;
+    padding-bottom: 1px;
+    padding-right: 8px;
+    border-radius: 5px;
+}
+
+.article-author {
+    font-weight: bold;
+    padding-left: 8px;
+}
+
+.article-reading-time {
+    float: right;
+}
+
+.article-title {
+    padding-top: 30px;
+}
+
+.article-title a {
+    font-size: 42px;
+    text-decoration: none;
+}
+
+.article-text {
+    text-align: justify;
+    padding-bottom: 30px;
+    line-height: 24px;
+}
+
+/*FOOTER*/
+footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 240px;
+    margin: auto;
+}

@@ -139,8 +139,18 @@ bluebird.each(urls, (url) => {
         const filePath = `./${url.split('/').slice(3).join('/').slice(1).replace('cv03/', '')}`;
         ensureDirectoryExistence(filePath);
         fs.writeFileSync(filePath, resp.data);
+        const cssHtmlLine = resp.data.split(/[\r\n]+/).filter((line) => line.includes('rel="stylesheet"') && line.includes('.css"')).map((line) => line.trim());
+        const cssLinkHref = cssHtmlLine.join('').replace(/^.*href="/g, '').replace(/\.css.*$/, '.css');
+        const cssFileUrl = `${url.replace('index.html', '')}${cssLinkHref}`;
+        // console.log(cssFileUrl);
+        return axios.get(cssFileUrl).then((resp) => {
+            const cssFilePath = filePath.replace('index.html', cssLinkHref);
+            ensureDirectoryExistence(cssFilePath);
+            // console.log(cssFilePath);
+            fs.writeFileSync(cssFilePath, resp.data);
+        });
     }).catch((err) => {
-        console.log(url);
+        console.log(url, err.message);
     });
 });
 

@@ -1,0 +1,117 @@
+.body-style {
+    font-family: open-sans, Lato, Poppins;
+
+}
+
+header,
+nav {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.blog-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Horizontally center both items */
+    text-align: center;
+    /* Center the text within the header */
+
+}
+
+.blog-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* Makes the image a circle */
+}
+
+.blog-title {
+    font-size: 55px;
+    font-weight: bold;
+}
+
+.blog-subtitle {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    /* Display links in a row */
+    margin-top: 35px;
+    /* Margin on top of the entire row */
+    margin-bottom: 35px;
+    /* Margin on the bottom of the entire row */
+}
+
+nav a {
+    margin: 0 10px;
+    /* Adjust the horizontal margin between links as needed */
+    text-decoration: none;
+    color: #000;
+    /* Set the text color */
+    font-size: 16px;
+    /* Set the font size */
+}
+
+
+main {
+    background-color: rgb(249, 249, 249);
+}
+
+.blog-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+
+.article-meta {
+    padding-top: 50px;
+    font-size: smaller;
+    display: flex;
+    justify-content: space-between;
+    /* Place content at each end of the row */
+    align-items: center;
+    /* Center vertically within the row */
+}
+
+.article-tags {
+    align-items: center;
+    display: flex;
+    /* Nested flex container for "Break" and author */
+}
+
+.article-tag {
+    background-color: #9fc4ca;
+    /* Background color for "Break" */
+    border-radius: 5px;
+    /* Make it rounded */
+    padding: 5px 10px;
+    /* Add padding for spacing */
+    margin-right: 5px;
+    /* Add spacing between "Break" and author */
+}
+
+.article-title a {
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.article-text {
+    font-size: smaller;
+    text-align: justify;
+}
+
+footer {
+    font-size: smaller;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

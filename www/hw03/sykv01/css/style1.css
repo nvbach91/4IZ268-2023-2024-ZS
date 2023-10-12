@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 660px;
+    margin: 0 auto;
+} 
+
+.red-ish {
+    color: red;
+}
+
+.green-ish {
+    color: rgb(0, 128, 0);
+}
+
+.blue-ish {
+    color: #0000ff;
+    font-weight: bold;
+}
+
+.font-size {
+    font-size: 18px;
+}
+
+.font-style {
+    font-size: 24px;
+    font-style: italic;
+}
+
+.brown-ish {
+    color: white;
+    background-color: brown;
+}
+
+.paragraph1 {
+    text-align: center;
+    line-height: 32px;
+}
+
+.paragraph2 {
+    text-align: justify;
+    text-transform: uppercase;
+}
+
+.border1 {
+    height: 300px;
+    width: 400px;
+    padding: 30px;
+    border: 1px solid purple;
+}
+
+.border2 {
+    height: 200px;
+    width: 500px;
+    margin: 100px;
+    background-color: rgb(178,34,34);
+}
+
+.display {
+    display: none;
+}
+
+.border3 {
+    width: auto;
+    padding: 50px;
+    border: 10px solid yellow;
+    background-color: rgb(45,93,134);
+}
+
+.transparent {
+    color: white;
+}
+
+.border4 {
+    height: 200px;
+    width: 500px;
+    color: white;
+    background-color: rgb(151,167,167);
+}
+
+.border5 {
+    height: 300px;
+    width: 400px;
+    position: relative;
+    background-color: rgb(173,216,230);
+}
+
+.border6 {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: pink;
+    font-size: 10px;
+}
+
+.border7 {
+    height: 400px;
+    width: 200px;
+    position: relative;
+    border: 20px solid brown;
+    border-radius: 10px;
+}
+
+.button1 {
+    width: 300px;
+    height: 100px;
+}
+
+.button1:hover {
+    background-color: blue;
+}
+
+.button2 {
+    width: 200px;
+    height: 50px;
+}
+
+.button2:hover {
+    background-color: brown;
+}
+
+.border8 {
+    width: 200px;
+    height: 500px;
+    background-color: rgb(95,158,160);
+    margin-top: 200px;
+    margin-bottom: 10px;
+}
+
+.border8:hover {
+    cursor: pointer;
+}

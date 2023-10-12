@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.red-text {
+    color: red;
+}
+
+.green-text {
+    color: rgb(48, 198, 28);
+}
+
+.blue-text {
+    color: #1049da;
+}
+
+.white-text {
+    color: white;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.italics-text {
+    font-style: italic;
+}
+
+.px18-text {
+    font-size: 18px;
+}
+
+.px24-text {
+    font-size: 24px;
+}
+
+.background-brown {
+    background-color: brown;
+}
+
+.background-green {
+    background-color: green;
+}
+
+.background-darkred {
+    background-color: rgb(170, 16, 16);
+}
+
+
+.px32-line-height {
+    line-height: 32px;
+}
+
+.center-text-content {
+    text-align: center;
+}
+
+
+.justify-text-content {
+    text-align: justify;
+}
+
+.capitalize-text {
+    text-transform: uppercase;
+}
+
+.hide-content {
+    display: none;
+}
+
+.obscure-content {
+    visibility: hidden;
+}
+
+.box1 {
+    width: 400px;
+    height: 500px;
+    border: 1px solid rgb(227, 26, 227);
+    padding: 30px;
+}
+
+
+.box2 {
+    width: 500px;
+    height: 200px;
+    margin: 100px;
+}
+
+.box3 {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgb(57, 119, 140);
+    padding: 50px;
+    border: 10px solid yellow;
+    border-width: thick;
+}
+
+.box4 {
+    width: 200px;
+    height: 500px;
+    opacity: 0.5;
+    background-color: rgb(109, 155, 109);
+}
+
+.box5 {
+    width: 400px;
+    height: 300px;
+    position: relative;
+    background-color: lightblue;
+}
+
+.box6 {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: pink;
+    font-size: 10px;
+}
+
+.box7 {
+    width: 200px;
+    height: 400px;
+    border: 20px solid brown;
+    border-radius: 10px;
+}
+
+.box8 {
+    width: 200px;
+    height: 500px;
+    background-color: lightblue;
+    margin-top: 200px;
+}
+
+.box8:hover {
+    cursor: pointer;
+}
+
+.button1 {
+    width: 300px;
+    height: 100px;
+}
+
+.button1:active {
+    color: blue;
+}
+
+.button2 {
+    width: 200px;
+    height: 50px;
+}
+
+.button2:hover {
+    background-color: brown;
+}

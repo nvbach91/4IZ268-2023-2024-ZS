@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.text2 {
+    color: red;
+}
+
+.text3 {
+    color: rgb(26, 154, 26);
+}
+
+.text4 {
+    color: #0000ff;
+    font-weight: bold;
+}
+
+.text5 {
+    font-size: 18px;
+}
+
+.text6 {
+    font-size: 24px;
+    font-style: italic;
+}
+
+.text7 {
+    color: white;
+    background-color: rgba(126, 33, 33, 0.433);
+}
+
+.par1 {
+    text-align: center;
+    line-height: 32px;
+}
+
+.par2 {
+    text-align: justify;
+    text-transform: uppercase;
+}
+
+.box1 {
+    width: 400px;
+    height: 300px;
+    border: 1px;
+    border-style: solid;
+    border-color: purple;
+    padding: 30px;
+}
+
+.box2 {
+    width: 500px;
+    height: 200px;
+    background-color: rgb(206, 96, 96);
+    margin: 100px;
+}
+
+.text8 {
+    opacity: 0;
+}
+
+.box3 {
+    width: 100%;
+    background-color: blue;
+    padding: 50px;
+    border: 10px;
+    border-color: yellow;
+    border-style: solid;
+    box-sizing: border-box;
+}
+
+.text9 {
+    opacity: 0;
+}
+
+.box4 {
+    width: 500px;
+    height: 200px;
+    object-fit: contain;
+    background-color: rgba(36, 230, 52, 0.5);
+
+}
+
+.section {
+    height: 400px;
+    width: 300px;
+    position: relative;
+    background-color: rgb(153, 217, 243);
+}
+
+.child {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 50px;
+    right: 10px;
+    background-color: pink;
+}
+
+.box5 {
+    height: 400px;
+    width: 200px;
+    border: 20px;
+    border-color: brown;
+    border-radius: 10px;
+    border-style: solid;
+}
+
+.button1 {
+    width: 300px;
+    height: 100px;
+}
+
+.button1:focus {
+    background-color: blue;
+}
+
+.button2 {
+    width: 200px;
+    height: 50px;
+}
+
+.button2:hover {
+    background-color: brown;
+}
+
+.box6 {
+    height: 500px;
+    width: 200px;
+    margin-top: 200px;
+    background-color: #669dd3;
+    cursor: pointer;
+}

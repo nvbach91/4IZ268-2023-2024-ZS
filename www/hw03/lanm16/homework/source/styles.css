@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.red-ish {
+    color: red;
+}
+.green-ish {
+    color: rgb(26, 255, 10);
+}
+.blue-ish {
+    color:#0047AB;
+   font-weight: bold;
+}
+.text-18 {
+    font-size: 18px;
+}
+.text-24 {
+    font-size: 24px;
+    font-style: italic;
+}
+.brown-ish {
+    color: white;
+    background-color: brown;
+}
+.p1 {
+    text-align: center;
+    line-height: 32px;
+}
+.p2 {
+    text-align: justify;
+    text-transform: uppercase;
+}
+.box1 {
+    width: 400px;
+    height: 300px;
+    padding: 30px;
+    border: 1px solid purple;
+}
+.box2 {
+    width: 500px;
+    height: 200px;
+    background-color: rgb(183, 6, 6);
+    margin: 100px;
+}
+.box3 {
+    display: none;
+}
+.box4 {
+    max-width: fit-content;
+    background-color: blue;
+    padding: 50px;
+    border: 10px yellow solid;
+    position: relative;
+}
+.inv {
+    color: white;
+}
+.box5 {
+    width: 200px;
+    height: 500px;
+    background-color: rgba(4, 153, 4, 0.911);
+    opacity: 0.5;
+}
+.mainbox {
+    width: 400px;
+    height: 300px;
+    position: relative;
+    background-color: lightblue;
+}
+.sidebox {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: pink;
+    font-size: 6px;
+}
+.round {
+    width: 200px;
+    height: 400px;
+    border: 20px solid brown;
+    border-radius: 10px;
+}
+.button1 {
+    width: 300px;
+    height: 100px;
+}
+.button1:active {
+    color: blue;
+}
+.button2 {
+    width: 200px;
+    height: 50px;
+}
+.button2:hover {
+    background-color: brown;
+}
+.last {
+    width: 200px;
+    height: 500px;
+    margin-top: 200px;
+    background-color: rgb(4, 107, 107);
+}
+.last:hover {
+    cursor: grab;
+}

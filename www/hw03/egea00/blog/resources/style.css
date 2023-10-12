@@ -1,0 +1,147 @@
+:root {
+    --button-color: #c3e2e2;
+    --bg-color: #f9f9f9;
+    --primary-color: #00abbd;
+    --secondary-color: #bfd8ee;
+    --text-color: #333;
+    --text-color-light: #666;
+    --font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+}
+
+
+/***************** HEADER *****************/
+.blog-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0 2.5rem;
+    max-width: 75vw;
+    margin: 0 auto;
+    flex-direction: row;
+}
+
+.blog-logo {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.blog-title {
+    font-size: 4rem;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+.blog-subtitle {
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 0;
+    padding: 1.3rem;
+    color: var(--text-color-light);
+}
+
+/***************** NAVIGATION *****************/
+.navbar {
+    text-align: left;
+    max-width: 75vw;
+    margin: 0 auto;
+}
+
+.navbar a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 2rem;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+}
+
+/***************** MAIN *****************/
+article {
+    margin-bottom: 5rem;
+}
+
+.blog {
+    background-color: var(--bg-color);
+}
+
+.article-wrapper {
+    max-width: 75vw;
+    margin: 0 auto;
+    text-align: justify;
+    padding: 5rem 0 2.5rem 0;
+}
+
+.article-title,
+.article-title a {
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.article-title a:hover {
+    color: var(--primary-color);
+}
+
+.article-text {
+    line-height: 1.5rem;
+}
+
+.article-meta {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.article-tags {
+    width: 80%
+}
+
+.article-tag {
+    padding: 0.2rem 0.7rem;
+    border-radius: 0.4rem;
+    background-color: var(--button-color);
+    border-color: var(--button-color);
+    color: var(--text-color-light);
+}
+
+.article-tag:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--bg-color);
+    cursor: pointer;
+}
+
+.article-author {
+    font-weight: bolder;
+    margin-left: 1rem;
+}
+
+.article-reading-time {
+    flex: 20%;
+    text-align: right;
+}
+
+/***************** FOOTER *****************/
+.page-footer {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.8rem;
+}

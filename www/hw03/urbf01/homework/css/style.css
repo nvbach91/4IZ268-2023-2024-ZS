@@ -1,0 +1,129 @@
+html, body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.red-font {
+  color: red;
+}
+
+.green-font {
+  color: rgb(10, 145, 37);
+}
+
+.blue-bold-font {
+  color: #0729a7;
+  font-weight: bold;
+}
+
+.smaller-font {
+  font-size: 18px;
+}
+
+.bigger-italic-font {
+  font-size: 24px;
+  font-style: italic;
+}
+
+.white-font-brown-background {
+  color: #fff;
+  background-color: #69390f;
+}
+
+.centered-p {
+  text-align: center;
+  line-height: 32px;
+}
+
+.capitalized-p {
+  text-transform: uppercase;
+  text-align: justify;
+}
+
+.box1 {
+  width: 400px;
+  height: 300px;
+  border: 1px solid purple;
+  padding: 30px;
+}
+
+.box2 {
+  width: 500px;
+  height: 200px;
+  background-color: red;
+  margin: 100px;
+}
+
+.invisible-text {
+  display: none;
+}
+
+.box3 {
+  width: calc(100% - 120px);
+  background-color: #0729a7;
+  padding: 50px;
+  border: 10px solid yellow;
+}
+
+.hidden-text {
+  visibility: hidden;
+}
+
+.box4 {
+  width: 200px;
+  height: 500px;
+  background-color: rgb(23, 99, 23);
+  opacity: 0.5;
+}
+
+.box5 {
+  width: 400px;
+  height: 300px;
+  position: relative;
+  background-color: lightblue;
+}
+
+.box6 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: pink;
+}
+
+.box7 {
+  width: 200px;
+  height: 400px;
+  border: 20px solid brown;
+  border-radius: 10px;
+}
+
+button {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button1 {
+  width: 300px;
+  height: 50px;
+}
+.button1:focus {
+  color: blue;
+}
+
+.button2 {
+  width: 200px;
+  height: 50px;
+}
+.button2:hover {
+  background-color: brown;
+}
+
+.box8 {
+  margin-top: 200px;
+  width: 200px;
+  height: 500px;
+  background-color: #3d73ae;
+}
+.box8:hover {
+  cursor: grab;
+}/*# sourceMappingURL=style.css.map */

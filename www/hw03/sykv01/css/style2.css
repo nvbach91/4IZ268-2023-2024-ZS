@@ -1,0 +1,98 @@
+body {
+    font-family: 'Khula', sans-serif;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.blog-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3px;
+}
+
+.blog-logo {
+    float:left;
+    width: 90px;
+    height: 90px;
+    overflow: hidden; 
+    border-radius: 90%;
+}
+
+.blog-title {
+    font-size: 60px;
+    font-weight:  bold;
+    color:rgb(68, 68, 68);
+    padding-top: 10px;
+}
+
+.blog-subtitle {
+    text-align: center;
+    font-size: 23px;
+    line-height: 1.3em;
+    color:rgb(68, 68, 68);
+}
+
+.navigation a {
+    display: inline-block;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color:rgb(68, 68, 68);
+    font-size: 15px;  
+}
+
+main {
+    background-color: rgba(228, 228, 228, 0.47);
+    margin: 0 -500%;
+    padding: 0 500% !important;
+}
+
+.blog-wrapper {
+    padding-bottom: 120px;
+}
+
+.article-tags, .article-reading-time {
+    display: inline-block;
+    margin-top: 60px;
+    font-size: 14px;
+    color:rgb(68, 68, 68);
+}
+
+.article-tag {
+    background-color: rgba(120, 182, 198, 0.475);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    border-radius: 7px;
+}
+
+.article-author {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.article-reading-time {
+    float: right;
+}
+
+.article-title a {
+    text-decoration: none;
+    line-height: 1.2em;
+    color:rgb(68, 68, 68);
+    font-size: 40px;
+}
+
+.article-text {
+    text-align: justify;
+    margin-top: -15px;
+    font-size: 15px;
+    line-height: 1.5em;
+    color:rgb(68, 68, 68);
+}
+
+footer {
+    text-align: center;
+    color:rgb(68, 68, 68);
+}
