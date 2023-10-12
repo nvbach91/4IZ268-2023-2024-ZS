@@ -1,0 +1,124 @@
+body {
+    font-family: Arial;
+    margin:0;
+    padding: 20px;
+  }
+  .color-named {
+    color:red;
+  }
+  .color-rgb {
+    color: rgb(0, 255, 0);
+  }
+  .color-hex-weight {
+    color: #0000FF;
+    font-weight: bold;
+  }
+  .font-size {
+    font-size: 18px;
+  }
+  .font-size-style {
+    font-size: 24px;
+    font-style: italic;
+  }
+  .bg-color {
+    color:white;
+    background-color: brown;
+  }
+  .alignment {
+    text-align: center;
+    line-height: 32px;
+  }
+  .transform {
+    text-align: justify;
+    text-transform: capitalize;
+  }
+  .border-style {
+    width: 400px;
+    height: 300px;
+    border: 1px solid purple;
+    padding: 30px;
+  }
+  .background-style {
+    width: 500px;
+    height: 200px;
+    background-color: rgba(255, 0, 0, 0.8);
+    margin: 100px;
+  }
+  .seemless-text {
+    font-size: 0;
+    opacity: 0;
+  }
+  .border-box{
+    width: 100%;
+    background-color: #0074D9;
+    padding: 50px;
+    border: 10px solid #FFDC00;
+    box-sizing: border-box;
+    / 
+  }
+  .hidden-text-gap{
+    color: transparent;
+  }
+  .box-formatting{
+    height: 200px;
+    width: 500px;
+    background-color: rgba(0, 128, 0, 0.5);
+    color: white;
+  }
+  .parent-box {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    background-color: lightblue;
+  }
+  .child-box {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50px;
+    right: 10px;
+    background-color: pink;
+    line-height: 13px;
+    font-size: smaller;
+  }
+  .rounded-border {
+    width: 200px;
+    height: 400px;
+    border: 20px solid brown;
+    border-radius: 10px;
+  }
+  .hover-button {
+    width: 200px;
+    height: 50px;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .hover-button:hover {
+    background-color: blue;
+    color:white;
+  }
+  .clickable-button {
+    width: 300px;
+    height: 100px;
+    background: linear-gradient(90deg, white, grey);
+    border: 1px solid black;
+    cursor: pointer;
+  }
+  .clickable-button:focus {
+    color:blue;
+  }
+  .box-hover {
+    width: 200px;
+    height: 500px;
+    background-color: #439deb;
+    cursor: pointer;
+    margin-top: 200px;
+  }
+  
+  
+  
+  
+  
+  
+  
