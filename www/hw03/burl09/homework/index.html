@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CSS Homework</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div>The font of this web page is Arial, sans-serif, or any non-serif font</div>
+    <div style="color: red;">This text is red-ish using a named color</div>
+    <div style="color: rgb(0,255,0);">This text is green-ish using a rgb color</div>
+    <div style="color: #0000ff;"> <strong>This text is blue-ish using a hex color and the text is bold</strong></div>
+    <div style="font-size: 18px;">The size of this text is 18px</div>
+    <div style="font-size: 24px;"><em>The size of this text is 24px and the text is italic</em></div>
+    <div style="color: white; background-color: brown;">This text is white and the background color is brown-ish</div>
+    <p style="line-height: 32px;">This paragraph's content is centered and the line height is 32px. Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum excepturi optio consectetur molestias deleniti, iure voluptas reiciendis, dolor iste voluptatem iusto aliquid unde, quam commodi a doloribus impedit numquam assumenda.</p>
+    <p style="text-transform: uppercase; text-align: justify;">This paragraph's content is justified and the text is capitalized everywhere (use text-transform). Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita ipsa perferendis quod quia obcaecati illum enim saepe, maxime, ratione iure iusto. Quae delectus voluptatibus, repellendus veniam facere molestias dolor possimus!</p>
+    <div style="border: 1px solid purple; width: 400px; height: 300px; padding: 30px;">This box is 400px in width and 300px in height total. It has a solid 1px purple border and the padding is 30px</div>
+    <div style="width: 500px; height: 200px; background-color: red; margin-left: 100px; margin-right: 100px;">This box is 500px in width and 200px in height total. It has a red-ish background-color and the margin on every side is 100px</div>
+    <div style="color: rgba(0, 0, 0, 0);">You should not be able to see this text at all</div>
+    <div style="background-color: #0000ff; padding: 50px; border: 10px solid yellow;">This box is 100% in width relative to the page. It has a blue-ish background-color, padding: 50px and a yellow-ish 10px thick border. Pay attention to the width of this box, it hould not be wider than the page itself!</div>
+    <div style="color: rgba(0, 0, 0, 0);">You should not be able to see this text but there is a gap</div>
+    <div style="width: 500px; height: 200px; background-color: rgb(91, 175, 91); opacity: 0.5; color: white;">This box is 200x500, its background color is green-ish and its opacity is 0.5</div>
+    <div style="width: 400px; height: 300px; background-color: lightblue; position: relative;">
+        <p>This box is 400x300 and its position is relative, its background color is light blue</p>
+        <div style="width: 50px; height: 50px; top: 50px; right: 10px; background-color: pink; position: absolute; font-size: small;">This box is 50x50 and its position is absolute inside its parent: 50px from the top and 10px from the right. Its background color is pink</div>
+    </div>
+    <div style="width: 200px; height: 400px; border: 20px solid brown; border-radius: 10px;">This box is 200x400 and has a 20px brown border that is rounded by 10px radius</div>
+    <p>This button is 300px wide and 100px high and whenever I click on it, its text's color turns blue</p>
+    <button style="width: 300px; height: 100px;" id="test" onclick="colorchange()">Button 01</button>
+    <script>
+        function colorchange(){
+            document.getElementById("test").style.color="blue";
+        }
+    </script>
+    <p>This button is 200px wide and 50px high and whenever hover my mouse on it, its background color turns brown</p>
+    <button class="button-hover" style="width: 200px; height: 50px;">Button 02</button>
+    <div class="div-hover" style="width: 200px; height: 500px; margin-top: 200px; background-color: rgba(0, 255, 255, 0.379);">This box is 200x500, its background color is blue-ish and whenever I hover my mouse over it, the cursor turns in to a hand. There is a 200px space above this box.</div>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+body{
+    font-family: Arial;
+}
+
+.button-hover:hover{
+    background-color: brown;
+}
+
+.div-hover:hover{
+    cursor: pointer;
+}
