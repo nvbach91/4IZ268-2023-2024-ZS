@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+.top-panel {
+    display: flex;
+    justify-content: space-between;
+    border-top: 5px solid #57579b;
+}
+.top-panel span {
+    background-image: url(https://github.com/nvbach91/nvbach91/assets/20724910/e7e240b4-382d-4b09-a62b-2ad43e03b518);
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-indent: 60px;
+    padding: 15px 0;
+}
+.top-panel a {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    padding: 15px 0;
+}
+.site-billboard {
+    background-image: url(https://github.com/nvbach91/nvbach91/assets/20724910/d0430f61-b06f-42ef-9f3e-a207d18be834);
+    padding: 10px;
+    background-size: cover;
+    background-position: center;
+}
+.site-billboard h1, .site-billboard h3 {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    text-align: center;
+}
+.content {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.product-heading {
+    background-image: url(https://github.com/nvbach91/nvbach91/assets/20724910/a8ad1146-4eb0-4bd4-8170-e1764783e892);
+    padding: 30px 0;
+    text-align: center;
+    background-position: center;
+}
+.product-heading h2 {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.products {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.product {
+    width: calc(100% / 1);
+    padding: 20px;
+}
+
+@media screen and (min-width: 640px) {
+    .site-billboard {
+        padding: 50px;
+    }
+    .product {
+        width: calc(100% / 2);
+    }
+}
+@media screen and (min-width: 1280px) {
+    .site-billboard {
+        padding: 50px 120px;
+    }
+    .product {
+        width: calc(100% / 3);
+    }
+}
+@media screen and (min-width: 1366px) {
+    .site-billboard {
+        padding: 50px 160px;
+    }
+    .product {
+        width: calc(100% / 4);
+    }
+}
+@media screen and (min-width: 1920px) {
+    .site-billboard {
+        padding: 50px 240px;
+    }
+    .product {
+        width: calc(100% / 5);
+    }
+}
