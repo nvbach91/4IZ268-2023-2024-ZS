@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+h1 {
+    text-align: center;
+    padding: 50px 10px;
+    color: white;
+    background-color: rgb(192, 50, 50);
+}
+
+.instructions {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.colors>input {
+    width: 50%;
+    padding: 5px;
+    border: none;
+    font-size: 18px;
+    margin: 0;
+    float: left;
+    color: white;
+}
+
+.wrapper {
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+}
+
+header {
+    background-color: rgb(223, 114,  75);
+    padding: 4rem;
+}
+
+nav {
+    background-color: rgb( 47, 108, 136);
+    padding: 1.2rem;
+}
+
+div.row {
+    display: flex;
+}
+
+main {
+    background-color: rgb(192,  70,  94);
+    width: 70%;
+    padding-top: 25rem;
+    padding-bottom: 25rem;
+}
+
+aside {
+    background-color: rgb( 53, 184, 155);
+    width: 30%;
+    padding-top: 25rem;
+    padding-bottom: 25rem;
+}
+
+footer {
+    background-color: rgb( 39,  39,  39);
+    padding: 3rem;
+}
+
+@media screen and (max-width: 720px) {
+    div.row {
+        display: flex;
+        flex-wrap: wrap;
+    }    
+
+    main {
+        width: 100%;
+    }
+
+    aside {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 720px) {
+    .colors>input {
+        padding: 20px;
+        width: calc(100% / 3);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .colors>input {
+        width: 20%;
+    }
+}

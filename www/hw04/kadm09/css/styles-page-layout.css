@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+h1 {
+    text-align: center;
+    padding: 50px 10px;
+    color: white;
+    background-color: rgb(192, 50, 50);
+}
+
+.instructions {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.colors>input {
+    width: 50%;
+    padding: 5px;
+    border: none;
+    font-size: 18px;
+    margin: 0;
+    float: left;
+    color: white;
+}
+
+.wrapper {
+    background-color: #ccc;
+    max-width: 1280px;
+    margin: 0 auto;
+    color: white; /* style all text within the wrapper */
+}
+
+/* Set default display width for mobile viewport */
+
+.top-panel, .upper-nav-bar,
+.content, .auxiliary-content,
+.site-footer {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    padding: 35px;
+}
+
+/* add mock sizing */
+.top-panel {
+    background-color: rgb(233, 114, 75);
+    min-height: 200px;
+}
+
+.upper-nav-bar {
+    background-color: rgb(47, 108, 136);
+    min-height: 60px;
+}
+
+.content {
+    background-color: rgb(192,70,94);
+    min-height: 350px;
+}
+
+.auxiliary-content {
+    background-color: rgb(53, 184, 155);
+    min-height: 350px;
+}
+
+.site-footer {
+    background-color: rgb(39,39,39);
+    min-height: 100px;
+}
+
+/* Increase element size for with increasing VP width */
+/* Uses single column even for ~= tablet sizes */
+@media screen and (min-width: 720px) {
+    .colors>input {
+        padding: 20px;
+        width: calc(100% / 3);
+    }
+}
+
+/* Flex the main section with NTB VP */
+
+@media screen and (min-width: 1024px) {
+    .colors>input {
+        width: 20%;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .content {
+        width: 70%;
+    }
+
+    .auxiliary-content {
+        width: 30%;
+    }
+
+}
+
+/* Upscale the flex sizes a bit for a VP equalling or exceeding
+   the maximum width of the page content. */
+@media screen and (min-width: 1280px) {
+
+    .content {
+        width: 65%;
+    }
+
+    .auxiliary-content {
+        width: 35%;
+    }
+}

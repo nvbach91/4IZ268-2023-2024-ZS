@@ -1,0 +1,258 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+h1 {
+    text-align: center;
+    padding: 50px 10px;
+    color: white;
+    background-color: rgb(192, 50, 50);
+}
+
+.instructions {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.colors>input {
+    width: 50%;
+    padding: 5px;
+    border: none;
+    font-size: 18px;
+    margin: 0;
+    float: left;
+    color: white;
+}
+
+.wrapper {
+    max-width: 1280px;
+    margin: 0px auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header {
+    width: 100%;
+    background-color: rgb(223, 114, 75);
+    color: white;
+    text-align: center;
+    padding: 70px;
+}
+
+
+nav {
+    width: 100%;
+    color: white;
+    background-color: rgb(47, 108, 136);
+    text-align: center;
+    padding: 50px;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+.row main {
+    color: white;
+    background-color: rgb(192, 70, 94);
+    padding: 100px;
+    text-align: center;
+}
+
+.row aside {
+    color: white;
+    padding: 100px;
+    background-color: rgb(53, 184, 155);
+    text-align: center;
+}
+
+.row .clear {
+    display: none;
+}
+
+footer {
+    width: 100%;
+    color: white;
+    background-color: rgb(39, 39, 39);
+    text-align: center;
+    padding: 50px;
+}
+
+@media screen and (max-width: 720px) {
+
+    .instructions {
+        max-width: 720px;
+    }
+
+    .colors {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .wrapper {
+        max-width: 720px;
+        margin: 0px auto;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    header {
+        padding: 100px;
+    }
+
+    nav {
+        padding: 50px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+
+
+    .row main {
+        width: 100%;
+        padding: 200px;
+    }
+
+    .row aside {
+        width: 100%;
+        padding: 200px;
+    }
+
+    .row .clear {
+        display: none;
+    }
+
+    footer {
+        width: 100%;
+        padding: 70px;
+    }
+
+}
+
+
+@media screen and (min-width: 720px) {
+    .colors>input {
+        padding: 20px;
+        width: calc(100% / 3);
+    }
+    header {
+        width: 100%;
+        background-color: rgb(223, 114, 75);
+        color: white;
+        text-align: center;
+        padding: 70px;
+    }
+    
+    
+    nav {
+        width: 100%;
+        color: white;
+        background-color: rgb(47, 108, 136);
+        text-align: center;
+        padding: 50px;
+    }
+    
+    .row {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    
+    
+    .row main {
+        color: white;
+        width: 75%;
+        background-color: rgb(192, 70, 94);
+        padding: 100px;
+        text-align: center;
+    }
+    
+    .row aside {
+        width: 25%;
+        color: white;
+        padding: 100px;
+        background-color: rgb(53, 184, 155);
+        text-align: center;
+    }
+    
+    .row .clear {
+        display: none;
+    }
+    
+    footer {
+        width: 100%;
+        color: white;
+        background-color: rgb(39, 39, 39);
+        text-align: center;
+        padding: 50px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .colors>input {
+        width: 20%;
+    }
+
+    .wrapper {
+        max-width: 1280px;
+        margin: 0px auto;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    header {
+        padding: 50px;
+    }
+
+    nav {
+        padding: 10px;
+    }
+
+    .row {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+
+    .row main {
+        width: 75%;
+        padding: 200px;
+    }
+
+    .row aside {
+        width: 25%;
+        padding: 200px;
+    }
+
+    .row .clear {
+        display: none;
+    }
+
+    footer {
+        padding: 20px;
+    }
+}

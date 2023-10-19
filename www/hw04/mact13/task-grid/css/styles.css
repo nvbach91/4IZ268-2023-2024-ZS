@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+body{
+    max-width: 1200px;
+    margin: auto;
+}
+.instructions h1 {
+    color: white;
+    background-color: rgb(33, 79, 110);
+    text-align: center;
+    padding-top: 70px;
+    padding-bottom: 10px;
+    padding-left: 320px;
+    padding-right: 320px;
+}
+.wrapper div {
+    background-color: grey;
+    color: white;
+    text-align: center;
+}
+.float-box {
+    padding: 120px;
+    font-size: 40px;
+}
+
+.container-02 {
+    display: flex;
+    flex-wrap: wrap;
+}
+.container-02 .float-box {
+    width: calc(100%/2);
+}
+.container-03 {
+    display: flex;
+    flex-wrap: wrap;
+}
+.container-03 .float-box {
+    width: calc(100%/3);
+}
+.container-04 {
+    display: flex;
+    flex-wrap: wrap;
+}
+.container-04 .float-box {
+    width: calc(100%/4);
+}
+.float-box:nth-child(1) {background-color: rgb(255, 125,  78);}
+.float-box:nth-child(2) {background-color: rgb(168,  89,  60);}
+.float-box:nth-child(3) {background-color: rgb( 33, 165, 121);}
+.float-box:nth-child(4) {background-color: rgb( 47,  83, 160);}
+.float-box:nth-child(5) {background-color: rgb(197,  56,  56);}
+.float-box:nth-child(6) {background-color: rgb(112, 158,  94);}
+.float-box:nth-child(7) {background-color: rgb(182, 109, 197);}
+.float-box:nth-child(8) {background-color: rgb(167,  35,  79);}
+.float-box:nth-child(9) {background-color: rgb( 38, 189, 189);}
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+

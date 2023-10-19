@@ -1,0 +1,149 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+    color: white;
+    background: rgb(19, 117, 182);
+    text-align: center;
+    padding: 20px 100px;
+}
+
+.instructions {
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.clear {
+    clear: both;
+}
+
+.colors input {
+    padding: 20px;
+    border: none;
+    font-size: 18px;
+    margin: 0;
+    float: left;
+    width: 25%;
+    color: white;
+}
+
+.wrapper {
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+/* .container {
+    display: grid;
+    margin-bottom: 50px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.container-01 {
+    grid-template-columns: auto;
+}
+
+.container-02 {
+    grid-template-columns: auto auto;
+    gap: 0
+}
+
+.container-03 {
+    grid-template-columns: auto auto auto;
+}
+
+.container-04 {
+    grid-template-columns: auto auto auto auto;
+}
+
+.container-04 .clear {
+    grid-column: 2 / 5;
+} */
+
+.container {
+    display: flex;
+    margin-bottom: 50px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.float-box {
+    color: white;
+    background-color: black;
+    text-align: center;
+    padding: 50px;
+    width: 100%
+}
+
+.float-box:nth-child(1) {
+    background-color: rgb(255, 125, 78)
+}
+
+.float-box:nth-child(2) {
+    background-color: rgb(168, 89, 60)
+}
+
+.float-box:nth-child(3) {
+    background-color: rgb(33, 165, 121)
+}
+
+.float-box:nth-child(4) {
+    background-color: rgb(47, 83, 160)
+}
+
+.float-box:nth-child(5) {
+    background-color: rgb(197, 56, 56)
+}
+
+.float-box:nth-child(6) {
+    background-color: rgb(112, 158, 94)
+}
+
+.float-box:nth-child(7) {
+    background-color: rgb(182, 109, 197)
+}
+
+.float-box:nth-child(8) {
+    background-color: rgb(167, 35, 79)
+}
+
+.float-box:nth-child(9) {
+    background-color: rgb(38, 189, 189)
+}
+
+.container-03 .clear,
+.container-04 .clear {
+    background: gray;
+}
+
+.container-01 {
+    flex-direction: column;
+}
+
+.container-02,
+.container-03,
+.container-04 {
+    flex-wrap: wrap;
+}
+
+.container-02 .float-box {
+    width: 50%;
+}
+
+.container-03 .float-box,
+.container-03 .clear {
+    width: calc(100% / 3);
+}
+
+.container-04 .float-box {
+    width: 25%;
+}
+
+.container-04 .clear {
+    width: 75%
+}

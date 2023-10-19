@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .clear {
+    clear: both;
+  }
+  
+  h1 {
+    text-align: center;
+    padding: 50px 10px;
+    color: white;
+    background-color: rgb(192, 50, 50);
+  }
+  
+  .instructions {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 50px;
+  }
+  
+  .colors > input {
+    width: 50%;
+    padding: 5px;
+    border: none;
+    font-size: 18px;
+    margin: 0;
+    float: left;
+    color: white;
+  }
+  
+  .wrapper {
+    width: 100%;
+    flex-grow: 1;
+    background-color: #ccc;
+    color: #fff;
+    text-align: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.25rem;
+    display: grid;
+    align-items: center;
+    grid-template-rows: 72fr 23fr 317fr 42fr;
+  }
+  
+  .wrapper > *,
+  .row > * {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  
+  .row {
+    display: grid;
+  }
+  
+  .clear {
+    display: none;
+  }
+  
+  header,
+  nav,
+  main,
+  aside,
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  header {
+    background-color: rgb(223, 114, 75);
+  }
+  
+  nav {
+    background-color: rgb(47, 108, 136);
+  }
+  
+  main {
+    background-color: rgb(192, 70, 94);
+  }
+  
+  aside {
+    background-color: rgb(53, 184, 155);
+  }
+  
+  footer {
+    background-color: rgb(39, 39, 39);
+  }
+  
+  @media screen and (min-width: 720px) {
+    .colors > input {
+      padding: 20px;
+      width: calc(100% / 3);
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .wrapper {
+      grid-template-rows: 108fr 35fr 476fr 62fr;
+      min-height: 100vh;
+    }
+    .row {
+      grid-template-columns: 399fr 237fr;
+    }
+    .colors > input {
+      width: 20%;
+    }
+  }

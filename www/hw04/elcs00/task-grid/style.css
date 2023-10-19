@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+h1 {
+    text-align: center;
+    padding: 50px 10px;
+    color: white;
+    background-color: rgb(78, 146, 179);
+}
+
+.colors input {
+    padding: 20px;
+    border: none;
+    font-size: 18px;
+    margin: 0;
+    float: left;
+    width: 25%;
+    color: white;
+}
+
+.instructions {
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;  
+}
+
+.wrapper h2 {
+    padding-left: 100px;
+    
+}
+
+.container {
+    margin: 0 auto;
+    width:100%;
+    justify-content: space-between;
+    text-align: center;
+    color:white;
+    font-weight: bold;
+    font-size: 32px;
+    flex-wrap: wrap;
+    padding: 100px;
+}
+
+.container-02, .container-03, .container-04 {
+    display: flex;
+  }
+  
+  .container-02 div {
+    flex: 0 0 50%; 
+  }
+
+  .container-03 div {
+    flex: 0 0 33.33%;
+  }
+
+  .container-04 div {
+    flex: 0 0 25%;
+  }
+
+  .float-box-1 {
+    background-color: rgb(255, 125,  78);
+    padding:100px;
+}
+
+.float-box-2 {
+    background-color: rgb(168,  89,  60);
+    padding:100px;
+}
+
+.float-box-3 {
+    background-color: rgb( 33, 165, 121);
+    padding:100px;
+}
+
+.float-box-4 {
+    background-color: rgb( 47,  83, 160);
+    padding:100px;
+}
+
+.float-box-5 {
+    background-color: rgb(197,  56,  56);
+    padding:100px;
+}
+
+.float-box-6 {
+    background-color: rgb(112, 158,  94);
+    padding:100px;
+}
+
+.float-box-7 {
+    background-color: rgb(182, 109, 197);
+    padding:100px;
+}
+
+.float-box-8 {
+    background-color: rgb(167,  35,  79);
+    padding:100px;
+}
+
+
+
+
+
+
+
+
+
+

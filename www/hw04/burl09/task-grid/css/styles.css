@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+h1 {
+    color: white;
+    background-color: rgb(47, 97, 121);
+    text-align: center;
+    padding: 70px;
+    padding-bottom: 10px;
+}
+
+.colors input {
+    color: white;
+    margin: 0;
+    padding: 20px;
+    font-size: 16px;
+    border: none;
+    float: left;
+    width: 25%;
+}
+
+.instructions {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.wrapper {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container-01 .float-box {
+    color: white;
+    text-align: center;
+    padding: 60px;
+    font-size: 40px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.container-02 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-02 .float-box {
+    color: white;
+    text-align: center;
+    padding: 60px;
+    font-size: 40px;
+    width: 50%;
+    font-weight: bold;
+}
+
+.container-03 {
+    background-color: grey;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-03 .float-box {
+    color: white;
+    text-align: center;
+    padding: 60px;
+    font-size: 40px;
+    width: calc(100%/3);
+    font-weight: bold;
+}
+
+.container-04 {
+    background-color: grey;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-04 .float-box {
+    color: white;
+    text-align: center;
+    padding: 60px;
+    font-size: 40px;
+    width: 25%;
+    font-weight: bold;
+}
+
+.float-box:nth-child(1) {
+    background-color: rgb(255, 125, 78);
+}
+
+.float-box:nth-child(2) {
+    background-color: rgb(168, 89, 60);
+}
+
+.float-box:nth-child(3) {
+    background-color: rgb(33, 165, 121);
+}
+
+.float-box:nth-child(4) {
+    background-color: rgb(47, 83, 160);
+}
+
+.float-box:nth-child(5) {
+    background-color: rgb(197, 56, 56);
+}
+
+.float-box:nth-child(6) {
+    background-color: rgb(112, 158, 94);
+}
+
+.float-box:nth-child(7) {
+    background-color: rgb(182, 109, 197);
+}
+
+.float-box:nth-child(8) {
+    background-color: rgb(167, 35, 79);
+}
+
+.float-box:nth-child(9) {
+    background-color: rgb(38, 189, 189);
+}
+
+.clear {
+    clear: both;
+}

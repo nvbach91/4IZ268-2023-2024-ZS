@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    padding: 50px 10px;
+    color: white;
+    background-color: rgb(192, 70, 94);
+}
+
+.instructions,
+.wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.instructions {
+    margin-bottom: 50px;
+}
+
+
+.colors>input {
+    border: none;
+    font-size: 18px;
+    margin: 0;
+    float: left;
+    color: white;
+}
+
+@media screen and (max-width: 720px) {
+    .colors>input {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 720px) {
+    .colors>input {
+        padding: 20px;
+        width: calc(100% / 3);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .colors>input {
+        width: 20%;
+    }
+}
+
+header,
+nav,
+main,
+aside,
+footer {
+    margin: 0 auto;
+    border: none;
+    color: white;
+    text-align: center;
+}
+
+header {
+    background-color: rgb(223, 114, 75);
+    padding: 80px;
+}
+
+nav {
+    background-color: rgb(47, 108, 136);
+    padding: 10px 0;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main {
+    background-color: rgb(192, 70, 94);
+    padding: 300px;
+
+}
+
+aside {
+    padding: 300px 0;
+    background-color: rgb(53, 184, 155);
+
+}
+
+footer {
+    background-color: rgb(39, 39, 39);
+    padding: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    main,
+    aside {
+        width: 100%;
+    }
+
+    header,
+    nav,
+    main,
+    aside,
+    footer {
+        padding: 10px;
+    }
+
+    main {
+        padding: 50px;
+    }
+}
+
+@media screen and (min-width: 720px) {
+    main {
+        width: 58%;
+    }
+
+    aside {
+        width: 42%;
+    }
+
+    .colors>input {
+        padding: 20px;
+        width: calc(100% / 3);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .colors>input {
+        width: 20%;
+    }
+}

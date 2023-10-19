@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+h1 {
+  text-align: center;
+  padding: 50px 10px;
+  color: white;
+  background-color: rgb(78, 146, 179);
+}
+
+.colors > input {
+  padding: 20px;
+  border: none;
+  font-size: 18px;
+  margin: 0;
+  float: left;
+  width: 25%;
+  color: white;
+}
+
+.instructions,
+.wrapper {
+  max-width: 1280px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.container {
+  color: #fff;
+  background-color: gray;
+}
+
+.float-box {
+  font-size: 3.125rem;
+  font-weight: 700;
+  padding: 3.75rem;
+  text-align: center;
+  width: 100%;
+}
+
+.float-box:nth-child(8n + 1) {
+  background-color: rgb(255, 125, 78);
+}
+
+.float-box:nth-child(8n + 2) {
+  background-color: rgb(168, 89, 60);
+}
+
+.float-box:nth-child(8n + 3) {
+  background-color: rgb(33, 165, 121);
+}
+
+.float-box:nth-child(8n + 4) {
+  background-color: rgb(47, 83, 160);
+}
+
+.float-box:nth-child(8n + 5) {
+  background-color: rgb(197, 56, 56);
+}
+
+.float-box:nth-child(8n + 6) {
+  background-color: rgb(112, 158, 94);
+}
+
+.float-box:nth-child(8n + 7) {
+  background-color: rgb(182, 109, 197);
+}
+
+.float-box:nth-child(8n) {
+  background-color: rgb(167, 35, 79);
+}
+
+.container-02 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.container-03 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.container-04 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}

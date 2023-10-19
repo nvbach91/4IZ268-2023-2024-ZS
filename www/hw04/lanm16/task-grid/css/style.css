@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;    
+}
+
+.clear {
+    clear: both;
+}
+h1 {
+    background-color: rgb(4, 114, 114);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.colors>input {
+    padding: 20px;
+    font-size: 16px;
+    margin: 0px;
+    float: left;
+    width: calc(100%/4);
+    color: white;
+    border: none;
+}
+
+.instructions {
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 0px;
+}
+
+.wrapper {
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.float-box:nth-child(1) {
+    background-color: rgb(255, 125,  78);
+}
+
+.float-box:nth-child(2) {
+    background-color: rgb(168,  89,  60);
+}
+
+.float-box:nth-child(3) {
+    background-color: rgb( 33, 165, 121);
+}
+
+.float-box:nth-child(4) {
+    background-color: rgb( 47,  83, 160);
+}
+
+.float-box:nth-child(5) {
+    background-color: rgb(197,  56,  56);
+}
+
+.float-box:nth-child(6) {
+    background-color: rgb(112, 158,  94);
+}
+
+.float-box:nth-child(7) {
+    background-color: rgb(182, 109, 197);
+}
+
+.float-box:nth-child(8) {
+    background-color: rgb(167,  35,  79);
+}
+
+.float-box:nth-child(9) {
+    background-color: rgb( 38, 189, 189);
+}
+
+.container-01 {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-01 .float-box {
+    padding: 70px;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+}
+
+.container-02 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-02 .float-box {
+    padding: 70px;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    width: calc(100%/2);
+}
+
+.container-03 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-03 .float-box {
+    padding: 70px;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    width: calc(100%/3);
+}
+
+.container-03 .clear {
+    background-color: grey;
+    width: calc(100% / 3);
+}
+
+.container-04 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-04 .float-box {
+    padding: 70px;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    width: calc(100%/4);
+}
+
+.container-04 .clear {
+    background-color: grey;
+    width: 75%;
+}

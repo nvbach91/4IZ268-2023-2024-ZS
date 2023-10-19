@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;    
+}
+
+.clear {
+    clear: both;
+}
+h1 {
+    background-color: rgb(171, 20, 20);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.colors>input {
+    padding: 5px;
+    font-size: 10px;
+    margin: 0px;
+    float: left;
+    width: calc(100%/2);
+    color: white;
+    border: none;
+}
+
+.instructions {
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.wrapper {
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: rgb(223, 114,  75);
+    color: white;
+    text-align: center;
+    padding: 70px;
+}
+
+nav {
+    background-color: rgb( 47, 108, 136);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    background-color: rgb(192,  70,  94);
+    color: white;
+    text-align: center;
+    padding: 210px;
+}
+
+
+aside {
+    background-color: rgb( 53, 184, 155);
+    color: white;
+    text-align: center;
+    padding: 210px;
+}
+
+footer {
+    background-color: rgb( 39,  39,  39);
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+
+
+@media screen and (min-width: 1020px) {
+    .colors>input {
+        padding: 15px;
+        width: calc(100% / 5);
+    }
+    .row {
+        display: flex;
+        flex-direction: row;    
+    }
+    main {
+        width: 66%;
+    }
+    aside {
+        width: 33%;
+    }
+
+}

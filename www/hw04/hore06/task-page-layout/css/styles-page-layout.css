@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+h1 {
+    text-align: center;
+    padding: 50px 10px;
+    color: white;
+    background-color: rgb(192, 50, 50);
+}
+
+.instructions {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.colors>input {
+    width: 50%;
+    padding: 5px;
+    border: none;
+    font-size: 18px;
+    margin: 0;
+    float: left;
+    color: white;
+}
+
+.wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    color: white;
+    font-size: larger;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.wrapper header {
+    background-color: rgb(223, 114, 75);
+    height: 200px;
+    padding: 100px;
+}
+
+.wrapper nav {
+    background-color: rgb(47, 108, 136);
+    padding: 25px;
+}
+
+.wrapper main {
+    background-color: rgb(192, 70, 94);
+    width: 75%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.wrapper aside {
+    background-color: rgb(53, 184, 155);
+    width: 25%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+}
+
+.wrapper footer {
+    background-color: rgb(39, 39, 39);
+    height: 100px;
+    padding: 50px;
+
+}
+
+.wrapper .row {
+    flex-wrap: wrap;
+    display: flex;
+}
+
+
+
+@media screen and (max-width: 720px) {
+    .wrapper .row {
+        flex-wrap: wrap;
+        display: flex;
+    }
+
+    .wrapper main {
+        background-color: rgb(192, 70, 94);
+        width: 100%;
+    }
+
+    .wrapper aside {
+        background-color: rgb(53, 184, 155);
+        width: 100%;
+    }
+
+}
+
+
+
+
+@media screen and (min-width: 720px) {
+    .colors>input {
+        padding: 20px;
+        width: calc(100% / 3);
+    }
+
+
+}
+
+@media screen and (min-width: 1024px) {
+    .colors>input {
+        width: 20%;
+    }
+
+
+}
