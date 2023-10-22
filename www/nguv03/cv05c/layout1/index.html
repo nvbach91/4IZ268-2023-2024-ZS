@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .yellow, .green, .red, .blue {
+            padding: 40px;
+            flex-grow: 1;
+            border: 5px solid white;
+        }
+        .yellow { background-color: yellow; }
+        .green  { background-color: green ; }
+        .red    { background-color: red   ; }
+        .blue   { background-color: blue  ; }
+        .row { display: flex; }
+    </style>
+</head>
+<body>
+    <div>LAYOUT 1</div>
+    <div>
+        <div class="row">
+            <div class="yellow"></div>
+            <div class="green"></div>
+        </div>
+        <div class="row">
+            <div class="red"></div>
+            <div>
+                <div class="blue"></div>
+                <div class="blue"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

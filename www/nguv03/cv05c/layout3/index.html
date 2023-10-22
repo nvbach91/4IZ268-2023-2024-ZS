@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <style>
+        .gallery { display: flex; }
+        .picture { padding: 50px; border: 5px solid white; background-position: center; background-size: cover;}
+        .orange  { background-color: orange ; background-image: url(https://picsum.photos/seed/picsum/200/300); height: 10px; }
+        .green   { background-color: green  ; background-image: url(https://picsum.photos/seed/picsum/200/300); height: 100px; }
+        .red     { background-color: red    ; background-image: url(https://picsum.photos/seed/picsum/200/300); height: 40px; }
+        .blue    { background-color: blue   ; background-image: url(https://picsum.photos/seed/picsum/200/300); height: 70px; }
+        .yellow  { background-color: yellow ; background-image: url(https://picsum.photos/seed/picsum/200/300); height: 100px; }
+        .purple  { background-color: purple ; background-image: url(https://picsum.photos/seed/picsum/200/300); height: 130px; }
+        .skyblue { background-color: skyblue; background-image: url(https://picsum.photos/seed/picsum/200/300); height: 50px; }
+    </style>
+</head><body>
+    <div class="gallery">
+        <div class="column">
+            <div class="picture orange">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ruluNrdzvMA?si=6S22RvBnYBoNyuYE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="picture green"></div>
+            <div class="picture red"></div>
+        </div>
+        <div class="column">
+            <div class="picture blue"></div>
+            <div class="picture yellow"></div>
+        </div>
+        <div class="column">
+            <div class="picture purple"></div>
+            <div class="picture skyblue"></div>
+        </div>
+    </div>
+</body>
+</html>
