@@ -1,0 +1,4 @@
+input, button, div {
+    display: block; /* Každý prvek bude na novém řádku */
+    margin-bottom: 10px; /* Mezera mezi prvky */
+  }
