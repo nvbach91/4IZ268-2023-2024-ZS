@@ -1,0 +1,30 @@
+.container {
+    width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.column {
+    background-color: lightgrey;
+    width: 50%;    
+}
+
+.task-row {
+    margin: 2px;
+    padding-bottom: 5px;
+}
+
+.output-area {
+    padding: 10px;
+    overflow-wrap: break-word;
+}
+
+
+
+
