@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+}
+.wrapper{
+    margin: 0 auto;
+    width: 80%;
+}
+.row{
+    display: flex;
+    flex-grow: 1;
+}
+#tasks{
+    width: 50%;
+    border: 1px solid #48cfae;
+}
+#results{
+    width: 50%;
+    border: 1px solid #41ba9b;
+}
+.task-row, .output{
+    padding: 5px;
+}
+.task-row button, .output{
+    margin: 10px;
+}
+.multi-column-row{
+    display: flex;
+}
+
+#first-input-task5-numerator, #second-input-task5-numerator{
+    margin-right: 5px;
+    border-bottom: 5px solid black;
+}
+#first-input-task5-denominator{
+    margin-right: 5px;
+}
+.output{
+    overflow-wrap: break-word;
+    padding: 100px 0;
+    font-size: large;
+    text-align: center;
+}
