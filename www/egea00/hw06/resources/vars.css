@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@500&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+:root {
+    --button-color: #666;
+    --primary-color: #FFF2D8;
+    --secondary-color: #EAD7BB;
+    --tri-color: #BCA37F;
+    --text-color: #333;
+    --text-color-light: #fff;
+    --bg-color: #bebebe;
+    --font-family: 'Arimo', sans-serif;
+    --header-size: 12rem;
+    --font-basic: 1rem;
+    --font-small: calc(var(--font-basic) * 0.8);
+    --font-smaller: calc(var(--font-basic) * 0.5);
+    --font-title: calc(var(--font-basic) * 3);
+    --font-big: calc(var(--font-basic) * 1.4);
+    --card-size: 12rem;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+.layout{
+    width: 1280px;
+    margin: 0 auto;
+}
