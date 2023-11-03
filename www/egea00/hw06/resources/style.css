@@ -1,0 +1,49 @@
+.my-header{
+    width: 100%;
+    text-align: center;
+}
+.my-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+.my-tasks, .my-results {
+    flex: 1;
+    width: var(--card-size);
+    height: var(--card-size);
+    margin: 2px;
+    padding: 5rem 10rem 30rem 10rem;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+.my-tasks{
+    background-color: var(--primary-color);
+}
+.my-results{
+    background-color: var(--secondary-color);
+    font-size: 1.4rem;
+    font-weight: 900;
+}
+/*
+.my-tasks #reset button{
+    margin-top: 10px;
+    background-color: var(--tri-color);
+    color: var(--text-color-light);
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: var(--font-basic);
+    font-weight: bold;
+}
+.my-tasks #reset button:hover{
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+.my-tasks #reset button:active{
+    background-color: var(--button-color);
+    color: var(--text-color-light);
+}
+*/
