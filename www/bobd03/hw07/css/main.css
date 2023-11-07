@@ -1,0 +1,43 @@
+html {
+    box-sizing: border-box;
+    background-color: black;
+}
+
+body {
+    display: block;
+    background-color: rgb(32, 32, 32);
+    padding: 25px 80px;
+    border: 8px darkgray;
+    border-radius: 20px;
+    font-family: Black Ops One;
+}
+
+.container {
+    width: 100%;
+    text-align: center;
+}
+
+.input {
+    padding: 25px 0;
+}
+
+#cipherText, #cipherKey {
+    padding: 10px;
+    margin: 10px;
+}
+
+label {
+    color: white;
+    font-weight: bold;
+}
+
+.result {
+    padding: 50px 0;
+    text-align: center;
+    color: white;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
