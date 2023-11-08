@@ -1,0 +1,126 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(to right, #b2b3c5, #c2cfe5);
+}
+
+textarea,
+input,
+.result-wrapper p {
+  font-family: "Special Elite", sans-serif;
+}
+
+h1,
+h2 {
+  margin: 0;
+  text-wrap: wrap;
+}
+
+header,
+footer {
+  width: 100vw;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+header {
+  background: linear-gradient(to bottom right, #ababab, #e6e6e6);
+}
+header p {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+footer {
+  background: #d4d4d4;
+}
+
+main {
+  margin: 0 auto;
+  padding: 2rem 0;
+  max-width: 1200px;
+  width: 100%;
+  min-height: calc(100vh - 300px);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+  justify-content: center;
+}
+
+.form-wrapper,
+.result-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: calc(100% - 2rem);
+  background: #fdfdfd;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100% - 4rem);
+  gap: 1.5rem;
+}
+
+textarea,
+input {
+  border: 1px solid #888;
+  background: #fff;
+  border-radius: 5px;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+textarea {
+  text-transform: uppercase;
+}
+
+button {
+  border: none;
+  background: #444;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+button:hover {
+  background: #222;
+}
+
+.result-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+@media only screen and (min-width: 768px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+  .form-wrapper,
+  .result-wrapper {
+    padding: 2rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .form-wrapper,
+  .result-wrapper {
+    padding: 4rem;
+  }
+}/*# sourceMappingURL=main.css.map */
