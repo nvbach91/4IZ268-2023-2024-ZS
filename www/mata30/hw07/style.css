@@ -1,0 +1,43 @@
+body {
+  width: 50%;
+  margin: 0 auto;
+  align-content: center;
+}
+
+div {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(242, 242, 238);
+  font-size: 24px;
+  text-align: center;
+  padding: 15px;
+}
+
+.heading {
+  font-size: 48px;
+  text-align: center;
+}
+
+.area-1 {
+  width: 90%;
+  height: 100px;
+  background-color: rgb(255, 255, 255);
+  margin: 5px;
+}
+
+.area-2 {
+  width: 90%;
+  height: 30px;
+  background-color: rgb(255, 255, 255);
+  margin: 5px;
+}
+
+.submit-button {
+  color: white;
+  font-size: 15px;
+  background-color: rgb(51, 125, 100);
+  border: none;
+  margin: 0px 5px;
+  padding: 15px 15px;
+}
