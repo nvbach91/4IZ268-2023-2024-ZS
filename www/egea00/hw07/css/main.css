@@ -1,0 +1,96 @@
+body {
+    font-family: 'Arimo', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #292929;
+    gap: 2rem;
+}
+.container {
+    width: 45%;
+    max-width: 700px;
+    height: 75%;
+    max-height: 700px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    word-wrap: break-word;
+}
+h1 {
+    text-align: center;
+    width: 100%;
+    color: #fff;
+}
+.form-group {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 0.9rem;
+}
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+textarea, input[type="number"],input[type="submit"], input[type="reset"] {
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #121212;
+    border-radius: 0.75rem;
+    resize: none;
+}
+textarea, input[type="number"] {
+    font-size: 1rem;
+    background-color: #1d1d1d;
+    color: #fdfdfd;
+    font-family:'Source Code Pro', monos pace , sans-serif !important;
+}
+input[type="submit"], input[type="reset"] {
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+input[type="submit"] {
+    background-color: #2d5d86;
+}
+input[type="submit"]:hover {
+    background-color: #3977ac;
+}
+input[type="reset"] {
+    background-color: #00364c;
+}
+input[type="reset"]:hover {
+    background-color: #005b7f;
+}
+.input-container{
+    background-color: #434343;
+}
+.output-container {
+    background: #121212;
+    color: #fff;
+    font-size: 1.2rem;
+    font-family:'Source Code Pro', monos pace , sans-serif !important;
+}
+@media screen and (max-height: 800px){
+    body {
+        flex-direction: column;
+        height: unset;
+        padding: 1rem;
+    }
+    .container {
+        width: 90%;
+        height: 90%;
+        max-height: 500px;
+    }
+}
