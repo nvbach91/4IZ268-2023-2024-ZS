@@ -1,0 +1,31 @@
+body {
+    background-color: white;
+  }
+  header {
+    background-color: gray;
+    color: black;
+    padding: 10px;
+    text-align: center;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+  }
+  button {
+    background-color: blue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+  }
+  p {
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+  }
