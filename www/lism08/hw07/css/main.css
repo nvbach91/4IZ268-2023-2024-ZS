@@ -1,0 +1,44 @@
+body {
+    margin: auto;
+    margin-top: 10px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    max-width: 1024px;
+}
+
+.cipher-input {
+    width: 80%;
+    background-color: rgb(224, 224, 224);
+    padding: 50px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.cipher-input :nth-child(2), .cipher-input :nth-child(3) {
+    padding: 10px;
+    border: none;
+    margin: 5px;
+}
+
+.cipher-input :nth-child(2) {
+    height: 100px;
+}
+
+.cipher-input :nth-child(4) {
+    margin: 5px;
+    width: 150px;
+    padding: 8px;
+    border: none;
+    background-color: rgb(43, 163, 43);
+    color: white;
+}
+
+.decipher {
+    margin-top: 10px;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    border-top: 1px solid rgb(224, 224, 224);
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
