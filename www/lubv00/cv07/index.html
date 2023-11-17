@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Long live SPARTA!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <form id="cipherForm">
+        <h1>Long live SPARTA!</h1>
+        <label for="cipherText">Encrypted Text:</label>
+        <textarea id="cipherText" name="cipherText" rows="4" cols="33" required></textarea><br>
+        <label for="key">Used Key:</label>
+        <input type="number" id="key" name="key" required><br>
+        <button type="button" id="decipherButton">Decipher!</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script src="./js/main.js" defer></script>
+</body>
+
+</html>
