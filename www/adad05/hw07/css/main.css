@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+.form {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.form-row {
+    flex-wrap: nowrap;
+}
+
+.input1 {
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.input2 {
+    width: 10%;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.form-row>button {
+    width: 10%;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.form-row>p {
+    padding-left: 10px;
+    background-color: rgb(226, 226, 226);
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    height: 200px;
+}
