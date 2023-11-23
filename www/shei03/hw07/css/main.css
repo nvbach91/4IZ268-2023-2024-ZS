@@ -1,0 +1,39 @@
+body {
+    width: 100%;
+    height: 30rem;
+    background-color: #bdbbbb;
+    background-image: url("https://cdn.vox-cdn.com/thumbor/qCfHPH_9Mw78vivDlVDMu7xYc78=/715x248:1689x721/920x613/filters:focal(972x299:1278x605):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/69305239/shrek4_disneyscreencaps.com_675.0.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+main {
+    display: flex;
+    flex-basis: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    font-family: sans-serif;
+}
+
+main * {
+    display: block;
+}
+form {
+
+}
+textarea {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+#submit, #reset {
+    width: 100%;
+    font-size: 2em;
+    border-radius: 5%;
+    box-shadow: 1px 1px 1px #999
+}
+label {
+    color: white;
+}
