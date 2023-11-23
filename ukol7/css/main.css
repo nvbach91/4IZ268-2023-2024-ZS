@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+
+.body {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.layout {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grey {
+    background-color: rgba(223, 219, 219, 0.604);
+    width: calc(100% - 100px);
+    margin: 0 50px;
+    padding: 0 10px;  
+    text-align: left;
+}
+
+#sparta,
+#decipheredText {
+    margin-left: 10px;
+}
+
+#decipherText,
+#key {
+    width: calc(100% - 20px);
+    margin-bottom: 10px;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+#decipher {
+    background-color: rgb(36, 175, 147);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+
+}
+
+#decTextUnder {
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.centered-text {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #c6c4c4;
+    border-bottom: 1px solid #c6c4c4;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+.centered-text p {
+    font-size: 50px;
+    margin: 0;
+}
