@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Long live SPARTA!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <h1>Long live Sparta!</h1>
+      <p>Caesars cipher implementation</p>
+    </header>
+    <main>
+      <div class="form-wrapper">
+        <h2>Use to decipher the cipher</h2>
+        <form action="/" id="decipherForm">
+          <textarea
+            name="cipherText"
+            placeholder="Encrypted text"
+            id="cipherText"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <input
+            type="number"
+            placeholder="Key value (number)"
+            name="cipherKey"
+            id="cipherKey"
+          />
+          <button type="submit">Decipher</button>
+        </form>
+      </div>
+      <div class="result-wrapper">
+        <p id="result">Decrypted text goes here...</p>
+      </div>
+    </main>
+    <footer>Filip Urban 2023</footer>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
