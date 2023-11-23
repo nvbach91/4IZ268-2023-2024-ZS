@@ -1,0 +1,30 @@
+.main {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    gap: 15px;
+}
+
+.row {
+    background-color: #EEEEEE;
+    padding: 5px;
+    flex-grow: 1;
+    width: 50%;
+}
+
+.row button {
+    margin-top: 5px;
+    display: block;
+    padding: 5px;
+    background-color: #5F9EA0;
+    color: white;
+}
+
+.cipher-wrapper-output {
+    background-color: white;
+
+
+}
