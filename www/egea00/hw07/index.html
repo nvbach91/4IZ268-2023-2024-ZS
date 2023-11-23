@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Long live SPARTA!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500&family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+<div class="container input-container">
+    <h1>Long live Sparta!</h1>
+    <div class="form-group">
+        <label for="cipherText">Enter cipher text:</label>
+        <textarea id="cipherText" rows="4"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="shiftValue">Enter shift value:</label>
+        <input type="number" id="shiftValue">
+    </div>
+    <input type="submit" id="decipherButton" value="Decipher!">
+    <input type="submit" id="cipherButton" value="Cipher!">
+    <input type="reset" value="Reset">
+</div>
+<div class="container output-container" id="decipheredText">
+    Output will appear here...
+</div>
+<script src="js/main.js"></script>
+</body>
+
+</html>
