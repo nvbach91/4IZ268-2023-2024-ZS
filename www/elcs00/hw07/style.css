@@ -1,0 +1,29 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 100px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 8px;
+            background-color: rgb(50, 79, 159);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(50, 79, 159);
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
