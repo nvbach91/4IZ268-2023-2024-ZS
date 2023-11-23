@@ -1,0 +1,53 @@
+/* main.css */
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #333;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Přidá padding do šířky inputu */
+}
+
+button {
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical; /* Umožňuje uživateli měnit velikost textového pole pouze vertikálně */
+}
