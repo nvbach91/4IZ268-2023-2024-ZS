@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, p {
+    text-align: center;
+}
+
+
+#pexeso {
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#pexeso .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-basis: 20%;
+    height: 150px;
+    font-weight: 600;
+
+    border: 10px solid #FFF;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+
+    --s: 70px;
+    --c1: #AB3E5B;
+    --c2: #FFBE40;
+
+    --_g: 
+    #0000 25%,#0008 47%,var(--c1)  53% 147%,var(--c2) 153% 247%,
+    var(--c1) 253% 347%,var(--c2) 353% 447%,var(--c1) 453% 547%,#0008 553%,#0000 575%;
+    --_s: calc(25%/3) calc(25%/4) at 50%; 
+    
+    background:
+        radial-gradient(var(--_s) 100%,var(--_g)),
+        radial-gradient(var(--_s) 100%,var(--_g)) calc(var(--s)/2) calc(3*var(--s)/4),
+        radial-gradient(var(--_s) 0   ,var(--_g)) calc(var(--s)/2) 0,
+        radial-gradient(var(--_s) 0   ,var(--_g)) 0                calc(3*var(--s)/4),
+        repeating-linear-gradient(90deg,#ACCEC0 calc(25%/-6) calc(25%/6),#61A6AB 0 calc(25%/2));
+    background-size: var(--s) calc(3*var(--s)/2);
+
+    transition: transform .25s, background .25s;
+}
+
+#pexeso .card:not(.is-matched):hover {
+    --c2: #b6be8e;
+    transform: scale(1.05);
+}
+
+#pexeso .card.is-flipped {
+    background: rgba(255, 192, 66, 0.2);
+    color: #ad8027;
+}
+
+#pexeso .card.is-matched {
+    background: rgba(98, 167, 172, 0.2);
+    color: #215256;
+}
