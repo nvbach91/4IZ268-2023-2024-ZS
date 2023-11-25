@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-area {
+    margin: 100px auto 0px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.heading {
+    font-size: 40px;
+}
+
+.point-counter {
+    font-size: 20px;
+}
+
+.playground {
+    width: 1200px;
+    height: 1000px;
+    background-color: aqua;
+    margin: 100px auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    border-radius: 20px
+}
+
+.card {
+    background-color: green;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: transparent;
+    font-size: 0px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.card-active {
+    background-color: brown;
+    color: white;
+    cursor: not-allowed;
+    font-size: 30px;
+    animation: activation;
+    animation-duration: 0.2s;
+}
+
+.card-matched {
+    background-color: yellowgreen;
+    color: white;
+    cursor: not-allowed;
+    font-size: 40px;
+    animation: match;
+    animation-duration: 1s;
+}
+
+@keyframes activation {
+    0% {
+        background-color: green;
+    }
+
+    50% {
+        background-color: rgb(163, 165, 42);
+    }
+
+    100% {
+        background-color: brown;
+    }
+}
+
+@keyframes match {
+    0% {
+        background-color: brown;
+        scale: 0.9;
+    }
+
+    50% {
+        background-color: blanchedalmond;
+        scale: 1.1
+    }
+
+    100% {
+        background-color: yellowgreen;
+        scale: 1.0
+    }
+}
