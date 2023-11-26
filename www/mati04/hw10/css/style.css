@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+#game-field {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1024px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+.card {
+    background-color: #15ff00;
+    color: transparent;
+    width: 20%;
+    height: 150px;
+    display: flex;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color .5s ease;
+}
+.card:hover {
+    background-color: rgba(25, 0, 255, 0.466);
+}
+
+.card.revealed {
+    background-color: black;
+    color: white;
+    font-size: 30px;
+}
