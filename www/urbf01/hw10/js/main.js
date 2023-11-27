@@ -29,6 +29,10 @@ function cardClicked() {
   if (firstCard.dataset.city === secondCard.dataset.city) {
     score++;
     revealedCards += 2;
+    firstCard.classList.add("found");
+    firstCard.classList.remove("revealed");
+    secondCard.classList.add("found");
+    firstCard.classList.remove("revealed");
     resetBoard();
   } else {
     if (score > 0) {

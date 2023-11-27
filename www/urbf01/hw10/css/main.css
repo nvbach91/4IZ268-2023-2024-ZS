@@ -33,6 +33,10 @@ body {
   background-color: #da5050;
 }
 .card.revealed {
-  background-color: rgb(51, 150, 237);
+  background-color: #3396ed;
   color: #fff;
+}
+.card.found {
+  background-color: #33ed7d;
+  color: #000;
 }
