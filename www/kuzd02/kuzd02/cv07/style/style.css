@@ -1,0 +1,55 @@
+.decryptor {
+	min-width: 50vw;
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	margin: 0 20% 0 20%;
+	background-color: rgb(228, 224, 224);
+}
+
+.decryptorContent * {
+	display: flex;
+	margin-top: 10px;
+}
+
+.decryptor .decryptorContent {
+	padding: 1rem;
+}
+
+.decryptorContent .cipherInput {
+	width: 50vw;
+	height: 20vh;
+}
+
+.decryptorContent .keyInput {
+	width: 30vw;
+	height: 30px;
+}
+
+.decryptorContent .saveBtn {
+	cursor: pointer;
+	border: none;
+	color: white;
+	background-color: rgb(55, 120, 120);
+	justify-content: center;
+	width: 80px;
+	height: 40px;
+}
+
+.decryptorContent .saveBtn:hover {
+	background-color: rgb(39, 82, 82);
+}
+
+.decryptorContent .saveBtn:active {
+	background-color: rgb(95, 146, 143);
+}
+
+body .answer {
+	display: flex;
+	font-weight: 400;
+	font-size: 24px;
+	justify-content: center;
+	margin-top: 10px;
+	border-bottom: 1px solid gray;
+	border-top: 1px solid grey;
+}
