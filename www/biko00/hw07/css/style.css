@@ -1,0 +1,53 @@
+body {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.main-block {
+    display: flex;
+    flex-direction: column;
+    background-color: #eeeeee;
+    width: 500px;
+    height: 300px;
+    margin: auto;
+    padding: 23px;
+}
+
+.main-block h2 {
+    margin-top: 35px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#cipherText {
+    resize: horizontal;
+    height: 150px;
+    border-color: transparent;
+}
+
+#shiftKey {
+    border-color: transparent;
+    margin-top: 15px;
+    height: 35px;
+}
+
+#button {
+    background-color: #5f9ea0;
+    width: 100px;
+    padding: 12px;
+    border-color: transparent;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+#result {
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+    margin: 20px;
+}
+
+hr {
+    border: 1px solid #eeeeee;
+}
