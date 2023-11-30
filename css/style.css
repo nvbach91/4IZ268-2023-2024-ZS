@@ -1,0 +1,30 @@
+body{
+    text-align: center;
+    background-color: rgb(19, 19, 19);
+    color: white;
+    padding-top: 40px;
+}
+#game-field{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 70px;
+    margin-top: 50px;
+    position: relative;
+}
+.card{
+    padding: 80px 20px;
+    margin: 10px;
+    background-color: rgb(161, 161, 161);
+    width: 9%;
+    text-align: center;
+    color: transparent;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    font-size: 25px;
+}
+.revealed{
+    background-color: rgb(233, 233, 233);
+    color: rgb(29, 29, 29);
+}
