@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,h2{
+    text-align: center;
+}
+
+#game-field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.card {
+    width: 20%;
+    height: 100px;
+    margin: 10px;
+    background-color: blue;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card:hover {
+    background-color: red;
+}
+
+.card.revealed {
+    background-color: green;
+}
+
+.card.flipped {
+    background-color: green;
+}
+
+.card.found {
+    background-color: green;
+}
+
+.card .back {
+    visibility: hidden;
+}
+
+.card.flipped .back .city-name {
+    visibility: visible;
+}
+
+.card.found .back .city-name {
+    visibility: visible;
+}
