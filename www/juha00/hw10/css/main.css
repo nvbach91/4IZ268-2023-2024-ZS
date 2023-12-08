@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+#game-field {
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-gap: 10px;
+}
+
+.card {
+    background-color: #477c9f;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    cursor: pointer;
+    border-radius: 10px;
+    user-select: none;
+}
+
+.card.hidden {
+    background-color: #3498db;
+    color: #3498db;
+}
+
+.card.hidden:hover {
+    background-color: #1e5b83;
+    color: #1e5b83;
+}
+
+.card.matched {
+    background-color: #2ecc71;
+    color: white;
+    cursor: default;
+}
+
+.restart-button {
+    background-color: #2c3841;
+    color: white;
+    font-size: 14px;
+    padding: 20px 0;
+    margin-top: 10px;
+    width: 100px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.restart-button:hover {
+    background-color: #1e5b83;
+}
+
+.restart-button:active {
+    background-color: #2c3841;
+}
