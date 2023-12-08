@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 20px;
+}
+h1 {
+    color: #333;
+    margin-bottom: 16px;
+}
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+#game-field {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1024px;
+    margin: 0 auto;
+    gap: 10px;
+}
+.card {
+    background-color: #e66465;
+    border: 10px solid white;
+    width: calc(20% - 20px); /* Adjust for margin */
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color .5s ease;
+    position: relative; /* For absolute positioning of inner elements */
+}
+.card:hover {
+    background-color: #a7312d;
+}
+.card.revealed {
+    background-color: #4CAF50; /* Green background for revealed cards */
+    color: white;
+}
+.card.revealed .card-back {
+    color: white;
+}
+.card .card-back {
+    /* Hide the text initially */
+    display: none;
+}
+
+.card.revealed .card-back {
+    /* Show the text when revealed */
+    display: block;
+}
+
+.card.matched {
+    background-color: #81C784; /* Slightly different green for matched cards */
+}
+
