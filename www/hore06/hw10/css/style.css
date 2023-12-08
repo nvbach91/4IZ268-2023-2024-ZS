@@ -1,0 +1,76 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Styly pro nadpis h1 */
+  h1 {
+    font-size: 36px;
+    font-weight: 300;
+    color: #333;
+    text-align: center;
+    margin: 10px;
+  }
+  
+  /* Styly pro nadpis h2 */
+  h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+    margin: 10px;
+  }
+  
+  /* Styly pro element skóre */
+  #points {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+  }
+  
+  /* Styly pro element herního pole */
+  #game-field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+  
+  /* Styly pro jednotlivé karty */
+  .card-incorrect{
+    width: 20%;
+    height: 100px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #0d0d0d;
+    background-color: aquamarine;
+  }
+  
+  /* Styly pro otočené karty */
+  .card:hover {
+    background-color: aqua;
+  }
+
+  .card-correct{
+    width: 20%;
+    height: 100px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    background-color: aqua;
+  }
