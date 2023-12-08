@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f1f1f1;
+}
+.pokemon-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+.pokemon-card {
+    width: calc(100% / 3);
+    padding: 10px;
+    margin: 0;
+    list-style-type: none;
+    background-color: white;
+    border: 10px solid #f1f1f1;
+}
+.pokemon-image {
+    height: 140px;
+}
+.pokemon-name {
+    background-color: cadetblue;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+}
+.pokemon-remove {
+    border: none;
+    padding: 10px;
+    background-color: rgb(45, 87, 88);
+    color: white;
+    border-radius: 5px;
+}

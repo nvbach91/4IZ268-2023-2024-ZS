@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f1f1f1;
+}
+
+#pokemon-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+#pokemon-list li {
+    width: calc(100% / 3);
+    padding: 10px;
+    border: 10px solid white;
+    background-color: white;
+}
+.pokemon-name {
+    background-color: tomato;
+    color: #434343;
+    padding: 5px;
+}
+li img {
+    height: 140px;
+}
