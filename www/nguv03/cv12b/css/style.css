@@ -1,0 +1,29 @@
+* { 
+    box-sizing: border-box; 
+  }
+  body { 
+    font-family: sans-serif; 
+  }
+  .spinner {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border: 30px solid transparent;
+    border-top-color: firebrick;
+    border-bottom-color: firebrick;
+    animation: spinning 2s linear infinite;
+    transition: border-color 0.5s ease;
+  }
+  .spinner:hover {
+    border-top-color: cadetblue;
+    border-bottom-color: cadetblue;
+  }
+  @keyframes spinning {
+    from { 
+      transform: rotate(0deg); 
+    }
+    to { 
+      transform: rotate(360deg); 
+    }
+  }
