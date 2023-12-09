@@ -1,5 +1,5 @@
 const CLIENT_ID = 'cba42855be2a2bcbdbde';
-const CLIENT_SECRET = '1db62efcec45f1939f28da2e458b6fe5b48d5db0';
+const CLIENT_SECRET = '';
 const baseApiUrl = 'https://api.github.com';
 
 const containers = {
