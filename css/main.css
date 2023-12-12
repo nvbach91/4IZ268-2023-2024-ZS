@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+hr {
+    border-style: solid;
+    border-color: #eee;
+}
+
+/*PROFILE*/
+h2{
+    margin: 15px 0 0px 0;
+    padding: 0px;
+}
+p{
+    display: inline-block;
+    text-align: center;
+    margin: 2px 5px;
+}
+#user-profile{
+    margin-top: 50px;
+}
+.profile-img{
+    background-image: black;
+    height: 200px;
+    width: 200px;
+}
+.repo-name{
+    font-weight: bold;
+}
