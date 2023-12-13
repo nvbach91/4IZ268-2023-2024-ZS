@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin: 0;
+}
+hr {
+    border-style: solid;
+    border-color: #eee;
+}
+header {
+    text-align: center;
+    padding: 0.5rem 0;
+}
+main {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin: 1rem 5rem;
+}
+form {
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+#user-profile{
+    margin: 1rem 0;
+}
+#user-profile img {
+    max-width: 100px;
+    border-radius: 50%;
+    margin: 0.2rem 0 0;
+}
+#user-profile > * {
+    margin: 0 0;
+}
+#user-profile p:nth-child(2) {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+#user-profile p:nth-child(4) {
+    font-style: italic;
+}
+
+#repositories {
+    list-style-type: none;
+    padding: 0;
+}
+#repositories li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 3px 0;
+}
+#repositories a {
+    text-decoration: none;
+    color: #007bff;
+}
+#repositories a:hover {
+    text-decoration: underline;
+}
+#repositories li:has(> a:hover) {
+    background-color: #f5f5f5;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+    font-size: 0.8em;
+    background-color: cadetblue;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    main {
+        margin: 1rem 0;
+    }
+}
+
