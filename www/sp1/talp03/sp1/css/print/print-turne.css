@@ -1,0 +1,14 @@
+.list-date>span::before {
+    width: 2.7vw;
+    height: 2.7vw;
+    left: -1.4vw;
+}
+
+.list-dates:before {
+    height: 97.5%;
+    top: 25px;
+}
+
+.list-date>span:before {
+    top: 1.8vh
+}

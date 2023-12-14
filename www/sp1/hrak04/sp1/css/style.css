@@ -1,0 +1,1110 @@
+body {
+    font-family: 'Titillium Web', sans-serif;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    background-color: white;
+    position: relative;
+    flex-direction: column;
+}
+
+.navbar .logo {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    max-width: 213px;
+    max-height: 100px;
+    list-style: none;
+    flex-basis: 100%;
+}
+
+.navbar>ul {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.primary-nav>ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.primary-nav a {
+    color: #12181f;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.primary-nav a:hover,
+.primary-nav a.active {
+    color: #000000;
+    border-bottom: 2px solid #12181f;
+}
+
+.primary-nav.with-secondary-nav>ul {
+    margin-top: 50px;
+}
+
+.secondary-nav {
+    margin-top: 0px;
+}
+
+.secondary-nav>ul {
+    display: flex;
+    justify-content: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.secondary-nav a {
+    margin: 0 10px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.secondary-nav a:hover,
+.secondary-nav a.active {
+    background-color: #d3d3d3;
+    color: #000000;
+    border: 2px solid #12181f;
+    border-radius: 4px;
+    padding: 3px 8px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+}
+
+.dropdown-content {
+    margin-top: 0;
+    padding: 0;
+}
+
+.navbar ul {
+    margin-top: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    line-height: 2;
+    margin: 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.header-style-1,
+.header-style-2,
+.header-style-3,
+.header-style-4,
+.header-style-5,
+.header-style-6,
+.header-style-7 {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    width: 100%;
+    height: 300px;
+    color: white;
+}
+
+.header-style-1 {
+    background-image: url('../images/ceramics.jpg');
+}
+
+.header-style-2 {
+    background-image: url('../images/gallery.jpg');
+}
+
+.header-style-3 {
+    background-image: url('../images/kurzy.jpeg');
+}
+
+.header-style-4 {
+    background-image: url('../images/jednodenni.png');
+}
+
+.header-style-5 {
+    background-image: url('../images/semestralni.jpg');
+}
+
+.header-style-6 {
+    background-image: url('../images/contact.jpg');
+    padding: 0;
+}
+
+.header-style-7 {
+    background-image: url('../images/cenik.jpg');
+}
+
+header h1,
+header h2 {
+    margin: 10px 0;
+}
+
+.header-style-1 h1,
+.header-style-1 h2,
+.header-style-2 h1,
+.header-style-3 h1,
+.header-style-4 h1,
+.header-style-5 h1,
+.header-style-6 h1,
+.header-style-7 h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header h2 {
+    font-size: 18px;
+}
+
+main {
+    background-color: #33333316;
+    margin: 0;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    color: #333333;
+    padding: 10px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.pricing-container {
+    padding: 0 10px;
+}
+
+.contact-article,
+.home-article,
+.pricing-article {
+    flex: 0 0 calc(48% - 5px);
+    margin-bottom: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #aaaaaa;
+    background-color: white;
+}
+
+.home-article {
+    margin: 5px 10px;
+}
+
+.semestral-article {
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #aaaaaa;
+    background-color: white;
+    margin: 0 10px;
+    margin-top: 5px;
+}
+
+.course-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0 10px;
+}
+
+
+.semestral-course-description {
+    flex: 0 0 calc(80% - 10px);
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #aaaaaa;
+    background-color: white;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.daycourse-description {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 2px 2px 5px #aaaaaa;
+    background-color: white;
+}
+
+.daycourse-registration-info {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 10px;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.daycourse-info,
+.daycourse-pricing,
+.daycourse-registration-info .application-button {
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #aaaaaa;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.daycourse-info {
+    width: calc(55% - 20px);
+}
+
+.daycourse-pricing {
+    width: calc(20% - 20px);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.daycourse-registration-info .application-button {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+}
+
+.semestral-course-pricing,
+.application-button {
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px #aaaaaa;
+    background-color: white;
+    flex: 0 0 calc(50% - 20px);
+    margin: 10px;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.semestral-course-pricing {
+    padding: 10px;
+}
+
+.application-button a {
+    color: #333;
+    text-decoration: none;
+}
+
+.application-button:hover,
+.application-button a:hover {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+.semestral-course-pricing a,
+.daycourse-pricing a {
+    color: #6a5f5f;
+    text-decoration: none;
+}
+
+.semestral-course-pricing a:hover,
+.semestral-course-pricing a:focus,
+.daycourse-pricing a:hover,
+.daycourse-pricing a:focus {
+    color: blueviolet;
+    text-decoration: underline;
+}
+
+.contact-article h1 {
+    font-size: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    width: 25%;
+}
+
+td {
+    width: 25%;
+}
+
+td[colspan="2"] {
+    height: 60px;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+.course-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.upcoming-courses,
+.course-info,
+.semestral-info,
+.day-info,
+.individual-info,
+.silkpainting-info {
+    flex: 0 0 calc(47%);
+    margin: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #aaaaaa;
+    background-color: white;
+}
+
+.semestral-info,
+.day-info,
+.individual-info,
+.silkpainting-info {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.semestral-info p,
+.day-info p {
+    font-size: 20px;
+}
+
+.upcoming-courses ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+.upcoming-courses p {
+    margin-top: 20px;
+    font-style: italic;
+    color: #7f8c8d;
+}
+
+.registration {
+    width: calc(50%);
+}
+
+.home-pictures {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.image-container {
+    text-align: center;
+    flex-basis: calc(25% - 20px);
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px #aaaaaa;
+    background-color: white;
+}
+
+.home-pictures img {
+    max-width: 90%;
+    max-height: 100px;
+    margin-bottom: 5px;
+}
+
+.image-description {
+    font-size: 14px;
+    color: #333;
+}
+
+.icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.icons-container h2 {
+    padding-right: 20px;
+    padding-bottom: 0px;
+}
+
+.possible-courses-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 10px;
+}
+
+.possible-courses-container a {
+    margin-right: 20px;
+}
+
+.possible-courses-container>a,
+.possible-courses-container>article {
+    flex: 0 0 calc(50% - 20px);
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.possible-courses-container article {
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px #aaaaaa;
+    background-color: white;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.possible-courses-container img {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}
+
+.possible-courses-container figcaption {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    color: #12181f;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-icons li a i {
+    font-size: 50px;
+    color: #12181f;
+    padding-right: 50px;
+}
+
+.map-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+.map-container iframe {
+    flex: 1;
+    max-width: 100%;
+    height: 450px;
+    border: 0;
+    padding-bottom: 30px;
+}
+
+.contact-photos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 0;
+}
+
+.contact-photo-item {
+    position: relative;
+    width: 300px;
+    height: 200px;
+}
+
+.contact-photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid gray;
+    transition: all 0.3s ease;
+}
+
+.contact-photo-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.contact-photo-item:hover .contact-photo-description {
+    opacity: 1;
+}
+
+.contact-photos img:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    z-index: 10;
+}
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.gallery-container figure {
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+}
+
+.gallery-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-container figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 12%;
+    width: 65%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    transform: translateY(100%);
+    margin-bottom: 10px;
+}
+
+.gallery-container figure:hover figcaption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+    line-height: 1.8;
+}
+
+.footer * {
+    margin: 0;
+    padding: 0;
+}
+
+.social-icons-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icons-list li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.social-icons-list li:last-child {
+    margin-right: 0;
+}
+
+.social-icons-list li a i {
+    font-size: 40px;
+    color: white;
+}
+
+.social-icons-list li a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.social-icons-list li a:hover,
+.social-icons-list li a:focus {
+    opacity: 0.8;
+}
+
+@media screen and (max-width:1415px) {
+    .course-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .semestral-course-description,
+    .application-button,
+    .semestral-course-pricing {
+        width: 98.5%;
+    }
+
+    .application-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .registration {
+        width: 100%;
+    }
+
+    .application-button {
+        width: calc(100% - 20px);
+        margin: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .application-button a {
+        display: block;
+        width: 100%;
+        font-size: 1.2em;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .semestral-course-pricing {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .navbar {
+        padding-left: 0px;
+        min-height: 200px;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar .primary-nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        top: 0;
+    }
+
+    .primary-nav li {
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar .logo {
+        position: absolute;
+        left: 10px;
+        top: 40px;
+        z-index: 1000;
+    }
+
+    .primary-nav li {
+        text-align: center;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .dropdown .dropdown-content li {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        display: block;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    .dropdown .dropdown-content {
+        top: 75%;
+    }
+
+    .dropdown-content a {
+        display: block;
+        text-decoration: none;
+        color: black;
+        padding: 12px 16px;
+    }
+
+    .navbar .primary-nav li {
+        display: inline-block;
+        margin-right: 10px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .navbar .primary-nav li.logo {
+        position: absolute;
+        left: 0;
+        top: 10px;
+        z-index: 1000;
+    }
+
+    .navbar .primary-nav li:first-child {
+        margin-left: 0;
+    }
+
+    .home-pictures {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .home-pictures .image-container {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin: 10px 0;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px;
+        align-items: stretch;
+    }
+
+    .contact-container,
+    .contact-article {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin: 10px 0;
+    }
+
+    .map-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .map-container iframe {
+        width: 100%;
+    }
+
+    .course-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .semestral-course-description,
+    .application-section,
+    .semestral-course-pricing {
+        width: 100%;
+    }
+
+    .application-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .daycourse-registration-info {
+        flex-direction: column;
+        gap: 0;
+        margin-left: 0;
+    }
+
+    .daycourse-info,
+    .daycourse-pricing {
+        width: 98.5%;
+    }
+
+    .contact-photos {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .contact-photo-item {
+        width: calc(50% - 20px);
+        margin: 5px;
+        height: 300px;
+    }
+
+    .contact-photos img:hover {
+        cursor: pointer;
+        transform: scale(1);
+        z-index: 10;
+    }
+
+    .possible-courses-container {
+        flex-direction: column;
+    }
+
+    .possible-courses-container {
+        margin-right: 20px;
+    }
+
+    .possible-courses-container a {
+        flex: 0 0 calc(100% - 20px);
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+
+    .registration .application-button {
+        margin-right: 10px;
+    }
+
+    .semestral-course-description {
+        flex: 0 0 100%;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+
+    .application-button a {
+        display: block;
+        width: 90%;
+        font-size: 1.2em;
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 430px) {
+    .navbar {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto;
+        padding: 10px;
+    }
+
+    .navbar .logo {
+        position: static;
+        margin: 0 auto;
+        max-width: 80%;
+    }
+
+    .primary-nav,
+    .secondary-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .primary-nav li,
+    .secondary-nav li {
+        display: block;
+        margin-top: 5px;
+    }
+
+    .dropdown-content {
+        display: none !important;
+    }
+
+    .primary-nav a,
+    .secondary-nav a {
+        padding: 8px;
+        display: block;
+    }
+
+    .primary-nav a:active,
+    .secondary-nav a:active {
+        border-bottom: black;
+    }
+
+    .secondary-nav>ul {
+        flex-direction: column;
+        padding: 0;
+        align-items: center;
+    }
+
+    .daycourse-registration-info {
+        flex-direction: column;
+        gap: 0;
+        margin-left: 0;
+        margin-right: 10px;
+    }
+
+    .daycourse-info,
+    .daycourse-pricing {
+        width: 97%;
+    }
+}
+
+@media print {
+
+    .navbar,
+    .footer,
+    .dropdown,
+    .social-icons-list {
+        display: none;
+    }
+
+    .home-article {
+        margin: 5px 10px;
+    }
+
+    .home-pictures .image-container {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin: 10px 0;
+    }
+
+    body {
+        color: black;
+        background-color: white;
+        font-size: 12pt;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .header-style-1,
+    .header-style-2 {
+        height: 200px;
+        margin-bottom: 10px;
+    }
+
+    .header-style-3,
+    .header-style-5,
+    .header-style-6,
+    .header-style-7 {
+        height: 100px;
+    }
+
+    .gallery-container {
+        padding: 0;
+        gap: 0;
+        justify-content: start;
+    }
+
+    .gallery-container figure {
+        width: 50%;
+        height: auto;
+        margin: 0;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .gallery-container img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .gallery-container figcaption {
+        display: block;
+        position: relative;
+        color: black;
+        background-color: transparent;
+        opacity: 1;
+        transform: none;
+        padding: 5px 0;
+        font-size: 10pt;
+        width: auto;
+        bottom: auto;
+        left: auto;
+    }
+
+    .contact-photos,
+    .icons-container,
+    .map-container,
+    .application-button {
+        display: none;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px;
+        align-items: stretch;
+    }
+
+    .contact-container,
+    .contact-article {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin: 10px 0;
+    }
+
+    .course-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .registration {
+        width: 100%;
+    }
+
+    .daycourse-info,
+    .daycourse-pricing {
+        width: 46%;
+    }
+
+    .semestral-course-pricing {
+        height: 150px;
+    }
+
+    .pricing-article h2 {
+        display: none;
+    }
+}

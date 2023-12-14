@@ -1,0 +1,147 @@
+/* sevices */
+.section-1 {
+    background-color: white;
+    height: 45vw;
+}
+
+.s1-sect {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.h-services {
+    text-align: center;
+    color: #AE2A2F;
+    font-weight: 800;
+    font-size: 3vw;
+    margin: 1vw 0 0.5vw 0;
+}
+
+.p-services {
+    text-align: center;
+}
+
+.serv-container {
+    height: 25vw;
+    width: 100%;
+    margin: 0 auto 4.2vw auto;
+    display: flex;
+}
+
+.serv-item {
+    width: 25%;
+    height: inherit;
+    background-color: #AE2A2F;
+    margin: 2.2vw 0 0 0;
+    transition: 0.2s;
+}
+
+.serv-image {
+    height: 80%;
+    background-color: #AE2A2F;
+}
+
+.serv-image img {
+    height: 100%;
+    width: 100%;
+    opacity: 0.4;
+    transition: 0.2s;
+}
+
+.serv-image img:hover {
+    opacity: 1;
+    transition: 0.2s;
+}
+
+.serv-item:hover {
+    background-color: #FFD500;
+    transition: 0.2s;
+    height: 102%;
+    cursor: pointer;
+    margin-bottom: 5vw;
+    box-shadow: 0 0px 2vw 0.2vw #ABABAB;
+
+}
+
+.serv-food {
+    margin: 2.2vw auto;
+}
+
+.serv-descript {
+    height: 20%;
+    color: white;
+    font-size: 1.5vw;
+    display: flex;
+    align-items: center;
+}
+
+.serv-descript h3 {
+    margin: auto;
+}
+
+/* others */
+.section-2 {
+    height: 30vw;
+}
+
+.o-container {
+    margin-top: 3vw;
+    width: 100%;
+    display: flex;
+}
+
+.box {
+    width: calc(100%/3);
+    height: 15vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #AE2A2F;
+    padding: 1.6vw 0;
+}
+
+.box span {
+    font-size: 2vw;
+    font-weight: 500;
+    text-align: left;
+    margin: auto 4vw;
+    color: white;
+}
+
+.b1 {
+    background-color: #96252A;
+}
+
+.b2 {
+    background-color: #AE2A2F;
+}
+
+.b3 {
+    background-color: #C12B30;
+}
+
+.h-others {
+    text-align: center;
+    color: #AE2A2F;
+    font-weight: 800;
+}
+
+/* schedule */
+.section-3 {
+    height: 20vw;
+    width: 70%;
+    margin: auto;
+}
+
+.h-schedule {
+    text-align: center;
+    font-weight: 800;
+    font-size: 6vw;
+}
+
+.p-schedule {
+    text-align: center;
+    font-size: 1.5vw;
+    line-height: 3.5vw;
+}

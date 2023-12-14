@@ -1,0 +1,27 @@
+@media print {
+
+  #main-header {
+      padding: 15px;
+  }
+
+  .logo {
+      display: block;
+  }
+
+  header, nav, .button, .footer, .social-icons, .copyright-section, #main-header video, .styles-container, iframe {
+      display: none;
+    }
+
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  
+}
+  
+    

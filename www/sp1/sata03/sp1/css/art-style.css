@@ -1,0 +1,43 @@
+/* Article Page*/
+.article {
+  margin: Opx auto;
+  text-align: left;
+  padding: 30px;
+  background-color: #fff;
+}
+
+.citation {
+  display: flex;
+  justify-content: space-between;
+  border-left: 3px solid #3D3D3D;
+}
+
+.art-read a {
+  color: #7DB59A;
+}
+
+.text {
+  padding: 0px 20px;
+}
+
+.important {
+  display: flex;
+  justify-content: space-between;
+  background-color: #EBEBEB;
+  padding: 30px;
+}
+
+.right p,
+.left p {
+  font-size: 18px;
+}
+
+.logo-footer {
+  margin-bottom: 10px;
+}
+
+@media print {
+  iframe {
+    display: none;
+  }
+}

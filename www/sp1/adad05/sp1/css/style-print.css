@@ -1,0 +1,31 @@
+@media print {
+    .stars {
+        display: none;
+    }
+
+    header {
+        display: none;
+    }
+
+    * {
+        color: black;
+        text-decoration: none;
+        font-size: 10px;
+    }
+
+    .rating {
+        display: none;
+    }
+
+    footer {
+        display: none;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+}

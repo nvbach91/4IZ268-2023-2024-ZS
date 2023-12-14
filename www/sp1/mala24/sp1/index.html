@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styly.css" media="screen">
+    <link rel="stylesheet" href="./css/print.css" media="print">
+    <link rel="icon" type="image/svg" href="./img/f1_logo.svg">
+    <title>Formula 1</title>
+</head>
+
+<body>
+    <nav class="topnav">
+        <ul>
+            <li>
+                <div class="navimg"><img src="./img/f1_logo.svg" alt="logo" width="62"></div>
+            </li>
+            <li><a href="../">Home</a></li>
+            <li>Results
+                <ul class="dropdown">
+                    <li><a href="./results/driverstandings/">Driver Standings</a></li>
+                    <li><a href="./results/constructorstandings/">Constructor Standings</a></li>
+                </ul>
+            </li>
+            <li>Schedule
+                <ul class="dropdown">
+                    <li><a href="./schedule/2023/">2023</a></li>
+                    <li><a href="./schedule/2024/">2024</a></li>
+                </ul>
+            </li>
+            <li><a href="./drivers/">Drivers</a></li>
+            <li><a href="./teams/">Teams</a></li>
+            <li><a href="./video/">Video</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="layout">
+        <div class="main">
+            <h1>What's F1?</h1>
+            <div class="row">
+                <div class="row-item">
+                    <img src="./img/home/who_races_in_F1-min.png" alt="Who race in F1?">
+                </div>
+                <div class="row-item">
+                    <h2>Who races in F1?</h2>
+                    <p>Extreme g-forces. Daring decisions made in the blink of an eye – and at 370km/h. Dramatically
+                        battling to be the best, Formula 1 drivers are more like fighter pilots than sportspeople. Only
+                        20 get the chance to compete, and they push themselves – and their incredible machines – to the
+                        very limit.</p>
+                    <button onclick="location.href='./drivers'" type="button">Meet our teams</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row-item">
+                    <h2>Who are the F1 teams?</h2>
+                    <p>Formula 1 is a team sport. It needs to be to change all 4 tyres on a car in under 2 seconds! F1
+                        teams design and build their cars and get them ready to race. Each has their own history. Each
+                        has their own unique approach. All want to be the fastest. But who should you root for?</p>
+                    <button onclick="location.href='./teams'" type="button">Meet our drivers</button>
+                </div>
+                <div class="row-item">
+                    <img src="./img/home/who_are_the_F1_teams-min.png" alt="Who are the F1 teams?">
+                </div>
+            </div>
+            <div class="row">
+                <div class="row-item">
+                    <img src="./img/home/Where_does_F1_race-min.png" alt="Where does F1 race?">
+                </div>
+                <div class="row-item">
+                    <h2>Where does F1 race?</h2>
+                    <p>Some sports play stadiums. Our 'stadiums' span cities. With 23 races in 23 amazing locations
+                        across 5 continents, Formula 1 is truly an international sport.</p>
+                    <p>Check out the Formula 1 calendar for 2023, including the inaugural Las Vegas Grand Prix. </p>
+                    <button onclick="location.href='./schedule/2023/'" type="button">2023 schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,364 @@
+/* Font import */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Open+Sans&display=swap');
+
+/* Main settings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+
+/* Header + logo + main */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 3px 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.logo img {
+    width: 250px;
+    height: 150px;
+}
+
+main {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f4f4f4;
+    text-transform: uppercase;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    text-align: center;
+
+}
+
+nav ul li {
+    display: block;
+    margin: 10px 20px;
+    justify-content: center;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    padding: 5px 5px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+.active-nav-item a {
+    background-color: #d8d8d8;
+    color: #000;
+    border-radius: 15%;
+}
+
+/* Hamburger Menu */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Homepage */
+
+.page-title {
+    text-align: center;
+    width: 100%;
+    font-size: 2.5rem;
+    color: #333;
+    margin: 10px 0;
+    font-weight: lighter;
+    font-family: 'Nunito', sans-serif;
+}
+
+.content-wrapper p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    padding: 1rem 0;
+    background-color: #f4f4f4;
+    color: #333;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-shrink: 0;
+}
+
+.footer p {
+    margin-top: 20px;
+}
+
+/* About me */
+.about-me {
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-photo {
+    max-width: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 2px solid #333;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.profile-photo:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.about-me.social-media {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-link {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.social-link i {
+    margin-right: 5px;
+}
+
+.social-link:hover,
+.social-link:focus {
+    color: #0056b3;
+}
+
+
+/* Container */
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 10px;
+}
+
+.section-block img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.section-block {
+    background-color: #0000000d;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.section-block {
+    transition: box-shadow 0.3s ease;
+}
+
+.section-block:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.section-block h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Travel Diary */
+.travel-diary.container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    padding: 10px;
+}
+
+.arrow {
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+    max-height: 100px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Tips for travelers */
+.tips.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.tips.section-block {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+}
+
+.tips.image-block {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.tips.image-block img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.tips.section-block h2 {
+    padding-bottom: 10px;
+}
+
+.tips.section-block h2,
+p {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.tips.container {
+    transition: box-shadow 0.3s ease;
+}
+
+.tips.container:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tips.section-block:hover {
+    box-shadow: none;
+}
+
+
+/* Links */
+.section-block ul {
+    list-style: none;
+    padding: 0;
+}
+
+.section-block ul li {
+    margin-bottom: 10px;
+}
+
+.section-block ul li a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.section-block ul li a:hover {
+    color: #0056b3;
+}
+
+/* Responzive layout */
+@media (max-width: 1260px) {
+    nav ul {
+        flex-direction: column;
+        display: none;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    nav ul.nav-active {
+        display: block;
+    }
+
+    .active-nav-item a {
+        font-size: 14px;
+        padding: 5px;
+        background-color: #d8d8d8;
+        border-radius: 15%;
+
+    }
+
+    .tips.container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+
+@media (max-width: 800px) {
+    header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+}

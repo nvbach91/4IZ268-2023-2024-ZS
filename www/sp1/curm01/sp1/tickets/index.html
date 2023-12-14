@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lístky</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@100;200;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="ticketspage-body">
+    <header class="top-panel">
+        <a id="navbar-homepage" href="../"><span></span></a>
+        <nav>
+            <a href="../about">O akci</a>
+            <a href="../programme/">Program</a>
+            <a href="./"><strong>Lístky</strong></a>
+            <a href="../location/">Lokace</a>
+            <a href="../contact/">Kontakt</a>
+        </nav>
+    </header>
+    <main class="ticketspage-main">
+        <div class="ticketspage-main-div">
+            <h1>LÍSTKY</h1>
+            <p>Tato stránka slouží k závaznému objednání lístků. Zadejte, kolik lístků si přejete pro hráče a kolik pro
+                ostatní doprovod. Maximální počet lístků na osobu je 10.</p>
+            <form>
+
+                <div class="ticketspage-main-div-1">
+                    <div class="ticketspage-main-div-customer">HRÁČ/HRÁČKA</div>
+                    <div class="ticketspage-main-div-tickets">
+                        <label for="quantity1">Počet lístků:</label>
+                        <input type="number" id="quantity1" name="quantity1" min="0" max="30">
+                    </div>
+                    <div class="ticketspage-main-div-price"><strong>Cena:</strong> 0 Kč</div>
+                </div>
+                <div class="ticketspage-main-div-1">
+                    <div class="ticketspage-main-div-customer">DOPROVOD</div>
+                    <div class="ticketspage-main-div-tickets">
+                        <label for="quantity2">Počet lístků:</label>
+                        <input type="number" id="quantity2" name="quantity2" min="0" max="10">
+                    </div>
+                    <div class="ticketspage-main-div-price"><strong>Cena:</strong> 250 Kč</div>
+                </div>
+                <label for="fname">Křestní jméno</label>
+                <input type="text" id="fname" name="firstname" placeholder="Vyplňte své křestní jméno">
+
+                <label for="lname">Příjmení</label>
+                <input type="text" id="lname" name="lastname" placeholder="Vyplňte své příjmení">
+
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="email" placeholder="Vyplňte svůj e-mail">
+                <input type="submit" value="Objednat" onclick="alert('Lístky úspěšně objednány!')">
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div>Copyright © 2023 Čurillová</div>
+    </footer>
+</body>
+
+</html>

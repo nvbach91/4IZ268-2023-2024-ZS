@@ -1,0 +1,16 @@
+.article-title {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.article-wrapper {
+    margin-top: 30px;
+}
+
+.article-content {
+    flex-wrap: wrap;
+}
+
+.article-text {
+    margin-bottom: 30px;
+}

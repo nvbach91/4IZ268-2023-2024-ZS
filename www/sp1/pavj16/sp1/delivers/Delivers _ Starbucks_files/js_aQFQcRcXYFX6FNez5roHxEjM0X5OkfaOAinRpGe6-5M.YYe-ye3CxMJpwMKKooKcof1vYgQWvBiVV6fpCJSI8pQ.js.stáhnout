@@ -1,0 +1,16 @@
+(function () {
+    function ie_check() {
+        const user_agent = navigator.userAgent;
+        const is_it_ie = user_agent.indexOf("MSIE ") > -1 || user_agent.indexOf("Trident/") > -1;
+        return is_it_ie;
+    }
+    if (ie_check()) {
+        const getUrl = window.location;
+        const targetUrl = getUrl.protocol + "//" + getUrl.host + "/" + 'ie-check';
+        if (targetUrl == getUrl) {
+            return;
+        } else {
+            window.location.replace(targetUrl);
+        }
+    }
+})();

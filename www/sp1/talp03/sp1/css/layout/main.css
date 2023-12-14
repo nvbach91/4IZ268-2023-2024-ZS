@@ -1,0 +1,239 @@
+* {
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: rgb(245, 245, 245);
+}
+
+header {
+    background-image: url(../../image/background-image.jpg);
+}
+
+.header-wrapper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: rgba(0, 0, 0, 0.11);
+}
+
+.header-title {
+    padding: 0;
+    text-align: center;
+    font-size: 2.5vw;
+    padding-top: 40px;
+    max-width: 35%;
+    background-image: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(245, 245, 245) 100%), linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(245, 245, 245) 100%);
+    background-clip: content-box, padding-box;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.header-subtitle {
+    text-align: center;
+    max-width: 35%;
+    font-size: 1.5vw;
+    padding: 30px;
+    color: rgba(37, 37, 37, 0.774);
+    background-image: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(245, 245, 245) 100%), linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(245, 245, 245) 100%);
+    background-clip: content-box, padding-box;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.navigation {
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.navigation a {
+    width: 500px;
+    display: inline-block;
+    padding: 30px;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.navigation a:hover {
+    border-bottom: solid black 4px;
+    margin-bottom: -4px;
+    background-color: rgba(0, 0, 0, 0.11);
+    font-weight: 500;
+}
+
+
+.article-wrapper {
+    margin-top: 60px;
+    max-width: 75%;
+}
+
+.page-article {
+    margin-bottom: 65px;
+}
+
+.article-meta {
+    text-align: right;
+}
+
+.article-title {
+    margin-bottom: 40px;
+}
+
+.article-content {
+    display: flex;
+}
+
+.article-text {
+    line-height: 25px;
+    text-align: justify;
+    margin-right: 40px;
+    font-size: 18px;
+}
+
+.article-title h3 {
+    text-decoration: none;
+    color: black;
+    font-size: 35px;
+}
+
+.footer {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+    border-top: solid black 3px;
+}
+
+.mf-item {
+    margin-top: 30px;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    font-size: 30px;
+    position: relative;
+}
+
+.link-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.fa {
+    width: 40px;
+}
+
+.copyright {
+    margin-top: 30px;
+    flex-basis: 100%;
+    flex-grow: 1;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.mf-item:nth-child(1):hover {
+    color: rgb(218, 19, 25);
+}
+
+.mf-item:nth-child(2):hover {
+    color: rgb(19, 194, 82);
+}
+
+.mf-item:nth-child(3):hover {
+    color: rgb(0, 68, 255);
+}
+
+@media screen and (max-width: 600px) {
+    .header-title {
+        max-width: 85%;
+        font-size: 4vw;
+    }
+
+    .header-subtitle {
+        max-width: 85%;
+        font-size: 4vw;
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navigation a {
+        max-width: 100%;
+    }
+
+    .article-content {
+        flex-wrap: wrap;
+    }
+
+    .article-wrapper {
+        max-width: 90%;
+    }
+
+    .article-text {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    .card-video iframe {
+        width: 336px;
+        height: 189px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 768px) {
+    .header-title {
+        max-width: 85%;
+        font-size: 4vw;
+    }
+
+    .header-subtitle {
+        max-width: 85%;
+        font-size: 4vw;
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .article-content {
+        flex-wrap: wrap;
+    }
+
+    .article-wrapper {
+        max-width: 90%;
+    }
+
+    .article-text {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1360px) {
+    .header-title {
+        max-width: 85%;
+        font-size: 3.8vw;
+    }
+
+    .header-subtitle {
+        max-width: 85%;
+        font-size: 2.3vw;
+    }
+
+    .navigation a {
+        width: 300px;
+    }
+
+    .article-wrapper {
+        max-width: 90%;
+    }
+}

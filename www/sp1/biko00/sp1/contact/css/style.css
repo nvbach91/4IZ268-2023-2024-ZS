@@ -1,0 +1,72 @@
+.contact-methods p {
+    margin: 10px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input,
+form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.hidden-message {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    main {
+        width: 95%;
+    }
+}
+
+@media print {
+
+    header nav,
+    footer {
+        display: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    a {
+        color: black;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .project {
+        page-break-before: always;
+    }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grandpianos</title>
+    <link rel="stylesheet" href="task-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <div class="layout">
+        <div class="menu">
+            <div class="menu-item">
+                <a href="../"><i class="fa fa-home"><span style="padding-left: 7px;"></span></i>Home</a>
+            </div>
+            <div class="menu-item">
+                <a href="../about"><i class="fa fa-question"><span style="padding-left: 7px;"></span></i>About</a>
+            </div>
+            <div class="menu-item menu-active">
+                <div class="dropdown">
+                    <div class="dropbtn" onclick="myFunction()">
+                        <i class="fa fa-music"><span style="padding-left: 7px;"></span></i>Products<i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a href="../products/grandpianos">Grandpianos</a>
+                        <a href="../products/pianinos">Pianinos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <a href="../services"><i class="fa fa-handshake"><span style="padding-left: 7px;"></span></i>Services</a>
+            </div>
+            <div class="menu-item">
+                <a href="../contact"><i class="fa fa-phone"><span style="padding-left: 7px;"></span></i>Contact</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-header">LB Services</div>
+            <hr class="solid">
+            <div class="main-sec">
+                <h2>Grandpianos</h2>
+                <p>The grand piano offers better sound and more precise key control, making it the preferred choice when space and budget allow. The grand piano is also considered a necessity in venues hosting skilled pianists.</p>
+                <p>In grand pianos the frame and strings are horizontal, with the strings extending away from the keyboard. The action lies beneath the strings, and uses gravity as its means of return to a state of rest. Grand pianos range in length from approximately 1.5 meters (4 ft 11 in) to 3 meters (9 ft 10 in). All else being equal, longer pianos with longer strings have larger, richer sound and lower inharmonicity of the strings. Inharmonicity is the degree to which the frequencies of overtones (known as partials or harmonics) sound sharp relative to whole multiples of the fundamental frequency. This results from the piano's considerable string stiffness; as a struck string decays its harmonics vibrate, not from their termination, but from a point very slightly toward the center (or more flexible part) of the string. The higher the partial, the further sharp it runs. Pianos with shorter and thicker string (i.e., small pianos with short string scales) have more inharmonicity. The greater the inharmonicity, the more the ear perceives it as harshness of tone.</p>
+            </div>
+            <hr class="solid">
+            <div class="products">
+                <div class="product-item">
+                    <img src="https://www.ladeni.net/wp-content/uploads/2020/12/P9170043.jpg" alt="ronisch-model-265">
+                    <h2>RÖNISCH CONCERT GRAND PIANO MODEL 265</h2>
+                    <p>Exceptional Rönisch concert grand piano model 265 after overhaul. A concert series instrument with a powerful sound, made in 1896. New finish, new chokes, hammers, new strings and tuning pins, ivory keyboard lining, new keyboard cashmere, etc. 2 year warranty. Written contracts. The instrument is without any further investment required.</p>
+                </div>
+                <div class="product-item">
+                    <img src="https://www.ladeni.net/wp-content/uploads/2021/08/P1010971b.jpg" alt="petrof-model-210">
+                    <h2>PIANO PETROF MOD. 210 OP.44 614</h2>
+                    <p>We offer for sale a PETROF piano mod. 210 opus 44 614 after general overhaul. The instrument underwent a complete overhaul in 2011. New finish was made - polyurethane black matt, the soundboard and the cast iron frame were repainted, the rocker was replaced, complete string covering including tuning pins, the mechanics is after a complete overhaul - new drums on the hammer handles, new hammers, chokes, new keyboard lining and cashmere key padding, etc. The piano is completely comparable to the original new instrument. A distinctive sounding instrument, suitable for larger spaces.</p>
+                </div>
+            </div>
+            <div class="footer">
+                <hr class="solid">
+                <p>2023 Made by LB Services | FIS VŠE Webtech</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var dropdown = document.getElementById("myDropdown");
+            if (dropdown.classList.contains('show')) {
+              dropdown.classList.remove('show');
+            }
+          }
+        }
+    </script>
+</body>
+</html>

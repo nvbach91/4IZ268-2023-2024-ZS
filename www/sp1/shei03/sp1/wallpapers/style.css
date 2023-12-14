@@ -1,0 +1,40 @@
+html,
+body {
+  height: 2000px;
+}
+footer {
+  height: 105px;
+}
+main {
+  height: 1300px;
+}
+.shop {
+  flex-wrap: wrap;
+}
+.banner h1 {
+  right: 20%;
+}
+@media all and (max-width: 600px) {
+  #nav-wallpapers {
+    display: none;
+  }
+}
+@media print {
+  .banner {
+    height: 300px;
+  }
+  .banner img {
+    display: none;
+  }
+  .banner h1 {
+    top: 15%;
+    left: 20%;
+  }
+  #main-nav {
+    display: none;
+  }
+  html,
+  body {
+    height: 600px;
+  }
+}

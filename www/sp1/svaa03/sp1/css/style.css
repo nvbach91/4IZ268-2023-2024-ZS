@@ -1,0 +1,273 @@
+.header-hompage {
+    background-image: url(../img/torontoweb2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container-nav {
+    background-color: #333;
+    padding: 15px;
+}
+
+.top-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    overflow: hidden;
+}
+
+.top-menu a {
+    text-decoration: none;
+    color: #fff;
+    padding: 15px 20px;
+    display: inline-block;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.top-menu a:hover {
+    background-color: #555;
+}
+
+.top-menu a.active {
+    background-color: #555;
+}
+
+main {
+    padding: 20px;
+}
+
+
+section h2 {
+    padding-left: 80px;
+}
+
+section {
+    margin-bottom: 20px;
+    border: 10px solid #ddd;
+    padding: 20px;
+}
+
+section p {
+    text-align: justify;
+}
+
+section img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.two-column {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.two-column>div {
+    flex: 1;
+    padding: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+@media screen and (max-width: 700px) {
+    .top-menu {
+        flex-direction: column;
+    }
+
+    .two-column {
+        flex-direction: column;
+    }
+
+}
+
+
+.header-scores {
+    background-image: url(../img/torontoweb6.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px;
+}
+
+
+.main {
+    padding: 20px;
+}
+
+.table-container {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.table-header th {
+    background-color: #333;
+    color: #fff;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.table-body td,
+.table-body th {
+    border: 1px solid #808080;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    background-color: #d8d8d8;
+    color: #333;
+}
+
+.table-body tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.header-standings {
+    background-image: url(../img/torontoweb6.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px;
+}
+
+.header-videos {
+    background-image: url(../img/torontoweb6.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px;
+}
+
+.video-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.video-container {
+    width: 45%;
+    margin-bottom: 20px;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 315px;
+}
+
+.video-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #777;
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        width: 100%;
+    }
+
+    .ticket-column {
+        width: 100%;
+    }
+}
+
+.stats-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.stats-table {
+    width: 45%;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.stats-table h2 {
+    text-align: center;
+    color: #333;
+    padding: 0px;
+}
+
+.best-player {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.best-player p {
+    text-align: center;
+}
+
+.best-player img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.shop-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.shop-column {
+    width: 45%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.shop-column h2 {
+    text-align: center;
+    color: #333;
+    padding: 0px;
+}
+
+.shop-column img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.shop-column p {
+    text-align: center;
+}
+
+.header-shop {
+    background-image: url(../img/torontoweb6.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px;
+}
+
+.header-stats {
+    background-image: url(../img/torontoweb6.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px;
+}

@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+    font-family: Roboto, sans-serif;
+    color: #222;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #edfff8;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-menu {
+    background-color: #1a7951;
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    align-items: center;
+    box-shadow: 6px 0 12px #888;
+}
+
+.logo {
+    font-size: 3rem;
+    color: #fcfcfc;
+    margin: 1rem;
+}
+
+.top-menu-item {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #fcfcfc;
+    padding: 2rem 1.4rem;
+    margin: 0 0 2px;
+    height: 100%;
+    box-sizing: content-box;
+}
+
+.current-page, .top-menu-item:hover {
+    background-color: rgba(1, 1, 1, 0.2);
+    margin: 0;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+}
+
+.plastic {
+    border-bottom-color: yellow;
+}
+
+.paper {
+    border-bottom-color: blue;
+}
+
+.glass {
+    border-bottom-color: green;
+}
+
+.metal {
+    border-bottom-color: silver;
+}
+
+.tetra-pak {
+    border-bottom-color: orange;
+}
+
+a {
+    color: #1a7951;
+}
+
+main {
+    max-width: 800px;
+    margin: 100px auto auto auto;
+    padding: 0 15px;
+    flex: 1 1 400px;
+    padding-bottom: 20px;
+}
+
+
+.welcome {
+    font-size: 20px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 20px;
+    margin-bottom: 2rem;
+}
+
+.stats > div {
+    flex: 1 0 220px;
+}
+
+.stats-big {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+img {
+    max-height: 400px;
+    display: block;
+    margin: auto;
+}
+
+footer {
+    background-color: #1a7951;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    color: #fcfcfc;
+}
+
+.print-header {
+    font-size: 30px;
+    font-weight: bold;
+    display: none;
+}
+
+@media print {
+    .top-menu, footer {
+        display: none;
+    }
+
+    .print-header {
+        display: block;
+    }
+
+    main {
+        margin: auto;
+    }
+}

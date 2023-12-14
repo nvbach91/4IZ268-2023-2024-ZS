@@ -1,0 +1,753 @@
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  background-color: #fff;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  max-width: 1024px;
+}
+
+
+/* Header Style */
+header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(61, 61, 61, 0.4);
+}
+
+.logo {
+  padding: 15px;
+  margin-top: 20px;
+  vertical-align: middle;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+/* Navigation Style */
+#menu {
+  padding: 15px;
+}
+
+#menu a {
+  text-decoration: none;
+  color: #3D3D3D;
+  display: inline-block;
+  padding-top: 25px;
+  padding-right: 10px;
+  font-size: 15px;
+}
+
+#menu a[href].selected,
+a.selected:active {
+  color: #7DB59A;
+}
+
+#menu a:hover {
+  color: #ACC9BB;
+  transition: 0.3s ease-out;
+}
+
+
+/* Navigation Back (Product <-> Shop, Article <-> Blog */
+.back {
+  background-color: #fff;
+  padding: 10px;
+}
+
+.back a {
+  color: #3D3D3D;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.back a:hover {
+  color: #ACC9BB;
+  transition: 0.3s ease-out;
+}
+
+/* Foter Style */
+footer {
+  border-top: 1px solid rgba(61, 61, 61, 0.4);
+  padding: 50px 20px;
+}
+
+.logo-footer {
+  margin-bottom: 10px;
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.left,
+.right {
+  width: 50%;
+  padding: 20px;
+}
+
+.social-media {
+  margin-top: 10px;
+}
+
+.add-div {
+  padding-bottom: 10px
+}
+
+.add-div p {
+  font-size: 22px;
+}
+
+.add-div a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.add-div a:hover {
+  color: #7DB59A;
+  transition: 0.3s ease-out;
+}
+
+/* Footer with Policies */
+.legacy {
+  display: flex;
+  justify-content: space-between;
+}
+
+.legacy p {
+  font-size: 16px;
+  color: #3D3D3D;
+  opacity: 0.7;
+  padding: 10px;
+}
+
+.policy p,
+.policy a {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.policy a:hover {
+  color: #ACC9BB;
+  transition: 0.3s ease-out;
+}
+
+/*Text, headings, titles, etc. */
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+li,
+ul {
+  color: #3D3D3D;
+  text-decoration: none;
+}
+
+.menu a:active {
+  color: #7DB59A;
+}
+
+h1 {
+  font-size: 42px;
+  line-height: 95%;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+p,
+li {
+  font-size: 20px;
+}
+
+a:hover {
+  color: #7DB59A;
+  transition: 0.3s ease-out;
+}
+
+/* Buttons */
+/* btn>Shop */
+.btn-shop {
+  font-size: 16px;
+  color: #3D3D3D;
+  background-color: transparent;
+  border: 1px solid #3D3D3D;
+  border-radius: 30px;
+  padding: 5px 50px;
+  cursor: pointer;
+}
+
+.btn-shop:hover {
+  font-size: 16px;
+  color: #F5F5F7;
+  background-color: #3D3D3D;
+  border: 1px solid #3D3D3D;
+  border-radius: 30px;
+  padding: 5px 50px;
+  transition: 0.3s ease-out;
+}
+
+/*btn NewsLetter*/
+.btn-nl {
+  font-family: Arial;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #F5F5F7;
+  background-color: transparent;
+  border: 1px solid #F5F5F7;
+  border-radius: 30px;
+  padding: 8px 50px;
+  cursor: pointer;
+}
+
+.btn-nl:hover {
+  color: #3D3D3D;
+  background-color: #ACC9BB;
+  transition: 0.3s ease-out;
+  border: none;
+}
+
+
+/* Homepage Billboard */
+.intro {
+  height: 600px;
+  background-image: url('../src/billboard.png');
+  background-position: center;
+  padding: 50px;
+}
+
+.intro h1 {
+  vertical-align: middle;
+  padding-top: 150px;
+  padding-right: 20px;
+}
+
+.intro p {
+  max-width: 420px;
+}
+
+/* Blocck with Cards */
+.cards {
+  margin: 30px 30px 0px 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Long card */
+.card-large {
+  width: 100%;
+  background-color: #ACC9BB;
+  border-radius: 15px;
+  padding: 30px 50px 0px 70px;
+  height: fit-content;
+}
+
+.card-large img {
+  width: 400px;
+  height: 300px;
+  float: right;
+  padding-right: 30px;
+}
+
+.card-large a {
+  color: #3D3D3D;
+  text-decoration: none;
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.card-large a:hover {
+  padding-top: 20px;
+  color: #F5F5F7;
+  transition: 0.3s ease-out;
+}
+
+.card-large p {
+  max-width: 500px;
+}
+
+/* Card Row (3 Small Cards) */
+
+.cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* Small Card */
+
+.card-small {
+  text-align: center;
+  width: calc(100% / 3);
+  background-color: #fff;
+  border-radius: 15px;
+  height: 500px;
+  border: 5px solid #F5F5F7;
+  padding: 30px;
+}
+
+.card-small a:hover {
+  color: #ACC9BB;
+  transition: 0.3s ease-out;
+}
+
+.card-small p {
+  text-align: center;
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+/* Images for Sm. Cards' BG */
+
+.card-small.jammer {
+  background-image: url('../src/jammer.png');
+  background-position: left;
+}
+
+.card-small.backpack {
+  background-image: url('../src/backpack.png');
+  background-position: center;
+}
+
+.card-small.sleeve {
+  background-image: url('../src/sleeve-sm.png');
+  background-position: center;
+}
+
+.card-small a,
+.card-small p {
+  color: #F5F5F7;
+}
+
+/* Block Statistics */
+.statistics h2 {
+  margin: 50px auto;
+  text-align: center;
+  max-width: 780px;
+}
+
+/* Card row (2 Cards) */
+.cards-numbers-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 30px;
+}
+
+/* Card with Numbers */
+.card-number {
+  padding-left: 40px;
+  width: 50%;
+  background-color: #fff;
+  border-radius: 25px;
+  border: 10px solid #F5F5F7;
+}
+
+.card-number h1 {
+  padding-top: 15px;
+  font-size: 96px;
+  line-height: 10%;
+}
+
+.card-number h3 {
+  padding-right: 40px;
+  font-weight: normal;
+}
+
+/* Long Card about App*/
+
+.card-large.shielding {
+  height: fit-content;
+  display: inline-block;
+  background-color: #3D3D3D;
+  border-radius: 15px;
+}
+
+.card-large.shielding.w {
+  height: fit-content;
+  display: inline-block;
+  background-color: #ACC9BB;
+  border-radius: 15px;
+  margin-bottom: 50px;
+}
+
+.imag-sh {
+  width: 30%;
+}
+
+/* Long Card App Info */
+.aside {
+  width: 70%;
+  padding-top: 20px;
+}
+
+.aside h3 {
+  font-size: 24px;
+  opacity: 0.4;
+  font-weight: normal;
+  line-height: 10%;
+  color: #F5F5F7;
+}
+
+.aside h2 {
+  line-height: 95%;
+  color: #F5F5F7;
+}
+
+.aside p {
+  opacity: 0.7;
+  color: #F5F5F7;
+}
+
+.aside-w h3 {
+  font-size: 24px;
+  opacity: 0.4;
+  font-weight: normal;
+  line-height: 10%;
+  color: #3D3D3D;
+}
+
+.aside-w h2 {
+  line-height: 95%;
+  color: #3D3D3D;
+}
+
+.aside-w p {
+  opacity: 0.7;
+  color: #3D3D3D;
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.left,
+.right {
+  width: 50%;
+  padding: 20px;
+}
+
+.social-media {
+  margin-top: 10px;
+}
+
+.add-div {
+  padding-bottom: 10px
+}
+
+.add-div p {
+  font-size: 22px;
+}
+
+.add-div a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.add-div a:hover {
+  color: #ACC9BB;
+  transition: 0.3s ease-out;
+}
+
+/* Responsive layouts */
+
+@media screen and (max-width: 800px) {
+  .card-large img {
+    width: 300px;
+    height: 300px;
+    float: right;
+    padding-right: 30px;
+  }
+
+  .statistics h2 {
+    margin: 50px auto;
+    text-align: center;
+    max-width: 600px;
+  }
+
+  .card-large {
+    text-align: left;
+    padding: 50px;
+  }
+
+  .card-large p {
+    max-width: 400px;
+  }
+
+  .card-large img {
+    width: O;
+    height: 0;
+  }
+
+  .card-large.shielding,
+  .card-large.shielding.w {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .card-large.shielding img {
+    height: 300px;
+  }
+
+  .card-large.shielding.w img {
+    height: 300px;
+  }
+
+  .imag-sh {
+    width: 100%;
+  }
+
+  .aside,
+  .aside-w {
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  .aside p,
+  .aside-w p {
+    font-size: 18px;
+  }
+
+  .card-small {
+    padding-top: 15px;
+    text-align: left;
+    height: 300px;
+  }
+
+  .card-small p {
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .card-small h3 {
+    font-size: 24px;
+  }
+
+  /* Images for Sm. Cards' BG */
+
+  .card-small.jammer {
+    background-image: url('../src/jammer-sm.png');
+    background-position: left;
+  }
+
+  .card-small.backpack {
+    background-image: url('../src/backpack-sm.png');
+    background-position: center;
+  }
+
+  .card-small.sleeve {
+    background-image: url('../src/sleeve-sm.png');
+    background-position: center;
+  }
+
+  .card-number h1 {
+    padding-top: 15px;
+    font-size: 64px;
+    line-height: 10%;
+  }
+
+  .card-number h3 {
+    padding-right: 18px;
+    font-weight: normal;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-small {
+    width: 100%;
+  }
+
+  .intro {
+    background-color: #fff;
+    background-image: none;
+  }
+
+  .card-number {
+    width: 100%;
+  }
+
+  .card-large {
+    padding: 30px 20px;
+  }
+
+  .imag-sh {
+    width: fit-content;
+  }
+
+  .aside,
+  .aside-w {
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  .aside p,
+  .aside-w p {
+    font-size: 18px;
+  }
+
+  .aside h3,
+  .aside-w h3 {
+    font-size: 24px;
+  }
+
+  .aside h2,
+  .aside-w h2 {
+    font-size: 28px;
+    line-height: 95%;
+  }
+
+  .statistics h2 {
+    text-align: left;
+    padding: 10px 2Opx;
+    font-size: 30px;
+    max-width: 320px;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+  }
+
+  .add-div p {
+    font-size: 18px;
+  }
+
+  .legacy {
+    display: inline-block;
+  }
+
+  .legacy p {
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+
+  header {
+    display: block;
+    text-align: center;
+    padding: 10px auto;
+  }
+
+  .logo {
+    padding: 5px;
+    margin-top: 10px;
+  }
+
+  #menu {
+    padding: 5px;
+  }
+
+  #menu a {
+    margin: 0px;
+    padding: 5px;
+  }
+
+  .card-small {
+    width: 100%;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+  }
+
+  .add-div img {
+    margin: 10px 0;
+    width: 80px;
+  }
+
+  .intro {
+    padding: 0px 20px;
+    background-color: #fff;
+    background-image: none;
+  }
+
+  .cards-numbers-row {
+    margin: 0px;
+  }
+
+  .card-number {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .card-number h1 {
+    font-size: 54px;
+    padding-top: 0;
+  }
+
+  .card-large {
+    padding: 30px 20px;
+  }
+
+  .imag-sh {
+    width: fit-content;
+  }
+
+  .aside,
+  .aside-w {
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  .aside p,
+  .aside-w p {
+    font-size: 18px;
+  }
+
+  .aside h3,
+  .aside-w h3 {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .aside h2,
+  .aside-w h2 {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .statistics {
+    padding: 20px;
+  }
+
+  .statistics h2 {
+    margin: 10px;
+    text-align: left;
+    font-size: 30px;
+    max-width: 320px;
+  }
+
+  .card-large.shielding img {
+    width: 0;
+    height: 0;
+  }
+
+  .card-large.shielding.w img {
+    width: 0;
+    height: 0;
+  }
+
+  .policy p {
+    margin: 2px;
+  }
+}

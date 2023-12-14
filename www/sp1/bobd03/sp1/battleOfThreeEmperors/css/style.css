@@ -1,0 +1,430 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Satisfy', cursive;
+    background-color: black;
+}
+
+.page-layout {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    min-width: 200px;
+    background-color: black;
+    height: 100%;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    background-image: url(../../images/nav_scroll.png);
+    background-size: 100% 100%;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    padding: 50px 0;
+    height: 50%;
+    position: fixed;
+}   
+
+a {
+    color: brown;
+}
+
+.links a {
+    text-decoration: none;
+    padding: 10px 30px;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    color: brown;
+}
+
+.links a:hover {
+    border-bottom: 5px groove black;
+    border-radius: 10px;
+}
+
+header {
+    width: 100%;
+    height: 30%;
+    padding: 50px 10px;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Courgette', cursive;
+    background-image: url(../../images/header.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+header h1 {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+.main-page {
+    max-width: 1680px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main-content {
+    background-color: burlywood;
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+
+.context h2, .prelude h2, .battle h2 {
+    padding: 10px 20px;
+}
+
+.context article {
+    display: flex;
+    border-bottom: 5px black dashed;
+}
+
+.context section {
+    width: 50%;
+    padding: 10px 20px;
+    margin: 10px;
+    text-align: justify;
+    background-color: rgba(169, 133, 143, 0.4);
+    border-radius: 20px;
+}
+
+.napoleon {
+    display: flex;
+    border-bottom: 5px black dashed;
+}
+
+.napoleon img {
+    padding: 30px;
+    width: 40%;
+    height: 40%;
+    align-self: center;
+}
+
+.napoleon article {
+    width: 60%;
+    padding: 10px 20px;
+    margin: 10px;
+    text-align: justify;
+    background-color: rgba(169, 133, 143, 0.4);
+    border-radius: 20px;
+}
+
+.prelude, .battle article {
+    display: flex;
+    border-bottom: 5px black dashed;
+}
+
+.prelude article, .battle section {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 10px;
+    text-align: justify;
+    background-color: rgba(169, 133, 143, 0.4);
+    border-radius: 20px;
+}
+
+.prelude img, .battle-pic {
+    float: right;
+    padding: 20px;
+    max-width: 60%;
+    height: auto;
+}
+
+
+footer {
+    height: 10%;
+    background-color: brown;
+    color: white;
+    text-align: center;
+    font-family: 'Courgette', cursive;
+}
+
+@media screen and (max-width: 1366px) {
+    nav {
+        min-width: 180px;
+    }
+
+    .links {
+        background-size: 100% 80%;
+    }
+
+    .links a{
+        font-size: 14px;
+        padding: 10px 25px;
+    }
+
+    .napoleon article {
+        width: 50%;
+    }
+
+    .napoleon img {
+        width: 50%;
+        height: 50%;
+    }
+
+    footer {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    
+    .napoleon {
+        flex-wrap: wrap;
+    }
+
+    .napoleon article {
+        width: 100%;
+    }
+
+    .napoleon img {
+        width: 80%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .page-layout {
+        flex-direction: column;
+    }
+
+
+    nav {
+        width: 100%;
+        height: 10%;
+        background-color: burlywood;
+        top: 0;
+        position: fixed;
+        border-bottom: 5px solid brown;
+    }
+
+    .links {
+        background-color: burlywood;
+        background-image: none;
+        flex-direction: row;
+        padding: 0;
+        height: 100%;
+        position: relative;
+    }
+
+    .links a{
+       font-size: 14px;
+       padding: 0px 10px;
+       width: 20%;
+       align-self: center;
+   }
+
+    .context article{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .context section {
+        width: 100%;
+    }
+
+    .context p, .napoleon p, .prelude p, .battle p {
+        font-size: 16px;
+    }
+
+    .prelude img, .battle-pic {
+        float: none;
+        max-width: none;
+        width: 100%;
+        padding: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    header {
+        display: flex;
+        margin-top: 80px;
+    }
+
+    header h1 {
+        font-size: 30px;
+        width: 100%;
+        align-self: center;
+    }
+
+    footer {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {  
+    .page-layout {
+        flex-direction: column;
+    }
+
+    nav {
+        width: 100%;
+        height: 10%;
+        background-color: burlywood;
+        top: 0;
+        position: fixed;
+        border-bottom: 5px solid brown;
+    }
+
+    .links {
+        background-image: none;
+        flex-direction: row;
+        position: relative;
+        padding: 0;
+        height: 100%;
+    }
+
+    .links a{
+        font-size: 12px;
+        padding: 0px 5px;
+        width: 20%;
+        align-self: center;
+    }
+
+    header {
+        display: flex;
+        margin-top: 80px;
+    }
+    
+    header h1 {
+        font-size: 25px;
+        width: 100%;
+        align-self: center;
+    }
+
+    .context article{
+        display: flex;
+    }
+
+    .context section {
+        width: 100%;
+    }
+
+    .context p, .napoleon p, .prelude p, .battle p {
+        font-size: 14px;
+    }
+
+    .prelude img, .battle-pic {
+        float: none;
+        max-width: none;
+        width: 100%;
+        padding: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+}
+
+
+@media print {
+    html {
+        height: auto;
+    }
+
+    body {
+        background-color: transparent
+    }
+    
+    nav {
+        display: none;
+    }
+    main-page {
+        width: 100%;
+    }
+
+    .main-content {
+        background-color: transparent;
+        padding: 1.5cm;
+    }
+
+    .context h2, .prelude h2, .battle h2 {
+        padding: 2px 20px;
+    }
+
+    .context {
+        page-break-after: always;
+    }
+
+    .context article{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .context section {
+        width: 100%;
+        background-color: transparent;
+        page-break-inside: avoid;
+    }
+
+    .context p, .napoleon p, .prelude p, .battle p {
+        font-size: 16px;
+    }
+
+    .napoleon {
+        flex-wrap: wrap;
+        page-break-after: always;
+    }
+
+    .napoleon article {
+        width: 100%;
+        background-color: transparent;
+        page-break-inside: avoid;
+    }
+
+    .napoleon img {
+        width: 50%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .prelude {
+        page-break-after: always;
+    }
+
+    .prelude article {
+        background-color: transparent;
+        page-break-inside: avoid;
+    }
+
+    .battle section {
+        background-color: transparent;
+        page-break-inside: avoid;
+    }
+
+    .prelude img, .battle-pic {
+        float: none;
+        max-width: none;
+        width: 50%;
+        padding: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        align-self: center;
+    }
+
+    footer {
+        display: fixed;
+        bottom: 0;
+    }
+}

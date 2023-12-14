@@ -1,0 +1,148 @@
+¸* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia;
+    font-size: 150%;
+    background-color: antiquewhite;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.header {
+    background-image: url('C:\Users\jcern\Desktop\cerj37_webik\semestralka\logo-1.png');
+    background-size: contain;
+    height: auto;
+    background-color: lightgray;
+}
+@media print {
+    .navigation {
+        display: none;
+    }
+}
+
+.logo {
+    width: 150px;
+    padding: 10px;
+    display: flex;
+    margin: auto;
+}
+
+.navigation {
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    height: 30px;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+.navigation a {
+    padding: 10px;
+}
+
+.gallery {
+    display: flex;
+}
+
+.current-page {
+    background-color: lightgray;
+
+}
+
+.picture {
+    padding: 20px 50px;
+    border: 5px solid antiquewhite
+}
+
+.banner {
+    background-image: url('https://www.kosteleckeuzeniny.cz/wp-content/uploads/2023/11/KU_HOMEPAGE_BANNER_MASNA_PRODEJNA_ROKU-01.jpg');
+    background-size: contain;
+    height: auto;
+    background-color: lightgray;
+}
+
+.divider {
+    background-color: rgb(252, 195, 121);
+    height: 5px;
+}
+
+.home-img {
+    width: 50%;
+    height: 50%;
+    display: block;
+
+}
+
+.footer {
+    background-color: rgb(252, 195, 121);
+    padding: 20px;
+}
+
+.main-text {
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: burlywood;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.button:hover {
+    background-color: white;
+    color: black;
+}
+
+.home-text {
+    text-align: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    font-size: 20px;
+}
+
+.product-img {
+    width: 250px;
+    margin-top: 80px;
+}
+
+.shop-menu {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    font-size: 12px;
+
+}
+
+.image-shop {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.shop-menu {
+    background-color: blanchedalmond;
+    padding: 15px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.divider-vertical {
+    background-color: rgb(252, 195, 121);
+    height: 100px;
+    width: 5px;
+    padding-top: 40px;
+    margin: 10px;
+}

@@ -1,0 +1,22 @@
+.container-nav,
+.footer {
+    display: none;
+}
+
+@page {
+    size: A4;
+    margin: 20mm;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+h1,
+h2 {
+    page-break-after: avoid;
+}
+
+table {
+    page-break-inside: auto;
+}

@@ -1,0 +1,68 @@
+.about-h3-text {
+    text-align: center;
+    font-size: 45px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: rgb(83, 83, 83);
+}
+
+.community-about {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 150px;
+    margin-right: 150px;
+    border: 1px solid rgb(83, 83, 83);
+    border-radius: 5%;
+    box-shadow: 2px 2px 20px 6px rgb(99, 99, 99);
+}
+
+.community-tile-about img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.community-tile-about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.about-section {
+    margin-bottom: 50px;
+}
+
+@media (max-width: 1250px) {
+    .community-tile-about {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem;
+    }
+
+    .community-about {
+        grid-template-columns: repeat(2, 1fr);
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 800px) {
+    .community-about {
+        grid-template-columns: repeat(1, 1fr);
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .community-tile-about {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem;
+    }
+}

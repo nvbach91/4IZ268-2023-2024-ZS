@@ -1,0 +1,924 @@
+/* Global definition block */
+/*
+color scheme
+
+#16171B -- black, background theme
+#222327  -- grey, used as backdrop for content
+#C39E68 -- gold, accent
+#B1361E -- darkred, accent
+#6795DE -- lightblue, accent
+
+use white as primary content color to ensure contrast
+
+font definitions 
+font-family: 'Jura', sans-serif; - headlines
+font-family: 'Ubuntu', sans-serif; -rest of the content 
+-should combine techy feel with easy eye tracking, both fonts support
+czech latin extensions
+*/
+
+/* Use Ubuntu globally, use border-box globally */
+* {
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Define Jura as default for all headings  */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Jura', sans-serif;
+}
+
+/* Suppress default text decoration for all a elements
+    Set default color to white to better match the color scheme    
+*/
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* all body elements are centered and are using limited area,
+    this should look good on most tablet, notebook and desktop screens
+    Might create too much negative space for ultrawide */
+body {
+    max-width: 1024px;
+    margin: 0 auto;
+    background: #16171B;
+    color: white;
+}
+
+/* Unified navbar and footer bar styling */
+.navbar,
+.footerbar {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Unified navbar and footer bar styling in relation
+to their position within the page */
+.navbar {
+    border-bottom: #C39E68 solid 2px;
+    margin-bottom: 8px;
+}
+
+.footerbar {
+    border-top: #C39E68 solid 2px;
+    margin-top: 8px;
+}
+
+/* Active nav and footer items are treated as grouped inline block section */
+.nav-item-wrapper,
+.footer-item-wrapper {
+    display: inline-block;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/* add flair to "logo" section of the nav*/
+.nav-root {
+    font-weight: 600;
+    font-size: 40px;
+    font-family: 'Jura', sans-serif;
+    transition: color .5s ease;
+}
+
+/* Highlight and provide interactive nav and footer item behavior */
+.nav-item,
+.footer-item {
+    border-left: #B1361E solid 2px;
+    border-right: #B1361E solid 2px;
+    padding: 0 3px;
+    transition: color .5s ease;
+}
+
+.nav-item:hover,
+.nav-root:hover,
+.footer-item:hover {
+    color: #B1361E;
+    text-decoration: underline;
+}
+
+/*
+    Landing page specific stylings
+*/
+.lp-main {
+    margin: 10px 0;
+    background-color: #222327;
+    border-radius: 10px;
+}
+
+.lp-section-introduction {
+    display: flex;
+    margin: 10px;
+}
+
+.lp-introduction {
+    width: 65%;
+}
+
+.lp-image {
+    width: 35%;
+    overflow: hidden;
+}
+
+/* This configuration ensures relatively stable maintaining of
+    aspect ratio for images at a cost of vertical negative space
+    when reducing viewport size, alternative would be using object-fit:contain,
+    but that seems to be generating horizontal negative space instead,
+    this ruleset is less verbose and is therefore used as a primary img
+    handling method.    
+*/
+.lp-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+
+    border-radius: 10px;
+}
+
+.lp-section-continue {
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+    flex-wrap: wrap;
+}
+
+/* Makes sure that cards utilize available flex space fully
+    provides optical feedback when item is highlighted to make sure
+    transitions standout within the page 
+*/
+.lp-cs-card {
+    flex-grow: 1;
+    padding: 5px;
+    text-align: center;
+    border: #B1361E solid 2px;
+    background-color: #16171B;
+    border-radius: 5px;
+    width: 30%;
+    transition: transform 0.5s ease;
+    transition: color .5s ease;
+    margin-bottom: 10px;
+}
+
+.lp-cs-card:hover {
+    color: #B1361E;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+/*
+    Blog specific stylings
+*/
+/* Treats each article as a separate item */
+.article-feed article {
+    background-color: #222327;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.article-header {
+    display: inline-block;
+}
+
+
+.article-content {
+    display: flex;
+    gap: 20px;
+}
+
+.article-picture-container {
+    width: 35%;
+    overflow: hidden;
+}
+
+.article-picture-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.article-abstract {
+    width: 65%;
+}
+
+/* Forces artificial separation of the article closing elements to
+    better handle positioning     
+*/
+.article-footer {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.article-tag-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.article-tag,
+.article-read-button {
+    padding: 5px;
+}
+
+.article-read-button {
+    border-left: #B1361E solid 2px;
+    border-right: #B1361E solid 2px;
+    transition: transform 0.5s ease;
+    transition: color .5s ease;
+}
+
+.article-read-button:hover {
+    color: #B1361E;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+
+.article-tag {
+    background-color: #6795DE;
+    border-radius: 10px;
+}
+
+/* Techstack specific stylings */
+
+.techstack-item {
+    padding: 10px;
+    background-color: #222327;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.techstack-usecase-tags {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.techstack-tag {
+    background-color: #6795DE;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.techstack-item-maincontent {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 10px;
+    border-bottom: #C39E68 solid 1px;
+
+}
+
+.techstack-image-wrapper {
+    width: 35%;
+    overflow: hidden;
+}
+
+.techstack-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.techstack-item-description {
+    width: 65%;
+}
+
+.techstack-item-highlights {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.techstack-item-pros,
+.techstack-item-cons {
+    width: 50%;
+    padding: 15px;
+}
+
+.techstack-item-cons {
+    border-left: #C39E68 solid 1px;
+}
+
+.techstack-item-highlights li {
+    margin: 4px 0;
+    list-style-type: none;
+}
+
+/* https://fontawesome.com/v6/docs/web/add-icons/pseudo-elements */
+.techstack-item-cons li::before {
+    content: "\f00d";
+    font: var(--fa-font-solid);
+    color: #B1361E;
+    font-size: 25px;
+    margin-right: 5px;
+}
+
+.techstack-item-pros li::before {
+    content: "\f00c";
+    font: var(--fa-font-solid);
+    color: #6795DE;
+    font-size: 25px;
+    margin-right: 5px;
+}
+
+/* Lessons specific stylings */
+.lesson-cards {
+    background-color: #222327;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.lessons-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* Makes sure that card has enough negative space at the bottom*/
+.lesson-card {
+    width: 30%;
+    flex-grow: 1;
+    padding: 5px;
+    padding-bottom: 15px;
+    text-align: center;
+    border: #B1361E solid 2px;
+    background-color: #16171B;
+    border-radius: 5px;
+
+}
+
+.lesson-button {
+    transition: color ease 0.5s;
+    border-left: #B1361E solid 2px;
+    border-right: #B1361E solid 2px;
+    padding: 5px;
+}
+
+.lesson-button:hover {
+    color: #B1361E;
+    text-decoration: underline;
+}
+
+.lessons-faq {
+    border-top: #C39E68 solid 2px;
+}
+
+.faq-item {
+    background-color: #222327;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.lessons-faq li {
+    margin-bottom: 4px;
+}
+
+.faq-locations {
+    border-top: #C39E68 solid 1px;
+    display: flex;
+    gap: 15px;
+}
+
+.faq-location {
+    width: 50%;
+}
+
+/* 
+    Originally intended to have iframes with google embbeds here
+    but styling proved difficult, ideally would use modals,
+    but only way I know how to do that properly is with JS. 
+*/
+.location-button {
+    border-left: #B1361E solid 2px;
+    border-right: #B1361E solid 2px;
+    padding: 0 3px;
+    transition: color .5s ease;
+}
+
+.location-button:hover {
+    color: #B1361E;
+    text-decoration: underline;
+}
+
+
+/* Portfolio specific stylings */
+
+.portfolio-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.portfolio-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.portfolio-item {
+    background-color: #222327;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.portfolio-button {
+    border-left: #B1361E solid 2px;
+    border-right: #B1361E solid 2px;
+    padding: 0 3px;
+    transition: color .5s ease;
+}
+
+.portfolio-button:hover {
+    color: #B1361E;
+    text-decoration: underline;
+}
+
+.portfolio-furtherreading {
+    border-top: #C39E68 solid 2px;
+}
+
+.portfolio-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.portfolio-card {
+    width: 50%;
+    padding: 5px;
+    flex-grow: 1;
+    text-align: center;
+    border: #B1361E solid 2px;
+    border-radius: 10px;
+}
+
+.portfolio-card:hover {
+    text-decoration: underline;
+    color: #B1361E;
+    transform: scale(1.05);
+}
+
+/* About specific stylings */
+
+.about-speedrun,
+.about-longform {
+    background-color: #222327;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.about-speedrun {
+    margin-bottom: 10px;
+}
+
+.about-speedrun li {
+    margin-bottom: 5px;
+}
+
+
+
+/* CV specific stylings */
+.cv-main {
+    display: flex;
+    gap: 10px;
+}
+
+.cv-content-wrapper {
+    width: 75%;
+}
+
+/* 
+    Prevents  the left bar from getting completly squished, which would
+    force text content to wrap and create new lines
+*/
+.cv-personal {
+    width: 25%;
+    min-width: 175px;
+    background-color: #222327;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.cv-personal img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50px;
+}
+
+.cv-personal-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cv-card {
+    width: 100%;
+    padding: 5px;
+    flex-grow: 1;
+    text-align: center;
+    border: #B1361E solid 2px;
+    border-radius: 10px;
+}
+
+.cv-card:hover {
+    text-decoration: underline;
+    color: #B1361E;
+}
+
+.cv-personal-content-wrapper {
+    width: 65%;
+}
+
+.cv-timeline {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.cv-timeline-work,
+.cv-timeline-school {
+    width: 50%;
+    background-color: #222327;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.cv-skills {
+    display: flex;
+    gap: 10px;
+}
+
+.cv-skills-segment {
+    width: 33%;
+    background-color: #222327;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+/* 
+    Creates prepared bins for progress bars, amount of 
+    bar filled can be changed quickly by swapping the class
+    of the progress bar
+*/
+.progress-bar {
+    background-color: white;
+    border-radius: 5px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #6795DE;
+}
+
+.level-master {
+    width: 100%;
+}
+
+.level-advanced {
+    width: 85%;
+}
+
+.level-advanced-intermediate {
+    width: 70%;
+}
+
+.level-intermediate {
+    width: 50%;
+}
+
+.level-advanced-beginner {
+    width: 30%;
+}
+
+.level-beginner {
+    width: 20%;
+}
+
+/* 
+    Used to hightlight important parts of the UI relative to the selections,
+    highlights nav items relative
+    to the current site position.
+    Last in order to ensure specificity
+*/
+.active-element {
+    color: #B1361E;
+}
+
+/* 
+    Add a breakpoint for smaller tablets and mobile phones
+    Reorganize the layout into a single column
+*/
+@media (max-width: 768px) {
+
+    /* Landing page */
+    .lp-section-introduction {
+        flex-direction: column;
+    }
+
+    .lp-introduction,
+    .lp-image,
+    .lp-cs-card {
+        width: 100%;
+    }
+
+    /* Prevent scaling clipping outside of viewport bounds */
+    .lp-cs-card:hover {
+        transform: none;
+    }
+
+    /* Swap the default order of elements */
+    .lp-image {
+        order: 1;
+    }
+
+    .lp-introduction {
+        order: 2;
+    }
+
+    /* blog */
+    .article-content {
+        flex-direction: column;
+    }
+
+    .article-picture-container,
+    .article-abstract {
+        width: 100%;
+    }
+
+    .article-footer,
+    .article-tag-wrapper {
+        flex-direction: column;
+    }
+
+    .article-tag-wrapper {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .article-tag {
+        flex-grow: 1;
+    }
+
+    /* techstack */
+    .techstack-item,
+    .techstack-usecase-tags,
+    .techstack-item-maincontent,
+    .techstack-item-highlights {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .techstack-usecase-tags,
+    .techstack-image-wrapper,
+    .techstack-item-highlights,
+    .techstack-item-pros,
+    .techstack-item-cons,
+    .techstack-item-description {
+        width: 100%;
+    }
+
+    /* Uses delimiting border under normal cirumstances, drop it */
+    .techstack-item-cons {
+        border: none;
+    }
+
+    /* 
+        for mobiles, move tag section to the end of the item to provide
+        clearer top-down identification of the item
+     */
+    .techstack-usecase-tags {
+        order: 99;
+    }
+
+    /* lessons */
+    .faq-locations {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .lesson-card,
+    .faq-location {
+        width: 100%;
+    }
+
+    /* portfolio */
+    .portfolio-container {
+        flex-direction: column;
+    }
+
+    .portfolio-column {
+        width: 100%;
+    }
+
+    .portfolio-cards {
+        flex-direction: column;
+    }
+
+    .portfolio-card {
+        width: 100%;
+    }
+
+    /* 
+        suppres the scaling effects used on the page
+        under mobile viewports to prevent borders from clipping visual area
+     */
+    .portfolio-card:hover {
+        transform: none;
+    }
+
+    /* CV */
+
+    .cv-main {
+        flex-direction: column;
+    }
+
+    .cv-timeline {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cv-skills {
+        flex-direction: column;
+    }
+
+    .cv-personal,
+    .cv-timeline,
+    .cv-timeline-school,
+    .cv-timeline-work,
+    .cv-content-wrapper,
+    .cv-skills-segment {
+        width: 100%;
+    }
+
+    /* About  - no need, uses single file by default*/
+
+}
+
+@media print {
+
+    /* Drop the dark theme for printing, switch colors back for contrast */
+    body {
+        background-color: white;
+        color: #000;
+    }
+
+    /* dont print Acitve links */
+    .nav-item,
+    .footer-item {
+        display: none;
+    }
+
+    /* override active element styling for nav root to ensure
+    page identification when printing subpages */
+    .nav-root {
+        color: black;
+    }
+
+    /* Dont show hosting info in print as it might be misleading */
+    .footer-hosting {
+        display: none;
+    }
+
+    /* landing page specific modifications */
+    /* dont print links */
+    .lp-cs-card {
+        display: none;
+    }
+
+    /* drop all the specific color coding */
+    .lp-introduction,
+    .lp-section-introduction,
+    .lp-image,
+    .lp-main {
+        background-color: white;
+    }
+
+    /* dont print my whole face over A4 */
+    .lp-image {
+        max-width: 300px;
+    }
+
+    /* blog specific modifications */
+    /* add thin lines to differentiate articles */
+    .article-feed article {
+        background-color: white;
+        border-top: #000 solid 2px;
+        border-bottom: #000 solid 2px;
+        border-radius: 0px;
+    }
+
+    /* drop active links */
+    .article-read-button {
+        display: none;
+    }
+
+    /* techstack */
+    .techstack-item {
+        background-color: white;
+    }
+
+    /* stop images from going balistic on screen with no added value */
+    .techstack-image-wrapper {
+        max-width: 300px;
+    }
+
+    /* lessons */
+    .lesson-cards,
+    .lessons-card-wrapper,
+    .faq-item,
+    .lesson-card {
+        background-color: white;
+    }
+
+    /* dont print links */
+    .lesson-button,
+    .location-button {
+        display: none;
+    }
+
+    /* portfolio */
+    /* dont print links */
+    .portfolio-button,
+    .portfolio-furtherreading {
+        display: none;
+    }
+
+    .portfolio-item {
+        background-color: white;
+    }
+
+    /* kill margins where feasible to make page fit on a single vertical A4 */
+    .portfolio-item h2,
+    .portfolio-item,
+    .portfolio-main h1,
+    .portfolio-item h3 {
+        margin: 0;
+    }
+
+    /* CV */
+    .cv-personal,
+    .cv-timeline-school,
+    .cv-timeline-work,
+    .cv-skills-segment {
+        background-color: white;
+    }
+
+    /* Dont print links, dont print header for CV as it redundant */
+    .cv-personal-cards,
+    .cv-print-navbarhide {
+        display: none;
+    }
+
+    /* Dont print my face over whole A4 */
+    .cv-personal-image-container {
+        max-width: 300px;
+    }
+
+    /* add outline to progress bar to ensure contrast on print */
+    .progress-bar {
+        border: 3px solid black;
+    }
+
+    /* prevent footer clashing with progress bars on landscape print */
+    .cv-skills-segment {
+        margin-bottom: 10px;
+    }
+
+    /* about */
+    .about-speedrun,
+    .about-longform {
+        background-color: white;
+    }
+
+    /* 
+        squeeze the headers a bit for print to be able to ignore footer for single
+        page print
+    */
+    .about-main h1,
+    .about-speedrun h2,
+    .about-longform h2 {
+        margin: 0;
+    }
+
+}

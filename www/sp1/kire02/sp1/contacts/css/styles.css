@@ -1,0 +1,159 @@
+#contact {
+    padding: 20px;
+    text-align: center;
+}
+
+#contact form {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+#contact label {
+    display: block;
+    margin-top: 10px;
+}
+
+#contact input[type=text],
+#contact input[type=email],
+#contact textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+#contact input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#contact input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.contact-info {
+    margin-top: 20px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+}
+
+header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+header li {
+    float: left;
+}
+
+header li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+header li a:hover {
+    background-color: #3e8e41;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer li {
+    display: inline;
+    margin-right: 20px;
+}
+
+footer li a {
+    color: white;
+    text-decoration: none;
+}
+
+@media print {
+
+    body {
+        font-size: 12pt;
+        color: black;
+        background: white;
+    }
+
+    header, footer, nav {
+        display: none; 
+    }
+
+    img {
+        max-width: 100%; 
+    }
+
+    a {
+        text-decoration: none;
+        color: black; 
+    }
+
+
+    a[href]:after {
+        content: " (" attr(href) ")"; 
+    }
+
+
+    main, .section {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .blog-post, .service, .team-member {
+        box-shadow: none; 
+        border: 1px solid #ddd; 
+    }
+
+    article, .section {
+        page-break-inside: avoid; 
+    }
+}
+
+nav ul li a.active {
+    color: #ffffff; 
+    font-weight: bold;
+
+}
+
+@media screen and (min-width: 800px) {
+    body {
+        font-size: 14px; 
+    }
+
+    header, footer {
+        padding: 10px; 
+    }
+
+
+}

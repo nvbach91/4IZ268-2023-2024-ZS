@@ -1,0 +1,18 @@
+@media print{
+    body{
+        margin: 0;
+        background-color: white;
+    }
+    .introALL{
+        height: 300px;
+    }
+    .objednatALL{
+        display: none;
+    }
+    footer{
+        display: none;
+    }
+    p{
+        text-align: left;
+    }
+}

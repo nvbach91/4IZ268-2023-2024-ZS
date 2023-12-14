@@ -1,0 +1,17 @@
+.article-wrapper {
+    margin-top: 30px;
+}
+
+.article-title {
+    margin-bottom: 40px;
+    border-bottom: solid black 2px;
+    border-top: solid black 2px;
+}
+
+.article-title h3 {
+    margin: 10px;
+}
+
+.article-text {
+    margin: 0 !important;
+}

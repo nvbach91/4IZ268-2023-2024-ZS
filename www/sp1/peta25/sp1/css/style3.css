@@ -1,0 +1,360 @@
+/* Base styles */
+body,
+h1,
+h2,
+h3,
+p,
+nav,
+a {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', 'Arial', sans-serif;
+}
+
+.text-content {
+    margin-left: 5.5%;
+    margin-right: 5.5%;
+}
+
+/* Section heading styles */
+.text-content h2 {
+    font-size: 2em;
+    /* Example size, adjust as needed */
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.text-content h3 {
+    font-size: 1.5em;
+    /* Example size, adjust as needed */
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Section paragraph styles */
+.text-content p {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: justify;
+}
+
+
+
+/* Body and overall layout */
+body {
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+/* Header styles */
+.site-header {
+    position: relative;
+    color: #fff;
+    padding: 150px 0;
+    /* Adjust padding to control the height */
+    text-align: center;
+    font-size: 20px;
+    background-color: #333;
+    background-size: cover;
+    /* Cover ensures that the background covers the area */
+    background-position: center;
+    /* Align the background image nicely */
+    background-repeat: no-repeat;
+    /* Do not repeat the background */
+}
+
+.site-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
+    z-index: 0;
+}
+
+.site-header * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Navigation styles */
+.main-navigation {
+    background: #444;
+    text-align: center;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Ensure the navigation stays on top of other content */
+}
+
+.main-navigation a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.main-navigation a:hover {
+    color: #dddddd;
+}
+
+/* Main content styles */
+.main-content {
+    padding: 20px;
+}
+
+/* Section styles */
+.text-content {
+    margin-bottom: 20px;
+    padding: 20px;
+    /*border-left: 4px solid #444;*/
+    /* Add a border to the left instead of different background */
+}
+
+.text-content h2,
+.text-content h3 {
+    margin-bottom: 10px;
+}
+
+.text-content p {
+    margin-bottom: 10px;
+}
+
+/* Footer styles */
+.site-footer {
+    background-color: #333;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+.image-content img {
+    width: 500px;
+    /* Sets the width of the image to 200px */
+    height: auto;
+    /* Adjusts the height automatically to maintain the aspect ratio */
+}
+
+.image-content-tall img {
+    width: 300px;
+    /* Sets the width of the image to 200px */
+    height: auto;
+    /* Adjusts the height automatically to maintain the aspect ratio */
+}
+
+.image-content-other img {
+    width: 150px;
+    height: auto;
+}
+
+
+.images-side-by-side {
+    display: flex;
+    justify-content: left;
+    /* Center the images horizontally */
+    align-items: baseline;
+    /* Align the images vertically */
+    margin: 0 10px;
+    /* Add some space between the images */
+}
+
+
+/* Styles for social media icons in the footer */
+.site-footer a>.fab {
+    color: rgb(132, 134, 255);
+    /* Lighter color for icons */
+    font-size: 28px;
+    /* Increase the size of the icons */
+    transition: color 0.3s;
+    /* Smooth transition for color change */
+}
+
+/* Hover effect for icons in the footer */
+.site-footer a:hover>.fab {
+    color: rgb(255, 132, 249);
+    /* Darker color on hover */
+}
+
+
+.main-navigation a.active span {
+    color: rgb(132, 134, 255);
+    /* Red color, for example */
+    font-weight: bold;
+    border-bottom: 2px solid rgb(132, 134, 255);
+    /*Underline it with red */
+    /* Add other styles as needed */
+}
+
+.main-navigation a.active:hover span {
+    color: rgb(255, 132, 249);
+    /* Keep the color the same as the non-hover state */
+    border-bottom: 2px solid rgb(255, 132, 249);
+    /* Keep the underline the same as the non-hover state */
+}
+
+.main-navigation a:hover {
+    color: rgb(255, 132, 249);
+    /* Keep the color the same as the non-hover state */
+}
+
+/* Responsive styles */
+/* Tablet and Larger phones (for devices from 767px to 575px) */
+@media only screen and (max-width: 767px) {
+    .main-navigation a {
+        margin: 0;
+        padding: 5px;
+        box-sizing: border-box;
+        /* Include padding and border in the element's total width */
+        text-align: center;
+        /* Center the text within each link */
+        white-space: nowrap;
+        /* Prevent the text from wrapping */
+        overflow: hidden;
+        /* Prevents overflow text from spilling out */
+        text-overflow: ellipsis;
+        /* Adds an ellipsis if the text is too long */
+    }
+
+    .text-content {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .site-footer {
+        padding: 10px 10px;
+    }
+
+    .site-header {
+        padding: 50px 10px;
+        font-size: 1em;
+    }
+
+    .image-content img {
+        width: 300px;
+        /* Sets the width of the image to 200px */
+        height: auto;
+        /* Adjusts the height automatically to maintain the aspect ratio */
+    }
+
+    .image-content-tall img {
+        width: 180px;
+        /* Sets the width of the image to 200px */
+        height: auto;
+        /* Adjusts the height automatically to maintain the aspect ratio */
+    }
+
+    .image-content-other img {
+        width: 90px;
+        height: auto;
+    }
+}
+
+/* (Small) Phones (devices up to 575px) */
+@media only screen and (max-width: 575px) {
+    .main-navigation a {
+        padding: 8px;
+        font-size: 14px;
+        /* Smaller font size for small phones */
+        box-sizing: border-box;
+        /* Include padding and border in the element's total width */
+        text-align: center;
+        /* Center the text within each link */
+        white-space: nowrap;
+        /* Prevent the text from wrapping */
+        overflow: hidden;
+        /* Prevents overflow text from spilling out */
+        text-overflow: ellipsis;
+        /* Adds an ellipsis if the text is too long */
+    }
+
+    .site-header {
+        padding: 30px 10px;
+        /* Further reduce padding for small phones */
+        font-size: 1em;
+    }
+
+    .image-content img {
+        width: 200px;
+        /* Sets the width of the image to 200px */
+        height: auto;
+    }
+
+    .image-content-tall img {
+        width: 150px;
+        /* Sets the width of the image to 200px */
+        height: auto;
+    }
+
+    .image-content-other img {
+        width: 90px;
+        height: auto;
+    }
+
+    .images-side-by-side {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 10px 0;
+    }
+
+    .video iframe {
+        width: 200px;
+        height: auto;
+    }
+}
+
+@media print {
+
+    .no-print,
+    .fas.fa-link,
+    .video iframe,
+    .video h3,
+    .site-footer,
+    .main-navigation {
+        display: none;
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    p,
+    nav,
+    a {
+        font-family: 'Nunito', 'Arial', sans-serif;
+        color: #000;
+    }
+
+    .site-header {
+        padding: 0;
+    }
+
+    .site-header h1 {
+        color: #000;
+        background-image: none;
+    }
+
+    .image-content img {
+        width: 200px;
+        height: auto;
+    }
+
+    .image-content-tall img {
+        width: 150px;
+        height: auto;
+    }
+
+    .image-content-other img {
+        width: 90px;
+        height: auto;
+    }
+}

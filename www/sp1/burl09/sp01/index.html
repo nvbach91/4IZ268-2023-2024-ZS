@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <div class="layout">
+        <div class="menu">
+            <div class="menu-item menu-active">
+                <a href="./"><i class="fa fa-home"><span style="padding-left: 7px;"></span></i>Home</a>
+            </div>
+            <div class="menu-item">
+                <a href="./about"><i class="fa fa-question"><span style="padding-left: 7px;"></span></i>About</a>
+            </div>
+            <div class="menu-item">
+                <div class="dropdown">
+                    <div class="dropbtn" onclick="myFunction()">
+                        <i class="fa fa-music"><span style="padding-left: 7px;"></span></i>Products<i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a href="./products/grandpianos">Grandpianos</a>
+                        <a href="./products/pianinos">Pianinos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <a href="./services"><i class="fa fa-handshake"><span style="padding-left: 7px;"></span></i>Services</a>
+            </div>
+            <div class="menu-item">
+                <a href="./contact"><i class="fa fa-phone"><span style="padding-left: 7px;"></span></i>Contact</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-header">LB Services</div>
+            <hr class="solid">
+            <div class="main-abs">
+                <p>We provide our customers with an exclusive and complete service. Our technicians and tuners give exceptional care to those interested in renovation, moving or other piano maintenance and repair services.</p>
+                <p>Looking for a suitable musical instrument? Our company can arrange sales, transportation, or you can choose from our own selection! Our staff is always ready to advise you on your choice or suggest the best logistical solution.</p>
+                <p>Welcome to the LB Services family!</p>
+            </div>
+            <hr class="solid">
+            <div class="flav">
+                <img src="https://steinway.co.uk/wp-content/uploads/2019/10/ImageB-1.jpg" alt="tuning">
+            </div>
+            <div class="main-sec">
+                <h2>Services</h2>
+                <p>We tune pianos of all brands in homes, schools and other institutions. We prepare pianos for concerts and recordings. We provide minor repairs of pianos directly at the customer's premises. Our professionally trained tuners are able to thoroughly inspect your piano or upright, perform basic maintenance on site and repair minor defects.</p>
+            </div>
+            <hr class="solid">
+            <div class="main-sec">
+                <h2>Products</h2>
+                <p>We offer new or reconditioned grand pianos and pianinos. We offer a 2-year warranty on these instruments and most of them can be bought back within 1 year of sale.</p>
+            </div>
+            <hr class="solid">
+            <div class="main-sec">
+                <h2>Contacts</h2>
+                <p>Visit our Contacts page for more information about how to contact our specialists, showroom open hours and more.</p>
+            </div>
+            <hr class="solid">
+            <div class="main-sec">
+                <h2>News & Other</h2>
+            </div>
+            <div class="cards">
+                <div class="card card-video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/0DiOleTEq1s?si=Kp1RktbLNU1rxJk0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="card news">
+                    <p>Do you want to learn how the musical instruments work in detail? </p>
+                    <p>Why is each note on a piano slightly out of tune and how do piano tuners listen differently to the rest of us? Piano technician Ara Vartoukian explains the art and science of piano tuning.</p>
+                </div>
+            </div>
+            <hr class="solid">
+            <div class="footer">
+                <p>2023 Made by LB Services | FIS VŠE Webtech</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var dropdown = document.getElementById("myDropdown");
+            if (dropdown.classList.contains('show')) {
+              dropdown.classList.remove('show');
+            }
+          }
+        }
+    </script>
+</body>
+</html>

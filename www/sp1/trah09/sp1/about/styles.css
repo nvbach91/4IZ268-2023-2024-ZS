@@ -1,0 +1,25 @@
+.gallery {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.875rem;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 300 / 230;
+  object-fit: cover;
+  border-radius: 1.25rem;
+}
+
+@media only screen and (min-width: 48rem) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 62rem) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

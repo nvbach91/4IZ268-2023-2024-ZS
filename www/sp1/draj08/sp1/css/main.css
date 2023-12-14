@@ -1,0 +1,936 @@
+* {
+    box-sizing: border-box;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+/*Navbar*/
+
+body {
+    margin: 0;
+    background-color: #ffffff;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #181818;
+    height: 50px;
+}
+
+.nav-item {
+    float: left;
+    height: 80%;
+}
+
+nav li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 30px 14px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.nav-logo img {
+    width: 42px;
+    animation: changetoBlue .2s ease-out;
+}
+
+.nav-logo:hover img {
+    animation: changetoPink .2s ease-out;
+    content: url("../img/logo-pink.png");
+}
+
+.nav-logo a {
+    padding: 14px 20px 9px;
+}
+
+.nav-logo {
+    margin-right: 50px;
+    height: 100%;
+}
+
+.nav-link span {
+    position: relative;
+}
+
+.nav-item .active span::after {
+    width: 50%;
+    left: 25%;
+    border-bottom: 3px solid #006fba;
+    transition: all .2s linear;
+}
+
+.nav-item .dropdown-content .active span::after {
+    width: 30%;
+    left: 35%;
+}
+
+.nav-item:hover .nav-link span::after {
+    width: 50%;
+    left: 25%;
+    transition: all .3s ease-out;
+    border-bottom: 3px solid #F363B9;
+}
+
+.nav-link span::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    width: 0%;
+    left: 50%;
+    border-bottom: 3px solid #F363B9;
+}
+
+
+.dropdown-content {
+    display: none;
+    z-index: 100;
+    position: absolute;
+    animation: growDown .3s ease-out;
+    transform-origin: top center;
+}
+
+.dropdown-content a {
+    padding: 15px 20px;
+    position: relative;
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    background-color: rgba(24, 24, 24, .7);
+}
+
+
+
+.navbar .nav-item .dropdown-content a:hover span::after {
+    width: 30%;
+    left: 35%;
+    border-bottom: 3px solid #F363B9;
+    transition: all .3s ease-out
+}
+
+.dropdown-content a span::after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    width: 0%;
+    left: 50%;
+    border-bottom: 3px solid #F363B9;
+}
+
+/*Mostly layout - widths of columns, spans of rows, definition of section, visual of titles*/
+.a523-img-root {
+    width: 100%;
+    position: relative;
+}
+
+.a523-img-root img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 80%;
+    justify-content: center;
+}
+
+.flex-row-column25 {
+    display: flex;
+    width: calc(25% - 10px);
+    margin: 0 5px;
+    flex-wrap: wrap;
+}
+
+.calendar-column {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+}
+
+.calendar-column span {
+    text-align: center;
+    padding: 15px;
+}
+
+.calendar-column h4 {
+    text-align: center;
+}
+
+.flex-row-column30 {
+    display: flex;
+    width: 30%
+}
+
+.flex-row-column70 {
+    display: flex;
+    width: 70%
+}
+
+.flex-row-column80 {
+    display: flex;
+    width: 80%
+}
+
+.flex-row-column33 {
+    display: flex;
+    width: 33%;
+}
+
+.flex-row-column50 {
+    width: 50%;
+    flex-wrap: nowrap;
+}
+
+.flex-row-column-fill-rest {
+    display: flex;
+    flex-grow: 1;
+}
+
+.section-title {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    color: black;
+    font-size: 20px;
+    min-height: 75px;
+    margin-top: 30px;
+}
+
+section,
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1900px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.section-title h2 {
+    padding-top: 15px;
+}
+
+.section-title h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 6%;
+    left: 47%;
+    border-bottom: 6px solid #006fba;
+    border-radius: 10px;
+}
+
+.page-title {
+    min-height: 80px;
+    flex-wrap: wrap;
+}
+
+.page-title h1 {
+    padding-top: 15px;
+    font-size: 36px;
+    position: relative;
+    text-align: center;
+}
+
+.page-title h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 40%;
+    left: 30%;
+    border-bottom: 6px solid #006fba;
+    border-radius: 10px;
+}
+
+.move-down {
+    margin: 20px auto;
+}
+
+.section-content {
+    flex-wrap: wrap;
+    text-align: justify;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    margin: 0 10px;
+    align-self: center;
+    min-height: 280px;
+}
+
+.section-content:not(.content-detail) h3 {
+    text-align: center;
+    position: relative;
+    transition: all .3s ease-out;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.section-content:not(.content-detail) a:hover h3::after {
+    width: 20%;
+    left: 40%;
+    transition: all .3s ease-out;
+}
+
+.section-content h2 {
+    text-align: center;
+    position: relative;
+    transition: all .3s ease-out;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.section-content a:hover h2::after {
+    width: 20%;
+    left: 40%;
+    transition: all .3s ease-out;
+}
+
+.section-content a h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 0%;
+    left: 50%;
+    border-bottom: 5px solid #F363B9;
+    margin-bottom: 5px;
+}
+
+.section-content:not(.content-detail) a h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 0%;
+    left: 50%;
+    border-bottom: 5px solid #F363B9;
+    margin-bottom: 5px;
+}
+
+.section-content a {
+    text-decoration: none;
+    color: black;
+}
+
+.button-container {
+    justify-content: center;
+}
+
+.button {
+    display: inline-block;
+    color: white;
+    background-color: #006fba;
+    text-align: center;
+    padding: 14px 30px 14px;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: all .3s ease-out;
+}
+
+.button:hover {
+    background-color: #F363B9;
+    color: black;
+    transition: all .3s ease-out;
+}
+
+/*Mostly HomePage special stuff*/
+.shadow-box {
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    background-color: rgba(78, 78, 78, .6);
+}
+
+.team-title-container {
+    flex-wrap: wrap;
+}
+
+.team-title-container h1 {
+    padding: 5px 0 0 20px;
+    font-size: 36px;
+    color: white;
+    width: 100%;
+}
+
+.team-title-container p {
+    padding: 0 0 5px 20px;
+    font-size: 18px;
+    color: white;
+}
+
+.shadow-box img {
+    width: 184px;
+    padding: 5px 20px 5px 0;
+}
+
+.logos-container {
+    flex-flow: row-reverse;
+}
+
+/*HomePage French motto */
+.motto-box {
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 20px;
+    height: 300px;
+    align-content: center;
+}
+
+.motto-box p,
+.motto-box h3 {
+    width: 100%;
+}
+
+.motto-box p {
+    padding-top: 5px;
+}
+
+.motto-box:nth-child(1) {
+    background-color: rgba(0, 0, 255, .1);
+}
+
+.motto-box:nth-child(3) {
+    background-color: rgba(255, 0, 9, .1);
+}
+
+.motto-box-root {
+    margin: 20px 0;
+    justify-content: space-between;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.motto-box h3 {
+    font-size: 30px;
+}
+
+/*HomePage Calendar section */
+.track-image {
+    padding: 30px;
+    height: 120px;
+    width: 100%;
+}
+
+.calendar .section-content:nth-child(2) {
+    min-height: 375px;
+}
+
+/*HomePage and OurTeam drivers and management section*/
+.driver {
+    position: relative;
+}
+
+.driver img {
+    width: 100%;
+    display: block;
+}
+
+.shadow-column {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    background-color: rgba(78, 78, 78, .6);
+}
+
+.driver:nth-child(2) .shadow-column {
+    right: 0;
+    left: unset;
+}
+
+.driver-info {
+    padding: 35px;
+    writing-mode: vertical-rl;
+    color: rgb(180, 180, 180);
+    font-size: 30px;
+    white-space: nowrap;
+    word-spacing: 30px;
+    transform: rotate(180deg);
+}
+
+.driver:nth-child(2) .driver-info {
+    transform: rotate(0deg);
+}
+
+.shadow-row {
+    position: absolute;
+    bottom: 0;
+    left: 120px;
+    height: 80px;
+    width: calc(100% - 120px);
+    background-color: rgba(78, 78, 78, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.shadow-row p {
+    margin-right: 60px;
+}
+
+.driver:nth-child(2) .shadow-row {
+    right: 120px;
+    left: unset;
+}
+
+.driver:nth-child(2) .shadow-row p {
+    margin-right: 0;
+    margin-left: 60px;
+}
+
+
+/*CSS for other pages*/
+.content-detail {
+    margin-bottom: 50px;
+}
+
+.content-detail a {
+    width: 100%;
+}
+
+.section-image {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    object-fit: cover;
+}
+
+.vertical-center {
+    margin: auto 0 auto;
+}
+
+.section-text {
+    padding-left: 30px;
+    flex-wrap: wrap;
+}
+
+.section-text p,
+.section-text h2 {
+    padding-top: 10px;
+}
+
+.section-text p:nth-child(1) {
+    padding-top: 0;
+}
+
+.content-detail:nth-child(even) .section-text {
+    padding-left: 0;
+    padding-right: 30px;
+}
+
+.news-main-image {
+    max-height: 300px;
+}
+
+.news-detail .section-text {
+    padding: 10px 0;
+}
+
+.driver-comment-text {
+    padding-right: 50px;
+    align-items: center;
+    font-style: italic;
+    flex-wrap: wrap;
+}
+
+.driver-comment {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.driver-comment-text:nth-child(2) {
+    padding-right: 0;
+    padding-left: 50px;
+}
+
+.gallery .section-content {
+    padding: 0;
+}
+
+.gallery .section-content img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    object-fit: cover;
+}
+
+.gallery-root,
+.news-overview,
+.section-subtitle {
+    flex-wrap: wrap;
+}
+
+
+.section-subtitle p {
+    text-align: center;
+    padding: 20px 50px;
+    width: 75%;
+}
+
+.car-info-list li {
+    padding-bottom: 15px;
+    text-align: left;
+}
+
+.car-info-list li ul li:last-child {
+    padding-bottom: 0;
+}
+
+.car-info-list li ul li:first-child {
+    padding-top: 15px;
+}
+
+.section-text h3 {
+    height: 60px;
+}
+
+.flex-row-column70+.section-text {
+    align-content: center;
+}
+
+.car-detail-text p {
+    padding-top: 30px;
+}
+
+.car-detail-text .flex-row-column50 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.car-detail-text .flex-row-column50 h3 {
+    writing-mode: sideways-rl;
+    transform: rotate(180deg);
+}
+
+.car-detail-text .flex-row-column50 h3 {
+    margin: 0;
+}
+
+.shadow-column.multiple p {
+    padding: 35px 5px;
+    font-size: 20px;
+}
+
+.driver-info span {
+    padding-bottom: 20px;
+}
+
+.management .shadow-column {
+    width: 80px;
+}
+
+.management .shadow-row {
+    left: 80px;
+    width: calc(100% - 80px);
+}
+
+.management:nth-child(2) .shadow-row {
+    left: unset;
+    right: 80px;
+}
+
+footer {
+    background-color: #181818;
+    color: white;
+    align-items: center;
+    text-align: center;
+    height: 60px;
+}
+
+
+@media screen and (max-width: 1024px) {
+
+    article.content-detail h2 {
+        height: 80px;
+    }
+
+    .content-detail:nth-child(even) .news-content {
+        flex-flow: column-reverse;
+    }
+
+    .section-text p:nth-child(1) {
+        padding-top: 10px;
+    }
+
+    .move-down .section-content .section-text {
+        padding: 0;
+    }
+
+    .flex-row-column33,
+    .flex-row-column50,
+    .flex-row-column30,
+    .flex-row-column70 {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .container {
+        flex-wrap: wrap;
+        width: 95%;
+    }
+
+    .gallery.container {
+        flex-wrap: nowrap;
+    }
+
+    .news-content,
+    .move-down,
+    .gallery-root .gallery {
+        flex-wrap: wrap;
+    }
+
+    .section-content {
+        margin-bottom: 20px;
+    }
+
+    .shadow-column {
+        display: none;
+    }
+
+    .shadow-row,
+    .management .shadow-row {
+        left: 0;
+        width: 100%;
+        font-size: 25px;
+    }
+
+    .driver:nth-child(2) .shadow-row {
+        right: 0;
+    }
+
+    .driver:nth-child(2) .shadow-row p,
+    .shadow-row p {
+        margin: 0;
+    }
+
+    .calendar .section-content:nth-child(2) {
+        min-width: 420px;
+    }
+
+    .driver-comment .flex-row-column30 {
+        position: absolute;
+        top: 20px;
+        height: 120px;
+    }
+
+    .driver-comment img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .flex-row-column70.driver-comment-text {
+        position: relative;
+        padding: 0;
+    }
+
+    .driver-comment-text .flex-row:first-child {
+        align-items: center;
+        height: 140px;
+    }
+
+    .driver-comment-text .flex-row:first-child h2 {
+        text-align: left;
+        padding-left: 150px;
+    }
+
+    .driver-comment-text+.flex-row-column30 {
+        flex-flow: row-reverse;
+    }
+
+    .driver-comment-root .driver-comment:last-child .driver-comment-text h2 {
+        text-align: right;
+        padding-right: 150px;
+        padding-left: 0;
+    }
+
+    .content-detail a>.flex-row {
+        min-height: 60px;
+    }
+
+    .a523-img-root .shadow-box {
+        position: absolute;
+        bottom: -200px;
+        flex-wrap: wrap;
+        height: 190px;
+        background-color: unset;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+        width: 95%;
+        margin-left: 2.5%;
+        border-radius: 10px;
+    }
+
+    .team-title-container {
+        width: 100%;
+    }
+
+    .team-title-container h1 {
+        font-size: 32px;
+        position: relative;
+        color: black;
+        padding: 10px 0 0 0;
+        min-height: 60px;
+        text-align: center;
+    }
+
+    .team-title-container p {
+        width: 100%;
+        color: black;
+        font-size: 15px;
+        text-align: center;
+        padding: 15px 0 0 0;
+    }
+
+    .logos-container {
+        justify-content: center;
+    }
+
+    .team-motto {
+        margin-top: 190px;
+    }
+
+    .team-title-container h1::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 20%;
+        left: 40%;
+        border-bottom: 6px solid #006fba;
+        border-radius: 10px;
+    }
+
+    .section-title h2::after {
+        width: 20%;
+        left: 40%;
+    }
+
+    .car-info-list {
+        margin: 0;
+    }
+
+    .section-text h3 {
+        text-align: center;
+        width: 100%;
+        height: 50px;
+        padding-top: 10px;
+    }
+
+    .management p {
+        text-align: center;
+    }
+
+    .management .flex-row .flex-row-column25:nth-child(3),
+    .management .flex-row .flex-row-column25:nth-child(4) {
+        padding-top: 30px;
+    }
+
+    .flex-row-column50.car-image {
+        width: 55%;
+    }
+
+    .car-image+.flex-row-column30 {
+        width: 45%;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .standings {
+        height: 180px;
+        padding-left: 5px;
+    }
+
+    .standings-text {
+        font-size: 12px;
+        padding-left: 5px;
+    }
+
+    .car-detail-text {
+        padding-top: 30px;
+    }
+
+    .flex-row-column25 {
+        width: calc(50% - 10px);
+    }
+
+    .nav-logo {
+        margin-right: 25px;
+    }
+
+    nav li a {
+        padding: 15px 13px 15px;
+        font-size: 14px;
+    }
+}
+
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+
+    100% {
+        transform: scaleY(1)
+    }
+}
+
+@keyframes changetoPink {
+    0% {
+        content: url("../img/logo.png");
+    }
+
+    33% {
+        content: url("../img/logo-progress-change.png");
+    }
+
+    66% {
+        content: url("../img/logo-progress-change2.png");
+    }
+
+    100% {
+        content: url("../img/logo-pink.png");
+    }
+}
+
+@keyframes changetoBlue {
+    0% {
+        content: url("../img/logo-pink.png");
+    }
+
+    33% {
+        content: url("../img/logo-progress-change2.png");
+    }
+
+    66% {
+        content: url("../img/logo-progress-change.png");
+    }
+
+    100% {
+        content: url("../img/logo.png");
+    }
+}

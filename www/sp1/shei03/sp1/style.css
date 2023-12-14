@@ -1,0 +1,187 @@
+html,
+body {
+  height: 1920px;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 500px;
+  width: 100%;
+  background-color: whitesmoke;
+}
+
+.banner h1 {
+  color: #1e1e1e;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.banner img {
+  height: 420px;
+  width: 420px;
+}
+
+/*Start main*/
+main {
+  display: grid;
+  height: 700px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-gap: 20px;
+  background-color: #1e1e1e;
+  color: whitesmoke;
+}
+main img {
+  grid-row: 3 / 12;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  transition: all 1s;
+}
+main a {
+  margin: 20px;
+  font-size: 36px;
+}
+main h2,
+main img {
+  margin-left: 30px;
+}
+#featuredHeading {
+  grid-column: 1 / 6;
+  grid-row: 1;
+  font-size: 48px;
+}
+#image1 {
+  grid-column: 1 / 5;
+  transform: rotate(5deg);
+}
+#image2 {
+  grid-column: 2 / 6;
+  transform: rotate(10deg);
+}
+#image3 {
+  grid-column: 3 / 7;
+  transform: rotate(15deg);
+}
+#image4 {
+  grid-column: 8 / 11;
+  transform: rotate(5deg);
+}
+#image5 {
+  grid-column: 9 / 12;
+  transform: rotate(10deg);
+}
+#tshirtsHeading {
+  grid-row: 12;
+  grid-column: 1/3;
+  font-size: 36px;
+}
+#stickersHeading {
+  grid-column: 8 / 10;
+  grid-row: 12;
+  font-size: 36px;
+}
+
+main img:hover {
+  z-index: 1;
+  height: 110%;
+  transition: all 1s;
+}
+/*End main*/
+
+.instagram {
+  height: 500px;
+  text-align: center;
+  background-color: rgba(0, 0, 0);
+}
+.instagram img {
+  width: 100%;
+  max-height: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+.instagram a {
+  display: inline-block;
+  color: whitesmoke;
+  position: absolute;
+  z-index: 1;
+  top: 200%;
+  right: 35%;
+  font-size: 64px;
+  font-weight: bold;
+}
+footer {
+  height: 100px;
+}
+
+@media all and (max-width: 600px), print {
+  #excep-header {
+    display: none;
+  }
+  .banner {
+    flex-wrap: wrap;
+  }
+  .banner h1 {
+    display: block;
+    font-size: 48px;
+    width: 100%;
+    text-align: center;
+  }
+  .banner img {
+    width: 200px;
+    height: 200px;
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #image1,
+  #image2,
+  #image5 {
+    display: none;
+  }
+  #image3,
+  #image4 {
+    width: 35%;
+    height: 30%;
+    transform: rotate(10deg);
+  }
+  #featuredHeading {
+    width: 100%;
+    text-align: center;
+  }
+  #stickersHeading a,
+  #tshirtsHeading a {
+    font-size: 24px;
+    margin: 0;
+  }
+  #stickersHeading,
+  #tshirtsHeading {
+    width: 45%;
+  }
+  .instagram {
+    position: relative;
+  }
+  .instagram a {
+    width: 100%;
+    right: 0%;
+    top: 40%;
+  }
+}
+
+@media print {
+  .instagram {
+    display: none;
+  }
+  main {
+    padding-top: 45%;
+  }
+  main img {
+    min-height: 40%;
+  }
+}

@@ -1,0 +1,492 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.layout-home {
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-theme {
+    padding: 10px;
+    background-image: url(../img/tetris_theme.jpg);
+    background-size: 100% 100%;
+    color: white;
+}
+
+.main-theme h1 {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.layout-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu {
+    display: flex;
+    gap: 11.5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.menu-item {
+    flex-grow: 1;
+    padding: 7px;
+    border-radius: 10px;
+    background-color: rgb(235, 235, 235);
+    border: 3px solid white;
+    font-size: 12px;
+}
+
+.layout-page a {
+    text-decoration: none;
+    color: black;
+}
+
+.menu-item:hover {
+    background-color: rgba(149, 149, 149, 0.764);
+    transition: 1s;
+    cursor: pointer;
+}
+
+.active {
+    background-color: rgb(140, 140, 142);
+}
+
+
+
+
+.main-home {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-top: 10px;
+}
+
+.main-home p {
+    font-size: 12px;
+}
+
+.about {
+    padding: 20px;
+    text-align: justify;
+    flex-grow: 1;
+    background-color: rgb(235, 235, 235);
+    border: 3px solid white;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.main-home h2 {
+    border-bottom: 3px solid rgba(0, 0, 0, 0.334);
+}
+
+.main-home h3 {
+    font-size: 15px;
+}
+
+.cards-home {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.history {
+    flex-grow: 1;
+    background-color: rgb(235, 235, 235);
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    border: 3px solid white;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.nes-img {
+    flex-grow: 1;
+    padding: 10px;
+    border: 3px solid white;
+    border-radius: 15px;
+    height: 550px;
+}
+
+.footer {
+    margin-top: 20px;
+    background-color: rgba(235, 235, 235, 0.322);
+    border-radius: 5px;
+    padding: 6px;
+    font-size: 13px;
+    text-align: center;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
+
+.alex-img {
+    float: right;
+    width: 150px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 6px solid rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.controller-img {
+    flex-grow: 1;
+    border: 10px solid rgb(235, 235, 235);
+    border-radius: 15px;
+    height: 450px;
+    margin: 10px;
+}
+
+
+.list {
+    padding: 15px;
+    background-color: rgb(235, 235, 235);
+    border: 3px solid white;
+    border-radius: 10px;
+    margin: 10px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.list li {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.tech-theme {
+    padding: 20px;
+    background-color: rgb(235, 235, 235);
+    border: 3px solid white;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.techs {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.plays {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: rgb(235, 235, 235);
+    border: 3px solid white;
+    border-radius: 10px;
+    margin: 10px;
+    font-size: 12px;
+}
+
+
+.table {
+    background-color: rgb(235, 235, 235);
+    padding: 20px;
+    margin: 10px;
+    border: 3px solid white;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: rgb(147, 145, 145);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f6f6;
+}
+
+tr:hover {
+    background-color: rgba(164, 160, 158, 0.56);
+}
+
+
+
+
+
+.players1 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.players2 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.player {
+    padding: 20px;
+    margin-top: 10px;
+    text-align: justify;
+    flex-grow: 1;
+    background-color: rgb(235, 235, 235);
+    border: 3px solid white;
+    border-radius: 10px;
+}
+
+
+.player-img {
+    float: left;
+    width: 120px;
+    height: 120px;
+    border: 3px solid rgb(235, 235, 235);
+    border-radius: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+
+@media screen and (min-width: 800px) {
+    .layout-home {
+        width: 800px;
+    }
+
+    .layout-page {
+        flex-direction: row;
+    }
+
+    .about {
+        padding-bottom: 30px;
+    }
+
+    .menu {
+        flex-direction: column;
+        margin-right: 0px;
+        margin-left: 5px;
+        width: 15%;
+    }
+
+    .menu-item {
+        padding: 15px 15px;
+    }
+
+    .main-home {
+        flex-direction: column;
+        width: 85%;
+    }
+
+    .cards-home {
+        flex-direction: row;
+    }
+
+    .nes-img {
+        margin-top: 10px;
+        padding: 0px;
+        height: 500px;
+        width: 300px;
+        margin-right: 10px;
+    }
+
+    .alex-img {
+        width: 200px;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .controller-img {
+        height: 250px;
+        margin: 10px;
+    }
+
+    .list li {
+        margin-top: 12px;
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    .layout-home {
+        width: 1024px;
+    }
+
+    .menu-item {
+        font-size: 14px;
+    }
+
+    .main-home p {
+        font-size: 14px;
+    }
+
+    .list li {
+        font-size: 14px;
+        margin-top: 14px;
+    }
+
+    .main-theme {
+        padding: 20px;
+    }
+
+    .about {
+        padding-bottom: 50px;
+    }
+
+    .nes-img {
+        height: 500px;
+    }
+
+    .controller-img {
+        height: 270px;
+    }
+
+    .table {
+        font-size: 14px;
+    }
+
+    .players1 {
+        flex-direction: row;
+    }
+
+    .players2 {
+        flex-direction: row;
+    }
+
+    .player {
+        width: 50%;
+    }
+
+    .player-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .player:first-child {
+        margin-right: 10px;
+    }
+
+}
+
+@media screen and (min-width: 1280px) {
+    .layout-home {
+        width: 1280px;
+    }
+
+    .main-home p {
+        font-size: 15px;
+    }
+
+    .list li {
+        font-size: 15px;
+        margin-top: 25px;
+    }
+
+    .menu-item {
+        font-size: 15px;
+    }
+
+    .controller-img {
+        height: 350px;
+        margin: 10px;
+    }
+
+    .techs {
+        flex-direction: row;
+    }
+
+    .plays {
+        flex-grow: 1;
+        width: 33%;
+    }
+
+    .table {
+        font-size: 15px;
+    }
+}
+
+@media print {
+    .main-theme {
+        background-image: none;
+    }
+
+    .main-theme h1 {
+        background-color: white;
+        color: black;
+        padding: 0px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    p strong,
+    td strong {
+        font-weight: normal;
+    }
+
+    .about,
+    .history,
+    .footer,
+    .list,
+    .tech-theme,
+    .plays,
+    .player,
+    .active {
+        background-color: white;
+        border: none;
+    }
+
+    .list,
+    .tech-theme,
+    .plays,
+    .history,
+    .about,
+    .player,
+    .players1,
+    .players2 {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .plays h3,
+    .players1 h3,
+    .players2 h3 {
+        margin: 0px;
+    }
+
+    .layout-page img {
+        display: none;
+    }
+
+    .table {
+        background-color: white;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    th {
+        background-color: white;
+        color: rgb(0, 0, 0);
+    }
+
+    tr:nth-child(even) {
+        background-color: white;
+    }
+}

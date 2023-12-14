@@ -1,0 +1,11 @@
+(function (Drupal) {
+
+    Drupal.AjaxCommands.prototype.message = function (ajax, response) {
+        window._StarbucksFrontend.alert.open({
+            title: response.message,
+            type: 'banner',
+            theme: response.messageOptions.type,
+        });
+    };
+
+})(Drupal);

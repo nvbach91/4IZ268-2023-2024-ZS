@@ -1,0 +1,84 @@
+/*Table*/
+.price-table {
+    max-width: 900px;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-size: 16px;
+}
+
+tr.plan-name {
+    background-color: #50394c;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/*Sale Animated Text*/
+.sale p {
+    background: linear-gradient(to right, #50394c 20%, #da9555 30%, #da9555 70%, #50394c 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: textGrad 8s ease-in-out infinite alternate;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 20px;
+    font-size: 18px;   
+}
+
+@keyframes textGrad {
+    to {
+        background-position: 200%;
+      } 
+}
+
+/*Responsive Design*/
+@media (max-width: 950px) {
+    th, td {
+        font-size: 14px;
+    }
+
+    .price-table {
+        max-width: 650px;
+    }
+
+    .sale p {
+        font-size: 14px; 
+    }
+
+    
+
+}
+
+@media (max-width: 480px) {
+    th, td {
+        font-size: 12px;
+    }
+
+    .price-table {
+        max-width: 380px;
+    }
+
+    .sale p {
+        font-size: 12px; 
+    }
+
+}
+

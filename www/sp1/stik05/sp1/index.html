@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Vietnam on two wheels</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/gallery.css">
+    <link rel="stylesheet" type="text/css" media="print" href="./assets/css/print.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="./"><img src="./assets/images/logo-1.png" alt="Logo"></a>
+        </div>
+        <nav>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul>
+                <li class="active-nav-item"><a href="./">Home</a></li>
+                <li><a href="./about-me/">About me</a></li>
+                <li><a href="./travel-diary/">Travel diary</a></li>
+                <li><a href="./tips-for-travelers/">Tips for travelers</a></li>
+                <li><a href="./interesting-facts/">Interesting facts</a></li>
+                <li><a href="./links/">Links and refferals</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="content-wrapper">
+        <h1 class="page-title">Welcome!</h1>
+        <p>Welcome to our journey through Vietnam! Here, we celebrate the vibrant culture, breathtaking landscapes, and
+            culinary delights of this enchanting land. Dive into our curated guides, stories, and tips designed to
+            inspire your next adventure. Thank you for joining us – your unforgettable Vietnamese experience begins
+            here!</p>
+        <div class="gallery non-printable">
+            <figure>
+                <img src="./assets/images/view.jpg" alt="view" onclick="openLightbox(); currentSlide(1)">
+            </figure>
+            <figure>
+                <img src="./assets/images/rice-fields.jpg" alt="rice-fields" onclick="openLightbox(); currentSlide(2)">
+            </figure>
+            <figure>
+                <img src="./assets/images/mountains.jpg" alt="mountains" onclick="openLightbox(); currentSlide(3)">
+            </figure>
+            <figure>
+                <img src="./assets/images/dinosaur-spine.jpg" alt="dinosaur-spine"
+                    onclick="openLightbox(); currentSlide(4)">
+            </figure>
+            <figure>
+                <img src="./assets/images/lake.jpg" alt="lake" onclick="openLightbox(); currentSlide(5)">
+            </figure>
+            <figure>
+                <img src="./assets/images/offroad.jpg" alt="offroad" onclick="openLightbox(); currentSlide(6)">
+            </figure>
+            <figure>
+                <img src="./assets/images/motorcycle.jpeg" alt="motorcycle" onclick="openLightbox(); currentSlide(7)">
+            </figure>
+            <figure>
+                <img src="./assets/images/mountains-2.jpg" alt="mountains-2" onclick="openLightbox(); currentSlide(8)">
+            </figure>
+            <figure>
+                <img src="./assets/images/hero-image.jpg" alt="hero-image" onclick="openLightbox(); currentSlide(9)">
+            </figure>
+        </div>
+        <div id="lightbox" class="modal">
+            <span class="close cursor" onclick="closeLightbox()">&times;</span>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <div class="modal-content">
+                <div class="slide">
+                    <img class="gallery-image" src="./assets/images/view.jpg" alt="view">
+                    <div class="caption">Beautiful view</div>
+                </div>
+                <div class="slide">
+                    <img class="gallery-image" src="./assets/images/rice-fields.jpg" alt="Rice fields">
+                    <div class="caption">Rice fields</div>
+                </div>
+                <div class="slide">
+                    <img class="gallery-image" src="./assets/images/mountains.jpg" alt="Mountains">
+                    <div class="caption">View from dinosaur spine in Ta Xua Reserve</div>
+                </div>
+                <div class="slide">
+                    <img class="gallery-image" src="./assets/images/dinosaur-spine.jpg" alt="Dinosaur spine">
+                    <div class="caption">Dinosaur spine</div>
+                </div>
+                <div class="slide">
+                    <img class="gallery-image" src="./assets/images/lake.jpg" alt="Lake in Northern Vietnam">
+                    <div class="caption">Lake in Northern Vietnam</div>
+                </div>
+                <div class="slide">
+                    <img class="gallery-image" src="./assets/images/offroad.jpg" alt="Entrance to the forest road">
+                    <div class="caption">Entrance to the forest road</div>
+                </div>
+                <div class="slide">
+                    <img class="gallery-image" src="./assets/images/motorcycle.jpeg" alt="Honda FX150">
+                    <div class="caption">Honda FX150 with a view</div>
+                </div>
+                <div class="slide">
+                    <img class="gallery-image" src="./assets/images/mountains-2.jpg" alt="Another mountains">
+                    <div class="caption">Another mountains</div>
+                </div>
+                <div class="slide">
+                    <img class="gallery-image" src="./assets/images/hero-image.jpg" alt="❤️❤️❤️">
+                    <div class="caption">❤️❤️❤️</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Vietnam on two wheels</p>
+        <div class="social-media">
+            <a href="https://www.facebook.com/profile.php?id=100007493808011" target="_blank" class="social-link">
+                <i class="fab fa-facebook-square"></i>
+            </a>
+            <a href="https://www.instagram.com/karel.stierwald/" target="_blank" class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:stik05@vse.cz" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </footer>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

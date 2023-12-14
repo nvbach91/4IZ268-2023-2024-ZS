@@ -1,0 +1,17 @@
+header {
+    background-color: rgba(100, 100, 100, 0.781);
+}
+
+.header-subtitle {
+    color: rgba(100, 100, 100, 0.781);
+}
+
+.navigation a:hover {
+    background-color: rgba(100, 100, 100, 0.781);
+    color: white;
+}
+
+.list-song:hover {
+    background-color: rgba(100, 100, 100, 0.781);
+    color: white;
+}

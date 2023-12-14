@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ivan Matys">
+    <meta name="description" content="My web page is to teach a little bit about Linux">
+    <title>Permissions</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../images/tux.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <h1>Permissions</h1>
+        </header>
+        <nav>
+            <a href="../../">Home</a>
+            <div class="dropdown"><a href="../">Study</a>
+                <div class="dropdown-menu">
+                    <a href="../basic_commands/">Basic commands</a>
+                    <a href="../text_filters/">Text filters</a>
+                    <a class="active" href="./">Permissions</a>
+                    <a href="../linux_distributions/">Linux distributions</a>
+                </div>
+            </div>
+            <a href="../../about/">About me</a>
+            <a href="../../contact/">Contact</a>
+            <a href="../../sources/">Sources</a>
+        </nav>
+        <main>
+            <article>
+                <h3>Linux file ownership</h3>
+                <p>Every Linux system have three types of owner:</p>
+                <ul>
+                    <li><strong>User:</strong> A user is the one who created the file. By default, whosoever, creates
+                        the
+                        file becomes the
+                        owner of the file. A user can create, delete, or modify the file.</li>
+                    <li><strong>Group:</strong> A group can contain multiple users. All the users belonging to a group
+                        have
+                        same access permission for a file.</li>
+                    <li><strong>Other: </strong>Any one who has access to the file other than user and group comes in
+                        the
+                        category of other. Other has neither created the file nor is a group member.
+                    </li>
+                </ul>
+                Users and groups can be locally managed in <strong>/etc/psswd</strong> or <strong>/etc/group</strong>.
+                <p>All the three owners (user owner, group, others) in the Linux system have three types of permissions
+                    defined. Nine characters denotes the three types of permissions.</p>
+                <ul>
+                    <li><strong>Read (r) :</strong> The read permission allows you to open and read the content of a
+                        file.
+                        But you can't do any editing or modification in the file.</li>
+                    <li><strong>Write (w) : </strong> The write permission allows you to edit, remove or rename a file.
+                        For
+                        instance, if a file is present in a directory, and write permission is set on the file but not
+                        on
+                        the directory, then you can edit the content of the file but can't remove, or rename it.</li>
+                    <li><strong>Execute (x):</strong> In Unix type system, you can't run or execute a program unless
+                        execute
+                        permission is set.But in Windows, there is no such permission available.</li>
+                </ul>
+            </article>
+            <article>
+                <h3>File and directory permissions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Permission</th>
+                            <th>On a File</th>
+                            <th>On a Directory</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>r (read)</td>
+                            <td>Read file content (cat)</td>
+                            <td>Read directory content (ls)</td>
+                        </tr>
+                        <tr>
+                            <td>w (write)</td>
+                            <td>Change file content (vi)</td>
+                            <td>Create file in directory (touch)</td>
+                        </tr>
+                        <tr>
+                            <td>x (execute)</td>
+                            <td>Execute the file</td>
+                            <td>Enter the directory (cd)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article>
+                <h3>chgrp command</h3>
+                <p>The chgrp command can be abbreviated as change group. You can change the group owner of the file
+                    using
+                    chgrp command.</p>
+            </article>
+            <article>
+                <h3>chown command</h3>
+                <p>Command chown is used to change the owner of the file.</p>
+            </article>
+            <article>
+                <h3>List of special files</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>First Character</th>
+                            <th>File Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>-</td>
+                            <td>Normal file</td>
+                        </tr>
+                        <tr>
+                            <td>d</td>
+                            <td>Directory</td>
+                        </tr>
+                        <tr>
+                            <td>l</td>
+                            <td>Symbolic link</td>
+                        </tr>
+                        <tr>
+                            <td>p</td>
+                            <td>Named pipe</td>
+                        </tr>
+                        <tr>
+                            <td>b</td>
+                            <td>Block device</td>
+                        </tr>
+                        <tr>
+                            <td>c</td>
+                            <td>Character device</td>
+                        </tr>
+                        <tr>
+                            <td>s</td>
+                            <td>Socket</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article>
+                <h3>chmod command</h3>
+                <p>You can change the permissions with chmod command accordingly to your need.</p>
+            </article>
+        </main>
+        <div class="logo-slider">
+            <div class="logo-container">
+                <div class="logo-slide"><a href="https://archlinux.org/"><img src="../../images/arch-logo.png"
+                            alt="Arch linux"></a></div>
+                <div class="logo-slide"><a href="https://www.debian.org/"><img src="../../images/debian-logo.png"
+                            alt="Debian"></a></div>
+                <div class="logo-slide"><a href="https://fedoraproject.org/"><img src="../../images/fedora-logo.png"
+                            alt="Fedora"></a></div>
+            </div>
+        </div>
+
+        <footer><i class="fa-brands fa-linux"></i>Ivan Matys &copy;2023<i class="fa-brands fa-linux"></i>
+            <p>Project was made in 4IZ268. Thank you for visiting my website.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+/*Theese will apply on all pages if the class or tag exists there*/
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #333333;
+    color: #fefefe;
+}
+
+.page-logo {
+    border-radius: 50%;
+}
+
+/*setting rules for header and footer*/
+header,
+footer {
+    background-color: #5E2750;
+    text-align: center;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+/*setting rules for nav*/
+nav {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 3px;
+}
+
+nav a {
+    display: flex;
+    background-color: #a60000;
+    color: #fefefe;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+}
+
+nav a:hover {
+    background-color: #3C6EB4;
+}
+
+.where-am-i {
+    background-color: #3C6EB4;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/*setting rules for h2, text boxes, images,...*/
+h2 {
+    background-color: #E95420;
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 3px;
+    margin-top: 0px;
+}
+
+.text-wrapper {
+    background-color: #3C6EB4;
+    border-radius: 20px;
+    text-align: justify;
+    margin: 0;
+    margin-top: 0px;
+    margin-bottom: 3px;
+    padding: 8px;
+}
+
+.article-text p {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+figcaption {
+    text-align: center;
+    margin-top: 3px;
+}
+
+/*setting rules for footer, links and icons*/
+footer a,
+p a {
+    color: #fefefe;
+}
+
+.fa.fa-buymeacoffee,
+.fa.fa-github,
+.fa.fa-envelope {
+    font-size: 30px;
+    padding-right: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+/*end*/
+
+
+/*settings for a zigzag layout*/
+@media screen and (min-width: 720px) {
+
+    .page-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .zigzag {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        align-items: stretch;
+    }
+
+    .content-wrapper,
+    figure {
+        margin: 0;
+        padding-bottom: 3px;
+    }
+
+    figure {
+        position: relative;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .zigzag:nth-child(even) .content-wrapper {
+        order: 2;
+        margin-left: auto;
+    }
+
+    .zigzag:nth-child(even) figure {
+        order: 1;
+    }
+
+    .zigzag:nth-child(odd) .content-wrapper {
+        margin-right: auto;
+    }
+
+    figure img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .article-text,
+    .text-wrapper {
+        flex-grow: 1;
+    }
+}
+
+/*end*/
+
+/*Layout for printing*/
+@media print {
+    body {
+        color: #000000;
+    }
+
+    nav {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    figure {
+        page-break-inside: avoid;
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+/*end*/

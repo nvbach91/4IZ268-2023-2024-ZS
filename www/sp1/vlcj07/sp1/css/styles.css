@@ -1,0 +1,568 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+
+body,
+.header-section,
+.footer-section,
+.hero,
+.navbar,
+.mobile-menu,
+.main-container,
+.history,
+.types,
+.effects,
+.reviews,
+.interesting-facts,
+.main-title-text,
+.facts-container,
+.review,
+.section-container,
+.section-list,
+.section-img-container {
+    display: flex;
+}
+
+body,
+.mobile-menu,
+.main-title-text,
+.history,
+.types,
+.effects,
+.reviews,
+.interesting-facts,
+.section-container,
+.section-list {
+    flex-direction: column;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.header {
+    border-bottom: 1px solid black;
+    position: sticky;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    top: 0;
+}
+
+.footer {
+    border-top: 1px solid black;
+    margin-top: auto
+}
+
+.header,
+.footer {
+    background-color: #5C3317;
+}
+
+.footer-text,
+.nav-item,
+.hero,
+.nav-item-mobile {
+    color: white
+}
+
+.header-section,
+.footer-section {
+    justify-content: space-between;
+    padding: 20px 50px;
+}
+
+.header-section,
+.footer-section,
+.hero,
+.history,
+.types,
+.effects,
+.reviews,
+.interesting-facts,
+.section-container {
+    align-items: center;
+}
+
+.header-section,
+.footer-section,
+.main,
+.section-text-container .section-img-container {
+    margin: 0 auto;
+}
+
+.header-section,
+.footer-section,
+.main {
+    max-width: 1024px;
+}
+
+.nav-item,
+.hero,
+.nav-item-mobile,
+.section-link {
+    text-decoration: none;
+}
+
+.nav-item:hover,
+.hero:hover,
+.nav-item-mobile:hover {
+    color: #FFF5E1;
+    transform: scale(1.05)
+}
+
+.nav-item:active,
+.hero:active,
+.nav-item-mobile:active,
+.section-link:active {
+    opacity: 0.8;
+    transform: scale(0.9)
+}
+
+.current-page {
+    transform: scale(1.2);
+    color: #FFD700
+}
+
+.hero {
+    gap: 5px
+}
+
+.hero-logo {
+    max-width: 48px;
+}
+
+.hero span,
+.section-heading {
+    font-size: 32px;
+}
+
+.footer .hero {
+    transform: scale(0.6);
+}
+
+.navbar,
+.mobile-menu,
+.facts-container,
+.review {
+    gap: 20px
+}
+
+.hamburger {
+    position: relative;
+    cursor: pointer;
+    border: none;
+}
+
+.hamburger:before,
+.hamburger:after {
+    content: "";
+    position: absolute;
+    right: 0;
+}
+
+.hamburger,
+.hamburger:before,
+.hamburger:after {
+    background-color: white;
+    height: 4px;
+    width: 30px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.hamburger:before {
+    top: -10px;
+}
+
+.hamburger:after {
+    top: 10px;
+}
+
+.hamburger:active {
+    opacity: 0.9;
+    transform: scale(1.1);
+}
+
+.hamburger,
+.mobile-menu {
+    display: none;
+}
+
+.mobile-menu {
+    background-color: rgb(139, 69, 19);
+    padding: 20px;
+    transform-origin: top;
+    animation: open-menu 0.5s ease-in-out forwards;
+}
+
+.mobile-menu,
+.text-center,
+.section-table td {
+    text-align: center;
+}
+
+.nav-item-mobile {
+    font-size: 24px;
+}
+
+.main {
+    border: 1px solid transparent;
+    height: 100%;
+    background: linear-gradient(#FFF5E1 80%, rgba(139, 69, 19, 0.58));
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .8);
+    flex-grow: 1;
+}
+
+.main-container,
+.history,
+.types,
+.effects,
+.reviews,
+.interesting-facts,
+.section-container {
+    justify-content: space-evenly;
+    min-height: 100%;
+    margin: 24px auto 36px;
+    width: 100%;
+}
+
+.main-container {
+    width: 90%
+}
+
+.main-title-text {
+    gap: 10px;
+}
+
+.main-heading {
+    font-size: 52px;
+    text-align: start;
+}
+
+.main-subheading {
+    font-size: 36px;
+    text-align: end;
+    line-height: 5px;
+}
+
+.main-text {
+    margin-top: 20px;
+}
+
+.main-img-container {
+    width: 60%;
+}
+
+.section-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.section-img,
+.section-table td {
+    border: 1px solid black;
+}
+
+.facts-container,
+.review {
+    flex-direction: row;
+    max-width: 85%;
+}
+
+.section-heading {
+    margin-bottom: 20px;
+}
+
+.section-img-container {
+    width: 85%;
+
+}
+
+.section-img-container,
+.section-list {
+    justify-content: center;
+}
+
+.section-text {
+    margin: 20px 50px;
+    line-height: 36px;
+}
+
+.section-link {
+    color: #8B4513;
+    font-weight: 500;
+}
+
+.section-link:hover {
+    color: #5C3317
+}
+
+.divide-line {
+    margin: auto;
+    border-top: 0.5px solid #8B4513
+}
+
+.divide-line,
+.section-container .section-img-container,
+.section-table td {
+    width: 50%
+}
+
+.facts-container .section-text,
+.review .section-text {
+    margin: 0 20px;
+}
+
+.history .section-text,
+.effects .section-text,
+.reviews .section-text {
+    margin: 20px 75px;
+}
+
+.section-list {
+    width: max-content;
+    margin: 10px auto;
+    list-style-position: inside;
+}
+
+.section-small-heading {
+    font-size: 20px;
+    margin: 10px;
+}
+
+.tall-img {
+    max-width: 20%;
+}
+
+.small-img {
+    max-width: 30%;
+}
+
+.review {
+    margin-bottom: 30px;
+}
+
+.section-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.section-table td {
+    padding: 8px;
+}
+
+.section-table tr:nth-child(odd) {
+    background-color: #FFF5E1;
+}
+
+.section-table tr:nth-child(even) {
+    background-color: rgba(139, 69, 19, 0.15)
+}
+
+.columns {
+    columns: 20em;
+    margin: 20px;
+    widows: 4;
+}
+
+.columns .section-text {
+    margin: 0 30px 20px
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 0px;
+    }
+
+    .navbar,
+    .hero span {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .header-section {
+        padding: 20px
+    }
+
+    .main-container,
+    .facts-container,
+    .review {
+        flex-direction: column;
+    }
+
+    .main-heading,
+    .main-subheading,
+    .main-text,
+    .footer-text {
+        text-align: center;
+    }
+
+    .main-text {
+        font-size: 16px;
+    }
+
+    .main-img-container {
+        margin: 20px auto;
+        width: 90%;
+    }
+
+    .section-heading {
+        font-size: 24px;
+    }
+
+    .section-text,
+    .section-link,
+    .list-item {
+        font-size: 16px;
+    }
+
+    .section-img-container {
+        width: 81%
+    }
+
+    .interesting-facts .section-text {
+        margin: 20px;
+    }
+
+    .footer-text {
+        font-size: 16px;
+    }
+
+    .facts-container,
+    .review {
+        align-items: center;
+    }
+
+    .facts-container .section-img-container {
+        width: 95.3%;
+    }
+
+    .section-container .section-img-container {
+        width: 80%;
+    }
+
+    .review .section-img-container {
+        width: 30%
+    }
+
+    .tall-img {
+        max-width: 50%;
+    }
+
+}
+
+@keyframes open-menu {
+    0% {
+        transform: scaleY(0);
+    }
+
+    80% {
+        transform: scaleY(1.2);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@media print {
+    * {
+        background-color: transparent;
+        font-size: 12px;
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    *,
+    .section-link {
+        color: black;
+    }
+
+    .header {
+        position: relative;
+        display: flex;
+    }
+
+    .header,
+    .main {
+        box-shadow: none;
+    }
+
+    .navbar,
+    .footer,
+    .main img,
+    .divide-line {
+        display: none;
+    }
+
+    .main-heading,
+    .main-subheading {
+        transform: scale(0.8);
+    }
+
+    .main,
+    .main-heading,
+    .main-subheading {
+        text-align: center;
+    }
+
+    .section-heading {
+        font-size: 24px;
+    }
+
+    .section-heading,
+    .section-container,
+    .section-text {
+        margin: 0 auto;
+    }
+
+    .section-text,
+    .section-list {
+        text-align: start;
+    }
+
+
+    .main-container,
+    .facts-container {
+        flex-direction: column;
+    }
+
+    .main-container,
+    .types,
+    .history,
+    .effects,
+    .reviews,
+    .interesting-facts,
+    .section-container {
+        margin: 10px auto;
+    }
+
+    .section-link {
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    .section-link::after {
+        content: " [" attr(href) "]";
+    }
+
+    .columns {
+        columns: 20em;
+        margin: 10px;
+        widows: 4;
+    }
+
+    .columns .section-text {
+        margin: 0 10px 5px
+    }
+}

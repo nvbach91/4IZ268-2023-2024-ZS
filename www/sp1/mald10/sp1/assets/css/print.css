@@ -1,0 +1,112 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.site-header {
+    display: none;
+}
+
+.header-img {
+    height: fit-content;
+}
+
+.header-img h1 {
+    font-size: 30px;
+    padding: 0;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.header-img h2 {
+    font-size: 25px;
+    padding: 0;
+    margin-top: 0;
+    color: black;
+}
+
+.site-main-sections {
+    max-width: none;
+    padding: 0;
+}
+
+.first-section {
+    padding-top: 5px;
+    border: none;
+}
+
+.second-section {
+    padding-bottom: 0;
+    box-shadow: none;
+}
+
+.second-section h3 {
+    padding: 0;
+}
+
+.gallery-img img:hover {
+    transform: none;
+    transition: none;
+}
+
+.site-footer {
+    display: none;
+}
+
+.text-col {
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    box-shadow: none;
+}
+
+.gallery-img img {
+    box-shadow: none;
+}
+
+.form-section {
+    display: none;
+}
+
+.about-picture a img:hover {
+    transition: none;
+    transform: none;
+}
+
+.part-prices {
+    margin: 0;
+}
+
+.card {
+    height: min-content;
+}
+
+.card:nth-child(3) {
+    page-break-before: always;
+}
+
+@media print and (orientation: landscape) {
+    .about-text {
+        flex-basis: 55%;
+    }
+
+    .about-picture:first-child {
+        flex-basis: 32%;
+    }
+
+    .about-picture {
+        flex-basis: 35%;
+        flex-grow: 0;
+
+    }
+}
+
+@media print and (orientation: portrait) {
+    .first-section {
+        justify-content: center;
+    }
+
+    .contact-card {
+        flex-basis: 100%;
+        justify-content: left;
+    }
+}

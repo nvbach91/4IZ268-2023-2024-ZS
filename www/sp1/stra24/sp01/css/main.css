@@ -1,0 +1,371 @@
+body {
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  overflow: hidden;
+  text-align: center;
+  z-index: 1000;
+}
+
+nav a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: rgb(207, 0, 0);
+  color: black;
+}
+
+.selected {
+  background-color: rgb(207, 0, 0);
+  color: white;
+}
+
+.home-title {
+  margin: 0;
+  font-size: 200px;
+  padding-bottom: 10px;
+}
+
+h1 {
+  color: rgb(207, 0, 0);
+  font-family: 'Ephesis', cursive;
+  font-size: 80px;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+p {
+  color: white;
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: 300;
+  max-width: 700px;
+}
+
+.intro {
+  height: 800px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 150px;
+}
+
+.parallax-bg {
+  background: #000000;
+  background-image: url('../media/bg.jpg');
+  background-attachment: fixed;
+  background-position: center 1%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.rome-background {
+  background: linear-gradient(to bottom, rgba(112, 112, 112, 0.5), rgba(0, 0, 0, 0.5)), url('../media/rome.jpg') top/cover no-repeat;
+  padding: 50px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+  flex-wrap: wrap;
+}
+
+.container a {
+  text-decoration: none;
+}
+
+.card {
+  width: 220px;
+  height: 220px;
+  background-color: #000000;
+  margin: 10px 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card.name-card {
+  display: table;
+  transition: background 0.5s ease-in-out;
+}
+
+.card.name-card.caesar:hover {
+  background: linear-gradient(to bottom, rgba(207, 0, 0, 0.5), rgba(88, 0, 0, 0.5)), url('../media/caesar.jpg') center/cover no-repeat;
+}
+
+.card.name-card.agrippa:hover {
+  background: linear-gradient(to bottom, rgba(207, 0, 0, 0.5), rgba(88, 0, 0, 0.5)), url('../media/agrippa.jpg') center/cover no-repeat;
+}
+
+.card.name-card.antony:hover {
+  background: linear-gradient(to bottom, rgba(207, 0, 0, 0.5), rgba(88, 0, 0, 0.5)), url('../media/antony.jpg') center/cover no-repeat;
+}
+
+.card.name-card.livia:hover {
+  background: linear-gradient(to bottom, rgba(207, 0, 0, 0.5), rgba(88, 0, 0, 0.5)), url('../media/livia.jpg') center/cover no-repeat;
+}
+
+.card.name-card.cicero:hover {
+  background: linear-gradient(to bottom, rgba(207, 0, 0, 0.5), rgba(88, 0, 0, 0.5)), url('../media/cicero.jpg') center/cover no-repeat;
+}
+
+.card.name-card.pompey:hover {
+  background: linear-gradient(to bottom, rgba(207, 0, 0, 0.5), rgba(88, 0, 0, 0.5)), url('../media/pompey.jpg') center/cover no-repeat;
+}
+
+.info {
+  font-size: 35px;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: 40px;
+  margin-bottom: 0;
+  color: rgb(207, 0, 0);
+}
+
+.name {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0;
+  color: white;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.card p {
+  font-size: 20px;
+  color: white;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+.card:hover p {
+  color: rgb(207, 0, 0);
+}
+
+.black {
+  background-color: black;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.white {
+  background-color: white;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.black.map {
+  height: 450px
+}
+
+.mail-container {
+  width: 420px;
+  text-align: left;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+}
+
+.mail-container h2 {
+  color: white;
+  font-family: 'Ephesis', cursive;
+  font-size: 40px;
+}
+
+input[type="email"] {
+  padding: 12px;
+  margin: 8px 0;
+  width: calc(100% - 24px);
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'Rubik', sans-serif;
+}
+
+.subscribe {
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background-color: rgb(207, 0, 0);
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+  width: calc(100% - 24px);
+  transition: color 0.3s ease;
+  font-family: 'Rubik', sans-serif;
+}
+
+.subscribe:hover {
+  background-color: #000000;
+  color: rgb(207, 0, 0);
+}
+
+.subscribe:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+.footer-icons {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+  display: flex;
+}
+
+.footer-icons i {
+  font-size: 24px;
+  margin-left: 10px;
+  color: #ffffff;
+}
+
+footer p {
+  font-size: 14px;
+}
+
+.article-layout {
+  margin-top: 50px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.text-section {
+  box-sizing: border-box;
+  text-align: left;
+  width: 60%;
+  max-width: 500px;
+}
+
+.text-section h2 {
+  font-size: 30px;
+}
+
+.text-section p {
+  color: black;
+  text-align: justify;
+}
+
+.image-section {
+  box-sizing: border-box;
+  width: 40%;
+  max-width: 400px;
+}
+
+.image-section img {
+  width: 80%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInAnimation 1s ease-in-out forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .intro {
+    padding: 0 20px;
+  }
+
+  .parallax-bg {
+    background-position: -700px center;
+  }
+
+  .home-title {
+    font-size: 120px;
+  }
+
+  .intro-text {
+    font-size: 18px;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 220px;
+    height: 220px;
+    margin: 10px 0;
+  }
+
+  .card h3 {
+    margin-left: 0;
+    font-size: 28px;
+    margin-top: 20px;
+  }
+
+  .card p {
+    margin-left: 0;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  .black img {
+    height: 250px
+  }
+
+  .image-section {
+    display: none;
+  }
+
+  .text-section {
+    width: 100%;
+  }
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Příběhy a anekdoty z českého IT světa, a trocha té pomoci k tomu.">
+    <meta name="keywords" content="blog, gaming, programming, programování ,tech">
+    <meta name="author" content="Martin Kadlec">
+    <title>Martin Kadlec - techstack</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500&family=Ubuntu:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="../css/main.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-item-wrapper">
+            <a class="nav-root" href="../">Martin</a>
+        </div>
+        <div class="nav-item-wrapper">
+            <a class="nav-item" href="../blog/">BLOG</a>
+            <a class="nav-item active-element" href="../techstack/">TECHSTACK</a>
+            <a class="nav-item" href="../lessons/">LESSONS</a>
+            <a class="nav-item" href="../portfolio/">PORTFOLIO</a>
+            <a class="nav-item" href="../cv/">CV</a>
+            <a class="nav-item" href="../about/">ABOUT</a>
+        </div>
+    </nav>
+
+    <main class="techstack-main">
+
+        <h1>Techstack</h1>
+        <h2>Aneb moje get-things-done musthaves</h2>
+
+        <section class="techstack-item">
+
+            <div class="techstack-usecase-tags">
+                <div class="techstack-tag">#knowledgemanagment</div>
+                <div class="techstack-tag">#to-do-list</div>
+                <div class="techstack-tag">#doc-writing</div>
+                <div class="techstack-tag">#digital-library</div>
+            </div>
+
+            <div class="techstack-item-maincontent">
+                <div class="techstack-image-wrapper">
+                    <img src="../assets/1617670247obsidian.webp" alt="Obsidian Logo">
+                </div>
+                <div class="techstack-item-description">
+                    <h2>Obsidian</h2>
+                    <p> Obsidian je můj knowledge managment systém, bez kterého bych dnes nedal ani ránu.
+                        Offline first, modulární BE, performance a stability driven platforma,
+                        která podporuje několik přístupů k ukládání a práci s poznámkami. Je zdarma,
+                        nativně podporuje exporty poznámek, pluginy lze zcela svobodně tvořit v JavaScriptu
+                        a vzhled si každý může napsat sám v CSS stylesheetu, co víc si přát?
+                    </p>
+                </div>
+            </div>
+
+            <div class="techstack-item-highlights">
+                <div class="techstack-item-pros">
+                    <h3>The Good</h3>
+                    <ul>
+                        <li>Offline first - core data jsou vždy uložené jako pure Markdown, configy v .json</li>
+                        <li>Skvěle odladěná premium podpora - publikace jako web wiki, full sync support a další</li>
+                        <li>Modulární design - Lze plně konfigurovat přes JS a CSS</li>
+                        <li>Komunitní ekosystém předbalíčkovaných pluginů</li>
+                        <li>Nativní podpora code highlightingu, LateXu, fulltext searche, metadat indexe a graph view
+                        </li>
+                        <li>Umí SQL-like agregace a queries</li>
+                        <li>I na velkých datech pracuje rychle</li>
+                    </ul>
+                </div>
+
+                <div class="techstack-item-cons">
+                    <h3>The Bad and the Ugly</h3>
+                    <ul>
+                        <li>Ruční implementace synchornizace přes git chce trochu fištróna, zlobí binárky</li>
+                        <li>Bez premium balíčků se velmi špatně řeší synchronizace pro mobily</li>
+                        <li>Trpí stejnými neduhy jako Markdown, problematičtější práce s obrázky</li>
+                        <li>Některé integrace souborů (např. pdf) nejsou moc user friendly</li>
+                        <li>UX má vysoký skill floor, pro non-plaintext puritány může být na začátku špatně uchopitelné
+                        </li>
+                        <li>Neumí kolaboraci na úrovni source dat</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="techstack-item">
+
+            <div class="techstack-usecase-tags">
+                <div class="techstack-tag">#IDE</div>
+                <div class="techstack-tag">#java</div>
+            </div>
+
+            <div class="techstack-item-maincontent">
+                <div class="techstack-image-wrapper">
+                    <img src="../assets/croppedFullview-IntelliJ_IDEA_Icon.svg.png" alt="jetbrains Logo">
+                </div>
+                <div class="techstack-item-description">
+                    <h2>Ultimate IDEA</h2>
+                    <p>
+                        Netbrains mě jednou pro vždy překlopil z týmu light-weight na tým IDE.
+                        Podpora pro docker services, nativní connectory do databází, debugger, rychlá integrace
+                        pluginů a podpora pro Kotlin, Maven, JS a JSON out of the box je pro mě dnes esenciální
+                        při pracovních výkonech při BE web vývoji.
+                    </p>
+                </div>
+            </div>
+
+            <div class="techstack-item-highlights">
+                <div class="techstack-item-pros">
+                    <h3>The Good</h3>
+                    <ul>
+                        <li>Class driven UI a UX, zvládne louskat kontexty a scoping napříč celým projektem</li>
+                        <li>Vestavěné DB managment systémy jsou fire</li>
+                        <li>Nativně chápe kontejnerizovanou strukturu, umí komunikovat s Dockerem out of the box</li>
+                        <li>Full-text search napříč celým projektem</li>
+                        <li>Umí držet konzistenci napříč celým projektem</li>
+                        <li>Autooptimalizace importů a formátování</li>
+                        <li>By default odchytá mnoho sémantických erroů a umí hlídat security vulnerability</li>
+                    </ul>
+                </div>
+
+                <div class="techstack-item-cons">
+                    <h3>The Bad and the Ugly</h3>
+                    <ul>
+                        <li> RIP RAM, CPU a battery life</li>
+                        <li>Na velkých projektech běží velmi, velmi, velmi pomalu</li>
+                        <li>Ultimate verze nějaký ty chectáky stojí</li>
+                        <li>Občas trochu dělá problémy s Maven setupem</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="techstack-item">
+
+            <div class="techstack-usecase-tags">
+                <div class="techstack-tag">#IDE</div>
+                <div class="techstack-tag">#text-editor</div>
+                <div class="techstack-tag">#C</div>
+                <div class="techstack-tag">#Rust</div>
+                <div class="techstack-tag">#HTML/CSS</div>
+            </div>
+
+            <div class="techstack-item-maincontent">
+                <div class="techstack-image-wrapper">
+                    <img src="../assets/vsclogo.png" alt="VSC Logo">
+                </div>
+                <div class="techstack-item-description">
+                    <h2>Visual Studio Code</h2>
+                    <p>
+                        Nehledě na to jak moc mi IDEA přirostla k srdci, pravda je taková, že
+                        všechno v ní neodmakám. Na ten zbytek přichází jako zachránce VSC.
+                        Skrze pluginy a moudlární design jde ohnout pro téměř libovolný usecase,
+                        v mém případě od Ardiuna po XML.
+                    </p>
+                </div>
+            </div>
+
+            <div class="techstack-item-highlights">
+                <div class="techstack-item-pros">
+                    <h3>The Good</h3>
+                    <ul>
+                        <li>Zvládne v podstatě libovolný jazyk nebo technologii</li>
+                        <li>Lightweight install</li>
+                        <li>Podpora pro WSL</li>
+                        <li>Zvládne i usecases, které typicky vyžadují specializované editory (XML schemas,
+                            transformace)</li>
+                        <li>Umí i jazyky, pro které se špatně hledá IDE podpora (Rust)</li>
+                        <li>Free</li>
+                    </ul>
+                </div>
+
+                <div class="techstack-item-cons">
+                    <h3>The Bad and the Ugly</h3>
+                    <ul>
+                        <li>V low RAM situacích bohužel kucká stejně jako fullblown IDEs </li>
+                        <li>Podpora OOP jazyků není ideál, rozject Java projekty je vyloženě bolest</li>
+                        <li>Trochu zvláštní default nastavení (autosave,project trust systém,otevírání tabs)</li>
+                        <li>VCS integrace mi moc nesedí (Atom did it better)</li>
+                        <li>Přijde mi, že autocomplete a intellisense není tak dobrý, jako u jiných produktů</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footerbar">
+        <div class="footer-item-wrapper">
+            <div class="footer-root">&copy; 2023 Martin Kadlec</div>
+        </div>
+        <div class="footer-item-wrapper">
+            <div class="footer-hosting">Hosted thanks to ESO VŠE!</div>
+        </div>
+        <div class="footer-item-wrapper">
+            <a class="footer-item" href="mailto:kadm09-bugreporting@example.com" target="_blank">Report a bug</a>
+            <a class="footer-item" href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a class="footer-item" href="https://www.lundegaard.eu/kariera" target="_blank">Work with me!</a>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/0c67910da8.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

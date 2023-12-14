@@ -1,0 +1,17 @@
+header {
+    background-color: rgb(198, 100, 39);
+}
+
+.header-subtitle {
+    color: rgb(198, 100, 39);
+}
+
+.navigation a:hover {
+    background-color: rgb(198, 100, 39);
+    color: white;
+}
+
+.list-song:hover {
+    background-color: rgb(198, 100, 39);
+    color: white;
+}

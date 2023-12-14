@@ -1,0 +1,376 @@
+/* common */
+body {
+    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+}
+.navigation {
+    background-color: lightgray;
+    text-align: center;
+}
+.navigation a{
+    display: inline-block;
+    text-decoration: none;
+    padding: 25px;
+}
+.page-footer {
+    background-color: lightgray;
+    padding: 15px;
+}
+.rebook {
+    float: right;
+    padding-right: 20px;
+    text-decoration: none;
+}
+
+
+/* homepage */
+.home {
+    color: #3a3a3a;
+}
+.home-content {
+    padding: 50px;
+}
+.welcome {
+    background-image: url(../img/firepitView.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 200px;
+}
+.welcome h1 {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 50px;
+}
+.wrap {
+    width: 100%;
+}
+.leftside {
+    float:left; 
+    width: 45%;
+    background-color: transparent;
+    height: 400px;
+}
+.leftside h2 {
+    font-size: 40px;
+}
+.leftside p {
+    font-size: 20px;
+}
+.rightside {
+float: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 48%;
+}
+.nothing {
+    color: transparent;
+    padding: 5px;
+}
+.wrap2 {
+    width: 100%;
+}
+.leftside2 {
+    background-size: cover;
+    background-repeat: no-repeat;
+    float: left;
+    width: 45%;
+    height: 400px;
+}
+.rightside2 {
+float: right;
+    background-color: transparent;
+    height: 400px;
+    width: 50%;
+}
+.rightside2 h2 {
+    font-size: 40px;
+}
+.rightside2 p {
+    font-size: 20px;
+}
+
+
+/* cabins */
+.cabins {
+    color: #3a3a3a;
+}
+.cabins-content {
+    padding: 50px;
+}
+.welcome-cabins {
+    background-image: url(../img/detail.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 200px;
+}
+.welcome-cabins h1 {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 50px;
+}
+.cabins-wrap {
+    width: 100%;
+}
+.cabins-leftside {
+    float:left; 
+    width: 43%;
+    background-color: transparent;
+    height: 400px;
+}
+.cabins-leftside h2 {
+    font-size: 40px;
+}
+.cabins-leftside p {
+    font-size: 20px;
+}
+.cabins-rightside {
+    float: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 48%;
+}
+.cabins-wrap2 {
+    width: 100%;
+}
+.cabins-leftside2 {
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 48%;
+}
+.cabins-rightside2 {
+    float:right; 
+    width: 43%;
+    background-color: transparent;
+    height: 400px;
+}
+.cabins-rightside2 h2 {
+    font-size: 40px;
+}
+.cabins-rightside2 p {
+    font-size: 20px;
+}
+.cabins-wrap3 {
+    width: 100%;
+}
+.cabins-leftside3 {
+    float:left; 
+    width: 43%;
+    background-color: transparent;
+    height: 400px;
+}
+.cabins-leftside3 h2 {
+    font-size: 40px;
+}
+.cabins-leftside3 p {
+    font-size: 20px;
+}
+.cabins-rightside3 {
+    float: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 48%;
+}
+.cabins-wrap4 {
+    width: 100%;
+}
+.cabins-leftside4 {
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 48%;
+}
+.cabins-rightside4 {
+    float:right; 
+    width: 43%;
+    background-color: transparent;
+    height: 400px;
+}
+.cabins-rightside4 h2 {
+    font-size: 40px;
+}
+.cabins-rightside4 p {
+    font-size: 20px;
+}
+
+
+
+/* about */
+.about {
+    color: #3a3a3a;
+}
+.about-content {
+    padding: 50px;
+}
+.welcome-about {
+    background-image: url(../img/motherWithKids.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 200px;
+}
+.welcome-about h1 {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 50px;
+}
+.about-wrap {
+    width: 100%;
+}
+.about-leftside {
+    float:left; 
+    width: 40%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 600px;
+}
+.about-rightside {
+float: right;
+    background-color: transparent;
+    height: 600px;
+    width: 55%;
+}
+.about-rightside h2 {
+    font-size: 40px;
+}
+.about-rightside p {
+    font-size: 20px;
+}
+
+
+/* faq */
+.faq {
+    color: #3a3a3a;
+}
+.faq-content {
+    padding: 50px;
+}
+.welcome-faq {
+    background-image: url(../img/frontSide.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 200px;
+}
+.welcome-faq h1 {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 50px;
+}
+.answers {
+    text-align: center;
+}
+
+
+/* nearby */
+.nearby {
+    color: #3a3a3a;
+}
+.nearby-content {
+    padding: 50px;
+}
+.welcome-nearby {
+    background-image: url(../img/dolniMorava.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 200px;
+}
+.welcome-nearby h1 {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 50px;
+}
+.nearby.wrap {
+    width: 100%;
+}
+
+.nearby-leftside {
+    float:left; 
+    width: 45%;
+    background-color: transparent;
+    height: 400px;
+}
+.nearby-rightside {
+    float: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 48%;
+}
+.nearby-leftside h2 {
+    font-size: 40px;
+}
+.nearby-leftside p {
+    font-size: 20px;
+}
+.nothing {
+    color: transparent;
+    padding: 5px;
+}
+.nearby-leftside2 {
+    background-size: cover;
+    background-repeat: no-repeat;
+    float: left;
+    width: 45%;
+    height: 400px;
+}
+.nearby-rightside2 {
+float: right;
+    background-color: transparent;
+    height: 400px;
+    width: 50%;
+}
+.nearby-rightside2 h2 {
+    font-size: 40px;
+}
+.nearby-rightside2 p {
+    font-size: 20px;
+}
+.nearby-leftside3 {
+    float: left;
+    background-color: transparent;
+    width: 45%;
+    height: 400px;
+}
+.nearby-rightside3 {
+    float: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 50%;
+}
+.nearby-leftside3 h2 {
+    font-size: 40px;
+}
+.nearby-leftside3 p {
+    font-size: 20px;
+}
+
+
+/* contact */
+.contact {
+    color: #3a3a3a;
+}
+.contact-content {
+    padding: 50px;
+}
+.welcome-contact {
+    background-image: url(../img/parking.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 200px;
+}
+.welcome-contact h1 {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 50px;
+}
+.container {
+    padding:50px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    font-size: 20px;
+}

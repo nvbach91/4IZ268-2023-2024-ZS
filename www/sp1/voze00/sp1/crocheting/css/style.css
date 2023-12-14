@@ -1,0 +1,138 @@
+
+.introduction-section {
+    padding: 0 20px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.project-images {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.project-images img {
+    width: calc(33% - 50px);
+    height: auto;
+    border-radius: 5px;
+}
+
+.crafts-section {
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.tips-section {
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.section-title {
+    text-align: center;
+    color: #F47CB9;
+    font-family: 'Annie Use Your Telescope';
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.tip {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.tip h3, .craft-project h3{
+    margin-top: 0;
+    color: #F47CB9;
+    font-size: 22px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #F47CB9;
+}
+
+.tip p{
+    line-height: 1.6;
+}
+
+
+@media (max-width: 800px) {
+    .introduction-section,
+    .crafts-section,
+    .tips-section {
+        padding: 10px;
+    }
+
+    .project-images {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-images img {
+        width: 80%;
+        margin-bottom: 15px;
+    }
+
+    .section-title {
+        font-size: 30px;
+    }
+
+    .tip h3,
+    .craft-project h3 {
+        font-size: 18px;
+    }
+
+    .tip,
+    .craft-project {
+        margin-bottom: 20px;
+    }
+}
+
+@media print {
+    body {
+        color: black;
+        background-color: white;
+    }
+
+    nav,
+    .project-images,
+    footer {
+        display: none;
+    }
+
+    .main-container,
+    .introduction-section,
+    .crafts-section,
+    .tips-section {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .blog-title, .section-title {
+        font-size: 24px;
+    }
+
+    .blog-title,
+    .section-title,
+    .tip h3,
+    .craft-project h3 {
+        color: black;
+        border-bottom: none;
+    }
+
+    .tip h3,
+    .craft-project h3,
+    .tip p,
+    .craft-project p, .introduction-section {
+        font-size: 12px;
+    }
+
+    .tip,
+    .craft-project {
+        page-break-inside: avoid;
+        padding: 5px;
+        box-shadow: none;
+    }
+}

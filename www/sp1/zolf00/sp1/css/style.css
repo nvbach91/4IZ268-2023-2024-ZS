@@ -1,0 +1,536 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+}
+
+.ba-details {
+    font-weight: bold;
+}
+
+.contents {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    color: rgb(76, 76, 76);
+}
+
+.content {
+    width: 100%;
+    padding: 20px;
+}
+
+.content p {
+    height: 220px;
+}
+.content h2 {
+    border-bottom: 3px solid green;
+    font-size: 20px;
+}
+
+.content h3 {
+    border-bottom: 3px solid lightblue;
+    font-size: 15px;
+}
+
+.content:nth-child(1) h2 {border-color: red;}
+.content:nth-child(2) h2 {border-color: lightseagreen;}
+.content:nth-child(3) h2 {border-color: navy;}
+.content:nth-child(4) h2 {border-color: green;}
+.content:nth-child(5) h2 {border-color: purple;}
+.content:nth-child(6) h2 {border-color: black;}
+
+.contents-section {
+    max-width: 60%;
+    line-height: 1.5;
+}
+
+.content-team {
+    width: 100%;
+    padding: 20px;
+}
+
+.content-team p {
+    height: 150px;
+}
+.content-team h2 {
+    border-bottom: 3px solid green;
+    font-size: 20px;
+    height: 175px;
+}
+
+.content-team h3 {
+    border-bottom: 3px solid lightblue;
+    font-size: 15px;
+}
+
+.content-team:nth-child(1) h2 {border-color: red;}
+.content-team:nth-child(2) h2 {border-color: lightseagreen;}
+.content-team:nth-child(3) h2 {border-color: navy;}
+.content-team:nth-child(4) h2 {border-color: green;}
+.content-team:nth-child(5) h2 {border-color: purple;}
+.content-team:nth-child(6) h2 {border-color: black;}
+
+.button-like {
+    background-color: rgb(157, 92, 92);
+    border: 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.site-billboard {
+    padding: 175px;
+    background-image: url(../images/banner.jpg);
+    background-size: cover;
+    background-position: center;
+    max-width: 100%;
+}
+
+.site-billboard-text {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    text-align: center;
+}
+
+.site-billboard h1 {
+    font-size: 55px;
+    text-transform: uppercase;
+}
+
+.site-billboard h2 {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.about-billboard {
+    padding: 100px;
+    background-image: url(../images/nasTym.jpg);
+    background-size: cover;
+    background-position: center;
+    max-width: 100%;
+}
+
+.about-billboard h2 {
+    font-size: 40px;
+    font-weight: 300;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    text-align: center;
+    border: none;
+}
+
+.about-billboard h2:hover {
+    color: grey;
+}
+
+.technical-billboard {
+    padding: 100px;
+    background-image: url(../images/DSC08706-kopie-1024x683.jpg);
+    background-size: cover;
+    background-position: center;
+    max-width: 100%;
+}
+
+.technical-billboard h2 {
+    font-size: 40px;
+    font-weight: 300;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    text-align: center;
+    border: none;
+}
+
+.technical-billboard h2:hover {
+    color: grey;
+}
+
+.uk-img {
+    width: 250px;
+}
+
+.project-img {
+    width: 250px;
+}
+
+.map-embed {
+    width: 600px;
+    height: 450px;
+    margin: 20px;
+    border: none;
+}
+
+main {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+header {
+    background: #fff;
+    padding: 9px;
+    font-size: 16px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.footer-logo, .main-logo{
+    width: 150px;
+}
+
+.footer-contact {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.socials-logo {
+    width: 35px;
+    padding: 5px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 35px;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-top: 15px;
+}
+
+h3 {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+p {
+    font-size: 18px;
+}
+
+.navigation-items {
+    display: inline-flex;
+    gap: 15px;
+    padding: 10px;
+    color: #000000;
+    margin: 0;
+    list-style: none;
+}
+
+.navigation-item a {
+    text-decoration: none;
+    padding: 18px;
+    color: #000000;
+}
+
+.navigation-item a:hover {
+    color:  #3206e0;
+}
+
+.is-active a{
+    color:  #3206e0;
+    text-decoration: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropa {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+section {
+    max-width: 85%;
+    margin: 20px auto;
+    padding: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.text-section {
+    max-width: 50%;
+    line-height: 2;
+}
+
+.text {
+    color: rgb(76, 76, 76);
+}
+
+.about-section {
+    max-width: 75%;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 16px;
+}
+
+footer {
+    background-color: #000000;
+    color:gray;
+    text-align: left;
+    padding: 25px;
+}
+
+.img-gallery {
+    display: grid;
+    gap: 25px;
+    padding: 10px;
+    width: 100%;
+}
+
+.img-gallery-content {
+    width: 200px;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.miss-img {
+    width: 350px;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-img {
+    width: 300px;
+}
+
+.yt-video {
+    height: 315px;
+    width: 560px;
+    border: none;
+}
+
+@media screen and (min-width: 350px) {
+    .img-gallery {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .miss-img{
+        width: 200px;
+    }
+
+    header {
+        display: block;
+        text-align: center;
+    }
+
+    .navigation-item a {
+        padding: 0px;
+        font-size: 12px;
+    }
+
+    .site-billboard{
+        padding: 10px 30px;
+    }
+
+    .about-billboard{
+        padding: 5px 15px;
+        width: 100%;
+
+    }
+
+    .technical-billboard {
+        padding: 30px;
+    }
+
+    .content p {
+        height: 500px;
+    }
+
+    .content h2 {
+        font-size: 23px;
+    }
+
+    .team-img {
+        width: 300px;
+    }
+
+    .map-embed {
+        width: 200px;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .yt-video {
+        height: 200px;
+        width: 250px;
+        border: none; 
+    }
+
+    .uk-img {
+        width: 250px;
+    }
+
+    .project-img {
+        width: 150px;
+    }
+
+    .content-team h2 {
+        height: 225px;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .img-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    header {
+        display: block;
+        text-align: center;
+    }
+
+    .navigation-item a {
+        padding: 0px;
+        font-size: 18px;
+    }
+
+    .content p {
+        height: 220px;
+    }
+
+    .site-billboard{
+        padding: 10px 30px;
+    }
+
+    .map-embed {
+        width: 450px;
+        height: 300px;
+        margin: auto;
+        padding: 30px;
+    }
+    
+    .yt-video {
+        height: 315px;
+        width: 560px;
+        border: none;
+    }
+
+    .uk-img {
+        width: 350px;
+    }
+
+    .project-img {
+        width: 225px;
+    }
+
+    .content-team h2 {
+        height: 175px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .img-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .content {
+        width: calc(100%/2)
+    }
+
+    .team-img {
+        width: 600px;
+    }
+
+    .map-embed {
+        width: 600px;
+        height: 450px;
+        margin: 20px;
+    }
+
+    .content-team {
+        width: calc(100%/3)
+    }
+
+    header {
+        display: block;
+        text-align: center;
+    }
+
+    .navigation-item a {
+        padding: 18px;
+    }
+
+    .site-billboard{
+        padding: 175px;
+    }
+
+    .technical-billboard {
+        padding: 100px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    
+    header {
+        display:block;
+    }
+
+    .navigation-item a {
+        padding: 18px;
+    }
+}
+
+@media print {
+
+    nav,
+    header,
+    footer,
+    .yt-video,
+    a,
+    .map-embed {
+        display: none;
+    }
+
+}
+
+

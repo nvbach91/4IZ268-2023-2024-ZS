@@ -1,0 +1,564 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.layout {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.top-panel {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgb(204, 191, 191);
+    width: 100%;
+}
+
+.top-panel.about {
+    background-image: url(../pictures/darkside.jpg);
+}
+.top-panel.history {
+    background-image: url(../pictures/timeline.png);
+}
+.top-panel.members {
+    background-image: url(../pictures/members.avif);
+}
+.top-panel.movie {
+    background-image: url(../pictures/hammer.jpg);
+}
+.top-panel.albums {
+    background-image: url(../pictures/pink.jpg);
+}
+
+.image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.image-logo {
+    max-width: 80%;
+    height: auto;
+    max-height: 100%;
+}
+
+
+.navigation {
+    background-color: black;
+    text-align: center;
+    width: 100%;
+}
+
+.navigation a {
+    height: 50px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    align-items: center;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 15px;
+    display: inline-block;
+}
+
+.navigation a#active-page {
+    font-weight: bold;
+}
+
+
+.navigation a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.main {
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%; 
+}
+
+.main h1 {
+    color: black;
+    font-size: 30px;
+    padding: 5px;
+    font-weight: bold;
+    border: solid 10px black;
+}
+
+
+.info {
+    margin-top: 10px;
+    margin: 10px;
+    display: flex;
+}
+
+.info-item {
+    background-color: white;
+    border: solid 2px black;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 50%;
+}
+
+.text {
+    text-align: justify;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
+.card-footer {
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.card-footer a{
+    color: white;
+    text-decoration: underline;
+}
+
+.member-card {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.member-picture {
+    flex: 0 0 30%;
+    max-width: 30%;
+    padding: 10px; 
+}
+
+.member-picture img {
+    max-width: 100%;
+}
+
+
+.member-info {
+    flex: 0 0 70%; 
+    max-width: 70%; 
+    padding: 10px; 
+    text-align: justify;
+}
+
+.member-info h3{
+    margin-top: 0;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.album-cover img {
+    max-height: 200px;
+}
+
+.album-cover:nth-child(9) img {
+    border: 1px black solid;
+}
+
+.album-cover:nth-child(11) img {
+    border: 1px black solid;
+}
+
+.album-covers, .empty-place {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.empty-place {
+    background-color: transparent;
+    width: 50%;
+}
+
+.album-cover{
+    width: 50%;
+}
+
+.album-cover h3 {
+    text-align: center;
+    height: 30px;
+}
+
+.basics {
+    display: flex;
+    margin-right: 50px;
+    margin-left: 50px;
+    padding-bottom: 20px;
+}
+
+.movie-poster,
+.bob-geldof {
+    flex: 0 0 20%;
+    box-sizing: border-box;
+}
+
+.movie-info {
+    flex: 0 0 60%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    text-align: justify;
+}
+
+.movie-info h3 {
+    text-align: center;
+}
+
+.movie-poster img,
+.bob-geldof img {
+    width: 100%;
+    height: auto;
+}
+
+.album-thewall img {
+    max-height: 315px;
+}
+
+.spotify-trailer {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    padding-bottom: 20px;
+}
+
+.trailer {
+    width: 60%;
+}
+.album-thewall {
+    width: 40%;
+}
+
+.about-movie {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 35px;
+}
+
+.background,
+.plot {
+    width: 50%;
+    text-align: justify;
+    padding: 0 15px;
+}
+
+.background h3,
+.plot h3 {
+    text-align: center;
+}
+
+#thewall-analysis {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.year {
+    clear: both; 
+    overflow: hidden; 
+}
+
+.year h3 {
+    text-align: center;
+}
+
+.year p {
+    text-align: justify;
+    display: block;
+    position: relative;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.image-year-left {
+    float: left;
+    margin-left: 50px;
+    margin-right: 20px;
+    width: 200px;
+}
+
+.image-year-right {
+    float: right;
+    margin-left: 20px;
+    margin-right: 50px;
+    width: 200px;
+}
+
+.image-year-left[alt="live8"]{
+    width: 300px;
+}
+.image-year-right[alt="2014"]{
+    width: 300px;
+}
+.image-year-right[alt="strahov"]{
+    width: 300px;
+}
+.image-year-left[alt="pig"]{
+    width: 300px;
+}
+
+
+
+
+@media (min-width: 800px){
+    .album-cover {
+        width: 33%;
+    }
+    .empty-place {
+        visibility: hidden;
+    }
+    
+    .image-year-left,
+    .image-year-right {
+        width: 250px;
+    }
+    .image-year-left[alt="1967"]{
+        width: 400px;
+    }
+    .image-year-right[alt="atomheart-tour"]{
+        width: 180px;
+    }
+    .image-year-left[alt="1968"]{
+        width: 300px;
+    }
+    .image-year-left[alt="darkside-tour"]{
+        width: 200px;
+    }
+    .image-year-right[alt="wywh"]{
+        width: 180px;
+    }
+    .image-year-left[alt="pig"]{
+        width: 380px;
+    }
+    .image-year-right[alt="strahov"]{
+        width: 350px;
+    }
+    .image-year-left[alt="live8"]{
+        width: 400px;
+    }
+    .image-year-right[alt="2014"]{
+        width: 340px;
+    }
+}
+
+
+@media (min-width: 1024px){
+    .album-cover {
+        width: 25%;
+    }
+    .empty-place {
+        visibility: visible;
+        width: 25%;
+    }
+        
+    .image-year-left, 
+    .image-year-right {
+        width: 300px;
+    }
+    .image-year-left[alt="1967"]{
+        width: 470px;
+    }
+    .image-year-right[alt="jimi-hendrix"]{
+        width: 250px;
+    }
+    .image-year-right[alt="atomheart-tour"]{
+        width: 220px;
+    }
+    .image-year-left[alt="1968"]{
+        width: 350px;
+    }
+    .image-year-right[alt="wywh"]{
+        width: 200px;
+    }
+    .image-year-left[alt="pig"]{
+        width: 400px;
+    }
+    .image-year-right[alt="strahov"]{
+        width: 400px;
+    }
+    .image-year-left[alt="live8"]{
+        width: 450px;
+    }
+    .image-year-right[alt="2014"]{
+        width: 400px;
+    }
+}
+
+
+
+@media screen and (max-width: 800px) {
+    .member-picture,
+    .member-info {
+        flex: 0 0 100%; 
+        max-width: 100%; 
+    }
+    .member-picture img {
+        max-height: 300px;
+    }
+    .album-thewall{
+        width: 100%;
+    }
+    .basics {
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .movie-info {
+        order: -1; 
+        flex: 0 0 100%; 
+        width: 100%;  
+    }
+
+    .movie-poster,
+    .bob-geldof {
+        width: 50%;
+        flex: 0 0 50%; 
+        padding: 0 10px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .album-thewall{
+        width: 100%;
+    }
+    .trailer{
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 480px)  {
+    .image-year-left,
+    .image-year-right {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        display: block; 
+        width: 100%; 
+        padding-right: 50px;
+        padding-left: 50px;
+    }    
+    .info {
+        flex-wrap: wrap;
+    }
+
+    .info-item{
+        flex: 0 0 calc(100% - 20px);
+        margin-bottom: 10px;
+    }
+}
+
+ @media (min-width: 1440px){
+    .album-cover {
+        width: 25%;
+    }
+    .empty-place {
+        visibility: visible;
+        width: 25%;
+    }
+        
+    .image-year-left, 
+    .image-year-right {
+        width: 400px;
+    }
+    .image-year-left[alt="1967"]{
+        width: 470px;
+    }
+    .image-year-right[alt="jimi-hendrix"]{
+        width: 350px;
+    }
+    .image-year-right[alt="atomheart-tour"]{
+        width: 250px;
+    }
+    .image-year-right[alt="1971"]{
+        width: 300px;
+    }
+    .image-year-left[alt="1968"]{
+        width: 400px;
+    }
+    .image-year-left[alt="darkside-tour"]{
+        width: 330px;
+    }
+    .image-year-right[alt="wywh"]{
+        width: 250px;
+    }
+    .image-year-left[alt="pig"]{
+        width: 400px;
+    }
+    .image-year-right[alt="strahov"]{
+        width: 450px;
+    }
+    .image-year-left[alt="live8"]{
+        width: 500px;
+    }
+    .image-year-right[alt="2014"]{
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .trailer iframe,
+    .video iframe {
+        width: calc(100% - 40px); 
+        max-width: 100%; 
+    }
+    .background,
+    .plot {
+        width: 100%;
+
+    }
+    .movie-info {
+        order: -1; 
+        width: 100%;  
+    }
+    .movie-poster,
+    .bob-geldof {
+        flex: 0 0 100%; 
+    }          
+ 
+}
+
+@media print {
+    .card-footer, .video, .spotify-trailer {
+        display: none;
+    }
+    .basics {
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .movie-info {
+        order: -1; 
+        flex: 0 0 100%; 
+        width: 100%;  
+    }
+
+    .movie-poster,
+    .bob-geldof {
+        flex: 0 0 50%; 
+        padding: 0 10px;
+    } 
+    
+    .movie-poster img,
+    .bob-geldof img{
+        height: 210px;
+        width: auto;
+    } 
+}
+

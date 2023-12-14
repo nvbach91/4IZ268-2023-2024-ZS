@@ -1,0 +1,153 @@
+#about{
+    padding: 20px;
+}
+#about .team-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: center;
+    padding: 20px;
+}
+
+.team-member {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    flex-basis: calc(33% - 20px); 
+    max-width: calc(33% - 20px); 
+}
+
+.team-member img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.team-member h3 {
+    color: #4CAF50;
+}
+
+.team-member p {
+    font-size: 16px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+}
+
+header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+header li {
+    float: left;
+}
+
+header li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+header li a:hover {
+    background-color: #3e8e41;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer li {
+    display: inline;
+    margin-right: 20px;
+}
+
+footer li a {
+    color: white;
+    text-decoration: none;
+}
+
+@media print {
+    body {
+        font-size: 12pt;
+        color: black;
+        background: white;
+    }
+
+    header, footer, nav {
+        display: none; 
+    }
+
+    img {
+        max-width: 100%; 
+    }
+
+    a {
+        text-decoration: none;
+        color: black; 
+    }
+
+
+    a[href]:after {
+        content: " (" attr(href) ")"; 
+    }
+
+
+    main, .section {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .blog-post, .service, .team-member {
+        box-shadow: none; 
+        border: 1px solid #ddd; 
+    }
+
+    article, .section {
+        page-break-inside: avoid; 
+    }
+}
+
+    nav ul li a.active {
+    color: #ffffff; 
+    font-weight: bold;
+   
+}
+
+
+@media screen and (min-width: 800px) {
+    body {
+        font-size: 14px; 
+    }
+
+    header, footer {
+        padding: 10px; 
+    }
+
+}

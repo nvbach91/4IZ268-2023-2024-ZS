@@ -1,0 +1,19 @@
+
+.first-section {
+    display: block;
+}
+
+.header-img {
+    height: 300px;
+}
+
+.map-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map {
+    width: 100%; height:500px;
+    border: 0;
+}

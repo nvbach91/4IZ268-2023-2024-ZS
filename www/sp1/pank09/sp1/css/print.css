@@ -1,0 +1,12 @@
+img {
+    display: none;
+}
+
+.logo img {
+    display: inline-block;
+    max-height: 40px;
+}
+
+.main-footer {
+    margin-top: 20px;
+}

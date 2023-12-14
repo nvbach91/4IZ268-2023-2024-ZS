@@ -1,0 +1,1494 @@
+/*** HEADER ***/
+.padding-box {
+}
+
+header {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: stretch;
+    align-content: stretch;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+
+/* LOGO */
+.logo-header {
+    position: absolute;
+    z-index: 4;
+    left: 2rem;
+    top: 0;
+    width: clamp(150px, 20vw, 350px);
+    flex-wrap: nowrap;
+}
+
+.logo-header figure {
+    margin: 0;
+    font-size: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-align-self: flex-start;
+    align-self: flex-start;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.logo-header img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    pointer-events: none;
+    vertical-align: top;
+    display: inline-block;
+}
+
+/* NAV - SOCIALS */
+nav, .socials-header-container {
+    padding-left: clamp(160px, 22vw, 400px);
+    max-width: 100%;
+}
+
+.socials-header-container {
+    display: flex;
+    justify-content: end;
+    flex-direction: row;
+    border-bottom: 2px solid var(--tri-color);
+}
+
+.socials-header {
+    padding: 0.75rem 2rem;
+    align-items: stretch;
+    margin-right: clamp(2rem, 20vw, 12rem);
+}
+
+.socials-header a {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--secondary-color);
+    margin: 0 0.2rem;
+    font-size: var(--font-big);
+    padding: 0.35rem 0.3rem 0.3rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+
+    transition: color 0.2s, background-color 0.4s;
+    cursor: pointer;
+}
+
+.socials-header a:hover {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+nav {
+    background-color: var(--bg-color);
+    min-height: 90px;
+    margin-right: 3rem;
+    font-weight: 600;
+    z-index: 3;
+}
+
+nav .menu-toggle, nav .mobile-nav {
+    display: none;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+}
+
+nav li {
+    float: left;
+    position: relative;
+}
+
+nav a {
+    display: block;
+    color: var(--text-color-alt);
+    text-align: center;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+
+    transition: color 0.2s, background-color 0.4s;
+    cursor: pointer;
+}
+
+nav .active {
+    color: var(--text-color);
+}
+
+nav ul li a:hover {
+    color: var(--text-color);
+    background-color: var(--hover-color);
+}
+
+nav ul li:hover > a {
+    color: var(--text-color);
+    background-color: var(--hover-color);
+}
+
+/* DROPDOWN */
+nav ul li > ul {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    min-width: 100%;
+    z-index: 1;
+    transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+    overflow: hidden;
+}
+
+nav ul li:hover > ul {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s, 0s;
+    transform: translateY(0px);
+}
+
+nav ul li ul li {
+    padding: 0;
+    background-color: var(--hover-color);
+    width: clamp(150px, 20vw, 4rem);
+}
+
+nav ul li ul li a {
+    color: var(--primary-color);
+}
+
+nav ul li ul li a:hover {
+    background-color: var(--primary-color);
+}
+
+/* PADDING */
+.padding {
+    padding: 1dvh;
+}
+
+/*** MAIN ***/
+
+main {
+    margin: 0 2rem;
+    background-color: var(--bg-color);
+    box-sizing: border-box;
+    box-shadow: black 0 0 20px;
+}
+
+/* BANNER */
+main .banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(https://adacine2.github.io/resources/img/prague_landscape_1-min.jpg);
+    background-size: cover;
+    background-position: 50% 8%;
+    background-repeat: no-repeat;
+    position: relative;
+    height: clamp(15rem, 45dvh, 25rem);
+    overflow: hidden;
+}
+
+main .banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(999, 999, 999, 0.2);
+    pointer-events: none;
+}
+
+main .banner h1 {
+    position: absolute;
+    text-align: center;
+    color: var(--text-color-alt);
+    padding: 1rem 0;
+    background-color: var(--padding-color);
+    font-size: var(--font-xxbig);
+    text-transform: uppercase;
+    break-inside: avoid;
+    white-space: normal;
+    width: 60%;
+
+    text-shadow: var(--secondary-color) 0 0 5px;
+    z-index: 2;
+    opacity: 0;
+    animation: appearIn 1s ease-out forwards;
+    animation-delay: 0.3s;
+    transition: color 0.8s ease-out, background-color 0.8s ease-out;
+    cursor: default;
+}
+
+main .banner h1:hover {
+    color: var(--text-color);
+}
+
+main .banner h1 sup {
+    font-size: 0.5em;
+    line-height: 0;
+    margin-left: 0.2rem;
+    text-transform: none;
+}
+
+@keyframes appearIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* WELCOME */
+
+main .welcome-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: stretch;
+
+    background-color: var(--tri-color);
+    padding: 0.5rem;
+}
+
+main .welcome-wrap .welcome-main {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 70%;
+    flex-wrap: nowrap;
+    padding: 0.5rem;
+}
+
+.welcome-main h2 {
+    text-transform: uppercase;
+    width: 100%;
+    font-size: var(--font-xxbig);
+    padding: 0.8rem 0.5rem 1.3rem;
+    box-sizing: border-box;
+    font-weight: 900;
+    color: var(--secondary-color);
+}
+
+.welcome-main h2 span {
+    color: var(--primary-color);
+}
+
+.welcome-main .content {
+    overflow-x: auto;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: justify;
+    max-height: 22rem;
+    padding: 0.25rem;
+}
+
+main .welcome-wrap .welcome-aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    padding: 0.5rem;
+}
+
+.news {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: var(--bg-color-alt);
+    border-radius: 1rem;
+}
+
+.general-info .news {
+    width: 80%;
+    margin-bottom: 3rem;
+}
+
+.news h3 {
+    text-transform: uppercase;
+    width: 100%;
+    font-size: var(--font-xxbig);
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: 900;
+    color: var(--primary-color);
+}
+
+.news h3 span {
+    color: var(--secondary-color);
+}
+
+.news .content {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0.75rem;
+}
+
+.news .content p, .news .content h4 {
+    text-align: left;
+    margin: unset;
+}
+
+.news .content h4 {
+    color: var(--secondary-color);
+    padding-bottom: 0.25rem;
+}
+
+.news .content h4 i {
+    color: var(--primary-color);
+}
+
+.news article {
+    text-align: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--secondary-color);
+    min-width: 100%;
+}
+
+.news .button-orange {
+    margin: 0.75rem 0 0.25rem;
+}
+
+.welcome-aside .socials-connect {
+    display: none;
+}
+
+/* INFO */
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem 8rem;
+    background-color: var(--bg-color);
+    position: relative;
+}
+
+.info-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--tri-color);
+    height: 12rem;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.info, .hotel {
+    z-index: 1;
+}
+
+.info article, .hotel article {
+    display: flex;
+    flex-direction: row;
+
+    word-break: break-word;
+    height: 22rem;
+    width: 100%;
+}
+
+.info article section, .hotel article section {
+    width: 50%;
+    box-sizing: border-box;
+    word-break: break-word;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+
+    padding: 0.75rem;
+    height: 100%;
+    color: var(--text-color);
+}
+
+.info article section .content, .hotel article section .content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.25rem;
+    font-size: var(--font-small);
+}
+
+.info article section a, .hotel article section a {
+    margin: 2.5rem;
+}
+
+.info article h4, .hotel article h4 {
+    text-transform: uppercase;
+    font-size: var(--font-xbig);
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.primary-bg {
+    background-color: var(--primary-color);
+}
+
+.secondary-bg {
+    background-color: var(--secondary-color);
+}
+
+.primary-title {
+    color: var(--primary-color);
+}
+
+.secondary-title {
+    color: var(--secondary-color);
+}
+
+.info article:nth-of-type(2) section {
+    width: calc(100% / 3);
+}
+
+.info article .image, .hotel article .image {
+    height: 100%;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.info article:nth-of-type(1) .image {
+    width: 50%;
+    background-image: url(https://adacine2.github.io/resources/img/prague_landscape_2-min.webp);
+    background-position: 50% 50%;
+}
+
+.info article:nth-of-type(2) .image:nth-of-type(1) {
+    width: calc(100% / 3);
+    background-image: url(https://adacine2.github.io/resources/img/kcp-min.jpg);
+    background-position: 50% 50%;
+
+}
+
+.info article:nth-of-type(2) .image:nth-of-type(2) {
+    width: calc(100% / 3);
+    background-image: url(https://adacine2.github.io/resources/img/kcp2-min.webp);
+    background-position: 50% 5%;
+}
+
+.info article:nth-of-type(3) .image {
+    width: 50%;
+    background-image: url(https://adacine2.github.io/resources/img/metro-min.jpg);
+    background-position: 20% 50%;
+}
+
+/*** MAIN CONTENT ***/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 1rem 0;
+    background-color: var(--tri-color);
+    box-sizing: border-box;
+    min-height: 100dvh;
+}
+
+.container h1 {
+    padding: 4rem 1rem 2rem;
+    margin: 0;
+    text-transform: uppercase;
+    max-width: 100%;
+    font-size: var(--font-xxbig);
+    box-sizing: border-box;
+    font-weight: 900;
+    color: var(--primary-color);
+    word-wrap: break-word;
+}
+
+.container h1 span {
+    color: var(--secondary-color);
+}
+
+.container .content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.container .content p, .event p {
+    word-wrap: break-word;
+    overflow-x: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.container .content ul {
+    width: 100%;
+    word-wrap: break-word;
+    overflow-x: auto;
+    list-style-position: inside;
+    box-sizing: border-box;
+}
+
+.registration, .accommodation, .call-for-papers, .programme, .general-info, .sponsorship {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.event-wrapper {
+    padding-bottom: 2rem;
+}
+
+.event-wrapper .event {
+    padding: 0 1rem;
+    text-align: justify;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: stretch;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.accommodation {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 1rem 1rem 3rem;
+}
+
+.accommodation p a {
+    color: var(--text-color-alt);
+}
+
+.accommodation p a:hover {
+    color: var(--secondary-color);
+}
+
+.accommodation h3, .event-wrapper h3 {
+    text-align: justify;
+    color: var(--secondary-color);
+    padding: 0;
+    margin: 0;
+}
+
+.container h2 {
+    padding: 0.5rem 1rem;
+    margin: 0;
+    color: var(--secondary-color);
+    text-align: left;
+}
+
+.container h2 span {
+    color: var(--primary-color);
+}
+
+.accommodation p {
+    text-align: justify;
+    padding: 0;
+    margin: 0;
+}
+
+.accommodation .button-container {
+    padding: 2rem;
+    margin: auto;
+}
+
+.accommodation .table-cancellations {
+    text-align: left;
+    width: 75%;
+    border-collapse: collapse;
+}
+
+.accommodation .table-cancellations th {
+    border: 2px solid var(--primary-color);
+    background-color: var(--bg-color-alt);
+    padding: 0.75rem 0.25rem;
+}
+
+.accommodation .table-cancellations td {
+    border: 2px solid var(--primary-color);
+    padding: 0.25rem;
+}
+
+.accommodation .table-cancellations td:hover {
+    background-color: var(--bg-color-alt);
+}
+
+.committee .gallery-item {
+    max-height: 20rem;
+    max-width: 15rem;
+    position: relative;
+    overflow: hidden;
+    margin: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.committee .gallery-item:hover .caption {
+    display: block;
+}
+
+.committee .gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.committee .gallery-item:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.committee .gallery-item .caption {
+    bottom: 0;
+    position: absolute;
+    display: none;
+    text-align: center;
+    background-color: var(--padding-color);
+    color: var(--text-color);
+    width: 100%;
+    transition: 0.5s ease;
+    cursor: pointer;
+    padding: 0.75rem 0;
+}
+
+.committee .gallery-item .caption span {
+    font-weight: 600;
+    display: block;
+    padding-bottom: 0.25rem;
+}
+
+.committee .gallery-item {
+    max-height: 20rem;
+    max-width: 15rem;
+    position: relative;
+    overflow: hidden;
+    margin: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.committee .gallery-item:hover .caption {
+    display: block;
+}
+
+.committee .gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.committee .gallery-item:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.committee .gallery-item .caption span {
+    font-weight: 600;
+    display: block;
+    padding-bottom: 0.25rem;
+}
+
+.partners .gallery-item, .related .gallery-item {
+    max-height: 10rem;
+    max-width: 20rem;
+    overflow: hidden;
+    margin: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.related .gallery-item {
+    border: 8px solid var(--secondary-color);
+}
+
+.partners .gallery-item a img, .related .gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.partners .gallery-item:hover, .related .gallery-item:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.hotel article .image {
+    width: 50%;
+    min-height: 10rem;
+}
+
+.hotel article section {
+    width: 50%;
+}
+
+.hotel article:nth-of-type(1) .image {
+    background-image: url(https://adacine2.github.io/resources/img/hotels/corinthia-hotel-prague-min.jpg);
+    background-position: 50% 45%;
+}
+
+.hotel article:nth-of-type(2) .image {
+    background-image: url(https://adacine2.github.io/resources/img/hotels/grandium-hotel-prague-min.jpg);
+    background-position: 50% 50%;
+}
+
+.hotel article:nth-of-type(3) .image {
+    background-image: url(https://adacine2.github.io/resources/img/hotels/hotel-kings-court-prague-min.jpg);
+    background-position: 40% 50%;
+}
+
+.hotel article:nth-of-type(4) .image {
+    background-image: url(https://adacine2.github.io/resources/img/hotels/panorama-hotel-prague-min.jpg);
+    background-position: 50% 50%;
+}
+
+.hotel article:nth-of-type(5) .image {
+    background-image: url(https://adacine2.github.io/resources/img/hotels/union-hotel-prague-min.jpg);
+    background-position: 50% 50%;
+}
+
+.call-for-papers, .general-info article, .sponsorship, .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.split-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 0.75rem;
+}
+
+.split-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.split-image {
+    width: 50%;
+    background-position: 50% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 15rem;
+}
+
+.split-image.airport {
+    background-image: url(https://adacine2.github.io/resources/img/airport-prague-min.jpg);
+}
+
+.split-image.prague {
+    background-image: url(https://adacine2.github.io/resources/img/prague_landscape_2-min.webp);
+}
+
+.split-image.manager {
+    background-image: url(https://adacine2.github.io/resources/img/manager-min.webp);
+}
+
+.split-image.organiser {
+    background-image: url(https://adacine2.github.io/resources/icon/cong_org_alt.png);
+}
+
+.call-for-papers h3, .programme h3, .general-info article h3, .sponsorship h3 {
+    text-align: left;
+    width: 100%;
+    color: var(--secondary-color);
+    font-weight: 900;
+}
+
+.general-info article h4 {
+    text-align: left;
+    width: 100%;
+    color: var(--secondary-color);
+    margin: 0;
+    padding: 0.5rem 1rem 0;
+}
+
+.call-for-papers ul, .programme ul, .general-info article ul, .sponsorship ul {
+    width: 100%;
+    margin: 0;
+}
+
+.general-info article {
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.general-info article:last-of-type {
+    border-bottom: unset;
+    margin-bottom: 3rem;
+}
+
+.call-for-papers p, .sponsorship p, .contact p {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.call-for-papers ul a, .general-info article ul a, .general-info article p a, .sponsorship ul a, .contact .info ul a {
+    color: var(--text-color-alt);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.call-for-papers ul a:hover, .general-info article ul a:hover, .general-info article p a:hover, .sponsorship ul a:hover, .contact .info ul a:hover {
+    color: var(--secondary-color);
+}
+
+.call-for-papers .button-container, .programme .button-container {
+    padding: 1rem;
+}
+
+.programme {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0 2rem;
+}
+
+
+/*** FOOTER ***/
+
+footer {
+    margin: 0 2rem;
+    background-color: var(--primary-color);
+    box-sizing: border-box;
+    box-shadow: black 0 5px 20px -5px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+footer a {
+    color: var(--text-color);
+}
+
+footer a:hover {
+    color: var(--secondary-color);
+}
+
+footer section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: clamp(150px, 30vw, 500px);
+    height: 100%;
+    padding: 0.5rem;
+    color: var(--text-color);
+}
+
+footer section h2 {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    color: var(--text-color);
+    font-size: var(--font-big);
+    font-weight: 900;
+    border-bottom: 1px solid var(--tri-color);
+    height: 30%;
+    width: 75%;
+}
+
+footer .support img {
+    max-width: 10rem;
+}
+
+footer ul {
+    padding: unset;
+    margin: unset;
+}
+
+footer ul li {
+    list-style-type: none;
+    padding: 0.25rem 0;
+}
+
+footer section img {
+    width: 100%;
+    max-width: 4rem;
+    max-height: 5rem;
+    margin: 0 1rem;
+    object-fit: contain;
+    object-position: center;
+}
+
+footer section img:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+/*** FUNCTIONAL ***/
+
+.button, .button-white, .button-orange {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: var(--font-big);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 900;
+
+    transition: color 0.2s, background-color 0.4s, border 0.4s;
+    cursor: pointer;
+}
+
+.button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.button-orange {
+    color: var(--text-color-alt);
+    border: var(--primary-color) 2px solid;
+}
+
+.button-white {
+    color: var(--text-color);
+    border: var(--text-color) 2px solid;
+}
+
+.button:hover {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.button-orange:hover, .button-white:hover {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: var(--text-color) 2px solid;
+}
+
+/*** LOADER ***/
+
+.loader-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    animation: dimmed 2s ease-in-out 1;
+    position: relative;
+}
+
+.loader-wrapper h1 {
+    text-align: center;
+    color: var(--text-color-alt);
+    font-size: var(--font-xxbig);
+    text-transform: uppercase;
+    break-inside: avoid;
+    white-space: normal;
+    z-index: 2;
+    cursor: default;
+    padding: 0;
+    margin: 0;
+}
+
+.loader {
+    height: 10rem;
+    width: 10rem;
+    border: 5rem solid var(--primary-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    animation: rotate 4s ease-in-out infinite;
+    z-index: 2;
+}
+
+.loader-wrapper .back-home {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    break-inside: avoid;
+    white-space: normal;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.back-home a {
+    color: var(--text-color-alt);
+    font-size: var(--font-title);
+    text-decoration: none;
+}
+
+.back-home a:hover {
+    color: var(--text-color);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*** MEDIA QUERIES ***/
+
+@media screen and (min-width: 1200px) {
+    main .container h1:not(.news h1) {
+        padding: 10rem 1rem 1rem;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+@media screen and (max-width: 991px) {
+    .info-container {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 1rem;
+    }
+
+    .info-container::before {
+        height: 5rem;
+    }
+
+    .info {
+        z-index: 1;
+    }
+
+    .info article {
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+
+    .info article section {
+        width: 100% !important;
+        padding: 0.25rem;
+    }
+
+    .info article:nth-of-type(1) .image, .info article:last-of-type .image {
+        width: 100% !important;
+        height: 10rem;
+    }
+
+    .info article section .content {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.25rem;
+    }
+
+    .hotel {
+        z-index: 1;
+    }
+
+    .hotel article {
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+
+    .hotel article section {
+        width: 100% !important;
+        padding: 0.25rem;
+    }
+
+    .hotel article .image {
+        width: 100% !important;
+        height: 15rem;
+    }
+
+    .hotel article section .content {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.25rem;
+    }
+
+    .hotel article section a {
+        margin: 1rem;
+    }
+
+    main .gallery-item .caption {
+        background-color: unset;
+        color: var(--text-color-alt);
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 0;
+    }
+
+    footer {
+        padding: 0.5rem;
+        flex-direction: column;
+    }
+
+    footer section {
+        width: 100%;
+    }
+
+    .split-container {
+        flex-direction: column;
+    }
+
+    .split-content {
+        width: 100%;
+    }
+
+    .split-image {
+        width: 100%;
+        height: 15rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    :root {
+        --font-basic: 0.9rem;
+    }
+
+    main .banner h1 {
+        width: 80%;
+        box-sizing: border-box;
+    }
+
+    .loader {
+        height: 5rem;
+        width: 5rem;
+        border-width: 2.5rem;
+    }
+
+    .loader-wrapper h1 {
+        font-size: var(--font-big);
+    }
+
+    .back-home a {
+        font-size: var(--font-xxbig);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    :root {
+        --font-basic: 0.75rem;
+    }
+
+    main {
+        margin: 0;
+    }
+
+    main .banner h1 {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    main .welcome-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: stretch;
+
+        background-color: var(--tri-color);
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+
+    main .welcome-wrap .welcome-main {
+        width: 100%;
+        box-sizing: border-box;
+        max-height: 70dvh;
+    }
+
+    .welcome-main .content {
+        padding: 0 0.4rem;
+    }
+
+    .welcome-main h2 {
+        text-align: center;
+        padding: 0 0.5rem 0.5rem;
+    }
+
+    main .welcome-wrap .welcome-aside {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* HEADER */
+    header {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .logo-header {
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+
+    nav, .socials-header-container {
+        padding-left: unset;
+    }
+
+    .socials-header-container {
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .socials-header {
+        margin: 1rem 0;
+    }
+
+    .socials-header a {
+        font-size: var(--font-xbig);
+        padding: 0.55rem 0.5rem 0.5rem;
+    }
+
+    .menu-toggle {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    nav ul {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+    }
+
+    nav ul li > ul {
+        display: block;
+        position: static;
+        width: auto;
+        opacity: 1;
+        visibility: visible;
+        max-height: none;
+    }
+
+    nav ul li ul li {
+        width: 100%;
+        background-color: var(--bg-color);
+        margin-top: 0.25rem;
+        border-radius: 0.4rem;
+    }
+
+    nav ul li ul li:last-child {
+        margin-bottom: 0.25rem;
+    }
+
+    nav ul li ul li a {
+        color: var(--primary-color);
+    }
+
+    nav ul li {
+        width: 100%;
+        background-color: var(--hover-color);
+        border-radius: 0.4rem;
+        margin-top: 0.25rem;
+    }
+
+    .menu-toggle:checked ~ ul {
+        display: block;
+        max-height: 100rem;
+        min-width: 100%;
+        opacity: 1;
+    }
+
+    .menu-toggle:checked + .mobile-nav {
+        width: auto;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+    }
+
+    .menu-toggle:checked + .mobile-nav span {
+        display: none;
+    }
+
+    .menu-toggle:checked + .mobile-nav i {
+        width: 95dvw;
+        font-weight: 900;
+        box-sizing: border-box;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        margin: 1rem 0;
+        min-height: unset;
+        position: relative;
+    }
+
+    nav .mobile-nav {
+        all: unset;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 75%;
+        height: 75%;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        border-radius: 0.4rem;
+        cursor: pointer;
+        text-transform: uppercase;
+        align-items: center;
+        font-size: var(--font-xxbig);
+        transition: background-color 0.25s ease-in-out, color 0.5s ease-in-out;
+        text-align: center;
+    }
+
+    nav .mobile-nav i {
+        width: 20%;
+        text-align: center;
+    }
+
+    nav .mobile-nav span {
+        width: 80%;
+        text-align: center;
+        font-size: 0.75em;
+        margin: unset;
+    }
+
+    footer {
+        margin: unset;
+        box-shadow: unset;
+    }
+
+    .button {
+        font-size: var(--font-basic);
+    }
+
+    main .committee .gallery-item {
+        max-height: 20rem;
+        max-width: 7.5rem;
+    }
+
+    .loader {
+        height: 2rem;
+        width: 2rem;
+        border-width: 1.25rem;
+    }
+
+    .loader-wrapper h1 {
+        font-size: var(--font-xsmall);
+    }
+
+    .back-home a {
+        font-size: var(--font-big);
+    }
+}
+
+@media print {
+    main {
+        margin: 0 !important;
+        background-color: unset !important;
+        box-sizing: border-box;
+        box-shadow: unset !important;
+    }
+
+    header {
+        display: none;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .welcome-main .content {
+        overflow-x: unset;
+    }
+
+    .banner {
+        max-height: 5rem;
+    }
+
+    .banner h1 {
+        font-size: var(--font-big) !important;
+        padding: 0.5rem !important;
+        width: 100% !important;
+        text-shadow: unset !important;
+    }
+
+    .info-container {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 1rem;
+    }
+
+    .info-container .info section, .info-container .hotel section {
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 !important;
+        color: #000 !important;
+    }
+
+    .info-container .image {
+        display: none;
+    }
+
+    .info article section a {
+        margin: 0 !important;
+    }
+
+    main .gallery-item .caption {
+        background-color: unset !important;
+        color: #000 !important;
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    main .gallery-item {
+        max-width: 12rem !important;
+    }
+
+    main h1 {
+        font-size: var(--font-xbig) !important;
+        padding: 0.5rem !important;
+    }
+
+    .split-content {
+        width: 100% !important;
+    }
+
+    .split-image {
+        display: none;
+    }
+}

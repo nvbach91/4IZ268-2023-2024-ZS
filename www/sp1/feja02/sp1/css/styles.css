@@ -1,0 +1,305 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100vh;
+    height: 100%;
+}
+
+html {
+    font-size: 16px;
+    font-family: "Noto Sans Mono", monospace;
+    text-align: center;
+    background-color: #0e0e0e;
+    color: #9a8866;
+}
+
+body {
+    width: 100%;
+    max-width: 1850px;
+    flex-direction: column;
+    display: flex;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    margin: 10px 0 20px 0;
+}
+
+main {
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    margin: 20px 0 10px 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    opacity: 1;
+    transition: opacity .4s ease-out;
+}
+
+a:hover {
+    opacity: .6;
+    font-weight: bold;
+}
+
+.pretty-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.pretty-table th {
+    color: #aeaeb0;
+    background-color: hsla(0, 0%, 100%, .15);
+}
+
+.pretty-table tbody {
+    background-color: hsla(0, 0%, 100%, .01);
+}
+
+.pretty-table tr {
+    table-layout: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid #9a8866;
+}
+
+.pretty-table td, .pretty-table th {
+    padding: 20px;
+}
+
+.pretty-table tr:last-child {
+    border: none;
+}
+
+.divider {
+    border-color: #333333;
+}
+
+/* HEADER */
+
+.brand .title {
+    font-size: 1.5rem;
+}
+
+.brand .description {
+    font-size: 0.8rem;
+    margin: 5px 0;
+}
+
+.nav-active {
+    text-decoration: underline;
+}
+
+.nav-item {
+    border-right: 1px solid #333333;
+    padding: 0 10px 0 0;
+    white-space: nowrap;
+}
+
+.nav-item:last-child {
+    border: none;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* MAIN */
+
+.container {
+    display: block;
+    width: 100%;
+    align-items: center;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.heading {
+    margin-top: 0;
+}
+
+.cards {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    border: 2px solid #9a8866;
+    padding: 10px;
+}
+
+.card-title {
+    margin: 0 0 10px 0;
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.card-description {
+    text-align: justify;
+}
+
+.card-table {
+    min-width: 100%;
+}
+
+.card-table tr {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #9a8866;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.card-table tr:last-child {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.card-table th {
+    justify-content: left;
+    text-align: left;
+}
+
+.card-table th::after {
+    content: ":";
+}
+
+.card-table td {
+    text-align: right;
+}
+
+.card-buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.boss {
+    width: 350px;
+}
+
+.filler {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.map {
+    width: 370px;
+}
+
+.map-image {
+    width: 345px;
+    height: 200px;
+}
+
+.button {
+    border: 1px solid #9a8866;
+    padding: 5px;
+}
+
+.button a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.multi-row {
+    display: block;
+}
+
+.boss-image {
+    width: 100%;
+    height: 400px;
+}
+
+.menu .card {
+    width: 270px;
+    height: 300px;
+    border-style: dashed;
+}
+
+.link {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 15px;
+    padding: 15px 0;
+    max-width: 1600px;
+    font-size: .8rem;
+    text-align: center;
+}
+
+.footer-copyright {
+    white-space: nowrap;
+}
+
+
+@media screen and (max-width: 1024px) {
+    nav {
+        margin-top: 20px;
+    }
+
+    .header-container {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .footer-copyright {
+        margin-top: 10px;
+    }
+
+    .footer-container {
+        display: block;
+    }
+
+    .footer-container .spacer {
+        display: none;
+    }
+}
+
+@media print {
+    html {
+        color: black;
+        background-color: white;
+    }
+
+    .card {
+        break-inside: avoid;
+    }
+}

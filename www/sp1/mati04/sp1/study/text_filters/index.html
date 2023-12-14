@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ivan Matys">
+    <meta name="description" content="My web page is to teach a little bit about Linux">
+    <title>Text filters</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../images/tux.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <h1>Text filters</h1>
+        </header>
+        <nav>
+            <a href="../../">Home</a>
+            <div class="dropdown"><a href="../">Study</a>
+                <div class="dropdown-menu">
+                    <a href="../basic_commands/">Basic commands</a>
+                    <a class="active" href="./">Text filters</a>
+                    <a href="../permissions/">Permissions</a>
+                    <a href="../linux_distributions/">Linux distributions</a>
+                </div>
+            </div>
+            <a href="../../about/">About me</a>
+            <a href="../../contact/">Contact</a>
+            <a href="../../sources/">Sources</a>
+        </nav>
+        <main>
+            <article>
+                <h3>sort command</h3>
+                <p>The sort command is used generally to sort the output of the file. Let’s use the command and see the
+                    output.</p>
+            </article>
+            <article>
+                <h3>wc command</h3>
+                <p>wc command in Linux indicates the number of words, characters, lines, etc using a set of options.</p>
+                <ul>
+                    <li>wc -w shows the number of words</li>
+                    <li>wc -l shows the number of lines</li>
+                    <li>wc -m shows the number of characters present in a file</li>
+                </ul>
+            </article>
+            <article>
+                <h3>tr command</h3>
+                <p>The command 'tr' stands for 'translate'. It is used to translate, like from lowercase to uppercase
+                    and
+                    vice versa or new lines into spaces.</p>
+            </article>
+            <article>
+                <h3>cut command</h3>
+                <p>Linux cut command is useful for selecting a specific column of a file. It is used to cut a specific
+                    sections by byte position, character, and field and writes them to standard output. It cuts a line
+                    and
+                    extracts the text data. It is necessary to pass an argument with it; otherwise, it will throw an
+                    error
+                    message. To cut a specific section, it is necessary to specify the delimiter. A delimiter will
+                    decide
+                    how the
+                    sections are separated in a text file. Delimiters can be a space (' '), a hyphen (-), a slash (/),
+                    or
+                    anything else. After '-f' option, the column number is mentioned.</p>
+            </article>
+            <article>
+                <h3>uniq command</h3>
+                <p>Linux uniq command is used to remove all the repeated lines from a file. Also, it can be used to
+                    display
+                    a count of any word, only repeated lines, ignore characters, and compare specific fields. It is one
+                    of
+                    the most frequently used commands in the Linux system. It is often used with the sort command
+                    because it
+                    compares adjacent characters. It discards all the identical lines and writes the output.</p>
+            </article>
+            <article>
+                <h3>grep command</h3>
+                <p>The 'grep' command stands for "global regular expression print". grep command filters the content of
+                    a
+                    file which makes our search easy. It is a command-line utility to search plain-text data groups for
+                    lines that are the same as a regular
+                    expression. The name "grep" comes from the command, i.e., ed, which contains the same effect.
+                    Originally, grep was designed for the Unix operating system, but it became available for every
+                    Unix-like
+                    system later and a few others like OS 9. The grep filter finds a file for a specific character
+                    pattern
+                    and shows every line that includes that
+                    pattern. Characters should be in quotation marks if they occur in the pattern parameter with a
+                    special
+                    meaning for the shell. Usually, we must enclose the whole pattern in one quotation mark if the
+                    pattern
+                    parameter is not a common string. In an expression like [a-z], the minus sign (-) cml describes a
+                    range
+                    based on the current collating
+                    order. A collating order may specify equivalent classes in character ranges for use. The grep
+                    command
+                    assumes stdin when no files are mentioned. The pattern is called the regular expression that is
+                    found
+                    inside the file. The pattern is restricted
+                    regular expressions in the format of the egrep or ed command. The grep command applies a solid
+                    non-deterministic algorithm. It comes in handy when we need to filter large log files.</p>
+            </article>
+        </main>
+        <div class="logo-slider">
+            <div class="logo-container">
+                <div class="logo-slide"><a href="https://archlinux.org/"><img src="../../images/arch-logo.png"
+                            alt="Arch linux"></a></div>
+                <div class="logo-slide"><a href="https://www.debian.org/"><img src="../../images/debian-logo.png"
+                            alt="Debian"></a></div>
+                <div class="logo-slide"><a href="https://fedoraproject.org/"><img src="../../images/fedora-logo.png"
+                            alt="Fedora"></a></div>
+            </div>
+        </div>
+
+        <footer><i class="fa-brands fa-linux"></i>Ivan Matys &copy;2023<i class="fa-brands fa-linux"></i>
+            <p>Project was made in 4IZ268. Thank you for visiting my website.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

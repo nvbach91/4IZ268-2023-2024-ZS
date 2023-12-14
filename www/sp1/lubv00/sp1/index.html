@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ne hladu</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/fav_32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./img/fav_192x192.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="./img/fav_180x180.png">
+</head>
+
+
+<body>
+
+    <nav class="nav-section">
+        <a href="./"><img src="./img/logo.png" alt="logo" class="logo"></a>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="./about/">O nás</a></li>
+                <li><a href="./services/">Služby &amp; Ceny</a></li>
+                <li><a href="./articles/">Články</a></li>
+                <li><a href="./reservation/">Rezervace</a></li>
+                <li><a href="./contact/">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="hero-section">
+            <div class="hero-text">
+                <h1 class="welcome">Vítejte<br>v Ne hladu</h1>
+                <p>Vaše cesta ke zdravějšímu životu začíná zde</p>
+                <a href="./reservation/" class="default-button">Rezervace</a>
+            </div>
+        </section>
+
+        <section class="intro-section">
+            <div class="intro-text">
+                <h3>Kdo jsme?</h3>
+                <p>Nutriční terapeutky s magisterským vzděláním z 1. lékařské fakulty a VŠCHT, bojovnice za pravdu o
+                    zdravé
+                    výživě a spoluzakladatelky nutriční poradny Ne hladu. A taky už 19 let nejlepší kamarádky! Píšeme
+                    články, radíme, přednášíme a vystupujeme na konferencích a v TV. Zajímá vás zdravá výživa? Jste tu
+                    správně!</p>
+                <a href="./about/" class="default-button">Více o nás</a>
+            </div>
+            <img src="./img/nehladu-main.jpg" alt="zakladatelky" class="founders-photo">
+        </section>
+
+        <section class="testimonials-section grey-bg">
+            <div class="testimonials-container">
+                <div class="testimonials-text">
+                    <h3>Co říkají naši klienti?</h3>
+                    <p>Jsme hrdí na každého klienta, který s námi spolupracoval a dosáhl pozitivních změn ve svém
+                        životě.
+                        Každý
+                        příběh úspěchu je pro nás inspirací.</p>
+                </div>
+
+                <div class="testimonial-cards">
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-background">
+                            <p class="client-quote">
+                                "Díky Ne hladu jsem konečně našla správnou cestu ke zdravému stravování. Jsem vděčná za
+                                odbornou péči a
+                                vstřícný přístup."
+                            </p>
+                            <div class="client-rectangle"></div>
+                        </div>
+                        <div class="client">
+                            <img class="client-photo" src="./img/tereza.png" alt="foto zakaznika">
+                            <div class="client-name">Tereza Svobodová</div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-background">
+                            <p class="client-quote">
+                                "Ne hladu mi pomohlo s potížemi trávení a nadměrným únavovým syndromem. Díky tomu se
+                                cítím
+                                energičtější a mé trávení je mnohem lepší."
+                            </p>
+                            <div class="client-rectangle"></div>
+                        </div>
+                        <div class="client">
+                            <img class="client-photo" src="./img/Bara.png" alt="foto zakaznika">
+                            <div class="client-name">Barbora Králová</div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-background">
+                            <p class="client-quote">
+                                "S podporou Ne hladu jsem dosáhla svých cílů ve ztrátě váhy a získání vitality.
+                                Doporučuji
+                                každému, kdo chce investovat do svého dlouhodobého zdraví."
+                            </p>
+                            <div class="client-rectangle"></div>
+                        </div>
+                        <div class="client">
+                            <img class="client-photo" src="./img/Lucie.png" alt="foto zakaznika">
+                            <div class="client-name">Lucie Novotná</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="contact-text">
+                <h3>Kontaktujte nás</h3>
+                <p>Pokud máte nějaké dotazy nebo si chcete domluvit konzultaci, neváhejte nás kontaktovat. Jsme tu,
+                    abychom vám pomohli!</p>
+            </div>
+
+            <div class="contact-form">
+                <form>
+                    <label for="name">Vaše jméno:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Zpráva:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit" class="white-button">Odeslat</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <a href="./"><img src="./img/logo_white.png" alt="bile logo" class="logo"></a>
+                <div class="socials">
+                    <a href="https://www.facebook.com/NeHladu/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                            <path fill="white"
+                                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/nehladu/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                            <path fill="white"
+                                d="M13.028 2.001a78.82 78.82 0 0 1 2.189.022l.194.007c.224.008.445.018.712.03c1.064.05 1.79.218 2.427.465c.66.254 1.216.598 1.772 1.154a4.908 4.908 0 0 1 1.153 1.771c.247.637.415 1.364.465 2.428c.012.266.022.488.03.712l.006.194a79 79 0 0 1 .023 2.188l.001.746v1.31a78.836 78.836 0 0 1-.023 2.189l-.006.194c-.008.224-.018.445-.03.712c-.05 1.064-.22 1.79-.466 2.427a4.884 4.884 0 0 1-1.153 1.772a4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.427.465c-.267.012-.488.022-.712.03l-.194.006a79 79 0 0 1-2.189.023l-.746.001h-1.309a78.836 78.836 0 0 1-2.189-.023l-.194-.006a60.64 60.64 0 0 1-.712-.03c-1.064-.05-1.79-.22-2.428-.466a4.89 4.89 0 0 1-1.771-1.153a4.904 4.904 0 0 1-1.154-1.772c-.247-.637-.415-1.363-.465-2.427a74.367 74.367 0 0 1-.03-.712l-.005-.194A79.053 79.053 0 0 1 2 13.028v-2.056a78.82 78.82 0 0 1 .022-2.188l.007-.194c.008-.224.018-.446.03-.712c.05-1.065.218-1.79.465-2.428A4.88 4.88 0 0 1 3.68 3.68a4.897 4.897 0 0 1 1.77-1.155c.638-.247 1.363-.415 2.428-.465l.712-.03l.194-.005A79.053 79.053 0 0 1 10.972 2h2.056Zm-1.028 5A5 5 0 1 0 12 17a5 5 0 0 0 0-10Zm0 2A3 3 0 1 1 12.001 15a3 3 0 0 1 0-6Zm5.25-3.5a1.25 1.25 0 0 0 0 2.498a1.25 1.25 0 0 0 0-2.5Z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCkUqaTSg_lTgQWpTsDiTDbg" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                            <g fill="none" fill-rule="evenodd">
+                                <path
+                                    d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z" />
+                                <path fill="white"
+                                    d="M12 4c.855 0 1.732.022 2.582.058l1.004.048l.961.057l.9.061l.822.064a3.802 3.802 0 0 1 3.494 3.423l.04.425l.075.91c.07.943.122 1.971.122 2.954c0 .983-.052 2.011-.122 2.954l-.075.91c-.013.146-.026.287-.04.425a3.802 3.802 0 0 1-3.495 3.423l-.82.063l-.9.062l-.962.057l-1.004.048A61.59 61.59 0 0 1 12 20a61.59 61.59 0 0 1-2.582-.058l-1.004-.048l-.961-.057l-.9-.062l-.822-.063a3.802 3.802 0 0 1-3.494-3.423l-.04-.425l-.075-.91A40.662 40.662 0 0 1 2 12c0-.983.052-2.011.122-2.954l.075-.91c.013-.146.026-.287.04-.425A3.802 3.802 0 0 1 5.73 4.288l.821-.064l.9-.061l.962-.057l1.004-.048A61.676 61.676 0 0 1 12 4Zm-2 5.575v4.85c0 .462.5.75.9.52l4.2-2.425a.6.6 0 0 0 0-1.04l-4.2-2.424a.6.6 0 0 0-.9.52Z" />
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <ul class="footer-links">
+                    <li><a href="./about/">O nás</a></li>
+                    <li><a href="./services/">Služby &amp; Ceny</a></li>
+                    <li><a href="./articles/">Články</a></li>
+                    <li><a href="./reservation/">Rezervace</a></li>
+                    <li><a href="./contact/">Kontakt</a></li>
+                </ul>
+
+                <ul class="footer-links">
+                    <li><a href="">Ochrana osobních údajů</a></li>
+                    <li><a href="">Doručení a platba</a></li>
+                    <li><a href="">Podmínky vrácení peněz</a></li>
+                    <li><a href="">Obchodní podmínky</a></li>
+                </ul>
+
+                <div class="billing">
+                    <div><strong>Fakturační údaje</strong></div>
+                    <div>Ne hladu s.r.o.</div>
+                    <div>IČ: 08401748</div>
+                    <div>Hošťálkova 1168/111</div>
+                    <div>169 00, Praha 6</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+(function (Drupal) {
+
+    window._StarbucksFrontend = window._StarbucksFrontend || {};
+
+    window._StarbucksFrontend.errorMessages = {
+        presence: Drupal.t('This value is required.'),
+        email: Drupal.t('The provided email is invalid'),
+        includesUpperCase: Drupal.t('At least one capital letter'),
+        includesLowerCase: Drupal.t('At least one lowercase letter'),
+        includesNumber: Drupal.t('At least one number'),
+        includesSpecialCharacter: Drupal.t('At least one special character such as exclamation point or comma'),
+        tooShort: Drupal.t('This value must be at least %{count} characters.'),
+        lengthBounds: Drupal.t('From %{minimum} to %{maximum} characters'),
+        phoneNumber: Drupal.t('The provided phone number is invalid'),
+        checkbox: Drupal.t('This checkbox is required'),
+        numericality: Drupal.t('This value can only contain numbers.'),
+        terms: Drupal.t('Please agree to the Terms of Use'),
+        selectOption: Drupal.t('Please select an option'),
+        excludesNonEnglishCharacters: Drupal.t('Must contain only english characters'),
+        excludesWhitespace: Drupal.t('No spaces'),
+        notEqualPass: Drupal.t('is not equal to new password'),
+    };
+
+})(Drupal);

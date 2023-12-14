@@ -1,0 +1,301 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: justify;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+}
+
+body {
+    margin: 0;
+}
+
+footer {
+    background-image: url(../../images/background.jpg);
+    background-color: rgba(0, 0, 0, 0.774);
+    background-blend-mode: multiply;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 15px;
+    height: 50px;
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 30px;
+    color: white;
+    padding: 10px;
+    padding-left: 15px;
+    font-weight: 100;
+    margin-top: 5px;
+    margin-bottom: 14px;
+}
+
+iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.introduction {
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.introduction>p {
+    margin-top: 10px;
+}
+
+.header {
+    background-image: url(../../images/background.jpg);
+    height: 50px;
+}
+
+.header-row {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.book {
+    width: 100%;
+    margin-bottom: 10px;
+    background-image: url(../../images/frostpunk.jpg);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: auto;
+}
+
+.poster {
+    background-color: blue;
+    background-image: url(../../images/starec.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 30px;
+    position: relative;
+    width: 50%;
+}
+
+.poster>p {
+    position: absolute;
+    color: #ffffff;
+    right: 5px;
+    bottom: -10px;
+    background-color: rgba(0, 0, 0, 0.705);
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.end {
+    width: 100%;
+    padding: 0 10px;
+    margin-top: 0px;
+}
+
+.book:nth-child(3)>div>.poster {
+    background-image: url(../../images/valkasmloky.jpg);
+}
+
+.book:nth-child(4)>div>.poster {
+    background-image: url(../../images/rur.jpg);
+}
+
+.book:nth-child(5)>div>.poster {
+    background-image: url(../../images/lakomec.jpg);
+}
+
+.info {
+    background-color: rgba(0, 0, 0, 0.781);
+    background-blend-mode: multiply;
+    width: 50%;
+    border-top-right-radius: 10px;
+}
+
+.title {
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.author {
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.review {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.534);
+    background-blend-mode: multiply;
+    width: 100%;
+}
+
+.review>p {
+    color: white;
+    padding: 10px 20px;
+}
+
+.book>.row {
+    height: 100%;
+}
+
+.logo {
+    width: 50%;
+    height: 70px;
+    background-image: url(../../images/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+    display: none;
+}
+
+.logo>img {
+    display: inline-block;
+    scale: 0.5;
+    vertical-align: middle;
+}
+
+.menu {
+    padding: 5px 5px;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.menu-item {
+    width: 20%;
+    text-align: center;
+    margin: auto 0;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+.menu-item:nth-child(4) {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    background-color: rgba(0, 0, 0, 0.342);
+    border-radius: 4px;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.svg {
+    width: 12px;
+    height: 12px;
+}
+
+.wrapper {
+    max-width: 1000px;
+    padding: 0px 10px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.527);
+    background-blend-mode: multiply;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image {
+    padding: 1px;
+    flex-wrap: wrap;
+    width: 10%;
+    line-height: 0;
+}
+
+@media screen and (min-width: 1000px) {
+    .logo {
+        display: block;
+    }
+
+    .menu {
+        width: 50%;
+        height: 70px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    h2 {
+        font-size: 50px;
+    }
+
+    .wrapper {
+        padding: 0px 20px;
+    }
+
+    .menu-item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .header {
+        height: 70px;
+    }
+
+    .book {
+        margin-bottom: 4px;
+        height: 320px;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .poster {
+        width: 25%;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+    }
+
+    .info {
+        width: 25%;
+        border-top-right-radius: 0px;
+    }
+
+    .review {
+        width: 50%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 0px;
+    }
+
+    .author {
+        font-size: 30px;
+    }
+
+    .introduction {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .title {
+        font-weight: 200;
+    }
+}

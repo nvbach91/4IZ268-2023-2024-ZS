@@ -1,0 +1,238 @@
+@import url('https://fonts.cdnfonts.com/css/hedvig-letters-sans');
+
+body {
+    font-family: 'Hedvig Letters Sans', sans-serif;
+    background-color: #f7f7f7;
+    max-width: 1920px;
+    margin: auto;
+}
+
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.offer,
+footer,
+.wrapper,
+input[type="submit"]:hover,
+input[type="submit"] {
+    background-color: #11999e;
+}
+
+.main-header,
+.main-header-services,
+.main-header-services1,
+.wrapper,
+nav ul,
+.services,
+.content,
+.article-header,
+.price {
+    display: flex;
+}
+
+nav ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+nav a {
+    display: block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    margin: 0 20px;
+    padding-top: 15px;
+    font-size: 24px;
+    font-weight: 550;
+}
+
+nav a:hover,
+.active {
+    border-bottom: 2px solid black;
+}
+
+.services,
+.content {
+    width: 80%;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    gap: 15px;
+}
+
+.item {
+    width: calc(50% - 40px);
+    padding: 15px;
+}
+
+.article-header {
+    border-bottom: 2px solid #11999e;
+}
+
+.wider {
+    width: 100%;
+}
+
+.third {
+    width: calc(33% - 36px);
+}
+
+.article-header,
+.price {
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+footer {
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    margin: auto;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    color: white;
+    cursor: pointer;
+}
+
+.article-header h3,
+.price {
+    margin-bottom: 0;
+    font-size: 20px;
+}
+
+.price {
+    margin-top: auto;
+}
+
+.offer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0px;
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.main-header,
+.main-header-services,
+.main-header-services1 {
+    background-size: cover;
+    height: 500px;
+    background-position: center;
+    color: white;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.main-header {
+    background-image: url(../obrazky/okna1.jpg);
+}
+
+.main-header-services {
+    background-image: url(../obrazky/tepovacka.jpg);
+    background-position: bottom;
+}
+
+.main-header-services1 {
+    background-image: url(../obrazky/office.jpg);
+}
+
+main {
+    margin-bottom: 60px;
+}
+
+main a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+    nav a {
+        padding-top: 25px;
+    }
+
+    .article-header,
+    nav ul {
+        flex-direction: column;
+    }
+
+    .third,
+    .item {
+        width: 100%;
+    }
+
+    .main-header,
+    .main-header-services,
+    .main-header-services1 {
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .third {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+
+    .content,
+    .services {
+        width: 100%;
+    }
+}
+
+@media print {
+    body {
+        background-color: white;
+    }
+
+    header {
+        display: none;
+    }
+
+    nav {
+        display: none;
+    }
+
+    main {
+        width: 100%;
+        margin: 0;
+    }
+
+    .item {
+        width: 100%;
+    }
+}

@@ -1,0 +1,527 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+    text-align: justify;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+figcaption {
+    font-style: italic;
+}
+
+.menu-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-toggle .icon {
+    width: 30px;
+    height: 4px;
+    background-color: #000;
+    margin: 6px 0;
+}
+
+.menu-toggle .icon:before,
+.menu-toggle .icon:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    margin: 6px 0;
+}
+
+.nav-menu {
+    display: none;
+}
+
+/* Styles when the menu is open (controlled by JavaScript) */
+.menu-open .nav-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.menu-open .nav-menu .menu-item {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(73, 97, 237);
+    padding: 2%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 90%;
+    height: 50px;
+
+    justify-content: center;
+
+}
+
+.menu-open .nav-menu .menu-item:hover {
+    background-color: rgb(16, 15, 15);
+}
+
+.menu-open .menu-item.current-page {
+    background-color: black;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.navigation {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 10px;
+    background-color: rgb(73, 97, 237);
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.menu-item {
+    display: inline-block;
+    border-radius: 10px;
+    margin-right: 20px;
+    font-size: 16px;
+    background-color: transparent;
+    padding: 10px 5px;
+    width: 100px;
+    transition: background-color 0.3s;
+}
+
+.menu-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu-item:hover {
+    background-color: rgb(16, 15, 15);
+}
+
+.current-page {
+    background-color: black;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    flex-grow: 1;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    padding: 10px;
+    text-align: justify;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+.card-introduction {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.card-introduction h2 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.card-introduction p {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.card-photo {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-photo img {
+    width: 90%;
+    height: auto;
+    border-radius: 10%;
+
+}
+
+.row-about {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.biography {
+    background-color: whitesmoke;
+    padding: 30px;
+    width: 100%;
+    order: 2;
+}
+
+.biography h3 {
+    border-bottom: 1px solid black;
+    margin-top: 20px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    padding: 20px;
+    width: 100%;
+    order: 1;
+    border: solid 1px black;
+}
+
+.profile-photo {
+    text-align: center;
+}
+
+.profile-photo img {
+    width: 50%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.personal-information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+}
+
+.personal-information h2 {
+    width: 100%;
+}
+
+.personal-information ul {
+    padding: 0 40px;
+}
+
+.footer {
+    background-color: rgb(73, 97, 237);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.footer-menu {
+    list-style: none;
+    background-color: transparent;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+
+.footer-item {
+    display: inline-block;
+    border-radius: 10px;
+    border: 2px solid white;
+    padding: 10px 0;
+    margin: 5px;
+    flex: 1;
+    width: calc(100% / 4);
+    text-align: center;
+    background-color: white;
+}
+
+.footer-item:hover {
+    background-color: aqua;
+    border-color: aqua;
+}
+
+.footer h3,
+.footer p {
+    color: white;
+}
+
+.portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.project-card {
+    align-items: center;
+    text-align: center;
+    border: 2px solid black;
+    margin: 19px;
+    background-color: wheat;
+}
+
+.project-card img {
+    width: 30%;
+}
+
+.blog {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.blog article {
+    align-items: center;
+}
+
+.blog article figure {
+    text-align: center;
+}
+
+.blog article p {
+    display: block;
+}
+
+.blog article img {
+    width: 100%
+}
+
+.blog {
+    display: flex;
+    align-items: center;
+}
+
+.blog-card {
+    padding: 20px;
+    background-color: wheat;
+    margin-bottom: 50px;
+    border-radius: 20px;
+}
+
+.trackmania {
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+.trackmania-card {
+    width: 100%;
+    padding: 20px;
+}
+
+.card-video {
+    width: 100%;
+    height: 315px;
+}
+
+.card-video iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.trackmania-introduction {
+    display: flex;
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+.trackmania img {
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 768px) {
+
+    .cards {
+        padding: 30px;
+    }
+
+    .row {
+        justify-content: center;
+    }
+
+    .card {
+        width: 50%
+    }
+
+    .card-introduction {
+        padding: 50px;
+        width: 80%;
+    }
+
+    .card-photo {
+        width: 80%;
+        height: auto;
+    }
+
+    .footer-menu {
+        width: 30%;
+    }
+
+    .blog {
+        width: 90%;
+    }
+
+    .blog-card {
+        padding: 50px;
+        width: 80%;
+    }
+
+    .blog article img {
+        width: 40%
+    }
+
+    .portfolio {
+        padding: 50px 50px;
+    }
+
+    .trackmania {
+        width: 70%;
+    }
+
+    .trackmania-card {
+        width: 100%;
+    }
+
+    .card-video {
+        width: 100%;
+    }
+
+    .career-card {
+        width: 100%;
+    }
+
+    .biography {
+        width: 70%;
+        order: unset;
+    }
+
+    .profile {
+        width: 30%;
+        order: unset;
+    }
+
+    .project-card {
+        width: calc(50% - 50px);
+    }
+
+    .personal-information ul {
+        padding: 0 20px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .menu-toggle {
+        display: none;
+        cursor: pointer;
+    }
+
+    .navigation {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .nav-menu {
+        display: block;
+    }
+
+    .cards {
+        padding: 50px;
+    }
+
+    .card-photo {
+        width: 40%;
+        height: auto;
+    }
+
+    .card-introduction {
+        width: 60%;
+    }
+
+    .card-video {
+        width: 50%;
+    }
+
+
+}
+
+@media print {
+    img {
+        display: none;
+    }
+
+    figcaption {
+        display: none;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .footer {
+        display: none;
+    }
+
+    .card-video {
+        display: none;
+    }
+
+    .project-card {
+        page-break-inside: avoid;
+    }
+
+    .biography-section {
+        page-break-inside: avoid;
+    }
+
+    .profile {
+        border: none;
+    }
+
+    .blog-card {
+        margin-bottom: 10px;
+    }
+
+}

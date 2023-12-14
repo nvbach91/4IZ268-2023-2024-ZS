@@ -1,0 +1,171 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+}
+
+header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+header li {
+    float: left;
+}
+
+header li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+header li a:hover {
+    background-color: #3e8e41;
+}
+
+#hero {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+#hero img {
+    max-width: 100%;
+    height: auto;
+}
+
+.testimonials-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px; 
+    margin: 0 auto; 
+}
+
+#testimonials {
+    background-color: #e2e2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+.testimonial-wrapper {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px; 
+}
+
+.testimonial {
+    min-width: 300px;
+    border: 1px solid #ddd; 
+    padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2); 
+    background-color: white; 
+}
+
+
+.testimonial-wrapper::-webkit-scrollbar {
+    height: 5px;
+}
+
+.testimonial-wrapper::-webkit-scrollbar-thumb {
+    background-color: #4CAF50; 
+    border-radius: 10px;
+}
+
+.testimonial-wrapper::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer li {
+    display: inline;
+    margin-right: 20px;
+}
+
+footer li a {
+    color: white;
+    text-decoration: none;
+}
+
+@media print {
+
+    body {
+        font-size: 12pt;
+        color: black;
+        background: white;
+    }
+
+    header, footer, nav{
+        display: none; 
+    }
+
+    img {
+        max-width: 100%; 
+    }
+
+    a {
+        text-decoration: none;
+        color: black; 
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")"; 
+    }
+
+    main, .section {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .blog-post, .service, .team-member {
+        box-shadow: none; 
+        border: 1px solid #ddd; 
+    }
+
+    article, .section {
+        page-break-inside: avoid; 
+    }
+}
+
+nav ul li a.active {
+    color: #ffffff; 
+    font-weight: bold;
+    
+}
+
+@media screen and (min-width: 800px) {
+    body {
+        font-size: 14px; 
+    }
+
+    header, footer {
+        padding: 10px; 
+    }
+
+
+}

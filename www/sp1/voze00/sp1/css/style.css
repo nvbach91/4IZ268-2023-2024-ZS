@@ -1,0 +1,135 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    background-color: #F9E7E5;
+    margin: 0;
+}
+
+.main-container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 55vh;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.blog-title {
+    font-family: 'Annie Use Your Telescope';
+    color: #F47CB9;
+    font-size: 130px;
+    margin: 0;
+}
+
+.blog-subtitle {
+    color: #F47CB9;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.blog-header {
+    align-items: center;
+}
+
+nav {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+nav a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #F47CB9;
+    font-weight: bold;
+    font-size: 1.5vw;
+    border: 2px dotted #F47CB9;
+    border-radius: 50px;
+    margin: 0 5px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    border-style: solid;
+}
+
+footer {
+    color: #F47CB9;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+@media print {
+    body {
+        background-color: transparent;
+        margin: 0;
+        text-align: justify;
+        color: black;
+    }
+
+    .blog-title,
+    .blog-subtitle {
+        text-align: center;
+        margin: 10px 0;
+        color: black;
+    }
+
+    nav,
+    footer {
+        display: none;
+    }
+
+    .blog-title {
+        font-size: 20px;
+    }
+
+    .blog-subtitle {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 720px) {
+    nav {
+        width: calc(100% / 5);
+    }
+
+    nav a {
+        padding: 10px 20px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 700px) {
+    nav {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .blog-title {
+        font-size: 60px;
+    }
+
+    .blog-subtitle {
+        font-size: 15px;
+    }
+}

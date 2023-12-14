@@ -1,0 +1,26 @@
+:root {
+    font-family: 'Arimo', sans-serif;
+    --primary-color: #f80;
+    --secondary-color: #183764;
+    --tri-color: #fff;
+    --bg-color: #183764;
+    --bg-color-alt: rgba(255, 183, 96, 0.1);
+    --padding-color: rgba(24, 55, 100, 0.6);
+    --hover-color: #2a61b0;
+    --text-color: #fff;
+    --text-color-alt: #f80;
+    --font-basic: 1rem;
+    --font-small: calc(var(--font-basic) * 0.8);
+    --font-xsmall: calc(var(--font-basic) * 0.5);
+    --font-xxsmall: calc(var(--font-basic) * 0.3);
+    --font-title: calc(var(--font-basic) * 3);
+    --font-big: calc(var(--font-basic) * 1.3);
+    --font-xbig: calc(var(--font-basic) * 1.5);
+    --font-xxbig: calc(var(--font-basic) * 1.8);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+}

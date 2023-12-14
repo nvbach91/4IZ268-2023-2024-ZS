@@ -1,0 +1,44 @@
+@media print {
+  .nav-1 {
+    display: none;
+  }
+  .header {
+    display: none;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+  .container-1,
+  .container-2,
+  .container-3,
+  footer {
+    margin: 0;
+    width: 100%;
+  }
+  * {
+    color: black !important;
+    background: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    background-image: none !important;
+  }
+  .header,
+  .container-3,
+  footer {
+    page-break-inside: avoid;
+  }
+
+  .icons-group {
+    display: none;
+  }
+
+  .btn-link {
+    display: none;
+  }
+
+  img {
+    display: none !important;
+  }
+}

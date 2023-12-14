@@ -1,0 +1,282 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main-background {
+  background-image: url('../img/background.jpeg');
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+  position: relative;
+}
+
+.main-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.main-background-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.main-background-content h1 {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.main-background-content p {
+  font-size: 2rem;
+}
+
+
+
+.navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left img {
+  max-width: 150px;
+  width: 100%;
+}
+
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-right li {
+  margin-right: 20px;
+}
+
+.navbar-right a {
+  align-self: center;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-right a:hover {
+  color: #ccc;
+}
+
+.donate-button {
+  background-color: #F15A24;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+
+.content {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+
+
+.welcome {
+  max-width: 100%;
+  text-align: center;
+  margin-top: 40px;
+
+}
+
+.welcome h2 {
+  font-size: 40px;
+  font-family: "Paytone One", sans-serif;
+}
+
+.welcome p {
+  margin: 20px 0;
+}
+
+
+
+.tiles {
+  margin-top: 40px;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.tile {
+  padding-right: 10px;
+  max-height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.tile:hover {
+  transform: scale(1.04);
+  box-shadow: 5px 5px 5px 5px rgb(99, 99, 99);
+}
+
+
+
+.tile img {
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.tile-content {
+  width: 75%;
+}
+
+.tile h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tile p {
+  font-size: 0.8rem;
+}
+
+
+.community {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.community-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.community-tile img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.community-tile div {
+  text-align: center;
+}
+
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.social-icons a {
+  margin: 0 30px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.7s;
+}
+
+.social-icons img {
+  width: 60px;
+  height: auto;
+}
+
+.social-icons a:hover {
+  transition: transform 0.7s;
+  transform: scale(1.2);
+}
+
+.bottom-text {
+  color: black;
+  margin-top: 5px;
+}
+
+@media (max-width: 800px) {
+  .main-background-content h1 {
+    font-size: 40px;
+  }
+
+  .main-background-content p {
+    font-size: 1.5rem;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar-right {
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  .navbar-right ul {
+    flex-direction: column;
+    align-items: center;
+    max-width: fit-content;
+
+  }
+
+  .navbar-right li {
+    margin: 10px 0;
+    max-width: 100%;
+  }
+
+  .tiles {
+    margin-top: 40px;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 1050px) {
+  .community {
+    margin: 0 auto;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 3rem;
+    max-width: 500px;
+    align-items: center;
+  }
+}

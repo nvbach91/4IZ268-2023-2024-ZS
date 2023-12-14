@@ -1,0 +1,117 @@
+.about-me .profile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.about-me .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.about-me .profile-text p {
+    flex: 1;
+}
+
+.skills ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skills li {
+    background: #e7e7e7;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.personal-links a {
+    margin-right: 10px;
+}
+
+.personal-links img {
+    width: 50px;
+    height: 50px;
+}
+
+.places-lived .place {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    overflow: auto;
+}
+
+.places-lived img {
+    float: left;
+    margin-right: 15px;
+    width: 300px;
+    height: 300px;
+    border-radius: 10%;
+}
+
+
+@media (max-width: 600px) {
+    main {
+        width: 95%;
+    }
+
+    #about-me img,
+    #places-lived img {
+        float: none;
+        display: block;
+        margin: 0 auto 10px;
+    }
+}
+
+@media print {
+    body {
+        color: black;
+        background: white;
+    }
+
+    header,
+    footer,
+    nav,
+    .personal-links,
+    .skills li,
+    .places-lived img,
+    .about-me img {
+        display: none;
+    }
+
+    .about-me,
+    .places-lived {
+        margin: 0;
+        padding: 0;
+    }
+
+    .about-me .profile,
+    .about-me .profile-text,
+    .places-lived .place {
+        display: block;
+        width: 100%;
+    }
+
+    .about-me .profile-picture {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        margin: 0 auto 10px;
+    }
+
+    .skills ul,
+    .places-lived {
+        padding: 0;
+    }
+
+    .places-lived .place {
+        border: none;
+        background-color: transparent;
+    }
+}

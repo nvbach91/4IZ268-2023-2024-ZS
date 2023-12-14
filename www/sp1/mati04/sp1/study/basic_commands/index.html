@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ivan Matys">
+    <meta name="description" content="My web page is to teach a little bit about Linux">
+    <title>Basic commands</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../images/tux.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="whole-page">
+        <aside>
+            <h3>Table of Content</h3>
+            <ul>
+                <li><a href="#ls">ls command</a></li>
+                <li><a href="#pwd">pwd command</a></li>
+                <li><a href="#mkdir">mkdir command</a></li>
+                <li><a href="#rmdir">rmdir command</a></li>
+                <li><a href="#cd">cd command</a></li>
+                <li><a href="#touch">touch command</a></li>
+                <li><a href="#cat">cat command</a></li>
+                <li><a href="#rm">rm command</a></li>
+                <li><a href="#man">man command</a></li>
+            </ul>
+        </aside>
+        <div class="page">
+            <header>
+                <h1>Basic commands</h1>
+            </header>
+            <nav>
+                <a href="../../">Home</a>
+                <div class="dropdown"><a href="../">Study</a>
+                    <div class="dropdown-menu">
+                        <a class="active" href="./">Basic commands</a>
+                        <a href="../text_filters/">Text filters</a>
+                        <a href="../permissions/">Permissions</a>
+                        <a href="../linux_distributions/">Linux distributions</a>
+                    </div>
+                </div>
+                <a href="../../about/">About me</a>
+                <a href="../../contact/">Contact</a>
+                <a href="../../sources/">Sources</a>
+            </nav>
+            <main>
+                <article>
+                    <h3 id="ls">ls command</h3>
+                    <p>The ls command is commonly used to identify the files and directories in the working directory.
+                        This
+                        command is one of the many often-used Linux commands that you should know.
+                        This command can be used by itself without any arguments and it will provide us the output with
+                        all
+                        the
+                        details about the files and the directories in the current working directory. There is a lot of
+                        flexibility offered by this command in terms of displaying data in the output.</p>
+                    <div class="command">
+                        <div class="input">
+                            <h3>Input</h3>ls
+                        </div>
+                        <div class="output">
+                            <h3>Output</h3><img src="../../images/List-Contents-of-Directory.png" alt="output_ls">
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <h3 id="pwd">pwd command</h3>
+                    <p>The pwd command is mostly used to print the current working directory on your terminal. It is
+                        also
+                        one of
+                        the most commonly used commands.
+                        Now, your terminal prompt should usually include the entire directory. If it doesn’t, this is a
+                        quick
+                        command to see which directory you’re in. Another purpose for this command is when creating
+                        scripts
+                        because it can help us find the directory in which the script was saved.</p>
+                    <div class="command">
+                        <div class="input">
+                            <h3>Input</h3>pwd
+                        </div>
+                        <div class="output">
+                            <h3>Output</h3><img src="../../images/pwd-commadn-output.png" alt="output_pwd">
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <h3 id="mkdir">mkdir command</h3>
+                    <p>This mkdir command allows you to create fresh directories in the terminal itself. The default
+                        syntax
+                        is
+                        mkdir directory name and the new directory will be created.</p>
+                    <div class="command">
+                        <div class="input">
+                            <h3>Input</h3><img src="../../images/mkdir.png" alt="input_mkdir">
+                        </div>
+                        <div class="output">
+                            <h3>Output</h3><img src="../../images/output.png" alt="output_mkdir">
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <h3 id="rmdir">rmdir command</h3>
+                    <p> The rmdir command is used to delete permanently an empty directory. To perform this command the
+                        user
+                        running this command must be having sudo privileges in the parent directory.</p>
+                    <div class="command">
+                        <div class="input">
+                            <h3>Input</h3><img src="../../images/input_rmdir.png" alt="input_rmdir">
+                        </div>
+                        <div class="output">
+                            <h3>Output</h3><img src="../../images/output_rmdir.png" alt="output_rmdir">
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <h3 id="cd">cd command</h3>
+                    <p>The cd command is used to navigate between directories. It requires either the full path or the
+                        directory
+                        name, depending on your current working directory. If you run this command without any options,
+                        it
+                        will
+                        take you to your home folder.</p>
+                    <div class="command">
+                        <div class="input">
+                            <h3>Input</h3><img src="../../images/input.png" alt="input_cd">
+                        </div>
+                        <div class="output">
+                            <h3>Output</h3><img src="../../images/output_cd.png" alt="output_cd">
+                        </div>
+                    </div>
+                </article>
+                <h3 id="touch">touch command</h3>
+                <p>The touch command creates an empty file when put in the terminal in this format as touch file name
+                </p>
+                <div class="command">
+                    <div class="input">
+                        <h3>Input</h3><img src="../../images/inp_touch.png" alt="input_touch">
+                    </div>
+                    <div class="output">
+                        <h3>Output</h3><img src="../../images/op.png" alt="output_touch">
+                    </div>
+                </div>
+                <article>
+                    <h3 id="cat">cat command</h3>
+                    <p>The cat command is the simplest command to use when you want to see the contents of a particular
+                        file.
+                        The only issue is that it simply unloads the entire file to your terminal. If you want to
+                        navigate
+                        around a huge file, should use less command alternatively.</p>
+                    <div class="command">
+                        <div class="input">
+                            <h3>Input</h3><img src="../../images/inp_cat.png" alt="input_cat">
+                        </div>
+                        <div class="output">
+                            <h3>Output</h3><img src="../../images/oup.png" alt="output_cat">
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <h3 id="rm">rm command</h3>
+                    <p>rm command in Linux is generally used to delete the files created in the directory.</p>
+                    <div class="command">
+                        <div class="input">
+                            <h3>Input</h3><img src="../../images/inp.png" alt="input_rm">
+                        </div>
+                        <div class="output">
+                            <h3>Output</h3><img src="../../images/out.png" alt="output_rm">
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <h3 id="man">man command</h3>
+                    <p>The man command displays a user manual for any commands or utilities available in the Terminal,
+                        including
+                        their name, description, and options.</p>
+                    <div class="command">
+                        <div class="input">
+                            <h3>Input</h3><img src="../../images/1.png" alt="input_man">
+                        </div>
+                        <div class="output">
+                            <h3>Output</h3><img src="../../images/2.png" alt="output_man">
+                        </div>
+                    </div>
+                </article>
+            </main>
+            <div class="logo-slider">
+                <div class="logo-container">
+                    <div class="logo-slide"><a href="https://archlinux.org/"><img src="../../images/arch-logo.png"
+                                alt="Arch linux"></a></div>
+                    <div class="logo-slide"><a href="https://www.debian.org/"><img src="../../images/debian-logo.png"
+                                alt="Debian"></a></div>
+                    <div class="logo-slide"><a href="https://fedoraproject.org/"><img src="../../images/fedora-logo.png"
+                                alt="Fedora"></a></div>
+                </div>
+            </div>
+
+            <footer><i class="fa-brands fa-linux"></i>Ivan Matys &copy;2023<i class="fa-brands fa-linux"></i>
+                <p>Project was made in 4IZ268. Thank you for visiting my website.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,587 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.body {
+    margin: 0;
+}
+
+/*HEADER*/
+.top-panel {
+    background-image: url('/~zabv04/sp1/home/assets/images/brick_wall.jpg');
+    background-repeat: no-repeat;
+    background-position: center -100px;
+}
+
+.top-panel-container {
+    background-color: #00000080;
+    display: flex;
+}
+
+.top-panel-container div {
+    flex: 1;
+}
+
+.company-name {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.top-panel h1 {
+    margin: 0;
+    padding: 40px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.company-name p {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+
+/*NAVIGATION*/
+.navigation {
+    background-color: #0e0e3e;
+    justify-content: center;
+    display: flex;
+    font-size: 13pt;
+    padding: 15px;
+}
+
+.home-nav,
+.about-nav,
+.services-nav,
+.projects-nav {
+    margin-right: 10px;
+}
+
+.navigation a {
+    padding: 10px 0 10px 0;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #36369e;
+    min-width: 133px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.navigation i {
+    margin-right: 5px;
+}
+
+.navigation a:hover {
+    background-color: #7c9815;
+}
+
+.navigation a:active {
+    background-color: #de2c2c;
+    font-style: italic;
+}
+
+/*WRAPPER*/
+.wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+/*FIRST INFROMATION*/
+.info {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 0px 20px 0px 20px;
+    text-align: justify;
+    flex-grow: 1;
+    background-color: #e8e8ff;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+/*BORDER LINE BELOW h2 HEADERS*/
+.content h2 {
+    border-bottom: 3px solid #0e0e3e;
+    text-align: center;
+}
+
+/*--THEME FOR HOME HEADERS--*/
+.home-header-theme {
+    padding: 0px 20px 0px 20px;
+    background-color: #e8e8ff;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+/*SERVICES*/
+.home-services {
+    margin: 10px;
+    background-color: #e8e8ff;
+    padding: 20px 20px 0px 20px;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+}
+
+.list-container {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    padding: 10px;
+    justify-content: center;
+}
+
+.list {
+    padding: 0;
+    border-radius: 10px;
+    margin: 10px;
+    font-size: 12px;
+    background-color: #e8e8ff;
+    align-self: center;
+}
+
+.list-service {
+    display: flex;
+    background-color: #b6b6fa;
+    padding: 10px;
+    margin: 0 0 10px;
+    border-radius: 10px;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.list-service i {
+    /*margin-left: auto;*/
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+}
+
+.list li {
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-right: 40px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/*------------------------------*/
+/*PROJECTS PAGE*/
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*------------------------------*/
+
+/*HOME PROJECTS*/
+.home-projects {
+    background-color: #e8e8ff;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*gives space between pictures*/
+.project {
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.project-img-container {
+    margin: 0;
+    background-color: #0e0e3e;
+    border-radius: 10px 10px 0 0;
+}
+
+.project img {
+    max-width: 200px;
+    align-content: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.description {
+    padding: 2px;
+    border-radius: 0 0 10px 10px;
+    background-color: #0e0e3e;
+}
+
+.house-name,
+.house-address {
+    margin: 0;
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+.house-name {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.house-address {
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+/*BUTTON*/
+.below-button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #36369e;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+/*add more styling*/
+.button:hover {
+    background-color: #7c9815;
+    cursor: pointer;
+}
+
+.button:active {
+    background-color: #de2c2c;
+    font-style: italic;
+}
+
+/*-----------------------------------------------------------*/
+
+/*SERVICES PAGE*/
+
+.serv-main {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.serv-sec {
+    width: calc(100% / 4);
+    padding: 15px;
+    background-color: #e8e8ff;
+    border: 5px solid #ffffff;
+    border-radius: 10px;
+}
+
+.serv-sec:hover {
+    background-color: #f1f1f6;
+}
+
+/*-----------------------------------------------------------*/
+
+/*ABOUT PAGE*/
+
+.about-container {
+    display: flex;
+}
+
+.bullet-points {
+    background-color: #e8e8ff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 13px;
+}
+
+.bullet-points p {
+    text-align: justify;
+    margin-top: 0;
+    margin-left: 5px;
+    margin-bottom: 25px;
+}
+
+.bullet-points h3 {
+    margin-bottom: 3px;
+    margin-left: 5px;
+}
+
+.director p {
+    text-align: center;
+    font-size: xx-large;
+    margin: 13px 13px 0 13px;
+    padding: 0;
+    background-color: #b6b6fa;
+    color: #000000;
+    border-radius: 10px 10px 0 0;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.director img {
+    max-width: 350px;
+    max-height: 350px;
+    padding: 10px;
+    margin: 0 13px 13px 13px;
+    background-color: #b6b6fa;
+    border-radius: 0 0 10px 10px;
+}
+
+.map iframe {
+    width: 100%;
+    height: 350px;
+    border: 0;
+    margin-bottom: 30px;
+}
+
+/*-----------------------------------------------------------*/
+
+/*CONTACT PAGE*/
+
+.col {
+    padding: 15px;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.contact {
+    background-color: #e8e8ff;
+    margin: 13px;
+    border-radius: 10px;
+}
+
+.send-button {
+    padding: 5px;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #36369e;
+    font-weight: bold;
+    margin: 0 0 20px 20px;
+    padding: 10px;
+    width: 100px;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+.send-button:hover {
+    background-color: #7c9815;
+    cursor: pointer;
+}
+
+.send-button:active {
+    background-color: #de2c2c;
+    font-style: italic;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 150px;
+    max-height: 300px;
+    ;
+}
+
+input {
+    width: 80%;
+}
+
+input,
+select,
+textarea {
+    max-width: 100%;
+    outline: 0;
+    padding: 15px 15px;
+    border-radius: 10px;
+    border: 1px solid #0000001a;
+    background-color: #ffffff;
+}
+
+/*-----------------------------------------------------------*/
+
+/*FOOTER*/
+.footer {
+    color: #ffffff;
+    background-color: #0e0e3e;
+    padding: 20px;
+    text-align: center;
+    font-size: small;
+    margin-top: 30px;
+}
+
+/*TEXT ANIMATION*/
+.shine {
+    position: relative;
+    font-family: Impact, sans-serif;
+    font-size: 45px;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #90EE90, #fff, #000);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 3.5s infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff00;
+}
+
+@keyframes animate {
+    0% {
+        background-position: -500%;
+    }
+
+    100% {
+        background-position: 500%;
+    }
+}
+
+/*MEDIA SCREENS*/
+@media screen and (max-width: 800px) {
+
+    .list-container {
+        columns: 1;
+        -webkit-columns: 1;
+        -moz-columns: 1;
+    }
+
+    .list-service {
+        justify-content: center;
+    }
+
+    .director img {
+        max-width: 450px;
+        max-height: 450px;
+    }
+
+    .director p {
+        width: 450px;
+    }
+
+    .director {
+        width: 450px;
+    }
+
+    .about-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .serv-sec {
+        width: calc(100% / 1);
+    }
+
+    .contact .row {
+        flex-direction: column;
+    }
+
+}
+
+@media screen and (min-width: 801px) and (max-width: 1024px) {
+
+    .list-container {
+        columns: 1;
+        -webkit-columns: 1;
+        -moz-columns: 1;
+    }
+
+    .list-service {
+        justify-content: center;
+    }
+
+    .serv-sec {
+        width: calc(100% / 2);
+    }
+
+    .contact .row {
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+
+    .serv-sec {
+        width: calc(100% / 3);
+    }
+
+}
+
+@media print {
+
+    .navigation,
+    .shine,
+    .top-panel,
+    .list-service i,
+    .below-button,
+    .contact-info,
+    .footer,
+    .director,
+    .map,
+    .project-container,
+    .contact-header,
+    .contact {
+        display: none;
+    }
+
+    .wrapper,
+    .info,
+    .home-services,
+    .home-header-theme,
+    .list-container,
+    .list-service,
+    .list-service p,
+    .content h2 {
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    .company-name p {
+        text-decoration: none;
+    }
+
+    .list-service {
+        font-weight: normal;
+        justify-content: left;
+    }
+
+    .info {
+        margin-top: 20px;
+        text-align: justify;
+    }
+
+    .home-header-theme {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .house-name,
+    .house-address {
+        color: black;
+    }
+
+    .serv-sec {
+        width: calc(100% / 2);
+        text-align: justify;
+    }
+
+}

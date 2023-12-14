@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML-úklid objednávky</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../obrazky/favicon.ico" type="images/x-icon">
+    <link rel="shortcut icon" href="../obrazky/favicon.ico" type="images/x-icon">
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav>
+            <ul>
+                <li><a href="../hlavni_stranka/">Hlavní stránka</a></li>
+                <li><a href="../jednorazove_uklidy/">Jednorázové úklidy</a></li>
+                <li><a href="../pravidelne_uklidy/">Pravidelné úklidy</a></li>
+                <li><a href="../objednavky/" class="active">Objednávky</a></li>
+                <li><a href="../nabidky_prace/">Nabídky práce</a></li>
+            </ul>
+        </nav>
+    </div>
+    <header>
+        <h1>Objednávky</h1>
+    </header>
+    <main>
+        <div class="content">
+            <div class="item">
+                <div class="article-header">
+                    <h3>Jak probíhájí objednávky</h3>
+                </div>
+                <p>Objednávky probíhají přes telefon, nebo přes e-mail.</p>
+                <ul>
+                    <li>+420 774 543 418</li>
+                    <li><a href="mailto:milanlisy@seznam.cz">milanlisy@seznam.cz</a></li>
+                </ul>
+                <div class="article-header">
+                    <h3>Formulář na e-mail</h3>
+                </div>
+                <form action="mailto:milanlisy@seznam.cz" method="post" enctype="text/plain">
+                    <label for="jmeno">Jméno:</label>
+                    <input type="text" id="jmeno" name="jmeno" required>
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="zprava">Zpráva:</label>
+                    <textarea id="zprava" name="zprava" rows="4" required></textarea>
+
+                    <input type="submit" value="Odeslat">
+                </form>
+            </div>
+        </div>
+        <h3 class="offer">Dodatečné informace</h3>
+        <div class="content">
+            <div class="item">
+                <div class="article-header">
+                    <h3>Dodatečné informace k objednávkám</h3>
+                </div>
+                <p>Minimální cena objednávky úklidové služby je 500 Kč. A za mimopražské objednávky jsou ke konečné
+                    ceně
+                    přidány 4 Kč/km.</p>
+            </div>
+            <div class="item">
+                <div class="article-header">
+                    <h3>Objednávky před Vánoci</h3>
+                </div>
+                <p>Upozorňuji, že objednávky na úklidy před Vánoci je nutné objednat nejpozději do konce září, poté
+                    už
+                    nezbývají volné termíny.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>Tel. číslo: 774 543 418</div>
+        <div>E-mail: milanlisy@seznam.cz</div>
+        <div>&copy; 2023 Milan Lisý</div>
+    </footer>
+</body>
+
+</html>

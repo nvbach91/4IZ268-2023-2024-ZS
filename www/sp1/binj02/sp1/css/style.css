@@ -1,0 +1,154 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #F8F8F8;
+
+}
+header {
+    display: flex;
+    justify-content: space-between;
+}
+a {
+    cursor: pointer;
+}
+.logo {
+    padding: 10px;
+    vertical-align: middle;
+}
+.select {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.nav {
+    padding: 10px;
+}
+.nav a {
+    display: inline-block;
+    font-size: 20px;
+    padding: 10px 20px 0 0;
+    text-decoration: none;
+    color: #111111;
+}
+
+.welcome-bar {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    background-image: url("../images/banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 100px;
+    
+}
+.welcome-bar h1 {
+    margin: auto;
+    font-size: 80px;
+    color: rgb(228, 225, 225);
+}
+.block1 {
+    margin: 170px;
+    width: 75%;
+    display: flex;
+
+}
+.block1-text {
+    min-width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    min-height: 70%;
+    margin-right: 70px;
+}
+.block1-text h2 {
+    font-size: 50px;
+}
+.block1-text p {
+    font-size: 21px;
+    margin-right: 100px;
+
+}
+.block1-img img {
+    display: block;
+    width: 650px;
+}
+.button-pravidla {
+    margin-top: 400px;
+    height: 30%;
+    padding: 15px 25px 15px 25px;
+    background-color: black;
+    font-size: 23px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    position: relative;
+    right: 75%;
+
+
+}
+.button-pravidla a {
+    text-decoration: none;
+    color: white;
+}
+
+footer {
+    background-color: #111111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+footer ul {
+    list-style: none;
+}
+
+/* pravidla */
+.block1-text-pravidla {
+    display: flex;
+    flex-direction: column;
+    margin-left: 90px;
+    margin-right: 30px;
+    align-items: center;
+}
+.block1-text-pravidla h2 {
+    font-size: 50px;
+}
+.block1-text-pravidla p {
+    font-size: 21px;
+}
+
+/* Veci */
+
+.block1-veci {
+    margin: auto;
+    width: 75%;
+    display: flex;
+    padding-bottom: 40px;
+}
+.block1-text-veci{
+    min-width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    vertical-align: center;
+}
+.block1-text-veci h2 {
+    font-size: 50px;
+}
+.block1-text-veci p {
+    font-size: 21px;
+
+}
+.block1-img-veci img {
+    display: block;
+    width: 400px;
+}
+.vpravo {
+    text-align: right;
+    margin-right: 50px;
+}
+

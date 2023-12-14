@@ -1,0 +1,234 @@
+/*--- Styles ---*/
+* {
+    font-family: sans-serif;
+}
+
+h1 {
+    color: white;
+    text-align: left;
+    padding-left: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    color: white;
+    display: block;
+    padding: 10px;
+}
+
+h3 {
+    font-size: 18px;
+    text-align: left;
+    margin: 10px 10px;
+}
+
+h4 {
+    margin: 10px 10px;
+    flex-wrap: wrap;
+    font-size: 10px;
+    display: inline-block;
+}
+
+p {
+    font-size: 16px;
+    text-align: left;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+.background {
+    background-color: black;
+    width: 100%;
+}
+.background-h2{
+    margin: 10px 0 10px 0;
+    height: 65px;
+    text-align: left;
+}
+.black{
+    color: white;
+     display: block;
+    padding: 10px;
+}
+  
+.footer {
+    height: 50px;
+    background-color: #f0f0f0;
+}
+
+/*--- /Styles ---*/
+
+
+
+/*--- HEAD ---*/
+.header {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+
+}
+
+.nest {
+    display: flex;
+    justify-content: left;
+    margin: 20px;
+}
+
+.active {
+    list-style: none;
+    margin: 0 10px;
+    cursor: pointer;
+    color: black;
+    transition: transform 1s ease;
+}
+
+.active:hover {
+    transform: translateY(-5px);
+    color: orange;
+}
+
+.logo {
+    width: 50px;
+    list-style: none;
+    margin: 0 10px;
+}
+
+/*--- /HEAD ---*/
+
+/*--- Container ---*/
+.container-welcome {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    height: 100px;
+    display: flex;
+    background-color: rgb(0, 0, 0);
+    background-image: url(https://www.prusa3d.com/content/images/category/imageDesktop/original/4624.jpg);
+    background-size: cover;
+    background-position: 50% center;
+}
+
+.element-welcome {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0px 5px 0px 5px;
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.relative-element {
+    position: relative;
+    width: 50%;
+    height: 450px;
+    margin: 0px 5px 0px 5px;
+    flex: 1;
+}
+
+.image-element {
+    position: relative;
+    width: 50%;
+    height: 250px;
+    margin: 0px 5px 0px 5px;
+    flex: 1;
+}
+
+.flex-box {
+    width: 175px;
+    height: 140px;
+    margin: 10px 10px;
+}
+
+.flex-box-2 {
+    width: 100%;
+    height: 100%;
+}
+
+.flex-column {
+    flex: 1;
+}
+
+.flex-row {
+    flex: 1;
+    width: 40%;
+}
+
+.center-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.center-images-container {
+    max-width: 100%;
+    height: auto;
+    padding: 20px 50px;
+}
+
+/*--- /Container ---*/
+
+.software-container {
+    height: 450px;
+}
+
+/*--- Image ---*/
+
+.image-video {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    width: 100%;
+    height: auto;
+    opacity: 1.0;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.image-container-pla{
+    height: 90%;
+}
+
+.image-container:hover {
+    transform: scale(1.05);
+}
+
+.video-container {
+    width: 100%;
+    height: 80%;
+}
+
+/*--- /Image ---*/
+
+
+/*--- Link ---*/
+.link {
+    color: black;
+    font-size: 16px;
+    padding-left: 10px;   
+}
+.link:hover {
+    color: orange;
+}
+
+
+/*--- /Link ---*/

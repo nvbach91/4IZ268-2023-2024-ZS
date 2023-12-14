@@ -1,0 +1,67 @@
+/* Contacts Page */
+/* Contact Page Heading */
+.welcome-contacts {
+  text-align: center;
+  background-color: #F5F5F7;
+  padding: 20px;
+}
+
+/* Contact Card Row (2 Cards) */
+.contacts-cards {
+  background-color: #F5F5F7;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 30px;
+}
+
+/* Contact Card*/
+.contacts-card {
+  width: 50%;
+  padding: 50px;
+  background-color: #fff;
+  border-radius: 30px;
+  border: 10px solid #F5F5F7;
+  margin-bottom: 50px;
+}
+
+/* Responsive layout */
+
+@media screen and (max-width: 600px) {
+  .contacts-card {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+
+  .welcome-contacts {
+    padding-bottom: 0px;
+  }
+
+  .contacts-card {
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .social-links {
+    margin-top: 5px;
+  }
+
+  .contacts-card h3 {
+    padding: 5px;
+    margin: 0px;
+  }
+
+  .contacts-card p {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
+  }
+
+  .contacts-cards {
+    margin: 0 10px;
+    padding-bottom: 10px;
+  }
+
+}

@@ -1,0 +1,25 @@
+.contactSection {
+  display: grid;
+  gap: 1.25rem;
+  box-shadow: 10px 5px 5px #0000001a;
+  border-radius: 1.25rem;
+  background-color: #fbfbfb;
+  padding: 1.25rem;
+  margin-bottom: 1.875rem;
+}
+
+.iframe {
+  margin-top: 1.875rem;
+}
+
+@media (min-width: 48rem) {
+  .contactSection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 62rem) {
+  .contactSection {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

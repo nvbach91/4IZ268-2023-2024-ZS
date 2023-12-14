@@ -1,0 +1,115 @@
+html,
+body {
+  height: 1925px;
+}
+.banner {
+  width: 100%;
+  height: 505px;
+  background-image: url("../images/286101950_771191793900007_7199434256258209751_n.jpg");
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  padding-top: 13%;
+}
+.banner h1 {
+  color: whitesmoke;
+  font-size: 64px;
+  font-weight: bold;
+  right: 45%;
+}
+
+main {
+  width: 100%;
+  height: 1200px;
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.shop {
+  display: flex;
+  justify-content: space-around;
+  height: 90%;
+  width: 100%;
+}
+.shop-item {
+  height: 500px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #404040;
+  flex-wrap: wrap;
+  margin-top: 5%;
+  text-align: left;
+}
+.shop-item img {
+  width: 280px;
+  height: 370px;
+  margin: 0;
+}
+.shop-item h2 {
+  color: whitesmoke;
+  text-align: left;
+  width: 80%;
+  margin: -15% 0 0;
+}
+#main-nav {
+  display: inline;
+  color: whitesmoke;
+  font-size: 32px;
+}
+.fa-solid {
+  margin: 0 15px;
+  width: 32px;
+  height: 32px;
+}
+
+footer {
+  height: 100px;
+}
+
+@media all and (max-width: 600px), print {
+  #tShirts-nav {
+    display: none;
+  }
+  .banner h1 {
+    right: 30%;
+    font-size: 250%;
+  }
+  .shop-item {
+    margin: 2% 25%;
+    height: 30%;
+    width: 50%;
+  }
+  .shop-item img {
+    width: 90%;
+    height: 70%;
+  }
+}
+@media print {
+  #main-nav {
+    display: none;
+  }
+  .banner {
+    height: 100px;
+  }
+  .banner h1 {
+    top: 15%;
+  }
+  .shop-item {
+    height: 55%;
+    width: 90%;
+  }
+  .shop {
+    flex-wrap: wrap;
+  }
+  .shop-item img {
+    width: 80%;
+    height: 70%;
+  }
+  .shop-item a {
+    font-size: 18px;
+    margin: 0;
+  }
+}

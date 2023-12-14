@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Oficiální stránka taekwondo klubu Hirundo. Nabízíme kvalitní výuku taekwonda pro všechny věkové kategorie. Připojte se k nám a rozvíjejte své dovednosti!">
+    <meta name="keywords" content="taekwondo, sport, klub, Hirundo, bojové umění, výuka, cvičení, zápasy">
+    <meta name="author" content="Jméno Autora">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <title>Kontakt | Klub Hirundo</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <h1>Klub Hirundo</h1>
+                <img src="../assets/img/logo.png" alt="Logo Klubu Hirundo" class="logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../">Úvod</a></li>
+                    <li><a href="../rozvrh/">Rozvrh</a></li>
+                    <li><a href="../aktuality/">Aktuality</a></li>
+                    <li><a href="../galerie/">Galerie</a></li>
+                    <li><a href="./">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="heroSub">
+        <div class="container">
+            <h2>Kontakt</h2>
+        </div>
+    </section>
+    <section id="kontaktni-udaje">
+        <div class="container">
+            <h3>Klub Hirundo Taekwondo</h3>
+            <p><i class="fa fa-map"></i> Adresa klubu, Město, Země</p>
+            <p><i class="fa fa-phone"></i> +420 123 456 789</p>
+            <p><i class="fa fa-envelope"></i> info@hirundo.cz</p>
+            <p><i class="fa fa-user"></i> Jan Novák - Majitel klubu</p>
+        </div>
+    </section>
+    <section class="contact-map">
+        <img src="../assets/img/map.jpg" alt="Mapa Klubu Hirundo">
+    </section>
+    <section id="kontakt">
+        <div class="container">
+            <h2>Kontaktujte nás</h2>
+            <p>Máte otázky nebo nám chcete něco sdělit? Použijte níže uvedený formulář.</p>
+
+            <form action="procesor.php" method="post">
+                <label for="jmeno">Jméno:</label>
+                <input type="text" id="jmeno" name="jmeno" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="zprava">Zpráva:</label>
+                <textarea id="zprava" name="zprava" rows="4" required></textarea>
+
+                <button type="submit">Odeslat</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="../assets/img/logo.png" alt="Logo Klubu Hirundo">
+                </div>
+                <h2>Klub Hirundo</h2>
+                <p>&copy; 2023. Těšíme se na Vás!</p>
+            </div>
+            <div class="footer-column">
+                <p>Jsme váš spolehlivý průvodce na cestě k osobnímu rozvoji, fyzické kondici a dovednostem bojových
+                    umění.</p>
+            </div>
+            <div class="footer-column footer-navigation">
+                <ul>
+                    <li><a href="../">Úvod</a></li>
+                    <li><a href="../rozvrh/">Rozvrh</a></li>
+                    <li><a href="../aktuality/">Aktuality</a></li>
+                    <li><a href="../galerie/">Galerie</a></li>
+                    <li><a href="./">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

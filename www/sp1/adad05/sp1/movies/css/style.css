@@ -1,0 +1,307 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: justify;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+}
+
+body {
+    margin: 0;
+}
+
+footer {
+    background-image: url(../../images/background.jpg);
+    background-color: rgba(0, 0, 0, 0.774);
+    background-blend-mode: multiply;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    height: 50px;
+    padding-top: 15px;
+}
+
+h1 {
+    margin-bottom: 0;
+    font-size: 30px;
+}
+
+h2 {
+    color: rgb(255, 255, 255);
+    padding-left: 20px;
+    font-weight: 100;
+    margin-bottom: 0px;
+    transition: text 0.2s ease-out;
+    padding-right: 20px;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.title {
+    width: 75%;
+    text-align: left;
+}
+
+.rating {
+    width: 25%;
+}
+
+.rating>h2 {
+    padding-left: 0;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.movie {
+    width: 100%;
+    background-image: url(../../images/background.jpg);
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.432);
+    background-blend-mode: multiply;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.movie:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.685);
+}
+
+.movie:hover .poster {
+    background-color: rgba(0, 0, 0, 0.322);
+}
+
+.movie:hover .title>h2 {
+    text-decoration: underline 1px;
+    text-decoration-color: rgb(255, 255, 255);
+    text-underline-offset: 4px;
+}
+
+.poster {
+    background-image: url();
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    background-blend-mode: multiply;
+    transition: background-color 0.2s ease-out;
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.poster>p {
+    position: absolute;
+    color: #ffffff;
+    left: 10px;
+    bottom: -10px;
+    background-color: rgba(0, 0, 0, 0.705);
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.csfd {
+    text-decoration: none;
+}
+
+.movie:nth-child(2)>a>div>.poster {
+    background-image: url(../../images/johnwick.jpg);
+    background-position: 0 -10px;
+}
+
+.movie:nth-child(3)>a>div>.poster {
+    background-image: url(../../images/breakingbad.jpg);
+    background-position: 0 0px;
+}
+
+.movie:nth-child(4)>a>div>.poster {
+    background-image: url(../../images/alien.jpg);
+    background-position: 0 0px;
+}
+
+.movie:nth-child(5)>a>div>.poster {
+    background-image: url(../../images/narcos.jpg);
+    background-position: 0 0px;
+}
+
+.movie:nth-child(6)>a>div>.poster {
+    background-image: url(../../images/leon.jpg);
+    background-position: 0 0px;
+}
+
+.info {
+    border-radius: 10px;
+    width: 100%;
+}
+
+.info>div>p {
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #ffffff;
+    font-weight: 100;
+}
+
+.introduction {
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.introduction>p {
+    margin-top: 10px;
+}
+
+.end {
+    width: 100%;
+    padding: 0 10px;
+    margin-top: 0;
+}
+
+.header {
+    background-image: url(../../images/background.jpg);
+    height: 50px;
+}
+
+.header-row {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 50%;
+    height: 70px;
+    background-image: url(../../images/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+    display: none;
+}
+
+.logo>img {
+    display: inline-block;
+    scale: 0.5;
+    vertical-align: middle;
+}
+
+.menu {
+    padding: 5px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 50px;
+}
+
+.menu-item {
+    width: 20%;
+    text-align: center;
+    margin: auto 0;
+    color: white;
+    text-decoration: none;
+    padding: 5px 0;
+    font-size: 14px;
+}
+
+.menu-item:nth-child(3) {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    background-color: rgba(0, 0, 0, 0.342);
+    border-radius: 4px;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.svg {
+    width: 12px;
+    height: 12px;
+}
+
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.527);
+    background-blend-mode: multiply;
+    padding: 0 10px;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.row-title {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image {
+    padding: 1px;
+    flex-wrap: wrap;
+    width: 10%;
+    line-height: 0;
+}
+
+@media screen and (min-width: 1000px) {
+    .logo {
+        display: block;
+    }
+
+    .menu {
+        width: 50%;
+        height: 70px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    h2 {
+        font-size: 50px;
+    }
+
+    .wrapper {
+        padding: 0px 20px;
+    }
+
+    .poster {
+        width: 30%;
+    }
+
+    .info {
+        width: 70%;
+    }
+
+    .menu-item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .header {
+        height: 70px;
+    }
+
+    .movie {
+        margin-bottom: 4px;
+    }
+}

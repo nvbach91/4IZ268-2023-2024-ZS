@@ -1,0 +1,236 @@
+/* FILEPATH: /Users/tranovahonganh/Downloads/sp1/styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #edeae5;
+  color: #333;
+  margin: 0;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+main {
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 1.25rem;
+}
+
+a {
+  color: inherit;
+  font-size: 1rem;
+}
+
+h1 {
+  text-transform: uppercase;
+  color: #333;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+h2 {
+  margin: 2.5rem 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+header {
+  background: linear-gradient(#dfccad, #edeae5);
+  padding: 1.25rem;
+  font-size: 1rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom-right-radius: 1.25rem;
+  border-bottom-left-radius: 1.25rem;
+}
+
+footer {
+  padding: 1.25rem;
+  background-color: #333;
+  color: #d7d4cf;
+  border-top-right-radius: 1.25rem;
+  border-top-left-radius: 1.25rem;
+  box-shadow: 0px 0px 20px 0px #0000001a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.625rem;
+}
+
+.navigation-items {
+  display: flex;
+  gap: 0.625rem;
+  list-style: none;
+  margin: 0;
+}
+
+.navigation-item a {
+  border-radius: 0.3125rem;
+  color: #979797;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  padding: 0.625rem;
+  color: #979797;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.navigation-item a:hover {
+  text-decoration: underline;
+}
+
+.is_active a {
+  background-color: #fbfbfb;
+  color: #333;
+  pointer-events: none;
+  border: 0.0625rem solid #d7d4cf;
+}
+
+.heroText {
+  font-size: 1rem;
+}
+
+.introductionText {
+  max-width: 37.5rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.25rem;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.petrolWrapper {
+  margin-top: 1.875rem;
+}
+
+.petrolStation {
+  position: relative;
+  box-shadow: 10px 5px 5px #0000001a;
+  border-radius: 1.25rem;
+  background-color: #fbfbfb;
+  padding: 1.25rem;
+}
+
+.petrolStationIcon {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+}
+
+.petrolPriceWrapper {
+  margin-bottom: 1.25rem;
+}
+
+.petrolPrice {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+}
+
+.serviceTileList {
+  display: grid;
+  gap: 1.875rem;
+}
+
+.tile {
+  display: grid;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.2s;
+}
+
+.tile:hover {
+  background-color: #fbfbfb;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.tile:hover h3 {
+  text-decoration: underline;
+}
+
+.tileImage {
+  object-fit: cover;
+}
+
+.tileDescription {
+  font-size: 0.875rem;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.contactLinks {
+  font-weight: 700;
+}
+
+.tel:hover,
+.email:hover {
+  text-decoration: none;
+}
+
+.facebook {
+  transition: color 0.2s ease-in-out;
+}
+
+.facebook:hover {
+  color: #fbfbfb;
+}
+
+@media only screen and (min-width: 48rem) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: right;
+    gap: 1.25rem;
+  }
+  h1 {
+    font-size: 2.25rem;
+    margin-top: 1.875rem;
+  }
+  h2 {
+    margin: 1.875rem 0;
+  }
+  .contacts {
+    align-items: end;
+  }
+  .petrolWrapper {
+    margin-top: 2.5rem;
+  }
+  .serviceTileList {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 62rem) {
+  .hero {
+    display: flex;
+    gap: 1.875rem;
+  }
+}

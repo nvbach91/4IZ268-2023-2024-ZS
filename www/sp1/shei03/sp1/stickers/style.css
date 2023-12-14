@@ -1,0 +1,56 @@
+.banner {
+  width: 100%;
+  height: 500px;
+  color: whitesmoke;
+  background-color: #1e1e1e;
+}
+.banner h1 {
+  position: absolute;
+  top: 45%;
+  right: 44%;
+  font-size: 64px;
+  z-index: 1;
+}
+.banner img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 600px), print {
+  #stickers-nav {
+    display: none;
+  }
+  html,
+  body {
+    height: 900px;
+  }
+  .banner h1 {
+    right: 30%;
+    font-size: 250%;
+  }
+  body {
+    height: 800px;
+  }
+  main {
+    height: 500px;
+  }
+  .shop-item {
+    height: 80%;
+  }
+}
+@media print {
+  .banner {
+    height: 300px;
+  }
+  .banner img {
+    display: none;
+  }
+  .banner h1 {
+    top: 15%;
+    right: 35%;
+  }
+  #main-nav {
+    display: none;
+  }
+}

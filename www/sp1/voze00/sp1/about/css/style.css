@@ -1,0 +1,172 @@
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.main-container {
+    position: relative;
+}
+
+.image-container {
+    margin: 30px;
+    max-width: 450px;
+    margin-bottom: 20px;
+}
+
+.introduction,
+.image-container {
+    flex: 1;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+.image-container figcaption {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 8px;
+    padding: 0 10px;
+}
+
+.introduction {
+    margin-top: 30px;
+    margin-left: 30px;
+    text-align: justify;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    flex: 1;
+}
+
+footer {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+}
+
+@media (max-width: 800px) {
+    .content-container {
+        flex-direction: column;
+    }
+
+    .introduction,
+    .image-container {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin: 10px;
+    }
+
+    .introduction {
+        order: 1;
+    }
+
+    .image-container {
+        order: 2;
+        margin: 20px 10px;
+    }
+
+    .image-container figcaption {
+        font-size: 14px; /* Reduce the font size on smaller screens */
+        margin-top: 5px; /* Adjust the margin-top to ensure spacing */
+    }
+
+    nav a {
+        font-size: 20px;
+        padding: 8px 12px;
+        margin: 3px;
+    }
+
+    .blog-title {
+        font-size: 50px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-container {
+        margin: auto;
+    }
+
+    .content-container {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .introduction, .image-container {
+        flex: 1;
+        margin: 20px;
+    }
+
+    .introduction {
+        max-width: 600px;
+        text-align: left;
+        margin-top: 0;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .blog-title {
+        font-size: 100px;
+    }
+
+    footer {
+        font-size: 18px;
+        padding: 10px 0;
+        position: fixed;
+    }
+}
+
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    .main-container,
+    .content-container {
+        max-width: none;
+        background-color: transparent;
+    }
+
+    nav,
+    .image-container {
+        display: none;
+    }
+
+    .blog-title {
+        font-size: 24px;
+        margin: 0.5em 0;
+        color: black;
+    }
+
+    .introduction,
+    .introduction p,
+    .introduction main {
+        font-size: 12px;
+        margin: 0.5em 0;
+        padding: 0;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+        page-break-inside: avoid;
+    }
+}

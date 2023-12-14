@@ -1,0 +1,56 @@
+@media print{
+    *{
+        box-shadow: none !important;
+    }
+    header, footer.flex-row, .button, .shadow-row, .shadow-column, .team-motto,.a523-img-root img,.news-main-image, .gallery-root, .flex-row-column30 img, .vertical-center img{
+        display: none !important;
+    }
+    .section, section{
+        page-break-inside: avoid;
+        max-width: 100%;
+        margin: 0;
+    }
+    .container, .flex-row, p, .section-subtitle{
+        max-width: 100%;
+        width: 100% !important;
+        margin: 0;
+    }
+   .management p,.calendar p {
+        text-align: center;
+    }
+    .flex-row-column33{
+        margin:0;
+    }
+    .section-content{
+        padding: 10px;
+    }
+    .flex-row-column70, .flex-row-column30,.section-text{
+        width: 100% !important;
+    }
+    .section-text, .driver-comment-text{
+        padding: 0 !important;
+    }
+    .flex-row-column30 img{
+        width: 20%;
+    }
+    .section-content, .news-content, .driver-comment{
+        flex-wrap: wrap !important;
+    }
+    .driver-comment-text+.flex-row-column30 {
+        flex-flow: row-reverse;
+    }
+    .content-detail:nth-child(even) .news-content {
+        flex-flow: column-reverse;
+    }
+    .section-image{
+        max-width: 75%;
+    }
+     .flex-row .flex-row-column33.section-content{
+        height: 100px;
+        max-height: 100px;
+        min-height: 100px;
+        align-content: baseline;
+    }
+
+    
+}

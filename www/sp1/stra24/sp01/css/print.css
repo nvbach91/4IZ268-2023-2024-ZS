@@ -1,0 +1,324 @@
+@media print {
+    * {
+        box-sizing: content-box;
+    }
+
+    h1 {
+        color: black;
+        font-family: 'Rubik', sans-serif;
+        font-size: 50px;
+        margin-bottom: 20px;
+        position: static;
+    }
+
+    body {
+        background: none;
+        justify-content: normal;
+        align-items: normal;
+        padding-top: 0;
+    }
+
+    .timeline {
+        position: static;
+        max-width: none;
+        margin: 0;
+        padding-bottom: 0;
+    }
+
+    .timeline::after {
+        content: none;
+    }
+
+    .timeline-container {
+        padding: 0;
+        position: static;
+        background-color: transparent;
+        width: auto;
+        transition: none;
+    }
+
+    .timeline-container:hover {
+        transform: none;
+    }
+
+    .timeline-container::after {
+        content: none;
+    }
+
+    .timeline-container:hover::after {
+        opacity: 1;
+    }
+
+    .left,
+    .right {
+        left: auto;
+    }
+
+    .right::after {
+        left: auto;
+    }
+
+    .timeline-content {
+        padding: 0;
+        background-color: transparent;
+        position: static;
+        transition: none;
+    }
+
+
+    .timeline-content p {
+        color: inherit;
+        font-weight: normal;
+        font-size: medium;
+        transition: none;
+    }
+
+    nav {
+        display: none;
+    }
+
+    img{
+        display: none;
+    }
+
+    .selected {
+        background-color: transparent;
+        color: black;
+    }
+
+    .home-title {
+        margin: 0;
+        font-size: 200px;
+        padding-bottom: 10px;
+    }
+
+    p {
+        color: black;
+        font-size: 16px;
+        font-weight: normal;
+        max-width: none;
+    }
+
+    .intro {
+        height: auto;
+        overflow: visible;
+        position: static;
+        display: block;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0;
+    }
+
+    .parallax-bg {
+        background: transparent;
+        background-image: none;
+        background-attachment: scroll;
+        background-position: 0 0;
+        background-repeat: repeat;
+        background-size: auto;
+        position: static;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        z-index: auto;
+    }
+
+    .rome-background {
+        background: transparent;
+        padding: 0;
+    }
+
+    .container {
+        display: block;
+        justify-content: flex-start;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+        max-width: none;
+        flex-wrap: nowrap;
+    }
+
+    .container a {
+        text-decoration: underline;
+    }
+
+    .text-block{
+        margin: 0 auto;
+    }
+
+    .card {
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+        box-sizing: content-box;
+    }
+
+    .card.name-card {
+        display: block;
+        transition: none;
+    }
+
+    .card.name-card.caesar:hover,
+    .card.name-card.agrippa:hover,
+    .card.name-card.antony:hover,
+    .card.name-card.livia:hover,
+    .card.name-card.cicero:hover,
+    .card.name-card.pompey:hover {
+        background: none;
+    }
+
+    .info {
+        font-size: 35px;
+        font-weight: normal;
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: black;
+    }
+
+    .name {
+        text-decoration: underline;
+        font-size: 20px;
+        font-weight: normal;
+        text-align: left;
+        margin-top: 0;
+        color: black;
+        display: inline;
+        vertical-align: baseline;
+    }
+
+    .card p {
+        font-size: 14px;
+        color: black;
+        margin-left: 0;
+        transition: none;
+    }
+
+    .card:hover p {
+        color: black;
+    }
+
+    .black {
+        background-color: transparent;
+        padding: 0;
+        display: block;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: static;
+        text-align: left;
+    }
+
+    .white {
+        background-color: transparent;
+        padding: 0;
+        display: block;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: static;
+        text-align: left;
+    }
+
+    .black.map {
+        height: auto;
+    }
+
+    .mail-container {
+        width: auto;
+        text-align: left;
+        margin: 20px;
+        padding: 20px;
+        display: block;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: transparent;
+    }
+
+    .mail-container h2 {
+        color: black;
+        font-family: 'Ephesis', cursive;
+        font-size: 40px;
+    }
+
+    input[type="email"] {
+        padding: 12px;
+        margin: 8px 0;
+        width: calc(100% - 24px);
+        border: none;
+        border-radius: 0;
+        box-sizing: content-box;
+        font-size: 16px;
+        font-family: 'Rubik', sans-serif;
+    }
+
+    .subscribe {
+        padding: 15px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        background-color: black;
+        color: #fff;
+        border: none;
+        border-radius: 0;
+        font-size: 16px;
+        width: calc(100% - 24px);
+        transition: none;
+        font-family: 'Rubik', sans-serif;
+    }
+
+    .subscribe:hover {
+        background-color: black;
+        color: #fff;
+    }
+
+    .subscribe:active {
+        transform: none;
+        transition: none;
+    }
+
+    footer {
+        display: none;
+    }
+
+    footer p {
+        display: none;
+    }
+
+    .footer-icons {
+        display: none;
+    }
+
+    .mail-container{
+        display: none;
+    }
+
+    .home-title{
+        font-size:40px;
+    }
+    .info{
+        font-size: 20px;
+    }
+    .carousel {
+        display: block;
+        position: static;
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .carousel-item {
+        display: block;
+        position: static;
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .carousel-item h2{
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,106 @@
+@media screen and (max-width: 1000px){
+    .header-nav{
+        width: 30%;
+    }
+    #header-nav2{
+        transform: translate(230%, 10px);
+    }
+}
+@media screen and (max-width: 480px){
+    .header-nav{
+        display: none;
+    }
+    #slide1{
+        height: 570px;
+        margin-bottom: 40px;
+    }
+    #slide1 div{
+        padding-top: 140px;
+    }
+    #slide1 h1{
+        font-size: 45px;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    #slide1 h2{
+        display: none;
+    }
+    .slide2{
+        width: 90vw;
+        margin: 40px auto;
+        display: block;
+    }
+    .slide2-text{
+        display: block;
+        width: 100%;
+    }
+    .slide2-img{
+        display: block;
+        width: 80%;
+        margin: 50px auto 0 auto;
+    }
+    .slide2-img img{
+        width: 100%;
+        margin: 0 auto;
+    }
+    #slide2PC{
+        display: none;
+    }
+    #slide2M{
+        display: block;
+    }
+    h2{
+        font-size: 35px;
+    }
+    footer{
+        height: 530px;
+        margin-top: 100px;
+    }
+    #footer-logo{
+        padding-top: 50px;
+    }
+    .footer-nav{
+        display: block;
+        margin: 30px auto 0 auto;
+        width: 100%;
+        padding: 0;
+    }
+    .footer-nav li{
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+    }
+    .introALL{
+        height: 350px;
+        margin-bottom: 50px;
+    }
+    .introALL h1{
+        padding-top: 130px;
+        font-size: 50px;
+    }
+    .gallery-piece{
+        width: 100%;
+    }
+    #na-zakazku{
+        width: 100%;
+        padding: 0 20px;
+    }
+    #na-zakazku p{
+        font-size: 15px;
+    }
+    .objednatALL a{
+        width: 170px;
+        height: auto;
+        line-height: 1.8;
+        margin-top: 50px;
+	padding: 22px 0;
+    	font-size: 20px;
+    }
+    form{
+        width: 90vw;
+    }
+    #socials{
+        margin: 0 auto;
+    }
+}

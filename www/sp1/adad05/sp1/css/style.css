@@ -1,0 +1,542 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: justify;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+}
+
+body {
+    margin: 0;
+}
+
+hr {
+    width: 100%;
+    text-align: left;
+    margin-left: 0;
+    color: black;
+}
+
+footer {
+    margin-top: 80px;
+    background-image: url(../images/background.jpg);
+    background-color: rgba(0, 0, 0, 0.774);
+    background-blend-mode: multiply;
+    color: white;
+    padding-top: 20px;
+    text-align: center;
+    margin-top: 10px;
+    height: 50px;
+    padding-top: 15px;
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 50px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-weight: 100;
+    margin-top: 20px;
+    margin-bottom: 14px;
+}
+
+iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.latest {
+    width: 100%;
+    text-align: left;
+    padding: 0 5px;
+}
+
+.latest>h2 {
+    color: black;
+    padding: 0;
+    font-weight: bold;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.latest>p {
+    font-size: 14px;
+    margin-top: 0;
+    padding-bottom: 0px;
+}
+
+/* SECTION FOR GAME SHOWCASE */
+
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1px;
+    background-image: url(../images/frostpunk.jpg);
+    background-size: cover;
+    border-radius: 10px;
+    transition: background-color 0.2s ease-out;
+    background-color: rgba(0, 0, 0, 0);
+    background-blend-mode: multiply;
+    width: 100%;
+    margin-bottom: 40px;
+    margin-top: 4px;
+    height: auto;
+}
+
+.game:hover {
+    background-color: rgba(0, 0, 0, 0.425);
+}
+
+
+.info {
+    margin: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.699);
+    padding: 20px;
+    padding-top: 5px;
+    color: rgba(255, 255, 255, 0);
+    transition: color 3s ease;
+    height: auto;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.info>p {
+    color: rgb(212, 212, 212);
+}
+
+.stars {
+    width: 80%;
+    padding: 5px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.star {
+    height: 40px;
+    width: 40px;
+}
+
+.aside-left {
+    width: 100%;
+}
+
+.aside-right {
+    width: 100%;
+}
+
+.date {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.title {
+    width: 90%;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.39);
+    border-radius: 10px;
+}
+
+/* SECTION FOR MOVIE SHOWCASE */
+
+.movie {
+    width: 100%;
+    background-image: url(../images/background.jpg);
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.432);
+    background-blend-mode: multiply;
+    height: auto;
+    margin-top: 4px;
+    margin-bottom: 40px;
+}
+
+.movie:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.685);
+}
+
+.movie:hover .poster {
+    background-color: rgba(0, 0, 0, 0.322);
+}
+
+.movie:hover .title-movie>h2 {
+    text-decoration: underline 1px;
+    text-decoration-color: rgb(255, 255, 255);
+    text-underline-offset: 4px;
+}
+
+.poster {
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    background-blend-mode: multiply;
+    transition: background-color 0.2s ease-out;
+    position: relative;
+    height: 200px;
+    background-image: url(../images/johnwick.jpg);
+    background-position: 0 -10px;
+    width: 100%;
+}
+
+.poster>p {
+    position: absolute;
+    color: #ffffff;
+    left: 10px;
+    bottom: -10px;
+    background-color: rgba(0, 0, 0, 0.705);
+    border-radius: 10px;
+    padding: 4px;
+    width: 100px;
+}
+
+.csfd {
+    text-decoration: none;
+}
+
+.info-movie {
+    border-radius: 10px;
+    width: 100%;
+}
+
+.info-movie>div>p {
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #ffffff;
+    font-weight: 100;
+}
+
+.row-title {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image {
+    padding: 1px;
+    flex-wrap: wrap;
+    width: 10%;
+    line-height: 0;
+}
+
+.title-movie {
+    width: 75%;
+    text-align: left;
+}
+
+.rating {
+    width: 25%;
+
+}
+
+.rating>h2 {
+    margin-top: 10px;
+    padding-left: 0;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: right;
+    margin-bottom: 0px;
+}
+
+.title-movie>h2 {
+    color: rgb(255, 255, 255);
+    padding-left: 20px;
+    font-weight: 100;
+    margin-bottom: 0px;
+    transition: text 0.2s ease-out;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: left;
+    font-size: 50px;
+    margin-top: 10px;
+}
+
+/* SECTION FOR BOOK SHOWCASE */
+
+.book {
+    width: 100%;
+    background-image: url(../images/frostpunk.jpg);
+    margin-top: 4px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    height: auto;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-bottom: 10px;
+}
+
+.poster-book {
+    background-color: blue;
+    background-image: url(../images/starec.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border-top-left-radius: 30px;
+    width: 50%;
+    border-bottom-left-radius: 0px;
+}
+
+.poster-book>p {
+    position: absolute;
+    color: #ffffff;
+    right: 5px;
+    bottom: -10px;
+    background-color: rgba(0, 0, 0, 0.705);
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.info-book {
+    background-color: rgba(0, 0, 0, 0.781);
+    background-blend-mode: multiply;
+    width: 50%;
+    border-top-right-radius: 30px;
+}
+
+.info-book h2 {
+    text-align: left;
+    color: white;
+    padding: 10px;
+    padding-left: 15px;
+    font-weight: 100;
+    margin-top: 5px;
+    margin-bottom: 14px;
+}
+
+.title-book {
+    margin-bottom: 0;
+    text-align: left;
+    font-weight: 200;
+}
+
+.author {
+    margin-top: 0;
+    font-size: 30px;
+}
+
+.review {
+    background-color: rgba(0, 0, 0, 0.534);
+    background-blend-mode: multiply;
+    width: 100%;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 0px;
+}
+
+.review>p {
+    color: white;
+    padding: 10px 20px;
+}
+
+.book>.row {
+    height: 100%;
+}
+
+/* REST  */
+
+.introduction {
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.introduction>p {
+    margin-top: 10px;
+}
+
+.header {
+    background-image: url(../images/background.jpg);
+    height: 50px;
+}
+
+.header-row {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 50%;
+    height: 70px;
+    background-image: url(../images/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+    display: none;
+}
+
+.logo>img {
+    display: inline-block;
+    scale: 0.5;
+    vertical-align: middle;
+}
+
+.menu {
+    padding: 5px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 50px;
+    width: 100%;
+}
+
+.menu-item {
+    width: 20%;
+    text-align: center;
+    margin: auto 0;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+.menu-item-current {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    background-color: rgba(0, 0, 0, 0.342);
+    border-radius: 4px;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.svg {
+    width: 12px;
+    height: 12px;
+}
+
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.527);
+    padding: 0px 10px;
+    background-blend-mode: multiply;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image {
+    padding: 1px;
+    flex-wrap: wrap;
+    width: 10%;
+    line-height: 0;
+}
+
+.end {
+    width: 100%;
+    padding: 0 10px;
+    margin-top: 0;
+}
+
+@media screen and (min-width: 1000px) {
+    .aside-left {
+        width: 50%;
+    }
+
+    .aside-right {
+        width: 50%;
+    }
+
+    .game {
+        height: 320px;
+    }
+
+    .info {
+        height: 320px;
+    }
+
+    .poster>p {
+        width: 30%;
+    }
+
+    .info-movie {
+        width: 70%;
+    }
+
+    .poster {
+        width: 30%;
+    }
+
+    .poster-book {
+        width: 25%;
+        border-bottom-left-radius: 30px;
+    }
+
+    .info-book {
+        width: 25%;
+        border-top-right-radius: 0px;
+    }
+
+    .review {
+        width: 50%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 0px;
+    }
+
+    .book {
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .logo {
+        display: block;
+    }
+
+    .menu {
+        width: 50%;
+        height: 70px;
+    }
+
+    .menu-item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .header {
+        height: 70px;
+    }
+
+    .wrapper {
+        padding: 0px 20px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    .latest>h2 {
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+}

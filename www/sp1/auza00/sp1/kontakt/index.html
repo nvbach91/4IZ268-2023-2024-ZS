@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontaktujte nás</title>
+    <link rel="stylesheet" media="screen" href="../css/main.css">
+    <link rel="stylesheet" media="screen" href="../css/mainM.css">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="../js/email.js"></script>
+    <link rel="stylesheet" media="print" href="../css/print.css" />
+    <link rel="icon" type="image/x-icon" href="../fav/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="header-up"></div>
+        <div id="header-content">
+
+            <div id="header-circle"><a href="../index.html"><img id="header-logo" src="../img/logo.png" alt="logo"></a></div>
+        </div>
+            <nav class="header-nav">
+                <a href="../dorty/index.html">Dorty</a>
+                <a href="../zakusky/index.html">Zákusky</a>            
+            </nav>     
+            <nav class="header-nav" id="header-nav2">       
+                <a href="../galerie/index.html">Galerie</a>
+                <a href="">Kontaktujte nás</a>
+            </nav>        
+    </header>
+    <section class="introALL">
+        <h1>
+            Kontaktujte nás
+        </h1>
+    </section>
+    <div id="formALL">
+        <form onsubmit="sendEmail(); reset(); return false;" method="post">
+            <h2>Formulář</h2>
+            <label for="fname">Jméno</label>
+            <input type="text" id="fname" name="firstname" placeholder="Vaše jméno.." required>
+            <label for="lname">Přijmení</label>
+            <input type="text" id="lname" name="lastname" placeholder="Vaše přijmení.." required>
+            <label for="email" >E-mail</label>
+            <input type="text" id="email" name="email" placeholder="Váš email.." required>
+            <label for="subject">Píšu kvůli</label>
+            <select id="subject">
+                <option value="dort">dortu</option>
+                <option value="zakusek">zákusku</option>
+                <option value="dalsi">další</option>
+            </select><br>
+            <label for="message">Zpráva</label>
+            <textarea id="message" name="message" placeholder="Napiště zprávu" required></textarea>
+            <input type="submit" value="Odeslat" id="submit">
+        </form>
+    </div>
+    <div id="socialsALL">
+        <h2>
+            Sociální sítě
+        </h2>
+        <div id="socials">
+            <a href="https://www.instagram.com/toms_pastry/" class="fa fa-instagram"></a>
+        </div>
+    </div>
+    <footer>
+        <div id="footer-logo">
+            <a href="../index.html"><img src="../img/logo2.png" alt="logo"></a>
+        </div>
+        <div id="footer-content">
+            <ul class="footer-nav">
+                <li><a href="../dorty/index.html">Dorty</a></li>
+                <li><a href="../zakusky/index.html">Zákusky</a></li>  
+                <li><a href="../galerie/index.html">Galerie</a></li>
+                <li><a href="">Kontaktujte nás</a></li>
+            </ul>   
+        </div>
+        <p>
+            © 2023 Tom´s Pastry
+        </p>
+    </footer>
+</body>
+</html>

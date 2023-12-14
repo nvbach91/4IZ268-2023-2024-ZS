@@ -1,0 +1,286 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+    background-image: url("../images/background.jpg");
+}
+
+.whole-page {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1920px;
+}
+
+aside {
+    background-color: antiquewhite;
+    line-height: 32px;
+    width: 200px;
+    position: absolute;
+    top: 180px;
+    margin-left: auto;
+}
+
+aside a {
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+    transition: color, background-color 0.1s ease-in-out;
+}
+
+aside a:hover {
+    background-color: #333;
+    color: white;
+}
+
+aside h3 {
+    text-align: center;
+}
+
+.page h1 {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.page {
+
+    margin: auto;
+    border: 1px solid white;
+    border-radius: 30px;
+    background-color: white;
+    width: 50%;
+}
+
+nav {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav a {
+    display: inline-block;
+    padding: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: #333;
+    transition: color, background-color 0.1s ease-in-out;
+}
+
+nav a:hover {
+    background-color: #333;
+    color: white;
+}
+
+.active{
+    background-color: #333;
+    color: white;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: antiquewhite;
+    min-width: 130px;
+    z-index: 1;
+    transition: color, background-color 0.1s ease-in-out;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 16px;
+    padding-top: 10px;
+    margin-right: 0px;
+    text-decoration: none;
+}
+
+
+.dropdown-menu a:hover {
+    background-color: #333;
+}
+
+footer {
+    text-align: center;
+    color: #f0f0f0;
+    background-color: #333;
+    padding: 20px;
+    border: 10px solid #333;
+    border-radius: 30px;
+}
+
+main {
+    text-align: justify;
+    margin: 0 auto;
+    max-width: 37vw;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    line-height: 32px;
+}
+
+.command {
+    display: flex;
+}
+
+.input,
+.output {
+    background-color: antiquewhite;
+    width: 50%;
+    height: auto;
+    border: 5px solid black;
+    margin: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+.input img,
+.output img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+footer {
+    background-color: #333;
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.logo-slider {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.logo-container {
+    animation: slide 10s linear infinite;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 37vw;
+}
+
+.logo-container img {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(calc(100% - 25vw));
+    }
+
+    50% {
+        transform: translateX(calc(-100% + 25vw));
+    }
+
+    100% {
+        transform: translateX(calc(100% - 25vw));
+    }
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+@media print {
+    nav {
+        display: none;
+    }
+
+    aside {
+        display: none;
+    }
+
+    .logo-slider {
+        display: none;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .page {
+        width: 100%;
+        margin: 0;
+    }
+
+    main {
+        margin: 0;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    main h3 {
+        margin: 0;
+    }
+
+    table {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    nav {
+        display: block;
+        text-align: center;
+    }
+
+    .logo-container {
+        animation: slide 15s linear infinite;
+    }
+
+    @keyframes slide {
+        0% {
+            transform: translateX(60%);
+        }
+
+        50% {
+            transform: translateX(-60%);
+        }
+
+        100% {
+            transform: translateX(60%);
+        }
+    }
+
+    aside {
+        display: none;
+    }
+
+    main {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .page {
+        width: 100%;
+    }
+    table {
+        width: 90%;
+    }
+}

@@ -1,0 +1,152 @@
+.introduction-section {
+    padding: 0 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.recipes-section {
+    width: 100%;
+    padding: 20px;
+}
+
+.recipe {
+    display: flex;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.recipe-image {
+    width: 45%;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.recipe-details {
+    width: 55%;
+}
+
+.recipe-description h3 {
+    color: #F47CB9;
+    font-size: 22px;
+}
+
+.ingredients h4,
+.instructions h4 {
+    margin-top: 0;
+    color: #F47CB9;
+    font-size: 22px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #F47CB9;
+}
+
+.ingredients ul,
+.instructions p {
+    padding-left: 20px;
+}
+
+.ingredients li {
+    margin-bottom: 5px;
+}
+
+.instructions p {
+    text-align: justify;
+    margin-top: 10px;
+}
+
+.video-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.video-section iframe {
+    border: none;
+    width: 30%;
+    height: 240px;
+    border-radius: 10px;
+    border: none;
+}
+
+@media (max-width: 800px) {
+    .recipe {
+        flex-direction: column;
+    }
+
+    .recipe-image {
+        width: 90%;
+        margin: 0 auto 1.25rem;
+    }
+
+    .recipe-description {
+        width: 100%;
+    }
+
+    .video-section iframe {
+        width: 90%;
+        height: auto;
+        margin-bottom: 1.25rem;
+    }
+}
+
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    nav,
+    .video-section,
+    footer,
+    .recipe-image {
+        display: none;
+    }
+
+    .main-container {
+        width: 100%;
+        background-color: transparent;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .blog-title {
+        font-size: 24px;
+        color: black;
+    }
+
+    .instructions h4,
+    .ingredients h4 {
+        font-size: 12px;
+        color: black;
+        border-bottom: none;
+    }
+
+    .recipe {
+        flex-direction: column;
+        page-break-inside: avoid;
+    }
+
+    .ingredients, .instructions {
+        page-break-inside: avoid;
+    }
+
+    .recipe-description h3,
+    .introduction-section {
+        font-size: 12px;
+        color: black;
+    }
+
+    .ingredients ul,
+    .instructions ol {
+        padding-left: 15px;
+        color: black;
+    }
+
+    .ingredients li,
+    .instructions li {
+        font-size: 12px;
+        color: black;
+    }
+}

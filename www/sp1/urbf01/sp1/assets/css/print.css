@@ -1,0 +1,67 @@
+html,
+body {
+  font-size: 17px;
+  color: #000;
+  background-color: unset;
+}
+
+p,
+article {
+  max-width: 600px;
+}
+
+.navbar-toggler,
+.scroll-down,
+footer,
+iframe,
+img,
+.btn,
+form,
+.no-js-navigation {
+  display: none;
+}
+
+nav {
+  position: relative;
+  background-color: unset;
+}
+
+.navbar-logo svg {
+  height: 25px;
+}
+
+.main-header {
+  background: unset;
+  margin-top: unset;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.main-header::before {
+  display: none;
+}
+
+.homepage-header,
+.main-header .container {
+  height: 100px;
+  color: #000;
+}
+
+section,
+.tile {
+  padding: 1rem 0;
+}
+
+.research-container,
+.contact-us-banner {
+  text-align: justify;
+  margin: 0 auto;
+}
+
+.articles-wrapper,
+.img-section,
+.tiles-section {
+  gap: 1rem;
+}/*# sourceMappingURL=print.css.map */

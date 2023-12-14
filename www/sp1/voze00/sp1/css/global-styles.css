@@ -1,0 +1,65 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(248, 248, 248);
+    margin: 0;
+}
+
+.blog-title {
+    color: #F47CB9;
+    font-family: 'Annie Use Your Telescope';
+    font-size: 80px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.main-container {
+    max-width: 1280px;
+    background-color: #F9E7E5;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+nav a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 0 5px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    color: #F47CB9;
+    border: 2px dotted #F47CB9;
+    border-radius: 50px;
+    margin: 3px 5px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    border-style: solid;
+    border-color: #F47CB9;
+}
+
+nav a.active {
+    background-color: #F47CB9;
+    color: white;
+    border-style: solid;
+}

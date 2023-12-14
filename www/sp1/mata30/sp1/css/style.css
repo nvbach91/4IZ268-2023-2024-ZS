@@ -1,0 +1,433 @@
+*,
+*::before,
+*::after,
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+main {
+  flex-grow: 1;
+}
+
+a {
+  text-decoration: none;
+  color: #040404;
+}
+
+.container-1 {
+  max-width: 1280px;
+  margin: auto;
+  padding-left: 50px;
+}
+
+.nav-1 {
+  padding: 30px 0;
+}
+
+.row-2 {
+  display: flex;
+}
+
+.columns {
+  padding: 15px;
+  flex-grow: 1;
+}
+
+.container-2 {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-image: url("/~mata30/sp1/images/background-main.jpeg");
+  background-color: rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-2-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.container-3 {
+  text-align: center;
+}
+
+.header-2 {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.row-4 {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.row-3 {
+  display: flex;
+  gap: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.item1 {
+  background-color: #f0e0c3;
+  width: 100%;
+  padding: 20px 0;
+  border-radius: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.item {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-bottom: 80px;
+}
+
+.item h3 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.btn-link,
+.btn {
+  background-color: #f0e0c3;
+  border: 2px solid transparent;
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-size: 17px;
+  margin-right: 30px;
+}
+
+/* Chefs-information-page-css */
+
+.header-chefs {
+  text-align: center;
+}
+
+.header-chefs h1 {
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.header-chefs p {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.chefs-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chef {
+  width: calc(33.33% - 30px);
+  margin: 20px 15px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 11px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail {
+  width: 100%;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chef-info {
+  padding: 15px;
+}
+
+.chef-info h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
+.text-chefs {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 17px;
+}
+
+.text-chefs h3 {
+  margin-bottom: 10px;
+}
+
+.text-chefs p {
+  margin-bottom: 10px;
+}
+
+/* about us page design */
+
+.about {
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about .content img {
+  height: auto;
+  width: 550px;
+  max-width: 100%;
+  border-radius: 20px;
+}
+
+.text {
+  width: 550px;
+  max-width: 100%;
+}
+
+.content {
+  width: 1280px;
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.text h1 {
+  color: #12110f;
+  font-size: 60px;
+  text-transform: capitalize;
+}
+
+.text h5 {
+  color: rgb(12, 11, 11);
+  font-size: 25px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.text p {
+  color: #939496;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.btn-link:hover {
+  background-color: transparent;
+  border: 2px solid #d5c78f;
+  color: #201f1d;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+/* contact us page design */
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 100px;
+  margin-top: 100px;
+  position: relative;
+}
+
+.container:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: url("/~mata30/sp1/images/contact-us-photo.jpg") no-repeat center;
+  background-size: cover;
+  filter: blur(50px);
+  z-index: -1;
+}
+.contact-box {
+  max-width: 850px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+  border-radius: 40px;
+}
+
+.left {
+  background: url("/~mata30/sp1/images/contact-us-photo.jpg") no-repeat center;
+  background-size: cover;
+  height: 100%;
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 40px;
+}
+
+.right {
+  padding: 25px 40px;
+}
+
+h2 {
+  position: relative;
+  padding: 0 0 10px;
+  margin-bottom: 10px;
+}
+
+h2:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 50px;
+  border-radius: 2px;
+  background-color: #f0e0c3;
+}
+
+.field {
+  width: 100%;
+  border: 2px solid rgba(12, 11, 11, 0);
+  outline: none;
+  background-color: rgba(230, 230, 230, 0.6);
+  padding: 8px 16px;
+  font-size: 18px;
+  margin-bottom: 22px;
+}
+
+textarea {
+  min-height: 150px;
+}
+
+.field:focus {
+  border: 2px solid rgba(30, 85, 250, 0.47);
+  background-color: #fff;
+}
+
+/* our courses page design */
+
+.flex-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: space-around;
+  max-width: 1200px;
+}
+
+.flex-box {
+  width: calc(33.33% - 20px);
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  margin-right: 20px;
+  text-align: justify;
+  box-shadow: 0 0 11px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.flex-box:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.thumbnail {
+  width: 100%;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.text-cuisine {
+  text-align: center;
+  margin: 0 auto;
+  padding: 50px;
+  width: 1000px;
+}
+
+.text-cuisine h1 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.text-cuisine p {
+  line-height: 30px;
+}
+
+.cuisine-info {
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.cuisine-info h3 {
+  margin-bottom: 10px;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-1 a.active {
+  border-bottom: 4px solid rgb(246, 237, 183);
+  border-radius: 3px;
+}
+
+/* footer desing */
+
+footer {
+  margin-top: 100px;
+  padding: 30px 0;
+  text-align: center;
+  color: #d4d2d2;
+}
+
+.icons-group {
+  font-size: 24px;
+}

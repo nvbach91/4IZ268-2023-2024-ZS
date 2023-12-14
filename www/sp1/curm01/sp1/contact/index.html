@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt</title>
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@100;200;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="contactspage-body">
+    <header class="top-panel">
+        <a id="navbar-homepage" href="../"><span></span></a>
+        <nav>
+            <a href="../about">O akci</a>
+            <a href="../programme/">Program</a>
+            <a href="../tickets/">Lístky</a>
+            <a href="../location/">Lokace</a>
+            <a href="./"><strong>Kontakt</strong></a>
+        </nav>
+    </header>
+    <main class="contactspage-main">
+        <div class="contactspage-main-div">
+            <div class="contactspage-main-div-text">
+                <h1>KONTAKT</h1>
+                <p>V případě jakýchkoliv dotazů neváhejte kontaktovat hlavní organizátorku Petru Fialovou.</p>
+                <p><strong>tel.:</strong> 605 789 545</p>
+                <p><strong>mail:</strong> fialova@miners.cz</p>
+                <p>Nebo můžete využít náš <strong>kontaktní formulář</strong>. Budeme rádi i za jakoukoliv zpětnou
+                    vazbu.</p>
+            </div>
+            <div class="contactspage-form">
+                <form>
+                    <label for="fname">Křestní jméno</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Vyplňte své křestní jméno">
+
+                    <label for="lname">Příjmení</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Vyplňte své příjmení">
+
+                    <label for="email">E-mail</label>
+                    <input type="text" id="email" name="email" placeholder="Vyplňte svůj e-mail">
+
+                    <label for="subject">Předmět</label>
+                    <select id="subject" name="subject">
+                        <option value="question">Otázka</option>
+                        <option value="feedback">Zpětná vazba</option>
+                        <option value="complaint">Stížnost</option>
+
+                    </select>
+
+                    <label for="text">Zpráva</label>
+                    <textarea id="text" name="text" placeholder="Napište, co máte na srdci"
+                        style="height:200px"></textarea>
+
+                    <input type="submit" value="Poslat" onclick="alert('Formulář úspěšně odeslán!')">
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>Copyright © 2023 Čurillová</div>
+    </footer>
+</body>
+
+</html>

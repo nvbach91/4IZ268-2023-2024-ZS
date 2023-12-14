@@ -1,0 +1,302 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Rubik', sans-serif;
+    text-decoration: none;
+}
+
+header {
+    background-color: #154f3c66
+}
+
+main,
+.top-panel {
+    max-width: 1200px;
+    min-width: 250px;
+    margin: 0 auto;
+}
+
+.top-panel,
+.logo,
+.main-page,
+.poster-box,
+.logo-bcs {
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.top-panel {
+    flex-wrap: wrap;
+    min-height: 30vh;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 100%;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo img {
+    height: 100px;
+    width: auto;
+    cursor: pointer
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.logo:active {
+    transform: scale(0.9);
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 40px
+}
+
+.navbar a {
+    padding: 10px 10px 10px 10px;
+    font-size: 2rem;
+    color: #000
+}
+
+.navbar a:hover {
+    transform: scale(1.1);
+}
+
+.navbar a:active {
+    transform: scale(0.9);
+}
+
+.navbar .navbar-selected {
+    color: white;
+    font-weight: 800;
+}
+
+.main-page {
+    position: relative;
+    background-image: url(../img/mvl958ug6bl5do5x.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    min-height: 70vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.main-text {
+    color: #fff;
+    background-color: #0009;
+    padding: 20px;
+    text-align: center;
+    max-width: 80%
+}
+
+.headline {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+}
+
+.text-container {
+    margin: auto;
+    width: 60%;
+}
+
+.poster,
+.logo-bcs  {
+    width: 300px;
+    height: fit-content;
+    margin: auto;
+}
+
+.character-list {
+    list-style: none;
+    padding: 10px;
+}
+
+.groups,
+.locations {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.group,
+.location {
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    min-height: 350px;
+    min-width: 280px;
+}
+
+.location {
+    border-style: solid;
+    border-color: #154f3c66;
+    margin-right: 1px;
+}
+
+.location:hover {
+    transform: scale(1.01);
+}
+
+.poster-box {
+    min-height: 250px;
+}
+
+.poster-location {
+    min-width: 250px;
+    margin: auto;
+    border-style: solid;
+    border-color: #154f3c66;
+}
+
+.group:nth-child(1) {
+    background: #2b5ed658;
+}
+
+.group:nth-child(1):hover {
+    background: #2b5ed6b8;
+}
+
+.group:nth-child(2) {
+    background: rgba(255, 0, 0, 0.295);
+}
+
+.group:nth-child(2):hover {
+    background: rgba(255, 0, 0, 0.675);
+}
+
+.group:nth-child(3) {
+    background: rgba(0, 128, 0, 0.295);
+}
+
+.group:nth-child(3):hover {
+    background: rgba(0, 128, 0, 0.675);
+}
+
+.group:nth-child(4) {
+    background: rgba(128, 0, 128, 0.295);
+}
+
+.group:nth-child(4):hover {
+    background: rgba(128, 0, 128, 0.675);
+}
+
+.text-bcs {
+    text-align: justify;
+}
+
+.footer,
+.headline-line {
+    margin-top: 20px;
+    background-color: #154f3c66;
+    display: flex;
+    justify-content: center
+}
+
+.copyright p {
+    font-weight: 700
+}
+
+@media screen and (max-width: 1040px) {
+
+    .navbar a {
+        padding: 3px 3px 3px 3px;
+        font-size: 2rem;
+    }
+
+    .poster,
+    .logo-bcs {
+        width: 200px;
+        height: auto;
+    }
+
+    .group {
+        width: 100%;
+    }
+
+    .location {
+        width: 49%;
+    }
+
+    .logo {
+        padding-top: 10px;
+    }
+
+    .navbar {
+        padding: 20px;
+    }
+
+    .navbar a {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+@media screen and (min-width: 1040px) {
+
+    .group,
+    .location {
+        width: 32%;
+    }
+
+    .group {
+        width: 50%;
+    }
+
+}
+
+@media print {
+
+    header,
+    .poster,
+    .poster-box,
+    .logo-bcs,
+    .logo {
+        display: none;
+    }
+
+    .main,
+    .footer,
+    .main-page,
+    .main-text {
+        background-image: none;
+        background-color: transparent;
+        color: black;
+        padding: 0px;
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+    .group:nth-child(1),
+    .group:nth-child(2),
+    .group:nth-child(3),
+    .group:nth-child(4) {
+        background: transparent;
+    }
+
+    .body {
+        padding: 40px;
+    }
+}

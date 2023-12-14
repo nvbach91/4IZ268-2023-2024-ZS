@@ -1,0 +1,180 @@
+¸* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia;
+    font-size: 150%;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    /*background-image: url(https://www.kosteleckeuzeniny.cz/wp-content/uploads/2021/09/DSC_9280-scaled.jpg);*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: bisque;
+}
+
+.header {
+    background-image: url('C:\Users\jcern\Desktop\cerj37_webik\semestralka\logo-1.png');
+    background-size: contain;
+    height: auto;
+    background-color: lightgray;
+}
+@media print {
+    .navigation {
+        display: none;
+    }
+}
+.logo {
+    width: 150px;
+    padding: 10px;
+    display: flex;
+    margin: auto;
+}
+
+.navigation {
+    margin-bottom: 0px;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    height: 30px;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation a {
+    padding: 10px;
+}
+
+.footer {
+    background-color: rgb(252, 195, 121);
+    padding: 20px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+main {
+    margin: 50px;
+}
+
+.divider {
+    background-color: rgb(252, 195, 121);
+    height: 5px;
+}
+
+.current-page {
+    background-color: lightgray;
+
+}
+
+.divider-vertical {
+    background-color: rgb(252, 195, 121);
+    height: 100px;
+    width: 5px;
+    padding-top: 40px;
+    margin: 10px;
+}
+
+.shop {
+    font-size: 18px;
+}
+
+.text1 {
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+    text-decoration: none;
+    color: #fff;
+    background-color: burlywood;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.button:hover {
+    background-color: white;
+    color: black;
+}
+
+.article-subtext {
+    font-size: 11px;
+    text-align: center;
+    margin-left: 100px;
+    margin-right: 100px;
+
+}
+
+.main {
+    background-color: blanchedalmond;
+    margin: 50px;
+}
+
+.article-name {
+    text-align: center;
+    margin: 30px;
+}
+
+.article-title {
+    margin-left: 70px;
+}
+
+.article-text {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.shop-menu {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.image-shop {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.article-name {
+    background-color: blanchedalmond;
+    padding: 15px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.shop-menu {
+    background-color: blanchedalmond;
+    padding: 15px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: burlywood;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: white;
+    color: black;
+}

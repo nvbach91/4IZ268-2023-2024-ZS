@@ -1,0 +1,412 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+/* Обнуление отступов у стандартных элементов */
+body, h1, h2, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Стили для навигации */
+.selectPanel {
+    background-color: #a59f81;
+    color: #fff;
+    padding: 15px;
+    font-family: Montserrat, sans-serif;
+}
+
+.navigation {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 15px;
+}
+
+.nav-link:hover {
+    background-color: #000000;
+}
+
+/* Стили для заголовков */
+.h1 {
+    text-align: center;
+    margin-top: 120px;
+}
+
+.h1 h1 {
+    font-family: 'Abel', sans-serif;
+    font-size: 60px;
+}
+
+.h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.h2 h2 {
+    font-family: 'Abel', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+}
+
+
+/* SERVICES */
+
+
+/* Общий контейнер */
+.content-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    border: 5px solid #a59f81;
+    background-color: #ffffff;
+}
+
+
+/* Заголовок */
+.content-text h1 {
+    font-size: 60px;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    font-family: 'Abel', sans-serif;
+    color: #000000;
+}
+
+/* Текстовое содержимое */
+.content-text {
+    max-width: 50%;
+    font-family: Montserrat, sans-serif;
+    margin-left: 6%;
+    text-align: justify;
+}
+
+/* Картинка */
+.content-img {
+    max-width: 30%;
+    margin-right: 6%;
+}
+
+.content-img img {
+    max-width: 100%;
+    height: 450px; /* сохранение пропорций при изменении размера */
+}
+
+
+/*Ниже дизайн Вебсайт дизайн*/
+.content-box1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    border: 5px solid #a59f81;
+    border-radius: 5px;
+    background-color: #3c3a32;
+}
+.content-text1 h1 {
+    font-size: 60px;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    font-family: 'Abel', sans-serif;
+    color: #ffffff;
+}
+.content-text1 {
+    max-width: 50%;
+    font-family: Montserrat, sans-serif;
+    margin-left: 6%;
+    text-align: justify;
+    color: #ffffff;
+}
+.content-img1 {
+    max-width: 30%;
+    margin-right: 6%;
+}
+
+.content-img1 img {
+    max-width: 100%;
+    height: 470px;
+}
+
+
+/*Ниже дизайн Вебсайт лэйаут*/
+.content-box2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    border: 5px solid #a59f81;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+.content-text2 h1 {
+    font-size: 60px;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    font-family: 'Abel', sans-serif;
+    color: #000000;
+}
+.content-text2 {
+    max-width: 50%;
+    font-family: Montserrat, sans-serif;
+    margin-left: 6%;
+    text-align: justify;
+    color: #000000;
+}
+.content-img2 {
+    max-width: 30%;
+    margin-right: 3%;
+}
+
+.content-img2 img {
+    max-width: 100%;
+    height: 500px;
+}
+
+/*Футер*/
+footer {
+    background-color: #a59f81;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+}
+
+/* SKILLS */
+.column {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-right: 20px;
+    max-width: 28%;
+    max-height: 30%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+.content-img5 {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+.content-img6 {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+.content-img7 {
+    width: 100%;
+    display: block;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.content-img7 img{
+    width: 100%;
+    height: auto;
+}
+.content-img6 img{
+    width: 100%;
+    height: auto;
+}
+.content-img5 img{
+    width: 100%;
+    height: auto;
+}
+
+.flex p{
+    font-size: 15px;
+    font-family: Montserrat, sans-serif;
+}
+.flex h2{
+    font-size: 17px;
+    font-family: Montserrat, sans-serif;
+}
+.flex1 {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+.flex1 p{
+    font-size: 15px;
+    font-family: Montserrat, sans-serif;
+}
+.flex1 h2{
+    font-size: 17px;
+    font-family: Montserrat, sans-serif;
+}
+.content-img8 img{
+    width: 100%;
+    height: auto;
+}
+.content-img9 img{
+    width: 100%;
+    height: auto;
+}
+.content-img10 img{
+    width: 100%;
+    height: auto;
+}
+
+/* ABOUT ME*/
+.content-box5 {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    background-color: #ffffff;
+}
+.content-img12 img {
+    height: auto;
+    width: 100%;
+}
+
+.content-img12{
+    padding: 5%;
+    max-width: 100%;
+    margin-right: 1%;
+    margin-left: 5%;
+}
+
+.content-text11{
+    max-width: 50%;
+}
+
+.content-text11 h1 {
+    font-size: 60px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+    font-family: 'Abel', sans-serif;
+    color: #000000;
+}
+.content-text11 p {
+    font-family: Montserrat, sans-serif;
+    margin-left: 6%;
+    text-align: justify;
+    color: #000000;
+}
+
+/*PORTFOLIO*/
+.flex3 {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 20px;
+    background-color: #3f362a;
+}
+.content-img13 {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+.content-img14 {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+.content-img15 {
+    width: 100%;
+    display: block;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.content-img13 img{
+    width: 100%;
+    height: auto;
+}
+.content-img14 img{
+    width: 100%;
+    height: auto;
+}
+.content-img15 img{
+    width: 100%;
+    height: auto;
+}
+.flex4 {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 20px;
+    background-color: #3f362a;
+}
+.content-img16 {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+.content-img17 {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+.content-img18 {
+    width: 100%;
+    display: block;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.content-img16 img{
+    width: 100%;
+    height: auto;
+}
+.content-img17 img{
+    width: 100%;
+    height: auto;
+}
+.content-img18 img{
+    width: 100%;
+    height: auto;
+}
+
+/*Contacts*/
+.h5 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.h5 h1 {
+    font-family: 'Abel', sans-serif;
+    font-size: 60px;
+}
+
+.h5 p {
+    font-family: 'Abel', sans-serif;
+    font-size: 40px;
+}
+
+.h6 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+
+.h6 h2 {
+    font-family: 'Abel', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}

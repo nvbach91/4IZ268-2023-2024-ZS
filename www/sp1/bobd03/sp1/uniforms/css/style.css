@@ -1,0 +1,269 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Satisfy', cursive;
+    background-color: black;
+}
+
+.page-layout {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    min-width: 200px;
+    background-color: black;
+    height: 100%;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    background-image: url(../../images/nav_scroll.png);
+    background-size: 100% 100%;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    padding: 50px 0;
+    height: 50%;
+    position: fixed;
+}   
+
+.links a {
+    text-decoration: none;
+    padding: 10px 30px;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    color: brown;
+}
+
+.links a:hover {
+    border-bottom: 5px groove black;
+    border-radius: 10px;
+}
+
+header {
+    width: 100%;
+    height: 30%;
+    padding: 50px 10px;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Courgette', cursive;
+    background-image: url(../../images/header.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+header h1 {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+.main-page {
+    max-width: 1680px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main-content {
+    background-color: burlywood;
+    display: flex;
+    flex-wrap: wrap;
+    height: 60%;
+}
+
+.france, .coalition {
+    width: 50%;
+    text-align: center;
+    padding: 100px 20px;
+    font-size: 30px;
+}
+
+.france img, .coalition img {
+    width: 60%;
+    height: auto;
+    border: 10px solid transparent;
+}
+
+.france img:hover, .coalition img:hover {
+    border: 10px solid gold;
+    
+}
+
+
+footer {
+    height: 10%;
+    background-color: brown;
+    color: white;
+    text-align: center;
+    font-family: 'Courgette', cursive;
+}
+
+@media screen and (max-width: 1366px) {
+    nav {
+        min-width: 180px;
+    }
+
+    .links {
+        background-size: 100% 80%;
+    }
+
+    .links a{
+        font-size: 14px;
+        padding: 10px 25px;
+    }
+
+    footer {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .page-layout {
+        flex-direction: column;
+    }
+
+
+    nav {
+        width: 100%;
+        height: 10%;
+        background-color: burlywood;
+        top: 0;
+        position: fixed;
+        border-bottom: 5px solid brown;
+    }
+
+    .links {
+        background-color: burlywood;
+        background-image: none;
+        flex-direction: row;
+        padding: 0;
+        height: 100%;
+        position: relative;
+    }
+
+    .links a{
+       font-size: 14px;
+       padding: 0px 10px;
+       width: 20%;
+       align-self: center;
+   }
+
+    header {
+        display: flex;
+        margin-top: 80px;
+    }
+
+    header h1 {
+        font-size: 30px;
+        width: 100%;
+        align-self: center;
+    }
+
+    .france img, .coalition img {
+        width: 80%;
+        height: auto;
+        border: 10px solid transparent;
+    }
+
+    .france, .coalition {
+        font-size: 25px;
+    }
+    
+
+    footer {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {  
+    .page-layout {
+        flex-direction: column;
+    }
+
+    nav {
+        width: 100%;
+        height: 10%;
+        background-color: burlywood;
+        top: 0;
+        position: fixed;
+        border-bottom: 5px solid brown;
+    }
+
+    .links {
+        background-image: none;
+        flex-direction: row;
+        position: relative;
+        padding: 0;
+        height: 100%;
+    }
+
+    .links a{
+        font-size: 12px;
+        padding: 0px 5px;
+        width: 20%;
+        align-self: center;
+    }
+
+    header {
+        display: flex;
+        margin-top: 80px;
+    }
+    
+    header h1 {
+        font-size: 25px;
+        width: 100%;
+        align-self: center;
+    }
+
+    .france img, .coalition img {
+        width: 80%;
+        height: auto;
+        border: 10px solid transparent;
+    }
+
+    .france, .coalition {
+        font-size: 25px;
+        padding: 20px 10px;
+        width: 100%;
+    }
+    
+
+    footer {
+        font-size: 14px;
+    }
+}
+
+@media print {
+    nav {
+        display: none;
+    }
+    
+    body {
+        background-color: transparent;
+    }
+
+    .main-content {
+        background-color: transparent;
+    }
+
+    .main-content h2, .main-content p {
+        color: black;
+    }
+
+    footer {
+        display: fixed;
+        bottom: 0;
+    }
+
+}

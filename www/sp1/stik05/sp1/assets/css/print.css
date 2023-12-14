@@ -1,0 +1,113 @@
+@media print {
+
+    body,
+    html {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    nav,
+    footer,
+    .non-printable,
+    .burger .content-wrapper img {
+        display: none;
+    }
+
+    .logo img {
+        max-width: 100px;
+        height: auto;
+    }
+
+    .page-title {
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        color: black;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .section-block h2,
+    .content-wrapper p {
+        font-family: Arial, sans-serif;
+        font-size: medium;
+        color: black;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    .logo img,
+    .page-title,
+    .section-block h2,
+    .content-wrapper p {
+        display: block;
+    }
+
+    .content-wrapper {
+        width: 100%;
+    }
+
+    .tips.container {
+        width: 100%;
+        padding: 0;
+        display: block;
+    }
+
+    .tips.section-block {
+        background-color: #fff;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 15px;
+
+    }
+
+    .tips.container:hover {
+        box-shadow: none;
+    }
+
+
+    .container {
+        width: 100%;
+        padding: 0;
+        display: block;
+    }
+
+    .section-block {
+        background-color: #fff;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 15px;
+
+    }
+
+    .section-block:hover {
+        box-shadow: none;
+    }
+
+    .section-block h2,
+    .section-block p {
+        font-family: Arial, sans-serif;
+        font-size: medium;
+        color: black;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        color: black !important;
+        font-size: small !important;
+        text-align: left !important;
+        text-decoration: none !important;
+    }
+
+    section a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: smaller;
+        word-wrap: break-word;
+    }
+}

@@ -1,0 +1,71 @@
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 800px;
+  gap: 1.5rem;
+}
+form .form-element {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+form label {
+  font-size: 0.9rem;
+  color: #16302b;
+  text-align: center;
+}
+form input,
+form textarea {
+  margin: 0 auto;
+  display: block;
+  max-width: 300px;
+  width: calc(100% - 2rem);
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  border-radius: 15px;
+  border: 1px solid #16302b;
+}
+form button[type=submit] {
+  margin: 0 auto;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #248232;
+  padding: 0.6rem 1.5rem;
+  border: unset;
+  border-radius: 15px;
+  cursor: pointer;
+}
+form button[type=submit]:hover {
+  background-color: #1b6226;
+}
+
+@media only screen and (min-width: 868px) {
+  form {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "name email" "message message" "submit submit";
+  }
+  form button[type=submit] {
+    margin: unset;
+    max-width: 250px;
+  }
+  form label {
+    text-align: left;
+  }
+  form input,
+  form textarea {
+    margin: unset;
+    max-width: 800px;
+  }
+  .input-name {
+    grid-area: name;
+  }
+  .input-email {
+    grid-area: email;
+  }
+  .textarea-message {
+    grid-area: message;
+  }
+  .submit-button {
+    grid-area: submit;
+  }
+}/*# sourceMappingURL=form.css.map */

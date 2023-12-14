@@ -1,0 +1,224 @@
+/* welcome */
+.welcome-bg {
+    width: 100%;
+    height: 27vw;
+    background-image: url(../img/welcome.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+.welcome-bg h1 {
+    margin: auto;
+    font-size: 5vw;
+    color: white;
+    font-weight: 900;
+    text-shadow: black 1.1vw 0.5px 11vw;
+}
+
+/* about & prices */
+.section-1,
+.section-3 {
+    width: 70%;
+    height: 28vw;
+    margin: auto;
+    padding: 5.5vw 0;
+    display: flex;
+}
+
+.s1-image,
+.s3-image {
+    margin: 2.5vw;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
+    width: 40%;
+    background-color: #D9D9D9;
+}
+
+.s1-image {
+    margin-left: 0;
+}
+
+.s1-image img,
+.s3-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.s3-image {
+    margin-right: 0;
+}
+
+.about,
+.prices {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    color: #AE2A2F;
+}
+
+.about .text-div,
+.prices .text-div {
+    height: 20%;
+}
+
+.prices {
+    text-align: right;
+}
+
+p:nth-child(2),
+p:nth-child(4) {
+    margin-bottom: 3vw;
+}
+
+.button {
+    padding: 0.3vw 1vw;
+    border-radius: 0.6vw;
+    border: 0.2vw solid #AE2A2F;
+    background-color: white;
+    font-size: 1vw;
+    color: #AE2A2F;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background-color: #AE2A2F;
+    transition: 0.2s;
+    border-radius: 1vw;
+    color: white;
+}
+
+.button-div {
+    margin-top: auto;
+    margin-bottom: 0.4vw;
+}
+
+/* sevices */
+.section-2 {
+    background-color: #F8F8F8;
+    padding: 2.2vw 0;
+}
+
+.s2-sect {
+    width: 70%;
+    height: 34vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.h-services {
+    text-align: center;
+    color: #AE2A2F;
+    font-weight: 800;
+}
+
+.serv-container {
+    height: 25vw;
+    width: 100%;
+    margin: 0 auto 4.2vw auto;
+    display: flex;
+}
+
+.serv-item {
+    width: 25%;
+    height: inherit;
+    background-color: #AE2A2F;
+    margin: 2.2vw 0 0 0;
+    transition: 0.2s;
+}
+
+.serv-image {
+    height: 80%;
+    background-color: #AE2A2F;
+}
+
+.serv-image img {
+    height: 100%;
+    width: 100%;
+    opacity: 0.4;
+    transition: 0.2s;
+}
+
+.serv-image img:hover {
+    opacity: 1;
+    transition: 0.2s;
+}
+
+.serv-item:hover {
+    background-color: #FFD500;
+    transition: 0.2s;
+    height: 102%;
+    cursor: pointer;
+    margin-bottom: 5vw;
+    box-shadow: 0 0px 2vw 0.2vw #ABABAB;
+
+}
+
+.serv-food {
+    margin: 2.2vw auto;
+}
+
+.serv-descript {
+    height: 20%;
+    color: white;
+    font-size: 1.5vw;
+    display: flex;
+    align-items: center;
+}
+
+.serv-descript h3 {
+    margin: auto;
+}
+
+.serv-button {
+    text-align: right;
+    font-size: 1vw;
+    font-weight: 500;
+    color: #AE2A2F;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 2vw;
+    margin-left: auto;
+}
+
+.serv-button:hover {
+    color: #FFD500;
+    transition: 0.2s;
+    text-shadow: 0.01vw 0 0 currentColor;
+}
+
+/* mq */
+@media screen and (max-width: 900px) {
+    p {
+        font-size: 1.25vw;
+        line-height: 2.35vw;
+    }
+
+    .section-1,
+    .section-3 {
+        width: 80%;
+        height: 32vw;
+    }
+
+    button {
+        width: 10vw;
+        height: 4vw;
+        font-size: 1.5vw;
+        border: 0.3vw solid #AE2A2F;
+        border-radius: 1.2vw;
+    }
+
+    button:hover {
+        border-radius: 2vw;
+    }
+
+    .serv-button {
+        font-size: 1.8vw;
+        font-weight: 500;
+        margin-right: 1.5vw;
+    }
+}

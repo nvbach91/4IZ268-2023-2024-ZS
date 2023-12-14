@@ -1,0 +1,270 @@
+@media print {
+
+    h2 {
+        font-size: 2.66vw;
+        margin: 0;
+        font-weight: 600;
+        color: black
+    }
+
+    p {
+        line-height: 2.3vw;
+        font-size: 1.5vw;
+        font-weight: 300;
+        margin: 2px;
+    }
+
+    /* header */
+    header {
+        display: flex;
+        background-image: none;
+        margin: auto;
+    }
+
+    nav {
+        margin: auto;
+    }
+
+    .nav-item {
+        font-size: 1.7vw;
+    }
+
+    .logo-box {
+        display: none;
+    }
+
+    .item-active {
+        text-shadow: none;
+        color: black;
+    }
+
+    /* footer */
+    footer {
+        padding: 0;
+        background-color: white;
+        flex-direction: column;
+    }
+
+    footer div {
+        padding: 5px 0;
+    }
+
+    .footer-item {
+        font-size: 1.5vw;
+        font-weight: 300;
+    }
+
+    /* welcome */
+
+    .welcome-bg {
+        background-image: none;
+        height: 100px;
+    }
+
+    .welcome-bg h1 {
+        text-shadow: none;
+        color: black;
+    }
+
+    .section-1,
+    .section-3,
+    .s1-sect,
+    .section-2,
+    .container {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .s1-image,
+    .s3-image {
+        display: none
+    }
+
+    .about,
+    .prices {
+        width: 100%;
+        color: black;
+        margin-bottom: 10px;
+    }
+
+    .prices {
+        text-align: left;
+    }
+
+    p:nth-child(2),
+    p:nth-child(4) {
+        margin-bottom: 0;
+    }
+
+    .button {
+        display: none;
+    }
+
+    .section-2 {
+        background-color: white;
+        padding: 0;
+    }
+
+    .s2-sect {
+        width: auto;
+        height: auto;
+        margin: 0;
+    }
+
+    .h-services {
+        text-align: left;
+        color: black;
+        font-weight: 600;
+        font-size: 3vw;
+    }
+
+    .serv-container {
+        height: auto;
+        width: auto;
+        margin: 0 0 10px 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .serv-item,
+    .table-item {
+        background-color: white;
+        margin: 0;
+        margin-top: 5px;
+        height: auto;
+        ;
+    }
+
+    .serv-image,
+    .table-image {
+        display: none;
+    }
+
+    .serv-descript,
+    .table-descript {
+        height: auto;
+        color: black;
+        align-items: normal;
+    }
+
+    .serv-descript h3,
+    .box span,
+    .table-descript h3 {
+        margin: 0;
+        font-weight: 300;
+        font-size: 1.5vw;
+        color: black;
+        text-align: left;
+    }
+
+    .serv-button {
+        display: none;
+    }
+
+    .org-info h2,
+    .h-contact,
+    .h-prices,
+    .h-others,
+    .h-schedule,
+    h1,
+    h3 {
+        color: black;
+        font-weight: 600;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .p-prices,
+    .p-services,
+    .p-schedule {
+        text-align: left;
+        margin: 0
+    }
+
+    main {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .org-info {
+        margin-left: 0;
+        padding: 0;
+    }
+
+    .map {
+        display: none;
+    }
+
+    .p-container,
+    .o-container,
+    .container {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .box {
+        background-color: white;
+        height: auto;
+        padding: 0;
+    }
+
+    .box span {
+        color: black;
+        margin-bottom: 3px;
+    }
+
+    .h-schedule {
+        font-size: 3vw;
+        margin-top: 10px;
+    }
+
+    aside {
+        margin-bottom: px;
+    }
+
+    aside a {
+        padding: 5px 0 0 0;
+        font-size: 1.5vw;
+        font-weight: 300;
+        background-color: white;
+    }
+
+    .list-filter {
+        display: none;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .table-controls {
+        display: none;
+    }
+
+    .cs-bg {
+        background-image: none;
+        flex-direction: column;
+        align-items: normal;
+        height: auto;
+    }
+
+    .cs-bg h1 {
+        color: black;
+        margin-left: 0;
+        text-shadow: none;
+    }
+
+    .cs-info {
+        height: auto;
+        margin: 0 0 0 -5px;
+    }
+
+    .section-1 article p {
+        margin: 0;
+    }
+
+}

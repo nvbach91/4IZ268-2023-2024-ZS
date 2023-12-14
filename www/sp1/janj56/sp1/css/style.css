@@ -1,0 +1,143 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+
+}
+
+.top-panel {
+    background-image: url(../img/school.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px 10px;
+}
+
+header h1 {
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 45px;
+    text-align: center;
+    color: white;
+    margin: 0;
+}
+
+.navbar {
+    text-align: center;
+    display: block;
+    background-color: #eee9a0;
+    padding: 20px;
+}
+
+
+.navbar a:not(.here) {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 7px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.here {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 7px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.content {
+    max-width: 950px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.page-article p {
+    line-height: 28px;
+    text-align: justify;
+    margin-top: 10px;
+}
+
+.article-image {
+    padding-top: 20px;
+    height: 140px;
+}
+
+.page-footer {
+    text-align: center;
+    padding: 21px;
+    margin: 0;
+    background-color: #eee9a0;
+}
+
+.pictures {
+    columns: 200px;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+h3 {
+    margin-bottom: -0.5em;
+}
+
+iframe {
+    display: block;
+    margin: 0 auto;
+    border: none;
+}
+
+@media print {
+    .top-panel {
+        background-color: transparent;
+    }
+
+    .top-panel h1 {
+        color: black;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbar {
+        padding: 0;
+        margin: 0;
+    }
+
+    iframe,
+    .pictures-home,
+    .navbar {
+        display: none;
+    }
+
+    p {
+        font-size: 66%;
+    }
+
+    h3 {
+        font-size: 75%;
+    }
+
+    h2 {
+        font-size: 85%;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    h2,
+    h3 {
+        text-align: center;
+    }
+}

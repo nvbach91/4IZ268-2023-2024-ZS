@@ -1,0 +1,47 @@
+/* prices */
+main {
+    background-color: white;
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.h-prices {
+    color: #AE2A2F;
+    font-weight: 800;
+    font-size: 3vw;
+    margin: 1vw 0 0.5vw 0;
+    text-align: center;
+}
+
+.p-prices {
+    text-align: center;
+    margin-bottom: 2vw;
+}
+
+.p-container {
+    display: flex;
+    margin-bottom: 4vw;
+}
+
+.fuel {
+    width: 50%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.change,
+.cards {
+    margin-top: 1.3vw;
+}
+
+h2 {
+    font-size: 1vw;
+    color: #ae2f2f;
+    text-align: center;
+}

@@ -1,0 +1,910 @@
+/* GENERAL, HEADER, WRAPPERS, NAVIGATIONS, FOOTER */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Heebo', sans-serif;
+}
+
+body {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.home-wrapper,
+.about-wrapper,
+.games-wrapper,
+.hardware-wrapper,
+.blog-wrapper {
+    background-color: rgb(200, 200, 200);
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 55px;
+    padding-top: 5px;
+    height: 75px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header h4 {
+    font-style: italic;
+    padding-bottom: 15px;
+}
+
+.home-nav a,
+.about-nav a,
+.games-nav a,
+.hardware-nav a,
+.blog-nav a {
+    text-decoration: none;
+    display: inline-block;
+    width: 150px;
+    height: 60px;
+    line-height: 50px;
+    background-color: black;
+    border: 5px solid black;
+    border-radius: 25px;
+    color: white;
+    font-size: 20px;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.home-nav i,
+.about-nav i,
+.games-nav i,
+.hardware-nav i,
+.blog-nav i {
+    margin-right: 5px;
+}
+
+.home-nav a:hover,
+.about-nav a:hover,
+.games-nav a:hover,
+.hardware-nav a:hover,
+.blog-nav a:hover,
+.home-nav a.active,
+.about-nav a.active,
+.games-nav a.active,
+.hardware-nav a.active,
+.blog-nav a.active {
+    background-color: rgba(189, 50, 53, 0.8)
+}
+
+.footer {
+    height: 80px;
+}
+
+.footer p {
+    padding-top: 40px;
+}
+
+
+/* HOME */
+
+.home-main-container {
+    margin-top: 15px;
+    display: flex;
+}
+
+.home-news,
+.home-right-column {
+    flex: 1;
+    height: auto;
+    border-radius: 30px;
+    overflow: hidden;
+    width: 300px;
+}
+
+.home-news {
+    background-color: rgb(225, 225, 225);
+    border: 5px solid black;
+    margin-left: 50px;
+}
+
+.home-right-column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+    margin-left: 10px;
+}
+
+.home-most-played,
+.home-steam-logo {
+    flex: 1;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.home-most-played {
+    margin-bottom: 5px;
+    background-color: rgb(225, 225, 225);
+}
+
+.home-steam-logo {
+    margin-top: 5px;
+    border: none;
+}
+
+.home-news h2,
+.home-most-played h2 {
+    text-align: center;
+    padding: 20px;
+    font-size: 26px;
+    border-bottom: 3px solid black;
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
+.home-most-played h2 {
+    background-color: rgba(66, 116, 255, 0.6);
+}
+
+.home-news ul {
+    text-align: justify;
+    list-style-type: none;
+}
+
+.home-news li {
+    padding: 25px;
+    border-bottom: 2px solid black;
+    border-bottom-style: dashed;
+}
+
+.home-news li:nth-child(6) {
+    border-bottom: none;
+}
+
+.home-most-played ol {
+    text-align: left;
+    padding: 20px;
+    padding-left: 80px;
+    font-size: 20px;
+}
+
+.home-most-played li {
+    padding: 10px;
+    font-weight: bolder;
+}
+
+.home-steam-logo img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ABOUT */
+
+.about-first-row,
+.about-second-row {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 400px;
+}
+
+.about-wrapper main p {
+    font-size: 16px;
+    padding-top: 10px;
+    line-height: 1.4;
+}
+
+.about-introduction {
+    padding: 30px;
+    text-align: justify;
+    flex-grow: 1;
+    border-radius: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: rgb(225, 225, 225);
+    border-radius: 30px;
+    border: 5px solid black;
+}
+
+.about-introduction h2 {
+    border-bottom: 4px solid black;
+}
+
+.about-first-row h2,
+.about-second-row h2 {
+    border-bottom: 2px solid black;
+}
+
+.about-main-information,
+.about-gaben {
+    margin-right: 7.5px;
+}
+
+.about-important-milestones,
+.about-headquarters {
+    margin-left: 7.5px;
+}
+
+.about-main-information,
+.about-steam,
+.about-important-milestones,
+.about-headquarters {
+    width: 50%;
+    padding: 30px;
+    margin-bottom: 15px;
+    text-align: justify;
+    flex-grow: 1;
+    border-radius: 30px;
+    background-color: rgb(225, 225, 225);
+    border: 5px solid black;
+}
+
+.about-steam,
+.about-headquarters {
+    background-color: rgb(200, 200, 200);
+    padding: 5px;
+    border: none;
+}
+
+.about-main-information ul,
+.about-important-milestones ul {
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.about-main-information li,
+.about-important-milestones li {
+    padding: 5px;
+}
+
+.about-headquarters img,
+.about-steam img {
+    border-radius: 30px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* GAMES */
+
+.games-cs2,
+.games-dota2,
+.games-portal2 {
+    margin: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    height: auto;
+    border: 5px solid black;
+    background-color: rgb(215, 215, 215);
+    overflow: hidden;
+}
+
+.games-cs2 h2,
+.games-dota2 h2,
+.games-portal2 h2 {
+    color: black;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 20px;
+    text-align: left;
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.games-cs2 h2 {
+    background-image: url('../img/cs2.png');
+    background-position-x: 300px;
+    background-position-y: 40%;
+}
+
+.games-dota2 h2 {
+    background-image: url('../img/dota2.jpg');
+    background-position-y: 100%;
+}
+
+.games-portal2 h2 {
+    background-image: url('../img/portal2.jpg');
+    background-position-y: 40%;
+}
+
+.games-cs2 p,
+.games-dota2 p,
+.games-portal2 p {
+    color: #000000;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: justify;
+    padding: 20px;
+}
+
+
+/* HARDWARE */
+
+.hardware-deck,
+.hardware-index,
+.hardware-link,
+.hardware-controller {
+    margin: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    height: 339px;
+    border: 5px solid black;
+    background-color: rgb(215, 215, 215);
+    overflow: hidden;
+    display: flex;
+}
+
+.hardware-circle-one,
+.hardware-circle-two,
+.hardware-circle-three {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 5px solid black;
+    position: relative;
+    animation: scaleAnimation 1.8s infinite;
+    background-color: rgb(0, 0, 0);
+    top: 20px;
+    left: 20px;
+}
+
+.hardware-number {
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(255, 0, 0);
+    position: absolute;
+    top: calc(50%);
+    left: calc(50%);
+    transform: translate(-50%, -50%);
+}
+
+@keyframes scaleAnimation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.hardware-deck>.hardware-deck-text,
+.hardware-deck>.hardware-deck-video,
+.hardware-index>.hardware-index-text,
+.hardware-index>.hardware-index-video,
+.hardware-link>.hardware-link-text,
+.hardware-link>.hardware-link-video,
+.hardware-controller>.hardware-controller-text,
+.hardware-controller>.hardware-controller-video {
+    flex: 1;
+}
+
+.hardware-deck-video iframe,
+.hardware-link-video iframe,
+.hardware-controller-video iframe {
+    border: none;
+}
+
+.hardware-deck-text h4,
+.hardware-index-text h4,
+.hardware-link-text h4,
+.hardware-controller-text h4 {
+    font-style: italic;
+}
+
+.hardware-deck h2,
+.hardware-link h2,
+.hardware-controller h2 {
+    padding-top: 50px;
+    color: black;
+    font-size: 38px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/* BLOG */
+
+.blog-post-one,
+.blog-post-two,
+.blog-post-three {
+    margin: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    height: auto;
+    border: none;
+    background-color: rgb(155, 155, 155);
+    overflow: hidden;
+}
+
+.blog-post-one h2,
+.blog-post-two h2,
+.blog-post-three h2 {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 20px;
+    text-align: left;
+    text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+
+.blog-post-one ul,
+.blog-post-two p,
+.blog-post-three p {
+    color: white;
+    font-size: 18px;
+    font-weight: bolder;
+    line-height: 1.5;
+    text-align: justify;
+    padding: 30px;
+    padding-top: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+
+.blog-post-one ul {
+    text-align: left;
+    list-style-type: none;
+}
+
+.blog-post-one em,
+.blog-post-two em,
+.blog-post-three em {
+    font-size: 20px;
+}
+
+.blog-post-one {
+    background-image: url('../img/eldenring.jpg');
+    background-size: cover;
+    background-position: center 77%;
+}
+
+.blog-post-two {
+    background-image: url('../img/fifa24.jpg');
+    background-size: cover;
+    background-position: center 50%;
+}
+
+.blog-post-three {
+    background-image: url('../img/mafia.jpg');
+    background-size: cover;
+    background-position: center 15%;
+}
+
+
+/* RESPONSIVE DESIGN - HOME, ABOUT, GAMES, BLOG */
+
+@media screen and (max-width: 1024px) {
+
+    .home-wrapper,
+    .about-wrapper,
+    .blog-wrapper,
+    .games-wrapper {
+        width: 100%;
+    }
+
+    .home-nav,
+    .about-nav,
+    .blog-nav,
+    .games-nav {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .home-nav a:nth-child(5),
+    .about-nav a:nth-child(5),
+    .blog-nav a:nth-child(5),
+    .games-nav a:nth-child(5) {
+        margin-top: 10px;
+    }
+
+    .home-main-container {
+        flex-direction: column;
+    }
+
+    .home-news,
+    .home-right-column {
+        width: auto;
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-bottom: 10px;
+    }
+
+    .home-most-played ol {
+        padding-left: 30%;
+    }
+
+    .about-first-row {
+        height: auto;
+    }
+
+    .about-main-information,
+    .about-important-milestones {
+        padding-bottom: 10px;
+    }
+
+
+    .about-main-information li,
+    .about-important-milestones li {
+        font-size: 17px;
+        padding: 5px;
+    }
+
+    .games-cs2 p,
+    .games-dota2 p,
+    .games-portal2 p {
+        font-size: 18px;
+    }
+
+}
+
+
+/* RESPONSIVE DESIGN - HARDWARE */
+
+@media screen and (min-width: 800px) {
+    .hardware-wrapper {
+        width: 100%;
+    }
+
+    .hardware-nav {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .hardware-nav a:nth-child(5) {
+        margin-top: 10px;
+    }
+
+    .hardware-deck,
+    .hardware-link,
+    .hardware-controller {
+        flex-direction: column;
+        height: 560px;
+        width: 595px;
+        margin: 0 auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .hardware-deck-video,
+    .hardware-link-video,
+    .hardware-controller-video {
+        padding-top: 30px;
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    .hardware-wrapper {
+        width: 1024px;
+        margin: 0 auto;
+    }
+
+    .hardware-deck,
+    .hardware-link,
+    .hardware-controller {
+        flex-direction: row;
+        height: 339px;
+        width: 795px;
+        margin: 50px;
+        margin-left: 114.5px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .hardware-deck-video,
+    .hardware-link-video,
+    .hardware-controller-video {
+        padding-top: 0;
+    }
+
+    .hardware-deck h2,
+    .hardware-link h2,
+    .hardware-controller h2 {
+        font-size: 30px;
+    }
+
+    .hardware-deck h4,
+    .hardware-link h4,
+    .hardware-controller h4 {
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .hardware-wrapper {
+        width: 1280px;
+    }
+
+    .hardware-deck,
+    .hardware-link,
+    .hardware-controller {
+        height: 339px;
+        width: 1180px;
+        margin: 50px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .hardware-deck h2,
+    .hardware-link h2,
+    .hardware-controller h2 {
+        font-size: 38px;
+    }
+
+    .hardware-deck h4,
+    .hardware-link h4,
+    .hardware-controller h4 {
+        font-size: 20px;
+    }
+
+    .hardware-nav a:nth-child(5) {
+        margin-top: 0;
+    }
+
+}
+
+
+/* PRINT - ALL */
+
+@media print {
+
+    .header h1 {
+        font-size: 24px;
+        text-shadow: none;
+    }
+
+    .header h4 {
+        font-size: 13px;
+        font-weight: normal;
+        text-shadow: none;
+        padding-bottom: 0;
+    }
+
+    .home-nav,
+    .about-nav,
+    .games-nav,
+    .hardware-nav,
+    .blog-nav,
+    .home-steam-logo,
+    .about-second-row,
+    .hardware-deck-video,
+    .hardware-link-video,
+    .hardware-controller-video,
+    .footer {
+        display: none;
+    }
+
+
+    /* HOME */
+
+    .home-news,
+    .home-most-played {
+        font-size: 12px;
+        border: none;
+    }
+
+    .home-news h2,
+    .home-most-played h2 {
+        padding: 5px;
+        font-size: 18px;
+        border-bottom: none;
+    }
+
+    .home-news li {
+        padding: 7px;
+        border-bottom: none;
+    }
+
+    .home-news strong {
+        font-weight: normal;
+    }
+
+    .home-most-played ol {
+        font-size: 12px;
+        padding: 5px;
+        padding-left: 50px;
+    }
+
+    .home-most-played li {
+        padding: 3px;
+        font-weight: normal;
+    }
+
+
+    /* ABOUT */
+
+    .about-introduction {
+        padding: 0;
+    }
+
+    .about-wrapper main p {
+        font-size: 12px;
+        padding-top: 5px;
+        line-height: 1.2;
+    }
+
+    .about-main-information,
+    .about-important-milestones {
+        padding: 5px;
+    }
+
+    .about-main-information li,
+    .about-important-milestones li {
+        padding: 4px;
+        font-size: 12px;
+    }
+
+    .about-main-information strong,
+    .about-important-milestones strong {
+        font-weight: normal;
+    }
+
+
+    /* GAMES */
+
+    .games-cs2,
+    .games-dota2,
+    .games-portal2 {
+        border: none;
+        overflow: visible;
+        margin-top: 0;
+    }
+
+    .games-cs2 {
+        margin-top: 10px;
+    }
+
+    .games-cs2 h2,
+    .games-dota2 h2,
+    .games-portal2 h2 {
+        font-size: 18px;
+        padding: 5px;
+        padding-top: 0;
+        padding-bottom: 0;
+        text-shadow: none;
+    }
+
+    .games-cs2 p,
+    .games-dota2 p,
+    .games-portal2 p {
+        font-size: 12px;
+        padding: 5px;
+        padding-bottom: 0;
+        line-height: 1.3;
+    }
+
+
+    /* HARDWARE */
+
+    .hardware-deck,
+    .hardware-link,
+    .hardware-controller {
+        border: none;
+        height: 50px;
+        width: auto;
+        overflow: visible;
+        margin: 0;
+    }
+
+    .hardware-deck {
+        margin-top: 15px;
+    }
+
+    .hardware-deck h2,
+    .hardware-link h2,
+    .hardware-controller h2 {
+        padding-top: 0;
+        font-size: 22px;
+        text-shadow: none;
+        text-align: left;
+        padding-left: 70px;
+    }
+
+    .hardware-deck h4,
+    .hardware-link h4,
+    .hardware-controller h4 {
+        font-size: 14px;
+        text-align: left;
+        font-weight: normal;
+        padding-left: 70px;
+    }
+
+    .hardware-circle-one,
+    .hardware-circle-two,
+    .hardware-circle-three {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+    }
+
+    .hardware-circle-one {
+        margin-top: 49px;
+    }
+
+    .hardware-circle-two {
+        margin-top: 99px;
+    }
+
+    .hardware-circle-three {
+        margin-top: 149px;
+    }
+
+    .hardware-number {
+        font-size: 18px;
+        color: black;
+    }
+
+    .about-introduction,
+    .about-main-information,
+    .about-important-milestones {
+        border: none;
+    }
+
+    .about-introduction h2,
+    .about-first-row h2 {
+        border-bottom: none;
+        font-size: 18px;
+    }
+
+
+    /* BLOG */
+
+    .blog-post-one,
+    .blog-post-two,
+    .blog-post-three {
+        overflow: visible;
+    }
+
+    .blog-post-one ul,
+    .blog-post-two p,
+    .blog-post-three p {
+        color: black;
+        text-shadow: none;
+        font-weight: normal;
+        font-size: 12px;
+        padding: 0;
+        padding-top: 5px;
+        line-height: 1.3;
+    }
+
+    .blog-post-one h2,
+    .blog-post-two h2,
+    .blog-post-three h2 {
+        color: black;
+        text-shadow: none;
+        font-size: 16px;
+        padding: 0;
+    }
+
+    .blog-post-one em,
+    .blog-post-two em,
+    .blog-post-three em {
+        color: black;
+        text-shadow: none;
+        font-weight: normal;
+        font-size: 14px;
+    }
+
+}

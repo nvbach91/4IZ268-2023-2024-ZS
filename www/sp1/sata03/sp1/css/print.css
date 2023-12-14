@@ -1,0 +1,53 @@
+/* Print version */
+
+@media print {
+
+    body {
+        margin: initial;
+        color: black;
+        background: white;
+        box-shadow: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    a,
+    li,
+    ul {
+        color: #000 !important;
+    }
+
+    h1 {
+        font-size: 24pt;
+    }
+
+    h2 {
+        font-size: 20pt;
+    }
+
+    h3 {
+        font-size: 18pt;
+    }
+
+    h4 {
+        font-size: 14pt;
+    }
+
+    p,
+    li {
+        font-size: 12pt;
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+
+    footer,
+    header {
+        display: none;
+    }
+}

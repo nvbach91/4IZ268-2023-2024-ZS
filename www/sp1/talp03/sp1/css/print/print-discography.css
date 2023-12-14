@@ -1,0 +1,23 @@
+.header-title {
+    padding-right: 350px;
+}
+
+.navigation a {
+    padding-bottom: 0;
+}
+
+.album {
+    width: 250px;
+    height: 250px;
+    margin-top: 40px;
+}
+
+img {
+    margin-top: 35px;
+    width: 200px;
+    height: 200px;
+}
+
+.footer {
+    margin-top: 80px;
+}

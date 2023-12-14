@@ -1,0 +1,95 @@
+body {
+    padding-top: 45px;
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+}
+h1{
+    margin:0 0;
+    padding: 0 0;
+    text-align:left;
+    position: absolute;
+    left: 50px;
+    z-index: 4;
+}
+
+.carousel-item {
+    min-height: 500px;
+    background: linear-gradient(to bottom, rgba(161, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../media/bg.jpg");
+    background-size: 80%;
+    padding-top: 80px;
+    width: 100%;
+    box-sizing: border-box;
+    flex: 0 0 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item h2 {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    margin-top: 160px;
+}
+
+
+.carousel-btns {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+input[name="carousel-radio"] {
+    display: none;
+}
+
+.carousel-btn-label {
+    background-color: #bbbbbb;
+    font-size: 0;
+    padding: 10px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 0 20px;
+}
+
+.carousel-btn-label:hover {
+    background-color: #bb0000;
+}
+
+#slide1:checked~.carousel .carousel-item {
+    transform: translateX(0%);
+}
+
+#slide2:checked~.carousel .carousel-item {
+    transform: translateX(-100%);
+}
+
+#slide3:checked~.carousel .carousel-item {
+    transform: translateX(-200%);
+}
+
+@media (max-width: 768px) {
+    .carousel-item h2 {
+        font-size: 20px;
+        margin-top: 100px;
+    }
+
+    .carousel-btns {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .carousel-item {
+        background-size: 190%;
+        background-position: center right;
+
+    }
+    body {
+        padding-top: 90px;
+    }
+}
