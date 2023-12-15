@@ -1,5 +1,5 @@
 const App = {};
-const config = { app_id: '750142425345045' };
+const config = { app_id: '7702675183075984' };
 
 // only works after app review z facebook reviewers for post permission
 App.postStatus = (msg) => {
