@@ -1,0 +1,36 @@
+- výraznějším způsobem zvýraznit aktivní odkaz stránky
+- odkazy na externí weby otevřít v nové záložce
+- hodnoty atributu href tagu <a> v navigaci nesmí obsahovat část index.html
+- tisk musí být bez pozadí
+- zvýraznit aktivní položky menu i v podstránkách
+- chybí vícesloupcový layout
+- odkazy na externí stránky otevřít v nové záložce
+- chybí identifikace webu v každé stránce (název, logo, title)
+- chybí identifikace stránky v title
+- v <title> chybí název webu
+- chybí kořenová stránka
+- na některých místech je vhodnější text-align: left místo justify, zejména u úzkých odstavců
+- na některých místech je vhodnější použít sémantické značky
+- obrázky nejsou optimalizované
+- některé obrázky nejsou optimalizované
+- chybí meta tagy
+- chybí přizpůsobení pro tisk
+- chybí zvýraznění aktivní položky navigace
+- chybí favicon
+- omezit délku řádky textu (kontejneru), aby nezabíraly zbytečně moc do šířky stránky 
+- místo <b> se používá <strong>
+- zdeformované obrázky
+- použít HTML entity
+- h1 se smí vyskytovat pouze jednou v rámci HTML dokumentu
+- dodržet správnou strukturu <table>
+- chybí mailto: a tel:
+- obrázky je lepší ukládat do jednoho vlastního adresáře zvlášť
+- zvětšit klikatelný prostor kolem navigačních odkazů
+- duplicitní CSS pravidla v rámci webu
+- použít nějaký Google Font
+- nepárové tagy nesmí obsahovat ukončovací lomítko
+- inline CSS?
+- přidat odkaz na Home do loga
+- font je lepší importovat přes <link>
+- hodnota atributu lang neodpovídá jazyku obsahu
+- kazda stranka musi byt jeden soubor s nazvem index.html, nazev stranky je nazev obsahujici slozky, nikoliv nazev souboru
