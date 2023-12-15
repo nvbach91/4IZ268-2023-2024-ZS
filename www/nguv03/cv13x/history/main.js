@@ -1,5 +1,5 @@
 /* verze pro hash #page1 #page2 #page3 atd */
-$(document).ready(() => {
+/*$(document).ready(() => {
     const pageButtons = $('.page');
     const heading = $('#heading');
 
@@ -29,11 +29,11 @@ $(document).ready(() => {
         renderPage(pageNumber);
     });
 });
-
+*/
 
 /* verze pro path /1 /2 /3 atd */
 
-/*
+
 $(document).ready(() => {
     const staticPath = `/www/nguv03/cv13x/history`;
     const pageNumbers = [1, 2, 3];
@@ -74,4 +74,3 @@ $(document).ready(() => {
 
 });
 
-*/
