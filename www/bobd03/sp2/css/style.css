@@ -1,0 +1,67 @@
+header {
+    background-image: linear-gradient(purple, rgb(75, 75, 249));
+    width: 100%;
+    display: flex;
+}
+
+header h1 {
+    display: inline;
+    color: white;
+    margin: 0 auto 0 auto;
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.button-panel {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: black solid 2px;
+}
+
+.app-button {
+    width: 25%;
+    padding: 5px;
+    color: white;
+    background-color: blueviolet;
+    border: white 10px solid;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 20px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+
+}
+
+.popup-content {
+    padding: 40px 20px;
+    margin: auto;
+    background-color: white;
+    border: 5px black solid;
+    width: 60%;
+}
+
+.close-button {
+    color: white;
+    background-color: black;
+}
+
+main {
+    min-height: 480px;
+}
+
+footer {
+    width: 100%;
+    background-image: linear-gradient(purple, rgb(75, 75, 249));
+    text-align: center;
+    color: white;
+    padding: 10px 0;
+}
