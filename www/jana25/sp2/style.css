@@ -1,0 +1,663 @@
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body {
+    height: auto;
+    width: auto;
+    background-color: #f5f5f5;
+}
+
+@media only screen and (max-width: 1400px) {
+    * {
+        display: none
+    }
+}
+
+@font-face {
+    font-family: "gagarin";
+    src: url(font/GAGASM__.TTF);
+}
+
+@font-face {
+    font-family: "lemonmilk";
+    src: url(font/LEMONMILK-Light.otf) format("opentype");
+}
+
+.gameArea {
+    width: 1380px;
+    height: 840px;
+    border: 5px solid black;
+    margin: auto;
+    position: relative;
+}
+
+.playButton {
+    display: block;
+    margin: auto;
+    margin-top: 380px;
+    font-size: 120px;
+    font-family: gagarin;
+    background-color: rgba(0,0,0,0);
+    border: 0px solid;
+    outline: none;
+    padding: 25px;
+    color: #ff1100;
+    cursor: pointer;
+}
+
+.menuButton {
+    display: inline-block;
+    margin: 20px 0px 0px 20px;
+    font-size: 120px;
+    font-family: gagarin;
+    background-color: rgba(0,0,0,0);
+    border: 0px solid;
+    outline: none;
+    padding: 25px;
+    color: #ff1100;
+    cursor: pointer;
+}
+
+.signButton {
+    display: inline-block;
+    margin: 20px 0px 0px 20px;
+    font-size: 100px;
+    font-family: gagarin;
+    background-color: rgba(0,0,0,0);
+    border: 0px solid;
+    outline: none;
+    padding: 25px;
+    color: #ff4133;
+    cursor: pointer;
+}
+
+.signButton:hover {
+    color: #000
+}
+
+#profileName {
+    background-color: rgba(0,0,0,0);
+    margin: 20px auto;
+    width: 1280px;
+    height: 50px;
+
+    color: #000;
+    font-family: verdana;
+    font-size: 43px
+}
+
+#profileStats {
+    display: inline-block;
+    position: relative;
+    width: 540px;
+    height: 480px;
+    margin-left: 50px
+}
+
+    .stat {
+        position:absolute;
+        font-size: 43px;
+        margin: 0;
+        font-family: lemonmilk
+    }
+
+    #coinIndicator {
+        top: 30px;
+        left: 0px
+    }
+
+    #coinAmount {
+        top: 16px;
+        left: 70px
+    }
+
+    #pouchesCaught {
+        top: 115px;
+        left: 0px
+    }
+
+    #gamesPlayed {
+        top: 260px;
+        left: 0px
+    }
+
+    #topScore {
+        top: 390px;
+        left: 0px
+    }
+
+#profileCans {
+    border: solid #ff1100 5px;
+    display: inline-block;
+    position: relative, flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start; 
+    width: 720px;
+    height: 480px;
+    margin-left: 20px;
+}
+
+    .shopCans {
+        display: inline-block;
+        position: relative;
+        width: 240px;
+        height: 240px;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-sizing: border-box;
+    }
+
+        #shopCan3, #shopCan4, #shopCan5 {
+            top: -4px
+        }
+
+    .canLocked {
+        position: absolute;
+        width: 240px;
+        height: 240px;
+        background-image: url(images/shopCans/canLocked.png);
+        z-index: 30;
+    }
+
+    .canPriceTag {
+        position: absolute;
+        z-index: 35;
+        font-size: 26px;
+        font-family: lemonmilk;
+        border: 2px solid black;
+        top: 190px;
+        right: 15px;
+        padding: 2px;
+        color: #fff;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .caughtPouchesRemainingTag {
+        position: absolute;
+        width: auto;
+        height: auto;
+        z-index: 35;
+        font-size: 20px;
+        font-family: lemonmilk;
+        border: 2px solid black;
+        bottom: 15px;
+        right: 15px;
+        padding: 2px;
+        color: #000;
+        background-color: #66ccff;
+    }
+
+    
+
+.signInForm {
+    width: 500px;
+    height: 182px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #ffcccc
+}
+
+.signUpForm {
+    width: 500px;
+    height: 242px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #ffcccc
+}
+
+.email, .password{
+   border: 0px solid;
+   outline: none;
+   display: block;
+   margin: auto;
+   background-color:  #ffb3b3;
+   color: black;
+   font-family: arial;
+   font-size: 20px;
+   width: 496px;
+   height: 26px;
+
+}
+
+.submitSigning {
+    width: 140px;
+    height: 50px;
+    background-color: #ff9999;
+    display: block;
+    margin: 30px auto;
+    font-size: 30px;
+    font-family: gagarin;
+    border: 0px solid;
+    outline: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.buttonDiv {
+    display: inline-block;
+    margin: 40px 0px 0px 32px;
+    border: 2px solid #fff;
+    width: 60px;
+    height: 60px;
+    outline: none;
+}
+
+.buttonDiv:hover {
+    background-color: #e6e6e6;
+    border: 2px solid #d9d9d9
+}
+
+#soundDiv {
+    background-image: url(images/buttons/soundOff.png)
+}
+
+#musicDiv {
+    background-image: url(images/buttons/musicOff.png)
+}
+
+#tutorialDiv {
+    background-image: url(images/buttons/tutorial.png)
+}
+
+#profileDiv {
+    background-image: url(images/buttons/profile.png);
+    
+}
+
+.buttonButton {
+    background-color: rgba(0,0,0,0);
+    border: 0px solid;
+    outline: none;
+    width: 60px;
+    height: 60px;
+    cursor: pointer
+}
+
+.playButtonLoaded:hover {
+    color: #bf0d00;
+}
+
+.playAgain:hover {
+    color: #bf0d00;
+}
+
+.menuButton:hover {
+    color: #bf0d00;
+}
+
+.selectBackground {
+    width: 620px;
+    height: 400px;
+    margin: -60px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 20px;
+
+}
+
+.selectBg {
+    width: 290px;
+    height: 180px;
+    background-color: white;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 10%;
+    cursor: pointer;
+    position: relative;
+    z-index: 30;
+
+}
+
+input.selectBg:hover {
+    transition: all .17s ease-in-out;
+    transform: scale(1.04)
+}
+
+.selectSpecialBg:hover {
+    transition: all .17s ease-in-out;
+    transform: scale(1.04)
+}
+
+#selectBg3 {
+    background-color: #000;
+}
+
+#text1 {
+    font-family: gagarin;
+    font-size: 60px;
+    color: #ff1100;
+    text-align: center;
+    margin-top: 270px;
+}
+
+.box {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100px;
+    height: 100px;
+    background-color:rgba(0,0,0,0);
+    z-index: 40
+}
+
+.scoreBox {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100px;
+    width: auto;
+    background-color: #ff1100;
+    font-size: 100px;
+    line-height: 100px;
+    font-family: lemonmilk;
+    border: solid black 2px;
+    color: #fff
+}
+
+.paddle {
+    width: 287px;
+    height: 210px;
+    position: absolute;
+    top: 630px;
+    right: 420px;
+}
+
+.paddlePouches {
+    width: 287px;
+    height: 210px;
+    position: absolute;
+    top: 630px;
+    right: 420px;
+}
+
+.paddleSlugs {
+    width: 287px;
+    height: 210px;
+    position: absolute;
+    top: 630px;
+    right: 420px;
+}
+
+.collisionDetector {
+    width: 287px;
+    height: 1px;
+    top: 650px;
+    right: 420px;
+    position: absolute;
+}
+
+.pouch0 {
+    width: 100px;
+    height: 70px;
+    position: absolute;
+    top: 0px;
+    background-image: url(images/pouch/pouch0.png)
+}
+
+.pouch1 {
+    width: 100px;
+    height: 70px;
+    position: absolute;
+
+    background-image: url(images/pouch/pouch1.png)
+}
+
+.pouch2 {
+    width: 98px;
+    height: 48px;
+    position: absolute;
+
+    background-image: url(images/pouch/pouch2.png)
+}
+
+.pouch3 {
+    width: 240px;
+    height: 106px;
+    position: absolute;
+
+    background-image: url(images/pouch/pouch3.png)
+}   
+
+.pouch4 {
+    width: 50px;
+    height: 35px;
+    position: absolute;
+
+    background-image: url(images/pouch/pouchGold.png);
+}
+
+.pouch {
+    animation: pouchFall linear;
+    animation-duration: 2.6s;
+}
+
+.bigPouch {
+    animation: bigPouchFall linear;
+    animation-duration: 6s;
+}
+
+.coinPouch {
+    animation: coinPouchFall linear;
+    animation-duration: 2s;
+}
+
+.pouchMissed {
+    animation: pouchMissedFall linear;
+}
+
+.bigPouchMissed {
+    animation: bigPouchMissedFall linear;
+}
+
+.coinPouchMissed {
+    animation: coinPouchMissedFall linear;
+    animation-duration: 1s
+}
+
+
+
+@keyframes pouchFall {
+    from {top: 0px;}
+    to {top: 650px}
+}
+
+@keyframes bigPouchFall {
+    from {top: 0px;}
+    to {top: 614px}
+}
+
+@keyframes coinPouchFall {
+    from {top: 0px;}
+    to {top: 685px}
+}
+
+@keyframes pouchMissedFall {
+    from {top: 650px; opacity: 1}
+    to {top: 770px; opacity: 0}
+
+}
+
+@keyframes bigPouchMissedFall {
+    from {top: 614px; opacity: 1}
+    to {top: 710px; opacity: 0}
+
+}
+
+@keyframes coinPouchMissedFall {
+    from {top: 685px; opacity: 1}
+    to {top: 810px; opacity: 0}
+
+}
+
+
+
+
+
+
+
+
+.saveScore {
+    width: 600px;
+    height: 430px;
+    border: 4px solid black;
+    background-color: #e6e6e6;
+    margin: auto;
+    margin-top: 205px;
+    text-align: center;
+}
+
+.enterName {
+    margin-top: 50px;
+    border: 4px solid #ff1100;
+    background-color: #fff;
+    color: #ff1100;
+    font-family: lemonmilk;
+    width: 480px;
+    height: 64px;
+    font-size: 60px;
+    padding: 8px;
+    text-align: center;
+}
+
+.submitName {
+    margin-top: 50px;
+    border: 2px solid #ff1100;
+    background-color: #fff;
+    color: #ff1100;
+    font-family: gagarin;
+    width: 132px;
+    height: 56px;
+    border-radius: 20px;
+    font-size: 40px;
+    padding: 2px 8px 8px 8px;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.goOverview {
+    margin-top: 10px;
+    border: 2px solid #ff1100;
+    background-color: #fff;
+    color: #ff1100;
+    font-family: gagarin;
+    width: 60px;
+    height: 56px;
+    border-radius: 100%;
+    font-size: 40px;
+    padding: 2px 8px 8px 8px;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.goOverview:hover {
+    background-color: #f2f2f2;
+    color: #e60f00;
+}
+
+.leaderboard {
+    width: 900px;
+    height: 580px;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 10px
+
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffb3b3
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ff4d4d
+}
+
+.place {
+    background-color: rgba(0,0,0,0);
+    border: 1px solid black;
+    width: 900px;
+    height: 58px;
+    color: black;
+    margin: auto;
+    font-family: lemonmilk;
+    font-size: 40px
+
+}
+
+.placeSmall {
+    background-color: rgba(0,0,0,0);
+    border: 1px solid black;
+    width: 900px;
+    height: 42px;
+    color: black;
+    margin: auto;
+    font-family: lemonmilk;
+    font-size: 32px
+
+}
+
+#place0 {
+    background-color: 	#FFD700
+}
+
+#place1 {
+    background-color: 	#C0C0C0
+}
+
+#place2 {
+    background-color: 	#CD7F32
+}
+
+.submitName:hover {
+    background-color: #f2f2f2;
+    color: #e60f00;
+}
+ 
+.textEnd {
+    margin: 80px 0px 0px 0px;
+    font-family: gagarin;
+    font-size: 130px;
+    color: #ff1100;
+    text-align: center
+}
+
+.textStats {
+    margin: 60px 0px 0px 0px;
+    font-family: gagarin;
+    font-size: 70px;
+    color: #ff1100;
+    text-align: center
+}
+
+.playAgain {
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    font-size: 120px;
+    font-family: gagarin;
+    background-color: rgba(0,0,0,0);
+    border: 0px solid;
+    outline: none;
+    padding: 25px;
+    color: #ff1100;
+    cursor: pointer;
+}
+
