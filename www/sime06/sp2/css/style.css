@@ -1,0 +1,29 @@
+* {
+    font-family: 'Concert One', sans-serif;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+#app-description p {
+    margin: 0;
+}
+
+#app-description, #app {
+    flex: 1;
+    padding: 20px;
+}
+
+footer {
+    padding: 30px;
+}
