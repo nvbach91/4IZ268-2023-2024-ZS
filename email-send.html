@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Email Application - Send Email</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Create New Email</h2>
+
+    <form id="emailForm">
+        <div class="form-group">
+            <label for="subject">Subject:</label>
+            <input type="text" class="form-control" id="subject" required>
+        </div>
+        <div class="form-group">
+            <label for="recipient">Recipient:</label>
+            <input type="email" class="form-control" id="recipient" required>
+        </div>
+        <div class="form-group">
+            <label for="body">Body:</label>
+            <textarea class="form-control" id="body" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="attachments">Attachments:</label>
+            <input type="file" class="form-control-file" id="attachments">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="sendEmail()">Send Email</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+<script>
+    // Your JavaScript code for handling the functionality goes here
+    // For simplicity, I'm providing a placeholder function for sending emails
+
+    function sendEmail() {
+        // Placeholder function for sending email
+        alert('Email sent!'); // You can replace this with actual functionality
+    }
+
+    // Additional JavaScript logic for handling UI interactions and making AJAX calls can be added here
+</script>
+
+</body>
+</html>
