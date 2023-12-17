@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+
+        <form id="taskForm">
+            <div class="form-group">
+                <label for="taskName">Task Name:</label>
+                <input type="text" class="form-control" id="taskName" required>
+            </div>
+            <div class="form-group">
+                <label for="taskDate">Task Date:</label>
+                <input type="date" class="form-control" id="taskDate" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="addTask()">Add Task</button>
+        </form>
+        <ul id="taskList" class="list-group"></ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
