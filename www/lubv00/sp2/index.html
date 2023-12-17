@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>Task Manager</h1>
+        </header>
+
+        <section id="task-form">
+            <div><input type="text" id="new-task-title" placeholder="Task Title"></div>
+            <div><textarea id="new-task-description" placeholder="Task Description"></textarea></div>
+            <div class="form-row">
+                <div><input type="date" id="new-task-deadline" placeholder="Deadline"></div>
+                <div>
+                    <select id="new-task-priority">
+                        <option value="">Select Priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+            </div>
+            <div><button id="add-task"><i class="fa fa-plus"></i> Add Task</button></div>
+        </section>
+    </div>
+    <div class="task-column">
+        <section id="active-tasks">
+            <h2>Active Tasks</h2>
+            <ul id="tasks-list"></ul>
+        </section>
+        <section id="completed-tasks">
+            <h2>Completed Tasks</h2>
+            <ul id="done-list"></ul>
+        </section>
+    </div>
+    <section id="task-controls">
+        <button id="delete-all">Delete All Tasks</button>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.16.1/dist/date-fns.min.js"></script>
+    <script src="./js/script.js" defer></script>
+</body>
+
+</html>

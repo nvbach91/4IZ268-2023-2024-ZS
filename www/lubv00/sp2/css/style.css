@@ -1,0 +1,163 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Inter, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    padding: 1rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#task-form {
+    margin: auto;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: min(94%, 600px);
+}
+
+#task-form input[type="text"],
+#task-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#task-form .form-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+#task-form .form-row div {
+    margin-right: 8px;
+}
+
+#task-form .form-row input,
+#task-form .form-row select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#task-form button {
+    display: block;
+    width: fit-content;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #5cb85c;
+    color: white;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+#task-form button:hover {
+    background-color: #4cae4c;
+}
+
+.task-column {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 2rem 1rem;
+}
+
+section h2 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    background: #eee;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+ul li h3 {
+    margin: 0;
+}
+
+ul li p {
+    margin: 5px 0;
+}
+
+ul li button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+ul li button.edit {
+    background-color: #f0ad4e;
+    color: white;
+}
+
+ul li button.delete {
+    background-color: #d9534f;
+    color: white;
+}
+
+ul li button.done {
+    background-color: #5cb85c;
+    color: white;
+}
+
+#task-controls {
+    text-align: center;
+    background: none;
+    padding: 0;
+    margin: -1.2rem;
+    box-shadow: none;
+}
+
+#task-controls button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #d9534f;
+    color: white;
+    cursor: pointer;
+}
+
+#task-controls button:hover {
+    background-color: #c9302c;
+}
+
+@media screen and (max-width: 800px) {
+    .task-column {
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+
+    .task-column section {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
