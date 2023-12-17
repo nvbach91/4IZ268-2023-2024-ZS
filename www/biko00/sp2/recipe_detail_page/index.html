@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Oskar Bikmukhametov">
+    <meta name="description" content="Recipies page.">
+    <title>Recipies</title>
+    <link href="../globals/global_styles.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <link rel="icon" href="../globals/images/favicon.png" type="image/x-icon">
+</head>
+
+
+<body>
+
+    <div class="search-area">
+        <input type="text" placeholder="Cuisine">
+        <input type="text" placeholder="Diet">
+        <input type="text" placeholder="Ingredients">
+        <input type="text" placeholder="Exclude ingredients">
+        <input type="text" placeholder="Intolerances">
+        <button type="button" onclick="searchRecipes()">Search</button>
+    </div>
+
+    <div class="recipe-results">
+        <div class="filters">
+            Filters
+        </div>
+        <div class="recipe">
+            Recipe #1
+        </div>
+        <div class="recipe">
+            Recipe #2
+        </div>
+        <div class="recipe">
+            Recipe #3
+        </div>
+    </div>
+
+    <script>
+        function searchRecipes() {
+            console.log("Search for recipes based on the criteria.");
+        }
+    </script>
+
+</body>
+
+</html>

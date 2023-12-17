@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Oskar Bikmukhametov">
+  <meta name="description" content="Recipies page.">
+  <title>Home</title>
+  <link href="./css/style.css" rel="stylesheet">
+  <link rel="icon" href="./globals/images/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+
+  <div class="quiz-area">
+    <h2>Find a Recipe for You</h2>
+    <select id="cuisine">
+      <option value="">Select Cuisine</option>
+      <option value="italian">Italian</option>
+      <option value="mexican">Mexican</option>
+    </select>
+
+    <select id="diet">
+      <option value="">Select Diet</option>
+      <option value="vegetarian">Vegetarian</option>
+      <option value="vegan">Vegan</option>
+    </select>
+
+    <select id="ingredients">
+      <option value="">Select Key Ingredient</option>
+      <option value="chicken">Chicken</option>
+      <option value="beef">Beef</option>
+    </select>
+
+
+    <button type="button" onclick="findRecipes()">Find Recipes</button>
+  </div>
+
+  <script>
+    function findRecipes() {
+      var cuisine = document.getElementById('cuisine').value;
+      var diet = document.getElementById('diet').value;
+      var ingredients = document.getElementById('ingredients').value;
+
+      console.log(cuisine, diet, ingredients);
+
+      window.location.href = 'recipes.html?cuisine=' + cuisine + '&diet=' + diet + '&ingredients=' + ingredients;
+    }
+  </script>
+
+</body>
+
+</html>
