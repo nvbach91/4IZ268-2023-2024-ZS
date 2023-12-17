@@ -1,0 +1,110 @@
+/* Reset default margin and padding */
+body, h1, p, form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+/* Form styles */
+.form {
+    margin-bottom: 20px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-group {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input {
+    padding: 10px;
+    margin: 0;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.button {
+    padding: 10px 20px;
+    margin: 0;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+/* Weather container styles */
+.weather-container {
+    width: 300px;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Weather info styles */
+.weather-info {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Forecast container styles */
+.forecast-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.forecast-heading {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.chart-container {
+    width: 400px; /* Set a fixed width */
+    height: 100px; /* Set a fixed height */
+    margin: 20px auto; /* Adjust margin as needed */
+    border: 1px solid #ccc; /* Optional: Add border for visualization */
+    overflow: hidden; /* Prevent content from overflowing */
+}
+
+/* Style the canvas to fill its container */
+canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
