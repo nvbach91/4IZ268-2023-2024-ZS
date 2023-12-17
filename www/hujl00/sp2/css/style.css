@@ -1,0 +1,49 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: rgba(240, 230, 216, 0.425);
+    margin:auto;
+    max-width: 1240px;
+}
+.title {
+    font-size: 48px;
+}
+.line-unrevealed {
+    color: white;
+}
+.rules {
+    text-align: justify;
+}
+.keyboard {
+    border: 2px solid black;
+    width: 850px;
+    margin-left:70px;
+}
+.keyboard-row {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+    height: 50px
+}
+.key {
+    border: 2px solid black;
+    width: 30px;
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+    background-color: lightgray;
+}
+.start-button, .show-rules-button, .show-hint-button {
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    background-color: antiquewhite;
+    margin: 20px;
+}
+.primary-row {
+    display:flex;
+}
+.right-column, .left-column {
+    width: 40%;
+    padding: 20px;
+}
