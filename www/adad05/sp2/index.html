@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="left-side">
+            <div class="menu">
+                <div class="titleSection" id="weekOfCalendar">11-17.12.2023</div>
+                <div class="controls">
+                    <input class="arrowLeft" id="arrowLeftButton" type="submit" value=""></input>
+                    <input class="arrowRight" id="arrowRightButton" type="submit" value=""></input>
+                </div>
+                <div class="newEventBox">
+                    <div class="newEvent">Vytvořte událost:</div>
+                    <div class="newEventForm">
+                        <label class="label1">Název:</label><br>
+                        <input class="input1" id="input1" type="text" value=""><br>
+                        <label class="label2">Místo:</label><br>
+                        <input class="input2" id="input2" type="text" value=""><br>
+                        <label class="label3">Datum:</label><br>
+                        <input class="input3" id="input3" type="date" value=""><br>
+                        <label class="label4">Čas od a do:</label><br>
+                        <input class="input4" id="input4" type="time">
+                        <input class="input5" id="input5" type="time" value=""><br>
+                        <input class="submitEvent" id="formButton" type="submit" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="transport">
+                <div class="titleSection">Jízdní řády</div>
+                <div class="textSection">Z: Dlouhá 24, Praha 1</div>
+                <div class="textSection">Do: Betlémská 15, Praha 1</div>
+            </div>
+        </div>
+        <div class="calendar">
+            <div class="days">
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">Čas</div>
+                    </div>
+                    <div class="plan">
+                        <div class="time">00:00</div>
+                        <div class="time">00:30</div>
+                        <div class="time">01:00</div>
+                        <div class="time">01:30</div>
+                        <div class="time">02:00</div>
+                        <div class="time">02:30</div>
+                        <div class="time">03:00</div>
+                        <div class="time">03:30</div>
+                        <div class="time">04:00</div>
+                        <div class="time">04:30</div>
+                        <div class="time">05:00</div>
+                        <div class="time">05:30</div>
+                        <div class="time">06:00</div>
+                        <div class="time">06:30</div>
+                        <div class="time">07:00</div>
+                        <div class="time">07:30</div>
+                        <div class="time">08:00</div>
+                        <div class="time">08:30</div>
+                        <div class="time">09:00</div>
+                        <div class="time">09:30</div>
+                        <div class="time">10:00</div>
+                        <div class="time">10:30</div>
+                        <div class="time">11:00</div>
+                        <div class="time">11:30</div>
+                        <div class="time">12:00</div>
+                        <div class="time">12:30</div>
+                        <div class="time">13:00</div>
+                        <div class="time">13:30</div>
+                        <div class="time">14:00</div>
+                        <div class="time">14:30</div>
+                        <div class="time">15:00</div>
+                        <div class="time">15:30</div>
+                        <div class="time">16:00</div>
+                        <div class="time">16:30</div>
+                        <div class="time">17:00</div>
+                        <div class="time">17:30</div>
+                        <div class="time">18:00</div>
+                        <div class="time">18:30</div>
+                        <div class="time">19:00</div>
+                        <div class="time">19:30</div>
+                        <div class="time">20:00</div>
+                        <div class="time">20:30</div>
+                        <div class="time">21:00</div>
+                        <div class="time">21:30</div>
+                        <div class="time">22:00</div>
+                        <div class="time">22:30</div>
+                        <div class="time">23:00</div>
+                        <div class="time">23:30</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">PO</div>
+                    </div>
+                    <div id="monday" class="plan">
+                    </div>
+                    <div class="weather">
+                        <div class="temperature"></div>
+                        <div class="humidity">20°C 47 %</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">ÚT</div>
+                    </div>
+                    <div id="tuesday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature"></div>
+                        <div class="humidity">22°C 46 %</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">ST</div>
+                    </div>
+                    <div id="wednesday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature"></div>
+                        <div class="humidity">21°C 53 %</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">ČT</div>
+                    </div>
+                    <div id="thursday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature"></div>
+                        <div class="humidity">25°C 43 %</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">PÁ</div>
+                    </div>
+                    <div id="friday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature"></div>
+                        <div class="humidity">19°C 71 %</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">SO</div>
+                    </div>
+                    <div id="saturday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature"></div>
+                        <div class="humidity">23°C 45 %</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">NE</div>
+                    </div>
+                    <div id="sunday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature"></div>
+                        <div class="humidity">21°C 43 %</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
