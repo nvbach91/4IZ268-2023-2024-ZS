@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(231, 231, 231); /* placeholder barva maybe */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+h1 {
+    border-bottom: 2px solid rgb(29, 29, 29);
+    padding: 0 25px 10px 0;
+}
