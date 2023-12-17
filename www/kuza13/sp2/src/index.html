@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+	<link rel="stylesheet" href="./css/main.css" />
+	<title>ToDo app</title>
+</head>
+
+<body>
+	<main id="main-container" role="main" class="container">
+		<div id="content" style="display: none;">
+			<h4>Welcome <span id="userName"></span></h4>
+		</div>
+		<a id="signin" onclick="displayUI(); return false;" href="#">
+			<img src="./img/ms-symbollockup_signin_light.png" alt="Sign in with Microsoft" />
+		</a>
+
+		<button id="btnShowEvents" style="display: none;" onclick="displayEvents();">Show events</button>
+		<div id="eventWrapper" style="display: none;">
+			<p>Your events retrieved from Microsoft Graph for the upcoming week:</p>
+			<ul id="events"></ul>
+		</div>
+	</main>
+
+
+	<div class="container">
+
+		<div class="display-4 mb-2">ToDo app</div>
+		<div class="h4 mb-5">task list for today </div>
+
+		<!-- List of tasks -->
+		<div class="card mb-4">
+			<ul id="tasksList" class="list-group list-group-flush">
+
+
+		</div>
+		</li>
+
+		</ul>
+	</div>
+	<!-- //List of tasks -->
+
+	<!-- Form -->
+	<div class="card bg-light">
+		<div class="card-header">Add new task</div>
+		<div class="card-body">
+			<form id="form">
+				<div class="form-group">
+					<input type="text" class="form-control" id="taskInput" placeholder="Task text" required>
+					<small id="emailHelp" class="form-text text-muted">What we are doing, how much time we spent, how many we
+						get</small>
+				</div>
+				<button type="submit" class="btn btn-primary  btn-lg active">Add</button>
+			</form>
+		</div>
+	</div>
+	<!-- //Form  -->
+
+
+
+
+	</div>
+
+	<script src="./index.js"></script>
+	<script src="https://alcdn.msauth.net/browser/2.1.0/js/msal-browser.min.js"
+		integrity="sha384-EmYPwkfj+VVmL1brMS1h6jUztl4QMS8Qq8xlZNgIT/luzg7MAzDVrRa2JxbNmk/e"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@microsoft/microsoft-graph-client/lib/graph-js-sdk.js"></script>
+	<script src="auth.js"></script>
+	<script src="graph.js"></script>
+	<script src="ui.js"></script>
+
+
+
+</body>
+
+</html>
