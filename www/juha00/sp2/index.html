@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Explorer</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <h1>Anime Explorer</h1>
+    <form id="searchForm">
+        <label for="animeTitle">Search Anime:</label>
+        <input type="text" id="animeTitle" name="animeTitle" required>
+        <button type="button" onclick="searchAnime()">Search</button>
+
+        <button type="button" onclick="showFavorites()">Favorites</button>
+
+    </form>
+
+    <form id="filterForm">
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            <option value="">-- All --</option>
+            <option value="action">Action</option>
+            <option value="comedy">Comedy</option>
+            <option value="comedy">Fantasy</option>
+
+        </select>
+
+        <label for="maxEpisodes">Max Episodes:</label>
+        <input type="number" id="maxEpisodes" name="maxEpisodes" min="1">
+
+        <label for="season">Season:</label>
+        <select id="season" name="category">
+            <option value="">-- All --</option>
+            <option value="spring">spring</option>
+            <option value="summer">summer</option>
+            <option value="fall">fall</option>
+            <option value="winter">winter</option>
+        </select>
+
+        <button type="button" onclick="filterAnime()">Apply Filters</button>
+    </form>
+
+
+    <div id="animeResults"></div>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
