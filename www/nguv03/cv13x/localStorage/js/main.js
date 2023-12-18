@@ -14,6 +14,7 @@ let existingValues = [];
 if (localStorage.getItem('values') !== null) {
     existingValues = JSON.parse(localStorage.getItem('values'));
 }
+
 const createItem = (value) => {
     const item = $(`
         <li>
@@ -32,9 +33,11 @@ const createItem = (value) => {
     item.append(deleteButton);
     return item;
 };
+
 const existingItems = existingValues.map((v) => {
     return createItem(v);
 });
+
 list.append(existingItems);
 
 form.on('submit', (e) => {

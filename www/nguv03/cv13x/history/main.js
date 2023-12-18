@@ -1,6 +1,10 @@
 /* verze pro hash #page1 #page2 #page3 atd */
-/*$(document).ready(() => {
-    const pageButtons = $('.page');
+/*
+$(document).ready(() => {
+    const navigation = $('#navigation');
+    navigation.append([1, 2, 3].map((p) => $(`<button data-page="${p}">Page ${p}</button>`)));
+    const navigationButtons = navigation.children();
+    
     const heading = $('#heading');
 
     const renderPage = (pageNumber) => {
@@ -16,7 +20,7 @@
         renderPage(pageNumber || 1);
     }
 
-    pageButtons.click(function () {
+    navigationButtons.click(function () {
         const pageNumber = $(this).data('page');
         if (`#page${pageNumber}` !== location.hash) {
             history.pushState({}, '', `#page${pageNumber}`);
@@ -32,7 +36,6 @@
 */
 
 /* verze pro path /1 /2 /3 atd */
-
 
 $(document).ready(() => {
     const staticPath = `/www/nguv03/cv13x/history`;
