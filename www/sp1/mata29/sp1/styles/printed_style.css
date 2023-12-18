@@ -1,0 +1,27 @@
+* {
+    color: #000000;
+}
+
+body {
+    background-color: #FFFFFF;
+}
+
+.no-print {
+    display: none;
+}
+
+img.print-as-rectangle-horizontal {
+    width: 60vw;
+    height: 40vw;
+}
+
+img.print-as-square {
+    width: 26vw;
+    height: 26vw;
+}
+
+/* this overrides the wrapping of profile pics on the About page */
+.profile-pics {
+    display: flex;
+    flex-wrap: nowrap;
+}

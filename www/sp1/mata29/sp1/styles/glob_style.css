@@ -1,0 +1,147 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    color: #FFFFFF;
+}
+
+body {
+    background-color: #000000;
+}
+
+h1 {
+    font-size: calc(24px + 1vw);
+}
+
+h2 {
+    font-size: calc(20px + 0.8vw);
+}
+
+h3 {
+    font-size: calc(18px + 0.6vw);
+}
+
+p {
+    font-size: calc(12px + 0.3vw);
+}
+
+a.textual-link {
+    color: #FFD700;
+}
+
+a:hover.textual-link {
+    color: #DAA520;
+}
+
+.outer-container {
+    max-width: 1400px;
+    background-color: #000000;
+    margin: 0;
+    padding: 1vw 1vw 1vw 1vw;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    background-color: #191919;
+    border-radius: 10px;
+    display: block;
+    padding: 1vw 6vw 1vw 6vw;
+    margin-bottom: 6vw;
+}
+
+div.spotify-player {
+    background-color: #000000;
+    padding: 0;
+}
+
+div.spotify-player>iframe {
+    width: 100%;
+    border-radius: 12px;
+    border: 0;
+}
+
+footer {
+    font-size: calc(10px + 0.2vw);
+    background-color: #202020;
+    color: #FFFFFF;
+    padding-top: 15px;
+    border-radius: 15px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-socials {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.footer-socials>a {
+    text-decoration: none;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    max-width: 8vw;
+    max-height: 8vw;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+/**
+ * Very nice button from https://getcssscan.com/css-buttons-examples, adapted to work on <a> elements
+ *
+ * Sizing, colours and behaviour slightly adapted as well
+ *
+ */
+.yellowbtn {
+    background-color: #FFF000;
+    border-radius: 12px;
+    color: #000000;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    font-size: calc(14px + 0.5vw);
+}
+
+.yellowbtn:hover {
+    background: #F0D000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .2), 0 3px 8px 0 rgba(0, 0, 0, .15);
+}
+
+.yellowbtn:active {
+    outline: dashed 1px #F5F5F5;
+    transform: translateY(4px);
+}
+
+/* small screen */
+@media screen and (max-width: 620px) {
+
+    /* align section to center */
+    section {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* large screen */
+@media screen and (min-width: 620px) {
+
+    /* align section to left */
+    section {
+        align-items: start;
+        text-align: left;
+    }
+
+    /* allow indenting section contents in "large-screen" mode */
+    section.indented-section {
+        /* 4 more than the default 6vw for a section */
+        padding-left: 10vw;
+    }
+}

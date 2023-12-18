@@ -1,0 +1,61 @@
+div.discography-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 2vw;
+    margin-bottom: 2vw;
+}
+
+div.album-view {
+    flex-grow: 1;
+    margin-bottom: 3vw;
+    text-align: center;
+    padding: 2vw;
+    border: solid 1px #FFFFFF;
+}
+
+div.album-view>* {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1vw;
+}
+
+img.discography-albumcover {
+    width: 330px;
+    height: 330px;
+}
+
+/* override default size of h2 for use as album descriptor */
+h2 {
+    font-size: calc(18px + 0.6vw);
+}
+
+/* small screen */
+@media screen and (max-width: 620px) {
+
+    /* ensure images do not overflow on small screens */
+    img.discography-albumcover {
+        max-width: 80vw;
+        max-height: 80vw;
+    }
+
+    /* remove border around albums */
+    div.album-view {
+        border: none;
+    }
+
+    /* stretch buttons */
+    div.album-view>button {
+        width: 100%;
+    }
+}
+
+/* large screen */
+@media screen and (min-width: 620px) {
+    div.album-view {
+        max-width: fit-content;
+        margin-right: 3vw;
+    }
+}
