@@ -19,8 +19,6 @@ main {
 #user-profile {
     width: 18rem;
 }
-#search-form {
-}
 @keyframes spin {
     from {
         transform: rotate(0deg)

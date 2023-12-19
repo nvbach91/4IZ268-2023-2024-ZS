@@ -46,17 +46,14 @@ App.fetchRepositories = (username) => {
     url,
     data
   }).done((repositories) => {
-    console.log(repositories)
     App.repos.show();
     App.repos.empty();
     if (repositories.length === 0) {
-      App.repos.append(`<h3>There are no repositories.</h3>`);
+      App.repos.append('<h3>There are no repositories.</h3>');
     }
     else {
-      App.repos.append(`<ul id="repos-list" class="list-group"></ul>`)
-      const reposList = $(`$repos-list`)
-      reposList.forEach(repo => {
-        reposList.append(`<li class="list-group-item"><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`)
+      repositories.forEach(repo => {
+        App.repos.append(`<li class="list-group-item"><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`)
       })
     }
   }).fail(() => {
