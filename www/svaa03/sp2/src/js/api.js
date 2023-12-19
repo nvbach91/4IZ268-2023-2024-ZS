@@ -1,0 +1,1 @@
+//Funkce pro komunikaci s API
