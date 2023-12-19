@@ -1,0 +1,42 @@
+* {
+  border: 1px solid black;
+}
+body,
+html {
+  margin: 0;
+  height: 1500px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;
+  width: 100%;
+}
+.header-logo {
+  width: 5%;
+  height: 40%;
+  margin-left: 5%;
+}
+.header-nav {
+  margin-right: 5%;
+  width: 30%;
+  height: 40%;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-around;
+  height: 82%;
+}
+.main-element {
+  width: 60%;
+  height: 20%;
+}
+
+footer {
+  height: 8%;
+}
