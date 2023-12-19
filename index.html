@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Web about places to go">
+    <meta name="author" content="Aleksandra Shleinova">
+    <title>Maps</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <img src="#" alt="Logo">
+        </div>
+        <div class="login-container">
+            <button onclick="location.href='#signin'">Sign In</button>
+            <button onclick="location.href='#signup'">Sign Up</button>
+        </div>
+    </div>
+
+    <div class="links">
+        <a href="#reviews" class="active">All Reviews</a>
+        <a href="#my-reviews">My Reviews</a>
+    </div>
+
+    <div class="intro-text">
+        Find nearby locations to see reviews
+    </div>
+
+    <div class="search-container">
+        <input type="text" placeholder="Search for locations" name="search">
+        <button type="submit">Search</button>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="reviews-container">
+        <div class="reviews-list">
+            <div class="review-item">
+                <div class="review-header">
+                    <span class="review-name">Emily Thompson</span>
+                </div>
+                <div class="review-text">
+                    This place is great! The food is delicious and the staff is very friendly. I highly recommend it!
+                </div>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+            <div class="review-item">
+                <div class="review-header">
+                    <span class="review-name">Alex Turner</span>
+                </div>
+                <div class="review-text">
+                    The food is good, but the service could be better. Overall, I had a good experience.
+                </div>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+            <div class="review-item">
+                <div class="review-header">
+                    <span class="review-name">Olivia Parker</span>
+                </div>
+                <div class="review-text">
+                    The food is okay, but it's a bit overpriced. I wouldn't come back again.
+                </div>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyQthPF3YraI5ASUfwfDKu0SU6OBVG_fA&callback=initMap&libraries=maps,marker&v=beta"></script>
+</body>
+
+</html>
