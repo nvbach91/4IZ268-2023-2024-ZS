@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie clicker</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body onload="update_count()">
+    <div class="game_ui">
+        <div class="achievement_ui">
+            <h2>Ocenění</h2>
+        </div>
+        <div class="cookie_ui">
+            <h1 id="cookie">Máte 0 sušenek</h1>
+            <button onclick="clicker.cookie++">Klikni pro sušenku</button>
+            <div class="divider"></div>
+        </div>
+        <div class="upgrades_shop">
+            <h2>Obchod</h2>
+            <div id="upgrades"></div>
+        </div>
+    </div>
+    <script src="/jscript/script.js"></script>
+</body>
+
+</html>
