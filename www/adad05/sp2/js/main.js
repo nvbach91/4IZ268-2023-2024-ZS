@@ -59,7 +59,7 @@ const currentDate = () => {
 
 //funkce pro získání prvního a posledního dne v aktuálním týdnu (v případě n = 0), nebo n-tého týdne oběma směry
 const weekRange = (n) => {
-    weekDates.splice();
+    weekDates.splice(0);
     let dates = [];
     for (let i = 0; i < 7; i++) {
         const date = new Date();
@@ -104,23 +104,56 @@ const createEvent = () => {
         console.log("Minimální délka akce je 60 minut!");
         return;
     }
-    let height = (1000 / 1440) * durationMinutes;
-    let marginTop = (1000 / 1440) * (timeStartHours * 60 + timeStartMinutes);
-    let newEvent = $("<div></div>").addClass("event");
-    newEvent.css("height", `${height}px`);
-    newEvent.css("margin-top", `${marginTop}px`);
-    let newEventName = $(`<div>${eventName.val()}</div>`).addClass("eventTitle");
-    let newEventTime = $(`<div>${eventStartTime.val()}-${eventEndTime.val()}</div>`).addClass("eventTime");
-    newEvent.append(newEventName, newEventTime);
-    monday.append(newEvent);
+
+    console.log(eventDate.val());
+    let key = getKeyFromDate(eventDate.val());
+    let data = JSON.parse(localStorage.getItem(key));
+    let fitsCalendar = true;
+
+    if (!(data)) {
+        let newJSON = [];
+        data = { [eventDate.val()]: newJSON };
+        console.log(data);
+    }
+
+    // případ, kdy je v datech obsažen týden, ale v rámci týdne není obsažen konkrétní den
+    if (!(data[eventDate.val()])) {
+        let newJSON = [];
+        data = { ...data, [eventDate.val()]: newJSON };
+        console.log(data);
+    }
+
+    console.log(data[eventDate.val()].forEach((element) => {
+        let startMinutesNewEvent = (timeStartHours * 60) + timeStartMinutes;
+        let endMinutesNewEvent = (timeEndHours * 60) + timeEndMinutes;
+        let startMinutesElement = (parseInt(element.startTime.slice(0, 2)) * 60) + parseInt(element.startTime.slice(3, 5));
+        let endMinutesElement = (parseInt(element.endTime.slice(0, 2)) * 60) + parseInt(element.endTime.slice(3, 5));
+        if ((endMinutesNewEvent <= startMinutesElement) || (startMinutesNewEvent >= endMinutesElement)) {
+            console.log("OK");
+            console.log(endMinutesNewEvent + "<=" + startMinutesElement);
+            console.log(startMinutesNewEvent + ">=" + endMinutesElement);
+        } else {
+            fitsCalendar = false;
+            console.log("BAD");
+        }
+    }));
+
+    if (fitsCalendar) {
+        let newJSON = { "title": `${eventName.val()}`, "place": `${eventPlace.val()}`, "startTime": `${eventStartTime.val()}`, "endTime": `${eventEndTime.val()}` };
+        data[eventDate.val()].push(newJSON);
+        console.log(data[eventDate.val()]);
+        localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    updateWeek();
     clearInputs();
 }
 
 const loadEvent = (eventItem, pixels) => {
-    let timeStartHours = eventItem["startTime"].slice(0,2);
-    let timeStartMinutes = eventItem["startTime"].slice(3,5);
-    let timeEndHours = eventItem["endTime"].slice(0,2);
-    let timeEndMinutes = eventItem["endTime"].slice(3,5);
+    let timeStartHours = eventItem["startTime"].slice(0, 2);
+    let timeStartMinutes = eventItem["startTime"].slice(3, 5);
+    let timeEndHours = eventItem["endTime"].slice(0, 2);
+    let timeEndMinutes = eventItem["endTime"].slice(3, 5);
     let durationMinutes = (parseInt(timeEndHours) * 60 + parseInt(timeEndMinutes)) - (parseInt(timeStartHours) * 60 + parseInt(timeStartMinutes));
     let height = (1000 / 1440) * durationMinutes;
     let marginTop = (1000 / 1440) * (parseInt(timeStartHours) * 60 + parseInt(timeStartMinutes)) - pixels;
@@ -134,51 +167,82 @@ const loadEvent = (eventItem, pixels) => {
     return [pixels, newEvent];
 }
 
+const getKeyFromDate = (dateFromEvent) => {
+    console.log(dateFromEvent);
+    const date = new Date(dateFromEvent);
+    console.log(date.getDay());
+
+    if (date.getDay() === 0) {
+        date.setUTCDate(date.getUTCDate() - 6);
+    } else {
+        date.setUTCDate(date.getUTCDate() - date.getDay() + 1);
+    }
+
+
+    console.log(date);
+    let date1 = '' + date.getDate();
+    date.setUTCDate(date.getUTCDate() + 6);
+    let date2 = '' + date.getDate();
+    let month = '' + (date.getMonth() + 1);
+    let year = '' + date.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (date1.length < 2)
+        date1 = '0' + date1;
+    if (date2.length < 2)
+        date2 = '0' + date2;
+
+    let key = date1 + '-' + date2 + '.' + month + '.' + year
+    console.log(key);
+    return key;
+}
+
 const writeDataToCalendar = () => {
     let pixels = 0;
-    weekDataSorted["monday"].forEach ((item) => {
+    weekDataSorted["monday"].forEach((item) => {
         let result = loadEvent(item, pixels);
         pixels = result[0];
         monday.append(result[1]);
     });
 
     pixels = 0;
-    weekDataSorted["tuesday"].forEach ((item) => {
+    weekDataSorted["tuesday"].forEach((item) => {
         let result = loadEvent(item, pixels);
         pixels = result[0];
         tuesday.append(result[1]);
     });
 
     pixels = 0;
-    weekDataSorted["wednesday"].forEach ((item) => {
+    weekDataSorted["wednesday"].forEach((item) => {
         let result = loadEvent(item, pixels);
         pixels = result[0];
         wednesday.append(result[1]);
     });
 
     pixels = 0;
-    weekDataSorted["thursday"].forEach ((item) => {
+    weekDataSorted["thursday"].forEach((item) => {
         let result = loadEvent(item, pixels);
         pixels = result[0];
         thursday.append(result[1]);
     });
 
     pixels = 0;
-    weekDataSorted["friday"].forEach ((item) => {
+    weekDataSorted["friday"].forEach((item) => {
         let result = loadEvent(item, pixels);
         pixels = result[0];
         friday.append(result[1]);
     });
 
     pixels = 0;
-    weekDataSorted["saturday"].forEach ((item) => {
+    weekDataSorted["saturday"].forEach((item) => {
         let result = loadEvent(item, pixels);
         pixels = result[0];
         saturday.append(result[1]);
     });
 
     pixels = 0;
-    weekDataSorted["sunday"].forEach ((item) => {
+    weekDataSorted["sunday"].forEach((item) => {
         let result = loadEvent(item, pixels);
         pixels = result[0];
         sunday.append(result[1]);
@@ -239,7 +303,7 @@ const events = {
         { "title": "Škola", "place": "Žižkov", "startTime": "12:30", "endTime": "13:30" },
         { "title": "Škola", "place": "Žižkov", "startTime": "10:25", "endTime": "11:30" }
     ],
-    "2023-12-12": [
+    "2023-12-17": [
         { "title": "Škola", "place": "Žižkov", "startTime": "15:30", "endTime": "16:30" },
         { "title": "Škola", "place": "Žižkov", "startTime": "18:30", "endTime": "19:30" },
         { "title": "Škola", "place": "Žižkov", "startTime": "20:30", "endTime": "21:30" },
@@ -255,7 +319,7 @@ const compareByStartTime = (a, b) => {
 
 const getDataFromUser = (key) => {
     let data = JSON.parse(localStorage.getItem(key));
-    if (data){
+    if (data) {
         if (data[weekDates[0]]) { weekDataSorted["monday"] = data[weekDates[0]].sort(compareByStartTime); }
         if (data[weekDates[1]]) { weekDataSorted["tuesday"] = data[weekDates[1]].sort(compareByStartTime); }
         if (data[weekDates[2]]) { weekDataSorted["wednesday"] = data[weekDates[2]].sort(compareByStartTime); }
@@ -269,8 +333,8 @@ const getDataFromUser = (key) => {
     }
 }
 
-getDataFromUser(updateWeek());
+updateWeek();
 
+//localStorage.clear();
 //localStorage.setItem('11-17.12.2023', JSON.stringify(events));
 //console.log(localStorage.getItem("11-17.12.2023"));
-
