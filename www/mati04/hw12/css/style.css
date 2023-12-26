@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+body{
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#search-container{
+    background-color: #e1e1e1;
+    padding: 20px;
+    max-width: 840px;
+    margin: 0 auto;
+    
+}
+#search-container input{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+}
+button{
+    background-color: orange;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    color: black;
+    width: 100%;
+    transition: color, background-color 0.3s ease-in-out;
+}
+button:hover{
+    background-color: red;
+    color: white;
+}
+#user-profile {
+    max-width: 840px;
+    margin: 10px auto;
+}
+
+
+.user_info{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(10, 42px);
+    grid-gap: 5px;
+}
+ .login{
+    background-color: orangered;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    text-align: left;
+    grid-column: 1/3;
+    grid-row: 1/2;
+    padding: 0 10px;
+}
+.user_info img{
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    grid-column: 1/2;
+    grid-row: 2/12;
+}
+.info{
+    font-weight: bold;
+    width: 120px;
+    text-align: left;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 10px;
+    background-color: #e1e1e1;
+}
+#repositories {
+    list-style: none;
+    padding: 0;
+    max-width: 840px;
+    margin: 0 auto;
+}
+.repository-info{
+    display: flex;
+    padding: 5px 10px;
+    background-color: #e1e1e1;
+    margin-bottom: 5px;
+}
+
+.repository_name{
+    text-align: left;
+    width: 200px;
+}
+.repository_link{
+    width: 400px;
+    text-align: left;
+}
+
+
+footer{
+    margin-top: 15px;
+    background-color: black;
+    color: aliceblue;
+    padding: 10px;
+}
+ footer a {
+    text-decoration: none;
+    color: aliceblue;
+ }
+ .spinner {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    border: 15px solid transparent;
+    border-top-color: orange;
+    border-bottom-color: red;
+    animation: spinning 5s linear infinite;
+}
+
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .user_info{
+        display: block;
+    }
+    .user{
+        margin: 5px;
+        padding: 10px;
+    }
+    .login{
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+    .user_info img{
+        max-width: 300px;
+        max-height: 300px;
+    }
+}
