@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Git The Hub</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="flex-row multi-row">
+            <div class="flex-row">
+                <h1>Git The Hub</h1>
+            </div>
+            <div class="flex-row">
+                <p>Find information about github profile by inuting its username!</p>
+            </div>
+        </div>
+
+        <div class="flex-row multi-row search">
+            <div class="flex-row">
+                <input class="name-form" type="text" placeholder="GitHub account name">
+            </div>
+            <div class="flex-row">
+                <button class="submit-btn">Search!</button>
+            </div>
+        </div>
+
+        <div class="user-container flex-row hidden">
+            <h2>User information</h2>
+            <div class="flex-row user"></div>
+        </div>
+
+        <div class="repos-container flex-row hidden">
+            <h2>User repositories</h2>
+            <div class="flex-row repos"></div>
+        </div>
+    </div>
+    <footer class="flex-row">
+        <p>Created by <a href="mailto:draj08@vse.cz"> <strong> draj08 </strong> </a> for 4IZ268 </p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"> </script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
