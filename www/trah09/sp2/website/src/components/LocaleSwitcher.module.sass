@@ -1,0 +1,27 @@
+.wrapper
+	display: flex
+	align-items: center
+	font-size: 1em
+	text-transform: uppercase
+
+.localeCode
+	color: inherit
+	font-family: inherit
+	font-weight: 700
+	text-decoration: none
+	color: #aaaaaa
+	&:hover
+		text-decoration: underline
+	&.is_active
+		text-decoration: underline
+		pointer-events: none
+		color: inherit
+	& + &
+		&::before
+			content: ''
+			background: #aaaaaa
+			width: .125rem
+			min-height: 1em
+			height: 100%
+			display: inline-block
+			margin: 0 0.5em

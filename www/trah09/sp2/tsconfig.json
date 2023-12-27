@@ -1,0 +1,10 @@
+{
+	"files": [],
+	"include": [],
+	"references": [
+		{ "path": "./admin" },
+		{ "path": "./api" },
+		{ "path": "./scripts" },
+		{ "path": "./website" }
+	]
+}

@@ -1,0 +1,3618 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createEnum",
+			"enumName": "ContentReferenceType",
+			"values": [
+				"image",
+				"linkables",
+				"embed",
+				"link"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "EmbedType",
+			"values": [
+				"youtube",
+				"vimeo"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "LinkType",
+			"values": [
+				"internal",
+				"external"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "One",
+			"values": [
+				"One"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "SocialLinkType",
+			"values": [
+				"facebook",
+				"instagram"
+			]
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "AvaibilityDate",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "avaibility_date",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "ContactSubmission",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "contact_submission",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Content",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "content",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "ContentBlock",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "content_block",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "ContentReference",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "content_reference",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Course",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "course",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "CourseLocale",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "course_locale",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Embed",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "embed",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "FormFields",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "form_fields",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "General",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "general",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "GeneralLocale",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "general_locale",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "GenericPage",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "generic_page",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "GenericPageLocale",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "generic_page_locale",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Header",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "header",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "HeaderLocale",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "header_locale",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "HomePage",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "home_page",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "HomePageLocale",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "home_page_locale",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Image",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "image",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Link",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "link",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "LinkList",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "link_list",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "LinkListItem",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "link_list_item",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Linkable",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "linkable",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Locale",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "locale",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Redirect",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "redirect",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Reservation",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "reservation",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Seo",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "seo",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "SocialLink",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "social_link",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "SocialLinkItem",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "social_link_item",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "SocialLinkList",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "social_link_list",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "AvaibilityDate",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"columnType": "integer",
+				"nullable": false,
+				"type": "Integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "AvaibilityDate",
+			"field": {
+				"name": "dateTime",
+				"columnName": "date_time",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"type": "DateTime"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "AvaibilityDate",
+			"field": {
+				"name": "numberOfPeople",
+				"columnName": "number_of_people",
+				"columnType": "integer",
+				"nullable": false,
+				"type": "Integer",
+				"default": 1
+			},
+			"fillValue": 1
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "AvaibilityDate",
+			"field": {
+				"name": "numberOfOccupiedPlaces",
+				"columnName": "number_of_occupied_places",
+				"columnType": "integer",
+				"nullable": false,
+				"type": "Integer",
+				"default": 0
+			},
+			"fillValue": 0
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContactSubmission",
+			"field": {
+				"name": "createdAt",
+				"columnName": "created_at",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"type": "DateTime",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContactSubmission",
+			"field": {
+				"name": "email",
+				"columnName": "email",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContactSubmission",
+			"field": {
+				"name": "name",
+				"columnName": "name",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContactSubmission",
+			"field": {
+				"name": "text",
+				"columnName": "text",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentBlock",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"columnType": "integer",
+				"nullable": false,
+				"type": "Integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentBlock",
+			"field": {
+				"name": "json",
+				"columnName": "json",
+				"columnType": "text",
+				"nullable": false,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentReference",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"columnType": "ContentReferenceType",
+				"nullable": false,
+				"type": "Enum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentReference",
+			"field": {
+				"name": "primaryText",
+				"columnName": "primary_text",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Course",
+			"field": {
+				"name": "unique",
+				"columnName": "unique",
+				"columnType": "One",
+				"nullable": false,
+				"type": "Enum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "CourseLocale",
+			"field": {
+				"name": "title",
+				"columnName": "title",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Embed",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"columnType": "EmbedType",
+				"nullable": false,
+				"type": "Enum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Embed",
+			"field": {
+				"name": "embedId",
+				"columnName": "embed_id",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "successMessage",
+				"columnName": "success_message",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "errorMessage",
+				"columnName": "error_message",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "name",
+				"columnName": "name",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "nameRequiredMessage",
+				"columnName": "name_required_message",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "email",
+				"columnName": "email",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "emailRequiredMessage",
+				"columnName": "email_required_message",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "phone",
+				"columnName": "phone",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "phoneRequiredMessage",
+				"columnName": "phone_required_message",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "numberOfPeople",
+				"columnName": "number_of_people",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "vacancies",
+				"columnName": "vacancies",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "date",
+				"columnName": "date",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "note",
+				"columnName": "note",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormFields",
+			"field": {
+				"name": "submitButtonLabel",
+				"columnName": "submit_button_label",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "General",
+			"field": {
+				"name": "unique",
+				"columnName": "unique",
+				"columnType": "One",
+				"nullable": false,
+				"type": "Enum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "General",
+			"field": {
+				"name": "dummyText",
+				"columnName": "dummy_text",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "General",
+			"field": {
+				"name": "name",
+				"columnName": "name",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "General",
+			"field": {
+				"name": "shortName",
+				"columnName": "short_name",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "GenericPageLocale",
+			"field": {
+				"name": "title",
+				"columnName": "title",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Header",
+			"field": {
+				"name": "unique",
+				"columnName": "unique",
+				"columnType": "One",
+				"nullable": false,
+				"type": "Enum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "HeaderLocale",
+			"field": {
+				"name": "title",
+				"columnName": "title",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "HomePage",
+			"field": {
+				"name": "unique",
+				"columnName": "unique",
+				"columnType": "One",
+				"nullable": false,
+				"type": "Enum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "HomePage",
+			"field": {
+				"name": "address",
+				"columnName": "address",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "HomePage",
+			"field": {
+				"name": "email",
+				"columnName": "email",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "HomePage",
+			"field": {
+				"name": "tel",
+				"columnName": "tel",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "HomePageLocale",
+			"field": {
+				"name": "title",
+				"columnName": "title",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "HomePageLocale",
+			"field": {
+				"name": "description",
+				"columnName": "description",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "url",
+				"columnName": "url",
+				"columnType": "text",
+				"nullable": false,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "fileName",
+				"columnName": "file_name",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "width",
+				"columnName": "width",
+				"columnType": "integer",
+				"nullable": true,
+				"type": "Integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "height",
+				"columnName": "height",
+				"columnType": "integer",
+				"nullable": true,
+				"type": "Integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "size",
+				"columnName": "size",
+				"columnType": "integer",
+				"nullable": true,
+				"type": "Integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "alt",
+				"columnName": "alt",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Link",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"columnType": "LinkType",
+				"nullable": false,
+				"type": "Enum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Link",
+			"field": {
+				"name": "title",
+				"columnName": "title",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Link",
+			"field": {
+				"name": "isTargetBlank",
+				"columnName": "is_target_blank",
+				"columnType": "boolean",
+				"nullable": false,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Link",
+			"field": {
+				"name": "externalLink",
+				"columnName": "external_link",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "LinkListItem",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"columnType": "integer",
+				"nullable": false,
+				"type": "Integer",
+				"default": 0
+			},
+			"fillValue": 0
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Linkable",
+			"field": {
+				"name": "url",
+				"columnName": "url",
+				"columnType": "text",
+				"nullable": false,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Locale",
+			"field": {
+				"name": "code",
+				"columnName": "code",
+				"columnType": "text",
+				"nullable": false,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Locale",
+			"field": {
+				"name": "label",
+				"columnName": "label",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Locale",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"columnType": "integer",
+				"nullable": false,
+				"type": "Integer",
+				"default": 0
+			},
+			"fillValue": 0
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Redirect",
+			"field": {
+				"name": "note",
+				"columnName": "note",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Reservation",
+			"field": {
+				"name": "submittedAt",
+				"columnName": "submitted_at",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"type": "DateTime",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Reservation",
+			"field": {
+				"name": "numberOfPeople",
+				"columnName": "number_of_people",
+				"columnType": "integer",
+				"nullable": true,
+				"type": "Integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Reservation",
+			"field": {
+				"name": "name",
+				"columnName": "name",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Reservation",
+			"field": {
+				"name": "email",
+				"columnName": "email",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Reservation",
+			"field": {
+				"name": "tel",
+				"columnName": "tel",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Reservation",
+			"field": {
+				"name": "note",
+				"columnName": "note",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Seo",
+			"field": {
+				"name": "title",
+				"columnName": "title",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Seo",
+			"field": {
+				"name": "description",
+				"columnName": "description",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Seo",
+			"field": {
+				"name": "ogTitle",
+				"columnName": "og_title",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Seo",
+			"field": {
+				"name": "ogDescription",
+				"columnName": "og_description",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Seo",
+			"field": {
+				"name": "noIndex",
+				"columnName": "no_index",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Seo",
+			"field": {
+				"name": "noFollow",
+				"columnName": "no_follow",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "SocialLink",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"columnType": "SocialLinkType",
+				"nullable": true,
+				"type": "Enum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "SocialLink",
+			"field": {
+				"name": "url",
+				"columnName": "url",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "SocialLinkItem",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"columnType": "integer",
+				"nullable": false,
+				"type": "Integer"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "AvaibilityDate",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "course",
+				"target": "Course",
+				"joiningColumn": {
+					"columnName": "course_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "avaibilityDates"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "avaibilityDates",
+				"target": "AvaibilityDate",
+				"ownedBy": "course"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentBlock",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "content",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "content_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "blocks"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "blocks",
+				"target": "ContentBlock",
+				"ownedBy": "content",
+				"orderBy": [
+					{
+						"path": [
+							"order"
+						],
+						"direction": "asc"
+					}
+				]
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentReference",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "block",
+				"target": "ContentBlock",
+				"joiningColumn": {
+					"columnName": "block_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "references"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "references",
+				"target": "ContentReference",
+				"ownedBy": "block"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentReference",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "image",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "image_id",
+					"onDelete": "set null"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentReference",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "embed",
+				"target": "Embed",
+				"joiningColumn": {
+					"columnName": "embed_id",
+					"onDelete": "set null"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentReference",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "link",
+				"target": "Link",
+				"joiningColumn": {
+					"columnName": "link_id",
+					"onDelete": "set null"
+				},
+				"nullable": true,
+				"orphanRemoval": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "CourseLocale",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "root",
+				"target": "Course",
+				"joiningColumn": {
+					"columnName": "root_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "locales"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "locales",
+				"target": "CourseLocale",
+				"ownedBy": "root"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "CourseLocale",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "locale",
+				"target": "Locale",
+				"joiningColumn": {
+					"columnName": "locale_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "courses"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "courses",
+				"target": "CourseLocale",
+				"ownedBy": "locale"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "General",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "dummyImage",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "dummy_image_id",
+					"onDelete": "set null"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "GeneralLocale",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "root",
+				"target": "General",
+				"joiningColumn": {
+					"columnName": "root_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "locales"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "locales",
+				"target": "GeneralLocale",
+				"ownedBy": "root"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "GeneralLocale",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "locale",
+				"target": "Locale",
+				"joiningColumn": {
+					"columnName": "locale_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "generals"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "generals",
+				"target": "GeneralLocale",
+				"ownedBy": "locale"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "GeneralLocale",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "seo",
+				"target": "Seo",
+				"joiningColumn": {
+					"columnName": "seo_id",
+					"onDelete": "set null"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "GenericPageLocale",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "root",
+				"target": "GenericPage",
+				"joiningColumn": {
+					"columnName": "root_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "locales"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "locales",
+				"target": "GenericPageLocale",
+				"ownedBy": "root"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "GenericPageLocale",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "locale",
+				"target": "Locale",
+				"joiningColumn": {
+					"columnName": "locale_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "genericPages"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "genericPages",
+				"target": "GenericPageLocale",
+				"ownedBy": "locale"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "GenericPageLocale",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "content",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "content_id",
+					"onDelete": "set null"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "GenericPageLocale",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "seo",
+				"target": "Seo",
+				"joiningColumn": {
+					"columnName": "seo_id",
+					"onDelete": "set null"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "HeaderLocale",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "root",
+				"target": "Header",
+				"joiningColumn": {
+					"columnName": "root_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "locales"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "locales",
+				"target": "HeaderLocale",
+				"ownedBy": "root"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "HeaderLocale",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "locale",
+				"target": "Locale",
+				"joiningColumn": {
+					"columnName": "locale_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "headers"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "headers",
+				"target": "HeaderLocale",
+				"ownedBy": "locale"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "HeaderLocale",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "links",
+				"target": "LinkList",
+				"joiningColumn": {
+					"columnName": "links_id",
+					"onDelete": "set null"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "HomePage",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "socials",
+				"target": "SocialLinkList",
+				"joiningColumn": {
+					"columnName": "socials_id",
+					"onDelete": "cascade"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "HomePageLocale",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "root",
+				"target": "HomePage",
+				"joiningColumn": {
+					"columnName": "root_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "locales"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "locales",
+				"target": "HomePageLocale",
+				"ownedBy": "root"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "HomePageLocale",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "locale",
+				"target": "Locale",
+				"joiningColumn": {
+					"columnName": "locale_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "homePages"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "homePages",
+				"target": "HomePageLocale",
+				"ownedBy": "locale"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "HomePageLocale",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "seo",
+				"target": "Seo",
+				"joiningColumn": {
+					"columnName": "seo_id",
+					"onDelete": "cascade"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "HomePageLocale",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "image",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "image_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "HomePageLocale",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "formFields",
+				"target": "FormFields",
+				"joiningColumn": {
+					"columnName": "form_fields_id",
+					"onDelete": "cascade"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Link",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "internalLink",
+				"target": "Linkable",
+				"joiningColumn": {
+					"columnName": "internal_link_id",
+					"onDelete": "set null"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "LinkListItem",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "list",
+				"target": "LinkList",
+				"joiningColumn": {
+					"columnName": "list_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "items"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "items",
+				"target": "LinkListItem",
+				"ownedBy": "list",
+				"orderBy": [
+					{
+						"path": [
+							"order"
+						],
+						"direction": "asc"
+					}
+				]
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "LinkListItem",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "link",
+				"target": "Link",
+				"joiningColumn": {
+					"columnName": "link_id",
+					"onDelete": "set null"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Linkable",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "genericPage",
+				"target": "GenericPageLocale",
+				"joiningColumn": {
+					"columnName": "generic_page_id",
+					"onDelete": "cascade"
+				},
+				"nullable": true,
+				"inversedBy": "link"
+			},
+			"inverseSide": {
+				"type": "OneHasOne",
+				"name": "link",
+				"target": "Linkable",
+				"ownedBy": "genericPage",
+				"nullable": false
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Linkable",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "homePage",
+				"target": "HomePageLocale",
+				"joiningColumn": {
+					"columnName": "home_page_id",
+					"onDelete": "cascade"
+				},
+				"nullable": true,
+				"inversedBy": "link"
+			},
+			"inverseSide": {
+				"type": "OneHasOne",
+				"name": "link",
+				"target": "Linkable",
+				"ownedBy": "homePage",
+				"nullable": false
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Linkable",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "redirect",
+				"target": "Redirect",
+				"joiningColumn": {
+					"columnName": "redirect_id",
+					"onDelete": "cascade"
+				},
+				"nullable": true,
+				"inversedBy": "link"
+			},
+			"inverseSide": {
+				"type": "OneHasOne",
+				"name": "link",
+				"target": "Linkable",
+				"ownedBy": "redirect",
+				"nullable": false
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Redirect",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "target",
+				"target": "Link",
+				"joiningColumn": {
+					"columnName": "target_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Reservation",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "avaibilityDate",
+				"target": "AvaibilityDate",
+				"joiningColumn": {
+					"columnName": "avaibility_date_id",
+					"onDelete": "cascade"
+				},
+				"nullable": false,
+				"inversedBy": "reservation"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "reservation",
+				"target": "Reservation",
+				"ownedBy": "avaibilityDate"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Seo",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "ogImage",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "og_image_id",
+					"onDelete": "cascade"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "SocialLinkItem",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "list",
+				"target": "SocialLinkList",
+				"joiningColumn": {
+					"columnName": "list_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "items"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "items",
+				"target": "SocialLinkItem",
+				"ownedBy": "list"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "SocialLinkItem",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "socialLink",
+				"target": "SocialLink",
+				"joiningColumn": {
+					"columnName": "social_link_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createView",
+			"entity": {
+				"name": "ContentReferenceLinkableItem",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "content_reference_linkable_item",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					},
+					"reference": {
+						"type": "ManyHasOne",
+						"name": "reference",
+						"target": "ContentReference",
+						"joiningColumn": {
+							"columnName": "reference_id",
+							"onDelete": "restrict"
+						},
+						"nullable": false,
+						"inversedBy": "linkables"
+					},
+					"item": {
+						"type": "OneHasOne",
+						"name": "item",
+						"target": "Linkable",
+						"joiningColumn": {
+							"columnName": "item_id",
+							"onDelete": "restrict"
+						},
+						"nullable": false
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"view": {
+					"sql": "\n\tSELECT\n\t\tgen_random_uuid() AS id,\n\t\tI.id as item_id,\n\t\tC.id as reference_id\n\tFROM linkable as I\n\tCROSS JOIN content_reference as C\n\tWHERE C.type = 'linkables'\n"
+				}
+			}
+		},
+		{
+			"modification": "createRelationInverseSide",
+			"entityName": "ContentReference",
+			"relation": {
+				"type": "OneHasMany",
+				"name": "linkables",
+				"target": "ContentReferenceLinkableItem",
+				"ownedBy": "reference"
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Course",
+			"unique": {
+				"fields": [
+					"unique"
+				]
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "CourseLocale",
+			"unique": {
+				"fields": [
+					"root",
+					"locale"
+				]
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "General",
+			"unique": {
+				"fields": [
+					"unique"
+				]
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "GeneralLocale",
+			"unique": {
+				"fields": [
+					"root",
+					"locale"
+				]
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "GenericPageLocale",
+			"unique": {
+				"fields": [
+					"root",
+					"locale"
+				]
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Header",
+			"unique": {
+				"fields": [
+					"unique"
+				]
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "HeaderLocale",
+			"unique": {
+				"fields": [
+					"root",
+					"locale"
+				]
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "HomePage",
+			"unique": {
+				"fields": [
+					"unique"
+				]
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "HomePageLocale",
+			"unique": {
+				"fields": [
+					"root",
+					"locale"
+				]
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Linkable",
+			"unique": {
+				"fields": [
+					"url"
+				]
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Locale",
+			"unique": {
+				"fields": [
+					"code"
+				]
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/admin",
+					"value": {
+						"s3": {
+							"**": {
+								"upload": true,
+								"read": true
+							}
+						},
+						"stages": "*",
+						"entities": {
+							"AvaibilityDate": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"course": true,
+										"order": true,
+										"dateTime": true,
+										"numberOfPeople": true,
+										"numberOfOccupiedPlaces": true,
+										"reservation": true
+									},
+									"create": {
+										"id": true,
+										"course": true,
+										"order": true,
+										"dateTime": true,
+										"numberOfPeople": true,
+										"numberOfOccupiedPlaces": true,
+										"reservation": true
+									},
+									"update": {
+										"id": true,
+										"course": true,
+										"order": true,
+										"dateTime": true,
+										"numberOfPeople": true,
+										"numberOfOccupiedPlaces": true,
+										"reservation": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ContactSubmission": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"createdAt": true,
+										"email": true,
+										"name": true,
+										"text": true
+									},
+									"create": {
+										"id": true,
+										"createdAt": true,
+										"email": true,
+										"name": true,
+										"text": true
+									},
+									"update": {
+										"id": true,
+										"createdAt": true,
+										"email": true,
+										"name": true,
+										"text": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Content": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"blocks": true
+									},
+									"create": {
+										"id": true,
+										"blocks": true
+									},
+									"update": {
+										"id": true,
+										"blocks": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ContentBlock": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"content": true,
+										"order": true,
+										"json": true,
+										"references": true
+									},
+									"create": {
+										"id": true,
+										"content": true,
+										"order": true,
+										"json": true,
+										"references": true
+									},
+									"update": {
+										"id": true,
+										"content": true,
+										"order": true,
+										"json": true,
+										"references": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ContentReference": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"block": true,
+										"type": true,
+										"primaryText": true,
+										"image": true,
+										"linkables": true,
+										"embed": true,
+										"link": true
+									},
+									"create": {
+										"id": true,
+										"block": true,
+										"type": true,
+										"primaryText": true,
+										"image": true,
+										"linkables": true,
+										"embed": true,
+										"link": true
+									},
+									"update": {
+										"id": true,
+										"block": true,
+										"type": true,
+										"primaryText": true,
+										"image": true,
+										"linkables": true,
+										"embed": true,
+										"link": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ContentReferenceLinkableItem": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"reference": true,
+										"item": true
+									},
+									"create": {
+										"id": true,
+										"reference": true,
+										"item": true
+									},
+									"update": {
+										"id": true,
+										"reference": true,
+										"item": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Course": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"unique": true,
+										"locales": true,
+										"avaibilityDates": true
+									},
+									"create": {
+										"id": true,
+										"unique": true,
+										"locales": true,
+										"avaibilityDates": true
+									},
+									"update": {
+										"id": true,
+										"unique": true,
+										"locales": true,
+										"avaibilityDates": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"CourseLocale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"title": true
+									},
+									"create": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"title": true
+									},
+									"update": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"title": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Embed": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"type": true,
+										"embedId": true
+									},
+									"create": {
+										"id": true,
+										"type": true,
+										"embedId": true
+									},
+									"update": {
+										"id": true,
+										"type": true,
+										"embedId": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"FormFields": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"successMessage": true,
+										"errorMessage": true,
+										"name": true,
+										"nameRequiredMessage": true,
+										"email": true,
+										"emailRequiredMessage": true,
+										"phone": true,
+										"phoneRequiredMessage": true,
+										"numberOfPeople": true,
+										"vacancies": true,
+										"date": true,
+										"note": true,
+										"submitButtonLabel": true
+									},
+									"create": {
+										"id": true,
+										"successMessage": true,
+										"errorMessage": true,
+										"name": true,
+										"nameRequiredMessage": true,
+										"email": true,
+										"emailRequiredMessage": true,
+										"phone": true,
+										"phoneRequiredMessage": true,
+										"numberOfPeople": true,
+										"vacancies": true,
+										"date": true,
+										"note": true,
+										"submitButtonLabel": true
+									},
+									"update": {
+										"id": true,
+										"successMessage": true,
+										"errorMessage": true,
+										"name": true,
+										"nameRequiredMessage": true,
+										"email": true,
+										"emailRequiredMessage": true,
+										"phone": true,
+										"phoneRequiredMessage": true,
+										"numberOfPeople": true,
+										"vacancies": true,
+										"date": true,
+										"note": true,
+										"submitButtonLabel": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"General": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"unique": true,
+										"dummyText": true,
+										"dummyImage": true,
+										"name": true,
+										"shortName": true,
+										"locales": true
+									},
+									"create": {
+										"id": true,
+										"unique": true,
+										"dummyText": true,
+										"dummyImage": true,
+										"name": true,
+										"shortName": true,
+										"locales": true
+									},
+									"update": {
+										"id": true,
+										"unique": true,
+										"dummyText": true,
+										"dummyImage": true,
+										"name": true,
+										"shortName": true,
+										"locales": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"GeneralLocale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"seo": true
+									},
+									"create": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"seo": true
+									},
+									"update": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"seo": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"GenericPage": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"locales": true
+									},
+									"create": {
+										"id": true,
+										"locales": true
+									},
+									"update": {
+										"id": true,
+										"locales": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"GenericPageLocale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"link": true,
+										"title": true,
+										"content": true,
+										"seo": true
+									},
+									"create": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"link": true,
+										"title": true,
+										"content": true,
+										"seo": true
+									},
+									"update": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"link": true,
+										"title": true,
+										"content": true,
+										"seo": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Header": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"unique": true,
+										"locales": true
+									},
+									"create": {
+										"id": true,
+										"unique": true,
+										"locales": true
+									},
+									"update": {
+										"id": true,
+										"unique": true,
+										"locales": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"HeaderLocale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"title": true,
+										"links": true
+									},
+									"create": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"title": true,
+										"links": true
+									},
+									"update": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"title": true,
+										"links": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"HomePage": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"unique": true,
+										"locales": true,
+										"address": true,
+										"email": true,
+										"tel": true,
+										"socials": true
+									},
+									"create": {
+										"id": true,
+										"unique": true,
+										"locales": true,
+										"address": true,
+										"email": true,
+										"tel": true,
+										"socials": true
+									},
+									"update": {
+										"id": true,
+										"unique": true,
+										"locales": true,
+										"address": true,
+										"email": true,
+										"tel": true,
+										"socials": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"HomePageLocale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"seo": true,
+										"link": true,
+										"title": true,
+										"description": true,
+										"image": true,
+										"formFields": true
+									},
+									"create": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"seo": true,
+										"link": true,
+										"title": true,
+										"description": true,
+										"image": true,
+										"formFields": true
+									},
+									"update": {
+										"id": true,
+										"root": true,
+										"locale": true,
+										"seo": true,
+										"link": true,
+										"title": true,
+										"description": true,
+										"image": true,
+										"formFields": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Image": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"url": true,
+										"fileName": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"create": {
+										"id": true,
+										"url": true,
+										"fileName": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"update": {
+										"id": true,
+										"url": true,
+										"fileName": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Link": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"type": true,
+										"title": true,
+										"isTargetBlank": true,
+										"externalLink": true,
+										"internalLink": true
+									},
+									"create": {
+										"id": true,
+										"type": true,
+										"title": true,
+										"isTargetBlank": true,
+										"externalLink": true,
+										"internalLink": true
+									},
+									"update": {
+										"id": true,
+										"type": true,
+										"title": true,
+										"isTargetBlank": true,
+										"externalLink": true,
+										"internalLink": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"LinkList": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"items": true
+									},
+									"create": {
+										"id": true,
+										"items": true
+									},
+									"update": {
+										"id": true,
+										"items": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"LinkListItem": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"list": true,
+										"order": true,
+										"link": true
+									},
+									"create": {
+										"id": true,
+										"list": true,
+										"order": true,
+										"link": true
+									},
+									"update": {
+										"id": true,
+										"list": true,
+										"order": true,
+										"link": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Linkable": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"url": true,
+										"genericPage": true,
+										"homePage": true,
+										"redirect": true
+									},
+									"create": {
+										"id": true,
+										"url": true,
+										"genericPage": true,
+										"homePage": true,
+										"redirect": true
+									},
+									"update": {
+										"id": true,
+										"url": true,
+										"genericPage": true,
+										"homePage": true,
+										"redirect": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Locale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"code": true,
+										"label": true,
+										"order": true,
+										"generals": true,
+										"headers": true,
+										"genericPages": true,
+										"homePages": true,
+										"courses": true
+									},
+									"create": {
+										"id": true,
+										"code": true,
+										"label": true,
+										"order": true,
+										"generals": true,
+										"headers": true,
+										"genericPages": true,
+										"homePages": true,
+										"courses": true
+									},
+									"update": {
+										"id": true,
+										"code": true,
+										"label": true,
+										"order": true,
+										"generals": true,
+										"headers": true,
+										"genericPages": true,
+										"homePages": true,
+										"courses": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Redirect": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"link": true,
+										"note": true,
+										"target": true
+									},
+									"create": {
+										"id": true,
+										"link": true,
+										"note": true,
+										"target": true
+									},
+									"update": {
+										"id": true,
+										"link": true,
+										"note": true,
+										"target": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Reservation": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"avaibilityDate": true,
+										"submittedAt": true,
+										"numberOfPeople": true,
+										"name": true,
+										"email": true,
+										"tel": true,
+										"note": true
+									},
+									"create": {
+										"id": true,
+										"avaibilityDate": true,
+										"submittedAt": true,
+										"numberOfPeople": true,
+										"name": true,
+										"email": true,
+										"tel": true,
+										"note": true
+									},
+									"update": {
+										"id": true,
+										"avaibilityDate": true,
+										"submittedAt": true,
+										"numberOfPeople": true,
+										"name": true,
+										"email": true,
+										"tel": true,
+										"note": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Seo": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"title": true,
+										"description": true,
+										"ogTitle": true,
+										"ogDescription": true,
+										"ogImage": true,
+										"noIndex": true,
+										"noFollow": true
+									},
+									"create": {
+										"id": true,
+										"title": true,
+										"description": true,
+										"ogTitle": true,
+										"ogDescription": true,
+										"ogImage": true,
+										"noIndex": true,
+										"noFollow": true
+									},
+									"update": {
+										"id": true,
+										"title": true,
+										"description": true,
+										"ogTitle": true,
+										"ogDescription": true,
+										"ogImage": true,
+										"noIndex": true,
+										"noFollow": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"SocialLink": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"type": true,
+										"url": true
+									},
+									"create": {
+										"id": true,
+										"type": true,
+										"url": true
+									},
+									"update": {
+										"id": true,
+										"type": true,
+										"url": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"SocialLinkItem": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"list": true,
+										"order": true,
+										"socialLink": true
+									},
+									"create": {
+										"id": true,
+										"list": true,
+										"order": true,
+										"socialLink": true
+									},
+									"update": {
+										"id": true,
+										"list": true,
+										"order": true,
+										"socialLink": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"SocialLinkList": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"items": true
+									},
+									"create": {
+										"id": true,
+										"items": true
+									},
+									"update": {
+										"id": true,
+										"items": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							}
+						},
+						"variables": {}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/public",
+					"value": {
+						"s3": {
+							"**": {
+								"upload": false,
+								"read": true
+							}
+						},
+						"stages": "*",
+						"entities": {
+							"AvaibilityDate": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"course": true,
+										"order": true,
+										"dateTime": true,
+										"numberOfPeople": true,
+										"numberOfOccupiedPlaces": true,
+										"reservation": true
+									}
+								}
+							},
+							"ContactSubmission": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"email": true,
+										"name": true,
+										"text": true
+									}
+								}
+							},
+							"Content": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"blocks": true
+									}
+								}
+							},
+							"ContentBlock": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"content": true,
+										"order": true,
+										"json": true,
+										"references": true
+									}
+								}
+							},
+							"ContentReference": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"block": true,
+										"type": true,
+										"primaryText": true,
+										"image": true,
+										"linkables": true,
+										"embed": true,
+										"link": true
+									}
+								}
+							},
+							"ContentReferenceLinkableItem": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"reference": true,
+										"item": true
+									}
+								}
+							},
+							"Course": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"unique": true,
+										"locales": true,
+										"avaibilityDates": true
+									}
+								}
+							},
+							"CourseLocale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"root": true,
+										"locale": true,
+										"title": true
+									}
+								}
+							},
+							"Embed": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"type": true,
+										"embedId": true
+									}
+								}
+							},
+							"FormFields": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"successMessage": true,
+										"errorMessage": true,
+										"name": true,
+										"nameRequiredMessage": true,
+										"email": true,
+										"emailRequiredMessage": true,
+										"phone": true,
+										"phoneRequiredMessage": true,
+										"numberOfPeople": true,
+										"vacancies": true,
+										"date": true,
+										"note": true,
+										"submitButtonLabel": true
+									}
+								}
+							},
+							"General": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"unique": true,
+										"dummyText": true,
+										"dummyImage": true,
+										"name": true,
+										"shortName": true,
+										"locales": true
+									}
+								}
+							},
+							"GeneralLocale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"root": true,
+										"locale": true,
+										"seo": true
+									}
+								}
+							},
+							"GenericPage": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"locales": true
+									}
+								}
+							},
+							"GenericPageLocale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"root": true,
+										"locale": true,
+										"link": true,
+										"title": true,
+										"content": true,
+										"seo": true
+									}
+								}
+							},
+							"Header": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"unique": true,
+										"locales": true
+									}
+								}
+							},
+							"HeaderLocale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"root": true,
+										"locale": true,
+										"title": true,
+										"links": true
+									}
+								}
+							},
+							"HomePage": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"unique": true,
+										"locales": true,
+										"address": true,
+										"email": true,
+										"tel": true,
+										"socials": true
+									}
+								}
+							},
+							"HomePageLocale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"root": true,
+										"locale": true,
+										"seo": true,
+										"link": true,
+										"title": true,
+										"description": true,
+										"image": true,
+										"formFields": true
+									}
+								}
+							},
+							"Image": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"url": true,
+										"fileName": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									}
+								}
+							},
+							"Link": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"type": true,
+										"title": true,
+										"isTargetBlank": true,
+										"externalLink": true,
+										"internalLink": true
+									}
+								}
+							},
+							"LinkList": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"items": true
+									}
+								}
+							},
+							"LinkListItem": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"list": true,
+										"order": true,
+										"link": true
+									}
+								}
+							},
+							"Linkable": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"url": true,
+										"genericPage": true,
+										"homePage": true,
+										"redirect": true
+									}
+								}
+							},
+							"Locale": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"code": true,
+										"label": true,
+										"order": true,
+										"generals": true,
+										"headers": true,
+										"genericPages": true,
+										"homePages": true,
+										"courses": true
+									}
+								}
+							},
+							"Redirect": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"link": true,
+										"note": true,
+										"target": true
+									}
+								}
+							},
+							"Reservation": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"avaibilityDate": true,
+										"submittedAt": true,
+										"numberOfPeople": true,
+										"name": true,
+										"email": true,
+										"tel": true,
+										"note": true
+									}
+								}
+							},
+							"Seo": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"title": true,
+										"description": true,
+										"ogTitle": true,
+										"ogDescription": true,
+										"ogImage": true,
+										"noIndex": true,
+										"noFollow": true
+									}
+								}
+							},
+							"SocialLink": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"type": true,
+										"url": true
+									}
+								}
+							},
+							"SocialLinkItem": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"list": true,
+										"order": true,
+										"socialLink": true
+									}
+								}
+							},
+							"SocialLinkList": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"items": true
+									}
+								}
+							}
+						},
+						"variables": {}
+					}
+				}
+			]
+		}
+	]
+}

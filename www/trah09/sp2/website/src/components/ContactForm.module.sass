@@ -1,0 +1,34 @@
+@use 'common'
+
+.wrapper
+	display: grid
+	row-gap: 0.5em
+	padding-block: 2em
+
+.item
+	display: grid
+
+.submitButtonWrapper
+	width: 100%
+	display: flex
+	justify-content: center
+
+.submitButton
+	width: fit-content
+	font-size: 1.375rem
+	margin-top: 1em
+
+.successMessage
+	font-weight: 700
+	color: common.$primary-color
+	text-align: center
+	border: 1px solid #2EA271
+	background: #E8F8E8
+	padding: 1.25rem
+	width: fit-content
+	display: flex
+	border-radius: .625rem
+	margin: 1.875rem auto
+	font-size: 1.125rem
+	@media  ( min-width: common.$break768 )
+		font-size: 1.375rem

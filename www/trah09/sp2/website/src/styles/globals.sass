@@ -1,0 +1,34 @@
+@use 'common'
+@import 'react-toastify/dist/ReactToastify.css'
+@import 'react-ripple-click/dist/index.css'
+
+:root
+	--common-edge-gap: 1rem
+	--common-content-width-small: 32rem
+	--common-content-width-normal: 50rem
+	--common-content-width-wide: 75rem
+	--background-color: #F2F2EF
+	--text-color: #000000
+	overflow-y: scroll
+
+	// https://www.npmjs.com/package/shared-loading-indicator
+	--ProgressLoadingIndicator-color: #{common.$primary-color}
+
+	@media (min-width: 40rem)
+		--common-edge-gap: 2rem
+
+	// @media (prefers-color-scheme: dark)
+	// 	--background-color: #121212
+	// 	--text-color: #FFFFFF
+
+body
+	margin: 0
+	font-family: common.$font
+	background-color: var(--background-color)
+	color: var(--text-color)
+
+*, *::before, *::after
+	box-sizing: border-box
+
+button
+	cursor: pointer

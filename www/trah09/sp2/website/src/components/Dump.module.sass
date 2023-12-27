@@ -1,0 +1,76 @@
+.Dump
+	position: relative
+	z-index: 100
+	max-width: 100%
+	font-size: .8rem
+	border-radius: .5em
+	background-color: #000000
+	color: white
+	box-shadow: 0 0 0 2px rgba(white, .5)
+
+	&.maximized
+		position: fixed
+		top: 1em
+		left: 1em
+		right: 1em
+		bottom: 1em
+		background: rgba(#000000, .9)
+		backdrop-filter: blur(10px)
+		z-index: 420
+		.Pre
+			max-height: 100%
+			overflow: auto
+
+	&.faded
+		color: rgba(#ffffff, .1)
+
+	.MaximizeButton
+		opacity: 0
+
+	&:hover .MaximizeButton
+		opacity: .5
+
+		&:hover, &:focus
+			opacity: 1
+
+	&.maximized .MaximizeButton
+		opacity: .5
+
+.Pre
+	font-size: inherit
+	color: inherit
+	overflow-x: auto
+	max-height: 20em
+	max-width: 100%
+	min-width: 5em
+	min-height: 3.5em
+	white-space: pre
+	padding: .5em
+	margin: 0
+
+.Corner
+	position: absolute
+	top: .5em
+	right: .5em
+
+.MaximizeButton
+	appearance: none
+	margin: 0
+	padding: 0
+	color: inherit
+	font-family: inherit
+	background: black
+	border: solid 2px
+	width: 1.5em
+	height: 1.5em
+	font-size: 1.5em
+	line-height: 1
+	display: inline-flex
+	vertical-align: center
+	align-items: center
+	justify-content: center
+	border-radius: 2em
+	transition: opacity ease-in-out .2s
+
+	&:hover, &:focus
+		outline: none

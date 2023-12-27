@@ -1,0 +1,30 @@
+@use 'common'
+@use 'sass:color'
+
+.wrapper
+	a
+		font-weight: 600
+		color: common.$primary-color
+		transition: color 0.2s
+
+		&:hover, &:focus-visible
+			color: color.adjust(common.$primary-color, $lightness: 15%)
+
+	h1
+		font-size: 4rem
+
+	h2
+		font-size: 3.25rem
+
+	h3
+		font-size: 2.5rem
+
+	em
+		font-style: normal
+		color: common.$primary-color
+
+	[data-contember-align="center"]
+		text-align: center
+
+	[data-contember-align="end"]
+		text-align: end
