@@ -5,35 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess Dota 2 Hero by Image</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        .spinner {
-            display: block;
-            margin: 20px auto;
-
-            width: 48px;
-            height: 48px;
-            border: 5px solid #242424;
-            border-bottom-color: transparent;
-            border-radius: 50%;
-            box-sizing: border-box;
-            animation: rotation 1s linear infinite;
-        }
-
-        @keyframes rotation {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -41,16 +13,25 @@
     <div id="game-container">
         <h1>Guess Dota 2 Hero by Image</h1>
         <h2>Score: <span class="score"></span></h2>
+        <button id="give-up">Give Up</button>
         <div id="hero-image-container">
             <img id="hero-image" alt="Dota 2 Hero">
         </div>
         <input type="text" id="guess-input" placeholder="Enter Hero Name">
         <button id="submit-guess">Submit Guess</button>
         <p id="result-message"></p>
+        <h2>Guessed hero</h2>
+    </div>
+    <button id="clear-storage">Clear Guessed Heroes</button>
+    <button id="toggle-guessed-heroes">Toggle Guessed Heroes</button>
+</div>
+        <div id="guessed-heroes-container">
+            <div id="guessed-heroes-container">
+            <img id="hero-image" alt="Dota 2 Hero">
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="script.js"></script>
+    <script src="java/script.js"></script>
 </body>
 
 </html>
