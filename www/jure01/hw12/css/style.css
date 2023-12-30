@@ -1,0 +1,134 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+}
+
+main,
+footer {
+    width: 75%;
+    margin: auto;
+    text-align: center;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 50px;
+}
+
+.instructions {
+    text-align: center;
+}
+
+.input_area {
+    background-color: #E1E1E1;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+}
+
+input,
+#find_button {
+    width: 50%;
+    text-align: center;
+}
+
+
+input {
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    color: #ffffff;
+    background-color: #DC143C;
+    border-radius: 7.5px;
+    border-color: transparent;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #5F9EA0;
+}
+
+.user_left {
+    float: left;
+    width: 33%;
+}
+
+.user_name {
+    background-color: #5F9EA0;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 10px;
+    height: 30px;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.user_light,
+.repo_name {
+    float: left;
+    margin-left: 10px;
+    padding-top: 3.5px;
+}
+
+.user_detail,
+.repo {
+    height: 33px;
+    background-color: #E1E1E1;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+
+.user_bold {
+    font-weight: bold;
+    margin-left: 200px;
+    text-align: left;
+    padding-top: 3.5px;
+}
+
+.user_text {
+    width: calc(100% - 25px - 300px);
+    float: right;
+}
+
+.user_image {
+    text-align: center;
+}
+
+#view_button{
+    width: 100%;
+}
+
+.href_text {
+    text-decoration: none;
+    color: #E1E1E1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_container {
+    margin-bottom: 320px;
+}
+
+.repo_link {
+    padding-top: 3.5px;
+}
+
+footer {
+    height: 50px;
+    margin-top: 5px;
+    background-color: #5F9EA0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
