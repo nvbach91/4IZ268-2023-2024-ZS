@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+/*
+@keyframes spinner {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.spinner {
+    border: 5px solid rgb(95, 95, 160);
+    border-top: 5px solid #ccc;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation: spin 0.1s linear infinite;
+    margin: auto;
+}
+*/
+footer {
+    background-color: cadetblue;
+    padding: 20px 0;
+}
+
+.cell{
+    background-color: lightblue;
+    margin: 5px;
+    padding: 10px;
+    font-size: medium;
+}
+.repository{
+    background-color: rgb(100, 202, 235);
+    margin: 5px;
+    padding: 10px;
+    font-size: medium;
+}
+.button{
+
+    background-color: red;
+}
+footer{
+    padding: 5px;
+    margin-top: 20px;
+}
+img{
+    padding: 10px;
+}
+
+.fail_message{
+    font-size: large;
+    padding-top: 20px;
+}
+
