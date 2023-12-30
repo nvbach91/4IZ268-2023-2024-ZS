@@ -1,0 +1,152 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin: 0;
+    position: relative;
+}
+
+hr {
+    border-style: solid;
+    border-color: #eee;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.loader {
+    border: 5px solid cadetblue;
+    border-top: 5px solid #ccc;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+footer {
+    background-color: cadetblue;
+    padding: 20px 0;
+}
+
+#search-form {
+    background-color: #dcdada;
+    margin: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#username-input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: transparent;
+}
+
+#button-find {
+    margin-top: 10px;
+    color: white;
+    background-color: #d46767;
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: transparent;
+}
+
+#user-name {
+    background-color: cadetblue;
+    color: white;
+    margin: 5px;
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.basics {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.picture-link {
+    width: 50%;
+    margin-top: 5px;
+}
+
+.picture {
+    max-width: 100%;
+}
+.view-profile {
+    width: 100%;
+    background-color: #a03e3e;
+    color: white;
+    padding: 10px;
+}
+
+.view-profile:hover {
+    cursor: pointer;
+    text-decoration: underline;
+
+}
+.general {
+    width: 50%;
+}
+
+.info {
+    background-color: #d4d1d1;
+    margin: 5px;
+    text-align: left;
+    padding-left: 5px;
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+}
+.info a:nth-child(1) {
+    width: 40%;
+}
+
+.info a:nth-child(2){
+    flex: 1;
+    font-weight: bold;
+}
+
+.repo-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-left: -30px;
+    margin-right: 10px;
+}
+
+.repo-item {
+    display: flex;
+    background-color: #f0f0f0;
+    margin-bottom: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+.repo-name {
+    flex: 30%; 
+}
+
+.repo-link {
+    flex: 70%; 
+} 
+
+
+.repo-link a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+}
+
+.repo-link a:hover {
+    text-decoration: underline;
+}
