@@ -1,0 +1,51 @@
+*{
+  border: solid red 1px;
+}
+  /* 
+   * Optional: Makes the sample page fill the window. 
+   */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.search-wrapper {
+  width: 30%;
+  margin: 5px;
+}
+
+.place-search {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.place-button {
+  height: 20px;
+  margin: 4px;
+}
+
+.route-search {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.route-button {
+  height: 20px;
+  margin: 4px;
+}
+
+.map {
+  height: 500px;
+  width: 100%;
+}
