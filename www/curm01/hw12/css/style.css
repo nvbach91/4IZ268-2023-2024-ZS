@@ -1,0 +1,74 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+form{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+.avatar {
+    width: 20%;
+  }
+  
+.profile {
+    margin-top: 10px;
+  }
+
+button, input{
+    width: 300px;
+    border-radius: 10px;
+    height: 40px;
+}
+
+button{
+    margin-top: 5px;
+    color: white;
+    background-color: rgb(0, 174, 255);
+}
+footer{
+    text-align: center;
+    background-color: rgb(0, 174, 255);
+    border-radius: 30px;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+footer a{
+    text-decoration: none;
+    color: black;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: rgba(0, 174, 255, 0.7);
+    border: 1px;
+}
+
+img{
+    margin-top: 20px;
+}
+
+.userInfo{
+    text-align: center;
+}
+
+.userName{
+    font-size: 25px;
+}
+
+.userInfo-card{
+    margin-top: 10px;
+}
+
+.userRepo{
+    text-align: center;
+}
+
+
+
+
+
