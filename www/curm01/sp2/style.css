@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+
+}
+
+.top-panel {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.top-panel-cols {
+    margin-top: 10px;
+}
+
+.row-main {
+    width: 100%;
+    display: flex;
+}
+
+.col-main {
+    width: calc(100%/3);
+}
+
+.row-lists, .row-calendar {
+    width: 450px;
+    border: 1px solid black;
+    margin: 20px;
+}
+.row-lists {
+    height: 430px;
+}
+
+.row-calendar {
+    height: 350px;
+}
+
+.row-list-detail, .row-list-case-detail {
+    border: 1px solid black;
+    margin: 20px;
+    width: 790px;
+    height: 800px;
+}
+
