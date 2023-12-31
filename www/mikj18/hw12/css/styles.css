@@ -1,0 +1,109 @@
+body {
+    background-color: #f9f9f9;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  header {
+    background-color: #4caf50;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  #app {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  
+  main {
+    padding: 20px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #user-profile-generated, #repositories-generated {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .profile-img {
+    border-radius: 50%;
+    max-width: 100px;
+    height: auto;
+  }
+  
+  .profile-login {
+    color: #4caf50;
+  }
+  
+  .profile-bio, .profile-location, .profile-description, .profile-email,
+  .profile-followers, .profile-registered, .profile-link {
+    color: #333;
+  }
+  
+  .repository {
+    margin-bottom: 10px;
+  }
+  
+  .repo-name {
+    font-weight: bold;
+    color: #4caf50;
+  }
+  
+  .repo-url {
+    color: #333;
+  }
+  
+  h1 {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif, sans-serif; 
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif, sans-serif; 
+    font-size: 16px;
+    font-weight: 200;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 26px;
+    color: #555;
+    margin: 0px;
+  }
+  
+  #app {
+    border: 5px solid #4caf50;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+
+  

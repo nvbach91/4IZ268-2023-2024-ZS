@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Git The Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <header>
+        <h1>Git The Hub</h1>
+        <h2>Enter a username to search for an user on GitHub</h2>
+      </header>
+      <main>
+        <form id="search-form">
+          <input name="username" id="username" placeholder="Search by name" /> 
+          <button id="submit" type="submit">Find</button>
+        </form>
+        <div id="user-profile"> </div>
+        <div id="repositories"></div>
+      </main>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
