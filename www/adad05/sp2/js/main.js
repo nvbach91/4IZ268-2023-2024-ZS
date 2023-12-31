@@ -42,6 +42,11 @@ const friday = $("#friday");
 const saturday = $("#saturday");
 const sunday = $("#sunday");
 
+let eventOrigin = "Začátek cesty";
+let eventDestination = "Cíl cesty";
+const origin = $("#origin");
+const destination = $("#destination");
+
 //funkce pro získání aktuálního data ve formátu yyyy-mm-dd
 const currentDate = () => {
     let d = new Date(),
@@ -63,7 +68,15 @@ const weekRange = (n) => {
     let dates = [];
     for (let i = 0; i < 7; i++) {
         const date = new Date();
-        date.setUTCDate(date.getUTCDate() + (n * 7) - date.getDay() + 1 + i);
+
+        // neděle se z nějakého důvodu reprezentuje jako date.getDay() === 0, což mi rozhodilo vzorec. Proto je zde
+        // podmínka, která zjistí, když je zrovna neděle, a namísto vzorce použije konstantu - 6
+        if (date.getDay() === 0) {
+            date.setUTCDate(date.getUTCDate() + (n * 7) - 6 + i);
+        } else {
+            date.setUTCDate(date.getUTCDate() + (n * 7) - date.getDay() + 1 + i);
+        }
+
         let month = '' + (date.getMonth() + 1),
             day = '' + date.getDate(),
             year = '' + date.getFullYear();
@@ -161,9 +174,13 @@ const loadEvent = (eventItem, pixels) => {
     let newEvent = $("<div></div>").addClass("event");
     newEvent.css("height", `${height}px`);
     newEvent.css("margin-top", `${marginTop}px`);
+    newEvent.click(() => {
+        addEventToDirections(newEvent);
+    });
     let newEventName = $(`<div>${eventItem["title"]}</div>`).addClass("eventTitle");
     let newEventTime = $(`<div>${eventItem["startTime"]}-${eventItem["endTime"]}</div>`).addClass("eventTime");
-    newEvent.append(newEventName, newEventTime);
+    let newEventPlace = $(`<div>${eventItem["place"]}</div>`).addClass("eventPlace");
+    newEvent.append(newEventName, newEventTime, newEventPlace);
     return [pixels, newEvent];
 }
 
@@ -330,6 +347,20 @@ const getDataFromUser = (key) => {
         console.log(weekDataSorted);
     } else {
         console.log("No data available for this week!");
+    }
+}
+
+const addEventToDirections = (event) => {
+    if (eventOrigin === "Začátek cesty" && eventDestination === "Cíl cesty") {
+        eventOrigin = event.children(".eventPlace").text();
+        origin.text(eventOrigin);
+        console.log(eventOrigin);
+    } else if (eventDestination === "Cíl cesty") {
+        eventDestination = event.children(".eventPlace").text();
+        destination.text(eventDestination);
+        console.log(eventDestination);
+    } else {
+        console.log("Both places are set. Delete them if you wish to add new!");
     }
 }
 
