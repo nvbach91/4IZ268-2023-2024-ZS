@@ -1,0 +1,16 @@
+/*Zde je styl pro canvas, ktere slouzi jako herni pole*/
+canvas {
+    display: block;
+    position: absolute;
+    border: 5px solid  #009BFF;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+body {
+    background-image: url("https://webcomicms.net/sites/default/files/clipart/128543/animated-snake-128543-4655601.gif");
+    background-repeat: repeat;
+    background-size: 150px 224px;
+}
