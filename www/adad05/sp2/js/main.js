@@ -22,6 +22,9 @@ const weekOfCalendar = $("#weekOfCalendar");
 const leftButton = $("#arrowLeftButton");
 const rightButton = $("#arrowRightButton");
 
+const transportDirections = $("#transportDirections");
+const directionsButton = $("#directionsButton");
+
 formButton.click(() => {
     createEvent();
 });
@@ -33,6 +36,14 @@ leftButton.click(() => {
 rightButton.click(() => {
     clickRight();
 });
+
+directionsButton.click(() => {
+    eventOrigin = "Začátek cesty";
+    origin.text(eventOrigin);
+    eventDestination = "Cíl cesty";
+    destination.text(eventDestination);
+    transportDirections.empty();
+})
 
 const monday = $("#monday");
 const tuesday = $("#tuesday");
@@ -359,9 +370,51 @@ const addEventToDirections = (event) => {
         eventDestination = event.children(".eventPlace").text();
         destination.text(eventDestination);
         console.log(eventDestination);
+        callForDirections();
     } else {
         console.log("Both places are set. Delete them if you wish to add new!");
     }
+}
+
+// Google Directions API - předávají se parametry eventOrigin a eventDestination
+const callForDirections = () => {
+    let directionsService = new google.maps.DirectionsService();
+    let directionRequest = {
+        origin: eventOrigin,
+        destination: eventDestination,
+        travelMode: 'TRANSIT',
+        transitOptions: {
+            departureTime: new Date(),
+            routingPreference: 'LESS_WALKING'
+        },
+        unitSystem: google.maps.UnitSystem.IMPERIAL,
+        region: 'cs'
+    };
+
+    directionsService.route(directionRequest).then((resp) => {
+        resp["routes"][0]["legs"][0]["steps"].forEach((item) => {
+            if (item["travel_mode"] === "WALKING") {
+                let instructions = item["instructions"];
+                let estimatedTime = item["duration"]["text"];
+                let step = `${instructions} (${estimatedTime} chůze)`;
+                console.log(step);
+
+                let newStep = $(`<div>${step}</div>`).addClass("textSection");
+                transportDirections.append(newStep);
+            } else if (item["travel_mode"] === "TRANSIT") {
+                let departureStop = item["transit"]["departure_stop"]["name"];
+                let departureTime = item["transit"]["departure_time"]["text"];
+                let arrivalStop = item["transit"]["arrival_stop"]["name"];
+                let arrivalTime = item["transit"]["arrival_time"]["text"];
+                let step = `MHD: Z ${departureStop} (Odjezd: ${departureTime}) do ${arrivalStop} (Příjezd: ${arrivalTime})`;
+                console.log(step);
+
+                let newStep = $(`<div>${step}</div>`).addClass("textSection");
+                transportDirections.append(newStep);
+
+            }
+        });
+    });
 }
 
 updateWeek();

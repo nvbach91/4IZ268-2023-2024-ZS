@@ -12,7 +12,7 @@
     <div class="wrapper">
         <div class="left-side">
             <div class="menu">
-                <div class="titleSection" id="weekOfCalendar">11-17.12.2023</div>
+                <div class="titleSectionWeek" id="weekOfCalendar">11-17.12.2023</div>
                 <div class="controls">
                     <input class="arrowLeft" id="arrowLeftButton" type="submit" value=""></input>
                     <input class="arrowRight" id="arrowRightButton" type="submit" value=""></input>
@@ -37,6 +37,8 @@
                 <div class="titleSection">Jízdní řády</div>
                 <div class="textSection from" id="origin">Začátek cesty</div>
                 <div class="textSection to" id="destination">Cíl cesty</div>
+                <div id="transportDirections"></div>
+                <input class="eraseDirections" id="directionsButton" type="submit" value="Nový spoj">
             </div>
         </div>
         <div class="calendar">
@@ -170,6 +172,8 @@
             </div>
         </div>
     </div>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3Ugdl4Pr8w17-EHInv8F0xzgk3qrW6o8&callback=initMap"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
 </body>
