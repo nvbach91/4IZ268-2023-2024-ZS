@@ -11,6 +11,8 @@ let weekDataSorted = {
 };
 
 let weekDates = [];
+let currentLocation = [];
+let weekTemperatures = [[], [], [], [], [], [], []];
 
 const formButton = $("#formButton");
 const eventName = $("#input1");
@@ -24,6 +26,15 @@ const rightButton = $("#arrowRightButton");
 
 const transportDirections = $("#transportDirections");
 const directionsButton = $("#directionsButton");
+const deleteButton = $("#deleteButton");
+
+const weather0 = $("#weather0");
+const weather1 = $("#weather1");
+const weather2 = $("#weather2");
+const weather3 = $("#weather3");
+const weather4 = $("#weather4");
+const weather5 = $("#weather5");
+const weather6 = $("#weather6");
 
 formButton.click(() => {
     createEvent();
@@ -36,6 +47,11 @@ leftButton.click(() => {
 rightButton.click(() => {
     clickRight();
 });
+
+deleteButton.click(() => {
+    deleteMode = !deleteMode;
+    console.log(deleteMode);
+})
 
 directionsButton.click(() => {
     eventOrigin = "Začátek cesty";
@@ -57,6 +73,8 @@ let eventOrigin = "Začátek cesty";
 let eventDestination = "Cíl cesty";
 const origin = $("#origin");
 const destination = $("#destination");
+
+let deleteMode = false;
 
 //funkce pro získání aktuálního data ve formátu yyyy-mm-dd
 const currentDate = () => {
@@ -308,6 +326,7 @@ const updateWeek = () => {
     console.log(weekKey);
     getDataFromUser(weekKey);
     writeDataToCalendar();
+    //getWeekTemperatures();
     return title;
 }
 
@@ -362,6 +381,26 @@ const getDataFromUser = (key) => {
 }
 
 const addEventToDirections = (event) => {
+    if (deleteMode === true) {
+        console.log("ahoj");
+        deleteMode = false;
+        console.log(deleteMode);
+        console.log(weekDataSorted);
+        let evTitle = event.children(".eventTitle").text();
+        let evDay = event.parent(".plan").attr('id');
+        let evStart = event.children(".eventTime").text().slice(0, 5);
+        let evEnd = event.children(".eventTime").text().slice(6, 11);
+        weekDataSorted[evDay].forEach((item) => {
+            if (item["title"] === evTitle && item["startTime"] === evStart && item["endTime"] === evEnd) {
+                console.log("ano " + weekDataSorted[evDay].indexOf(item));
+                let index = weekDataSorted[evDay].indexOf(item);
+                weekDataSorted[evDay].splice(index, 1);
+                updateLocalStorage();
+            }
+        })
+        console.log(weekDataSorted);
+        return;
+    }
     if (eventOrigin === "Začátek cesty" && eventDestination === "Cíl cesty") {
         eventOrigin = event.children(".eventPlace").text();
         origin.text(eventOrigin);
@@ -417,7 +456,101 @@ const callForDirections = () => {
     });
 }
 
-updateWeek();
+const getWeekTemperatures = () => {
+    weekTemperatures = [[], [], [], [], [], [], []];
+    weekDates.forEach((date) => {
+        const weatherDataURL = `https://api.openweathermap.org/data/3.0/onecall/day_summary?lat=${currentLocation[0]}&lon=${currentLocation[1]}&date=${date}&units=metric&appid=db02c84c1478b104b588239aaa69fa95`;
+        fetch(weatherDataURL).then((resp) => {
+            return resp.json();
+        }).then((data) => {
+            let date = data["date"];
+            let humidity = data["humidity"]["afternoon"];
+            let temperature = data["temperature"]["afternoon"];
+            let wind = data["wind"]["max"]["speed"];
+            console.log(`${date}, vlhkost = ${humidity}, teplota = ${temperature}, vítr = ${wind}`);
+            let index = weekDates.indexOf(date);
+            weekTemperatures[index].push([temperature, humidity, wind]);
+            setTemperatures(index);
+        });
+    })
+}
+
+const setTemperatures = (day) => {
+    if (day === 0) { weather0.text(`${Math.round(weekTemperatures[0][0][0])}°C ${Math.round(weekTemperatures[0][0][1])} %`) }
+    if (day === 1) { weather1.text(`${Math.round(weekTemperatures[1][0][0])}°C ${Math.round(weekTemperatures[1][0][1])} %`) }
+    if (day === 2) { weather2.text(`${Math.round(weekTemperatures[2][0][0])}°C ${Math.round(weekTemperatures[2][0][1])} %`) }
+    if (day === 3) { weather3.text(`${Math.round(weekTemperatures[3][0][0])}°C ${Math.round(weekTemperatures[3][0][1])} %`) }
+    if (day === 4) { weather4.text(`${Math.round(weekTemperatures[4][0][0])}°C ${Math.round(weekTemperatures[4][0][1])} %`) }
+    if (day === 5) { weather5.text(`${Math.round(weekTemperatures[5][0][0])}°C ${Math.round(weekTemperatures[5][0][1])} %`) }
+    if (day === 6) { weather6.text(`${Math.round(weekTemperatures[6][0][0])}°C ${Math.round(weekTemperatures[6][0][1])} %`) }
+}
+
+const updateLocalStorage = () => {
+    let monday = [];
+    weekDataSorted["monday"].forEach((item) => {
+        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        monday.push(json);
+    });
+
+    let tuesday = [];
+    weekDataSorted["tuesday"].forEach((item) => {
+        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        tuesday.push(json);
+    });
+
+    let wednesday = [];
+    weekDataSorted["wednesday"].forEach((item) => {
+        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        wednesday.push(json);
+    });
+
+    let thursday = [];
+    weekDataSorted["thursday"].forEach((item) => {
+        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        thursday.push(json);
+    });
+
+    let friday = [];
+    weekDataSorted["friday"].forEach((item) => {
+        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        friday.push(json);
+    });
+
+    let saturday = [];
+    weekDataSorted["saturday"].forEach((item) => {
+        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        saturday.push(json);
+    });
+
+    let sunday = [];
+    weekDataSorted["sunday"].forEach((item) => {
+        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        sunday.push(json);
+    });
+
+    let json = {
+        [weekDates[0]] : monday,
+        [weekDates[1]] : tuesday,
+        [weekDates[2]] : wednesday,
+        [weekDates[3]] : thursday,
+        [weekDates[4]] : friday,
+        [weekDates[5]] : saturday,
+        [weekDates[6]] : sunday,
+    };
+
+    console.log(JSON.stringify(json));
+    console.log(weekKey);
+    console.log(localStorage.getItem("01-07.01.2024"));
+    localStorage.setItem(weekKey, JSON.stringify(json));
+    updateWeek();
+}
+
+navigator.geolocation.getCurrentPosition((position) => {
+    currentLocation.push(position.coords.latitude, position.coords.longitude);
+    updateWeek();
+});
+
+
 
 //localStorage.clear();
 //localStorage.setItem('11-17.12.2023', JSON.stringify(events));

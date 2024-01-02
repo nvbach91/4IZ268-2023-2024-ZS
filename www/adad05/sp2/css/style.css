@@ -172,6 +172,10 @@
     border-bottom: 3px solid rgba(8, 8, 8, 0.466);
 }
 
+.event:hover {
+    cursor: pointer;
+}
+
 .eventTitle {
     font-size: 12px;
     line-height: 20px;
@@ -383,4 +387,28 @@
 
 .eraseDirections:hover {
     cursor: pointer ;
+}
+
+.deleteSection {
+    width: 100%;
+    background-image: url(/images/background7.jpg);
+    border-radius: 20px;
+    border-top: 4px solid white;
+    border-right: 4px solid white;
+    padding: 10px;
+}
+
+.deleteButton {
+    border-radius: 10px;
+    height: 40px;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.164);
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.deleteButton:hover {
+    cursor: pointer;
 }
