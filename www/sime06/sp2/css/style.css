@@ -2,6 +2,8 @@
     font-family: 'Concert One', sans-serif;
     box-sizing: border-box;
     text-align: center;
+    font-size: large;
+    margin: 0;
 }
 
 body {
@@ -15,15 +17,131 @@ main {
     flex-direction: row;
 }
 
-#app-description p {
-    margin: 0;
+h1 {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 50px;
+    color: rgb(211, 211, 211);
 }
 
-#app-description, #app {
+#wrapper {
+    background-color: gray;
+    border-radius: 20px;
+    width: 1024px;
+    margin-top: 50px;
+    background-image: url(../img/background.png);
+}
+
+#app-description ul {
+    margin-left: 25px;
+    margin-right: 25px;
+    color: rgb(211, 211, 211);
+}
+
+#app-description li {
+    text-align: left;
+    padding-bottom: 15px;
+}
+
+#app-description,
+#app {
     flex: 1;
-    padding: 20px;
+}
+
+.loader {
+    border: 16px solid white;
+    border-radius: 50%;
+    border-top: 16px solid black;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+    display: none;
+    margin-left: 42%;
+    margin-top: 5px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#button {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+}
+
+#button:hover {
+    background-color: #2980b9;
+}
+
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+#second {
+    margin-top: 10px;
+}
+
+select:hover {
+    border-color: #3498db;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+}
+
+label {
+    display: block;
+    color: rgb(211, 211, 211);
+    margin-bottom: 3px;
+}
+
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    width: 40%;
+    box-sizing: border-box;
+    margin-bottom: 0;
+    box-shadow: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+}
+
+#messageBox {
+    margin-top: 5px;
+    color: rgb(211, 211, 211);
 }
 
 footer {
     padding: 30px;
+    color: rgb(211, 211, 211);
 }
