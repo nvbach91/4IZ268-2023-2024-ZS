@@ -1,4 +1,4 @@
 import { AppModule } from './app.module.js'
 
-// spuštění applikace
+// spuštění aplikace
 new AppModule()

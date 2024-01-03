@@ -1,4 +1,4 @@
-import { MapController } from './map.controller.js'
+import { mapController } from './map.controller.js'
 import { MapService } from './map.service.js'
 
 /*
@@ -7,6 +7,6 @@ import { MapService } from './map.service.js'
 export class MapModule {
 	constructor() {
 		const mapService = new MapService()
-		new MapController(mapService)
+		new mapController(mapService)
 	}
 }

@@ -1,6 +1,6 @@
 import { AppService } from '../app.service.js'
-import { config } from '../configs/config.js'
-import { Events } from '../configs/events.js'
+import { Events } from '../enums/events.enum.js'
+import { RouteData } from '../enums/routeData.enum.js'
 import { getLanguageCode } from '../utils/getLanguageCode.js'
 import { secToMs } from '../utils/secToMs.js'
 import { Marker } from './Marker.js'
@@ -10,58 +10,45 @@ import { PagesView } from './pages.view.js'
 	Třída PagesService - je třída služby stránek, která se zabývá zpracováním logiky stránek. 
 */
 export class PagesService {
-	// konstruktor uloží hlavní pramatry služby 
-	constructor() {
-		// vytvoření instance třídy přehledu
-		const view = new PagesView(this)
 
-		this.currentLanguage = config.defaultLanguage
+	// konstruktor uloží hlavní pramatry služby
+	constructor() {
+		const view = new PagesView(this)
+		this.currentLanguage = "ENG"
 		this.isPageChangeable = true
-		this.initMainPage(view) // inicializace hlavní stránky
+		this.initMainPage(view)
+		this.getStored()
 	}
 
-	// GETTERY
+	// Getters
 	getCurrentLanguage = () => { return this.currentLanguage }
 
-	// SETTERY
-	setOrigin = (origin) => {
-		this.originPlace = origin
-		$(this.currentPageElements.fromInput).attr("value", origin.name)
-	}
-
-	// Metoda vytvářející hlávní stránku
+	// metoda vytvářející hlávní stránku
 	initMainPage = (view) => {
-		this.mainContainer = document.querySelector("main")
 		this.view = this.view ? this.view : view
-		const language = this.currentLanguage ? this.currentLanguage : config.defaultLanguage
-		const [mainPage, elements] = this.view.getMainPage(language)
-		this.currentPageElements = elements
-		// metoda vyvolaná, až bude statická stránka hotová
-		const onLoaded = () => {
-			this.setCurrentPage(mainPage)
-			// event pro nastavení původní geolokace
-			AppService.emit(Events.ORIGINGET, getLanguageCode(this.currentLanguage))
-		}
-		this.initPreloader(onLoaded)
-		// vyvolá metodu ověření uložených map
-		this.updateStored()
-	}
+		const language = this.language ? this.language : "ENG"
+		this.language = language
 
-	// metoda ověřující zda jsou nějaké uložené trasy v localStorage, pokud jsou take je doplní do stránky
-	updateStored = () => {
-		if (localStorage.length === 0) return
-		const bottomPane = this.currentPageElements.bottomPane
-		if (!bottomPane) return
-		Object.getOwnPropertyNames(localStorage).forEach((currentPlaceName) => {
-			const currentPlaces = JSON.parse(localStorage[currentPlaceName])
-			const id = currentPlaceName.split("-")[1]
-			const storedItem = this.view.getStoredMap(
-				id,
-				currentPlaces,
-				this.currentLanguage,
-			)
-			$(bottomPane).append(storedItem)
-		})
+		// metoda spuštěná po vykreslení stránky
+		const onLoaded = () => {
+			// plynulé zobrazení obsahu stránky
+			this.setCurrentPage(this.view.getMainPage(language))
+
+			// ověření uložení stávu uživatele
+			const url = new URL(location)
+			// pokud nějaká data jsou, nemusí uživatel zadavat znovu místa
+			if (url.searchParams.size > 0) {
+				const from = url.searchParams.get("from")
+				const to = url.searchParams.get("to")
+				$('#fromMain').val(from)
+				$('#toMain').val(to)
+			} else {
+				// pokud nejsou, pokusí se zjistit aspoň poloha uživatele
+				AppService.emit(Events.OriginGet, getLanguageCode(this.currentLanguage))
+			}
+		}
+		// spustí preloader, než stránka bude hotova
+		this.initPreloader(onLoaded)
 	}
 
 	// metoda uloží nové nastavení jazyku stránky a obnoví ji
@@ -69,26 +56,29 @@ export class PagesService {
 		if (!this.isPageChangeable) return
 		if (this.currentLanguage === language) return
 		this.currentLanguage = language
-		const [page, pageElements] = this.view.getMainPage(language)
-		this.currentPageElements = pageElements
-		this.setCurrentPage(page)
-		this.updateStored()
+		$(this.currentPage).fadeOut(secToMs(0.25), 0, () => {
+			// znovu vyvolá ověření polohy uživatele v novém jazyce
+			AppService.emit(Events.OriginGet, getLanguageCode(this.currentLanguage))
+
+			this.view.setTexts(language)
+			const langButtons = [$("#CZ"), $("#ENG")]
+			langButtons.forEach((button) => {
+				$(button).attr("id") === language ? $(button).addClass("active") : $(button).removeClass("active")
+			})
+			$(this.currentPage).fadeIn(secToMs(0.25), 0)
+		})
 	}
 
-	// metoda zajištující obnovení stránky, dostane novou stránku, zpracuje animaci a pak zobrazí ji
-	setCurrentPage = (newPage) => {
+	// metoda zajištující plynulé obnovení stránky, dostane novou stránku, zpracuje animaci a pak zobrazí ji
+	setCurrentPage = (newPage, onUpdated) => {
 		this.isPageChangeable = false
-		const oldPage = this.currentPage
 		// metoda, která vyvolaná po skrytí minulé stránky, zajistí animaci a zobrazí novou
 		const set = () => {
-			$(newPage).hide()
 			this.currentPage = newPage
-			$(this.mainContainer).append(newPage)
 			$(newPage).fadeIn(secToMs(0.25), 0, () => {
-				AppService.emit(Events.ORIGINGET, getLanguageCode(this.currentLanguage))
 				this.isPageChangeable = true
 			})
-			$(oldPage).remove()
+			if (onUpdated) onUpdated()
 		}
 		if (!this.currentPage) {
 			set()
@@ -97,60 +87,63 @@ export class PagesService {
 		$(this.currentPage).fadeOut(secToMs(0.25), 0, set)
 	}
 
-	// metoda inicializuje stránku plánování cesty
+	// metoda pro aktualizace informace o trase
+	onRouteUpdated = (route) => {
+		// pokud nejsou nová místa, nebo jsou chybná, tak ne vloží nic
+		const origin = route.getLastValidOrigin()?.name || ''
+		const destination = route.getLastValidDestination()?.name || ''
+		$('.from-input').val(origin)
+		$('.to-input').val(destination)
+
+		// jelikož je aplikace jednostranná, potřebujeme uchovat stav uživatele v URL adrese pro jednodušší přenosnost toho stavu 
+		const url = new URL(location)
+		url.searchParams.set("from", origin)
+		url.searchParams.set("to", destination)
+		history.pushState({}, "", url)
+	}
+
+	// metoda vytvářející hlávní stránku
 	initMapPage = (from, to) => {
 		if (!this.isPageChangeable) return
-		const [mapPage, mapPageElements] = this.view.getMapPage(this.currentLanguage)
-		this.checkRoute(from, to)
-		this.setCurrentPage(mapPage)
-		this.currentPageElements = mapPageElements
-		// vyvolá event vytvoření mapy
-		AppService.emit(Events.INITMAP,
-			mapPageElements.map,
-			getLanguageCode(this.currentLanguage),
-		)
+		const mapPage = this.view.getMapPage(this.currentLanguage)
+		const destination = to ? to : $("#toMain").val()
+		const origin = from ? from : $("#fromMain").val()
+		// vyvolá ověření nové trasy podle zadaných údajů
+		AppService.emit(Events.RouteGet, destination, origin)
+
+		// až bude stránka připravená, vyvolá službu mapy pro jeji zobrazení
+		this.setCurrentPage(mapPage, () => {
+			AppService.emit(Events.InitMap,
+				document.getElementById("map"),
+				getLanguageCode(this.currentLanguage),
+			)
+		})
 	}
 
-	// metoda vyvolaná po ověření koordinátů obnoví stránku a mapu, pokud parametry míst jsou zadány správně
-	createRoute = (origin, destination) => {
-		if (destination && destination.isOk) {
-			$(this.currentPageElements.toInput).attr("value", destination.name)
-		}
-		if (origin && origin.isOk) {
-			$(this.currentPageElements.fromInput).attr("value", origin.name)
-			this.setOrigin(origin)
-		}
-		if (!origin || !destination) return
-		if (!origin.isOk || !destination.isOk) return
-		// vyvolá event vytvoření trasy na mapě
-		AppService.emit(Events.CREATEROUTE, origin.coords, destination.coords)
-	}
+	// metoda vyvolána po kliknutí tklačítka Submit pro zpracovávání nově zadaných údajů
+	checkRoute = () => {
+		const destination = $("#toMap").val()
+		const origin = $("#fromMap").val()
 
-	// metoda vyvolaná po zmačknutí tlačitka změn na mapě ověří, vezme data z inputů a pošle je na ověření
-	checkRoute = (from = null, to = null) => {
-		const destination = to ? to : this.currentPageElements.toInput.value
-
-		const origin = from ? from : this.currentPageElements.fromInput.value
-
-		// vovolá event ověření trasy
-		AppService.emit(Events.ROUTEGET, destination, origin)
+		// vyvolá ověření nové trasy podle zadaných údajů
+		AppService.emit(Events.RouteGet, destination, origin)
 	}
 
 	// metoda vyvolaná po vytvoření markeru na mapě, vytvoří vlastní instanci markeru a uloží změny na stránce
-	appendMarker = (
-		mapMarker, mapMarkerUpdate, title, description
-	) => {
+	appendMarker = (mapMarker, title, description) => {
 		const marker = new Marker() // instace třídy Marker
 		const name = title ? title : "Marker #" + marker.getID()
 		const desc = description ? description : ""
 		marker.setTitle(name)
 		marker.setDescription(desc)
 		marker.setMapMarker(mapMarker)
-		marker.setMapMarkerUpdate(mapMarkerUpdate)
+		// vygeneruje se nový element markeru a vloží se do příslušného pole
 		const markerHTML = this.view.getMarkerHTML(marker, this.currentLanguage)
-		$(this.currentPageElements.markers).append(markerHTML)
-		// vyvolá event uložení markeru do localStorage
-		AppService.emit(Events.UPDATEMARKERS)
+		$(".markers-pane").append(markerHTML)
+		// vyvolá event aktualizace markeru na mapě, podle nových dat
+		AppService.emit(Events.UpdateMarker, mapMarker, name, desc)
+		// vyvolá event uložení markeru
+		AppService.emit(Events.SetRouteData, RouteData.AddWaypoint, marker)
 	}
 
 	// metoda pro změnu markeru
@@ -161,90 +154,74 @@ export class PagesService {
 		const marker = Marker.getByID(markerID)
 		marker.setTitle(name)
 		marker.setDescription(description)
-		const markerUpdater = marker.getMapMarkerUpdate()
-		markerUpdater.setDescription(description)
-		markerUpdater.setTitle(name)
+		// vyvolá event aktualizace markeru na mapě, podle nových dat
+		AppService.emit(Events.UpdateMarker, marker.getMapMarker(), name, description)
 		// vyvolá event uložení změn markeru do localStorage
-		AppService.emit(Events.UPDATEMARKERS)
+		AppService.emit(Events.SetRouteData, RouteData.UpdateWaypoint, marker)
 	}
 
 	// metoda pro smazání mareku
 	deleteMarker = (container) => {
 		const markerID = $(container).attr("id")
-		$(container).fadeOut(
-			secToMs(0.25),
-			0,
-			() => {
-				$(container).remove()
-			}
-		)
+		$(container).fadeOut(secToMs(0.25), 0, () => {
+			$(container).remove()
+		})
 		const marker = Marker.getByID(markerID)
-		marker.getMapMarkerUpdate().delete()
 		Marker.removeByID(markerID)
-		// vyvolá event vymazání markeru z localStorage
-		AppService.emit(Events.UPDATEMARKERS)
+		// vyvolá event vymazání markeru z mapy
+		AppService.emit(Events.RemoveMarker, marker.getMapMarker())
+		// vyvolá event vymazání markeru z uložiště
+		AppService.emit(Events.SetRouteData, RouteData.RemoveWaypoint, marker)
 	}
 
 	// metoda pro uložení trasy do localStorage
 	save = () => {
 		// vyvolá event uložení
-		AppService.emit(Events.SAVE, this.openStoredID)
+		AppService.emit(Events.Save)
 	}
 
-	// metoda pro vymazání mapy z localStorage
-	deleteStored = (id) => {
-		localStorage.removeItem(`places-${id}`)
-		$(`#map-${id}`).fadeOut(secToMs(0.5), 0, () => {
-			$(`#map-${id}`).remove()
+	// metoda pro načtení uložených tras v localStorage
+	getStored = () => {
+		Object.getOwnPropertyNames(localStorage).forEach((currentRouteName) => {
+			if (!currentRouteName.startsWith("route")) return
+			const id = currentRouteName.split("-")[1]
+			const currentRoute = JSON.parse(localStorage.getItem(currentRouteName))
+			// pokud nějaké trasy jsou vytvoří element a vloží se do dolního panelu
+			const mapElement = this.view.getStoredMap(id, currentRoute, this.currentLanguage)
+			$("#storedPane").append(mapElement)
 		})
+	}
+
+	// metoda pro vymazání uložené mapy z localStorage
+	deleteStored = (container, id) => {
+		$(container).fadeOut(secToMs(0.5), 0, () => {
+			$(container).remove()
+		})
+		localStorage.removeItem(`route-${id}`)
 	}
 
 	// metoda pro otevření uložené trasy ze seznamu
-	openStored = (id, places) => {
+	openStored = (id, route) => {
+		this.initMapPage(route.origin?.name, route.destination?.name)
+		// vyvolá event nastavení všech uložených markerů na mapu
+		AppService.emit(Events.SetMarkers, route.waypoints)
+		// vyvolá event obnovení otevřené mapy (je potřeba pro zpracování tras)
+		AppService.emit(Events.SetOpenStoredID, id)
 		this.openStoredID = id
-		this.initMapPage(
-			places.origin.name,
-			places.destination.name
-		)
-		this.checkpoints = places.checkpoints
-	}
-
-	// metoda obnoví checkpointy na uložené mapě, až bude mapa připravená
-	onGoogleLoaded = () => {
-		if (!this.checkpoints) return
-		this.checkpoints.forEach((currentPoint) => {
-			// vyvolá event pro vytvoření checkpointu
-			AppService.emit(
-				Events.CREATEMARKER,
-				currentPoint.lat,
-				currentPoint.lng,
-				currentPoint.title,
-				currentPoint.description
-			)
-		})
-		this.checkpoints = undefined
 	}
 
 	// metoda pro obnovení obrazovky bez mapy a ji vymazání 
 	deleteMap = () => {
-		const id = this.openStoredID
-		this.openStoredID = undefined
-		this.deleteStored(id)
+		// pokud je však už uložená, také se vymáže
+		AppService.emit(Events.DeleteStored)
 		this.initMainPage()
 	}
 
+	// metoda inicializace preloaderu
 	initPreloader = (action) => {
-		if (this.isDOMLoaded) {
-			action()
-			return
-		}
 		const loader = this.view.getPreloader()
 		this.setCurrentPage(loader)
-		$(document).ready(() => {
-			this.isDOMLoaded = true
-			$(loader).fadeOut("slow")
-			action()
-		})
+		$(document).ready(action)
 	}
 
 }

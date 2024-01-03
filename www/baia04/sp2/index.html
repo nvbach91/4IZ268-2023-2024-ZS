@@ -5,14 +5,87 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel='stylesheet' href='styles/styles.css'>
-	<title>Document</title>
+	<link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
+	<link rel="stylesheet"
+		href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.css"
+		type="text/css">
+	<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+	<meta name="description" content="Planováč cest pro rychle a pohodlné planování dovolené">
+	<meta name="keywords" content="Route, Plan, Road, Travel, Cesta, Trasa, Plánovat, Dovolená">
+	<meta name="author" content="Aleksei Baiukov">
+	<title>Plánovač cest</title>
 </head>
 
 <body>
-	<main></main>
+
+	<div id='main-page' class='undisplayed'>
+		<div class='main-form'>
+			<div class="language-container">
+				<div>
+					<p class="language-text" id='lang'></p>
+				</div>
+				<div>
+					<button class='language-button-left active' id='ENG'>EN</button><button class='language-button-right'
+						id='CZ'>CZ</button>
+				</div>
+			</div>
+			<input class="to-input" id='toMain'>
+			<div>
+				<input class="from-input readonly small" id='fromMain' readonly><button class="edit-button readonly"
+					id='edit'></button>
+			</div>
+			<button class="submit" id='go'></button>
+			<div class="bottom-pane" id='storedPane'>
+			</div>
+		</div>
+	</div>
+
+	<div id='map-page' class='undisplayed'>
+		<div class="container">
+			<div class="row-container">
+				<div id="map"></div>
+				<div class="rightbar">
+					<div class="field">
+						<p class="field-text" id='fromText'></p><input class="from-input big" id='fromMap' value="">
+					</div>
+					<div class="field">
+						<p class="field-text" id='toText'></p>
+						<input class="to-input" id='toMap'>
+					</div>
+					<button class="submit wide-button" id='submitChanges'></button>
+					<div class="markers">
+						<p class="field-text" id='markers'></p>
+						<div class="markers-pane">
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom-pane">
+				<div class="button save">
+					<p id='save'></p>
+					<img src="./assets/images/save.png" alt='Uložit' class="icon inverted">
+				</div>
+				<div class="button delete">
+					<p id='delete'></p>
+					<img src="./assets/images/delete.png" alt='Vymázat' class="icon">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id='preloader' class='undisplayed'>
+		<div class='preloader'>
+			<div class='loader'></div>
+		</div>
+	</div>
+
+
+	<script type='module' src='./js/main.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
+	<script
+		src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
 </body>
-<script type='module' src='./js/main.js'></script>
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </html>

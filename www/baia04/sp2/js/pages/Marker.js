@@ -15,19 +15,17 @@ export class Marker {
 		Marker.makerList.push(this)
 	}
 
-	// GETTERY
+	// Getters
 	getTitle = () => { return this.title }
 	getDescription = () => { return this.description }
 	getID = () => { return this.id }
 	getMapMarker = () => { return this.mapMarker }
-	getMapMarkerUpdate = () => { return this.mapMarkerUpdate }
 
-	// SETTERY
+	// Setters
 	setTitle = (title) => { this.title = title }
 	setDescription = (description) => { this.description = description }
 	setID = (id) => { this.id = id }
 	setMapMarker = (mapMarker) => { this.mapMarker = mapMarker }
-	setMapMarkerUpdate = (update) => { this.mapMarkerUpdate = update }
 
 	/*
 		statická metoda, která vyhledá marker podle jeho identifikáčního čísla v seznamu

@@ -1,9 +1,11 @@
 export const lang = {
 	"ENG": {
 		lang: "Choose language",
-		place: "Type in place you are going to",
+		toMain: "Type in place you are going to",
 		go: "Go",
-		from: "Input start place",
+		fromMain: "Input start place",
+		fromMap: "Input start place",
+		toMap: "Input destination place",
 		edit: "Change",
 		fromText: "From",
 		toText: "To",
@@ -18,9 +20,11 @@ export const lang = {
 	},
 	"CZ": {
 		lang: "Vyberte si jazyk",
-		place: "Kam se chystáte?",
+		toMain: "Kam se chystáte?",
 		go: "Pokračovat",
-		from: "Odkud se vypravíte?",
+		fromMain: "Odkud se vypravíte?",
+		fromMap: "Odkud se vypravíte?",
+		toMap: "Jaká je cílová destinace?",
 		edit: "Opravit",
 		fromText: "Z",
 		toText: "Do",

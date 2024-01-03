@@ -1,134 +1,160 @@
 import { AppService } from '../app.service.js'
-import { apis } from '../configs/apis.config.js'
-import { config } from '../configs/config.js'
-import { Events } from '../configs/events.js'
+import { Events } from '../enums/events.enum.js'
+import { mapConfig } from './map.config.js'
+import { MapView } from './map.view.js'
 
 /*
 	Třída MapService - je třída služby mapy, která se zabývá zpracováním logiky mapy. 
 */
 export class MapService {
 
-	constructor() { }
+	constructor() {
+		this.map = null
+		this.view = new MapView()
+	}
 
-	// metoda pro inicializace mapy a jeji počatecní nastavení podle specifikováného kontejneru, jazyka a počátečných koordinát
-	initMap = (container, language, initialCoordinates = null) => {
+	// metoda pro inicializace mapy a jeji počatecní nastavení podle specifikováného kontejneru
+	initMap = (container, initialCoordinates = null) => {
 		// pokud nejsou zadány počateční koordináty, vezme si běžné z konfigu
-		initialCoordinates = initialCoordinates ? initialCoordinates : config.defaultPlace.coords
-		this.mapContainer = container
-		const key = apis.google
-		const callbackName = 'initMapCallback'
+		const coordinates = initialCoordinates || mapConfig.defaultPlace.coords
+		const token = mapConfig.api
+		const user = mapConfig.userName
+		const styleID = mapConfig.styleID
+
+		const url = `https://api.mapbox.com/styles/v1/${user}/${styleID}?access_token=${token}`
+
+		// pokud tato funkce je vyvolaná při tom, že už mapa existuje, není potřeba se dotazovat na server, stačí ji vytvořit znovu
 		if (this.map) {
-			this.createMap(initialCoordinates)
+			this.createMap(coordinates)
 			return
 		}
-		// do globální proměnné window bude uložená callback funkce pro její spuštění hned po získání mapy z google serveru, až metoda je vyvolaná proměnná je hned vymázaná
-		window[callbackName] = () => {
-			this.createMap(initialCoordinates)
-			delete window[callbackName]
-		}
 
-		// pro získání google mapy je potřeba přes REST API se připojít k jejich serveru a na tento požadávek server vrátí objekt mapy podle jazyka či chyby a vyvolá příslušnou metodu
+		// pro získání mapboxGL mapy je potřeba přes API se připojít k jejich serveru a na tento požadávek server vrátí objekt mapy či chybu a vyvolá příslušnou metodu
 		$.ajax({
-			url: `https://maps.googleapis.com/maps/api/js?key=${key}&libraries=places&language=${language}&callback=${callbackName}`,
-			dataType: 'script',
+			method: "GET",
+			dataType: "json",
+			url: url,
+			success: (style) => { this.createMap(style, container, coordinates) },
+			error: (er) => { console.log(er) }
 		})
 	}
 
-	// metoda pro vytváření markerů. Když uživatel klikne příslušném tlačítkem po mapě, ta spustí příslušnou metodou pro nastavení markeru podle koordinát
-	setupClickEvent() {
-		google.maps.event.addListener(
-			this.map,
-			config.markerClickType,
-			(event) => {
-				const clickedCoords = {
-					lat: event.latLng.lat(),
-					lng: event.latLng.lng(),
-				}
+	// metoda pro vytváření mapy po jí získání od serveru
+	createMap = (style, container, initialCoordinates) => {
+		mapboxgl.accessToken = mapConfig.api
+		if (!container) return
 
-				this.addMarker(clickedCoords.lat, clickedCoords.lng)
-			})
-	}
-
-	// metoda pro vytváření mapy po jí získání od google serveru
-	createMap = (initialCoordinates) => {
-		this.map = new google.maps.Map(this.mapContainer, {
-			center: {
-				lat: initialCoordinates.lat,
-				lng: initialCoordinates.lng
-			},
-			zoom: config.zoom,
+		// vytvoří se mapa podle definováného stylu a uloží se do kontejneru na stránce 
+		this.map = new mapboxgl.Map({
+			container: container,
+			center: initialCoordinates,
+			zoom: mapConfig.zoom,
+			style: style
 		})
 
-		// vytvořění standardních služeb zpracovávání tras
-		this.directionsService = new google.maps.DirectionsService()
-		this.directionsDisplay = new google.maps.DirectionsRenderer()
-		this.directionsDisplay.setMap(this.map)
+		// pro následující vytvoření tras potřebujeme mít tzv. router
+		this.router = new MapboxDirections({
+			accessToken: mapConfig.api,
+			interactive: false,
+		})
 
-		// po vytoření mapy a služeb zpracovávání tras je možné spustit poslouchač kliknutí po ní
-		this.setupClickEvent()
+		// přířadí se router k mapě
+		this.map.addControl(this.router, 'top-left')
+
+		// funkce pro nastavení markeru
+		const addMarkerFunction = (coords) => { this.addMarker(coords) }
+
+		// nastavení udalostí po kliknutí na mapu, vytvoří se nový marker
+		this.map.on('click', (event) => {
+			// zjistí koordinát klitkuntí
+			const clickedCoords = {
+				lat: event.lngLat.lat,
+				lng: event.lngLat.lng,
+			}
+			addMarkerFunction(clickedCoords)
+		})
+
 		// nahlašení eventu, že mapa je připravená
-		AppService.emit(Events.GOOGLELOADED)
+		AppService.emit(Events.OnMapLoaded)
 	}
 
 	// nastavení centru koordinát mapy
 	setCoords = (newCoords) => {
-		if (!this.map) return
-		this.map.setCenter({
-			lat: newCoords.lat,
-			lng: newCoords.lng
-		})
+		if (this.map) {
+			this.map.setCenter([
+				newCoords.lng,
+				newCoords.lat,
+			])
+		}
+	}
+
+	// metoda pro nastavení trasy na mapě 
+	setRoute(origin, destination) {
+		// mapa se nemusí načíst hned, ale je velmi důležitá věc stránky, takže nemůžeme dovolit, aby uživatel něco dělal bez mapy. Radši necháme ho cvílku čekat, než se mapa připraví
+		const interval = setInterval(() => {
+			if (!this.map?.loaded()) return
+			const originCoords = [origin.lng, origin.lat]
+			const destinationCoords = [destination.lng, destination.lat]
+
+			// nastaví trasu z původního místa na cílové
+			this.router.setOrigin(originCoords)
+			this.router.setDestination(destinationCoords)
+
+			// až je mapa hotova, žádný interval nepokračuje
+			clearInterval(interval)
+		}, 50)
+	}
+
+	// nastavení nekolika markerů najednou
+	addMarkers = (markers) => {
+		// mapa se nemusí načíst hned, ale je velmi důležitá věc stránky, takže nemůžeme dovolit, aby uživatel něco dělal bez mapy. Radši necháme ho cvílku čekat, než se mapa připraví
+		const interval = setInterval(() => {
+			if (!this.map?.loaded()) return
+
+			// pro každý marker ze seznamů, vyvolá funkce pro nastavení markerů
+			markers.forEach((currentMarker) => {
+				this.addMarker(
+					currentMarker,
+					currentMarker.title,
+					currentMarker.description
+				)
+			})
+
+			// až je mapa hotova, žádný interval nepokračuje
+			clearInterval(interval)
+		}, 50)
 	}
 
 	// metoda pro vytváření markeru na mapě podle koordinát, názvu a popisu
-	addMarker(lat, lng, title, description) {
-		const marker = new google.maps.Marker({
-			position: { lat, lng },
-			map: this.map,
-			title: title,
-		})
-		const infoWindow = new google.maps.InfoWindow({
-			content: description,
-		})
+	addMarker = (coordinates, title, description) => {
+		// získá element markeru
+		const markerView = this.view.getMarkerPopUp(title, description)
 
-		// poslouchač eventu zmačknutí markeru, běžně spustí okénko s informacemi, resp. popisem
-		marker.addListener('click', () => {
-			infoWindow.open(this.map, marker)
-		})
+		// vytoří nový marker 
+		const marker = new mapboxgl.Marker()
+			.setLngLat([coordinates.lng, coordinates.lat])
+			.setPopup(new mapboxgl.Popup().setHTML(markerView))
+			.addTo(this.map)
 
-		// objeckt s metody pro obnovení markeru
-		const update = {
-			// metoda pro nastavení nového názvu markeru
-			setTitle: (title) => {
-				marker.setTitle(title)
-			},
-			// metoda pro úpravu popisu markeru
-			setDescription: (description) => {
-				infoWindow.setContent(description)
-			},
-			// metoda pro vymazání markeru
-			delete: () => {
-				marker.setMap(null)
-			}
-		}
+		marker.getElement().style.cursor = 'pointer'
+
+		// nastavení popUp menu při kliknutí na marker
+		marker.getElement().addEventListener('click', (event) => {
+			marker.togglePopup()
+			event.stopPropagation() // pokud uživatel kliknul na marker, není potřeba na tomto místě vytvařet nový
+		})
 
 		// event vyvoláný pro další zpracování markeru stránkami
-		AppService.emit(Events.ADDMARKER, marker, update, title, description)
+		AppService.emit(Events.AddMarker, marker, title, description)
 		return marker
 	}
 
-	// metoda pro nastavení trasy na mapě
-	getDirections(origin, destination) {
-		const request = {
-			origin,
-			destination,
-			travelMode: 'DRIVING',
-		}
-
-		// požádá službu tras vytvořit novou trasu podle zadáných koordinát destinace a původního místa
-		this.directionsService.route(request, (result, status) => {
-			if (status === 'OK') {
-				this.directionsDisplay.setDirections(result)
-			}
-		})
+	// metoda pro obnovení informace o markeru. Ziská a nasteví nové popUp menu
+	updateMarker = (marker, title, description) => {
+		const newPopUp = this.view.getMarkerPopUp(title, description)
+		marker.getPopup().setHTML(newPopUp)
 	}
+
+	// metoda pro vymazání markeru z mapy
+	removeMarker = (marker) => { marker.remove() }
 }

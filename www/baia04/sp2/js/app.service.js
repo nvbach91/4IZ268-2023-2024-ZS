@@ -8,6 +8,7 @@ export class AppService {
 	// Metoda pro registraci nového eventu
 	static on = (name, func) => {
 		Object.defineProperty(this.events, name, { value: func })
+		console.log(this.events)
 	}
 
 	// Metoda pro spuštění eventu podle jeho názvu

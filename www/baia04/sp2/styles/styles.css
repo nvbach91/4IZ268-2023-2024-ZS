@@ -27,7 +27,7 @@ main {
 	gap: 10px
 }
 
-.field-input {
+.to-input {
 	padding: 10px;
 	width: 200px;
 	height: 30px;
@@ -35,13 +35,22 @@ main {
 	border-radius: 25px;
 }
 
-.from-field {
+.from-input{
 	padding: 10px;
-	width: 140px;
 	height: 30px;
 	border-width: 2px 0px 2px 2px;
 	border-top-left-radius: 25px;
 	border-bottom-left-radius: 25px;
+}
+
+.small {
+	width: 140px;
+}
+
+.big {
+	width: 200px;
+	border: 2px solid black;
+	border-radius: 25px;
 }
 
 .submit {
@@ -63,8 +72,7 @@ main {
 	border: 2px white solid;
 }
 
-.save,
-.delete {
+.save, .delete {
 	height: 20px;
 	background-color: green;
 	display: flex;
@@ -77,9 +85,7 @@ main {
 	background-color: darkred;
 }
 
-.submit:hover,
-.save:hover,
-.delete:hover {
+.submit:hover, .save:hover, .delete:hover {
 	cursor: pointer;
 	border: 2px darkgreen solid;
 	transition: 0.25s;
@@ -89,7 +95,11 @@ main {
 	border-color: red
 }
 
-.map {
+.undisplayed {
+	display: none;
+}
+
+#map {
 	width: 800px;
 	height: 600px;
 }
@@ -107,21 +117,19 @@ main {
 	border-width: 2px 0px 2px 2px;
 	border-color: black;
 	border-style: solid;
-	border-top-left-radius: 25px;
-	border-bottom-left-radius: 25px;
+	border-top-left-radius: 25px; 
+	border-bottom-left-radius: 25px; 
 	padding: 5px;
 	height: 40px;
-
 }
 
-.language-button-right,
-.edit-button {
+.language-button-right, .edit-button {
 	background: none;
 	border-width: 2px 2px 2px 2px;
 	border-color: black;
 	border-style: solid;
-	border-top-right-radius: 25px;
-	border-bottom-right-radius: 25px;
+	border-top-right-radius: 25px; 
+	border-bottom-right-radius: 25px; 
 	padding: 5px;
 	height: 40px;
 }
@@ -131,11 +139,7 @@ main {
 	padding: 5px;
 }
 
-.language-button-left:hover,
-.language-button-right:hover,
-.edit-button:hover,
-.clickable:hover,
-.button {
+.language-button-left:hover, .language-button-right:hover, .edit-button:hover, .clickable:hover, .button {
 	cursor: pointer;
 }
 
@@ -162,8 +166,7 @@ main {
 	border-color: darkred
 }
 
-.field-text,
-.language-text {
+.field-text, .language-text {
 	font-weight: bold;
 }
 
@@ -183,12 +186,12 @@ main {
 	max-height: 350px;
 	border: 2px solid black;
 	border-radius: 25px;
-	overflow-y: auto;
+	overflow-y: auto; 
 }
 
 .icon {
-	width: 15px;
-	height: 15px;
+	width: 20px;
+	height: 20px;
 }
 
 .marker {
@@ -215,8 +218,6 @@ main {
 
 .bottom-pane {
 	margin-top: 20px;
-	max-height: 300px;
-	overflow-y: auto;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -270,4 +271,8 @@ main {
 	100% {
 		transform: rotate(360deg);
 	}
+}
+
+.mapboxgl-ctrl-top-left {
+	display: none !important;
 }
