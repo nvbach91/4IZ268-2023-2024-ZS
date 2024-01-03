@@ -1,0 +1,57 @@
+body {
+    text-align: center;
+    font-family: Calibri;
+    background-image: url(https://juliemarieeats.com/wp-content/uploads/2023/01/Bakery-Style-Chocolate-Chip-Cookies-14-scaled.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.game_ui {
+    background-color: green;
+}
+.achievement_ui{
+    background-color: gold;
+    display: inline-block;
+    height: 800px;
+    width: 30%;
+    border: 3px solid burlywood;
+}
+.cookie_ui{
+    background-color: antiquewhite;
+    vertical-align: top;
+    display: inline-block;
+    height: 800px;
+    width: 33%;
+    border: 3px solid burlywood;
+}
+.upgrades_shop{
+    background-color: blueviolet;
+    vertical-align: top;
+    display: inline-block;
+    height: 800px;
+    width: 33%;
+    border: 3px solid burlywood;
+}
+button {
+    background-color: beige;
+    color: black;
+    border: 2px solid burlywood;
+    margin: 5px;
+    height: 50px;
+    font-size: medium;
+}
+
+button:hover {
+    background-color: brown;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.divider {
+    color: blueviolet;
+    height: 5px;
+    width: 60px;
+}
