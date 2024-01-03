@@ -2,57 +2,74 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cabin&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <title>Task Manager with Google Calendar API</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./css/style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cabin&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
-    <div id="app">
-        <header>
-            <h1>Task Manager</h1>
-        </header>
+  <header>
+    <h1>Task Manager</h1>
+    <div id="loader"></div>
+  </header>
 
-        <section id="task-form">
-            <div><input type="text" id="new-task-title" placeholder="Task Title"></div>
-            <div><textarea id="new-task-description" placeholder="Task Description"></textarea></div>
-            <div class="form-row">
-                <div><input type="date" id="new-task-deadline" placeholder="Deadline"></div>
-                <div>
-                    <select id="new-task-priority">
-                        <option value="">Select Priority</option>
-                        <option value="High">High</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Low">Low</option>
-                    </select>
-                </div>
-            </div>
-            <div><button id="add-task"><i class="fa fa-plus"></i> Add Task</button></div>
-        </section>
+  <main>
+    <div class="auth_buttons">
+      <button id="authorize_button"><i class="fab fa-google"></i>Authorize</button>
+      <button id="signout_button"><i class="fas fa-sign-out-alt"></i>Sign Out</button>
     </div>
-    <div class="task-column">
-        <section id="active-tasks">
-            <h2>Active Tasks</h2>
-            <ul id="tasks-list"></ul>
-        </section>
-        <section id="completed-tasks">
-            <h2>Completed Tasks</h2>
-            <ul id="done-list"></ul>
-        </section>
+    <div class="message">
+      <div id="message_div"></div>
     </div>
-    <section id="task-controls">
-        <button id="delete-all">Delete All Tasks</button>
-    </section>
+    <div id="event_controls">
+      <div id="error_message"></div>
+      <form id="event_form">
+        <input type="hidden" id="event_id">
+        <label for="event_title">Event Title:</label>
+        <input type="text" id="event_title" placeholder="Add Event Title" required>
+        <div class="date_time">
+          <div class="date_container">
+            <label for="event_start">Start Date and Time:</label>
+            <input type="datetime-local" id="event_start" required>
+          </div>
+          <div class="date_container">
+            <label for="event_end">End Date and Time:</label>
+            <input type="datetime-local" id="event_end" required>
+          </div>
+        </div>
+        <label for="event_description">Event Description:</label>
+        <input type="text" id="event_description" placeholder="Add Event Description">
+        <button type="button" id="add_event_button"><i class="fas fa-plus"></i>Add Event</button>
+      </form>
+    </div>
+    <div class="events">
+      <div id="events_list">
+        <h2>Upcoming Events</h2>
+        <ul id="upcoming_events_content"></ul>
+      </div>
+      <div id="past_events">
+        <h2>Past Events</h2>
+        <div class="past-events-buttons">
+          <button id="day_events">Past Day</button>
+          <button id="week_events">Past Week</button>
+          <button id="month_events">Past Month</button>
+        </div>
+        <ul id="past_events_content"></ul>
+      </div>
+    </div>
+  </main>
 
+  <footer>
+    <p>Task Manager © 2024</p>
+  </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.16.1/dist/date-fns.min.js"></script>
-    <script src="./js/script.js" defer></script>
+  <script src="./js/main.js"></script>
+  <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+  <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
 </body>
 
 </html>

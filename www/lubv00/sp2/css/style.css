@@ -1,163 +1,242 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Inter, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, sans-serif;
 }
 
 body {
-    background-color: #f4f4f4;
-    padding: 1rem;
+  background-color: #f4f4f4;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 20px;
+main {
+  display: none;
 }
 
-#task-form {
-    margin: auto;
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: min(94%, 600px);
+#loader {
+  width: 10rem;
+  height: 10rem;
+  border: 1rem solid #f3f3f3;
+  border-top: 1rem solid #322d76;
+  border-bottom: 1rem solid #322d76;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  margin: 2rem auto;
 }
 
-#task-form input[type="text"],
-#task-form textarea {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-#task-form .form-row {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+.auth_buttons {
+  display: flex;
+  flex-direction: column;
 }
 
-#task-form .form-row div {
-    margin-right: 8px;
+h1,
+h2 {
+  color: #333;
 }
 
-#task-form .form-row input,
-#task-form .form-row select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+h2 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
 }
 
-#task-form button {
-    display: block;
-    width: fit-content;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #5cb85c;
-    color: white;
-    cursor: pointer;
-    margin: 0 auto;
+main {
+  width: 100%;
 }
 
-#task-form button:hover {
-    background-color: #4cae4c;
+.events {
+  margin: auto;
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
 }
 
-.task-column {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+#event_controls,
+#events_list,
+#past_events {
+  background-color: #fff;
+  padding: 1.6rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
 }
 
-section {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    margin: 2rem 1rem;
+#event_controls {
+  width: min(94%, 600px);
+  margin: auto;
 }
 
-section h2 {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+#event_form {
+  display: flex;
+  flex-direction: column;
 }
 
-ul {
-    list-style-type: none;
+input {
+  padding: 10px;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+label {
+  font-size: 0.8rem;
+}
+
+.date_container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.date_time {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+button {
+  width: fit-content;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button i {
+  margin-right: 5px;
+}
+
+
+#add_event_button,
+.save-event-button {
+  background-color: #d26b9d;
+  color: white;
+}
+
+#add_event_button:hover,
+.save-event-button:hover {
+  background-color: #b95485;
+}
+
+#authorize_button,
+.edit-event-button {
+  background-color: #4e499e;
+  color: white;
+  margin: 0.5rem;
+}
+
+.edit-event-button {
+  margin: 0;
+}
+
+#authorize_button:hover,
+.edit-event-button:hover {
+  background-color: #322d76;
+}
+
+#signout_button,
+.delete-event-button {
+  background-color: #b793c9;
+  color: #4e499e;
+  margin-bottom: 1rem;
+}
+
+.delete-event-button {
+  margin-bottom: 0;
+}
+
+#signout_button:hover,
+.delete-event-button:hover {
+  background-color: #9b73af;
+}
+
+#day_events,
+#week_events,
+#month_events {
+  background-color: #a2bedc;
+  color: #042441;
+}
+
+#day_events:hover,
+#week_events:hover,
+#month_events:hover {
+  background-color: #7797b9;
+}
+
+.cancel-event-button {
+  background-color: #e4def9;
+  color: #322d76;
+}
+
+.cancel-event-button:hover {
+  background-color: #b1a9d1;
+  color: #322d76;
 }
 
 ul li {
-    background: #eee;
-    padding: 10px;
-    margin-bottom: 8px;
-    border-radius: 4px;
+  list-style: none;
 }
 
-ul li h3 {
-    margin: 0;
+ul li:not(:last-child) {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
 }
 
-ul li p {
-    margin: 5px 0;
+.event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-ul li button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.event-actions,
+.past-events-buttons {
+  display: flex;
+  gap: 0.5rem;
 }
 
-ul li button.edit {
-    background-color: #f0ad4e;
-    color: white;
+.past-events-buttons {
+  margin-bottom: 1rem;
 }
 
-ul li button.delete {
-    background-color: #d9534f;
-    color: white;
+.message #message_div {
+  display: none;
+  margin: 0.5rem 0 1.8rem;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 0.6rem;
 }
 
-ul li button.done {
-    background-color: #5cb85c;
-    color: white;
+.message .offline {
+  color: blue;
 }
 
-#task-controls {
-    text-align: center;
-    background: none;
-    padding: 0;
-    margin: -1.2rem;
-    box-shadow: none;
+.message .synced {
+  color: green;
 }
 
-#task-controls button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #d9534f;
-    color: white;
-    cursor: pointer;
-}
-
-#task-controls button:hover {
-    background-color: #c9302c;
-}
-
-@media screen and (max-width: 800px) {
-    .task-column {
-        flex-direction: column;
-        margin-top: 1rem;
-    }
-
-    .task-column section {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
+#error_message {
+  color: red;
+  display: none;
 }
