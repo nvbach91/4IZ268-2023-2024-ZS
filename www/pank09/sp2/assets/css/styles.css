@@ -110,10 +110,6 @@ aside {
     transition: transform .25s;
 }
 
-.cards.vertical .card:hover img {
-    transform: scale(1.1);
-}
-
 .cards.vertical .card .content {
     padding-right: 50px;
 }
@@ -128,12 +124,13 @@ aside {
 }
 
 .cards.horizontal .card .content {
-    padding: 20px;
+    padding: 20px 20px 0;
     text-align: center;
 }
 
 .cards .card img {
     width: 75px;
+    height: auto;
 }
 
 .cards .card .details {
@@ -147,6 +144,43 @@ aside {
     margin-bottom: .25rem;
 }
 
+.cards .card .list {
+    margin-top: -10px;
+    padding-bottom: 20px;
+}
+
+.cards .card:not(.is-active) .list {
+    display: none;
+}
+
+.cards .card .i-chevron-down {
+    transition: transform .25s;
+}
+
+.cards .card.is-active .i-chevron-down {
+    transform: rotate(-180deg);
+}
+
+.cards .card .list .card img {
+    display: block;
+    margin: auto;
+    width: 25px;
+    height: auto;
+}
+
+.cards .card .list .card .content {
+    text-align: center;
+    padding: 0;
+}
+
+.cards .card .list .card .time,
+.cards .card .list .card .details {
+    font-size: 0.75rem;
+}
+
+.cards.vertical .row {
+    margin-bottom: 0;
+}
 /* Grid */
 
 .container {
@@ -220,6 +254,15 @@ aside {
     flex-basis: 100%;
 }
 
+.row.narrow {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.row.narrow .col {
+    padding: 5px;
+}
+
 @media screen and (min-width: 1025px) {
     .row {
         display: flex;
@@ -237,6 +280,7 @@ aside {
         padding-left: 30px;
         padding-right: 30px;
     }
+    
 }
 
 .notification {
@@ -250,6 +294,21 @@ aside {
 .notification.error {
     color: rgb(189, 16, 16);
     background-color: rgba(180, 18, 18, 0.2);
+}
+
+/* Icon */
+.icon {
+    display: block;
+    content: ' ';
+    width: 20px;
+    height: 20px;
+    -webkit-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.i-chevron-down {
+    background-image: url(../icons/chevron-down.svg);
 }
 
 /* Animation */

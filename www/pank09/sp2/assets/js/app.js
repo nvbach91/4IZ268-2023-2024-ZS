@@ -2,11 +2,25 @@ class WeatherApp {
     constructor() {
         this.promises = [];
 
-        this.OW_apiKey = "";
-        this.imageBase = "assets/icons/";
+        this.OW_apiKey = '';
+        this.imageBase = 'assets/icons/';
 
         this.currentLocation = JSON.parse(localStorage.getItem('currentLocation')) || null;
-        this.weather = JSON.parse(localStorage.getItem('weather')) || null;
+        this.weather = null;
+
+        const weather = localStorage.getItem('weather');
+        const lastModifiedString = localStorage.getItem('weather.lastModifiedDate');
+
+        if (weather && lastModifiedString) {
+            const lastModifiedDate = new Date(lastModifiedString);
+            const currentDateTime = new Date();
+
+            const timeDifferenceInMintues = (currentDateTime - lastModifiedDate) / (1000 * 60);
+
+            if (timeDifferenceInMintues < 2) {
+                this.weather = JSON.parse(weather);
+            }
+        }
         
         this.initialize();
     }
@@ -18,7 +32,7 @@ class WeatherApp {
             icon:           document.querySelector('.current-weather-icon'),
             wind:           document.querySelector('.current-wind'),
             humidity:       document.querySelector('.current-humidity'),
-            uv:             document.querySelector('.current-uv'),
+            precipitation:  document.querySelector('.current-precipitation'),
             pressure:       document.querySelector('.current-pressure'),
             dailyForecast:  document.querySelector('.daily-forecast'),
             hourlyForecast: document.querySelector('.hourly-forecast'),
@@ -48,7 +62,7 @@ class WeatherApp {
 
         this.sendRequest(apiUrl, (data) => {
             if (data.length === 0) {
-                throw new Error("City not found. Please set the city manually.");
+                throw new Error('City not found. Please set the city manually.');
                 return;
             }
             this.currentLocation = {};
@@ -73,7 +87,7 @@ class WeatherApp {
     
                         this.sendRequest(apiUrl, (data) => {
                             if (data.length === 0) {
-                                throw new Error("City not found. Please set the city manually.");
+                                throw new Error('City not found. Please set the city manually.');
                                 return;
                             }
                             this.currentLocation = {
@@ -90,7 +104,7 @@ class WeatherApp {
                     }
                 );
             } else {
-                this.pushError("Geolocation API is not supported by this browser. Please set the city manually.");
+                this.pushError('Geolocation API is not supported by this browser. Please set the city manually.');
             }
         });
     }
@@ -110,13 +124,23 @@ class WeatherApp {
 
         this.containers.city.innerText = name;
         this.containers.temperature.innerText = this.kelvinToCelcius(main.temp);
-        this.containers.humidity.innerText = main.humidity + "%";
-        this.containers.uv.innerText = "0.16";
-        this.containers.pressure.innerText = this.hPaToMmHg(main.pressure);
-        this.containers.wind.innerText = Math.round(wind.speed) + " m/s";
+        this.containers.humidity.innerText = main.humidity + '%';
 
-        if (weather.length !== 0)
+        this.containers.precipitation.innerText = '0 mm';
+
+        if ('rain' in this.weather.current && '1h' in this.weather.current.rain) 
+            this.containers.precipitation.innerText = this.weather.current.rain['1h'] + ' mm';
+
+        if ('snow' in this.weather.current && '1h' in this.weather.current.snow) 
+            this.containers.precipitation.innerText = this.weather.current.snow['1h'] + ' mm';
+
+        this.containers.pressure.innerText = this.hPaToMmHg(main.pressure);
+        this.containers.wind.innerText = Math.round(wind.speed) + ' m/s';
+
+        if (weather.length !== 0) {
             this.containers.icon.src = `${this.imageBase}${weather[0].icon}.svg`;
+            this.containers.icon.alt = weather[0].main;
+        }
         
         if (!this.weather.forecast)
             return;
@@ -142,13 +166,17 @@ class WeatherApp {
             const nowDate = new Date();
             const nowDayName = this.getDayName(nowDate.getDay());
 
-            const displayDayName = nowDayName === forecastDayName ? "Today" : forecastDayName;
+            const displayDayName = nowDayName === forecastDayName ? 'Today' : forecastDayName;
 
             const tempMin = this.kelvinToCelcius(main.temp_max);
             const tempMax = this.kelvinToCelcius(main.temp_min);
             const temp = tempMin === tempMin ? tempMin : `${tempMin}/${tempMax}`;
 
-            dayForecastCards.push(this.createDailyCard(weather[0].icon, displayDayName, weather[0].main, temp));
+            const card = this.createDailyCard(weather[0].icon, displayDayName, weather[0].main, temp);
+
+            this.handleClickOnDailyCard(card, dayForecast);
+
+            dayForecastCards.push(card);
         });
         
         this.containers.dailyForecast.innerHTML = '';
@@ -157,7 +185,7 @@ class WeatherApp {
         const hourlyForecastCards = [];
 
         // Get first 3 hours of first day
-        list.slice(0, 3).forEach(hourlyForecast => {
+        list.slice(0, 4).forEach(hourlyForecast => {
             const { name, main, weather, wind } = hourlyForecast;
 
             const forecastDate = new Date(hourlyForecast.dt_txt);
@@ -170,13 +198,53 @@ class WeatherApp {
         this.containers.hourlyForecast.append(...hourlyForecastCards);
     }
 
+    handleClickOnDailyCard(card, currentForecast) {
+        const { list } = this.weather.forecast;
+
+        const currentDate = currentForecast.dt_txt.split(' ')[0];
+
+        const hourlyForecastOfSameDate = list.filter(forecast => {
+            const date = forecast.dt_txt.split(' ')[0];
+
+            return date === currentDate;
+        });
+
+        const hourlyForecastCards = [];
+
+        // Get first 3 hours of first day
+        hourlyForecastOfSameDate.slice(0, 4).forEach(hourlyForecast => {
+            const { name, main, weather, wind } = hourlyForecast;
+
+            const forecastDate = new Date(hourlyForecast.dt_txt);
+            const forecastTime = `${forecastDate.getHours()}:00`;
+
+            hourlyForecastCards.push(this.createHourlyCard(weather[0].icon, forecastTime, weather[0].main, this.kelvinToCelcius(main.temp)));
+        });
+        
+        card.querySelector('.list').innerHTML = '';
+        card.querySelector('.list').append(...hourlyForecastCards);
+
+        card.addEventListener('click', () => {
+            const activeCard = document.querySelector('.daily-forecast .card.is-active');
+
+            if (activeCard && !card.isSameNode(activeCard))
+                activeCard.classList.remove('is-active');
+
+            if (card.classList.contains('is-active')) {
+                card.classList.remove('is-active');
+            } else {
+                card.classList.add('is-active');
+            }
+        });
+    }
+
     createDailyCard(icon, day, condition, temp) {
         const card = document.createElement('div');
             card.classList.add('card');
             card.innerHTML = `
                 <div class="row is-mobile align-items-center">
                     <div class="col no-grow">
-                        <img class="weather-icon" src="${this.imageBase}${icon}.svg">
+                        <img class="weather-icon" src="${this.imageBase}${icon}.svg" width="75" height="75" alt="${condition}">
                     </div>
                     <div class="col">
                         <div class="content">
@@ -184,7 +252,11 @@ class WeatherApp {
                             <div class="details">${condition} ${temp}</div>
                         </div>
                     </div>
+                    <div class="col no-grow">
+                        <i class="icon i-chevron-down"></i>
+                    </div>
                 </div>
+                <div class="row narrow is-mobile align-items-center list"></div>
             `;
 
         return card;
@@ -195,7 +267,7 @@ class WeatherApp {
             card.classList.add('col');
             card.innerHTML = `
             <div class="card">
-                <img class="weather-icon" src="${this.imageBase}${icon}.svg">
+                <img class="weather-icon" src="${this.imageBase}${icon}.svg" width="75" height="75" alt="${condition}">
                 <div class="content">
                     <div class="time">${time}</div>
                     <div class="details">${condition} ${temp}</div>
@@ -215,10 +287,10 @@ class WeatherApp {
 
         this.containers.city.innerText = '-';
         this.containers.temperature.innerText = '-°';
-        this.containers.humidity.innerText = "-%";
-        this.containers.uv.innerText = "-.--";
+        this.containers.humidity.innerText = '-%';
+        this.containers.precipitation.innerText = "-.- mm";
         this.containers.pressure.innerText = '- mmHg';
-        this.containers.wind.innerText = "- m/s";
+        this.containers.wind.innerText = '- m/s';
 
         this.containers.icon.src = `${this.imageBase}${dummyIcon}.svg`;
         
@@ -260,6 +332,7 @@ class WeatherApp {
         });
 
         localStorage.setItem('weather', JSON.stringify(this.weather));
+        localStorage.setItem('weather.lastModifiedDate', new Date().toISOString());
     }
 
     async sendRequest(url, callback) {
@@ -291,11 +364,11 @@ class WeatherApp {
     }
 
     kelvinToCelcius(tempInKelvin) {
-        return Math.round(tempInKelvin - 273.15) + "°";
+        return Math.round(tempInKelvin - 273.15) + '°';
     }
 
     hPaToMmHg(pressureInHPa) {
-        return Math.round(pressureInHPa * 0.75006) + " mmHg";
+        return Math.round(pressureInHPa * 0.75006) + ' mmHg';
     }
 
     pushError(msg) {
