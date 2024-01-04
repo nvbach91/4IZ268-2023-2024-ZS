@@ -65,8 +65,15 @@ function showHideHelp() {
 }
 
 /*REDIRECT*/
-if(document.getElementById('button-enter') !== null){
-    document.getElementById('button-enter').onclick = function () {
+const buttonEnter = document.getElementById('button-enter');
+if(buttonEnter !== null){
+    buttonEnter.onclick = function () {
         location.href = 'main';
     };
+}
+/*SPINNER*/
+if($('#loader-all') !== null){
+    $(window).on('load',function () {
+        $('#loader-all').hide();
+    });
 }
