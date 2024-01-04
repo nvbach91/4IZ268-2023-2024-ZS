@@ -97,37 +97,34 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    fetchOpponentData();
-  }, []);
+  const handleAutomaticDamage = () => {
+    updateCurrentOpponent((prevOpponent) => {
+      const newOpponent = { ...prevOpponent, hp: Math.max(0, prevOpponent.hp - (stats.automaticDamage * stats.automaticDamageMultiplier)) };
+
+      if (newOpponent.hp <= 0 && !capturedPokemons.includes(prevOpponent.name)) {
+        handleCapturedPokemon(newOpponent);
+      } else if (newOpponent.hp <= 0) {
+        fetchOpponentData();
+      }
+
+      return newOpponent;
+    });
+
+    setPoints((prevPoints) => prevPoints + (stats.automaticDamage * stats.automaticDamageMultiplier));
+    setStats((prevStats) => ({ ...prevStats, totalPointsEarned: prevStats.totalPointsEarned + (stats.automaticDamage * stats.automaticDamageMultiplier) }));
+  };
 
   useEffect(() => {
-    const handleAutomaticDamage = () => {
-      updateCurrentOpponent((prevOpponent) => {
-        const newOpponent = { ...prevOpponent, hp: prevOpponent.hp - stats.automaticDamage * stats.automaticDamageMultiplier };
-
-        if (newOpponent.hp <= 0 && !capturedPokemons.includes(prevOpponent.name)) {
-          handleCapturedPokemon(newOpponent);
-        } else if (newOpponent.hp <= 0) {
-          fetchOpponentData();
-        }
-
-        return newOpponent;
-      });
-      setPoints((prevPoints) => prevPoints + stats.automaticDamage * stats.automaticDamageMultiplier);
-      setStats((prevStats) => ({ ...prevStats, totalPointsEarned: prevStats.totalPointsEarned + stats.automaticDamage * stats.automaticDamageMultiplier }));
-    };
-
     const automaticDamageInterval = setInterval(handleAutomaticDamage, 1000 / stats.attackSpeed);
 
     return () => clearInterval(automaticDamageInterval);
-  }, [stats.automaticDamage, stats.attackSpeed]);
-
+  }, [stats.automaticDamage, stats.attackSpeed, stats.automaticDamageMultiplier]);
+  
   const handleOpponentClick = () => {
     const damageDealt = stats.damagePerClick;
 
     updateCurrentOpponent((prevOpponent) => {
-      const newOpponent = { ...prevOpponent, hp: prevOpponent.hp - damageDealt };
+      const newOpponent = { ...prevOpponent, hp: Math.max(0, prevOpponent.hp - damageDealt) };
 
       if (newOpponent.hp <= 0 && !capturedPokemons.includes(prevOpponent.name)) {
         handleCapturedPokemon(newOpponent);
@@ -158,6 +155,19 @@ const App = () => {
   useEffect(() => {
     if (isAppLaunching) {
       setIsAppLaunching(false);
+      const savedState = JSON.parse(localStorage.getItem("pokemonIdleState"));
+      if (savedState) {
+        setPoints(savedState.points);
+        setPokemons(savedState.pokemons);
+        updateCurrentOpponent(savedState.currentOpponent);
+        setMultiplier(savedState.multiplier);
+        setCapturedPokemons(savedState.capturedPokemons);
+        setUpgrades(savedState.upgrades);
+        setStats(savedState.stats);
+      }
+      else {
+        fetchOpponentData();
+      }
     } else {
       const stateToSave = {
         points,
@@ -171,19 +181,6 @@ const App = () => {
       localStorage.setItem("pokemonIdleState", JSON.stringify(stateToSave));
     }
   }, [isAppLaunching, points, pokemons, currentOpponent, multiplier, capturedPokemons, upgrades, stats]);
-
-  useEffect(() => {
-    const savedState = JSON.parse(localStorage.getItem("pokemonIdleState"));
-    if (savedState) {
-      setPoints(savedState.points);
-      setPokemons(savedState.pokemons);
-      updateCurrentOpponent(savedState.currentOpponent);
-      setMultiplier(savedState.multiplier);
-      setCapturedPokemons(savedState.capturedPokemons);
-      setUpgrades(savedState.upgrades);
-      setStats(savedState.stats);
-    }
-  }, []);
 
   return (
     <div className="App">
@@ -200,7 +197,13 @@ const App = () => {
           clickPoints={formatNumber(stats.clickPoints)}
         />
       </div>
-      <UpgradesSection upgrades={upgrades.map((upgrade) => ({ ...upgrade, formattedCost: formatNumber(upgrade.cost) }))} onUpgradeClick={handleUpgradeClick} stats={stats} maxAttackSpeed={maxAttackSpeed} points={points} />
+      <UpgradesSection
+        upgrades={upgrades.map((upgrade) => ({ ...upgrade, formattedCost: formatNumber(upgrade.cost) }))}
+        onUpgradeClick={handleUpgradeClick}
+        stats={stats}
+        maxAttackSpeed={maxAttackSpeed}
+        points={points}
+      />
     </div>
   );
 };

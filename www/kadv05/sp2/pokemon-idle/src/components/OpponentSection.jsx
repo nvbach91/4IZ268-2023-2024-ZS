@@ -2,9 +2,6 @@ import React from "react";
 
 const OpponentSection = ({ currentOpponent, onOpponentClick, formatNumber, capitalizeFirstLetter }) => {
   const calculateHealthPercentage = () => {
-    if (currentOpponent.maxHP === 0) {
-      return 0;
-    }
     return (currentOpponent.hp / currentOpponent.maxHP) * 100;
   };
 
