@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cz">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
@@ -33,20 +33,21 @@
         </h3>
     </div>
     <div id="index-loginALL">
-        <button onclick='handleAuthClick()'>
+        <button onclick='handleAuthClick()' class="button-login">
             <i class="fa-brands fa-google"></i>
-            Přihlásit se
+            Přihlásit se přes Google
         </button>
+        <p>nebo</p>
         <button id="button-enter">
             Vstoupit bez přihlášení
         </button>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src='js/form.js'></script>
     <script src='js/map.js'></script>
     <script src='js/script.js'></script>
     <script async='' defer='' onload='this.onload=function(){};handleClientLoad()'
         onreadystatechange="if (this.readyState === 'complete') this.onload()"
         src='https://apis.google.com/js/api.js'></script>
-
 </body>
 </html>
