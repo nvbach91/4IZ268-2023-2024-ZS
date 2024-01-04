@@ -1,82 +1,80 @@
-
-
 // Your web app's Firebase configuration
 
 
-var score = 0;
+App.score = 0;
 
-var caughtPouch = 0;
-var lostPouch = 0;
-var odlozSlimak = 0;
+App.caughtPouch = 0;
+App.lostPouch = 0;
+App.odlozSlimak = 0;
 
-var coinsCaught = 0;
+App.coinsCaught = 0;
 
-var droppedBigPouches = 0
+App.droppedBigPouches = 0
 
-var moved = false;
+App.moved = false;
 
-var caughtPouchIndicator = 0;
-var odlozSlimakIndicator = 0;
+App.caughtPouchIndicator = 0;
+App.odlozSlimakIndicator = 0;
 
-var canUsing;
- 
-var closedImage 
-var openImage 
-var odlozImage 
-if(signedIn) {
-    var uid = firebase.auth().currentUser.uid;
-    firebase.database().ref("users/" + uid).once("value")
-      .then(function (snapshot) {
-        canUsing = snapshot.child("canUsing").val();
-        closedImage = "url(images/can/can"+ canUsing +"/can0.png)"
-openImage = "url(images/can/can"+ canUsing +"/can2.png)"
-odlozImage = "url(images/can/can"+ canUsing +"/can1.png)"
-      });
+App.canUsing;
+
+App.closedImage
+App.openImage
+App.odlozImage
+if (App.signedIn) {
+    App.uid = firebase.auth().currentUser.uid;
+    firebase.database().ref("users/" + App.uid).once("value")
+        .then(function(snapshot) {
+            App.canUsing = snapshot.child("canUsing").val();
+            App.closedImage = "url(images/can/can" + App.canUsing + "/can0.png)"
+            App.openImage = "url(images/can/can" + App.canUsing + "/can2.png)"
+            App.odlozImage = "url(images/can/can" + App.canUsing + "/can1.png)"
+        });
 } else {
-    canUsing = 0;
-closedImage = "url(images/can/can"+ canUsing +"/can0.png)"
-openImage = "url(images/can/can"+ canUsing +"/can2.png)"
-odlozImage = "url(images/can/can"+ canUsing +"/can1.png)"
+    App.canUsing = 0;
+    App.closedImage = "url(images/can/can" + App.canUsing + "/can0.png)"
+    App.openImage = "url(images/can/can" + App.canUsing + "/can2.png)"
+    App.odlozImage = "url(images/can/can" + App.canUsing + "/can1.png)"
 }
 
 
 
-var paddleX = 420;
+App.paddleX = 420;
 
-var odlozToggle = false;
+App.odlozToggle = false;
 
-var counter = 1;
-var phase = 0;
+App.counter = 1;
+App.phase = 0;
 
-var thirdPhaseMinAnimationDuration = 300;
+App.thirdPhaseMinAnimationDuration = 300;
 
-var randomPouchDropInterval;
-var randomPouchDropAxis;
-var randomPouchDropAxis0 = 400;
-var randomPouch;
-var randomPouchRatio;
+App.randomPouchDropInterval;
+App.randomPouchDropAxis;
+App.randomPouchDropAxis0 = 400;
+App.randomPouch;
+App.randomPouchRatio;
 
-var randomCoin;
+App.randomCoin;
 
-var interval = 2000;
+App.interval = 2000;
 
-var min = 200;
+App.min = 200;
 
-var animationDuration = 2.6;
+App.animationDuration = 2.6;
 
-var sTimeout;
-var sInterval;
+App.sTimeout;
+App.sInterval;
 
 function setup() {
 
 
 
-    $("#text1, .selectBackground, .selectBg").css("display", "none");
+    $("#text1, .selectBackground, .selectBg").remove();
     $("body").css("cursor", "none");
     musicCheck();
     $("<div/>", {
         "class": "scoreBox",
-        text: score
+        text: App.score
     }).appendTo(".gameArea");
     for (i = 0; i < 5; i++) {
         $("<div/>", {
@@ -89,7 +87,7 @@ function setup() {
         "class": "paddle",
         "id": "paddle",
     }).appendTo(".gameArea");
-    $(".paddle").css("background-image",closedImage)
+    $(".paddle").css("background-image", App.closedImage)
     $("<div/>", {
         "class": "paddlePouches",
         "id": "paddlePouches",
@@ -110,7 +108,7 @@ function setup() {
 function game() {
     var keyDownA = false;
     var keyDownD = false;
-    document.onkeydown = function (e) {
+    document.onkeydown = function(e) {
         if (e.keyCode == 37 || e.keyCode == 65) {
             keyDownA = true;
         } else if (e.keyCode == 39 || e.keyCode == 68) {
@@ -118,7 +116,7 @@ function game() {
         }
     }
 
-    document.onkeyup = function (e) {
+    document.onkeyup = function(e) {
         if (e.keyCode == 37 || e.keyCode == 65) {
             keyDownA = false;
         } else if (e.keyCode == 39 || e.keyCode == 68) {
@@ -126,315 +124,322 @@ function game() {
         }
     }
 
-    sInterval = setInterval(function () {
+    App.sInterval = setInterval(function() {
         if (keyDownA) {
-            if (!moved) {
-                $(".paddle").css("background-image", openImage);
-                moved = true;
+            if (!App.moved) {
+                $(".paddle").css("background-image", App.openImage);
+                App.moved = true;
             }
-            if (paddleX < 1092) {
-                paddleX += 16;
-                document.getElementById("paddle").style.right = paddleX + "px";
-                document.getElementById("paddlePouches").style.right = paddleX + "px";
-                document.getElementById("paddleSlugs").style.right = paddleX + "px";
-                document.getElementById("collisionDetector").style.right = paddleX + "px";
+            if (App.paddleX < 1092) {
+                App.paddleX += 16;
+                document.getElementById("paddle").style.right = App.paddleX + "px";
+                document.getElementById("paddlePouches").style.right = App.paddleX + "px";
+                document.getElementById("paddleSlugs").style.right = App.paddleX + "px";
+                document.getElementById("collisionDetector").style.right = App.paddleX + "px";
             }
         } else if (keyDownD) {
-            if (!moved) {
-                $(".paddle").css("background-image", openImage);
-                moved = true;
+            if (!App.moved) {
+                $(".paddle").css("background-image", App.openImage);
+                App.moved = true;
             }
-            if (paddleX > 4) {
-                paddleX -= 16;
-                document.getElementById("paddle").style.right = paddleX + "px";
-                document.getElementById("paddlePouches").style.right = paddleX + "px";
-                document.getElementById("paddleSlugs").style.right = paddleX + "px";
-                document.getElementById("collisionDetector").style.right = paddleX + "px";
+            if (App.paddleX > 4) {
+                App.paddleX -= 16;
+                document.getElementById("paddle").style.right = App.paddleX + "px";
+                document.getElementById("paddlePouches").style.right = App.paddleX + "px";
+                document.getElementById("paddleSlugs").style.right = App.paddleX + "px";
+                document.getElementById("collisionDetector").style.right = App.paddleX + "px";
 
             }
         }
     }, 12.5)
 
-    document.addEventListener("keyup", function (e) {
+    document.addEventListener("keyup", function(e) {
         if (e.code === "ArrowUp" || e.code === "KeyW") {
-            if (!odlozToggle) {
-                $(".paddle").css("background-image", odlozImage);
-                $(".paddlePouches").css("display","none");
-                $(".paddleSlugs").css("display","block");
-                odlozToggle = true
-            } else if (odlozToggle) {
-                $(".paddle").css("background-image", openImage);
-                $(".paddleSlugs").css("display","none");
-                $(".paddlePouches").css("display","block");
-                odlozToggle = false
+            if (!App.odlozToggle) {
+                $(".paddle").css("background-image", App.odlozImage);
+                $(".paddlePouches").css("display", "none");
+                $(".paddleSlugs").css("display", "block");
+                App.odlozToggle = true
+            } else if (App.odlozToggle) {
+                $(".paddle").css("background-image", App.openImage);
+                $(".paddleSlugs").css("display", "none");
+                $(".paddlePouches").css("display", "block");
+                App.odlozToggle = false
             }
         }
 
     });
 
-    setTimeout(function () {
+    setTimeout(function() {
         startDropping();
     }, 2300);
 
 }
 
-function dropPouch(a,b,c,x,y,z) {
-    if (randomPouchRatio <= a) randomPouch = x;
-        else if (randomPouchRatio <= b) randomPouch = y;
-        else if (randomPouchRatio <= c) randomPouch = z;
-        
-        randomCoin = Math.floor(Math.random() * 12);
+function dropPouch(a, b, c, x, y, z) {
+    if (App.randomPouchRatio <= a) App.randomPouch = x;
+    else if (App.randomPouchRatio <= b) App.randomPouch = y;
+    else if (App.randomPouchRatio <= c) App.randomPouch = z;
 
-        if (counter > 10 && randomCoin == 0) {
-            $("<div/>", {
-                "class" : "coinPouch pouch4",
-                "id" : "coin"+counter
-            }).appendTo(".gameArea");
+    App.randomCoin = Math.floor(Math.random() * 12);
 
-            document.getElementById("coin" + counter).style.right = randomPouchDropAxis0 + "px";
-            document.getElementById("coin" + counter).addEventListener("animationend", reachedCan)
-        }
-        
-        if (randomPouch <= 2) {
+    if (App.counter > 10 && App.randomCoin == 0) {
         $("<div/>", {
-            "class": "pouch pouch" + randomPouch,
-            "id": "pouch" + counter,
+            "class": "coinPouch pouch4",
+            "id": "coin" + App.counter
         }).appendTo(".gameArea");
-        
-        } else if (randomPouch == 3) {
-            $("<div/>", {
-                "class": "bigPouch pouch" + randomPouch,
-                "id": "pouch" + counter,
-            }).appendTo(".gameArea");
-        }
-        if(randomPouch == 3 && randomPouchDropAxis > 1130) {
-            document.getElementById("pouch" + counter).style.right = randomPouchDropAxis - 140 + "px";
-        } else {
-            document.getElementById("pouch" + counter).style.right = randomPouchDropAxis + "px";
-        }
+
+        document.getElementById("coin" + App.counter).style.right = App.randomPouchDropAxis0 + "px";
+        document.getElementById("coin" + App.counter).addEventListener("animationend", reachedCan)
+    }
+
+    if (App.randomPouch <= 2) {
+        $("<div/>", {
+            "class": "pouch pouch" + App.randomPouch,
+            "id": "pouch" + App.counter,
+        }).appendTo(".gameArea");
+
+    } else if (App.randomPouch == 3) {
+        $("<div/>", {
+            "class": "bigPouch pouch" + App.randomPouch,
+            "id": "pouch" + App.counter,
+        }).appendTo(".gameArea");
+    }
+    if (App.randomPouch == 3 && App.randomPouchDropAxis > 1130) {
+        document.getElementById("pouch" + App.counter).style.right = App.randomPouchDropAxis - 140 + "px";
+    } else {
+        document.getElementById("pouch" + App.counter).style.right = App.randomPouchDropAxis + "px";
+    }
 }
 
-function dropPouchPhase3(a,b,c,d,x,y,z,q) {
-    if (randomPouchRatio <= a) randomPouch = x;
-        else if (randomPouchRatio <= b) randomPouch = y;
-        else if (randomPouchRatio <= c) randomPouch = z;
-        else if (randomPouchRatio <= d) randomPouch = q;
-        
-        randomCoin = Math.floor(Math.random() * 3);
+function dropPouchPhase3(a, b, c, d, x, y, z, q) {
+    if (App.randomPouchRatio <= a) App.randomPouch = x;
+    else if (App.randomPouchRatio <= b) App.randomPouch = y;
+    else if (App.randomPouchRatio <= c) App.randomPouch = z;
+    else if (App.randomPouchRatio <= d) App.randomPouch = q;
 
-        if (randomCoin == 0) {
-            $("<div/>", {
-                "class" : "coinPouch pouch4",
-                "id" : "coin"+counter
-            }).appendTo(".gameArea");
+    App.randomCoin = Math.floor(Math.random() * 3);
 
-            document.getElementById("coin" + counter).style.right = randomPouchDropAxis0 + "px";
-            document.getElementById("coin" + counter).addEventListener("animationend", reachedCan)
-        }
-
-        if (randomPouch <= 2) {
+    if (App.randomCoin == 0) {
         $("<div/>", {
-            "class": "pouch pouch" + randomPouch,
-            "id": "pouch" + counter,
+            "class": "coinPouch pouch4",
+            "id": "coin" + App.counter
         }).appendTo(".gameArea");
-        } else if (randomPouch == 3) {
-            $("<div/>", {
-                "class": "bigPouch pouch" + randomPouch,
-                "id": "pouch" + counter,
-            }).appendTo(".gameArea");
-        }
-        if(randomPouch == 3 && randomPouchDropAxis > 1130) {
-            document.getElementById("pouch" + counter).style.right = randomPouchDropAxis - 140 + "px";
-        } else {
-            document.getElementById("pouch" + counter).style.right = randomPouchDropAxis + "px";
-        }
+
+        document.getElementById("coin" + App.counter).style.right = App.randomPouchDropAxis0 + "px";
+        document.getElementById("coin" + App.counter).addEventListener("animationend", reachedCan)
+    }
+
+    if (App.randomPouch <= 2) {
+        $("<div/>", {
+            "class": "pouch pouch" + App.randomPouch,
+            "id": "pouch" + App.counter,
+        }).appendTo(".gameArea");
+    } else if (App.randomPouch == 3) {
+        $("<div/>", {
+            "class": "bigPouch pouch" + App.randomPouch,
+            "id": "pouch" + App.counter,
+        }).appendTo(".gameArea");
+    }
+    if (App.randomPouch == 3 && App.randomPouchDropAxis > 1130) {
+        document.getElementById("pouch" + App.counter).style.right = App.randomPouchDropAxis - 140 + "px";
+    } else {
+        document.getElementById("pouch" + App.counter).style.right = App.randomPouchDropAxis + "px";
+    }
 }
 
 
 
 function startDropping() {
-    randomPouchRatio = Math.floor(Math.random() * 15);
-    randomPouchDropAxis = Math.floor(Math.random() * 1280);
-    
+    App.randomPouchRatio = Math.floor(Math.random() * 15);
+    App.randomPouchDropAxis = Math.floor(Math.random() * 1280);
+
     checkPosition();
 
-    
 
 
 
-    
+    if (App.phase == 0) {
+        dropPouch(7, 12, 14, 0, 2, 1);
+        if (App.counter < 50) {
+            if (App.counter > 0 && App.counter < 20) {
+                App.min = App.min + 14
 
-    
-    
-    if(phase == 0) {
-        dropPouch(7,12,14,0,2,1);
-        if (counter < 50) {
-            if (counter > 0 && counter < 20) {
-                min = min + 14
-                
             }
-            animationDuration = animationDuration - 0.03;
-            $("#pouch"+counter).css("animation-duration", animationDuration + "s");
-        interval = interval - 20
+            App.animationDuration = App.animationDuration - 0.03;
+            $("#pouch" + App.counter).css("animation-duration", App.animationDuration + "s");
+            App.interval = App.interval - 20
         } else {
 
-            min = 450;
-            interval = 750;
-            
+            App.min = 450;
+            App.interval = 750;
 
-                phase = 1;
+
+            App.phase = 1;
 
 
         }
-    } else if (phase == 1) {   
-        if (counter < 140) {
-            dropPouch(4,13,14,1,2,3);
+    } else if (App.phase == 1) {
+        if (App.counter < 140) {
+            dropPouch(4, 13, 14, 1, 2, 3);
         } else {
-            dropPouch(4,13,14,1,2,1);
+            dropPouch(4, 13, 14, 1, 2, 1);
         }
-        if (counter < 150) {
-            interval = interval - 5;
-            min = min - 5;
-            animationDuration = Math.floor(Math.random() * (350 - 250) + 250) / 100
-            if(randomPouch == 3) {
-                $(".pouch3").css("animation-duration","6s");
+        if (App.counter < 150) {
+            App.interval = App.interval - 5;
+            App.min = App.min - 5;
+            App.animationDuration = Math.floor(Math.random() * (350 - 250) + 250) / 100
+            if (App.randomPouch == 3) {
+                $(".pouch3").css("animation-duration", "6s");
             } else {
-            $("#pouch"+counter).css("animation-duration", animationDuration + "s");
+                $("#pouch" + App.counter).css("animation-duration", App.animationDuration + "s");
             }
         } else {
 
-            min = 900;
-            interval = 1400;
-            $(".pouch0, .pouch1, .pouch2").css("animation-duration","");
-            phase = 2;
+            App.min = 900;
+            App.interval = 1400;
+            $(".pouch0, .pouch1, .pouch2").css("animation-duration", "");
+            App.phase = 2;
         }
-    } else if (phase == 2) {
-        dropPouch(6,10,14,0,1,2)
-        
-        
-        if (counter < 250) {
-            animationDuration = Math.floor(Math.random() * (100 - 70) + 70) / 100;
-            $("#pouch"+counter).css("animation-duration", animationDuration + "s");
-            interval = interval + 5;
+    } else if (App.phase == 2) {
+        dropPouch(6, 10, 14, 0, 1, 2)
+
+
+        if (App.counter < 250) {
+            App.animationDuration = Math.floor(Math.random() * (100 - 70) + 70) / 100;
+            $("#pouch" + App.counter).css("animation-duration", App.animationDuration + "s");
+            App.interval = App.interval + 5;
 
 
 
         } else {
-            min = 800;
-            interval = 1600;
-            phase = 3;
+            App.min = 800;
+            App.interval = 1600;
+            App.phase = 3;
         }
-        
-    } else if (phase == 3) {
-        dropPouchPhase3(6,7,13,14,0,1,2,3);
 
-            thirdPhaseMinAnimationDuration = thirdPhaseMinAnimationDuration - 2;
-            interval = interval - 5;
-            min = min - 1;
-        
-        animationDuration = Math.floor(Math.random() * (800 - thirdPhaseMinAnimationDuration) + thirdPhaseMinAnimationDuration) / 100;
-        $("#pouch"+counter).css("animation-duration", animationDuration + "s");
+    } else if (App.phase == 3) {
+        dropPouchPhase3(6, 7, 13, 14, 0, 1, 2, 3);
+
+        App.thirdPhaseMinAnimationDuration = App.thirdPhaseMinAnimationDuration - 2;
+        App.interval = App.interval - 5;
+        App.min = App.min - 1;
+
+        App.animationDuration = Math.floor(Math.random() * (800 - App.thirdPhaseMinAnimationDuration) + App.thirdPhaseMinAnimationDuration) / 100;
+        $("#pouch" + App.counter).css("animation-duration", App.animationDuration + "s");
     }
-    
-    
 
-    document.getElementById("pouch" + counter).addEventListener("animationend", reachedCan)
-    counter++;
-    randomPouchDropAxis0 = randomPouchDropAxis;
-    sTimeout = setTimeout(startDropping, Math.floor(Math.random() * interval) + min)
-    
+
+
+    document.getElementById("pouch" + App.counter).addEventListener("animationend", reachedCan)
+    App.counter++;
+    App.randomPouchDropAxis0 = App.randomPouchDropAxis;
+    App.sTimeout = setTimeout(startDropping, Math.floor(Math.random() * App.interval) + App.min)
+
 }
 
 function checkPosition() {
-    if(((randomPouchDropAxis + 700) < randomPouchDropAxis0) || ((randomPouchDropAxis - 700) > randomPouchDropAxis0)) {
-        randomPouchDropAxis = Math.floor(Math.random() * 1280);
+    if (((App.randomPouchDropAxis + 700) < App.randomPouchDropAxis0) || ((App.randomPouchDropAxis - 700) > App.randomPouchDropAxis0)) {
+        App.randomPouchDropAxis = Math.floor(Math.random() * 1280);
         checkPosition();
     } else return
-    }
+}
 
 function reachedCan() {
     var xP, xC;
-    if(this.classList.contains("bigPouch")) {
+    if (this.classList.contains("bigPouch")) {
         xP = 120;
         xC = 167
-    } else if(this.classList.contains("coinPouch")) {
+    } else if (this.classList.contains("coinPouch")) {
         xP = 25;
         xC = 262
-    } else  {
+    } else {
         xP = 50;
         xC = 237
     }
-    
-    
+
+
     if (parseInt(this.style.right) + xP >= parseInt(document.getElementById("collisionDetector").style.right) && parseInt(this.style.right) <= parseInt(document.getElementById("collisionDetector").style.right) + xC) {
-        if (!odlozToggle) {
+        if (!App.odlozToggle) {
             if (this.className.split(' ')[1] == "pouch0") {
                 changeScore(1, "pouch");
-                if (sound == 1) document.getElementById("pouchCan").play();
+                if (App.sound == 1) document.getElementById("pouchCan").play();
             } else if (this.className.split(' ')[1] == "pouch1") {
                 endClear();
             } else if (this.className.split(' ')[1] == "pouch2") {
-                if (score > 0) changeScore(-1, "lyft")
-                if (sound == 1) document.getElementById("lyft").play();
+                if (App.score > 0) changeScore(-1, "lyft")
+                if (App.sound == 1) document.getElementById("lyft").play();
             } else if (this.className.split(' ')[1] == "pouch3") {
                 changeScore(5, "pouch")
-                if (sound == 1) document.getElementById("bigPouchCan").play();
+                if (App.sound == 1) document.getElementById("bigPouchCan").play();
             } else if (this.className.split(' ')[1] == "pouch4") {
-                coinsCaught++;
-                if (sound == 1) document.getElementById("coinCatch").play();
-                $(".scoreBox").css({"background-color": "#ffff00", "color": "#1a1a00"});
-                setTimeout(function(){
-                    $(".scoreBox").css({"background-color": "#ff1100", "color": "#fff"});
-                },150)
+                App.coinsCaught++;
+                if (App.sound == 1) document.getElementById("coinCatch").play();
+                $(".scoreBox").css({
+                    "background-color": "#ffff00",
+                    "color": "#1a1a00"
+                });
+                setTimeout(function() {
+                    $(".scoreBox").css({
+                        "background-color": "#ff1100",
+                        "color": "#fff"
+                    });
+                }, 150)
             }
-        } else if (odlozToggle) {
+        } else if (App.odlozToggle) {
             if (this.className.split(' ')[1] == "pouch0") {
                 missedPouch();
-                if (sound == 1) document.getElementById("pouchLoss").play();
+                if (App.sound == 1) document.getElementById("pouchLoss").play();
             } else if (this.className.split(' ')[1] == "pouch1") {
                 changeScore(1, "slimak");
-                if (sound == 1) document.getElementById("slimejs").play();
+                if (App.sound == 1) document.getElementById("slimejs").play();
             } else if (this.className.split(' ')[1] == "pouch2") {
-                if (score > 0) changeScore(-1, "lyft")
-                if (sound == 1) document.getElementById("lyft").play();
+                if (App.score > 0) changeScore(-1, "lyft")
+                if (App.sound == 1) document.getElementById("lyft").play();
             } else if (this.className.split(' ')[1] == "pouch3") {
-                if (score > 9) changeScore(-5, "pouch");
+                if (App.score > 9) changeScore(-5, "pouch");
                 missedPouch();
-                if (sound == 1) document.getElementById("pouchLoss").play();
+                if (App.sound == 1) document.getElementById("pouchLoss").play();
             } else if (this.className.split(' ')[1] == "pouch4") {
-                coinsCaught++;
-                if (sound == 1) document.getElementById("coinCatch").play();
-                $(".scoreBox").css({"background-color": "#ffff00", "color": "#1a1a00"});
-                setTimeout(function(){
-                    $(".scoreBox").css({"background-color": "#ff1100", "color": "#fff"});
-                },150)
+                App.coinsCaught++;
+                if (App.sound == 1) document.getElementById("coinCatch").play();
+                $(".scoreBox").css({
+                    "background-color": "#ffff00",
+                    "color": "#1a1a00"
+                });
+                setTimeout(function() {
+                    $(".scoreBox").css({
+                        "background-color": "#ff1100",
+                        "color": "#fff"
+                    });
+                }, 150)
             }
         }
         this.remove();
     } else {
         if (this.className.split(' ')[1] == "pouch0") {
             missedPouch();
-            if (sound == 1) document.getElementById("pouchLoss").play();
+            if (App.sound == 1) document.getElementById("pouchLoss").play();
         } else if (this.className.split(' ')[1] == "pouch3") {
-            if (score > 9) changeScore(-5, "pouch");
+            if (App.score > 9) changeScore(-5, "pouch");
             missedPouch();
-            if (sound == 1) document.getElementById("pouchLoss").play();
+            if (App.sound == 1) document.getElementById("pouchLoss").play();
         }
-        if(this.classList.contains("pouch")) {
+        if (this.classList.contains("pouch")) {
             this.classList.remove("pouch");
             this.classList.add("pouchMissed");
             this.addEventListener("animationend", removeMissedPouch)
-        } else if(this.classList.contains("bigPouch")) {
+        } else if (this.classList.contains("bigPouch")) {
             this.classList.remove("bigPouch");
             this.classList.add("bigPouchMissed");
             this.addEventListener("animationend", removeMissedPouch)
-        } else if(this.classList.contains("coinPouch")) {
+        } else if (this.classList.contains("coinPouch")) {
             this.classList.remove("coinPouch");
             this.classList.add("coinPouchMissed");
             this.addEventListener("animationend", removeMissedPouch)
         }
-        
-        
+
+
 
     }
 }
@@ -444,62 +449,62 @@ function removeMissedPouch() {
 }
 
 function changeScore(change, pouchOrSlimak) {
-    score = score + change;
-    $(".scoreBox").text(score);
+    App.score = App.score + change;
+    $(".scoreBox").text(App.score);
     if (pouchOrSlimak == "pouch") {
-        caughtPouch++
-        if (caughtPouch % 4 == 0 && caughtPouch <= 40) {
-            
-            if(canUsing == 3) {
-                
-            $(".paddlePouches").css("background-image", "url(images/pouchLayers/pouchLayers3/pouchLayer" + caughtPouchIndicator + ".png");
+        App.caughtPouch++
+        if (App.caughtPouch % 4 == 0 && App.caughtPouch <= 40) {
+
+            if (App.canUsing == 3) {
+
+                $(".paddlePouches").css("background-image", "url(images/pouchLayers/pouchLayers3/pouchLayer" + App.caughtPouchIndicator + ".png");
             } else {
-            $(".paddlePouches").css("background-image", "url(images/pouchLayers/pouchLayers/pouchLayer" + caughtPouchIndicator + ".png");
+                $(".paddlePouches").css("background-image", "url(images/pouchLayers/pouchLayers/pouchLayer" + App.caughtPouchIndicator + ".png");
             }
-            caughtPouchIndicator++
+            App.caughtPouchIndicator++
         }
     } else if (pouchOrSlimak == "slimak") {
-        odlozSlimak++
-        if (odlozSlimak <= 10) {
-            
-            if(canUsing == 3) {
-            $(".paddleSlugs").css("background-image", "url(images/slugLayers/slugLayers3/slugLayer" + odlozSlimakIndicator + ".png");
+        App.odlozSlimak++
+        if (App.odlozSlimak <= 10) {
+
+            if (App.canUsing == 3) {
+                $(".paddleSlugs").css("background-image", "url(images/slugLayers/slugLayers3/slugLayer" + App.odlozSlimakIndicator + ".png");
             } else {
-            $(".paddleSlugs").css("background-image", "url(images/slugLayers/slugLayers/slugLayer" + odlozSlimakIndicator + ".png");
+                $(".paddleSlugs").css("background-image", "url(images/slugLayers/slugLayers/slugLayer" + App.odlozSlimakIndicator + ".png");
             }
-            odlozSlimakIndicator++
-        } else if (odlozSlimak == 20) {
-            if(canUsing == 3) {
+            App.odlozSlimakIndicator++
+        } else if (App.odlozSlimak == 20) {
+            if (App.canUsing == 3) {
                 $(".paddleSlugs").css("background-image", "url(images/slugLayers/slugLayers3/slugLayer10.png");
             } else {
                 $(".paddleSlugs").css("background-image", "url(images/slugLayers/slugLayers/slugLayer10.png");
             }
-            
+
 
         }
     }
 }
 
 function missedPouch() {
-    $("#box" + lostPouch).css("background-image", "url(images/pouch/pouchLoss.png");
-    lostPouch++;
-    if (lostPouch == 5) endClear();
+    $("#box" + App.lostPouch).css("background-image", "url(images/pouch/pouchLoss.png");
+    App.lostPouch++;
+    if (App.lostPouch == 5) endClear();
 }
 
 function endClear() {
-    clearTimeout(sTimeout);
-    clearInterval(sInterval);
+    clearTimeout(App.sTimeout);
+    clearInterval(App.sInterval);
     $(".box, .scoreBox, .paddle, .paddlePouches, .paddleSlugs, .collisionDetector, .pouch, .pouchMissed, .bigPouch, .bigPouchMissed, .coinPouch, .coinPouchMissed").remove();
     $(".gameArea").css("background-image", "url(images/background/finish.jpg)");
     $("body").css("cursor", "default");
-    if (music == 1) {
-        music = 0;
+    if (App.music == 1) {
+        App.music = 0;
         musicCheck();
     }
-    if (sound == 1) {
+    if (App.sound == 1) {
         document.getElementById("lose").play();
     }
-    
+
     saveScore();
 }
 
@@ -509,7 +514,7 @@ function saveScore() {
     }).appendTo(".gameArea");
     $("<p/>", {
         "class": "textStats",
-        text: "SCORE " + score
+        text: "SCORE " + App.score
     }).appendTo(".saveScore")
     $("<input>", {
         "class": "enterName",
@@ -529,22 +534,26 @@ function saveScore() {
 
     document.getElementById("username").addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
-         event.preventDefault();
-         document.getElementById("submitName").click();
+            event.preventDefault();
+            document.getElementById("submitName").click();
         }
-      });
+    });
 
-    $(".submitName").click(function () {
-        $(".saveScore").css({ "width": "900", "height": "680", "margin-top": "80px" });
+    $(".submitName").click(function() {
+        $(".saveScore").css({
+            "width": "900",
+            "height": "680",
+            "margin-top": "80px"
+        });
         $("<div/>", {
             "class": "leaderboard"
         }).appendTo(".saveScore");
         for (i = 0; i < 100; i++) {
             if (i < 10) {
                 $("<div/>", {
-                "class": "place",
-                "id": "place" + i
-            }).appendTo(".leaderboard")
+                    "class": "place",
+                    "id": "place" + i
+                }).appendTo(".leaderboard")
             } else {
                 $("<div/>", {
                     "class": "placeSmall",
@@ -553,100 +562,99 @@ function saveScore() {
             }
 
         }
-        
-        
-        
-        if (signedIn) {
+
+
+
+        if (App.signedIn) {
             var uid = firebase.auth().currentUser.uid;
 
             var balanceI;
             var caughtPouchesI;
             var gamesPlayedI;
             var highScoreI;
- 
+
 
             firebase.database().ref("users/" + uid).once("value")
                 .then(function(snapshot) {
                     balanceI = snapshot.child("balance").val();
-                    balanceI = balanceI + coinsCaught;
+                    balanceI = balanceI + App.coinsCaught;
                     caughtPouchesI = snapshot.child("caughtPouches").val();
-                    caughtPouchesI = caughtPouchesI + caughtPouch;
+                    caughtPouchesI = caughtPouchesI + App.caughtPouch;
                     gamesPlayedI = snapshot.child("gamesPlayed").val();
                     gamesPlayedI++;
                     highScoreI = snapshot.child("highScore").val();
-                    if (score >= highScoreI) {
-                        highScoreI = score;
+                    if (App.score >= highScoreI) {
+                        highScoreI = App.score;
                     } else {
                         highScoreI = highScoreI
                     }
 
                 })
 
-           setTimeout(function(){
-            firebase.database().ref("users/" + uid)
-                                  .child("balance").set(balanceI);
-                                  firebase.database().ref("users/" + uid)
-                                  .child("caughtPouches").set(caughtPouchesI);
-                                  firebase.database().ref("users/" + uid)
-                                  .child("gamesPlayed").set(gamesPlayedI);
-                                  firebase.database().ref("users/" + uid)
-                                  .child("highScore").set(highScoreI);
-            
-            
-           },3000)
+            setTimeout(function() {
+                firebase.database().ref("users/" + uid)
+                    .child("balance").set(balanceI);
+                firebase.database().ref("users/" + uid)
+                    .child("caughtPouches").set(caughtPouchesI);
+                firebase.database().ref("users/" + uid)
+                    .child("gamesPlayed").set(gamesPlayedI);
+                firebase.database().ref("users/" + uid)
+                    .child("highScore").set(highScoreI);
+
+
+            }, 3000)
 
 
         }
 
         var ref = firebase.database().ref("leaderboard");
-        
-        if(score > 10) {
 
-                var data = {
-                    name: username.value,
-                    score: score,
-                }
-            
-            
+        if (App.score > 10) {
+
+            var data = {
+                name: username.value,
+                score: App.score,
+            }
+
+
             ref.push(data);
         }
 
         ref.on("value", getData)
 
-        
+
         $(".textStats, .enterName, .submitName").remove();
-        
-        setTimeout(function(){
-            $("<input>", {
+
+        setTimeout(function() {
+            $("<button/>", {
                 "class": "goOverview",
-                "type": "button",
-                "value": "OK"
+                "text": "OK"
             }).appendTo(".saveScore");
 
-            $(".goOverview").hover(function () {
-                if (sound == 1) {
+            $(".goOverview").hover(function() {
+                if (App.sound == 1) {
                     document.getElementById("click0").play();
                 }
-            }, function () { });
+            }, function() {});
 
-                $(".goOverview").click(function () {
-                    if(sound == 1) document.getElementById("click2").play();
-                    $(".goOverview, .leaderboard, .saveScore").remove();
-                    overview();
-                });
-          
+            $(".goOverview").click(function() {
+                if (App.sound == 1) document.getElementById("click2").play();
+                $(".goOverview, .leaderboard, .saveScore").remove();
+                overview();
+            });
 
-        },2000)
-        
-        
+
+        }, 2000)
+
+
     });
-    $(".submitName").hover(function () {
-        if (sound == 1) {
+    $(".submitName").hover(function() {
+        if (App.sound == 1) {
             document.getElementById("click0").play();
         }
-    }, function () { });
-    $(".submitName").click(function () {
-        if (sound == 1) {
+    }, function() {});
+    $(".submitName").click(function() {
+        if (App.sound == 1) {
             document.getElementById("click2").play();
         }
     });
@@ -657,12 +665,23 @@ function getData(data) {
     var leaderboard = data.val();
     var keys = Object.keys(leaderboard);
     keys.sort((a, b) => (leaderboard[a].score < leaderboard[b].score) ? 1 : -1)
+    var content = "";
     for (i = 0; i < 100; i++) {
-        var k = keys[i]
+        var k = keys[i];
         var name = leaderboard[k].name;
         var score = leaderboard[k].score;
-        $("#place" + i).text(i+1+". "+name + " " + score);
+
+        if (i < 10) {
+            placeClass = "place";
+        } else {
+            placeClass = "placeSmall";
+        }
+
+
+        content += '<div class="' + placeClass + '" id="place' + i + '">' + (i + 1) + ". " + name + " " + score + '</div>';
     }
+
+    $(".leaderboard").html(content);
 }
 
 function overview() {
@@ -672,25 +691,66 @@ function overview() {
     }).appendTo(".gameArea")
     $("<p/>", {
         "class": "textStats",
-        text: caughtPouch + " POUCHES IN THE CAN"
+        text: App.caughtPouch + " POUCHES IN THE CAN"
     }).appendTo(".gameArea")
     $("<p/>", {
         "class": "textStats",
-        text: odlozSlimak + " SLUGS IN THE CATCH LID"
+        text: App.odlozSlimak + " SLUGS IN THE CATCH LID"
     }).appendTo(".gameArea")
     $("<p/>", {
         "class": "textStats",
-        text: "SCORE " + score
+        text: "SCORE " + App.score
     }).appendTo(".gameArea")
-    $("<input>", {
+    $("<button/>", {
         "class": "playAgain",
-        "type": "button",
-        "value": "PLAY AGAIN"
+        "text": "PLAY AGAIN"
     }).appendTo(".gameArea")
 
-    $(".playAgain").click(function () {
+    $(".playAgain").click(function() {
         $(".textEnd, .textStats, .playAgain").remove();
-        location.reload();
-
+        //location.reload();
+        restart();
     });
+}
+
+function restart() {
+    App.score = 0;
+
+    App.caughtPouch = 0;
+    App.lostPouch = 0;
+    App.odlozSlimak = 0;
+
+    App.coinsCaught = 0;
+
+    App.droppedBigPouches = 0
+
+    App.moved = false;
+
+    App.caughtPouchIndicator = 0;
+    App.odlozSlimakIndicator = 0;
+
+    App.paddleX = 420;
+
+    App.odlozToggle = false;
+
+    App.counter = 1;
+    App.phase = 0;
+
+    App.thirdPhaseMinAnimationDuration = 300;
+
+    App.randomPouchDropAxis0 = 400;
+
+
+    App.interval = 2000;
+
+    App.min = 200;
+
+    App.animationDuration = 2.6;
+    start();
+
+    $(".buttonDiv, .buttonButton").css("display", "inline-block");
+
+
+    setUpSounds();
+
 }

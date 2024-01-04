@@ -43,7 +43,7 @@ body {
     margin-top: 380px;
     font-size: 120px;
     font-family: gagarin;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: 0px solid;
     outline: none;
     padding: 25px;
@@ -56,7 +56,7 @@ body {
     margin: 20px 0px 0px 20px;
     font-size: 120px;
     font-family: gagarin;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: 0px solid;
     outline: none;
     padding: 25px;
@@ -69,7 +69,7 @@ body {
     margin: 20px 0px 0px 20px;
     font-size: 100px;
     font-family: gagarin;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: 0px solid;
     outline: none;
     padding: 25px;
@@ -82,7 +82,7 @@ body {
 }
 
 #profileName {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     margin: 20px auto;
     width: 1280px;
     height: 50px;
@@ -100,37 +100,37 @@ body {
     margin-left: 50px
 }
 
-    .stat {
-        position:absolute;
-        font-size: 43px;
-        margin: 0;
-        font-family: lemonmilk
-    }
+.stat {
+    position: absolute;
+    font-size: 43px;
+    margin: 0;
+    font-family: lemonmilk
+}
 
-    #coinIndicator {
-        top: 30px;
-        left: 0px
-    }
+#coinIndicator {
+    top: 30px;
+    left: 0px
+}
 
-    #coinAmount {
-        top: 16px;
-        left: 70px
-    }
+#coinAmount {
+    top: 16px;
+    left: 70px
+}
 
-    #pouchesCaught {
-        top: 115px;
-        left: 0px
-    }
+#pouchesCaught {
+    top: 115px;
+    left: 0px
+}
 
-    #gamesPlayed {
-        top: 260px;
-        left: 0px
-    }
+#gamesPlayed {
+    top: 260px;
+    left: 0px
+}
 
-    #topScore {
-        top: 390px;
-        left: 0px
-    }
+#topScore {
+    top: 390px;
+    left: 0px
+}
 
 #profileCans {
     border: solid #ff1100 5px;
@@ -138,64 +138,66 @@ body {
     position: relative, flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-content: flex-start; 
+    align-content: flex-start;
     width: 720px;
     height: 480px;
     margin-left: 20px;
 }
 
-    .shopCans {
-        display: inline-block;
-        position: relative;
-        width: 240px;
-        height: 240px;
-        background-repeat: no-repeat;
-        background-position: center;
-        box-sizing: border-box;
-    }
+.shopCans {
+    display: inline-block;
+    position: relative;
+    width: 240px;
+    height: 240px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+}
 
-        #shopCan3, #shopCan4, #shopCan5 {
-            top: -4px
-        }
+#shopCan3,
+#shopCan4,
+#shopCan5 {
+    top: -4px
+}
 
-    .canLocked {
-        position: absolute;
-        width: 240px;
-        height: 240px;
-        background-image: url(../images/shopCans/canLocked.png);
-        z-index: 30;
-    }
+.canLocked {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    background-image: url(../images/shopCans/canLocked.png);
+    z-index: 30;
+}
 
-    .canPriceTag {
-        position: absolute;
-        z-index: 35;
-        font-size: 26px;
-        font-family: lemonmilk;
-        border: 2px solid black;
-        top: 190px;
-        right: 15px;
-        padding: 2px;
-        color: #fff;
-        outline: none;
-        cursor: pointer;
-    }
+.canPriceTag {
+    position: absolute;
+    z-index: 35;
+    font-size: 26px;
+    font-family: lemonmilk;
+    border: 2px solid black;
+    top: 190px;
+    right: 15px;
+    padding: 2px;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+}
 
-    .caughtPouchesRemainingTag {
-        position: absolute;
-        width: auto;
-        height: auto;
-        z-index: 35;
-        font-size: 20px;
-        font-family: lemonmilk;
-        border: 2px solid black;
-        bottom: 15px;
-        right: 15px;
-        padding: 2px;
-        color: #000;
-        background-color: #66ccff;
-    }
+.caughtPouchesRemainingTag {
+    position: absolute;
+    width: auto;
+    height: auto;
+    z-index: 35;
+    font-size: 20px;
+    font-family: lemonmilk;
+    border: 2px solid black;
+    bottom: 15px;
+    right: 15px;
+    padding: 2px;
+    color: #000;
+    background-color: #66ccff;
+}
 
-    
+
 
 .signInForm {
     width: 500px;
@@ -213,17 +215,18 @@ body {
     background-color: #ffcccc
 }
 
-.email, .password{
-   border: 0px solid;
-   outline: none;
-   display: block;
-   margin: auto;
-   background-color:  #ffb3b3;
-   color: black;
-   font-family: arial;
-   font-size: 20px;
-   width: 496px;
-   height: 26px;
+.email,
+.password {
+    border: 0px solid;
+    outline: none;
+    display: block;
+    margin: auto;
+    background-color: #ffb3b3;
+    color: black;
+    font-family: arial;
+    font-size: 20px;
+    width: 496px;
+    height: 26px;
 
 }
 
@@ -269,11 +272,11 @@ body {
 
 #profileDiv {
     background-image: url(../images/buttons/profile.png);
-    
+
 }
 
 .buttonButton {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: 0px solid;
     outline: none;
     width: 60px;
@@ -347,7 +350,7 @@ input.selectBg:hover {
     right: 0px;
     width: 100px;
     height: 100px;
-    background-color:rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     z-index: 40
 }
 
@@ -427,7 +430,7 @@ input.selectBg:hover {
     position: absolute;
 
     background-image: url(../images/pouch/pouch3.png)
-}   
+}
 
 .pouch4 {
     width: 50px;
@@ -468,41 +471,73 @@ input.selectBg:hover {
 
 
 @keyframes pouchFall {
-    from {top: 0px;}
-    to {top: 650px}
+    from {
+        top: 0px;
+    }
+
+    to {
+        top: 650px
+    }
 }
 
 @keyframes bigPouchFall {
-    from {top: 0px;}
-    to {top: 614px}
+    from {
+        top: 0px;
+    }
+
+    to {
+        top: 614px
+    }
 }
 
 @keyframes coinPouchFall {
-    from {top: 0px;}
-    to {top: 685px}
+    from {
+        top: 0px;
+    }
+
+    to {
+        top: 685px
+    }
 }
 
 @keyframes pouchMissedFall {
-    from {top: 650px; opacity: 1}
-    to {top: 770px; opacity: 0}
+    from {
+        top: 650px;
+        opacity: 1
+    }
+
+    to {
+        top: 770px;
+        opacity: 0
+    }
 
 }
 
 @keyframes bigPouchMissedFall {
-    from {top: 614px; opacity: 1}
-    to {top: 710px; opacity: 0}
+    from {
+        top: 614px;
+        opacity: 1
+    }
+
+    to {
+        top: 710px;
+        opacity: 0
+    }
 
 }
 
 @keyframes coinPouchMissedFall {
-    from {top: 685px; opacity: 1}
-    to {top: 810px; opacity: 0}
+    from {
+        top: 685px;
+        opacity: 1
+    }
+
+    to {
+        top: 810px;
+        opacity: 0
+    }
 
 }
-
-
-
-
 
 
 
@@ -579,7 +614,6 @@ input.selectBg:hover {
 
 ::-webkit-scrollbar {
     width: 10px
-
 }
 
 ::-webkit-scrollbar-track {
@@ -591,7 +625,7 @@ input.selectBg:hover {
 }
 
 .place {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: 1px solid black;
     width: 900px;
     height: 58px;
@@ -599,11 +633,10 @@ input.selectBg:hover {
     margin: auto;
     font-family: lemonmilk;
     font-size: 40px
-
 }
 
 .placeSmall {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: 1px solid black;
     width: 900px;
     height: 42px;
@@ -611,26 +644,25 @@ input.selectBg:hover {
     margin: auto;
     font-family: lemonmilk;
     font-size: 32px
-
 }
 
 #place0 {
-    background-color: 	#FFD700
+    background-color: #FFD700
 }
 
 #place1 {
-    background-color: 	#C0C0C0
+    background-color: #C0C0C0
 }
 
 #place2 {
-    background-color: 	#CD7F32
+    background-color: #CD7F32
 }
 
 .submitName:hover {
     background-color: #f2f2f2;
     color: #e60f00;
 }
- 
+
 .textEnd {
     margin: 80px 0px 0px 0px;
     font-family: gagarin;
@@ -653,11 +685,10 @@ input.selectBg:hover {
     margin-top: 30px;
     font-size: 120px;
     font-family: gagarin;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: 0px solid;
     outline: none;
     padding: 25px;
     color: #ff1100;
     cursor: pointer;
 }
-
