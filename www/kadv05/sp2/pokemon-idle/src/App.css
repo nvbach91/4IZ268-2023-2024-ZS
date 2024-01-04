@@ -1,0 +1,213 @@
+/* src/App.css */
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 100vh;
+  font-family: "Arial", sans-serif;
+}
+
+.middle-section {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.upgrades-section,
+.pokemon-section,
+.stats-section,
+.opponent-section,
+.points-section {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.upgrades-section h2,
+.pokemon-section h2,
+.stats-section h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.upgrades-section {
+  height: 100%;
+  width: 25%;
+  padding: 20px;
+  background-color: #ecf0f1;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.upgrade {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.upgrade.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.upgrade-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.pokemon-section {
+  width: 25%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.pokemon-section > div {
+  box-sizing: border-box;
+  width: 47%;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-section img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.points-section {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.points-section h2 {
+  font-size: 40px;
+  text-align: center;
+  margin: 0;
+}
+
+.opponent-section {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.opponent-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.opponent-info {
+  text-align: center;
+}
+
+.opponent-info h3 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.opponent-info p {
+  margin: 0;
+}
+
+.stats-section {
+  height: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.stats-section div {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.health-bar-container {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.health-bar {
+  height: 100%;
+  background-color: #2ecc71;
+  transition: width 0.3s ease;
+}
+
+.upgrade.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
