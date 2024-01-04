@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='cz'>
+<html lang='cs'>
 
 <head>
     <meta charset='UTF-8'>
@@ -21,8 +21,6 @@
 </head>
 
 <body scroll='no'>
-    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'></script>
-
     <div id='map'></div>
     <button id='info-button' onclick='showHideHelp()'>
         <p>?</p>
@@ -83,15 +81,16 @@
         <p>
             Pro tohle potřebuju aby ses přihlásil přes Google
         </p>
-        <button onclick='handleAuthClick()'>
-            Přihlásit se
+        <button onclick='handleAuthClick()' class="button-login">
+            <i class="fa-brands fa-google"></i>
+            Přihlásit se přes Google
         </button>
     </div>
     <div id='popup3' class='popup'>
         <p>
             Opravdu se chceš odhlásit?
         </p>
-        <button onclick='handleSignoutClick()'>
+        <button onclick='handleSignoutClick()' class="button-login">
             Odhlásit se
         </button>
     </div>
@@ -109,17 +108,13 @@
     </div>
     <div id='information-allM'>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src='../js/form.js'></script>
     <script src='../js/map.js'></script>
     <script src='../js/script.js'></script>
     <script async='' defer='' onload='this.onload=function(){};handleClientLoad()'
         onreadystatechange="if (this.readyState === 'complete') this.onload()"
         src='https://apis.google.com/js/api.js'></script>
-    <script>
-        $(window).load(function () {
-            $('#loader-all').hide();
-        });
-    </script>
 </body>
 </body>
 
