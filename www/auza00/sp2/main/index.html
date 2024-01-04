@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang='cz'>
+
+<head>
+    <meta charset='UTF-8'>
+    <link rel='stylesheet' href='../css/style.css'>
+    <title>I Know A Spot</title>
+    <link rel='icon' type='image/x-icon' href='/img/joint-favicon.png'>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link
+        href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'
+        rel='stylesheet'>
+
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+    <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css' />
+    <script src='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js'></script>
+
+    <script src='https://kit.fontawesome.com/d7179d63a4.js' crossorigin='anonymous'></script>
+    <meta http-equiv='Content-Security-Policy' content='upgrade-insecure-requests'>
+</head>
+
+<body scroll='no'>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'></script>
+
+    <div id='map'></div>
+    <button id='info-button' onclick='showHideHelp()'>
+        <p>?</p>
+    </button>
+    <button id='button-remove' onclick='removePoint()'>
+        <i class='fa-solid fa-xmark'></i>
+    </button>
+    <section id='buttons-all'>
+
+        <button id='button-top' class='button2'>
+            <i class='fa-solid fa-trophy'></i>
+        </button>
+        <button class='button-add' id='button-add-third' onclick='showHideLogin()'>
+            <i class='fa-solid fa-plus'></i>
+        </button>
+        <button class='button-add' id='button-add-first' onclick='addPoint()'>
+            <i class='fa-solid fa-plus'></i>
+        </button>
+        <button class='button-add' id='button-add-second' onclick='showHideForm()'>
+            <i class='fa-solid fa-check'></i>
+        </button>
+        <button id='button-logout' class='button2' onclick='showHideSignout()'>
+            <i class='fa-solid fa-right-from-bracket'></i>
+        </button>
+    </section>
+    <div id='popup-all' class='popup-all' onclick='showHideForm()'>
+    </div>
+    <div id='popup-all2' class='popup-all' onclick='hideInfo()'>
+    </div>
+    <div id='popup-all3' class='popup-all' onclick='showHideLogin()'>
+    </div>
+    <div id='popup-all4' class='popup-all' onclick='showHideSignout()'>
+    </div>
+    <div id='popup-all5' class='popup-all' onclick='showHideHelp()'>
+    </div>
+    <div id='popup' class='popup'>
+
+        <form id='add-form'>
+            <input type='file' accept='image/*' id='fotka' name='fotka'>
+            <input type='text' id='nazev' name='nazev' class='input-text' placeholder='název..' required>
+            <input type='text' id='autor' name='autor' class='input-text' placeholder='autor (ty:D)'>
+            <textarea type='text' id='popis' name='popis' class='input-text' placeholder='popis..'></textarea>
+            <input type='checkbox' id='vyhlidka' name='type' value='vyhlidka'>
+            <label for='vyhlidka'>Vyhlídka</label><br>
+            <input type='checkbox' id='rybnik' name='type' value='rybnik'>
+            <label for='rybnik'>Rybník nebo jezero</label><br>
+            <input type='checkbox' id='ohniste' name='type' value='ohniste'>
+            <label for='ohniste'>Ohniště</label><br>
+            <input type='checkbox' id='zricenina' name='type' value='zricenina'>
+            <label for='zricenina'>Zřícenina</label><br>
+            <input type='checkbox' id='pristresek' name='type' value='pristresek'>
+            <label for='pristresek'>Přístřešek</label><br>
+
+            <input id='form-submit' type='submit' value='Přidat spot'>
+        </form>
+    </div>
+    <div id='popup2' class='popup'>
+        <p>
+            Pro tohle potřebuju aby ses přihlásil přes Google
+        </p>
+        <button onclick='handleAuthClick()'>
+            Přihlásit se
+        </button>
+    </div>
+    <div id='popup3' class='popup'>
+        <p>
+            Opravdu se chceš odhlásit?
+        </p>
+        <button onclick='handleSignoutClick()'>
+            Odhlásit se
+        </button>
+    </div>
+    <div id='popup4' class='popup'>
+        <h2>
+            Nějaký info...
+        </h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam voluptatum laudantium, facilis ut sunt porro?
+            Iure id ratione esse nihil, incidunt vitae obcaecati maxime nostrum doloribus eos placeat natus commodi.
+        </p>
+    </div>
+    <div id='loader-all'>
+        <div id='loader' alt='Loading...'></div>
+    </div>
+    <div id='information-allM'>
+    </div>
+    <script src='../js/form.js'></script>
+    <script src='../js/map.js'></script>
+    <script src='../js/script.js'></script>
+    <script async='' defer='' onload='this.onload=function(){};handleClientLoad()'
+        onreadystatechange="if (this.readyState === 'complete') this.onload()"
+        src='https://apis.google.com/js/api.js'></script>
+    <script>
+        $(window).load(function () {
+            $('#loader-all').hide();
+        });
+    </script>
+</body>
+</body>
+
+</html>
