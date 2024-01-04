@@ -85,6 +85,21 @@ h1 {
     background-color: #2980b9;
 }
 
+#historyButton {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+}
+
+#historyButton:hover {
+    background-color: #2980b9;
+}
+
 select {
     padding: 8px;
     border: 1px solid #ccc;
@@ -137,6 +152,11 @@ input[type="number"]:focus {
 }
 
 #messageBox {
+    margin-top: 5px;
+    color: rgb(211, 211, 211);
+}
+
+#historyBox {
     margin-top: 5px;
     color: rgb(211, 211, 211);
 }

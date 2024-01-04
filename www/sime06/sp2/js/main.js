@@ -1,7 +1,4 @@
 $(document).ready(function () {
-    // URL for the API
-    const api = `https://v6.exchangerate-api.com/v6/a85eb748d50975a2e1110f63/latest/USD`;
-
     // An array of available currencies
     let currencies = [
         'USD',
@@ -21,30 +18,34 @@ $(document).ready(function () {
     let lastFirstCurrency = localStorage.getItem('firstCurrency') || 'EUR';
     let lastSecondCurrency = localStorage.getItem('secondCurrency') || 'USD';
 
+    // Retrieve the conversion history from localStorage, or initialize it to an empty array
+    let conversionHistory = JSON.parse(localStorage.getItem('conversionHistory')) || [];
+
     // This iteration adds all values from the 'currencies' array to the 'first' and 'second' dropdowns
     $.each(currencies, function (index, currency) {
         $('#first').append(new Option(currency, currency));
         $('#second').append(new Option(currency, currency));
     });
 
-    // Variables to store the options that were removed from each dropdown
-    let removedOptionFirst = null;
-    let removedOptionSecond = null;
+    // Variables to store the options that were disabled in each dropdown
+    let disabledOptionFirst = null;
+    let disabledOptionSecond = null;
 
     // Attach an event handler to the 'change' event on the '#first' dropdown
     $('#first').on('change', function () {
         // Get the value of the selected option
         let selectedOption = $(this).val();
 
-        // If an option was previously removed from the '#second' dropdown, append it back
-        if (removedOptionSecond) {
-            $('#second').append(removedOptionSecond);
-            removedOptionSecond = null;
+        // If an option was previously disabled in the '#second' dropdown, enable it
+        if (disabledOptionSecond) {
+            $('#second option[value="' + disabledOptionSecond + '"]').prop('disabled', false);
+            disabledOptionSecond = null;
         }
 
-        // Store the option in the '#second' dropdown that matches the selected option in the '#first' dropdown
-        // This option will be removed from the '#second' dropdown to prevent the user from selecting the same currency in both dropdowns
-        removedOptionSecond = $('#second option[value="' + selectedOption + '"]').detach();
+        // Store the value of the option in the '#second' dropdown that matches the selected option in the '#first' dropdown
+        // This option will be disabled in the '#second' dropdown to prevent the user from selecting the same currency in both dropdowns
+        disabledOptionSecond = selectedOption;
+        $('#second option[value="' + selectedOption + '"]').prop('disabled', true);
     });
 
     // Attach an event handler to the 'change' event on the '#second' dropdown
@@ -52,15 +53,16 @@ $(document).ready(function () {
         // Get the value of the selected option
         let selectedOption = $(this).val();
 
-        // If an option was previously removed from the '#first' dropdown, append it back
-        if (removedOptionFirst) {
-            $('#first').append(removedOptionFirst);
-            removedOptionFirst = null;
+        // If an option was previously disabled in the '#first' dropdown, enable it
+        if (disabledOptionFirst) {
+            $('#first option[value="' + disabledOptionFirst + '"]').prop('disabled', false);
+            disabledOptionFirst = null;
         }
 
-        // Store the option in the '#first' dropdown that matches the selected option in the '#second' dropdown
-        // This option will be removed from the '#first' dropdown to prevent the user from selecting the same currency in both dropdowns
-        removedOptionFirst = $('#first option[value="' + selectedOption + '"]').detach();
+        // Store the value of the option in the '#first' dropdown that matches the selected option in the '#second' dropdown
+        // This option will be disabled in the '#first' dropdown to prevent the user from selecting the same currency in both dropdowns
+        disabledOptionFirst = selectedOption;
+        $('#first option[value="' + selectedOption + '"]').prop('disabled', true);
     });
 
     // Set the value of the 'first' and 'second' dropdowns to the last selected currencies
@@ -131,49 +133,104 @@ $(document).ready(function () {
         }
     });
 
-    // Asynchronous function for currency conversion
+    // Define the asynchronous function convertCurrency
     let convertCurrency = async () => {
-        // Get the amount to convert from the '#amount' input field
+        // Get the values from the input field and the two select fields
         let amount = $('#amount').val();
-        // Get the currency to convert from from the '#first' dropdown
         let firstCurrency = $('#first').val();
-        // Get the currency to convert to from the '#second' dropdown
         let secondCurrency = $('#second').val();
 
-        // If the amount is greater than 0, proceed with the conversion
+        // Construct the API URL using the first currency
+        const api = `https://v6.exchangerate-api.com/v6/a85eb748d50975a2e1110f63/latest/${firstCurrency}`;
+
+        // Get the current date and format it as YYYY-MM-DD
+        let currentDate = new Date();
+        // Convert the date to ISO format and split it at the 'T' character to get the date part
+        let formattedDate = currentDate.toISOString().split('T')[0];
+
+        // Check if the entered amount is greater than 0
         if (parseFloat(amount) > 0) {
-            // Clear the '#messageBox' div
+            // Clear the message box and show the loader
             $('#messageBox').html('');
-            // Show the loader
             $('#loader').show();
 
+            // Try to fetch the conversion rates from the API, catch any errors that occur -> move to 'catch' block
             try {
-                // Fetch the conversion rates from the API
+                // AJAX request to the API, two properties are set: url and type, await = request either fullfilled or rejected
                 let data = await $.ajax({ url: api, type: 'GET' });
 
-                // Get the exchange rate for the 'from' currency
-                let fromExchangeRate = data.conversion_rates[firstCurrency];
-                // Get the exchange rate for the 'to' currency
+                // Get the exchange rate for the second currency from the API response
                 let toExchangeRate = data.conversion_rates[secondCurrency];
-                // Calculate the converted amount
-                let convertedAmount = (amount / fromExchangeRate) * toExchangeRate;
-                // Display the converted amount in the '#messageBox' div
-                $('#messageBox').html(`${amount} ${firstCurrency} = ${convertedAmount.toFixed(2)} ${secondCurrency}`);
+                // Calculate the converted amount by multiplying the amount by the exchange rate
+                let convertedAmount = amount * toExchangeRate;
 
-                // Store the 'from' and 'to' currencies in local storage
+                // Selector, content of innerHTML, display the converted amount and the exchange rate
+                $('#messageBox').html(`${amount} ${firstCurrency} = ${convertedAmount.toFixed(2)} ${secondCurrency}<br>(Exchange rate valid on ${formattedDate})`);
+
+                // Create a new object to hold the conversion history entry
+                let newEntry = {
+                    date: formattedDate,
+                    amount: amount,
+                    fromCurrency: firstCurrency,
+                    toCurrency: secondCurrency,
+                    convertedAmount: convertedAmount.toFixed(2)
+                };
+
+                // Get the date one year ago
+                let oneYearAgo = new Date();
+                // Calculate the date one year ago by subtracting 365 days from the current date
+                oneYearAgo.setDate(oneYearAgo.getDate() - 365);
+                // Convert the date to ISO format and split it at the 'T' character to get the date part in string
+                let oneYearAgoFormatted = oneYearAgo.toISOString().split('T')[0];
+                // Remove entries from the conversion history that are older than one year
+                // Takes an entry and checks if the date is greater than or equal to one year ago
+                conversionHistory = conversionHistory.filter(entry => entry.date >= oneYearAgoFormatted);
+
+                // Add the new entry to the conversion history array
+                conversionHistory.push(newEntry);
+
+                // Store the conversion history and the last selected currencies in local storage
+                // JSON.stringify = convert a JavaScript object to a JSON string
+                localStorage.setItem('conversionHistory', JSON.stringify(conversionHistory));
                 localStorage.setItem('firstCurrency', firstCurrency);
                 localStorage.setItem('secondCurrency', secondCurrency);
+
             } catch (error) {
-                // If an error occurs, log it to the console and display an error message in the '#messageBox' div
+                // If an error occurs during the API request, log the error and display an error message
                 console.error('Error:', error);
-                $('#messageBox').text('An error occurred while fetching data. Please try again.');
+                // To not repeatedly select the same element, store it in a variable
+                let messageBox = $('#messageBox');
+                messageBox.text('An error occurred while fetching data. Please try again.');
             } finally {
                 // Hide the loader
                 $('#loader').hide();
             }
         }
-    };
-
-    // Attach the 'convertCurrency' function to the 'click' event of the '#button' button
+    }
     $('#button').click(convertCurrency);
+
+    let showConversionHistory = () => {
+        // Retrieve the array of conversion history entries from localStorage, or initialize it to an empty array
+        // Parse the JSON string to convert it to a JavaScript object
+        let conversionHistory = JSON.parse(localStorage.getItem('conversionHistory')) || [];
+
+        // Sort the history by date in ascending order
+        // This subtracts the date of the first entry from the date of the second entry, less than 0 = first entry is older than second entry
+        conversionHistory.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        // Create a string to hold the HTML for the history
+        let historyHtml = '';
+
+        // Loop through the history for each entry
+        for (let entry of conversionHistory) {
+            // Add an HTML string for each entry to the historyHtml string
+            historyHtml += `<p>${entry.date}: ${entry.amount} ${entry.fromCurrency} = ${entry.convertedAmount} ${entry.toCurrency}</p>`;
+        }
+
+        // Display the history on the page
+        $('#historyBox').html(historyHtml);
+    }
+
+    // Attach the showConversionHistory function to a button click event
+    $('#historyButton').click(showConversionHistory);
 });
