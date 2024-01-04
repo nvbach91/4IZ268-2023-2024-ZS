@@ -1,7 +1,7 @@
 import { lang } from '../configs/language.config.js'
 
 /*
-	Třída PagesView - je třída pro vytváření přechledu statických prvků stránky a nastavení jejich dynamické zpracování údalostí
+	Třída PagesView - je třída pro vytváření přehledu statických prvků stránky a nastavení jejich dynamické zpracování událostí
 */
 export class PagesView {
 	constructor(service) {
@@ -26,8 +26,8 @@ export class PagesView {
 		})
 
 		$("#go").click(() => { this.service.initMapPage() })
-		this.mainPage = $("#main-page")
-		return $("#main-page")
+		this.mainPage = $("#mainPage")
+		return $("#mainPage")
 	}
 
 	// metoda nastavující textové prvky na stránku podle zvoleného jazyka
@@ -44,6 +44,7 @@ export class PagesView {
 					$(element).attr("placeholder", text)
 					break
 				case "P":
+				case "SPAN":
 				case "BUTTON":
 				case "H1":
 				case "H2":
@@ -56,13 +57,41 @@ export class PagesView {
 	// metoda nastavující přehled a zpracování stránky mapy
 	getMapPage = (languageName) => {
 
-		$('.submit').click(this.service.checkRoute)
+		$('#mapForm').submit(() => {
+			this.service.checkRoute()
+			return false
+		})
 		$('.save').click(this.service.save)
 		$('.delete').click(this.service.deleteMap)
 
+		const defaultPixelRatio = 1.25
+
+		// metoda pro nastavení velikostí elementů, které se nemusí zvětšovat
+		const onChanged = () => {
+			const newDevicePixelRation = window.devicePixelRatio
+			const delta = defaultPixelRatio / newDevicePixelRation
+			$('.bottom-pane').css(
+				{
+					"transform": `scale(${delta}) `,
+					"transform-origin": `${delta > 0 ? "bottom left" : "top right"}`,
+				}
+			)
+			$('.rightbar').css(
+				{
+					"transform": `scale(${delta})`,
+
+					"transform-origin": `${delta > 0 ? "top right" : "bottom left"}`
+				}
+			)
+		}
+
+		// poslohač události obnovení rolíšení stránky
+		const resizeObserver = new ResizeObserver(onChanged)
+		resizeObserver.observe(window.document.documentElement)
+
 		this.setTexts(languageName)
 
-		return $('#map-page')
+		return $('#mapPage')
 	}
 
 	// metoda vytváří element markeru
@@ -193,5 +222,52 @@ export class PagesView {
 		$(loader).addClass("loader")
 		$(preloader).append(loader)
 		return preloader
+	}
+
+	// metoda pro vytvoření preloaderu
+	getLightLoader = () => {
+		const loader = document.createElement("div")
+		$(loader).addClass("light-loader")
+		return loader
+	}
+
+	// metoda vytvoří element kroku
+	getStep = (action, distance) => {
+		const stepContainer = document.createElement("div")
+		$(stepContainer).addClass("step")
+
+		const actionContainer = document.createElement("div")
+		const actionName = document.createElement("p")
+		$(actionName).text(action)
+		$(actionContainer).append(actionName)
+
+		const distanceContainer = document.createElement("div")
+		const distanceInMeters = document.createElement("p")
+		$(distanceInMeters).text(distance)
+		$(distanceContainer).append(distanceInMeters)
+		$(stepContainer).append(actionContainer, distanceContainer)
+
+		return $(stepContainer)
+	}
+
+	// metoda vytvoří element malý uložené mapy
+	getStoredLight = (id, route) => {
+		const container = document.createElement("div")
+		$(container).addClass("stored-light")
+
+		const originTitle = document.createElement("p")
+		$(originTitle).text(route.origin?.name || "")
+		const destinationTitle = document.createElement("p")
+		$(destinationTitle).text(route.destination?.name || "")
+
+		$(container).append(originTitle, destinationTitle)
+
+		$(container).click(
+			() => {
+				this.service.openStored(id, route)
+			}
+		)
+
+		return $(container)
 	}
 }

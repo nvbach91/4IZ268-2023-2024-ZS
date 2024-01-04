@@ -16,7 +16,12 @@ export const lang = {
 		delete: "Delete",
 		markers: "Markers",
 		save: "Save",
-		open: "Open"
+		open: "Open",
+		time: "Duration",
+		distance: "Distance",
+		steps: "Steps",
+		saved: "Map is saved",
+		deleted: "Map is deleted"
 	},
 	"CZ": {
 		lang: "Vyberte si jazyk",
@@ -35,6 +40,11 @@ export const lang = {
 		delete: "Vymazat",
 		markers: "Markery",
 		save: "Uložit",
-		open: "Zobrazit"
+		open: "Zobrazit",
+		time: "Doba trvání",
+		distance: "Délka trasy",
+		steps: "Kroky",
+		saved: "Mapa je uložená",
+		deleted: "Mapa je smazaná"
 	}
 }

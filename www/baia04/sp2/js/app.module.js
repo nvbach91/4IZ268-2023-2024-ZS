@@ -1,5 +1,6 @@
 import { AppService } from './app.service.js'
 import { MapModule } from './map/map.module.js'
+import { NotificationModule } from './notification/notification.module.js'
 import { PagesModule } from './pages/pages.module.js'
 import { PositionModule } from './position/position.module.js'
 import { RouteModule } from './route/route.module.js'
@@ -20,5 +21,6 @@ export class AppModule {
 		new PositionModule()
 		new MapModule()
 		new RouteModule()
+		new NotificationModule()
 	}
 }

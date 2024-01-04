@@ -1,7 +1,7 @@
 export const RouteData = {
-	Origin: "Origin",
-	Destination: "Destination",
-	AddWaypoint: "Waypoint",
-	UpdateWaypoint: "UpdateWaypoint",
-	RemoveWaypoint: "RemoveWaypoint"
+	Origin: 0,
+	Destination: 1,
+	AddWaypoint: 2,
+	UpdateWaypoint: 3,
+	RemoveWaypoint: 4
 }

@@ -35,7 +35,7 @@ main {
 	border-radius: 25px;
 }
 
-.from-input{
+.from-input {
 	padding: 10px;
 	height: 30px;
 	border-width: 2px 0px 2px 2px;
@@ -60,19 +60,24 @@ main {
 	border: none;
 	padding: 10px;
 	color: rgb(255, 255, 255);
-	border: 2px white solid;
+	border: 3px rgba(0, 0, 0, 0) solid;
+}
+
+#submitChanges {
+	margin-top: 10px;
 }
 
 .button {
-	width: 300px;
+	width: 200px;
 	border-radius: 20px;
 	border: none;
 	padding: 10px;
 	color: rgb(255, 255, 255);
-	border: 2px white solid;
+	border: 3px rgba(0, 0, 0, 0) solid;
 }
 
-.save, .delete {
+.save,
+.delete {
 	height: 20px;
 	background-color: green;
 	display: flex;
@@ -85,9 +90,11 @@ main {
 	background-color: darkred;
 }
 
-.submit:hover, .save:hover, .delete:hover {
+.submit:hover,
+.save:hover,
+.delete:hover {
 	cursor: pointer;
-	border: 2px darkgreen solid;
+	border-color: darkgreen;
 	transition: 0.25s;
 }
 
@@ -100,8 +107,9 @@ main {
 }
 
 #map {
-	width: 800px;
-	height: 600px;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
 }
 
 .language-container {
@@ -117,19 +125,20 @@ main {
 	border-width: 2px 0px 2px 2px;
 	border-color: black;
 	border-style: solid;
-	border-top-left-radius: 25px; 
-	border-bottom-left-radius: 25px; 
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
 	padding: 5px;
 	height: 40px;
 }
 
-.language-button-right, .edit-button {
+.language-button-right,
+.edit-button {
 	background: none;
 	border-width: 2px 2px 2px 2px;
 	border-color: black;
 	border-style: solid;
-	border-top-right-radius: 25px; 
-	border-bottom-right-radius: 25px; 
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
 	padding: 5px;
 	height: 40px;
 }
@@ -139,7 +148,11 @@ main {
 	padding: 5px;
 }
 
-.language-button-left:hover, .language-button-right:hover, .edit-button:hover, .clickable:hover, .button {
+.language-button-left:hover,
+.language-button-right:hover,
+.edit-button:hover,
+.clickable:hover,
+.button {
 	cursor: pointer;
 }
 
@@ -151,47 +164,68 @@ main {
 	filter: invert(15%);
 }
 
+.controls {
+	position: absolute;
+}
+
 .container {
 	display: flex;
 	flex-direction: column;
-}
-
-.row-container {
-	display: flex;
-	flex-direction: row;
-	gap: 5%
 }
 
 .invalid {
 	border-color: darkred
 }
 
-.field-text, .language-text {
+.field-text,
+.language-text {
 	font-weight: bold;
 }
 
 .rightbar {
+	width: 250px;
+	background-color: rgba(165, 214, 80, 0.455);
+	border-radius: 10px;
+	padding: 10px;
+	position: absolute;
 	display: flex;
 	flex-direction: column;
-	gap: 7px
+	gap: 7px;
+	top: 10px;
+}
+
+.rightbar {
+	right: 20px;
+}
+
+.leftbar {
+	top: 0;
+	bottom: 0;
+	left: 20px
 }
 
 .wide-button {
 	width: 100%;
 }
 
-.markers-pane {
+.markers-pane,
+.steps-pane {
 	width: 100%;
-	min-height: 150px;
-	max-height: 350px;
+	min-height: 60px;
+	max-height: 150px;
 	border: 2px solid black;
 	border-radius: 25px;
-	overflow-y: auto; 
+	overflow-y: auto;
 }
 
 .icon {
 	width: 20px;
 	height: 20px;
+}
+
+.notification-icon {
+	width: 50px;
+	height: 50px;
 }
 
 .marker {
@@ -212,17 +246,21 @@ main {
 	justify-content: center;
 }
 
-.clean-input {
+.clean-input,
+textarea {
+	background: none;
 	border: none
 }
 
 .bottom-pane {
-	margin-top: 20px;
-	width: 100%;
+	position: fixed;
+	bottom: 15px;
+	left: 41%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 5px
+	gap: 5px;
+	transition: transform 0.2s ease;
 }
 
 .inverted {
@@ -254,13 +292,18 @@ main {
 	z-index: 1000;
 }
 
-.loader {
+.loader,
+.light-loader {
 	border: 8px solid #f3f3f3;
 	border-top: 8px solid #3498db;
 	border-radius: 50%;
 	width: 50px;
 	height: 50px;
 	animation: spin 1s linear infinite;
+}
+
+.light-loader {
+	position: absolute;
 }
 
 @keyframes spin {
@@ -275,4 +318,69 @@ main {
 
 .mapboxgl-ctrl-top-left {
 	display: none !important;
+}
+
+.option-content {
+	padding-left: 10px;
+	display: flex;
+	gap: 5%;
+}
+
+.step {
+	display: flex;
+	justify-content: space-between;
+	font-size: 12px;
+	border-bottom: 1px black solid;
+	margin: 6px;
+	overflow-y: hidden;
+}
+
+#storedLightPane {
+	position: absolute;
+	margin-top: 3px;
+	margin-left: 3px;
+	display: flex;
+	flex-direction: column;
+	gap: 3px
+}
+
+.stored-light {
+	padding: 10px;
+	background-color: rgba(165, 214, 80, 0.455);
+	border-radius: 15px;
+	border: 2px rgba(0, 0, 0, 0) solid
+}
+
+.stored-light:hover {
+	cursor: pointer;
+	border-color: darkgreen;
+	transition: 0.5s;
+}
+
+.notification {
+	position: absolute;
+	width: 300px;
+	top: 0;
+	right: 50%;
+	left: 50%;
+	background-color: rgba(255, 0, 0, 0.828);
+	transform: translate(-50%, 20px);
+	display: flex;
+	padding: 15px;
+	border-radius: 10px;
+	color: white;
+	gap: 20px;
+}
+
+.confirm {
+	background-color: rgba(0, 128, 0, 0.8);
+}
+
+.error {
+	background-color: rgba(255, 0, 0, 0.8);
+	;
+}
+
+.warning {
+	background-color: rgba(255, 166, 0, 0.8);
 }

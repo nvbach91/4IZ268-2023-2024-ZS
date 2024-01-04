@@ -29,13 +29,17 @@ export class MapService {
 			return
 		}
 
+		AppService.emit(Events.InitLightLoader)
 		// pro získání mapboxGL mapy je potřeba přes API se připojít k jejich serveru a na tento požadávek server vrátí objekt mapy či chybu a vyvolá příslušnou metodu
 		$.ajax({
 			method: "GET",
 			dataType: "json",
 			url: url,
 			success: (style) => { this.createMap(style, container, coordinates) },
-			error: (er) => { console.log(er) }
+			error: (error) => {
+				AppService.emit(Events.RemoveLightLoader)
+				AppService.emit(Events.ShowNotification, Notifications.Error, error)
+			}
 		})
 	}
 
@@ -58,6 +62,31 @@ export class MapService {
 			interactive: false,
 		})
 
+		//!
+		this.router.on('route', (event) => {
+			const route = event.route[0]
+
+			const steps = route.legs[0]?.steps
+			const stepsParsed = []
+
+			steps.forEach((currentStep) => {
+				const parsedStep = {
+					maneuver: currentStep.maneuver.instruction,
+					distance: currentStep.distance
+				}
+				stepsParsed.push(parsedStep)
+			})
+
+			const routeInfo = {
+				duration: route.duration,
+				distance: route.distance,
+				steps: stepsParsed
+			}
+			// vyvolá event nastavení dodatečných informací o cestě
+			AppService.emit(Events.SetRouteInfo, routeInfo)
+
+		})
+
 		// přířadí se router k mapě
 		this.map.addControl(this.router, 'top-left')
 
@@ -74,8 +103,8 @@ export class MapService {
 			addMarkerFunction(clickedCoords)
 		})
 
-		// nahlašení eventu, že mapa je připravená
-		AppService.emit(Events.OnMapLoaded)
+
+		AppService.emit(Events.RemoveLightLoader)
 	}
 
 	// nastavení centru koordinát mapy
@@ -91,6 +120,7 @@ export class MapService {
 	// metoda pro nastavení trasy na mapě 
 	setRoute(origin, destination) {
 		// mapa se nemusí načíst hned, ale je velmi důležitá věc stránky, takže nemůžeme dovolit, aby uživatel něco dělal bez mapy. Radši necháme ho cvílku čekat, než se mapa připraví
+		AppService.emit(Events.InitLightLoader)
 		const interval = setInterval(() => {
 			if (!this.map?.loaded()) return
 			const originCoords = [origin.lng, origin.lat]
@@ -99,6 +129,7 @@ export class MapService {
 			// nastaví trasu z původního místa na cílové
 			this.router.setOrigin(originCoords)
 			this.router.setDestination(destinationCoords)
+			AppService.emit(Events.RemoveLightLoader)
 
 			// až je mapa hotova, žádný interval nepokračuje
 			clearInterval(interval)
@@ -108,6 +139,7 @@ export class MapService {
 	// nastavení nekolika markerů najednou
 	addMarkers = (markers) => {
 		// mapa se nemusí načíst hned, ale je velmi důležitá věc stránky, takže nemůžeme dovolit, aby uživatel něco dělal bez mapy. Radši necháme ho cvílku čekat, než se mapa připraví
+		AppService.emit(Events.InitLightLoader)
 		const interval = setInterval(() => {
 			if (!this.map?.loaded()) return
 
@@ -120,6 +152,7 @@ export class MapService {
 				)
 			})
 
+			AppService.emit(Events.RemoveLightLoader)
 			// až je mapa hotova, žádný interval nepokračuje
 			clearInterval(interval)
 		}, 50)

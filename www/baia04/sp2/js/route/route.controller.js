@@ -24,14 +24,9 @@ export class RouteController {
 			this.routeService.save(id)
 		})
 
-		// registrace eventu požadavku na načítání dat trasy z localStorage
-		AppService.on(Events.SetOpenStoredID, (id) => {
-			this.routeService.openStoredID = id
-		})
-
 		// registrace eventu požadavku na vymázaní dat trasy z localStorage
-		AppService.on(Events.DeleteStored, () => {
-			this.routeService.deleteStored()
+		AppService.on(Events.DeleteStored, (id) => {
+			this.routeService.deleteStored(id)
 		})
 
 	}

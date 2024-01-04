@@ -43,10 +43,9 @@ export class RouteService {
 	}
 
 	// metoda pro uložení trasy do localStorage
-	save = () => {
-		if (this.openStoredID) localStorage.removeItem(`route-${this.openStoredID}`)
-		const newID = this.openStoredID ? this.openStoredID : localStorage.length
-		this.openStoredID = newID
+	save = (id) => {
+		if (!id) return
+		localStorage.removeItem(id)
 		// data z trasy se naparsují v čítelné podobě
 		const routeObjectToSave = {
 			origin: this.route.getLastValidOrigin() || null,
@@ -63,15 +62,13 @@ export class RouteService {
 			}
 			routeObjectToSave.waypoints.push(waypointObject)
 		})
-		localStorage.setItem("route-" + newID, JSON.stringify(routeObjectToSave))
+		localStorage.setItem(id, JSON.stringify(routeObjectToSave))
 	}
 
 	// metoda pro vymazání mapy z localStorage
-	deleteStored = () => {
-		const id = this.openStoredID
+	deleteStored = (id) => {
 		if (!id) return
-		localStorage.removeItem(`route-${id}`)
-		$(`#route-${id}`).remove()
-		this.openStoredID = undefined
+		localStorage.removeItem(id)
+		$(`#${id}`).remove()
 	}
 }

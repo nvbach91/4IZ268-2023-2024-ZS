@@ -17,6 +17,19 @@ export class PagesController {
 		AppService.on(Events.AddMarker, (marker, title, description) => {
 			this.pagesService.appendMarker(marker, title, description)
 		})
+
+		//!
+		AppService.on(Events.SetRouteInfo, (routeInfo) => {
+			this.pagesService.setRouteInfo(routeInfo)
+		})
+
+		AppService.on(Events.InitLightLoader, () => {
+			this.pagesService.initLightLoader()
+		})
+
+		AppService.on(Events.RemoveLightLoader, () => {
+			this.pagesService.removeLightLoader()
+		})
 	}
 
 

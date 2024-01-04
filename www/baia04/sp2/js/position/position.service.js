@@ -1,5 +1,6 @@
 import { AppService } from '../app.service.js'
 import { Events } from '../enums/events.enum.js'
+import { Notifications } from '../enums/notifications.enum.js'
 import { RouteData } from '../enums/routeData.enum.js'
 import { Place } from '../utils/Place.js'
 import { positionConfig } from './position.config.js'
@@ -30,11 +31,13 @@ export class PositionService {
 						AppService.emit(Events.SetRouteData, RouteData.Origin, origin)
 					})
 					.catch((error) => {
+						AppService.emit(Events.ShowNotification, Notifications.Error, error)
 						// vyvolá event nastavení názvu pozice na stránce
 						AppService.emit(Events.SetRouteData, RouteData.Origin, origin)
 					})
 			})
 			.catch((error) => {
+				AppService.emit(Events.ShowNotification, Notifications.Error, error)
 				// vyvolá event nastavení názvu pozice na stránce
 				AppService.emit(Events.SetRouteData, RouteData.Origin, origin)
 			})
@@ -63,6 +66,7 @@ export class PositionService {
 				AppService.emit(Events.UpdateMapCenter, newOrigin.coords)
 			})
 			.catch((error) => {
+				AppService.emit(Events.ShowNotification, Notifications.Error, error)
 				newOrigin.setIsValid(false)
 			})
 
@@ -72,6 +76,7 @@ export class PositionService {
 				newDestination.setIsValid(true)
 			})
 			.catch((error) => {
+				AppService.emit(Events.ShowNotification, Notifications.Error, error)
 				newDestination.setIsValid(false)
 			})
 
@@ -140,7 +145,7 @@ export class PositionService {
 	}
 
 	// metoda pro zjíštění koordinát podle názvu místa
-	getCoordsByPlace = (placeName, lang) => {
+	getCoordsByPlace = (placeName) => {
 		const key = positionConfig.openCage
 
 		return new Promise((resolve, reject) => {
@@ -150,7 +155,7 @@ export class PositionService {
 			}
 			// pro zíštění koordinát je potřeba se připojít přes API k OpenCage API, které na tento požadávek vrátí buď objekt koordinát místa nebo chybu
 			$.ajax({
-				url: `https://api.opencagedata.com/geocode/v1/json?key=${key}&q=${encodeURIComponent(placeName)}&language=${lang}`,
+				url: `https://api.opencagedata.com/geocode/v1/json?key=${key}&q=${encodeURIComponent(placeName)}`,
 				dataType: 'json',
 				success: (response) => {
 					const results = response.results

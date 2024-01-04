@@ -1,7 +1,11 @@
 import { AppService } from '../app.service.js'
+import { lang } from '../configs/language.config.js'
 import { Events } from '../enums/events.enum.js'
+import { Notifications } from '../enums/notifications.enum.js'
 import { RouteData } from '../enums/routeData.enum.js'
+import { getKilometersByMeters } from '../utils/getKilometersByMeters.js'
 import { getLanguageCode } from '../utils/getLanguageCode.js'
+import { getTimeBySeconds } from '../utils/getTimeBySeconds.js'
 import { secToMs } from '../utils/secToMs.js'
 import { Marker } from './Marker.js'
 import { PagesView } from './pages.view.js'
@@ -103,11 +107,15 @@ export class PagesService {
 	}
 
 	// metoda vytvářející hlávní stránku
-	initMapPage = (from, to) => {
+	initMapPage = (from, to, id) => {
 		if (!this.isPageChangeable) return
 		const mapPage = this.view.getMapPage(this.currentLanguage)
 		const destination = to ? to : $("#toMain").val()
 		const origin = from ? from : $("#fromMain").val()
+
+		this.openStoredID = id ? id : `route-${localStorage.length}`
+
+
 		// vyvolá ověření nové trasy podle zadaných údajů
 		AppService.emit(Events.RouteGet, destination, origin)
 
@@ -177,11 +185,16 @@ export class PagesService {
 	// metoda pro uložení trasy do localStorage
 	save = () => {
 		// vyvolá event uložení
-		AppService.emit(Events.Save)
+		AppService.emit(Events.Save, this.openStoredID)
+		// vyvolá event zobrazení upozornění
+		AppService.emit(Events.ShowNotification, Notifications.Success, lang[this.currentLanguage].saved)
+		this.getStored()
 	}
 
 	// metoda pro načtení uložených tras v localStorage
 	getStored = () => {
+		$("#storedPane").empty()
+		$("#storedLightPane").empty()
 		Object.getOwnPropertyNames(localStorage).forEach((currentRouteName) => {
 			if (!currentRouteName.startsWith("route")) return
 			const id = currentRouteName.split("-")[1]
@@ -189,32 +202,37 @@ export class PagesService {
 			// pokud nějaké trasy jsou vytvoří element a vloží se do dolního panelu
 			const mapElement = this.view.getStoredMap(id, currentRoute, this.currentLanguage)
 			$("#storedPane").append(mapElement)
+			const mapElementLight = this.view.getStoredLight(id, currentRoute, this.currentLanguage)
+			$("#storedLightPane").append(mapElementLight)
 		})
 	}
 
 	// metoda pro vymazání uložené mapy z localStorage
 	deleteStored = (container, id) => {
+		this.openStoredID = undefined
 		$(container).fadeOut(secToMs(0.5), 0, () => {
 			$(container).remove()
 		})
-		localStorage.removeItem(`route-${id}`)
+		AppService.emit(Events.ShowNotification, Notifications.Warning, lang[this.currentLanguage].deleted)
+		AppService.emit(Events.DeleteStored, `route-${id}`)
 	}
 
 	// metoda pro otevření uložené trasy ze seznamu
 	openStored = (id, route) => {
-		this.initMapPage(route.origin?.name, route.destination?.name)
+		this.initMapPage(route.origin?.name, route.destination?.name, `route-${id}`)
 		// vyvolá event nastavení všech uložených markerů na mapu
 		AppService.emit(Events.SetMarkers, route.waypoints)
 		// vyvolá event obnovení otevřené mapy (je potřeba pro zpracování tras)
 		AppService.emit(Events.SetOpenStoredID, id)
-		this.openStoredID = id
 	}
 
 	// metoda pro obnovení obrazovky bez mapy a ji vymazání 
 	deleteMap = () => {
 		// pokud je však už uložená, také se vymáže
-		AppService.emit(Events.DeleteStored)
+		AppService.emit(Events.DeleteStored, this.openStoredID)
+		this.openStoredID = undefined
 		this.initMainPage()
+		AppService.emit(Events.ShowNotification, Notifications.Warning, lang[this.currentLanguage].deleted)
 	}
 
 	// metoda inicializace preloaderu
@@ -224,4 +242,42 @@ export class PagesService {
 		$(document).ready(action)
 	}
 
+	// metoda pro nastavení dodatečných informací o cestě
+	setRouteInfo = (routeInfo) => {
+
+		// vypíše čas
+		const hoursAndMinutes = getTimeBySeconds(routeInfo.duration)
+		const duration = `${hoursAndMinutes.hours}h ${hoursAndMinutes.minutes}m`
+		$('#timeField').text(duration)
+
+		// vypíše délku
+		const kilometersAndMeters = getKilometersByMeters(routeInfo.distance)
+		const distance = `${kilometersAndMeters.kilometers}km ${kilometersAndMeters.meters}m`
+		$('#distanceField').text(distance)
+
+		// vypíše kroky
+		const stepsPane = $(".steps-pane")
+		const stepsAmount = routeInfo.steps.length
+		$("#stepsAmount").text(` (${stepsAmount})`)
+		routeInfo.steps.forEach((currentStep) => {
+			const distance = getKilometersByMeters(currentStep.distance)
+			const amount = distance.kilometers > 0 ? Math.round(distance.kilometers) + "km" : Math.round(distance.meters) + "m"
+			const action = currentStep.maneuver.length < 70 ? currentStep.maneuver : currentStep.maneuver.slice(0, 65) + "..."
+			const step = this.view.getStep(action, amount)
+			$(stepsPane).append(step)
+		})
+		this.removeLightLoader()
+	}
+
+	// metoda pro inicializaci malého loaderu
+	initLightLoader = () => {
+		const lightLoader = this.view.getLightLoader()
+		$("body").append(lightLoader)
+		this.lightLoader = lightLoader
+	}
+
+	// metoda pro smazání malého loaderu
+	removeLightLoader = () => {
+		$(".light-loader").remove()
+	}
 }

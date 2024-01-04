@@ -19,5 +19,9 @@ export const Events = {
 	CreateMarker: "CreateMarker",
 	Save: "Save",
 	SetOpenStoredID: "SetOpenStoredID",
-	DeleteStored: "DeleteStored"
+	DeleteStored: "DeleteStored",
+	SetRouteInfo: "SetRouteInfo",
+	ShowNotification: "ShowNotification",
+	InitLightLoader: "InitLightLoader",
+	RemoveLightLoader: "RemoveLightLoader",
 }
