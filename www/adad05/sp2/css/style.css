@@ -4,7 +4,8 @@
 }
 
 .wrapper {
-    max-width: 1000px;
+    max-width: 1200px;
+    min-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -14,7 +15,7 @@
 .menu {
     width: 100%;
     background-color: rgba(243, 243, 243, 0.432);
-    background-image: url(/images/background7.jpg);
+    background-image: url(../images/background7.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 20px;
@@ -27,14 +28,14 @@
 }
 
 .left-side {
-    width: 25%;
+    width: 20%;
 }
 
 .calendar {
     width: 75%;
     background-color: rgb(221, 221, 221);
     border-radius: 20px;
-    background-image: url(/images/background6.jpg);
+    background-image: url(../images/background6.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -52,57 +53,57 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    width: calc(100% / 8);
 }
 
-.row:nth-child(1)>.weather{
-    background-image: url(/images/sun.jpg);
-    background-size: cover;
+.row:nth-child(1) {
+    width: 8%;
 }
 
-.row:nth-child(2)>.weather>.temperature{
-    background-image: url(/icons/slight_rain.png);
+.row:nth-child(2)>.weather>.temperature {
+    background-image: url(../icons/slight_rain.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
 }
 
-.row:nth-child(3)>.weather>.temperature{
-    background-image: url(/icons/cloud.png);
+.row:nth-child(3)>.weather>.temperature {
+    background-image: url(../icons/cloud.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
 }
 
-.row:nth-child(4)>.weather>.temperature{
-    background-image: url(/icons/storm.png);
+.row:nth-child(4)>.weather>.temperature {
+    background-image: url(../icons/storm.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
 }
 
-.row:nth-child(5)>.weather>.temperature{
-    background-image: url(/icons/wind.png);
+.row:nth-child(5)>.weather>.temperature {
+    background-image: url(../icons/wind.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
 }
 
-.row:nth-child(6)>.weather>.temperature{
-    background-image: url(/icons/slight_rain.png);
+.row:nth-child(6)>.weather>.temperature {
+    background-image: url(../icons/slight_rain.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
 }
 
-.row:nth-child(7)>.weather>.temperature{
-    background-image: url(/icons/sun_cloud.png);
+.row:nth-child(7)>.weather>.temperature {
+    background-image: url(../icons/sun_cloud.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
 }
 
-.row:nth-child(8)>.weather>.temperature{
-    background-image: url(/icons/slight_rain.png);
+.row:nth-child(8)>.weather>.temperature {
+    background-image: url(../icons/slight_rain.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -113,10 +114,12 @@
     text-align: center;
     height: auto;
     color: white;
+    width: 100%;
 }
 
 .plan {
     height: 1000px;
+    width: 100%;
 }
 
 .weather {
@@ -223,7 +226,7 @@
     color: white;
 }
 
-.textSection{
+.textSection {
     background-color: rgba(0, 0, 0, 0.219);
     border-radius: 10px;
     text-align: left;
@@ -233,11 +236,11 @@
     color: white;
 }
 
-.from::before{
+.from::before {
     content: "Z: ";
 }
 
-.to::before{
+.to::before {
     content: "Do: ";
 }
 
@@ -250,7 +253,7 @@
 
 .arrowLeft {
     width: 49%;
-    background-image: url(/icons/left.png);
+    background-image: url(../icons/left.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 50%;
@@ -263,7 +266,7 @@
 
 .arrowRight {
     width: 49%;
-    background-image: url(/icons/right.png);
+    background-image: url(../icons/right.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 50%;
@@ -355,7 +358,7 @@
     border: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.164);
-    background-image: url(/icons/ok.png);
+    background-image: url(../icons/ok.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -367,7 +370,7 @@
 
 .transport {
     width: 100%;
-    background-image: url(/images/background8.jpg);
+    background-image: url(../images/background8.jpg);
     border-radius: 20px;
     border-top: 4px solid white;
     border-right: 4px solid white;
@@ -386,12 +389,12 @@
 }
 
 .eraseDirections:hover {
-    cursor: pointer ;
+    cursor: pointer;
 }
 
 .deleteSection {
     width: 100%;
-    background-image: url(/images/background7.jpg);
+    background-image: url(../images/background7.jpg);
     border-radius: 20px;
     border-top: 4px solid white;
     border-right: 4px solid white;

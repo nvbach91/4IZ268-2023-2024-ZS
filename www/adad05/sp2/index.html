@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kalendář</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./icons/sun.png">
 </head>
 
 <body>
@@ -14,8 +15,8 @@
             <div class="menu">
                 <div class="titleSectionWeek" id="weekOfCalendar">11-17.12.2023</div>
                 <div class="controls">
-                    <input class="arrowLeft" id="arrowLeftButton" type="submit" value=""></input>
-                    <input class="arrowRight" id="arrowRightButton" type="submit" value=""></input>
+                    <input class="arrowLeft" id="arrowLeftButton" type="submit" value="">
+                    <input class="arrowRight" id="arrowRightButton" type="submit" value="">
                 </div>
                 <div class="newEventBox">
                     <div class="newEvent">Vytvořte událost:</div>
@@ -108,7 +109,7 @@
                     <div id="monday" class="plan">
                     </div>
                     <div class="weather">
-                        <div class="temperature"></div>
+                        <div class="temperature" id="weatherIcon0"></div>
                         <div class="humidity" id="weather0">20°C 47 %</div>
                     </div>
                 </div>
@@ -118,7 +119,7 @@
                     </div>
                     <div id="tuesday" class="plan"></div>
                     <div class="weather">
-                        <div class="temperature"></div>
+                        <div class="temperature" id="weatherIcon1"></div>
                         <div class="humidity" id="weather1">22°C 46 %</div>
                     </div>
                 </div>
@@ -128,7 +129,7 @@
                     </div>
                     <div id="wednesday" class="plan"></div>
                     <div class="weather">
-                        <div class="temperature"></div>
+                        <div class="temperature" id="weatherIcon2"></div>
                         <div class="humidity" id="weather2">21°C 53 %</div>
                     </div>
                 </div>
@@ -138,7 +139,7 @@
                     </div>
                     <div id="thursday" class="plan"></div>
                     <div class="weather">
-                        <div class="temperature"></div>
+                        <div class="temperature" id="weatherIcon3"></div>
                         <div class="humidity" id="weather3">25°C 43 %</div>
                     </div>
                 </div>
@@ -148,7 +149,7 @@
                     </div>
                     <div id="friday" class="plan"></div>
                     <div class="weather">
-                        <div class="temperature"></div>
+                        <div class="temperature" id="weatherIcon4"></div>
                         <div class="humidity" id="weather4">19°C 71 %</div>
                     </div>
                 </div>
@@ -158,7 +159,7 @@
                     </div>
                     <div id="saturday" class="plan"></div>
                     <div class="weather">
-                        <div class="temperature"></div>
+                        <div class="temperature" id="weatherIcon5"></div>
                         <div class="humidity" id="weather5">23°C 45 %</div>
                     </div>
                 </div>
@@ -168,8 +169,8 @@
                     </div>
                     <div id="sunday" class="plan"></div>
                     <div class="weather">
-                        <div class="temperature"></div>
-                        <div class="humidity" id="weather6">21°C 43 %</div>
+                        <div class="temperature" id="weatherIcon6"></div>
+                        <div class="humidity" id="weather6">-1°C 43 %</div>
                     </div>
                 </div>
             </div>

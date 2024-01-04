@@ -36,6 +36,14 @@ const weather4 = $("#weather4");
 const weather5 = $("#weather5");
 const weather6 = $("#weather6");
 
+const weatherIcon0 = $("#weatherIcon0");
+const weatherIcon1 = $("#weatherIcon1");
+const weatherIcon2 = $("#weatherIcon2");
+const weatherIcon3 = $("#weatherIcon3");
+const weatherIcon4 = $("#weatherIcon4");
+const weatherIcon5 = $("#weatherIcon5");
+const weatherIcon6 = $("#weatherIcon6");
+
 formButton.click(() => {
     createEvent();
 });
@@ -144,6 +152,10 @@ const createEvent = () => {
     let durationMinutes = (timeEndHours * 60 + timeEndMinutes) - (timeStartHours * 60 + timeStartMinutes);
     if (durationMinutes < 60) {
         console.log("Minimální délka akce je 60 minut!");
+        return;
+    }
+    if (eventName.val().length > 10) {
+        console.log("Název je moc dlouhý!");
         return;
     }
 
@@ -326,7 +338,7 @@ const updateWeek = () => {
     console.log(weekKey);
     getDataFromUser(weekKey);
     writeDataToCalendar();
-    //getWeekTemperatures();
+    getWeekTemperatures();
     return title;
 }
 
@@ -342,6 +354,7 @@ const clickRight = () => {
     updateWeek();
 }
 
+//dataset pro zkoušku
 const events = {
     "2023-12-11": [
         { "title": "Škola", "place": "Žižkov", "startTime": "15:30", "endTime": "16:30" },
@@ -475,67 +488,134 @@ const getWeekTemperatures = () => {
     })
 }
 
+//nastaví se teploty a změní se ikonky podle počasí
+//defaultní ikonka = slunce s mrakem
+//vlhkost nad 90 % včetně = mráček s kapkami
+//teplota pod 0 včetně = mráček s vločkami
 const setTemperatures = (day) => {
     if (day === 0) { weather0.text(`${Math.round(weekTemperatures[0][0][0])}°C ${Math.round(weekTemperatures[0][0][1])} %`) }
+    if (day === 0) {
+        weatherIcon0.css("background-image", `url(./icons/sun_cloud.png)`);
+        if (Math.round(weekTemperatures[0][0][1]) >= 90) {
+            weatherIcon0.css("background-image", `url(./icons/slight_rain.png)`);
+        }
+        if (Math.round(weekTemperatures[0][0][0]) <= 0) {
+            weatherIcon0.css("background-image", `url(./icons/snow.png)`);
+        }
+    }
     if (day === 1) { weather1.text(`${Math.round(weekTemperatures[1][0][0])}°C ${Math.round(weekTemperatures[1][0][1])} %`) }
+    if (day === 1) {
+        weatherIcon1.css("background-image", `url(./icons/sun_cloud.png)`);
+        if (Math.round(weekTemperatures[1][0][1]) >= 90) {
+            weatherIcon1.css("background-image", `url(./icons/slight_rain.png)`);
+        }
+        if (Math.round(weekTemperatures[1][0][0]) <= 0) {
+            weatherIcon1.css("background-image", `url(./icons/snow.png)`);
+        }
+    }
     if (day === 2) { weather2.text(`${Math.round(weekTemperatures[2][0][0])}°C ${Math.round(weekTemperatures[2][0][1])} %`) }
+    if (day === 2) {
+        weatherIcon2.css("background-image", `url(./icons/sun_cloud.png)`);
+        if (Math.round(weekTemperatures[2][0][1]) >= 90) {
+            weatherIcon2.css("background-image", `url(./icons/slight_rain.png)`);
+        }
+        if (Math.round(weekTemperatures[2][0][0]) <= 0) {
+            weatherIcon2.css("background-image", `url(./icons/snow.png)`);
+        }
+    }
     if (day === 3) { weather3.text(`${Math.round(weekTemperatures[3][0][0])}°C ${Math.round(weekTemperatures[3][0][1])} %`) }
+    if (day === 3) {
+        weatherIcon3.css("background-image", `url(./icons/sun_cloud.png)`);
+        if (Math.round(weekTemperatures[3][0][1]) >= 90) {
+            weatherIcon3.css("background-image", `url(./icons/slight_rain.png)`);
+        }
+        if (Math.round(weekTemperatures[3][0][0]) <= 0) {
+            weatherIcon3.css("background-image", `url(./icons/snow.png)`);
+        }
+    }
     if (day === 4) { weather4.text(`${Math.round(weekTemperatures[4][0][0])}°C ${Math.round(weekTemperatures[4][0][1])} %`) }
+    if (day === 4) {
+        weatherIcon4.css("background-image", `url(./icons/sun_cloud.png)`);
+        if (Math.round(weekTemperatures[4][0][1]) >= 90) {
+            weatherIcon4.css("background-image", `url(./icons/slight_rain.png)`);
+        }
+        if (Math.round(weekTemperatures[4][0][0]) <= 0) {
+            weatherIcon4.css("background-image", `url(./icons/snow.png)`);
+        }
+    }
     if (day === 5) { weather5.text(`${Math.round(weekTemperatures[5][0][0])}°C ${Math.round(weekTemperatures[5][0][1])} %`) }
+    if (day === 5) {
+        weatherIcon5.css("background-image", `url(./icons/sun_cloud.png)`);
+        if (Math.round(weekTemperatures[5][0][1]) >= 90) {
+            weatherIcon5.css("background-image", `url(./icons/slight_rain.png)`);
+        }
+        if (Math.round(weekTemperatures[5][0][0]) <= 0) {
+            weatherIcon5.css("background-image", `url(./icons/snow.png)`);
+        }
+    }
     if (day === 6) { weather6.text(`${Math.round(weekTemperatures[6][0][0])}°C ${Math.round(weekTemperatures[6][0][1])} %`) }
+    if (day === 6) {
+        weatherIcon6.css("background-image", `url(./icons/sun_cloud.png)`);
+        if (Math.round(weekTemperatures[6][0][1]) >= 90) {
+            weatherIcon6.css("background-image", `url(./icons/slight_rain.png)`);
+        }
+        if (Math.round(weekTemperatures[6][0][0]) <= 0) {
+            weatherIcon6.css("background-image", `url(./icons/snow.png)`);
+        }
+    }
 }
 
 const updateLocalStorage = () => {
     let monday = [];
     weekDataSorted["monday"].forEach((item) => {
-        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        let json = { "title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"] };
         monday.push(json);
     });
 
     let tuesday = [];
     weekDataSorted["tuesday"].forEach((item) => {
-        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        let json = { "title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"] };
         tuesday.push(json);
     });
 
     let wednesday = [];
     weekDataSorted["wednesday"].forEach((item) => {
-        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        let json = { "title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"] };
         wednesday.push(json);
     });
 
     let thursday = [];
     weekDataSorted["thursday"].forEach((item) => {
-        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        let json = { "title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"] };
         thursday.push(json);
     });
 
     let friday = [];
     weekDataSorted["friday"].forEach((item) => {
-        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        let json = { "title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"] };
         friday.push(json);
     });
 
     let saturday = [];
     weekDataSorted["saturday"].forEach((item) => {
-        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        let json = { "title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"] };
         saturday.push(json);
     });
 
     let sunday = [];
     weekDataSorted["sunday"].forEach((item) => {
-        let json = {"title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"]};
+        let json = { "title": item["title"], "place": item["place"], "startTime": item["startTime"], "endTime": item["endTime"] };
         sunday.push(json);
     });
 
     let json = {
-        [weekDates[0]] : monday,
-        [weekDates[1]] : tuesday,
-        [weekDates[2]] : wednesday,
-        [weekDates[3]] : thursday,
-        [weekDates[4]] : friday,
-        [weekDates[5]] : saturday,
-        [weekDates[6]] : sunday,
+        [weekDates[0]]: monday,
+        [weekDates[1]]: tuesday,
+        [weekDates[2]]: wednesday,
+        [weekDates[3]]: thursday,
+        [weekDates[4]]: friday,
+        [weekDates[5]]: saturday,
+        [weekDates[6]]: sunday,
     };
 
     console.log(JSON.stringify(json));
