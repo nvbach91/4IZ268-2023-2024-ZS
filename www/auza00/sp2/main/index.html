@@ -5,6 +5,11 @@
     <meta charset='UTF-8'>
     <link rel='stylesheet' href='../css/style.css'>
     <title>I Know A Spot</title>
+
+    <meta name="description" content="Mapa pro všechny zkuřky, který si chtějí svoji krásnou chvilku užít na nějakým pěkným místě.">
+    <meta name="keywords" content="spot, joint, špek, bong, tráva, marihuana, místo, mapa">
+    <meta name="author" content="Adam Auzký">
+
     <link rel='icon' type='image/x-icon' href='/img/joint-favicon.png'>
     <link rel='preconnect' href='https://fonts.googleapis.com'>
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
@@ -22,39 +27,40 @@
 
 <body scroll='no'>
     <div id='map'></div>
-    <button id='info-button' onclick='showHideHelp()'>
+    <button id='info-button'>
         <p>?</p>
     </button>
-    <button id='button-remove' onclick='removePoint()'>
+    <p id="google-account"></p>
+    <button id='button-remove'>
         <i class='fa-solid fa-xmark'></i>
     </button>
     <section id='buttons-all'>
 
-        <button id='button-top' class='button2'>
+        <button id='button-list' class='button2'>
             <i class='fa-solid fa-trophy'></i>
         </button>
-        <button class='button-add' id='button-add-third' onclick='showHideLogin()'>
+        <button class='button-add' id='button-add-third'>
             <i class='fa-solid fa-plus'></i>
         </button>
-        <button class='button-add' id='button-add-first' onclick='addPoint()'>
+        <button class='button-add' id='button-add-first'>
             <i class='fa-solid fa-plus'></i>
         </button>
-        <button class='button-add' id='button-add-second' onclick='showHideForm()'>
+        <button class='button-add' id='button-add-second'>
             <i class='fa-solid fa-check'></i>
         </button>
-        <button id='button-logout' class='button2' onclick='showHideSignout()'>
+        <button id='button-logout' class='button2'>
             <i class='fa-solid fa-right-from-bracket'></i>
         </button>
     </section>
-    <div id='popup-all' class='popup-all' onclick='showHideForm()'>
+    <div id='popup-all' class='popup-all'>
     </div>
-    <div id='popup-all2' class='popup-all' onclick='hideInfo()'>
+    <div id='popup-all2' class='popup-all'>
     </div>
-    <div id='popup-all3' class='popup-all' onclick='showHideLogin()'>
+    <div id='popup-all3' class='popup-all'>
     </div>
-    <div id='popup-all4' class='popup-all' onclick='showHideSignout()'>
+    <div id='popup-all4' class='popup-all'>
     </div>
-    <div id='popup-all5' class='popup-all' onclick='showHideHelp()'>
+    <div id='popup-all5' class='popup-all'>
     </div>
     <div id='popup' class='popup'>
 
@@ -81,7 +87,7 @@
         <p>
             Pro tohle potřebuju aby ses přihlásil přes Google
         </p>
-        <button onclick='handleAuthClick()' class="button-login">
+        <button class="button-login" id="main-button-login">
             <i class="fa-brands fa-google"></i>
             Přihlásit se přes Google
         </button>
@@ -90,7 +96,7 @@
         <p>
             Opravdu se chceš odhlásit?
         </p>
-        <button onclick='handleSignoutClick()' class="button-login">
+        <button class="button-login" id="main-button-signout">
             Odhlásit se
         </button>
     </div>
