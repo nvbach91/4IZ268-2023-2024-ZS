@@ -49,7 +49,6 @@ function maybeEnableButtons() {
   if (gapiInited && gisInited) {
     document.getElementById('authorize_button').style.visibility = 'visible';
     document.getElementById('loader').style.display = 'none';
-    document.querySelector('main').style.display = 'block';
   }
 }
 
@@ -64,6 +63,7 @@ function handleAuthClick() {
     await listUpcomingEvents();
     clearError();
     clearMessage();
+    document.querySelector('main').style.display = 'block';
   };
 
   if (gapi.client.getToken() === null) {
@@ -111,11 +111,14 @@ async function listUpcomingEvents() {
     return;
   }
   document.getElementById('upcoming_events_content').innerHTML = renderEventList(events);
+/*   console.log(JSON.stringify(response, null, 2)); */
 }
 
 async function addEvent(eventDetails) {
   eventDetails.id = Date.now().toString();
-  console.log("Sending event details:", JSON.stringify(eventDetails, null, 2));
+  // console.log("Sending event details:", JSON.stringify(eventDetails, null, 2));
+
+  eventDetails.extendedProperties = { private: { priority: document.getElementById('event_priority').value } };
 
   if (!navigator.onLine) {
     console.log("Offline - Event saved locally");
@@ -224,6 +227,7 @@ async function listPastEvents(timeMin, timeMax) {
     return;
   }
   document.getElementById('past_events_content').innerHTML = renderEventList(events);
+  // console.log(JSON.stringify(response, null, 2));
 }
 
 document.getElementById('day_events').addEventListener('click', () => {
@@ -269,16 +273,22 @@ function formatDateTimeCzech(start, end) {
 function renderEventList(events) {
   return events.map(event => {
     const description = event.description ? `<br><small>${event.description}</small>` : '';
+    const priority = event.extendedProperties?.private?.priority || 'Medium';
 
     return `
       <li data-event-id="${event.id}" class="event-item">
         <div class="event-details">
-          <span class="event-view">${event.summary} (${formatDateTimeCzech(event.start.dateTime || event.start.date, event.end.dateTime || event.end.date)})${description}</span>
+          <span class="event-view">${event.summary} (${formatDateTimeCzech(event.start.dateTime || event.start.date, event.end.dateTime || event.end.date)})${description} <div class="priority-display">Priority: ${priority}</div></span>
           <div class="event-edit" style="display:none;">
             <input type="text" class="edit-title" value="${event.summary}">
             <input type="text" class="edit-description" value="${event.description || ''}" placeholder="Enter description here">
             <input type="datetime-local" class="edit-start" value="${event.start.dateTime.slice(0, 16)}">
             <input type="datetime-local" class="edit-end" value="${event.end.dateTime ? event.end.dateTime.slice(0, 16) : ''}">
+            <select class="edit-priority">
+            <option value="High" ${priority === 'High' ? 'selected' : ''}>High</option>
+            <option value="Medium" ${priority === 'Medium' ? 'selected' : ''}>Medium</option>
+            <option value="Low" ${priority === 'Low' ? 'selected' : ''}>Low</option>
+        </select>
           </div>
         </div>
         <div class="event-actions">
@@ -317,6 +327,7 @@ document.addEventListener('click', function (event) {
     const newDescription = li.querySelector('.edit-description').value;
     const newStart = li.querySelector('.edit-start').value;
     let newEnd = li.querySelector('.edit-end').value;
+    const updatedPriority = li.querySelector('.edit-priority').value;
 
     if (!newTitle || !newStart) {
       displayError('Please fill in the title and start date');
@@ -338,7 +349,8 @@ document.addEventListener('click', function (event) {
       summary: newTitle,
       description: newDescription,
       start: { dateTime: appendSeconds(newStart), timeZone: 'Europe/Prague' },
-      end: { dateTime: newEnd, timeZone: 'Europe/Prague' }
+      end: { dateTime: newEnd, timeZone: 'Europe/Prague' },
+      extendedProperties: { private: { priority: updatedPriority }}
     };
 
     updateEvent(updatedDetails, eventId).then(() => {
@@ -397,6 +409,7 @@ async function editEvent(eventId) {
     document.getElementById('event_description').value = event.description || '';
     document.getElementById('event_start').value = event.start.dateTime ? event.start.dateTime.slice(0, 16) : '';
     document.getElementById('event_end').value = event.end && event.end.dateTime ? event.end.dateTime.slice(0, 16) : '';
+    document.getElementById('event_priority').value = response.result.extendedProperties?.private?.priority || 'Medium';
   } catch (error) {
     console.error('Error fetching event details:', error);
   }
@@ -412,7 +425,10 @@ async function updateEvent(updatedDetails, eventId) {
       updatedDetails.end.dateTime = appendSeconds(updatedDetails.end.dateTime);
     }
 
-    console.log("Updating event with details:", JSON.stringify(updatedDetails, null, 2));
+    const newPriority = document.querySelector(`li[data-event-id="${eventId}"] .edit-priority`).value;
+    updatedDetails.extendedProperties = { private: { priority: newPriority }};
+
+    // console.log("Updating event with details:", JSON.stringify(updatedDetails, null, 2));
 
     const response = await gapi.client.calendar.events.update({
       'calendarId': 'primary',

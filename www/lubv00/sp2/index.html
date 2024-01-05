@@ -15,18 +15,18 @@
   <header>
     <h1>Task Manager</h1>
     <div id="loader"></div>
-  </header>
-
-  <main>
     <div class="auth_buttons">
       <button id="authorize_button"><i class="fab fa-google"></i>Authorize</button>
       <button id="signout_button"><i class="fas fa-sign-out-alt"></i>Sign Out</button>
     </div>
+    <div id="error_message"></div>
+  </header>
+
+  <main>
     <div class="message">
       <div id="message_div"></div>
     </div>
     <div id="event_controls">
-      <div id="error_message"></div>
       <form id="event_form">
         <input type="hidden" id="event_id">
         <label for="event_title">Event Title:</label>
@@ -43,6 +43,12 @@
         </div>
         <label for="event_description">Event Description:</label>
         <input type="text" id="event_description" placeholder="Add Event Description">
+        <label for="event_priority">Priority:</label>
+        <select id="event_priority">
+          <option value="High">High</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="Low">Low</option>
+        </select>
         <button type="button" id="add_event_button"><i class="fas fa-plus"></i>Add Event</button>
       </form>
     </div>
