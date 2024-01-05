@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Šimeček Eduard">
+    <meta name="description"
+        content="This website allows users to make currency conversions through a simple app. It contains both a description and the app itself.">
+    <meta name="keywords" content="app, currency, convert, rate, money">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon_16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon_32x32.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="./img/favicon_180x180.png">
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>Currency Converter</h1>
+        </header>
+        <main>
+            <div id="app-description">
+                <ul>
+                    <li>This app allows users to make currency conversions.</li>
+                    <li>There are 11 currencies supported - 10 of the most used currencies in the world and Czech
+                        koruna.</li>
+                    <li>Same currency / negative amount / null amount conversions are disabled - Users are allowed to
+                        input only positive amounts.</li>
+                    <li>Only a dot (.) can be used, comma is disabled.</li>
+                    <li>In case of a typing mistake (more zeros than necessary) or nonsense amount in the input field,
+                        the value is cleared.</li>
+                </ul>
+            </div>
+            <div id="app">
+                <label for="amount">Amount to convert:</label>
+                <input type="number" id="amount" value="1" />
+                <div>
+                    <select id="first"></select>
+                    <select id="second"></select>
+                </div>
+                <button id="button">Convert!</button>
+                <div id="loader" class="loader"></div>
+                <div id="messageBox"></div>
+                <button id="historyButton">History!</button>
+                <div id="historyBox"></div>
+            </div>
+        </main>
+        <footer>App made by Eduard Šimeček for 4IZ268.</footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
