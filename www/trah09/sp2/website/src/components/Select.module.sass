@@ -1,0 +1,13 @@
+@use 'common'
+
+.select
+	border: .0625rem solid #e6e4bf
+	border-radius: .5rem
+	padding: .625rem
+	width: 100%
+	font-size: 1rem
+	&:focus
+		outline: none
+		border-color: common.$secondary-color
+	@media ( min-width: common.$break768 )
+		font-size: 1.125rem

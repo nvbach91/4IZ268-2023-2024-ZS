@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+MANGOWEB_TEAM_ID="$(op read 'op://Vercel/MANGOWEB_VERCEL_TEAM_ID/username')"
+
+TEAM_ID="$MANGOWEB_TEAM_ID"
+VERCEL_TOKEN="$(op read 'op://Vercel/MANGOWEB_VERCEL_TOKEN/password')"
+
+PROJECT=$1
+STAGE=$2
+
+if [ "$STAGE" = "prod" ]; then
+  VERCEL_PROJECT_NAME="$1"
+else
+  VERCEL_PROJECT_NAME="$1-$2"
+fi
+
+echo ""
+echo "Creating $VERCEL_PROJECT_NAME in $TEAM_ID..."
+RAW=$(curl -s "https://api.vercel.com/v8/projects?teamId=$TEAM_ID"  \
+    -X 'POST' \
+    -H "Authorization: Bearer $VERCEL_TOKEN" \
+    -H "Content-Type: application/json" \
+    --data-raw "{\"name\":\"$VERCEL_PROJECT_NAME\",\"framework\":\"nextjs\"}" \
+    --compressed)
+
+echo "$RAW" | jq
+
+PROJECT_ID=$(echo "$RAW" | jq -r ".id")
+
+echo ""
+echo "Writing project deploy file to .vercel/$STAGE.json..."
+echo "{\"orgId\":\"$TEAM_ID\",\"projectId\":\"$PROJECT_ID\"}" > ".vercel/$STAGE.json"
+cat ".vercel/$STAGE.json"
+
+echo ""
+echo "Setting up Github secret VERCEL_TOKEN..."
+gh secret set VERCEL_TOKEN -a actions -b $(op read 'op://Vercel/MANGOWEB_VERCEL_TOKEN/password')
+
+echo "done"

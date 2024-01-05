@@ -1,0 +1,62 @@
+@use '../common'
+
+.header
+	position: relative
+	display: flex
+	justify-content: center
+
+.localeSwitcher
+	position: absolute
+	right: 0
+	top: 2.5rem
+
+.title
+	text-align: center
+	color: common.$primary-color
+	font-size: 1.875rem
+	font-weight: 700
+	margin-top: 3.75rem
+	@media ( min-width: common.$break768 )
+		font-size: 3.125rem
+
+.image
+	position: relative
+	aspect-ratio: var(--image-AspectRatio)
+	margin-bottom: 1.875rem
+	border-radius: 1.25rem
+	overflow: hidden
+	box-shadow: 0 0 0.625rem 0 rgba( 0, 0, 0, 0.25 )
+	img
+		object-fit: fill
+
+.description
+	text-align: center
+	font-size: 1.125rem
+	@media ( min-width: common.$break768 )
+		font-size: 1.25rem
+
+.contacts
+	text-align: center
+	margin-bottom: 1.875rem
+
+.email,
+.tel
+	margin-top: .3125rem
+	a
+		color: inherit
+		&:hover
+			text-decoration: none
+
+.socials
+	display: flex
+	justify-content: center
+	margin-top: .625rem
+
+.fb,
+.ig
+	display: flex
+	font-size: 3.125rem
+	a
+		color: #838383
+		&:hover
+			color: common.$primary-color

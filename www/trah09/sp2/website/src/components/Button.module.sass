@@ -1,0 +1,79 @@
+@use 'common'
+
+.wrapper
+	position: relative
+	display: inline-flex
+	isolation: isolate
+	overflow: hidden
+	text-align: center
+	justify-content: center
+	font-family: inherit
+	font-weight: 500
+	text-transform: uppercase
+	cursor: pointer
+	border: 0.125rem solid
+	border-radius: 2em
+	text-decoration: none
+
+	&::before
+		content: ''
+		position: absolute
+		inset: 0
+		box-shadow: 0 0 1rem common.$primary-color
+		border-radius: inherit
+		opacity: 0
+		pointer-events: none
+		transition-property: opacity
+
+		@media (prefers-reduced-motion: no-preference)
+			transition-duration: 0.2s
+
+	&:hover,
+	&:focus-visible
+		&:not(:disabled)
+			&:not(.is_variant_text)
+				&::before
+					opacity: 1
+
+	&:disabled
+		opacity: 0.5
+		cursor: default
+
+	&.is_fullWidth
+		width: 100%
+
+	&.is_size_small
+		padding: 0 0.8em
+		font-size: 1.125rem
+		line-height: 1.8
+
+	&.is_size_medium
+		padding: 0.8em 1.7em
+		font-size: 1.5rem
+		line-height: 1.35
+
+	&.is_size_large
+		padding: 1em 2em
+		font-size: 2rem
+		line-height: 1.35
+
+	&.is_variant_primary
+		color: #ffffff
+		background-color: common.$primary-color
+		border-color: common.$primary-color
+
+	&.is_variant_secondary
+		color: var(--brand-color)
+		background-color: var(--background-color-heavy)
+
+	&.is_variant_text
+		color: inherit
+		background-color: transparent
+		border-color: transparent
+		color: var(--brand-color)
+		padding: 0
+
+		&:hover,
+		&:focus-visible
+			&:not(:disabled)
+				color: var(--brand-color)

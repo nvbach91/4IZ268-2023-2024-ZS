@@ -1,0 +1,23 @@
+@use 'common'
+
+.wrapper
+	--Container-horizontal-spacing: var(--common-edge-gap)
+	max-width: calc(var(--Container-width) + 2 * var(--Container-horizontal-spacing))
+	width: 100%
+	margin-inline: auto
+	padding-inline: var(--Container-horizontal-spacing)
+
+	&.view_size_small
+		--Container-width: var(--common-content-width-small)
+
+	&.view_size_normal
+		--Container-width: var(--common-content-width-normal)
+
+	&.view_size_wide
+		--Container-width: var(--common-content-width-wide)
+
+	&.view_size_fullWidth
+		max-width: none
+
+	&.view_disableGutters
+		--Container-horizontal-spacing: 0rem
