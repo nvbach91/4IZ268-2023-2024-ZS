@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather forecast</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/site.webmanifest">
+
+    <link rel="stylesheet" href="assets/css/styles.css" media="screen">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="dark">
+    <div class="container">
+        <div class="error-list"></div>
+        <div class="row">
+            <div class="col col-8">
+                <main>
+                    <form name="searchCity">
+                        <input class="" placeholder="Enter city">
+                    </form>
+                    <div class="row align-items-center justify-content-space-between">
+                        <div class="col">
+                            <h1 class="current-city">-</h1>
+                            <div class="current-temperature"></div>
+                        </div>
+
+                        <div class="col no-grow">
+                            <img class="current-weather-icon" src="assets/icons/dummy.svg" width="250" height="250"
+                                alt="-">
+                        </div>
+                    </div>
+
+                    <div class="current-weather-details row is-mobile wrap">
+                        <div class="col">
+                            <h5>Wind</h5>
+                            <span class="current-wind"></span>
+                        </div>
+                        <div class="col">
+                            <h5>Humidity</h5>
+                            <span class="current-humidity"></span>
+                        </div>
+                        <div class="col">
+                            <h5>Precipitation </h5>
+                            <span class="current-precipitation"></span>
+                        </div>
+                        <div class="col">
+                            <h5>Pressure</h5>
+                            <span class="current-pressure"></span>
+                        </div>
+                    </div>
+
+                    <aside>
+                        <div class="row is-mobile wrap cards horizontal hourly-forecast"></div>
+                    </aside>
+                </main>
+            </div>
+            <div class="col">
+                <aside>
+                    <h3>7-day forecast</h3>
+                    <div class="cards vertical daily-forecast"></div>
+                </aside>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col no-grow">
+                    <label for="temp-units">Temperature units</label>
+                    <select name="temp-units" id="temp-units">
+                        <option value="c" selected>Celsius</option>
+                        <option value="f">Fahrenheit</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
