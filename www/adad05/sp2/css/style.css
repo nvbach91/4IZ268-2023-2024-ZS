@@ -1,0 +1,453 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    max-width: 1200px;
+    min-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.menu {
+    width: 100%;
+    background-color: rgba(243, 243, 243, 0.432);
+    background-image: url(../images/background7.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    border-right: 4px solid white;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: fit-content;
+}
+
+.left-side {
+    width: 20%;
+}
+
+.calendar {
+    width: 75%;
+    background-color: rgb(221, 221, 221);
+    border-radius: 20px;
+    background-image: url(../images/background6.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.days {
+    padding: 10px;
+    display: flex;
+}
+
+.row {
+    background-color: rgba(0, 0, 0, 0.199);
+    border-radius: 20px;
+    margin: 4px 1px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: calc(100% / 8);
+}
+
+.row:nth-child(1) {
+    width: 8%;
+}
+
+.row:nth-child(2)>.weather>.temperature {
+    background-image: url(../icons/slight_rain.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.row:nth-child(3)>.weather>.temperature {
+    background-image: url(../icons/cloud.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.row:nth-child(4)>.weather>.temperature {
+    background-image: url(../icons/storm.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.row:nth-child(5)>.weather>.temperature {
+    background-image: url(../icons/wind.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.row:nth-child(6)>.weather>.temperature {
+    background-image: url(../icons/slight_rain.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.row:nth-child(7)>.weather>.temperature {
+    background-image: url(../icons/sun_cloud.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.row:nth-child(8)>.weather>.temperature {
+    background-image: url(../icons/slight_rain.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.day {
+    margin-top: 4px;
+    text-align: center;
+    height: auto;
+    color: white;
+    width: 100%;
+}
+
+.plan {
+    height: 1000px;
+    width: 100%;
+}
+
+.weather {
+    border-radius: 20px;
+    text-align: center;
+    padding: auto 0;
+    color: rgb(255, 255, 255);
+}
+
+.temperature {
+    margin: 4px auto;
+    font-size: 30px;
+    border-radius: 20px;
+    height: 40px;
+    width: 50%;
+}
+
+.humidity {
+    margin: 4px auto;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0.521);
+    border-radius: 20px;
+    height: 20px;
+    line-height: 20px;
+    width: 80%;
+}
+
+.dayTitle {
+    margin: 0 auto;
+    margin-bottom: 5px;
+    font-size: 14px;
+    width: 50%;
+    height: 20px;
+    line-height: 20px;
+    background-color: rgba(0, 0, 0, 0.637);
+    border-radius: 20px;
+}
+
+.dayDate {
+    margin: 4px;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.418);
+    border-radius: 16px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.event {
+    width: 100%;
+    height: calc(100% / 24);
+    background-color: rgba(0, 0, 0, 0.651);
+    border-radius: 8px;
+    border-bottom: 3px solid rgba(8, 8, 8, 0.466);
+}
+
+.event:hover {
+    cursor: pointer;
+}
+
+.eventTitle {
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: white;
+}
+
+.eventTime {
+    text-align: center;
+    color: white;
+    font-size: 10px;
+}
+
+.eventPlace {
+    text-align: center;
+    color: white;
+    font-size: 10px;
+    display: none;
+}
+
+.time {
+    height: calc(100% / 48);
+    text-align: center;
+    color: white;
+}
+
+.titleSectionWeek {
+    background-color: rgba(0, 0, 0, 0.219);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 30px;
+    margin: 10px;
+    margin-bottom: 4px;
+    padding: 4px 10px;
+    color: white;
+}
+
+.titleSection {
+    background-color: rgba(0, 0, 0, 0.219);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 4px;
+    padding: 4px 10px;
+    color: white;
+}
+
+.textSection {
+    background-color: rgba(0, 0, 0, 0.219);
+    border-radius: 10px;
+    text-align: left;
+    margin-bottom: 4px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: white;
+}
+
+.from::before {
+    content: "Z: ";
+}
+
+.to::before {
+    content: "Do: ";
+}
+
+.controls {
+    height: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 10px;
+}
+
+.arrowLeft {
+    width: 49%;
+    background-image: url(../icons/left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    background-color: rgba(0, 0, 0, 0.164);
+    border-radius: 10px;
+    margin-right: 1%;
+    height: 30px;
+    border: 0;
+}
+
+.arrowRight {
+    width: 49%;
+    background-image: url(../icons/right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    background-color: rgba(0, 0, 0, 0.164);
+    border-radius: 10px;
+    margin-left: 1%;
+    height: 30px;
+    border: 0;
+}
+
+.arrowLeft:hover {
+    cursor: pointer;
+}
+
+.arrowRight:hover {
+    cursor: pointer;
+}
+
+.newEventBox {
+    background-color: rgba(0, 0, 0, 0.164);
+    border-radius: 10px;
+    margin: 4px 10px;
+    margin-bottom: 10px;
+}
+
+.newEvent {
+    color: white;
+    font-size: 20px;
+    padding-top: 4px;
+    text-align: center;
+}
+
+.newEventForm {
+    color: white;
+    padding: 10px;
+}
+
+.input1 {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    border: 0;
+    text-align: left;
+    padding-left: 10px;
+    outline: none;
+}
+
+.input2 {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    border: 0;
+    text-align: left;
+    padding-left: 10px;
+    outline: none;
+}
+
+.input3 {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    border: 0;
+    text-align: center;
+    outline: none;
+}
+
+.input4 {
+    width: 40%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    border: 0;
+    text-align: center;
+    outline: none;
+}
+
+.input5 {
+    width: 40%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    text-align: center;
+    outline: none;
+}
+
+.submitEvent {
+    margin-top: 5px;
+    border-radius: 10px;
+    height: 40px;
+    border: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.164);
+    background-image: url(../icons/ok.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.submitEvent:hover {
+    cursor: pointer;
+}
+
+.transport {
+    width: 100%;
+    background-image: url(../images/background8.jpg);
+    border-radius: 20px;
+    border-top: 4px solid white;
+    border-right: 4px solid white;
+    padding: 10px;
+}
+
+.eraseDirections {
+    border-radius: 10px;
+    height: 40px;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.164);
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.eraseDirections:hover {
+    cursor: pointer;
+}
+
+.deleteSection {
+    width: 100%;
+    background-image: url(../images/background7.jpg);
+    border-radius: 20px;
+    border-top: 4px solid white;
+    border-right: 4px solid white;
+    padding: 10px;
+}
+
+.deleteButton {
+    border-radius: 10px;
+    height: 40px;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.164);
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.deleteButton:hover {
+    cursor: pointer;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    display: flex;
+    margin: 10px auto;
+}
+
+.loader-small {
+    width: 28px;
+    height: 28px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    display: flex;
+    margin: auto auto;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

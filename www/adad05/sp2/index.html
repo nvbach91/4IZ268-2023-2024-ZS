@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalendář</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./icons/sun.png">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="left-side">
+            <div class="menu">
+                <div class="titleSectionWeek" id="weekOfCalendar">11-17.12.2023</div>
+                <div class="controls" id="controls">
+                    <input class="arrowLeft" id="arrowLeftButton" type="submit" value="">
+                    <input class="arrowRight" id="arrowRightButton" type="submit" value="">
+                </div>
+                <div class="newEventBox">
+                    <div class="newEvent">Vytvořte událost:</div>
+                    <form class="newEventForm" id="form">
+                        <label class="label1">Název (max 10 znaků):</label><br>
+                        <input class="input1" name="title"><br>
+                        <label class="label2">Místo (adresa):</label><br>
+                        <input class="input2" name="adress"><br>
+                        <label class="label3">Datum:</label><br>
+                        <input class="input3" name="date" type="date" value=""><br>
+                        <label class="label4">Čas od a do:</label><br>
+                        <input class="input4" name="time0" type="time">
+                        <input class="input5" name="time1" type="time"><br>
+                        <input class="submitEvent" id="formButton" type="submit" value="">
+                    </form>
+                </div>
+            </div>
+            <div class="transport">
+                <div class="titleSection">Jízdní řády</div>
+                <div class="textSection from" id="origin">Začátek cesty</div>
+                <div class="textSection to" id="destination">Cíl cesty</div>
+                <div id="transportDirections" class="transportDirections"></div>
+                <input class="eraseDirections" id="directionsButton" type="submit" value="Nový spoj">
+            </div>
+            <div class="deleteSection">
+                <input class="deleteButton" id="deleteButton" type="submit" value="Smazat událost">
+            </div>
+        </div>
+        <div class="calendar">
+            <div class="days">
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">Čas</div>
+                    </div>
+                    <div class="plan" id="timeColumn"></div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">PO</div>
+                    </div>
+                    <div id="monday" class="plan">
+                    </div>
+                    <div class="weather">
+                        <div class="temperature" id="weatherIcon0"></div>
+                        <div class="humidity" id="weather0"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">ÚT</div>
+                    </div>
+                    <div id="tuesday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature" id="weatherIcon1"></div>
+                        <div class="humidity" id="weather1"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">ST</div>
+                    </div>
+                    <div id="wednesday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature" id="weatherIcon2"></div>
+                        <div class="humidity" id="weather2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">ČT</div>
+                    </div>
+                    <div id="thursday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature" id="weatherIcon3"></div>
+                        <div class="humidity" id="weather3"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">PÁ</div>
+                    </div>
+                    <div id="friday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature" id="weatherIcon4"></div>
+                        <div class="humidity" id="weather4"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">SO</div>
+                    </div>
+                    <div id="saturday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature" id="weatherIcon5"></div>
+                        <div class="humidity" id="weather5"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="day">
+                        <div class="dayTitle">NE</div>
+                    </div>
+                    <div id="sunday" class="plan"></div>
+                    <div class="weather">
+                        <div class="temperature" id="weatherIcon6"></div>
+                        <div class="humidity" id="weather6"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3Ugdl4Pr8w17-EHInv8F0xzgk3qrW6o8&callback=initMap"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
