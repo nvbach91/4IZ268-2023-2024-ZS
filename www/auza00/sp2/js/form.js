@@ -48,6 +48,9 @@ function handleFormSubmit(event) {
 
 
   async function updateValues(spreadsheetId, range, _values, callback) {
+    let auth2 = gapi.auth2.getAuthInstance();
+    let googleAccount = auth2.currentUser.get().getBasicProfile();
+    
     const result = await uploadImage();
     values2 = [
       [numRows + 1],
@@ -62,7 +65,8 @@ function handleFormSubmit(event) {
       [document.getElementById('zricenina').checked],
       [document.getElementById('pristresek').checked],
       [0],
-      [fileID.id]
+      [fileID.id],
+      [googleAccount.getEmail()]
     ];
     try {
       console.log(fileID);
@@ -86,7 +90,7 @@ function handleFormSubmit(event) {
     window.location.reload();
   }
 
-  updateValues(SHEET_ID, 'A1:M' + numRows, true)
+  updateValues(SHEET_ID, 'A1:N' + numRows, true)
 }
 
 const form = document.querySelector('#add-form');
