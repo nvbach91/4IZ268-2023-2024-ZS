@@ -45,6 +45,10 @@ body {
   width: 100%;
 }
 
+.pokemon-section button{
+  margin-bottom: 30px;
+}
+
 .upgrades-section {
   height: 100%;
   width: 25%;
@@ -188,7 +192,6 @@ button:hover {
 .health-bar {
   height: 100%;
   background-color: #2ecc71;
-  transition: width 0.3s ease;
 }
 
 .upgrade.disabled {

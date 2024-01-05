@@ -6,6 +6,9 @@ import UpgradesSection from "./components/UpgradesSection";
 import StatsSection from "./components/StatsSection";
 import OpponentSection from "./components/OpponentSection";
 
+let currentIntervalID = 0;
+let lastSaveTime = 0;
+
 const App = () => {
   const [points, setPoints] = useState(0);
   const [pokemons, setPokemons] = useState([]);
@@ -29,7 +32,6 @@ const App = () => {
     clickPoints: 0,
   });
 
-  // State variable to control saving during app launch
   const [isAppLaunching, setIsAppLaunching] = useState(true);
 
   const capitalizeFirstLetter = (string) => {
@@ -99,7 +101,7 @@ const App = () => {
 
   const handleAutomaticDamage = () => {
     updateCurrentOpponent((prevOpponent) => {
-      const newOpponent = { ...prevOpponent, hp: Math.max(0, prevOpponent.hp - (stats.automaticDamage * stats.automaticDamageMultiplier)) };
+      const newOpponent = { ...prevOpponent, hp: Math.max(0, prevOpponent.hp - stats.automaticDamage * stats.automaticDamageMultiplier) };
 
       if (newOpponent.hp <= 0 && !capturedPokemons.includes(prevOpponent.name)) {
         handleCapturedPokemon(newOpponent);
@@ -110,16 +112,17 @@ const App = () => {
       return newOpponent;
     });
 
-    setPoints((prevPoints) => prevPoints + (stats.automaticDamage * stats.automaticDamageMultiplier));
-    setStats((prevStats) => ({ ...prevStats, totalPointsEarned: prevStats.totalPointsEarned + (stats.automaticDamage * stats.automaticDamageMultiplier) }));
+    setPoints((prevPoints) => prevPoints + stats.automaticDamage * stats.automaticDamageMultiplier);
+    setStats((prevStats) => ({ ...prevStats, totalPointsEarned: prevStats.totalPointsEarned + stats.automaticDamage * stats.automaticDamageMultiplier }));
   };
 
   useEffect(() => {
-    const automaticDamageInterval = setInterval(handleAutomaticDamage, 1000 / stats.attackSpeed);
+    clearInterval(currentIntervalID);
+    currentIntervalID = setInterval(handleAutomaticDamage, 1000 / stats.attackSpeed);
 
-    return () => clearInterval(automaticDamageInterval);
+    return () => clearInterval(currentIntervalID);
   }, [stats.automaticDamage, stats.attackSpeed, stats.automaticDamageMultiplier]);
-  
+
   const handleOpponentClick = () => {
     const damageDealt = stats.damagePerClick;
 
@@ -153,6 +156,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    const currentTime = new Date();
     if (isAppLaunching) {
       setIsAppLaunching(false);
       const savedState = JSON.parse(localStorage.getItem("pokemonIdleState"));
@@ -164,11 +168,11 @@ const App = () => {
         setCapturedPokemons(savedState.capturedPokemons);
         setUpgrades(savedState.upgrades);
         setStats(savedState.stats);
-      }
-      else {
+      } else {
         fetchOpponentData();
       }
-    } else {
+    } else if (currentTime - lastSaveTime > 1000) {
+      console.log("saved");
       const stateToSave = {
         points,
         pokemons,
@@ -179,8 +183,9 @@ const App = () => {
         stats,
       };
       localStorage.setItem("pokemonIdleState", JSON.stringify(stateToSave));
+      lastSaveTime = currentTime;
     }
-  }, [isAppLaunching, points, pokemons, currentOpponent, multiplier, capturedPokemons, upgrades, stats]);
+  }, [isAppLaunching, points, pokemons, currentOpponent, multiplier, capturedPokemons, upgrades, stats, stats.attackSpeed]);
 
   return (
     <div className="App">
