@@ -21,7 +21,8 @@ export const lang = {
 		distance: "Distance",
 		steps: "Steps",
 		saved: "Map is saved",
-		deleted: "Map is deleted"
+		deleted: "Map is deleted",
+		back: "Back"
 	},
 	"CZ": {
 		lang: "Vyberte si jazyk",
@@ -45,6 +46,7 @@ export const lang = {
 		distance: "Délka trasy",
 		steps: "Kroky",
 		saved: "Mapa je uložená",
-		deleted: "Mapa je smazaná"
+		deleted: "Mapa je smazaná",
+		back: "Zpět"
 	}
 }

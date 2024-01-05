@@ -29,6 +29,7 @@ export class PagesService {
 
 	// metoda vytvářející hlávní stránku
 	initMainPage = (view) => {
+		this.openStoredID = undefined
 		this.view = this.view ? this.view : view
 		const language = this.language ? this.language : "ENG"
 		this.language = language
@@ -113,8 +114,15 @@ export class PagesService {
 		const destination = to ? to : $("#toMain").val()
 		const origin = from ? from : $("#fromMain").val()
 
-		this.openStoredID = id ? id : `route-${localStorage.length}`
+		// vyběr nového ID pro nově uloženou mapu
+		let maxID = 0
+		Object.keys(localStorage).forEach((currentKey) => {
+			if (!currentKey.startsWith("route")) return
+			const currentNumberID = parseInt(currentKey.split("-")[1])
+			maxID = Math.max(maxID, currentNumberID)
+		})
 
+		this.openStoredID = id ? id : `route-${maxID + 1}`
 
 		// vyvolá ověření nové trasy podle zadaných údajů
 		AppService.emit(Events.RouteGet, destination, origin)
@@ -126,6 +134,7 @@ export class PagesService {
 				getLanguageCode(this.currentLanguage),
 			)
 		})
+		this.getStored()
 	}
 
 	// metoda vyvolána po kliknutí tklačítka Submit pro zpracovávání nově zadaných údajů
@@ -215,6 +224,7 @@ export class PagesService {
 		})
 		AppService.emit(Events.ShowNotification, Notifications.Warning, lang[this.currentLanguage].deleted)
 		AppService.emit(Events.DeleteStored, `route-${id}`)
+		this.getStored()
 	}
 
 	// metoda pro otevření uložené trasy ze seznamu
@@ -233,6 +243,7 @@ export class PagesService {
 		this.openStoredID = undefined
 		this.initMainPage()
 		AppService.emit(Events.ShowNotification, Notifications.Warning, lang[this.currentLanguage].deleted)
+		this.getStored()
 	}
 
 	// metoda inicializace preloaderu

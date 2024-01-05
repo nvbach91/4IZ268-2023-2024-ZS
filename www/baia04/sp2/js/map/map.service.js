@@ -84,7 +84,6 @@ export class MapService {
 			}
 			// vyvolá event nastavení dodatečných informací o cestě
 			AppService.emit(Events.SetRouteInfo, routeInfo)
-
 		})
 
 		// přířadí se router k mapě
@@ -129,7 +128,14 @@ export class MapService {
 			// nastaví trasu z původního místa na cílové
 			this.router.setOrigin(originCoords)
 			this.router.setDestination(destinationCoords)
-			AppService.emit(Events.RemoveLightLoader)
+
+			// vypne loader, pokud cesta je nastavená, nebo je v ní chybě
+			this.router.on('error', (event) => {
+				AppService.emit(Events.RemoveLightLoader)
+			})
+			this.router.on('route', () => {
+				AppService.emit(Events.RemoveLightLoader)
+			})
 
 			// až je mapa hotova, žádný interval nepokračuje
 			clearInterval(interval)

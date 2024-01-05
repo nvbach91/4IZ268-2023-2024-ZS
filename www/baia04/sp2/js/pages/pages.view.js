@@ -63,6 +63,7 @@ export class PagesView {
 		})
 		$('.save').click(this.service.save)
 		$('.delete').click(this.service.deleteMap)
+		$('#backButton').click(this.service.initMainPage)
 
 		const defaultPixelRatio = 1.25
 

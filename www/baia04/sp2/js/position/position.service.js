@@ -66,7 +66,6 @@ export class PositionService {
 				AppService.emit(Events.UpdateMapCenter, newOrigin.coords)
 			})
 			.catch((error) => {
-				AppService.emit(Events.ShowNotification, Notifications.Error, error)
 				newOrigin.setIsValid(false)
 			})
 
@@ -76,7 +75,6 @@ export class PositionService {
 				newDestination.setIsValid(true)
 			})
 			.catch((error) => {
-				AppService.emit(Events.ShowNotification, Notifications.Error, error)
 				newDestination.setIsValid(false)
 			})
 
