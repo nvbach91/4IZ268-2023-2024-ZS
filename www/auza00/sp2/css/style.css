@@ -153,7 +153,7 @@ button{
     visibility: hidden;
 }
 
-#button-top {
+#button-list {
     visibility: hidden;
 }
 
@@ -636,4 +636,16 @@ button{
     text-align: center;
     color: #afda88;
     margin: 0;
+}
+
+/*ACCOUNT INFO*/
+#google-account{
+    visibility: hidden;
+    position: absolute;
+    top: -6px;
+    right: 50px;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.452);
 }
