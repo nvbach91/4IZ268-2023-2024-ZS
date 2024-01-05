@@ -24,7 +24,7 @@ App.odlozImage
 if (App.signedIn) {
     App.uid = firebase.auth().currentUser.uid;
     firebase.database().ref("users/" + App.uid).once("value")
-        .then(function(snapshot) {
+        .then((snapshot) => {
             App.canUsing = snapshot.child("canUsing").val();
             App.closedImage = "url(images/can/can" + App.canUsing + "/can0.png)"
             App.openImage = "url(images/can/can" + App.canUsing + "/can2.png)"
@@ -65,7 +65,7 @@ App.animationDuration = 2.6;
 App.sTimeout;
 App.sInterval;
 
-function setup() {
+const setup = () => {
 
 
 
@@ -76,7 +76,7 @@ function setup() {
         "class": "scoreBox",
         text: App.score
     }).appendTo(".gameArea");
-    for (i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
         $("<div/>", {
             "class": "box",
             "id": "box" + i,
@@ -105,10 +105,10 @@ function setup() {
 
 }
 
-function game() {
-    var keyDownA = false;
-    var keyDownD = false;
-    document.onkeydown = function(e) {
+const game = () => {
+    let keyDownA = false;
+    let keyDownD = false;
+    document.onkeydown = (e) => {
         if (e.keyCode == 37 || e.keyCode == 65) {
             keyDownA = true;
         } else if (e.keyCode == 39 || e.keyCode == 68) {
@@ -116,7 +116,7 @@ function game() {
         }
     }
 
-    document.onkeyup = function(e) {
+    document.onkeyup = (e) => {
         if (e.keyCode == 37 || e.keyCode == 65) {
             keyDownA = false;
         } else if (e.keyCode == 39 || e.keyCode == 68) {
@@ -124,7 +124,7 @@ function game() {
         }
     }
 
-    App.sInterval = setInterval(function() {
+    App.sInterval = setInterval(() => {
         if (keyDownA) {
             if (!App.moved) {
                 $(".paddle").css("background-image", App.openImage);
@@ -153,7 +153,7 @@ function game() {
         }
     }, 12.5)
 
-    document.addEventListener("keyup", function(e) {
+    document.addEventListener("keyup", (e) => {
         if (e.code === "ArrowUp" || e.code === "KeyW") {
             if (!App.odlozToggle) {
                 $(".paddle").css("background-image", App.odlozImage);
@@ -167,16 +167,15 @@ function game() {
                 App.odlozToggle = false
             }
         }
-
     });
 
-    setTimeout(function() {
+    setTimeout(() => {
         startDropping();
     }, 2300);
 
 }
 
-function dropPouch(a, b, c, x, y, z) {
+const dropPouch = (a, b, c, x, y, z) => {
     if (App.randomPouchRatio <= a) App.randomPouch = x;
     else if (App.randomPouchRatio <= b) App.randomPouch = y;
     else if (App.randomPouchRatio <= c) App.randomPouch = z;
@@ -212,7 +211,7 @@ function dropPouch(a, b, c, x, y, z) {
     }
 }
 
-function dropPouchPhase3(a, b, c, d, x, y, z, q) {
+const dropPouchPhase3 = (a, b, c, d, x, y, z, q) => {
     if (App.randomPouchRatio <= a) App.randomPouch = x;
     else if (App.randomPouchRatio <= b) App.randomPouch = y;
     else if (App.randomPouchRatio <= c) App.randomPouch = z;
@@ -250,7 +249,7 @@ function dropPouchPhase3(a, b, c, d, x, y, z, q) {
 
 
 
-function startDropping() {
+const startDropping = () => {
     App.randomPouchRatio = Math.floor(Math.random() * 15);
     App.randomPouchDropAxis = Math.floor(Math.random() * 1280);
 
@@ -338,15 +337,15 @@ function startDropping() {
 
 }
 
-function checkPosition() {
+const checkPosition = () => {
     if (((App.randomPouchDropAxis + 700) < App.randomPouchDropAxis0) || ((App.randomPouchDropAxis - 700) > App.randomPouchDropAxis0)) {
         App.randomPouchDropAxis = Math.floor(Math.random() * 1280);
         checkPosition();
     } else return
 }
 
-function reachedCan() {
-    var xP, xC;
+const reachedCan = () => {
+    let xP, xC;
     if (this.classList.contains("bigPouch")) {
         xP = 120;
         xC = 167
@@ -379,7 +378,7 @@ function reachedCan() {
                     "background-color": "#ffff00",
                     "color": "#1a1a00"
                 });
-                setTimeout(function() {
+                setTimeout(() => {
                     $(".scoreBox").css({
                         "background-color": "#ff1100",
                         "color": "#fff"
@@ -407,7 +406,7 @@ function reachedCan() {
                     "background-color": "#ffff00",
                     "color": "#1a1a00"
                 });
-                setTimeout(function() {
+                setTimeout(() => {
                     $(".scoreBox").css({
                         "background-color": "#ff1100",
                         "color": "#fff"
@@ -444,11 +443,11 @@ function reachedCan() {
     }
 }
 
-function removeMissedPouch() {
+const removeMissedPouch = () => {
     this.remove();
 }
 
-function changeScore(change, pouchOrSlimak) {
+const changeScore = (change, pouchOrSlimak) => {
     App.score = App.score + change;
     $(".scoreBox").text(App.score);
     if (pouchOrSlimak == "pouch") {
@@ -485,13 +484,13 @@ function changeScore(change, pouchOrSlimak) {
     }
 }
 
-function missedPouch() {
+const missedPouch = () => {
     $("#box" + App.lostPouch).css("background-image", "url(images/pouch/pouchLoss.png");
     App.lostPouch++;
     if (App.lostPouch == 5) endClear();
 }
 
-function endClear() {
+const endClear = () => {
     clearTimeout(App.sTimeout);
     clearInterval(App.sInterval);
     $(".box, .scoreBox, .paddle, .paddlePouches, .paddleSlugs, .collisionDetector, .pouch, .pouchMissed, .bigPouch, .bigPouchMissed, .coinPouch, .coinPouchMissed").remove();
@@ -508,7 +507,7 @@ function endClear() {
     saveScore();
 }
 
-function saveScore() {
+const saveScore = () => {
     $("<div/>", {
         "class": "saveScore"
     }).appendTo(".gameArea");
@@ -532,14 +531,14 @@ function saveScore() {
         "value": "SUBMIT"
     }).appendTo(".saveScore");
 
-    document.getElementById("username").addEventListener("keyup", function(event) {
+    document.getElementById("username").addEventListener("keyup", (event) => {
         if (event.keyCode === 13) {
             event.preventDefault();
             document.getElementById("submitName").click();
         }
     });
 
-    $(".submitName").click(function() {
+    $(".submitName").click(() => {
         $(".saveScore").css({
             "width": "900",
             "height": "680",
@@ -548,7 +547,7 @@ function saveScore() {
         $("<div/>", {
             "class": "leaderboard"
         }).appendTo(".saveScore");
-        for (i = 0; i < 100; i++) {
+        for (let i = 0; i < 100; i++) {
             if (i < 10) {
                 $("<div/>", {
                     "class": "place",
@@ -566,16 +565,16 @@ function saveScore() {
 
 
         if (App.signedIn) {
-            var uid = firebase.auth().currentUser.uid;
+            const uid = firebase.auth().currentUser.uid;
 
-            var balanceI;
-            var caughtPouchesI;
-            var gamesPlayedI;
-            var highScoreI;
+            let balanceI;
+            let caughtPouchesI;
+            let gamesPlayedI;
+            let highScoreI;
 
 
             firebase.database().ref("users/" + uid).once("value")
-                .then(function(snapshot) {
+                .then((snapshot) => {
                     balanceI = snapshot.child("balance").val();
                     balanceI = balanceI + App.coinsCaught;
                     caughtPouchesI = snapshot.child("caughtPouches").val();
@@ -591,7 +590,7 @@ function saveScore() {
 
                 })
 
-            setTimeout(function() {
+            setTimeout(() => {
                 firebase.database().ref("users/" + uid)
                     .child("balance").set(balanceI);
                 firebase.database().ref("users/" + uid)
@@ -607,11 +606,11 @@ function saveScore() {
 
         }
 
-        var ref = firebase.database().ref("leaderboard");
+        const ref = firebase.database().ref("leaderboard");
 
         if (App.score > 10) {
 
-            var data = {
+            const data = {
                 name: username.value,
                 score: App.score,
             }
@@ -625,19 +624,19 @@ function saveScore() {
 
         $(".textStats, .enterName, .submitName").remove();
 
-        setTimeout(function() {
+        setTimeout(() => {
             $("<button/>", {
                 "class": "goOverview",
                 "text": "OK"
             }).appendTo(".saveScore");
 
-            $(".goOverview").hover(function() {
+            $(".goOverview").hover(() => {
                 if (App.sound == 1) {
                     document.getElementById("click0").play();
                 }
-            }, function() {});
+            }, () => {});
 
-            $(".goOverview").click(function() {
+            $(".goOverview").click(() => {
                 if (App.sound == 1) document.getElementById("click2").play();
                 $(".goOverview, .leaderboard, .saveScore").remove();
                 overview();
@@ -648,12 +647,12 @@ function saveScore() {
 
 
     });
-    $(".submitName").hover(function() {
+    $(".submitName").hover(() => {
         if (App.sound == 1) {
             document.getElementById("click0").play();
         }
-    }, function() {});
-    $(".submitName").click(function() {
+    }, () => {});
+    $(".submitName").click(() => {
         if (App.sound == 1) {
             document.getElementById("click2").play();
         }
@@ -661,15 +660,15 @@ function saveScore() {
 
 }
 
-function getData(data) {
-    var leaderboard = data.val();
-    var keys = Object.keys(leaderboard);
+const getData = (data) => {
+    const leaderboard = data.val();
+    const keys = Object.keys(leaderboard);
     keys.sort((a, b) => (leaderboard[a].score < leaderboard[b].score) ? 1 : -1)
-    var content = "";
-    for (i = 0; i < 100; i++) {
-        var k = keys[i];
-        var name = leaderboard[k].name;
-        var score = leaderboard[k].score;
+    let content = "";
+    for (let i = 0; i < 100; i++) {
+        let k = keys[i];
+        let name = leaderboard[k].name;
+        let score = leaderboard[k].score;
 
         if (i < 10) {
             placeClass = "place";
@@ -684,7 +683,7 @@ function getData(data) {
     $(".leaderboard").html(content);
 }
 
-function overview() {
+const overview = () => {
     $("<p/>", {
         "class": "textEnd",
         text: "THE GAME HAS ENDED"
@@ -706,14 +705,14 @@ function overview() {
         "text": "PLAY AGAIN"
     }).appendTo(".gameArea")
 
-    $(".playAgain").click(function() {
+    $(".playAgain").click(() => {
         $(".textEnd, .textStats, .playAgain").remove();
         //location.reload();
         restart();
     });
 }
 
-function restart() {
+const restart = () => {
     App.score = 0;
 
     App.caughtPouch = 0;

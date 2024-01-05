@@ -1,7 +1,7 @@
 const App = {};
 
 
-$(document).ready(function() {
+$(document).ready(() => {
     $("<div/>", {
         "class": "gameArea"
     }).appendTo("body");
@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 });
 
-function start() {
+const start = () => {
     $("<button/>", {
         "class": "playButton",
         "text": "LOADING.."
@@ -54,7 +54,7 @@ function start() {
         "id": "profileButton"
     }).appendTo("#profileDiv");
 
-    setTimeout(function() { //LOADING
+    setTimeout(() => { //LOADING
 
         $(".playButton").addClass("playButtonLoaded");
 
@@ -64,7 +64,7 @@ function start() {
           }
         }*/
 
-        $("#profileButton").click(function() {
+        $("#profileButton").click(() => {
             profilePage();
         })
 
@@ -72,7 +72,7 @@ function start() {
 
         $(".playButton").text("PLAY");
 
-        $(".playButton").click(function() {
+        $(".playButton").click(() => {
             $(".playButton, .buttonDiv, .buttonButton").remove()
             $("<p/>", {
                 text: "SELECT BACKGROUND",
@@ -81,7 +81,7 @@ function start() {
             $("<div/>", {
                 "class": "selectBackground"
             }).appendTo(".gameArea")
-            for (i = 0; i < 4; i++) {
+            for (let i = 0; i < 4; i++) {
                 if (i < 3) {
                     $("<button/>", {
                         "class": "selectBg",
@@ -96,15 +96,15 @@ function start() {
 
                     $("#selectBg3").css("cursor", "default")
 
-                    var specialBgOwned;
-                    var uid = firebase.auth().currentUser.uid;
+                    let specialBgOwned;
+                    const uid = firebase.auth().currentUser.uid;
 
                     firebase.database().ref("users/" + uid).once("value")
-                        .then(function(snapshot) {
+                        .then((snapshot) => {
                             specialBgOwned = snapshot.child("specialBgOwned").val()
                             App.caughtPouches = snapshot.child("caughtPouches").val();
 
-                            var remainingPouches = 50000 - App.caughtPouches
+                            let remainingPouches = 50000 - App.caughtPouches
 
                             if (specialBgOwned == 0) {
 
@@ -117,13 +117,13 @@ function start() {
 
 
 
-                                $("#caughtPouchesRemainingTagBg").hover(function() {
+                                $("#caughtPouchesRemainingTagBg").hover(() => {
                                     $(this).text("You need to catch " + remainingPouches + " more pouches to unlock this legendary background");
                                     $(this).css({
                                         "width": "230px",
                                         "height": "140px"
                                     })
-                                }, function() {
+                                }, () => {
                                     $(this).text(remainingPouches);
                                     $(this).css({
                                         "width": "auto",
@@ -133,12 +133,12 @@ function start() {
                             } else if (specialBgOwned == 1) {
                                 $("#selectBg3").css("background-image", "url(images/background/bgs3.jpg");
                                 $("#selectBg3").addClass("selectSpecialBg");
-                                $("#selectBg3").hover(function() {
+                                $("#selectBg3").hover(() => {
                                     if (App.sound == 1) {
                                         document.getElementById("click0").play();
                                     }
-                                }, function() {});
-                                $("#selectBg3").click(function() {
+                                }, () => {});
+                                $("#selectBg3").click(() => {
                                     $(".gameArea").css("background-image", "url(" + "images/background/bg3.jpg");
                                     setup();
                                 });
@@ -150,25 +150,25 @@ function start() {
 
                 }
             }
-            $("#selectBg0").click(function() {
+            $("#selectBg0").click(() => {
                 $(".gameArea").css("background-image", "url(" + "images/background/bg0.jpg");
                 setup();
             });
-            $("#selectBg1").click(function() {
+            $("#selectBg1").click(() => {
                 $(".gameArea").css("background-image", "url(" + "images/background/bg1.jpg");
                 setup();
             });
-            $("#selectBg2").click(function() {
+            $("#selectBg2").click(() => {
                 $(".gameArea").css("background-image", "url(" + "images/background/bg2.jpg");
                 setup();
             });
 
-            $("#selectBg0, #selectBg1, #selectBg2").hover(function() {
+            $("#selectBg0, #selectBg1, #selectBg2").hover(() => {
                 if (App.sound == 1) {
                     document.getElementById("click0").play();
                 }
-            }, function() {});
-            $(".selectBg").click(function() {
+            }, () => {});
+            $(".selectBg").click(() => {
                 if (App.sound == 1) {
                     document.getElementById("click2").play();
                 }

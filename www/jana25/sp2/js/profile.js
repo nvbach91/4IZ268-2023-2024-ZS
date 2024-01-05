@@ -20,7 +20,7 @@ App.firebaseConfig = {
 firebase.initializeApp(App.firebaseConfig);
 firebase.analytics();
 
-function profilePage() {
+const profilePage = () => {
     $(".buttonDiv, .buttonButton, .playButton").css("display", "none");
 
     $(".gameArea").css("background-image", "url(images/background/finish.jpg)")
@@ -83,18 +83,18 @@ function profilePage() {
 
         //
 
-        var uid = firebase.auth().currentUser.uid;
+        const uid = firebase.auth().currentUser.uid;
 
-        var balanceS;
-        var caughtPouchesS;
-        var gamesPlayedS;
-        var highScoreS;
+        let balanceS;
+        let caughtPouchesS;
+        let gamesPlayedS;
+        let highScoreS;
 
 
 
 
         firebase.database().ref("users/" + App.uid).once("value")
-            .then(function(snapshot) {
+            .then((snapshot) => {
                 balanceS = snapshot.child("balance").val();
                 caughtPouchesS = snapshot.child("caughtPouches").val();
                 gamesPlayedS = snapshot.child("gamesPlayed").val();
@@ -142,14 +142,14 @@ function profilePage() {
 
 
 
-                var uid = firebase.auth().currentUser.uid;
+                const uid = firebase.auth().currentUser.uid;
                 firebase.database().ref("users/" + uid).once("value")
-                    .then(function(snapshot) {
+                    .then((snapshot) => {
                         App.canCode = snapshot.child("canCode").val();
                         balance = snapshot.child("balance").val();
                         caughtPouches = snapshot.child("caughtPouches").val();
 
-                        for (i = 0; i <= 5; i++) {
+                        for (let i = 0; i <= 5; i++) {
                             $("<div/>", {
                                 "class": "shopCans",
                                 "id": "shopCan" + i,
@@ -196,7 +196,7 @@ function profilePage() {
 
                                 } else if (i == 5) {
                                     if (caughtPouches < 30000) {
-                                        var remainingPouches = 30000 - caughtPouches;
+                                        let remainingPouches = 30000 - caughtPouches;
 
                                         $("<div/>", {
                                             "class": "caughtPouchesRemainingTag",
@@ -204,14 +204,14 @@ function profilePage() {
                                             "text": remainingPouches
                                         }).appendTo("#shopCan5");
 
-                                        $("#caughtPouchesRemainingTagCan").hover(function() {
+                                        $("#caughtPouchesRemainingTagCan").hover(() => {
                                             $(this).text("You need to catch " + remainingPouches + " more pouches to unlock this legendary can");
                                             $(this).css({
                                                 "width": "210px",
                                                 "height": "210px",
                                                 "font-size": "23px"
                                             })
-                                        }, function() {
+                                        }, () => {
                                             $(this).text(remainingPouches);
                                             $(this).css({
                                                 "width": "auto",
@@ -232,32 +232,32 @@ function profilePage() {
                             } else {
                                 switch (i) {
                                     case 0:
-                                        $("#shopCan0").click(function() {
+                                        $("#shopCan0").click(() => {
                                             selectCan(0);
                                         })
                                         break;
                                     case 1:
-                                        $("#shopCan1").click(function() {
+                                        $("#shopCan1").click(() => {
                                             selectCan(1);
                                         })
                                         break;
                                     case 2:
-                                        $("#shopCan2").click(function() {
+                                        $("#shopCan2").click(() => {
                                             selectCan(2);
                                         })
                                         break;
                                     case 3:
-                                        $("#shopCan3").click(function() {
+                                        $("#shopCan3").click(() => {
                                             selectCan(3);
                                         })
                                         break;
                                     case 4:
-                                        $("#shopCan4").click(function() {
+                                        $("#shopCan4").click(() => {
                                             selectCan(4);
                                         })
                                         break;
                                     case 5:
-                                        $("#shopCan5").click(function() {
+                                        $("#shopCan5").click(() => {
                                             selectCan(5);
                                         })
                                         break;
@@ -283,7 +283,7 @@ function profilePage() {
 
     }
 
-    function selectCan(index) {
+    const selectCan = (index) => {
         $(".shopCans").css("border", "none");
         $("#shopCan" + index).css("border", "8px solid #39e600");
       
@@ -296,17 +296,17 @@ function profilePage() {
 
     }
 
-    function buyCan(price, index) {
+    const buyCan = (price, index) => {
         if (balance >= price) {
             $("#canPriceTag" + index).css("background-color", "#33cc33");
 
-            $("#canPriceTag" + index).click(function() {
+            $("#canPriceTag" + index).click(() => {
                 if (App.sound == 1) document.getElementById("cash").play();
                 balance = balance - price;
 
                 App.canCode = App.canCode.substring(0, index) + "1" + App.canCode.substring(index + 1)
 
-                var uid = firebase.auth().currentUser.uid;
+                const uid = firebase.auth().currentUser.uid;
                 firebase.database().ref("users/" + uid)
                     .child("canCode").set(App.canCode);
                 firebase.database().ref("users/" + uid)
@@ -318,36 +318,36 @@ function profilePage() {
 
                 $(".canPriceTag").remove();
 
-                setTimeout(function() {
+                setTimeout(() => {
 
                     switch (index) {
                         case 0:
-                            $("#shopCan0").click(function() {
+                            $("#shopCan0").click(() => {
                                 selectCan(0);
                             })
                             break;
                         case 1:
-                            $("#shopCan1").click(function() {
+                            $("#shopCan1").click(() => {
                                 selectCan(1);
                             })
                             break;
                         case 2:
-                            $("#shopCan2").click(function() {
+                            $("#shopCan2").click(() => {
                                 selectCan(2);
                             })
                             break;
                         case 3:
-                            $("#shopCan3").click(function() {
+                            $("#shopCan3").click(() => {
                                 selectCan(3);
                             })
                             break;
                         case 4:
-                            $("#shopCan4").click(function() {
+                            $("#shopCan4").click(() => {
                                 selectCan(4);
                             })
                             break;
                         case 5:
-                            $("#shopCan5").click(function() {
+                            $("#shopCan5").click(() => {
                                 selectCan(5);
                             })
                             break;
@@ -360,7 +360,7 @@ function profilePage() {
         }
     }
 
-    $(".menuButton").click(function() {
+    $(".menuButton").click(() => {
         goMenu();
 
 
@@ -368,7 +368,7 @@ function profilePage() {
 
 
 
-    $("#signInButton").click(function() {
+    $("#signInButton").click(() => {
         $(".signButton, .profileContainer").css("display", "none");
 
         $("<form/>", {
@@ -396,14 +396,14 @@ function profilePage() {
             value: "SIGN IN"
         }).appendTo(".signInForm");
 
-        document.getElementById("passwordSigningIn").addEventListener("keyup", function(event) {
+        document.getElementById("passwordSigningIn").addEventListener("keyup", (event) => {
             if (event.keyCode === 13) {
                 event.preventDefault();
                 document.getElementById("submitSigningIn").click();
             }
         });
 
-        $("#submitSigningIn").click(function() {
+        $("#submitSigningIn").click(() => {
             if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(emailSigningIn.value) && document.getElementById("passwordSigningIn").value.length >= 4) {
                 signIn();
             } else alert("error")
@@ -412,7 +412,7 @@ function profilePage() {
 
     })
 
-    $("#signUpButton").click(function() {
+    $("#signUpButton").click(() => {
         $(".signButton, .profileContainer").css("display", "none");
 
         $("<form/>", {
@@ -447,14 +447,14 @@ function profilePage() {
             value: "SIGN UP"
         }).appendTo(".signUpForm");
 
-        document.getElementById("passwordSigningUpConfirm").addEventListener("keyup", function(event) {
+        document.getElementById("passwordSigningUpConfirm").addEventListener("keyup", (event) => {
             if (event.keyCode === 13) {
                 event.preventDefault();
                 document.getElementById("submitSigningUp").click();
             }
         });
 
-        $("#submitSigningUp").click(function() {
+        $("#submitSigningUp").click(() => {
             if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(emailSigningUp.value) && document.getElementById("passwordSigningUp").value == document.getElementById("passwordSigningUpConfirm").value) {
                 signUp();
             } else alert("Either the email is in an incorrect format or the passwords do not match.")
@@ -463,31 +463,31 @@ function profilePage() {
 
     })
 
-    $("#signOutButton").click(function() {
+    $("#signOutButton").click(() => {
         signOut();
 
 
     })
 
-    $(".signButton, .menuButton").hover(function() {
+    $(".signButton, .menuButton").hover(() => {
         if (App.sound == 1) {
             document.getElementById("click0").play();
         }
-    }, function() {});
-    $(".signButton, .menuButton").click(function() {
+    }, () => {});
+    $(".signButton, .menuButton").click(() => {
         if (App.sound == 1) {
             document.getElementById("click2").play();
         }
     });
 }
 
-function signIn() {
-    var typedEmail = document.getElementById("emailSigningIn").value;
-    var typedPassword = document.getElementById("passwordSigningIn").value;
+const signIn = () => {
+    const typedEmail = document.getElementById("emailSigningIn").value;
+    const typedPassword = document.getElementById("passwordSigningIn").value;
 
-    firebase.auth().signInWithEmailAndPassword(typedEmail, typedPassword).catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+    firebase.auth().signInWithEmailAndPassword(typedEmail, typedPassword).catch((error) => {
+        let errorCode = error.code;
+        let errorMessage = error.message;
         if (errorCode === 'auth/wrong-password') {
             alert('Wrong password.');
         } else {
@@ -502,10 +502,10 @@ function signIn() {
 
 }
 
-function signUp() {
+const signUp = () => {
 
     firebase.auth().createUserWithEmailAndPassword(document.getElementById("emailSigningUp").value, document.getElementById("passwordSigningUp").value).then(() => {
-        var uid = firebase.auth().currentUser.uid;
+        const uid = firebase.auth().currentUser.uid;
         firebase.database().ref("users/" + uid).set({
 
             balance: 0,
@@ -516,10 +516,10 @@ function signUp() {
             canUsing: 0,
             specialBgOwned: 0,
         });
-    }).catch(function(error) {
+    }).catch((error) => {
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        let errorCode = error.code;
+        let errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode == 'auth/weak-password') {
             alert('The password is too weak.');
@@ -534,14 +534,14 @@ function signUp() {
 
 }
 
-function signOut() {
+const signOut = () => {
     firebase.auth().signOut();
 
     location.reload();
 }
 
-window.onload = function() {
-    firebase.auth().onAuthStateChanged(function(user) {
+window.onload = () => {
+    firebase.auth().onAuthStateChanged((user) => {
 
 
 
@@ -550,7 +550,7 @@ window.onload = function() {
 
 
 
-            var email = user.email;
+            let email = user.email;
             App.displayName = email.substring(0, email.lastIndexOf("@"));
 
             App.signedIn = true;
@@ -569,7 +569,7 @@ window.onload = function() {
     })
 };
 
-function goMenu() {
+const goMenu = () => {
     $(".menuButton, form, .signButton, .profileContainer").remove();
     $(".buttonDiv, .buttonButton").css("display", "inline-block");
     $(".playButton").css("display", "block");
