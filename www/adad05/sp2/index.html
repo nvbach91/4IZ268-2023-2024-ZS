@@ -14,31 +14,31 @@
         <div class="left-side">
             <div class="menu">
                 <div class="titleSectionWeek" id="weekOfCalendar">11-17.12.2023</div>
-                <div class="controls">
+                <div class="controls" id="controls">
                     <input class="arrowLeft" id="arrowLeftButton" type="submit" value="">
                     <input class="arrowRight" id="arrowRightButton" type="submit" value="">
                 </div>
                 <div class="newEventBox">
                     <div class="newEvent">Vytvořte událost:</div>
-                    <div class="newEventForm">
-                        <label class="label1">Název:</label><br>
-                        <input class="input1" id="input1" type="text" value=""><br>
+                    <form class="newEventForm" id="form">
+                        <label class="label1">Název (max 10 znaků):</label><br>
+                        <input class="input1" name="title"><br>
                         <label class="label2">Místo (adresa):</label><br>
-                        <input class="input2" id="input2" type="text" value=""><br>
+                        <input class="input2" name="adress"><br>
                         <label class="label3">Datum:</label><br>
-                        <input class="input3" id="input3" type="date" value=""><br>
+                        <input class="input3" name="date" type="date" value=""><br>
                         <label class="label4">Čas od a do:</label><br>
-                        <input class="input4" id="input4" type="time">
-                        <input class="input5" id="input5" type="time" value=""><br>
+                        <input class="input4" name="time0" type="time">
+                        <input class="input5" name="time1" type="time"><br>
                         <input class="submitEvent" id="formButton" type="submit" value="">
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="transport">
                 <div class="titleSection">Jízdní řády</div>
                 <div class="textSection from" id="origin">Začátek cesty</div>
                 <div class="textSection to" id="destination">Cíl cesty</div>
-                <div id="transportDirections"></div>
+                <div id="transportDirections" class="transportDirections"></div>
                 <input class="eraseDirections" id="directionsButton" type="submit" value="Nový spoj">
             </div>
             <div class="deleteSection">
@@ -51,56 +51,7 @@
                     <div class="day">
                         <div class="dayTitle">Čas</div>
                     </div>
-                    <div class="plan">
-                        <div class="time">00:00</div>
-                        <div class="time">00:30</div>
-                        <div class="time">01:00</div>
-                        <div class="time">01:30</div>
-                        <div class="time">02:00</div>
-                        <div class="time">02:30</div>
-                        <div class="time">03:00</div>
-                        <div class="time">03:30</div>
-                        <div class="time">04:00</div>
-                        <div class="time">04:30</div>
-                        <div class="time">05:00</div>
-                        <div class="time">05:30</div>
-                        <div class="time">06:00</div>
-                        <div class="time">06:30</div>
-                        <div class="time">07:00</div>
-                        <div class="time">07:30</div>
-                        <div class="time">08:00</div>
-                        <div class="time">08:30</div>
-                        <div class="time">09:00</div>
-                        <div class="time">09:30</div>
-                        <div class="time">10:00</div>
-                        <div class="time">10:30</div>
-                        <div class="time">11:00</div>
-                        <div class="time">11:30</div>
-                        <div class="time">12:00</div>
-                        <div class="time">12:30</div>
-                        <div class="time">13:00</div>
-                        <div class="time">13:30</div>
-                        <div class="time">14:00</div>
-                        <div class="time">14:30</div>
-                        <div class="time">15:00</div>
-                        <div class="time">15:30</div>
-                        <div class="time">16:00</div>
-                        <div class="time">16:30</div>
-                        <div class="time">17:00</div>
-                        <div class="time">17:30</div>
-                        <div class="time">18:00</div>
-                        <div class="time">18:30</div>
-                        <div class="time">19:00</div>
-                        <div class="time">19:30</div>
-                        <div class="time">20:00</div>
-                        <div class="time">20:30</div>
-                        <div class="time">21:00</div>
-                        <div class="time">21:30</div>
-                        <div class="time">22:00</div>
-                        <div class="time">22:30</div>
-                        <div class="time">23:00</div>
-                        <div class="time">23:30</div>
-                    </div>
+                    <div class="plan" id="timeColumn"></div>
                 </div>
                 <div class="row">
                     <div class="day">
@@ -110,7 +61,7 @@
                     </div>
                     <div class="weather">
                         <div class="temperature" id="weatherIcon0"></div>
-                        <div class="humidity" id="weather0">20°C 47 %</div>
+                        <div class="humidity" id="weather0"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -120,7 +71,7 @@
                     <div id="tuesday" class="plan"></div>
                     <div class="weather">
                         <div class="temperature" id="weatherIcon1"></div>
-                        <div class="humidity" id="weather1">22°C 46 %</div>
+                        <div class="humidity" id="weather1"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -130,7 +81,7 @@
                     <div id="wednesday" class="plan"></div>
                     <div class="weather">
                         <div class="temperature" id="weatherIcon2"></div>
-                        <div class="humidity" id="weather2">21°C 53 %</div>
+                        <div class="humidity" id="weather2"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -140,7 +91,7 @@
                     <div id="thursday" class="plan"></div>
                     <div class="weather">
                         <div class="temperature" id="weatherIcon3"></div>
-                        <div class="humidity" id="weather3">25°C 43 %</div>
+                        <div class="humidity" id="weather3"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -150,7 +101,7 @@
                     <div id="friday" class="plan"></div>
                     <div class="weather">
                         <div class="temperature" id="weatherIcon4"></div>
-                        <div class="humidity" id="weather4">19°C 71 %</div>
+                        <div class="humidity" id="weather4"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -160,7 +111,7 @@
                     <div id="saturday" class="plan"></div>
                     <div class="weather">
                         <div class="temperature" id="weatherIcon5"></div>
-                        <div class="humidity" id="weather5">23°C 45 %</div>
+                        <div class="humidity" id="weather5"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -170,7 +121,7 @@
                     <div id="sunday" class="plan"></div>
                     <div class="weather">
                         <div class="temperature" id="weatherIcon6"></div>
-                        <div class="humidity" id="weather6">-1°C 43 %</div>
+                        <div class="humidity" id="weather6"></div>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,19 @@ let weekDataSorted = {
     "sunday": []
 };
 
+const daysOfWeek = [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday"
+]
+
+const form = $("#form");
+const controls = $("#controls");
+
 let weekDates = [];
 let currentLocation = [];
 let weekTemperatures = [[], [], [], [], [], [], []];
@@ -36,6 +49,16 @@ const weather4 = $("#weather4");
 const weather5 = $("#weather5");
 const weather6 = $("#weather6");
 
+const weatherList = [
+    weather0,
+    weather1,
+    weather2,
+    weather3,
+    weather4,
+    weather5,
+    weather6
+]
+
 const weatherIcon0 = $("#weatherIcon0");
 const weatherIcon1 = $("#weatherIcon1");
 const weatherIcon2 = $("#weatherIcon2");
@@ -44,8 +67,26 @@ const weatherIcon4 = $("#weatherIcon4");
 const weatherIcon5 = $("#weatherIcon5");
 const weatherIcon6 = $("#weatherIcon6");
 
-formButton.click(() => {
-    createEvent();
+const weatherIconList = [
+    weatherIcon0,
+    weatherIcon1,
+    weatherIcon2,
+    weatherIcon3,
+    weatherIcon4,
+    weatherIcon5,
+    weatherIcon6,
+]
+
+const timeColumn = $("#timeColumn");
+
+form.submit((e) => {
+    e.preventDefault();
+    const formData = {};
+    form.serializeArray().forEach(({ name, value }) => {
+        formData[name] = value;
+    });
+    createEvent(formData);
+    form[0].reset();
 });
 
 leftButton.click(() => {
@@ -76,6 +117,16 @@ const thursday = $("#thursday");
 const friday = $("#friday");
 const saturday = $("#saturday");
 const sunday = $("#sunday");
+
+const arrayOfDays = [
+    monday,
+    tuesday,
+    wednesday,
+    thursday,
+    friday,
+    saturday,
+    sunday
+]
 
 let eventOrigin = "Začátek cesty";
 let eventDestination = "Cíl cesty";
@@ -137,47 +188,48 @@ const clearInputs = () => {
     eventDate.val("");
     eventStartTime.val("");
     eventEndTime.val("");
+    form[0].reset();
 }
 
 // funkce pro vytvoření události v kalendáři za pomocí informací z input polí
-const createEvent = () => {
-    if (eventName.val() === "" || eventPlace.val() === "" || eventDate.val() === "" || eventStartTime.val() === "" || eventEndTime.val() === "") {
+const createEvent = (formData) => {
+    if (formData.title === "" || formData.adress === "" || formData.date === "" || formData.time0 === "" || formData.time1 === "") {
         console.log("Chybí údaje!");
         return;
     };
-    let timeStartHours = parseInt(eventStartTime.val().split(':')[0]);
-    let timeStartMinutes = parseInt(eventStartTime.val().split(':')[1]);
-    let timeEndHours = parseInt(eventEndTime.val().split(':')[0]);
-    let timeEndMinutes = parseInt(eventEndTime.val().split(':')[1]);
+    let timeStartHours = parseInt(formData.time0.split(':')[0]);
+    let timeStartMinutes = parseInt(formData.time0.split(':')[1]);
+    let timeEndHours = parseInt(formData.time1.split(':')[0]);
+    let timeEndMinutes = parseInt(formData.time1.split(':')[1]);
     let durationMinutes = (timeEndHours * 60 + timeEndMinutes) - (timeStartHours * 60 + timeStartMinutes);
     if (durationMinutes < 60) {
         console.log("Minimální délka akce je 60 minut!");
         return;
     }
-    if (eventName.val().length > 10) {
+    if (formData.title.length > 10) {
         console.log("Název je moc dlouhý!");
         return;
     }
 
-    console.log(eventDate.val());
-    let key = getKeyFromDate(eventDate.val());
+    console.log(formData.date);
+    let key = getKeyFromDate(formData.date);
     let data = JSON.parse(localStorage.getItem(key));
     let fitsCalendar = true;
 
     if (!(data)) {
         let newJSON = [];
-        data = { [eventDate.val()]: newJSON };
+        data = { [formData.date]: newJSON };
         console.log(data);
     }
 
     // případ, kdy je v datech obsažen týden, ale v rámci týdne není obsažen konkrétní den
-    if (!(data[eventDate.val()])) {
+    if (!(data[formData.date])) {
         let newJSON = [];
-        data = { ...data, [eventDate.val()]: newJSON };
+        data = { ...data, [formData.date]: newJSON };
         console.log(data);
     }
 
-    console.log(data[eventDate.val()].forEach((element) => {
+    console.log(data[formData.date].forEach((element) => {
         let startMinutesNewEvent = (timeStartHours * 60) + timeStartMinutes;
         let endMinutesNewEvent = (timeEndHours * 60) + timeEndMinutes;
         let startMinutesElement = (parseInt(element.startTime.slice(0, 2)) * 60) + parseInt(element.startTime.slice(3, 5));
@@ -193,9 +245,9 @@ const createEvent = () => {
     }));
 
     if (fitsCalendar) {
-        let newJSON = { "title": `${eventName.val()}`, "place": `${eventPlace.val()}`, "startTime": `${eventStartTime.val()}`, "endTime": `${eventEndTime.val()}` };
-        data[eventDate.val()].push(newJSON);
-        console.log(data[eventDate.val()]);
+        let newJSON = { "title": `${formData.title}`, "place": `${formData.adress}`, "startTime": `${formData.time0}`, "endTime": `${formData.time1}` };
+        data[formData.date].push(newJSON);
+        console.log(data[formData.date]);
         localStorage.setItem(key, JSON.stringify(data));
     }
 
@@ -256,55 +308,16 @@ const getKeyFromDate = (dateFromEvent) => {
     return key;
 }
 
+//zkráceno do jednoho for cyklu namísto 7 funkcí
 const writeDataToCalendar = () => {
-    let pixels = 0;
-    weekDataSorted["monday"].forEach((item) => {
-        let result = loadEvent(item, pixels);
-        pixels = result[0];
-        monday.append(result[1]);
-    });
-
-    pixels = 0;
-    weekDataSorted["tuesday"].forEach((item) => {
-        let result = loadEvent(item, pixels);
-        pixels = result[0];
-        tuesday.append(result[1]);
-    });
-
-    pixels = 0;
-    weekDataSorted["wednesday"].forEach((item) => {
-        let result = loadEvent(item, pixels);
-        pixels = result[0];
-        wednesday.append(result[1]);
-    });
-
-    pixels = 0;
-    weekDataSorted["thursday"].forEach((item) => {
-        let result = loadEvent(item, pixels);
-        pixels = result[0];
-        thursday.append(result[1]);
-    });
-
-    pixels = 0;
-    weekDataSorted["friday"].forEach((item) => {
-        let result = loadEvent(item, pixels);
-        pixels = result[0];
-        friday.append(result[1]);
-    });
-
-    pixels = 0;
-    weekDataSorted["saturday"].forEach((item) => {
-        let result = loadEvent(item, pixels);
-        pixels = result[0];
-        saturday.append(result[1]);
-    });
-
-    pixels = 0;
-    weekDataSorted["sunday"].forEach((item) => {
-        let result = loadEvent(item, pixels);
-        pixels = result[0];
-        sunday.append(result[1]);
-    });
+    for (let i = 0; i <= 6; i++) {
+        let pixels = 0;
+        weekDataSorted[daysOfWeek[i]].forEach((item) => {
+            let result = loadEvent(item, pixels);
+            pixels = result[0];
+            arrayOfDays[i].append(result[1]);
+        });
+    }
 }
 
 const cleanData = () => {
@@ -338,8 +351,25 @@ const updateWeek = () => {
     console.log(weekKey);
     getDataFromUser(weekKey);
     writeDataToCalendar();
-    getWeekTemperatures();
+    let dataAvailable = checkForLocalTemp();
+    console.log("Jsou data v localStorage: " + dataAvailable);
+    if (!(dataAvailable)) { getWeekTemperatures(); }
     return title;
+}
+
+const checkForLocalTemp = () => {
+    weekTemperatures = [[], [], [], [], [], [], []];
+    let available;
+    weekDates.forEach((date) => {
+        let data = JSON.parse(localStorage.getItem(`temp${date}`));
+        if (data) {
+            available = true;
+            let index = weekDates.indexOf(date);
+            weekTemperatures[index].push([data.temperature, data.humidity, data.wind]);
+            setTemperatures(index);
+        }
+    })
+    return available;
 }
 
 //funkce po kliknutí na šipku pro minulý týden
@@ -377,16 +407,13 @@ const compareByStartTime = (a, b) => {
     return (a.startTime.slice(0, 2) * 60 + a.startTime.slice(3, 5)) - (b.startTime.slice(0, 2) * 60 + b.startTime.slice(3, 5));
 }
 
+// zkráceno pomocí cyklu
 const getDataFromUser = (key) => {
     let data = JSON.parse(localStorage.getItem(key));
     if (data) {
-        if (data[weekDates[0]]) { weekDataSorted["monday"] = data[weekDates[0]].sort(compareByStartTime); }
-        if (data[weekDates[1]]) { weekDataSorted["tuesday"] = data[weekDates[1]].sort(compareByStartTime); }
-        if (data[weekDates[2]]) { weekDataSorted["wednesday"] = data[weekDates[2]].sort(compareByStartTime); }
-        if (data[weekDates[3]]) { weekDataSorted["thursday"] = data[weekDates[3]].sort(compareByStartTime); }
-        if (data[weekDates[4]]) { weekDataSorted["friday"] = data[weekDates[4]].sort(compareByStartTime); }
-        if (data[weekDates[5]]) { weekDataSorted["saturday"] = data[weekDates[5]].sort(compareByStartTime); }
-        if (data[weekDates[6]]) { weekDataSorted["sunday"] = data[weekDates[6]].sort(compareByStartTime); }
+        for (let i = 0; i <= 6; i++) {
+            if (data[weekDates[i]]) { weekDataSorted[daysOfWeek[i]] = data[weekDates[i]].sort(compareByStartTime); }
+        }
         console.log(weekDataSorted);
     } else {
         console.log("No data available for this week!");
@@ -430,6 +457,8 @@ const addEventToDirections = (event) => {
 
 // Google Directions API - předávají se parametry eventOrigin a eventDestination
 const callForDirections = () => {
+    let loader = $(`<span></span>`).addClass("loader");
+    transportDirections.append(loader);
     let directionsService = new google.maps.DirectionsService();
     let directionRequest = {
         origin: eventOrigin,
@@ -466,13 +495,53 @@ const callForDirections = () => {
 
             }
         });
+        loader.remove();
     });
+}
+
+const apiExampleRepsonse = {
+    "lat": 33,
+    "lon": 35,
+    "tz": "+02:00",
+    "date": "2020-03-04",
+    "units": "standard",
+    "cloud_cover": {
+        "afternoon": 0
+    },
+    "humidity": {
+        "afternoon": 87
+    },
+    "precipitation": {
+        "total": 0
+    },
+    "temperature": {
+        "min": 286.48,
+        "max": 299.24,
+        "afternoon": 12,
+        "night": 289.56,
+        "evening": 295.93,
+        "morning": 287.59
+    },
+    "pressure": {
+        "afternoon": 1015
+    },
+    "wind": {
+        "max": {
+            "speed": 8.7,
+            "direction": 120
+        }
+    }
 }
 
 const getWeekTemperatures = () => {
     weekTemperatures = [[], [], [], [], [], [], []];
+    let loader = $(`<span></span>`).addClass("loader-small");
+    controls.append(loader);
+    leftButton.css("display", "none");
+    rightButton.css("display", "none");
+    let allReady = [false, false, false, false, false, false, false];
     weekDates.forEach((date) => {
-        const weatherDataURL = `https://api.openweathermap.org/data/3.0/onecall/day_summary?lat=${currentLocation[0]}&lon=${currentLocation[1]}&date=${date}&units=metric&appid=db02c84c1478b104b588239aaa69fa95`;
+        const weatherDataURL = `https://api.openweathermap.org/data/3.0/onecall/day_summary?lat=${currentLocation[0]}&lon=${currentLocation[1]}&date=${date}&units=metric&appid=7659dac6387be0e52b02e162b8aecd64`;
         fetch(weatherDataURL).then((resp) => {
             return resp.json();
         }).then((data) => {
@@ -484,6 +553,13 @@ const getWeekTemperatures = () => {
             let index = weekDates.indexOf(date);
             weekTemperatures[index].push([temperature, humidity, wind]);
             setTemperatures(index);
+            console.log(date);
+            localStorage.setItem(`temp${date}`, JSON.stringify({ "temperature": temperature, "humidity": humidity, "wind": wind }));
+            allReady[index] = true;
+            console.log(allReady[index]);
+            loader.remove();
+            leftButton.css("display", "");
+            rightButton.css("display", "");
         });
     })
 }
@@ -493,78 +569,22 @@ const getWeekTemperatures = () => {
 //vlhkost nad 90 % včetně = mráček s kapkami
 //teplota pod 0 včetně = mráček s vločkami
 const setTemperatures = (day) => {
-    if (day === 0) { weather0.text(`${Math.round(weekTemperatures[0][0][0])}°C ${Math.round(weekTemperatures[0][0][1])} %`) }
-    if (day === 0) {
-        weatherIcon0.css("background-image", `url(./icons/sun_cloud.png)`);
-        if (Math.round(weekTemperatures[0][0][1]) >= 90) {
-            weatherIcon0.css("background-image", `url(./icons/slight_rain.png)`);
-        }
-        if (Math.round(weekTemperatures[0][0][0]) <= 0) {
-            weatherIcon0.css("background-image", `url(./icons/snow.png)`);
-        }
+
+    weatherList[day].text(`${Math.round(weekTemperatures[day][0][0])}°C ${Math.round(weekTemperatures[day][0][1])} %`)
+
+    weatherIconList[day].css("background-image", `url(./icons/sun_cloud.png)`);
+    if (Math.round(weekTemperatures[day][0][1]) >= 90) {
+        weatherIconList[day].css("background-image", `url(./icons/slight_rain.png)`);
     }
-    if (day === 1) { weather1.text(`${Math.round(weekTemperatures[1][0][0])}°C ${Math.round(weekTemperatures[1][0][1])} %`) }
-    if (day === 1) {
-        weatherIcon1.css("background-image", `url(./icons/sun_cloud.png)`);
-        if (Math.round(weekTemperatures[1][0][1]) >= 90) {
-            weatherIcon1.css("background-image", `url(./icons/slight_rain.png)`);
-        }
-        if (Math.round(weekTemperatures[1][0][0]) <= 0) {
-            weatherIcon1.css("background-image", `url(./icons/snow.png)`);
-        }
+    if (Math.round(weekTemperatures[day][0][0]) <= 0) {
+        weatherIconList[day].css("background-image", `url(./icons/snow.png)`);
     }
-    if (day === 2) { weather2.text(`${Math.round(weekTemperatures[2][0][0])}°C ${Math.round(weekTemperatures[2][0][1])} %`) }
-    if (day === 2) {
-        weatherIcon2.css("background-image", `url(./icons/sun_cloud.png)`);
-        if (Math.round(weekTemperatures[2][0][1]) >= 90) {
-            weatherIcon2.css("background-image", `url(./icons/slight_rain.png)`);
-        }
-        if (Math.round(weekTemperatures[2][0][0]) <= 0) {
-            weatherIcon2.css("background-image", `url(./icons/snow.png)`);
-        }
-    }
-    if (day === 3) { weather3.text(`${Math.round(weekTemperatures[3][0][0])}°C ${Math.round(weekTemperatures[3][0][1])} %`) }
-    if (day === 3) {
-        weatherIcon3.css("background-image", `url(./icons/sun_cloud.png)`);
-        if (Math.round(weekTemperatures[3][0][1]) >= 90) {
-            weatherIcon3.css("background-image", `url(./icons/slight_rain.png)`);
-        }
-        if (Math.round(weekTemperatures[3][0][0]) <= 0) {
-            weatherIcon3.css("background-image", `url(./icons/snow.png)`);
-        }
-    }
-    if (day === 4) { weather4.text(`${Math.round(weekTemperatures[4][0][0])}°C ${Math.round(weekTemperatures[4][0][1])} %`) }
-    if (day === 4) {
-        weatherIcon4.css("background-image", `url(./icons/sun_cloud.png)`);
-        if (Math.round(weekTemperatures[4][0][1]) >= 90) {
-            weatherIcon4.css("background-image", `url(./icons/slight_rain.png)`);
-        }
-        if (Math.round(weekTemperatures[4][0][0]) <= 0) {
-            weatherIcon4.css("background-image", `url(./icons/snow.png)`);
-        }
-    }
-    if (day === 5) { weather5.text(`${Math.round(weekTemperatures[5][0][0])}°C ${Math.round(weekTemperatures[5][0][1])} %`) }
-    if (day === 5) {
-        weatherIcon5.css("background-image", `url(./icons/sun_cloud.png)`);
-        if (Math.round(weekTemperatures[5][0][1]) >= 90) {
-            weatherIcon5.css("background-image", `url(./icons/slight_rain.png)`);
-        }
-        if (Math.round(weekTemperatures[5][0][0]) <= 0) {
-            weatherIcon5.css("background-image", `url(./icons/snow.png)`);
-        }
-    }
-    if (day === 6) { weather6.text(`${Math.round(weekTemperatures[6][0][0])}°C ${Math.round(weekTemperatures[6][0][1])} %`) }
-    if (day === 6) {
-        weatherIcon6.css("background-image", `url(./icons/sun_cloud.png)`);
-        if (Math.round(weekTemperatures[6][0][1]) >= 90) {
-            weatherIcon6.css("background-image", `url(./icons/slight_rain.png)`);
-        }
-        if (Math.round(weekTemperatures[6][0][0]) <= 0) {
-            weatherIcon6.css("background-image", `url(./icons/snow.png)`);
-        }
-    }
+
+
 }
 
+//propíše se obsah pole weekDataSorted do localStorage
+//využívá se při vymázání eventu
 const updateLocalStorage = () => {
     let monday = [];
     weekDataSorted["monday"].forEach((item) => {
@@ -625,13 +645,27 @@ const updateLocalStorage = () => {
     updateWeek();
 }
 
+const createTimeColumn = () => {
+    for (let i = 0; i <= 23; i++) {
+        let time = [];
+        if (String(i).length === 1) {
+            time.push("0" + i + ":00", "0" + i + ":30");
+        } else {
+            time.push(i + ":00", i + ":30");
+        }
+        timeColumn.append($(`<div>${time[0]}</div>`).addClass("time"));
+        timeColumn.append($(`<div>${time[1]}</div>`).addClass("time"));
+    }
+}
+
 navigator.geolocation.getCurrentPosition((position) => {
     currentLocation.push(position.coords.latitude, position.coords.longitude);
     updateWeek();
+    createTimeColumn();
 });
-
 
 
 //localStorage.clear();
 //localStorage.setItem('11-17.12.2023', JSON.stringify(events));
 //console.log(localStorage.getItem("11-17.12.2023"));
+
