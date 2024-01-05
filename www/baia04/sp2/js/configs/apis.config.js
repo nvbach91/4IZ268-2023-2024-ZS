@@ -1,3 +1,3 @@
 export const apis = {
-	openCage: ""
+	openCage: "a0925a97084f4bc99d14b582aab99faf"
 }

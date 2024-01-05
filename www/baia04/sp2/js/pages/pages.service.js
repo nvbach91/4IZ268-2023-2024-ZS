@@ -34,6 +34,11 @@ export class PagesService {
 		const language = this.language ? this.language : "ENG"
 		this.language = language
 
+		if (!localStorage.getItem('routes')) {
+			localStorage.setItem('routes', JSON.stringify([]))
+			console.log(localStorage.getItem('routes'))
+		}
+
 		// metoda spuštěná po vykreslení stránky
 		const onLoaded = () => {
 			// plynulé zobrazení obsahu stránky
@@ -116,8 +121,9 @@ export class PagesService {
 
 		// vyběr nového ID pro nově uloženou mapu
 		let maxID = 0
-		Object.keys(localStorage).forEach((currentKey) => {
-			if (!currentKey.startsWith("route")) return
+		console.log(typeof (JSON.parse(localStorage.getItem('routes'))))
+		JSON.parse(localStorage.getItem('routes')).forEach((currentRoute) => {
+			const currentKey = currentRoute.id
 			const currentNumberID = parseInt(currentKey.split("-")[1])
 			maxID = Math.max(maxID, currentNumberID)
 		})
@@ -204,10 +210,11 @@ export class PagesService {
 	getStored = () => {
 		$("#storedPane").empty()
 		$("#storedLightPane").empty()
-		Object.getOwnPropertyNames(localStorage).forEach((currentRouteName) => {
-			if (!currentRouteName.startsWith("route")) return
+		const routes = JSON.parse(localStorage.getItem('routes'))
+		console.log(typeof (routes))
+		routes.forEach((currentRoute) => {
+			const currentRouteName = currentRoute.id
 			const id = currentRouteName.split("-")[1]
-			const currentRoute = JSON.parse(localStorage.getItem(currentRouteName))
 			// pokud nějaké trasy jsou vytvoří element a vloží se do dolního panelu
 			const mapElement = this.view.getStoredMap(id, currentRoute, this.currentLanguage)
 			$("#storedPane").append(mapElement)

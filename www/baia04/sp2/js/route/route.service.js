@@ -45,9 +45,11 @@ export class RouteService {
 	// metoda pro uložení trasy do localStorage
 	save = (id) => {
 		if (!id) return
-		localStorage.removeItem(id)
+		const routes = JSON.parse(localStorage.getItem('routes'))
+
 		// data z trasy se naparsují v čítelné podobě
 		const routeObjectToSave = {
+			id: id,
 			origin: this.route.getLastValidOrigin() || null,
 			destination: this.route.getLastValidDestination() || null,
 			waypoints: []
@@ -62,13 +64,30 @@ export class RouteService {
 			}
 			routeObjectToSave.waypoints.push(waypointObject)
 		})
-		localStorage.setItem(id, JSON.stringify(routeObjectToSave))
+
+		for (let i = 0; i < routes.length; i++) {
+			const currentRoute = routes[i]
+			if (currentRoute.id !== id) continue
+			routes.splice(id, 1)
+		}
+
+		routes.push(routeObjectToSave)
+
+		localStorage.setItem('routes', JSON.stringify(routes))
 	}
 
 	// metoda pro vymazání mapy z localStorage
 	deleteStored = (id) => {
 		if (!id) return
-		localStorage.removeItem(id)
+		const routes = JSON.parse(localStorage.getItem('routes'))
+
+		for (let i = 0; i < routes.length; i++) {
+			const currentRoute = routes[i]
+			if (currentRoute.id !== id) continue
+			routes.splice(id, 1)
+		}
+
+		localStorage.setItem('routes', JSON.stringify(routes))
 		$(`#${id}`).remove()
 	}
 }

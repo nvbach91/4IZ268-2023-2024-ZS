@@ -9,7 +9,7 @@ export const mapConfig = {
 		}
 	},
 	routingProfile: "driving",
-	userName: "",
+	userName: "diog0o",
 	styleID: "",
 	zoom: 8
 }
