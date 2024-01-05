@@ -9,7 +9,7 @@ const DISCOVERY_DOCS = [
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
 const SCOPE_READ = 'https://www.googleapis.com/auth/spreadsheets.readonly';
-const SCOPE_WRITE = 'https://www.googleapis.com/auth/drive';
+const SCOPE_WRITE = "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/userinfo.profile";
 //const SCOPE_SHEET = 'https://www.googleapis.com/auth/spreadsheets';
 
 const SHEET_ID = '1vmCEEhOVdES-JpLhw8iGC15VPcAZ_maTHEAF4RA3_TU';
@@ -19,9 +19,12 @@ let numRows = '';
 
 let dataf = [];
 
+let markerAddedToMap = false;
+
 const signin_button = document.getElementById('button-add-third');
 const signout_button = document.getElementById('button-logout');
 const add_button = document.querySelector('#button-add-first');
+const info_button = document.getElementById("info-button");
 
 const result2 = document.getElementById('result');
 /**
@@ -49,8 +52,8 @@ function initClient() {
         // Handle the initial sign-in state.
         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
         //handleAuthClick();
-        console.log('inited');
-        getValues('1vmCEEhOVdES-JpLhw8iGC15VPcAZ_maTHEAF4RA3_TU', 'A1:M' + numRows);
+
+        getValues('1vmCEEhOVdES-JpLhw8iGC15VPcAZ_maTHEAF4RA3_TU', 'A1:N' + numRows);
     });
 }
 
@@ -59,24 +62,33 @@ function initClient() {
  *  appropriately. After a sign-in, the API is called.
  */
 function updateSigninStatus(isSignedIn) {
-    if (isSignedIn && (signin_button!==null&&add_button!==null)) {
+    if (isSignedIn && (info_button!==null)) {
         //getValues('1vmCEEhOVdES-JpLhw8iGC15VPcAZ_maTHEAF4RA3_TU', 'A1:M' + numRows);
         signin_button.style.display = 'none';
         signout_button.style.visibility = 'visible';
         signout_button.style.display = 'inline-block';
         add_button.style.display = 'inline-block';
+        
+        let auth2 = gapi.auth2.getAuthInstance();
+        let googleAccount = auth2.currentUser.get().getBasicProfile();
+        document.getElementById("google-account").style.visibility="visible";
+        document.getElementById("google-account").innerHTML =
+        "Přihlášen jako: "+ googleAccount.getEmail();
     }
-    else if(isSignedIn && (signin_button==null&&add_button==null)){
+    else if(isSignedIn && (info_button==null)){
         location.href = 'main';
     }
-    else if(!isSignedIn && (signin_button!==null&&add_button!==null)){
+    else if(!isSignedIn && (info_button!==null)){
         add_button.style.display = 'none';
         signout_button.style.visibility = 'hidden';
         signout_button.style.display = 'none';
 
-        signin_button.style.display = 'inline-block';        
+        signin_button.style.display = 'inline-block';   
+        
+        document.getElementById("google-account").style.visibility="hidden";
     }
     else {
+        document.getElementById("google-account").style.visibility="hidden";
         return false;
     }
 }
@@ -139,7 +151,7 @@ function getValues(spreadsheetId, range) {
                                         'zricenina': result?.values[i][9],
                                         'pristresek': result?.values[i][10],
                                         'likes': result?.values[i][11],
-                                        'imageSRC': 'https://drive.google.com/uc? export=view&id=' + result?.values[i][12],
+                                        'imageSRC': 'https://drive.google.com/uc?export=view&id=' + result?.values[i][12],
                                         'image': result?.values[i][12]
                                     }
                                 }
@@ -332,7 +344,12 @@ map.on('click', 'unclustered-points', (e) => {
     let pristresek = e.features[0].properties.pristresek;
     let likes = e.features[0].properties.likes;
 
-    console.log(vyhlidka);
+    map.flyTo({
+        //center: [e.features[0].geometry.coordinates[0], e.features[0].geometry.coordinates[1]+0.0015],
+        center: [e.features[0].geometry.coordinates[0], e.features[0].geometry.coordinates[1]],
+        zoom: 16
+    });
+
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
     // over the copy being pointed to.
@@ -344,7 +361,7 @@ map.on('click', 'unclustered-points', (e) => {
     mobileDiv.style.display = 'block';
     const popup2 = document.getElementById('popup-all2');
     popup2.style.display = 'block';
-    if (marker) {
+    if (markerAddedToMap == true) {
         removePoint();
     }
     mobileDiv.innerHTML =
@@ -385,15 +402,6 @@ map.on('click', 'unclustered-points', (e) => {
         .addTo(map);
 });
 
-// Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
-map.on('click', 'unclustered-points', (e) => {
-    map.flyTo({
-        //center: [e.features[0].geometry.coordinates[0], e.features[0].geometry.coordinates[1]+0.0015],
-        center: [e.features[0].geometry.coordinates[0], e.features[0].geometry.coordinates[1]],
-        zoom: 16
-    });
-});
-
 // Change the cursor to a pointer when the mouse is over the places layer.
 map.on('mouseenter', 'unclustered-points', () => {
     map.getCanvas().style.cursor = 'pointer';
@@ -414,6 +422,7 @@ function addPoint() {
     add_button.style.display = 'none';
     buttonAddS.style.display = 'inline-block';
     buttonRemove.style.display = 'block';
+    markerAddedToMap = true;
 }
 function removePoint() {
     marker.remove();
@@ -421,6 +430,7 @@ function removePoint() {
     buttonAddS.style.display = 'none';
     buttonRemove.style.display = 'none';
     signin_button.style.display = 'none';
+    markerAddedToMap = false;
 }
 
 map.on('move', () => {
