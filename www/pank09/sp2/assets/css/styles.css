@@ -49,6 +49,11 @@ input {
     margin-bottom: 2rem;
 }
 
+input[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
 ::placeholder {
     color: var(--primary-color);
     opacity: 1;
@@ -111,7 +116,7 @@ aside {
 }
 
 .cards.vertical .card .content {
-    padding-right: 50px;
+    padding-right: 10px;
 }
 
 .cards.vertical .card .content .day {

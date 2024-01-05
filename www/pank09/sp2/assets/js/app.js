@@ -26,6 +26,9 @@ class WeatherApp {
     }
 
     async initialize() {
+        this.form = document.forms.searchCity;
+        this.input = this.form.querySelector('input');
+
         this.containers = {
             city:           document.querySelector('.current-city'),
             temperature:    document.querySelector('.current-temperature'),
@@ -36,8 +39,11 @@ class WeatherApp {
             pressure:       document.querySelector('.current-pressure'),
             dailyForecast:  document.querySelector('.daily-forecast'),
             hourlyForecast: document.querySelector('.hourly-forecast'),
-            errorList:      document.querySelector('.error-list')
+            errorList:      document.querySelector('.error-list'),
+            temp_units:     document.querySelector('#temp-units')
         };
+
+        this.temp_units = this.containers.temp_units.value ?? 'c';
 
         if (!this.currentLocation) {
             await this.getLocation();
@@ -45,14 +51,24 @@ class WeatherApp {
 
         this.displayWeather();
 
-        document.forms.searchCity.addEventListener('submit', (e) => {
+        let self = this;
+
+        this.form.addEventListener('submit', (e) => {
             e.preventDefault();
-            this.setLocation();
+            self.setLocation();
+        });
+
+        this.containers.temp_units.addEventListener('change', function(e) {
+            self.temp_units = self.containers.temp_units.value;
+            self.displayWeather();
         });
     }
 
     async setLocation() {
-        const newLocation = document.forms.searchCity.querySelector('input').value.trim();
+        if (this.loading)
+            return;
+
+        const newLocation = this.input.value.trim();
 
         if (!newLocation)
             return;
@@ -101,10 +117,12 @@ class WeatherApp {
                     },
                     error => {
                         this.pushError(error.message);
+                        this.stopLoading();
                     }
                 );
             } else {
                 this.pushError('Geolocation API is not supported by this browser. Please set the city manually.');
+                this.stopLoading();
             }
         });
     }
@@ -123,7 +141,7 @@ class WeatherApp {
         const { name, main, weather, wind } = this.weather.current;
 
         this.containers.city.innerText = name;
-        this.containers.temperature.innerText = this.kelvinToCelcius(main.temp);
+        this.containers.temperature.innerText = this.getTemperature(main.temp);
         this.containers.humidity.innerText = main.humidity + '%';
 
         this.containers.precipitation.innerText = '0 mm';
@@ -161,15 +179,13 @@ class WeatherApp {
 
             const { name, main, weather, wind } = dayForecast;
 
-            const forecastDate = new Date(dayForecast.dt_txt);
-            const forecastDayName = this.getDayName(forecastDate.getDay());
-            const nowDate = new Date();
-            const nowDayName = this.getDayName(nowDate.getDay());
+            const forecastDate = moment(dayForecast.dt_txt);
+            const nowDate = moment();
 
-            const displayDayName = nowDayName === forecastDayName ? 'Today' : forecastDayName;
+            const displayDayName = nowDate.format('DD.MM.YY') === forecastDate.format('DD.MM.YY') ? forecastDate.format('[Today] (DD.MM)') : forecastDate.format('dddd (DD.MM)');
 
-            const tempMin = this.kelvinToCelcius(main.temp_max);
-            const tempMax = this.kelvinToCelcius(main.temp_min);
+            const tempMin = this.getTemperature(main.temp_max);
+            const tempMax = this.getTemperature(main.temp_min);
             const temp = tempMin === tempMin ? tempMin : `${tempMin}/${tempMax}`;
 
             const card = this.createDailyCard(weather[0].icon, displayDayName, weather[0].main, temp);
@@ -191,7 +207,7 @@ class WeatherApp {
             const forecastDate = new Date(hourlyForecast.dt_txt);
             const forecastTime = `${forecastDate.getHours()}:00`;
 
-            hourlyForecastCards.push(this.createHourlyCard(weather[0].icon, forecastTime, weather[0].main, this.kelvinToCelcius(main.temp)));
+            hourlyForecastCards.push(this.createHourlyCard(weather[0].icon, forecastTime, weather[0].main, this.getTemperature(main.temp)));
         });
         
         this.containers.hourlyForecast.innerHTML = '';
@@ -218,7 +234,7 @@ class WeatherApp {
             const forecastDate = new Date(hourlyForecast.dt_txt);
             const forecastTime = `${forecastDate.getHours()}:00`;
 
-            hourlyForecastCards.push(this.createHourlyCard(weather[0].icon, forecastTime, weather[0].main, this.kelvinToCelcius(main.temp)));
+            hourlyForecastCards.push(this.createHourlyCard(weather[0].icon, forecastTime, weather[0].main, this.getTemperature(main.temp)));
         });
         
         card.querySelector('.list').innerHTML = '';
@@ -283,6 +299,8 @@ class WeatherApp {
 
         this.loading = true;
 
+        this.input.setAttribute('disabled', true);
+
         document.body.classList.add('is-loading');
 
         this.containers.city.innerText = '-';
@@ -315,6 +333,7 @@ class WeatherApp {
 
     stopLoading() {
         this.loading = false;
+        this.input.removeAttribute('disabled');
         document.body.classList.remove('is-loading');
     }
 
@@ -367,8 +386,19 @@ class WeatherApp {
         return Math.round(tempInKelvin - 273.15) + '°';
     }
 
+    kelvinToFahrenheit(tempInKelvin) {
+        return Math.round((tempInKelvin - 273.15) * 1.8 + 32) + '°';
+    }
+
     hPaToMmHg(pressureInHPa) {
         return Math.round(pressureInHPa * 0.75006) + ' mmHg';
+    }
+
+    getTemperature(temp) {
+        if (this.temp_units === 'f')
+            return this.kelvinToFahrenheit(temp);
+
+        return this.kelvinToCelcius(temp);
     }
 
     pushError(msg) {
