@@ -19,7 +19,11 @@ $(document).ready(function () {
     let lastSecondCurrency = localStorage.getItem('secondCurrency') || 'USD';
 
     // Retrieve the conversion history from localStorage, or initialize it to an empty array
+    // Convert the JSON string to a JavaScript object
     let conversionHistory = JSON.parse(localStorage.getItem('conversionHistory')) || [];
+
+    // To not repeatedly select the same element from a tree, store it in a variable
+    let messageBox = $('#messageBox');
 
     // This iteration adds all values from the 'currencies' array to the 'first' and 'second' dropdowns
     $.each(currencies, function (index, currency) {
@@ -151,7 +155,7 @@ $(document).ready(function () {
         // Check if the entered amount is greater than 0
         if (parseFloat(amount) > 0) {
             // Clear the message box and show the loader
-            $('#messageBox').html('');
+            messageBox.html('');
             $('#loader').show();
 
             // Try to fetch the conversion rates from the API, catch any errors that occur -> move to 'catch' block
@@ -164,8 +168,8 @@ $(document).ready(function () {
                 // Calculate the converted amount by multiplying the amount by the exchange rate
                 let convertedAmount = amount * toExchangeRate;
 
-                // Selector, content of innerHTML, display the converted amount and the exchange rate
-                $('#messageBox').html(`${amount} ${firstCurrency} = ${convertedAmount.toFixed(2)} ${secondCurrency}<br>(Exchange rate valid on ${formattedDate})`);
+                // Selector, content of innerHTML, display the converted amount and the exchange rate, always 2 decimal places
+                messageBox.html(`${parseFloat(amount).toFixed(2)} ${firstCurrency} = ${convertedAmount.toFixed(2)} ${secondCurrency}<br>(Exchange rate valid on ${formattedDate})`);
 
                 // Create a new object to hold the conversion history entry
                 let newEntry = {
@@ -186,8 +190,8 @@ $(document).ready(function () {
                 // Takes an entry and checks if the date is greater than or equal to one year ago
                 conversionHistory = conversionHistory.filter(entry => entry.date >= oneYearAgoFormatted);
 
-                // Add the new entry to the conversion history array
-                conversionHistory.push(newEntry);
+                // Add the new entry to the beginning of the conversion history array
+                conversionHistory.unshift(newEntry);
 
                 // Store the conversion history and the last selected currencies in local storage
                 // JSON.stringify = convert a JavaScript object to a JSON string
@@ -199,7 +203,6 @@ $(document).ready(function () {
                 // If an error occurs during the API request, log the error and display an error message
                 console.error('Error:', error);
                 // To not repeatedly select the same element, store it in a variable
-                let messageBox = $('#messageBox');
                 messageBox.text('An error occurred while fetching data. Please try again.');
             } finally {
                 // Hide the loader
@@ -214,17 +217,17 @@ $(document).ready(function () {
         // Parse the JSON string to convert it to a JavaScript object
         let conversionHistory = JSON.parse(localStorage.getItem('conversionHistory')) || [];
 
-        // Sort the history by date in ascending order
-        // This subtracts the date of the first entry from the date of the second entry, less than 0 = first entry is older than second entry
-        conversionHistory.sort((a, b) => new Date(a.date) - new Date(b.date));
+        // Sort the history by date in descending order
+        // This subtracts the date of the second entry from the date of the first entry, less than 0 = second entry is older than first entry
+        conversionHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
 
         // Create a string to hold the HTML for the history
         let historyHtml = '';
 
         // Loop through the history for each entry
         for (let entry of conversionHistory) {
-            // Add an HTML string for each entry to the historyHtml string
-            historyHtml += `<p>${entry.date}: ${entry.amount} ${entry.fromCurrency} = ${entry.convertedAmount} ${entry.toCurrency}</p>`;
+            // Add an HTML string for each entry to the historyHtml string, always 2 decimal places
+            historyHtml += `<p>${entry.date}: ${parseFloat(entry.amount).toFixed(2)} ${entry.fromCurrency} = ${entry.convertedAmount} ${entry.toCurrency}</p>`;
         }
 
         // Display the history on the page
