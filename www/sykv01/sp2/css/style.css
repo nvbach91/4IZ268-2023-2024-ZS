@@ -1,0 +1,98 @@
+* { 
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Questrial', sans-serif;
+}
+
+body { 
+    margin: 0 auto;
+    padding: 0;
+    max-width: 700px;
+}
+
+header h1 {
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    letter-spacing: 2px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    height: 600px;
+}
+
+#authenticateButton {
+    margin: 50px;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    letter-spacing: 2px;
+    font-size: 25px;
+    font-weight: 600;
+    background-color: white;
+}
+
+#authenticateButton:hover {
+    background-color: #00800080;
+    cursor: pointer;
+}
+
+.color-picker {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.color-picker p {
+    font-size: 25px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
+
+.dot {
+    margin-top: 12px;
+    margin-left: 21px;
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.dot:hover{
+    background-color: #00800080;
+}
+
+.share-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#shareButton {
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    letter-spacing: 2px;
+    font-size: 25px;
+    font-weight: 600;
+    background-color: white;
+}
+
+#shareButton:hover {
+    background-color: #00800080;
+    cursor: pointer;
+}
