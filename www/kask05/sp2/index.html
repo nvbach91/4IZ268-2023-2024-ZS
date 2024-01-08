@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnApp</title>
-	<link rel="icon" href="./pictures/qmark.png" type="image/x-icon">
-    <link rel="shortcut icon" href="./pictures/qmark.png" type="image/x-icon">
-	<meta name="author" content="Kristýna Kaslová">
-	<link href="./css/style.css" rel="stylesheet">
-</head>
-<body>
-    <div id="app">
-		<div id="main-page"></div>
-		<div id="add-questions"></div>
-		<div id="edit-page"></div>
-		<div id="test-page"></div>
-	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="module" src="./js/main.js"></script>
 
-	<!-- <script type="module">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LearnApp</title>
+  <link rel="icon" href="./pictures/qmark.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="./pictures/qmark.png" type="image/x-icon" />
+  <meta name="author" content="Kristýna Kaslová" />
+  <link href="./css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="app">
+    <div id="main-page"></div>
+    <div id="add-questions"></div>
+    <div id="edit-page"></div>
+    <div id="test-page"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script type="module" src="./js/main.js"></script> -->
+
+  <!-- <script type="module">
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
 		import { getFirestore } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore.js";
 		
@@ -35,12 +37,55 @@
 		const firebaseApp = initializeApp(firebaseConfig);
     	const db = getFirestore(firebaseApp);
 	</script> -->
-	<!-- <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script> -->
 
+  <!-- <script type="module" src="try.js"></script> -->
 
-	<!-- <script type="module" src="try.js"></script> -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+    import { getDatabase, ref, push, get, set, child, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBdfFoWwK-7fikkdr7FILO0GWozM-53KT0",
+      authDomain: "sw02-ff39a.firebaseapp.com",
+      databaseURL: "https://sw02-ff39a-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "sw02-ff39a",
+      storageBucket: "sw02-ff39a.appspot.com",
+      messagingSenderId: "836948307385",
+      appId: "1:836948307385:web:e5bbf868acf984d3a05a68",
+      measurementId: "G-HQPB604937"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    const database = getDatabase();
+    // set(ref(database, 'users/123'), {
+    //   answerText: '123',
+    //   questionText: 'aaa'
+    // })
+
+    const r = ref(database, 'questions/question/answerText');
+    onValue(r, (snapshot) => {
+      console.log(snapshot)
+      console.log(snapshot.val())
+    })
+
+
+  </script>
+  <script type="module" src="./js/main.js"></script>
+
+
 </body>
+
 </html>
