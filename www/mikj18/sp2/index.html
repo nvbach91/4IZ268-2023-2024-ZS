@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="weatherInfo" class="weather-container">
+
+            <form id="locationForm" class="form">
+                <label for="locationInput" class="label">Enter location:</label>
+                <div class="input-group">
+                    <input type="text" id="locationInput" name="location" class="input" placeholder="Enter city name">
+                    <button type="submit" class="button">Get Weather</button>
+                </div>
+            </form>
+
+        
+                <p id="location" class="weather-info"></p>
+                <p id="temperature" class="weather-info"></p>
+                <p id="description" class="weather-info"></p>
+            </div>
+
+            <div id="forecast" class="forecast-container">
+                <h2 class="forecast-heading">5-Day Forecast</h2>
+                <canvas id="forecastChart" width="1200" height="300"></canvas>
+            </div>
+        </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>
