@@ -16,9 +16,14 @@ module.exports = {
           '100%': { transform: 'scaleY(1)' },
 
         },
+        'spinning': {
+          '0%': { transform: 'rotate(0deg)'},
+          '100%': { transform: 'rotate(360deg)' }
+        }
       },
       animation: {
         'open-menu': 'open-menu 0.5s ease-in-out forwards',  
+        'spinning': 'spinning 2s linear infinite'
       }
     },
   },
