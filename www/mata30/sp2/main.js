@@ -22,12 +22,12 @@ search.addEventListener('click', () => {
         weatherBox.style.display = 'none';
         weatherDetails.style.display = 'none';
         error404.style.display = 'block';
-        error404.classList.add('fadeIn');
+        error404.classList.add('slideIn');
         return;
       }
 
       error404.style.display = 'none';
-      error404.classList.remove('fadeIn');
+      error404.classList.remove('slideIn');
 
       const image = document.querySelector('.weather-box img');
       const temperature = document.querySelector('.weather-box .temperature');
@@ -67,8 +67,8 @@ search.addEventListener('click', () => {
 
       weatherBox.style.display = '';
       weatherDetails.style.display = '';
-      weatherBox.classList.add('fadeIn');
-      weatherDetails.classList.add('fadeIn');
+      weatherBox.classList.add('slideIn');
+      weatherDetails.classList.add('slideIn');
       container.style.height = '800px';
       container.style.width = '500px';
 

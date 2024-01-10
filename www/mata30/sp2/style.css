@@ -16,7 +16,7 @@ body {
 
 .container {
   position: relative;
-  width: 400px;
+  width: 600px;
   height: 105px;
   background-color: #fff;
   padding: 28px 32px;
@@ -35,7 +35,7 @@ body {
 }
 
 .search-box input {
-  color: #06283d;
+  color: #f2bded;
   width: 80%;
   font-size: 20px;
   text-transform: uppercase;
@@ -52,8 +52,8 @@ body {
   cursor: pointer;
   width: 50px;
   height: 50px;
-  color: #06283d;
-  background: #dff6ff;
+  color: #5e54e9;
+  background: #ebc1f7;
   border-radius: 50%;
   font-size: 15px;
   transition: 0.4s ease;
@@ -61,12 +61,12 @@ body {
 
 .search-box button:hover {
   color: #fff;
-  background: #06283d;
+  background: #fdb4fb;
 }
 
-.search-box i{
+.search-box i {
   position: absolute;
-  color: #06283d;
+  color: #e69aeb;
   font-size: 20px;
 }
 
@@ -88,14 +88,14 @@ body {
   margin-left: -16px;
 }
 
-.weather-box .temperature span{
+.weather-box .temperature span {
   position: relative;
   margin-left: 4px;
   font-size: 24px;
 }
 
 .weather-box .description {
-  color: #06283d;
+  color: #393f44;
   font-size: 20px;
   font-weight: 300;
   text-transform: capitalize;
@@ -108,7 +108,8 @@ body {
   margin-top: 25px;
 }
 
-.weather-details .humidity, .weather-details .wind {
+.weather-details .humidity,
+.weather-details .wind {
   display: flex;
   align-items: center;
   width: 50%;
@@ -126,28 +127,27 @@ body {
 }
 
 .weather-details i {
-  color: #06283d;
+  color: #6a747a;
   font-size: 20px;
   margin-right: 10px;
   margin-top: 6px;
 }
 
 .weather-details span {
-  color: #06283d;
+  color: #6a747a;
   font-size: 22px;
 }
 
 .weather-details p {
-  color: #06283d;
+  color: #6a747a;
   font-size: 14px;
   font-weight: 300;
-} 
+}
 
 .not-found {
   width: 100%;
   text-align: center;
   margin-top: 50px;
-  scale: 0;
   opacity: 0;
   display: none;
 }
@@ -163,19 +163,26 @@ body {
   margin-top: 12px;
 }
 
-.weather-box, .weather-details {
-  scale: 0;
+.weather-box,
+.weather-details {
   opacity: 0;
-} 
-
-.fadeIn {
-  animation: 0.5s fadeIn forwards;
-  animation-delay: 0.5s;
 }
 
-@keyframes fadeIn {
-  to {
-    scale: 1;
-    opacity: 1;
-  }
+.weather-box img {
+  max-width: 60%;
+  height: auto;
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+.weather-box,
+.weather-details {
+  opacity: 0;
+  transform: translateY(40px); /* Initial position off-screen */
+}
+
+.slideIn {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Transition properties */
 }
