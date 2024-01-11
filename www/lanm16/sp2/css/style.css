@@ -1,0 +1,103 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(223, 223, 223);
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 20px;
+    background-color: white;
+    border: 3px solid white;
+    border-radius: 20px;
+}
+
+h2 {
+    text-align: center;
+    background-color: white;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.layout-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+canvas {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 70%;
+    margin-bottom: 40px;
+    margin-right: 50px;
+    justify-content: center;
+    height: 500px;
+    width: 500px;
+}
+
+.table {
+    width: 30%;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+    margin-bottom: 40px;
+    margin-left: 50px;
+}
+
+
+.highscore-table {
+    width: calc(100% - 80px);
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.highscore-table .header-row,
+.highscore-table .even-row,
+.highscore-table .odd-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 7px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.highscore-table .header-row {
+    background-color: #717171;
+    color: white;
+}
+
+.highscore-table .even-row {
+    background-color: #f2f2f2;
+}
+
+.highscore-table .odd-row {
+    background-color: #ffffff;
+}
+
+#spinner {
+    display: none;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #4f4f4f;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 45%;
+    left: 66%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

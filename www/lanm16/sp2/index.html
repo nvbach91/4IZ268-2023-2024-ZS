@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake - online game</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Langer Matyáš">
+    <meta name="description" content="This page is about playing internet version of Snake.">
+    <meta name="keywords" content="videogame, snake, online game, highscore">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./img/snake.jpg">
+</head>
+
+<body>
+    <h1>My Snake game</h1>
+    <div class="layout-page">
+        <canvas id="game" width="400" height="400"></canvas>
+        <div class="table">
+            <h2>Highscores</h2>
+            <table id="highscores"></table>
+            <div id="spinner" style="display: none;"></div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script type="module" src="./js/snake.js"></script>
+</body>
+
+</html>
