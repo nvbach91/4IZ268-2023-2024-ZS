@@ -15,11 +15,14 @@
 </head>
 <body>
     <div id="dashboard">
+        <div id="charts-container">
+            <canvas id="myChart"></canvas>
+            <canvas id="forecastChart"></canvas>
+        </div>   
         <div id="weather-container">
             <h2>Weather App</h2>
             <input type="text" id="city" placeholder="Enter city">
-            <button onclick="getWeather()">Search</button>
-            <button id="get-weather">Get Weather</button>
+            <button id="search-button">Search</button>
             <button id="add-to-favorites">Add to Favorites</button>
             <img id="weather-icon" alt="Weather Icon">
     
@@ -31,14 +34,8 @@
             
             <div id="favorites"></div>
             <div id="five-day-forecast"></div>
-    
-            <!-- Přidání grafu -->
             
-        </div>
-        <div id="charts-container">
-            <canvas id="myChart"></canvas>
-            <canvas id="forecastChart"></canvas>
-        </div>    
+        </div> 
     </div>
         <div id="spinner" style="display: none;">
             <div class="loader"></div>
@@ -46,5 +43,4 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="../js/main.js"></script>
     </body>
-    </html>
 </html>
