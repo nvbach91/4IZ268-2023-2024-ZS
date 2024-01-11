@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kvízová hra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap">
+  </head>
+  <body>
+
+    <!-- Obsah stránky -->
+    <div class="main-wrapper">
+      <div class="home-container" id="home-container">
+        <div class="selection-container" id="selection-container">
+        </div>
+        <div class="difficulty-container">
+          <h2>Choose difficulty:</h2>
+          <ul>
+            <li><input type="radio" name="difficulty" value="easy">easy</li>
+            <li><input type="radio" name="difficulty" value="medium">medium</li>
+            <li><input type="radio" name="difficulty" value="hard">hard</li>
+          </ul>
+        </div>
+        <div class="number-of-questions-container">
+          <span class="number-of-questions-label">Number of questions:</span>
+          <input type="range" id="number-of-questions-input"
+            name="number-of-questions-input" min="10" max="30" value="10"
+            step="5">
+          <span id="selected-value">10</span>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" id="highscore-button"
+            class="highscore-button">HighScores</button>
+            <button type="button" id="start-button"
+          class="control-button">Start</button>
+          <button type="button" id="mute-button" class="muteButton">Toggle Sound</button>
+        </div>
+      </div>
+      <div class="quiz-container" id="quiz-container">
+
+      </div>
+
+      <!-- HTML pro načítací slider -->
+      <div id="loading-slider" class="loading-slider">
+        <div id="loading-progress" class="loading-progress"></div>
+      </div>
+
+      <div class="error-container" id="error-container">
+      </div>
+    </div>
+
+    <audio id="introMusic" src="./assets/mp3/intro.mp3" loop></audio>
+    <audio id="correctSound1" src="./assets/mp3/correct1.mp3"></audio>
+    <audio id="correctSound2" src="./assets/mp3/correct2.mp3"></audio>
+    <audio id="correctSound3" src="./assets/mp3/correct3.mp3"></audio>
+    <audio id="correctSound4" src="./assets/mp3/correct4.mp3"></audio>
+    <audio id="incorrectSound1" src="./assets/mp3/incorrect1.mp3"></audio>
+    <audio id="incorrectSound2" src="./assets/mp3/incorrect2.mp3"></audio>
+    <audio id="incorrectSound3" src="./assets/mp3/incorrect3.mp3"></audio>
+    <audio id="incorrectSound4" src="./assets/mp3/incorrect4.mp3"></audio>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script async defer crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
