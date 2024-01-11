@@ -165,7 +165,16 @@ body {
   border-radius: 5px;
   box-sizing: border-box;
   border-radius: 10px;
-  align-self: flex-end;
+}
+
+.quiz-back-to-home {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .loading-slider {
@@ -204,9 +213,10 @@ body {
 }
 
 .button-group {
+  width: 100%;
   margin-top: 30px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 20px;
 }
 
@@ -278,6 +288,12 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.btn-group1 {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .muteButton {

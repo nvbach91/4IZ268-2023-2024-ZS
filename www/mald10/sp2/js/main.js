@@ -1,21 +1,21 @@
-window.fbAsyncInit = function() {
+window.fbAsyncInit = function () {
     FB.init({
-      appId      : "387371490336516",
-      cookie     : true,
-      xfbml      : true,
-      version    : "v14.0"
+        appId: "387371490336516",
+        cookie: true,
+        xfbml: true,
+        version: "v14.0"
     });
 
     FB.AppEvents.logPageView();
-  };
+};
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) { return; }
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 // Vytvoření namespace objektu
 const quizApp = {};
@@ -49,11 +49,14 @@ $(document).ready(function () {
     introMusic.volume = 0.05;
 
     //změna číselné hodnoty počtu otázek podle nastavení slideru
-    const slider = document.getElementById("number-of-questions-input");
-    const selectedValue = document.getElementById("selected-value");
+    const slider = $("#number-of-questions-input");
+    const selectedValue = $("#selected-value");
+    const continueButton = $("#continue-button");
+    continueButton.prop("disabled", true);
 
-    slider.addEventListener("input", function () {
-        selectedValue.textContent = this.value;
+    slider.on("input", function () {
+        let sliderValue = $(this).val();
+        selectedValue.text(sliderValue);
     });
 
     //Akce pro spuštění kvízu a přenos dat o kategorii a obtížnosti
@@ -71,7 +74,7 @@ $(document).ready(function () {
 
     //interaktivita kategorii
     $("#selection-container").on("click", ".category-card", function (event) {
-        $(".category-card").removeClass("active");
+        $(this).siblings().removeClass("active");
         $(this).addClass("active");
     });
 
@@ -81,6 +84,12 @@ $(document).ready(function () {
         quizContainer.css("display", "flex");
         displayHighScores(0);
     });
+
+    continueButton.on("click", function (event) {
+        homeContainer.hide();
+        quizContainer.css("display", "flex");
+    });
+
     //mute button
     $("#mute-button").on("click", function (event) {
         quizApp.muted = !quizApp.muted;
@@ -105,16 +114,16 @@ $(document).ready(function () {
 
     //fb share button v quizcontaineru
     quizContainer.on("click", "#fb-share-button", function (event) {
-            /*FB.ui({
-            method: 'share',
-            href: "https://eso.vse.cz/~mald10/sp2/",
-          }, function(response){});*/
-          if(quizApp.accessToken){
+        /*FB.ui({
+        method: 'share',
+        href: "https://eso.vse.cz/~mald10/sp2/",
+      }, function(response){});*/
+        if (quizApp.accessToken) {
             publishPost();
-          }
-          else {
+        }
+        else {
             facebookLogin();
-          }
+        }
     });
 
     // error button akce
@@ -141,6 +150,7 @@ $(document).ready(function () {
 
         if (quizApp.currentQuestionIndex === quizApp.loadedQuestions.length - 1) {
             console.log("konec");
+            continueButton.prop("disabled", true);
             showResults();
             return;
         }
@@ -152,7 +162,7 @@ $(document).ready(function () {
         setTimeout(function () {
             displayQuestion(quizApp.loadedQuestions[quizApp.currentQuestionIndex], shuffledAnswersObject.answers);
             $("#answer-button").prop("disabled", false);
-        }, 2000);
+        }, 10);
     });
 
     quizContainer.on("click", "#home-button", function (event) {
@@ -164,56 +174,58 @@ $(document).ready(function () {
         displayHighScores();
     });
 
+    quizContainer.on("click", "#quiz-back-to-home", function (event) {
+        continueButton.prop("disabled",false);
+        quizContainer.hide();
+        homeContainer.css("display", "flex");
+    });
+
 });
 
 // Funkce pro načtení otázek z API
 function loadQuestions(amount, category, difficulty) {
-    return new Promise(function (resolve, reject) {
-        const apiUrl = "https://opentdb.com/api.php";
+    const apiUrl = "https://opentdb.com/api.php";
+    const queryParams = {
+        amount: amount,
+        category: category,
+        difficulty: difficulty
+    };
 
-        const queryParams = {
-            amount: amount,
-            category: category,
-            difficulty: difficulty
-        };
+    return $.ajax({
+        url: apiUrl,
+        method: "GET",
+        data: queryParams
+    }).then(function (data) {
+        quizApp.progressAnimation.pause();
+        quizApp.progressAnimation.seek(0);
+        quizApp.loadingSlider.hide();
 
-        $.ajax({
-            url: apiUrl,
-            method: "GET",
-            data: queryParams,
-            success: function (data) {
-                quizApp.progressAnimation.pause();
-                quizApp.progressAnimation.seek(0);
-                quizApp.loadingSlider.hide();
-                resolve(data.results);
-            },
-            error: function (error, xhr, textStatus, errorThrown) {
-                reject("Chyba při načítání otázek z API: ");
-                console.log(error);
-                console.log(xhr.status);
-                console.log(xhr);
-                console.log(textStatus);
-                console.log(errorThrown);
-                quizApp.progressAnimation.pause();
-                quizApp.progressAnimation.seek(0);
-                quizApp.loadingSlider.hide();
-                showErrorContainer(2);
-            }
-        });
+        if (data && data.results) {
+            return data.results;
+        } else {
+            return Promise.reject("Chyba při načítání otázek z API.");
+        }
+    }).catch(function (error) {
+        console.error(error);
+        quizApp.progressAnimation.pause();
+        quizApp.progressAnimation.seek(0);
+        quizApp.loadingSlider.hide();
+        return Promise.reject(error);
     });
 }
 
 //vyhodnocení odpovedi
 function processAnswer(selectedAnswer) {
+    const selectedAnswerLabel = $("#answer-" + selectedAnswer);
     if (selectedAnswer === quizApp.currentCorrectAnswer) {
         playCorrectSound();
-        $("#answer-" + selectedAnswer).css("color", "green");
+        selectedAnswerLabel.css("color", "green");
         quizApp.currentPoints++;
         $("#points-number").text(quizApp.currentPoints + " pts.");
         return true;
     }
     playIncorrectSound();
-    $("#answer-" + selectedAnswer).css("color", "red");
+    selectedAnswerLabel.css("color", "red");
     $("#answer-" + quizApp.currentCorrectAnswer).css("color", "green");
     return false;
 }
@@ -226,10 +238,13 @@ async function prepareGame(amount, category, difficulty) {
             quizApp.progressAnimation.play();
             $("#loading-slider").show();
             const newQuestionCount = await getNewQuestionCount(amount, category);
-
             await new Promise(resolve => setTimeout(resolve, 5000));
+
+            if (newQuestionCount) {
+                displayMinorErrorMessage("Not enough questions available for the selected category and difficulty. Additional difficulties have been considered and quiz will have: " + newQuestionCount + " questions");
+            }
+
             quizApp.loadedQuestions = await loadQuestions(newQuestionCount, category, "");
-            displayMinorErrorMessage("Not enough questions available for the selected category and difficulty. Additional difficulties have been considered and quiz will have: " + newQuestionCount + " questions");
         }
         quizApp.currentQuestionIndex = 0;
         const shuffledAnswersObject = prepareAndShuffleAnswers(quizApp.loadedQuestions[quizApp.currentQuestionIndex]);
@@ -239,15 +254,15 @@ async function prepareGame(amount, category, difficulty) {
         $(".quiz-container").css("display", "flex");
 
     } catch (error) {
-        showErrorContainer(2);
         console.error(error);
+        showErrorContainer(2);
     }
 }
 
 
 //v případě malého množství otázek pomocí této funkce zjistíme kolik otázek můžeme dostat v dané kategorii ale bez nastavení obtížnosti
 async function getNewQuestionCount(amount, category) {
-    try{
+    try {
         const desiredQuestionCount = amount;
         const loadedQuestionCount = await loadQuestionCount(category);
         let newQuestionCount;
@@ -258,32 +273,26 @@ async function getNewQuestionCount(amount, category) {
         newQuestionCount = loadedQuestionCount.total_question_count;
         return newQuestionCount;
     }
-    catch(error){
-        showErrorContainer(3);
+    catch (error) {
         console.error(error);
     }
 }
 
 function loadQuestionCount(category) {
-    return new Promise(function (resolve, reject) {
-        $.ajax({
-            url: "https://opentdb.com/api_count.php?category=" + category,
-            method: "GET",
-            success: function (data) {
-                if (data && data.category_question_count) {
-                    resolve(data.category_question_count);
-                }
-                else {
-                    reject("Error while retrieving question count for the category from API.");
-                    showErrorContainer(3);
-                }
-            },
-            error: function (error) {
-                const errorMessage = "Error loading categories from API: ";
-                reject(errorMessage);
-                showErrorContainer(3);
-            }
-        });
+    const apiUrl = "https://opentdb.com/api_count.php?category=" + category;
+
+    return $.ajax({
+        url: apiUrl,
+        method: "GET"
+    }).then(function (data) {
+        if (data && data.category_question_count) {
+            return data.category_question_count;
+        } else {
+            return Promise.reject("Chyba při získávání počtu otázek pro kategorii z API.");
+        }
+    }).catch(function (error) {
+        console.error(error);
+        return Promise.reject(error); // Předáme chybu dále
     });
 }
 
@@ -291,33 +300,36 @@ function addQuizContainerElements() {
     const quizContainer = $(".quiz-container");
     // Vytvoření obsahu pro výsledky
     const quizContent = `
-<div class="quiz-header">
-<div id="question-number" class="question-number"></div>
-<h2 id="category-title" class="category-title"></h2>
-<div id="points-number" class="points-number">0 pts.</div>
-</div>
-<p id="question-text"></p>
-<form id="answers-form" class="answers-form">
-<label>
-  <input type="radio" name="answer" value="1">
-  <span id="answer-1"></span>
-</label>
-<label>
-  <input type="radio" name="answer" value="2">
-  <span id="answer-2"></span>
-</label>
-<label>
-  <input type="radio" name="answer" value="3">
-  <span id="answer-3"></span>
-</label>
-<label>
-  <input type="radio" name="answer" value="4">
-  <span id="answer-4"></span>
-</label>
-<button type="submit" id="answer-button" class="control-button">Confirm answer</button>
-</form>
-<button type="button" id="quiz-mute-button" class="quiz-mute-button">Mute</button>
-`;
+                        <div class="quiz-header">
+                            <div id="question-number" class="question-number"></div>
+                                <h2 id="category-title" class="category-title"></h2>
+                                    <div id="points-number" class="points-number">0 pts.</div>
+                                    </div>
+                                    <p id="question-text"></p>
+                                    <form id="answers-form" class="answers-form">
+                                        <label>
+                                            <input type="radio" name="answer" value="1">
+                                            <span id="answer-1"></span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="answer" value="2">
+                                            <span id="answer-2"></span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="answer" value="3">
+                                            <span id="answer-3"></span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="answer" value="4">
+                                            <span id="answer-4"></span>
+                                        </label>
+                                        <button type="submit" id="answer-button" class="control-button">Confirm answer</button>
+                                    </form>
+                                    <div class="button-group">
+                                        <button type="button" id="quiz-back-to-home" class="quiz-back-to-home">Back to home</button>
+                                        <button type="button" id="quiz-mute-button" class="quiz-mute-button">Mute</button>
+                                    </div>
+                                    `;
     // Vložení obsahu do quizContainer
     quizContainer.html(quizContent);
     if (quizApp.muted === false) {
@@ -329,7 +341,9 @@ function addQuizContainerElements() {
 function displayQuestion(question, shuffledAnswers) {
     const radioButtons = $("input[type='radio'][name='answer']");
     const answerElements = $("#answer-1, #answer-2, #answer-3, #answer-4");
+    answerElements.html("");
     radioButtons.prop("checked", false).prop("disabled", false);
+    radioButtons.css("display","initial");
 
     $("#category-title").html(question.category);
     $("#question-number").html("Question " + (quizApp.currentQuestionIndex + 1));
@@ -341,8 +355,7 @@ function displayQuestion(question, shuffledAnswers) {
     });
 
     if (shuffledAnswers.length === 2) {
-        answerElements.slice(-2).html("");
-        radioButtons.slice(-2).prop("disabled", true);
+        radioButtons.slice(-2).css("display", "none");
     }
 }
 
@@ -391,32 +404,27 @@ async function renderCategories() {
 }
 
 function loadCategories() {
-    return new Promise(function (resolve, reject) {
+    const apiUrl = "https://opentdb.com/api_category.php";
 
-        $.ajax({
-            url: "https://opentdb.com/api_category.php",
-            method: "GET",
-            success: function (data) {
-                if (data && data.trivia_categories) {
-                    quizApp.progressAnimation.pause();
-                    quizApp.progressAnimation.seek(0);
-                    quizApp.loadingSlider.hide();
-                    resolve(data.trivia_categories);
-                } else {
-                    reject("Chyba při získávání kategorií z API.");
-                    showErrorContainer(1);
-                }
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                const errorMessage = "Chyba při načítání kategorií z API: ";
-                console.error(errorMessage, xhr, textStatus, errorThrown);
-                reject(errorMessage);
-                quizApp.progressAnimation.pause();
-                quizApp.progressAnimation.seek(0);
-                quizApp.loadingSlider.hide();
-                showErrorContainer(1);
-            }
-        });
+    return $.ajax({
+        url: apiUrl,
+        method: "GET"
+    }).then(function (data) {
+        if (data && data.trivia_categories) {
+            quizApp.progressAnimation.pause();
+            quizApp.progressAnimation.seek(0);
+            quizApp.loadingSlider.hide();
+            return data.trivia_categories;
+        } else {
+            showErrorContainer(1);
+            return Promise.reject("Chyba při získávání kategorií z API.");
+        }
+    }).catch(function (error) {
+        console.error(error);
+        quizApp.progressAnimation.pause();
+        quizApp.progressAnimation.seek(0);
+        quizApp.loadingSlider.hide();
+        return Promise.reject(error);
     });
 }
 
@@ -462,7 +470,7 @@ function saveHighScoreToLocalStorage(points, totalQuestions, percentageScore, ca
         points: points,
         questions: totalQuestions,
         percentage: percentageScore,
-        date: new Date().toLocaleDateString("en-GB")
+        date: new Date().toISOString()
     };
 
     existingHighScores.push(newHighScore);
@@ -513,11 +521,12 @@ async function displayHighScores(categoryID) {
     table.append(headerRow);
 
     categoryNamesMap.forEach(score => {
+        const onlyDate = score.date.split("T")[0];
         const row = $("<tr>").html(`<td>${score.points}</td>
                                     <td>${score.questions}</td>
                                     <td>${score.percentage}</td>
                                     <td>${score.categoryName}</td>
-                                    <td>${score.date}</td>`
+                                    <td>${onlyDate}</td>`
         );
         table.append(row);
     });
@@ -727,7 +736,7 @@ function playIncorrectSound() {
 }
 
 function facebookLogin() {
-    FB.getLoginStatus(function(response) {
+    FB.getLoginStatus(function (response) {
         if (response.status === 'connected') {
             console.log('User is already logged in:', response.authResponse);
             quizApp.accessToken = response.authResponse.accessToken;
@@ -735,7 +744,7 @@ function facebookLogin() {
         } else {
             console.log('User is not logged in. Initiating login...');
             // User is not logged in, initiate login
-            FB.login(function(loginResponse) {
+            FB.login(function (loginResponse) {
                 if (loginResponse.authResponse) {
                     console.log('Login successful:', loginResponse.authResponse);
                     quizApp.accessToken = response.authResponse.accessToken;
@@ -756,7 +765,7 @@ function publishPost(message) {
     };
 
     // Odešlete požadavek na publikaci příspěvku
-    FB.api('/me/feed', 'post', postParams, function(response) {
+    FB.api('/me/feed', 'post', postParams, function (response) {
         if (!response || response.error) {
             console.error('Chyba při publikaci příspěvku:', response.error);
         } else {
