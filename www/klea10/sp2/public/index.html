@@ -1,37 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="Weather">
-        <meta name="author" content="Anna Klebanova">
-        <meta name="description" content="Weather">
-        <title></title>
-        <!-- Favicon -->
-        <!--  <link rel="shortcut icon" href="./src/favicon.jpg" type="image/x-icon"> -->
-        <link href="../src/components/style.css" rel="stylesheet">
-        <!--Font-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Abel&family=Abril+Fatface&family=Montserrat:wght@300&family=Playfair+Display&family=Work+Sans:wght@700&display=swap"
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Weather">
+    <meta name="author" content="Anna Klebanova">
+    <meta name="description" content="Weather">
+    <title>Weather</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../src/img/favicon.png" type="image/x-icon">
+    <link href="../src/components/style.css" rel="stylesheet">
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abel&family=Abril+Fatface&family=Montserrat:ital,wght@0,300;0,400;1,400&family=Playfair+Display&family=Work+Sans:wght@700&display=swap"
         rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script src="../src/scripts/scripts.js"></script>
-    </head>
-    <body>
-        <div class="top-header">
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="top-header">
+        <div class="top-title">
+            WEATHER
         </div>
-        <div class="container">
-            <div class="left-select-menu">
+        <div class="search">
+            <input type="text" class="search-input" id="search-bar" placeholder="Search...">
+            <button class="search-button" , id="search-button">&#128269;</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="left-select-menu">
+            <div class="menu-title">
+                PIN YOUR LOCATIONS
             </div>
-            <div class="weathe-info-container">
-                <div class="current-weather">
-                </div>
-                <div class="12-hour-forecast">
-                </div>
-                <div class="5-days-forecast">
-                </div>
-            </div> 
+            <div class="location-selector" , id="location-selector">
+                PRAGUE
+            </div>
+            <div class="new-location" id="new-location">
+                <input type="text" id="new-location-input" placeholder="Enter city name">
+                <button id="add-location">PIN</button>
+            </div>
         </div>
-    </body>
+        <div class="weather-info-container">
+            <div class="cur-5-forecast">
+                <div class="current-weather">
+                    <div class="current-location" id="current-location">
+                    </div>
+                    <div class="weather-icon-degrees">
+                        <div class="current-degrees" id="current-degrees">
+                        </div>
+                        <div class="current-icon" id="current-icon">
+                        </div>
+                    </div>
+                    <div class="weather-phrase" id="weather-phrase">
+                    </div>
+                </div>
+                <div class="days-5-forecast">
+                    <table class="content-table" id="table">
+                        <thead>
+                            <tr>
+                                <th> </th>
+                                <th> </th>
+                                <th>°C min</th>
+                                <th>°C max</th>
+                                <th>%</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="hour-12-forecast">
+                <select id="metric">
+                    <option value="Temperature">Temperature</option>
+                    <option value="UVIndex">UVIndex</option>
+                    <option value="Wind">Wind</option>
+                    <option value="PrecipitationProbability">Precipitation</option>
+                </select>
+                <canvas id="line-chart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="../src/scripts/scripts.js"></script>
+</body>
+
 </html>
