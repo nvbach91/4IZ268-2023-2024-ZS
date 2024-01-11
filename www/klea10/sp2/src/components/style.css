@@ -1,0 +1,255 @@
+.container {
+    display: flex;
+    width: 100%;
+    min-height: 10%;
+    max-height: 20%;
+}
+
+/* header -----------------------------------------------*/
+
+.top-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 10%;
+    max-height: 20%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+.top-title {
+    padding: 2%;
+    max-height: 90%;
+    max-width: fit-content;
+    margin-left: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.search-input {
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    outline: none;
+}
+
+.search-button {
+    background-color: #fff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-button:hover {
+    background-color: rgb(141, 141, 141);
+}
+
+/* left menu -----------------------------------------------*/
+
+.menu-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 14px;
+}
+
+.left-select-menu {
+    display: flex;
+    flex-direction: column;
+    max-width: 30%;
+    padding: 2%;
+    background-color: rgb(141, 141, 141);
+    padding-top: 4%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    min-width: fit-content;
+    min-height: 80%;
+}
+
+.new-location {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 2%;
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.new-location button,
+.new-location input {
+    margin: 2%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.new-location input {
+    height: 30%;
+}
+
+.location-selector {
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding: 2%;
+    min-width: fit-content;
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+}
+
+/* forecasts -----------------------------------------------*/
+
+.weather-info-container {
+    padding: 1%;
+    min-width: fit-content;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    margin-left: 1%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+/* current weather -----------------------------------------------*/
+
+
+.current-weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5%;
+    width: 100%;
+    min-height: 50%;
+    height: 100%;
+    padding: 2% 0% 2% 2%;
+}
+
+.weather-icon-degrees {
+    height: min-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.weather-icon-degrees img {
+    object-fit: contain;
+    margin-left: 3%;
+    height: 40%;
+    width: auto;
+}
+
+.current-degrees {
+    font-size: large;
+}
+
+.current-location {
+    margin-left: 2%;
+    font-size: large;
+}
+
+.cur-5-forecast {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    height: 100%;
+}
+
+
+
+/* 5-day-forecast -----------------------------------------------*/
+
+
+.days-5-forecast {
+    width: 100%;
+    min-height: 50%;
+    height: 100%;
+    padding: 2% 0% 2% 2%;
+    margin-right: 5%
+}
+
+.content-table {
+    height: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 200px;
+    overflow: hidden;
+    table-layout: auto;
+    width: fit-content;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: rgb(141, 141, 141);
+}
+
+.content-table thead tr {
+    background-color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table thead {
+    height: 3%;
+}
+
+.content-table th{
+    color: black;
+    padding-left: 3%;
+    width: 2%;
+}
+.content-table td {
+    color: white;
+    padding-left: 3%;
+    width: 2%;
+}
+
+.content-table tbody td img {
+    width: 80%;
+    height: auto;
+}
+
+/* forecast details -----------------------------------------------*/
+
+.hour-12-forecast {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    margin: 5%;
+}
+
+.hour-12-forecast canvas {
+    width: 100%;
+    height: 100%;
+    margin: 5%;
+}
+
+.hour-12-forecast select {
+    font-family: 'Montserrat', sans-serif;
+    margin: 4% 4% 0% 4%;
+    padding: 0.5%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 0.9em;
+    cursor: pointer;
+    outline: none;
+}
+
+.hour-12-forecast select option {
+    padding: 3%;
+}
+
