@@ -16,37 +16,45 @@ backgroundImage.src = 'img/background.jpg';
 const ateSound = new Audio('sounds/ate.mp3');
 const gameoverSound = new Audio('sounds/gameover.wav');
 
-let speed = 4;
-let tileCount = 20;
-let tileSize = canvas.width / tileCount - 0.5;
-let headX = 10;
-let headY = 10;
-let foodX = Math.floor(Math.random() * tileCount);
-let foodY = Math.floor(Math.random() * tileCount);
-let over = false; // Start of the game cant crash
-let gameStarted = false;
-let xspeed = 0;
-let yspeed = 0;
-let speedIncreased = false;
-let speedFrame = 0;
-let highscore = 0;
-let snakebody = [];
-let snaketail = 2;
-let prevspeedX = 0;
-let prevspeedY = 0;
+
+let speed, tileCount, tileSize, headX, headY, foodX, foodY, over, gameStarted, 
+xspeed, yspeed, speedIncreased, speedFrame, highscore, snakebody, snaketail, 
+prevspeedX, prevspeedY, foodTimeout, bonusFoodTimeout, bonusFoodX, bonusFoodY;
+
+function startGame() {
+    speed = 4;
+    tileCount = 20;
+    tileSize = canvas.width / tileCount - 0.5;
+    headX = 10;
+    headY = 10;
+    foodX = Math.floor(Math.random() * tileCount);
+    foodY = Math.floor(Math.random() * tileCount);
+    over = false; // Start of the game can't crash
+    gameStarted = false;
+    xspeed = 0;
+    yspeed = 0;
+    speedIncreased = false;
+    speedFrame = 0;
+    highscore = 0;
+    snakebody = [];
+    snaketail = 2;
+    prevspeedX = 0;
+    prevspeedY = 0;
+    clearTimeout(foodTimeout);
+    clearTimeout(bonusFoodTimeout);
+    bonusFoodX = undefined;
+    bonusFoodY = undefined;
+}
+startGame();
 
 
 document.body.addEventListener('keydown', keyDown);
-window.addEventListener('keydown', function () {
-    if (!gameStarted) {
-        gameStarted = true;
-    }
-});
+
 window.onload = function () {
     displayHighscores();
 }
 
-class snakepart {
+class snakePart {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -84,7 +92,9 @@ function update() {
     }
     clearScreen();
     checkFood();
+    checkBonusFood();
     createFood();
+    createBonusFood();
     createSnake();
     calcScore();
     if (highscore > 4 && !speedIncreased) {
@@ -162,7 +172,7 @@ function gameOver() {
         ctx.fillText('Try Again?', canvas.width / 2, canvas.height / 1.5);
         ctx.fillStyle = 'white';
         ctx.font = '10px Verdana';
-        ctx.fillText('Click anywhere to play again.', canvas.width / 2, canvas.height / 1.25);
+        ctx.fillText('Press space or enter to play again.', canvas.width / 2, canvas.height / 1.25);
         db.collection('highscores').orderBy('score', 'desc').limit(10).get().then((querySnapshot) => {
             let highscores = [];
             querySnapshot.forEach((doc) => {
@@ -172,23 +182,37 @@ function gameOver() {
 
             if (highscore > tenthHighestScore) {
                 setTimeout(function () {
-                    let name = prompt('You made it to the highscore list! Please enter your name:');
-                    while (name.length > 20) {
-                        name = prompt('Name must be less than 21 characters. Please enter your name again:');
-                    }
-                    if (name != null) {
-                        saveHighscore(name, highscore);
-                    }
-                    // Wait for a click before resetting the game
-                    canvas.addEventListener('click', function () {
-                        resetGame();
-                    }, { once: true });
+                    Swal.fire({
+                        title: 'You made it to the TOP 10!',
+                        input: 'text',
+                        inputPlaceholder: 'Enter your name',
+                        inputValidator: (value) => {
+                            value = value ? value.trim() : value;
+                            if (!value) {
+                                return 'Name has to be at least 1 character!';
+                            } else if (value.length > 20) {
+                                return 'Name must be less than 21 characters!';
+                            }
+                        }
+                    }).then((result) => {
+                        if (result.value) {
+                            saveHighscore(result.value, highscore);
+                        }
+                        // Wait for a keydown event before resetting the game
+                        window.addEventListener('keydown', function (event) {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                                resetGame();
+                            }
+                        });
+                    });
                 }, 1010);
             } else {
                 // If the score is not higher than the 10th score, wait for a click before resetting the game
-                canvas.addEventListener('click', function () {
-                    resetGame();
-                }, { once: true });
+                window.addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        resetGame();
+                    }
+                });
             }
         });
     }
@@ -204,7 +228,7 @@ function createSnake() {
         let part = snakebody[i];
         ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
     }
-    snakebody.push(new snakepart(headX, headY)) // movement of the snake - add first, remove last
+    snakebody.push(new snakePart(headX, headY)) // movement of the snake - add first, remove last
     if (snakebody.length > snaketail) {
         snakebody.shift();
     }
@@ -221,6 +245,14 @@ function createFood() {
     ctx.fillRect(foodX * tileCount, foodY * tileCount, tileSize, tileSize)
 }
 
+function createBonusFood() {
+    if (bonusFoodX !== undefined && bonusFoodY !== undefined) {
+        ctx.fillStyle = 'rgb(255,239,0)';
+        ctx.fillRect(bonusFoodX * tileCount, bonusFoodY * tileCount, tileSize, tileSize)
+    }
+}
+
+
 function checkFood() {
     if (foodX === headX && foodY === headY) {
         generateFood();
@@ -229,9 +261,20 @@ function checkFood() {
         ateSound.play();
     }
 }
+function checkBonusFood() {
+    if (bonusFoodX === headX && bonusFoodY === headY) {
+        bonusFoodX = undefined;
+        bonusFoodY = undefined;
+        snaketail += 2;
+        highscore += 2;
+        ateSound.play();
+    }
+}
 
 function generateFood() {
+    clearTimeout(foodTimeout);
     let newfoodX, newfoodY, foodcollision;
+
 
     do {
         newfoodX = Math.floor(Math.random() * tileCount);
@@ -244,7 +287,30 @@ function generateFood() {
 
     foodX = newfoodX;
     foodY = newfoodY;
+    foodTimeout = setTimeout(generateFood, 8000);
 }
+
+
+function generateBonusFood() {
+    clearTimeout(bonusFoodTimeout);
+    let newBonusFoodX, newBonusFoodY, bonusFoodCollision;
+    do {
+        newBonusFoodX = Math.floor(Math.random() * tileCount);
+        newBonusFoodY = Math.floor(Math.random() * tileCount);
+
+        bonusFoodCollision = snakebody.some(
+            (part) => part.x === newBonusFoodX && part.y === newBonusFoodY
+        );
+    } while (bonusFoodCollision || (headX == newBonusFoodX && headY == newBonusFoodY));
+
+    bonusFoodX = newBonusFoodX;
+    bonusFoodY = newBonusFoodY;
+    bonusFoodTimeout = setTimeout(() => {
+        bonusFoodX = undefined;
+        bonusFoodY = undefined;
+    }, 5000);
+}
+setInterval(generateBonusFood, 30000);
 
 function calcScore() {
     ctx.fillStyle = 'white';
@@ -260,24 +326,15 @@ function startScreen() {
     ctx.font = '20px Verdana';
     ctx.fillText('Use arrow keys to move the snake', canvas.width / 2, canvas.height / 2);
     ctx.fillText('Press arrow key to start', canvas.width / 2, canvas.height / 2 + 50);
+    window.addEventListener('keydown', function () {
+        if (!gameStarted) {
+            gameStarted = true;            
+        }
+    });
 }
 
 function resetGame() {
-    // Reset the game state
-    headX = 10;
-    headY = 10;
-    foodX = Math.floor(Math.random() * tileCount);
-    foodY = Math.floor(Math.random() * tileCount);
-    over = false; // Start of the game can't crash
-    snakebody = [];
-    snaketail = 2;
-    xspeed = 0;
-    yspeed = 0;
-    speed = 4;
-    speedIncreased = false;
-    speedFrame = 0;
-    highscore = 0;
-    gameStarted = false;
+    startGame();
     startScreen();
     update();
 }
@@ -295,6 +352,7 @@ function saveHighscore(name, highscore) {
         .catch((error) => {
             console.error('Error adding document: ', error);
         });
+
 }
 
 function displayHighscores() {
@@ -308,12 +366,10 @@ function displayHighscores() {
                 highscores.push(doc.data());
             });
             spinner.style.display = 'none';
-            // Update your webpage with the highscores
             let highscoresTable = document.getElementById('highscores');
             highscoresTable.className = 'highscore-table';
-            // Clear the previous highscores
             highscoresTable.innerHTML = '<tr class="header-row"><th>Name</th><th>Score</th></tr>';
-            // Add each highscore to the table
+            let docFrag = document.createDocumentFragment();
             highscores.forEach((highscore, index) => {
                 let row = document.createElement('tr');
                 row.className = index % 2 === 0 ? 'even-row' : 'odd-row';
@@ -323,31 +379,35 @@ function displayHighscores() {
                 scoreCell.textContent = highscore.score;
                 row.appendChild(nameCell);
                 row.appendChild(scoreCell);
-                highscoresTable.appendChild(row);
+                docFrag.appendChild(row);
             });
+            highscoresTable.appendChild(docFrag);
         })
 }
 
 function keyDown(event) {
     //up
-    if (event.keyCode == 38) {
+    if (event.keyCode === 38) {
         yspeed = -1;
         xspeed = 0;
     }
     //down
-    if (event.keyCode == 40) {
+    if (event.keyCode === 40) {
         yspeed = 1;
         xspeed = 0;
     }
     //left
-    if (event.keyCode == 37) {
+    if (event.keyCode === 37) {
         yspeed = 0;
         xspeed = -1;
     }
     //right
-    if (event.keyCode == 39) {
+    if (event.keyCode === 39) {
         yspeed = 0;
         xspeed = 1;
+    }
+    else {
+        // Do nothing
     }
 }
 update();
