@@ -27,7 +27,7 @@ $(document).ready(function () {
     function displayHero(hero) {
         correctHero = getFormattedName(hero.localized_name);
 
-        $('#hero-image').attr('src', `${baseUrl}${hero.img}`);
+        $('#hero-image').attr('src',"https://cdn.dota2.com"+hero.img)
         $('#result-message').text('');
         $('#guess-input').val('');
     }
@@ -121,7 +121,7 @@ $(document).ready(function () {
             const hero = heroes.find(h => getFormattedName(h.localized_name) === heroName);
             if (hero) {
                 const heroDiv = $('<div class="guessed-hero"></div>');
-                const img = $('<img>').attr('src', `${baseUrl}${hero.img}`).addClass('guessed-hero-image');
+                const img = $('<img>').attr('src',"https://cdn.dota2.com"+hero.img).addClass('guessed-hero-image');
                 const name = $('<p>').text(hero.localized_name).addClass('guessed-hero-name');
                 
                 heroDiv.append(img).append(name); // Append both the image and the name
