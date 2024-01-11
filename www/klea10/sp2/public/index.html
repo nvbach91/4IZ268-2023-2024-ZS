@@ -25,26 +25,30 @@
 
 <body>
     <div class="top-header">
-        <div class="top-title">
-            WEATHER
-        </div>
-        <div class="search">
-            <input type="text" class="search-input" id="search-bar" placeholder="Search...">
-            <button class="search-button" , id="search-button">&#128269;</button>
-        </div>
+        <form class="top-header" id="top-form">
+            <div class="top-title">
+                WEATHER
+            </div>
+            <div class="search">
+                <input type="text" class="search-input" id="search-bar" placeholder="Search...">
+                <button class="search-button" id="search-button">&#128269;</button>
+            </div>
+        </form>
     </div>
     <div class="container">
         <div class="left-select-menu">
             <div class="menu-title">
                 PIN YOUR LOCATIONS
             </div>
-            <div class="location-selector" , id="location-selector">
+            <div class="location-selector" id="location-selector">
                 PRAGUE
             </div>
-            <div class="new-location" id="new-location">
-                <input type="text" id="new-location-input" placeholder="Enter city name">
-                <button id="add-location">PIN</button>
-            </div>
+            <form id="new-loc-form">
+                <div class="new-location" id="new-location">
+                    <input type="text" id="new-location-input" placeholder="Enter city name">
+                    <button id="add-location">PIN</button>
+                </div>
+            </form>
         </div>
         <div class="weather-info-container">
             <div class="cur-5-forecast">

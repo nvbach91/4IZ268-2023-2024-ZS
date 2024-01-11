@@ -1,5 +1,13 @@
 $(document).ready(function () {
 
+    $('#top-form').submit(function(event){
+        event.preventDefault();
+    });
+
+    $('#new-loc-form').submit(function(event){
+        event.preventDefault();
+    });
+
     const iconMapping = {
         '1': '01d',
         '2': '02d',
@@ -42,7 +50,7 @@ $(document).ready(function () {
         '43': '13n',
         '44': '13n'
     }
-    const apiKey = 'jGaorblmmHIH8N4m0NEwmYMA2ibpKNAX';
+    const apiKey = 'B80Dd87eFGyrS2IuCpyB81Fnx6I9DLLD';
     let chart12Hours;
 
     async function getLocation() {
@@ -97,17 +105,18 @@ $(document).ready(function () {
     }
 
     function addLocation() {
-        var newLocationInput = $('#new-location-input');
-        var cityName = newLocationInput.val();
+        let newLocationInput = $('#new-location-input');
+        let newLocationBox = $('#new-location');
+        let cityName = newLocationInput.val();
 
         if (cityName) {
-            var newLocationSelector = $('<div class="location-selector" id="location-selector"></div>').text(cityName);
+            let newLocationSelector = $('<div class="location-selector" id="location-selector"></div>').text(cityName);
 
             newLocationSelector.on('click', function () {
                 getLocationKey(cityName, apiKey, iconMapping);
             });
 
-            $('#new-location').before(newLocationSelector);
+            newLocationBox.before(newLocationSelector);
 
             newLocationInput.val('');
             getLocationKey(cityName, apiKey, iconMapping)
@@ -115,9 +124,10 @@ $(document).ready(function () {
     }
 
     $('#search-button').on("click", function () {
-        let name = $('#search-bar').val();
+        searchBar = $('#search-bar');
+        let name = searchBar.val();
         getLocationKey(name, apiKey, iconMapping);
-        $('#search-bar').val('');
+        searchBar.val('');
     });
 
     $('#location-selector').on("click", function () {
@@ -140,9 +150,9 @@ $(document).ready(function () {
                 let iconKey = response[0].WeatherIcon;
                 let comment = response[0].WeatherText;
 
-                var currentDegreesElement = document.getElementById('current-degrees');
-                var currentIconElement = document.getElementById('current-icon');
-                var weatherPhraseElement = document.getElementById('weather-phrase');
+                let currentDegreesElement = $('#current-degrees');
+                let currentIconElement = $('#current-icon');
+                let weatherPhraseElement = $('#weather-phrase');
 
                 $.ajax({
                     url: 'https://dataservice.accuweather.com/locations/v1/' + locationKey,
@@ -154,17 +164,17 @@ $(document).ready(function () {
                         metric: 'true'
                     },
                     success: function (response) {
-                        var currentLocationElement = document.getElementById('current-location');
-                        currentLocationElement.innerHTML = `<h1>${response.AdministrativeArea.EnglishName}</h1>`;
+                        let currentLocationElement = $('#current-location');
+                        currentLocationElement.html(`<h1>${response.AdministrativeArea.EnglishName}</h1>`);
                     },
                     error: function (xhr, status, error) {
                         console.error(error);
                     }
                 });
 
-                currentDegreesElement.innerHTML = `<h1>${currentTemperature}°C<span class="degree-symbol"></span></h1>`;
-                currentIconElement.innerHTML = `<img src=https://openweathermap.org/img/wn/${iconMapping[iconKey]}@2x.png>`;
-                weatherPhraseElement.innerHTML = `<h3>${comment}</h3>`;
+                currentDegreesElement.html(`<h1>${currentTemperature}°C<span class="degree-symbol"></span></h1>`);
+                currentIconElement.html(`<img src=https://openweathermap.org/img/wn/${iconMapping[iconKey]}@2x.png>`);
+                weatherPhraseElement.html(`<h3>${comment}</h3>`);
             },
             error: function (xhr, status, error) {
                 console.error(error);
