@@ -1,0 +1,48 @@
+body, h1, h2, #search-group, #movie-list, .movie-details {
+    text-align: center;
+    background-color: lightgray;
+}
+
+h1, #search-group {
+    padding: 10px; 
+    margin: 10px 0; 
+}
+
+#search-group, #movie-list, .movie-details {
+    background-color: lightgray;
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+p, button, input, label {
+    margin: 5px auto;
+}
+
+#search-group {
+    text-align: center;
+}
+
+
+label, input, button {
+    margin-right: 10px;
+}
+
+input {
+    margin-left: 10px;
+}
+
+#movies-found-title {
+
+    display: none;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.details-btn {
+    margin-left: 10px;
+}
+
+
