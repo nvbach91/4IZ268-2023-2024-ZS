@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess Dota 2 Hero by Image</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
@@ -17,18 +17,27 @@
         <div id="hero-image-container">
             <img id="hero-image" alt="Dota 2 Hero">
         </div>
-        <input type="text" id="guess-input" placeholder="Enter Hero Name">
-        <button id="submit-guess">Submit Guess</button>
-        <p id="result-message"></p>
-        <h2>Guessed hero</h2>
+            <form> 
+            <input type="text" id="guess-input" placeholder="Enter Hero Name">
+            <button id="submit-guess" type="button">Submit Guess</button>
+        </form>
+        <div>
+            <h2>Matchup: <span class="mathc"></span></h2>
+        </div>
+
+            <p id="result-message"></p>
+            <h2>Guessed hero</h2>
+        </div>
+        <button id="hint-button">Show Hint</button>
+        <button id="matchups">Matchups</button>
+        <button id="clear-storage">Clear Guessed Heroes</button>
+        <button id="toggle-guessed-heroes">Toggle Guessed Heroes</button>
     </div>
-    <button id="clear-storage">Clear Guessed Heroes</button>
-    <button id="toggle-guessed-heroes">Toggle Guessed Heroes</button>
-</div>
         <div id="guessed-heroes-container">
             <div id="guessed-heroes-container">
             <img id="hero-image" alt="Dota 2 Hero">
-    </div>
+        </div>
+
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="js/main.js"></script>
