@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>(Not)ToDo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+        <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+        <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+        <script src="js/app.js"></script>
+
+        <header>
+          <div class="header-left">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/No_sign.svg/2048px-No_sign.svg.png" alt="logo" width="60" height="60">
+              <h1>(Not)ToDo</h1>
+          </div>
+          <ul class="header-right">
+              <li><button id="authorize_button" onclick="handleAuthClick()">SignIn</button></li>
+              <li><button id="signout_button" onclick="handleSignoutClick()">Sign Out</button></li>
+          </ul>
+      </header>
+      <div class="grid-container">
+      <div id="formulare" class="grid-item">
+        <form id="addNewListForm">
+            <label for="newTaskList">New List:</label>
+            <input type="text" id="newTaskList" required>
+            <button type="button" onclick="addTaskList()">Add New List</button>
+        </form>
+
+        <form id="addTaskForm">
+            <label for="taskList">Task List:</label>
+            <select id="taskList"></select>
+            <button type="button" onclick="deleteTaskList()">Delete Task List</button>
+            <label for="taskName">Task Name:</label>
+            <input type="text" id="taskName" required>
+            <label for="taskDescription">Task Description:</label>
+            <textarea id="taskDescription"></textarea>
+            <label for="taskPriority">Task Priority:</label>
+            <select id="taskPriority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <label for="taskDueDate">Due Date:</label>
+            <input type="date" id="taskDueDate">
+            <button type="button" onclick="addTask()">Add Task</button>
+        </form>
+      </div>
+
+        <div id="taskInfo" class="grid-item">
+        <h2>Task Lists</h2>
+        <div id="taskListsContainer"></div>
+        <h2>Tasks</h2>
+        <div id="tasksContainer"></div>
+        <h2>Task Details</h2>
+        <div id="taskDetailsContainer"></div>
+        <button id="deleteTaskButton" onclick="deleteTask()">Delete Task</button>
+      </div>
+    </div>
+</body>
+</html>
