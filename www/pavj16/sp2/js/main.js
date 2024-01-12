@@ -108,42 +108,6 @@ function displayFiveDayForecast(dailyData) {
 
 document.getElementById('city').addEventListener('keyup', function(event) {
     if (event.key === 'Enter') {
-        getWeather();
-    }
-});
-
-function displayWeather(data) {
-    const tempDivInfo = document.getElementById('temp-div');
-    const weatherInfoDiv = document.getElementById('weather-info');
-    const weatherIcon = document.getElementById('weather-icon');
-    const hourlyForecastDiv = document.getElementById('hourly-forecast');
-
-    weatherInfoDiv.innerHTML = '';
-    hourlyForecastDiv.innerHTML = '';
-    tempDivInfo.innerHTML = '';
-
-    if (data.cod === '404') {
-        weatherInfoDiv.innerHTML = `<p>${data.message}</p>`;
-    } else {
-        const cityName = data.name;
-        const temperature = Math.round(data.main.temp); // No need to convert from Kelvin
-        const description = data.weather[0].description;
-        const iconCode = data.weather[0].icon;
-        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
-
-        const temperatureHTML = `<p>${temperature}°C</p>`;
-        const weatherHtml = `<p>${cityName}</p><p>${description}</p>`;
-
-        tempDivInfo.innerHTML = temperatureHTML;
-        weatherInfoDiv.innerHTML = weatherHtml;
-        weatherIcon.src = iconUrl;
-        weatherIcon.alt = description;
-
-        showImage();
-    }
-}
-document.getElementById('city').addEventListener('keyup', function(event) {
-    if (event.key === 'Enter') {
         getWeather(); // Call your function to get the weather
     }
 });
@@ -151,12 +115,6 @@ function displayWeather(data) {
     const tempDivInfo = document.getElementById('temp-div');
     const weatherInfoDiv = document.getElementById('weather-info');
     const weatherIcon = document.getElementById('weather-icon');
-    const hourlyForecastDiv = document.getElementById('hourly-forecast');
-
-    // Clear previous content
-    weatherInfoDiv.innerHTML = '';
-    hourlyForecastDiv.innerHTML = '';
-    tempDivInfo.innerHTML = '';
 
     if (data.cod === '404') {
         weatherInfoDiv.innerHTML = `<p>${data.message}</p>`;
@@ -167,12 +125,8 @@ function displayWeather(data) {
         const iconCode = data.weather[0].icon;
         const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
 
-        const temperatureHTML = `<p>${temperature.toFixed(0)}°C</p>`;
-
-        const weatherHtml = `<p>${cityName}</p><p>${description}</p>`;
-
-        tempDivInfo.innerHTML = temperatureHTML;
-        weatherInfoDiv.innerHTML = weatherHtml;
+        tempDivInfo.innerHTML = `<p>${temperature.toFixed(0)}°C</p>`;
+        weatherInfoDiv.innerHTML = `<p>${cityName}</p><p>${description}</p>`;
         weatherIcon.src = iconUrl;
         weatherIcon.alt = description;
 
@@ -189,8 +143,7 @@ function displayHourlyForecast(hourlyData) {
     forecastChartCanvas.style.backgroundColor = 'white'; 
     const next24Hours = hourlyData.slice(0, 8); // Display the next 24 hours (3-hour intervals)
 
-    // Clear previous forecasts
-    hourlyForecastDiv.innerHTML = '';
+    
     let hourlyItemHTML = '';
 
     next24Hours.forEach(item => {
@@ -208,9 +161,7 @@ function displayHourlyForecast(hourlyData) {
             </div>
         `;
     });
-
     hourlyForecastDiv.innerHTML = hourlyItemHTML;
-
     const labels = next24Hours.map(item => new Date(item.dt * 1000).toLocaleTimeString());
     const data = next24Hours.map(item => Math.round(item.main.temp)); // Temperature is already in Celsius
 
@@ -313,9 +264,11 @@ function showImage() {
     weatherIcon.style.display = 'block'; // Make the image visible once it's loaded
 }
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+favorites = favorites.map(city => city.toLowerCase()); // Convert all city names to lowercase
+let cityinput = document.getElementById('city')
 
 document.getElementById('add-to-favorites').addEventListener('click', function() {
-    const city = document.getElementById('city').value;
+    const city = cityinput.value.toLowerCase(); // Convert the city name to lowercase
     if (city && !favorites.includes(city)) {
         favorites.push(city);
         localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -349,43 +302,20 @@ function displayFavorites() {
         const removeButton = cityDiv.getElementsByClassName('remove-button')[0];
         removeButton.addEventListener('click', function(event) {
             event.stopPropagation(); // Prevent triggering the click event on the cityDiv
-            favorites = favorites.filter(favoriteCity => favoriteCity !== cityDiv.dataset.city);
+            favorites = favorites.filter(favoriteCity => favoriteCity !== cityDiv.dataset.city.toLowerCase());
             localStorage.setItem('favorites', JSON.stringify(favorites));
             displayFavorites();
         });
     });
 }
 
+displayFavorites();
 const spinner = document.getElementById('spinner');
 
-fetch(currentWeatherUrl)
-    .then(response => {
-        spinner.style.display = 'block'; // Show spinner
-        return response.json();
-    })
-    .then(data => {
-        spinner.style.display = 'none'; // Hide spinner
-        displayWeather(data);
-    })
-    .catch(error => {
-        spinner.style.display = 'none';
-        console.error('Error fetching current weather data:', error);
-        alert('Error fetching current weather data. Please try again.');
-    });
-
-fetch(forecastUrl)
-    .then(response => {
-        spinner.style.display = 'block'; 
-        return response.json();
-    })
-    .then(data => {
-        spinner.style.display = 'none'; 
-        displayHourlyForecast(data.list);
-    })
-    .catch(error => {
-        spinner.style.display = 'none';
-        console.error('Error fetching hourly forecast data:', error);
-        alert('Error fetching hourly forecast data. Please try again.');
-    });
-
 document.getElementById('search-button').addEventListener('click', getWeather);
+
+
+
+
+//<input id="my-input">
+
