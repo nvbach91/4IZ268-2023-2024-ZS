@@ -17,11 +17,11 @@ const ateSound = new Audio('sounds/ate.mp3');
 const gameoverSound = new Audio('sounds/gameover.wav');
 
 
-let speed, tileCount, tileSize, headX, headY, foodX, foodY, over, gameStarted, 
-xspeed, yspeed, speedIncreased, speedFrame, highscore, snakebody, snaketail, 
-prevspeedX, prevspeedY, foodTimeout, bonusFoodTimeout, bonusFoodX, bonusFoodY;
+let speed, tileCount, tileSize, headX, headY, foodX, foodY, over, gameStarted,
+    xspeed, yspeed, speedIncreased, speedFrame, highscore, snakebody, snaketail,
+    prevspeedX, prevspeedY, foodTimeout, bonusFoodTimeout, bonusFoodX, bonusFoodY;
 
-function startGame() {
+const startGame = () => {
     speed = 4;
     tileCount = 20;
     tileSize = canvas.width / tileCount - 0.5;
@@ -44,17 +44,14 @@ function startGame() {
     clearTimeout(bonusFoodTimeout);
     bonusFoodX = undefined;
     bonusFoodY = undefined;
-}
+};
 startGame();
-
-
-document.body.addEventListener('keydown', keyDown);
 
 window.onload = function () {
     displayHighscores();
 }
 
-class snakePart {
+class SnakePart {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -63,7 +60,7 @@ class snakePart {
 
 
 //game loop
-function update() {
+const update = () => {
     if (prevspeedX === 1 && xspeed === -1) {
         xspeed = prevspeedX;
     }
@@ -130,11 +127,9 @@ function update() {
     }
 
     setTimeout(update, 1000 / speed);
-}
+};
 
-// other functions
-
-function gameOver() {
+const gameOver = () => {
     if (xspeed === 0 && yspeed === 0) {
         return false
     }
@@ -217,51 +212,53 @@ function gameOver() {
         });
     }
     return over
-}
+};
 
-function clearScreen() {
+
+const clearScreen = () => {
     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-}
-function createSnake() {
+};
+const createSnake = () => {
     ctx.fillStyle = 'rgb(104,200,255)';
     for (let i = 0; i < snakebody.length; i++) {
         let part = snakebody[i];
         ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
     }
-    snakebody.push(new snakePart(headX, headY)) // movement of the snake - add first, remove last
+    snakebody.push(new SnakePart(headX, headY))
     if (snakebody.length > snaketail) {
         snakebody.shift();
     }
     ctx.fillStyle = 'rgb(54,146,199)';
     ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize)
-}
-function directionSnake() {
+};
+const directionSnake = () => {
     headX = headX + xspeed;
     headY = headY + yspeed;
-}
+};
 
-function createFood() {
+const createFood = () => {
     ctx.fillStyle = 'rgb(186,19,19)';
     ctx.fillRect(foodX * tileCount, foodY * tileCount, tileSize, tileSize)
-}
+};
 
-function createBonusFood() {
+const createBonusFood = () => {
     if (bonusFoodX !== undefined && bonusFoodY !== undefined) {
         ctx.fillStyle = 'rgb(255,239,0)';
         ctx.fillRect(bonusFoodX * tileCount, bonusFoodY * tileCount, tileSize, tileSize)
     }
-}
+};
 
 
-function checkFood() {
+const checkFood = () => {
     if (foodX === headX && foodY === headY) {
         generateFood();
         snaketail++;
         highscore++;
         ateSound.play();
     }
-}
-function checkBonusFood() {
+};
+
+const checkBonusFood = () => {
     if (bonusFoodX === headX && bonusFoodY === headY) {
         bonusFoodX = undefined;
         bonusFoodY = undefined;
@@ -269,9 +266,19 @@ function checkBonusFood() {
         highscore += 2;
         ateSound.play();
     }
-}
+};
 
-function generateFood() {
+//const checkBonusFood = () => {
+if (headX === bonusFoodX && headY === bonusFoodY) {
+    highscore += 2;
+    snakebody.push(new SnakePart(headX, headY));
+    snakebody.push(new SnakePart(headX, headY));
+    bonusFoodX = undefined;
+    bonusFoodY = undefined;
+}
+//}
+
+const generateFood = () => {
     clearTimeout(foodTimeout);
     let newfoodX, newfoodY, foodcollision;
 
@@ -288,10 +295,10 @@ function generateFood() {
     foodX = newfoodX;
     foodY = newfoodY;
     foodTimeout = setTimeout(generateFood, 8000);
-}
+};
 
 
-function generateBonusFood() {
+const generateBonusFood = () => {
     clearTimeout(bonusFoodTimeout);
     let newBonusFoodX, newBonusFoodY, bonusFoodCollision;
     do {
@@ -308,17 +315,17 @@ function generateBonusFood() {
     bonusFoodTimeout = setTimeout(() => {
         bonusFoodX = undefined;
         bonusFoodY = undefined;
-    }, 5000);
-}
+    }, 8000);
+};
 setInterval(generateBonusFood, 30000);
 
-function calcScore() {
+const calcScore = () => {
     ctx.fillStyle = 'white';
     ctx.font = '10px Segoe UI'
     ctx.fillText('Score   ' + highscore, canvas.width - 40, 20);
-}
+};
 
-function startScreen() {
+const startScreen = () => {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'black';
@@ -328,20 +335,20 @@ function startScreen() {
     ctx.fillText('Press arrow key to start', canvas.width / 2, canvas.height / 2 + 50);
     window.addEventListener('keydown', function () {
         if (!gameStarted) {
-            gameStarted = true;            
+            gameStarted = true;
         }
     });
-}
+};
 
-function resetGame() {
+const resetGame = () => {
     startGame();
     startScreen();
     update();
-}
+};
 
 
 
-function saveHighscore(name, highscore) {
+const saveHighscore = (name, highscore) => {
     db.collection('highscores').add({
         name: name,
         score: highscore
@@ -353,9 +360,9 @@ function saveHighscore(name, highscore) {
             console.error('Error adding document: ', error);
         });
 
-}
+};
 
-function displayHighscores() {
+const displayHighscores = () => {
     let spinner = document.getElementById('spinner');
     spinner.style.display = 'block';
 
@@ -383,31 +390,38 @@ function displayHighscores() {
             });
             highscoresTable.appendChild(docFrag);
         })
-}
+};
 
-function keyDown(event) {
-    //up
-    if (event.keyCode === 38) {
-        yspeed = -1;
-        xspeed = 0;
+const keyDown = (event) => {
+    switch (event.keyCode) {
+        case 37:
+            if (prevspeedX !== 1) {
+                xspeed = -1;
+                yspeed = 0;
+            }
+            break;
+        case 38:
+            if (prevspeedY !== 1) {
+                xspeed = 0;
+                yspeed = -1;
+            }
+            break;
+        case 39:
+            if (prevspeedX !== -1) {
+                xspeed = 1;
+                yspeed = 0;
+            }
+            break;
+        case 40:
+            if (prevspeedY !== -1) {
+                xspeed = 0;
+                yspeed = 1;
+            }
+            break;
     }
-    //down
-    if (event.keyCode === 40) {
-        yspeed = 1;
-        xspeed = 0;
-    }
-    //left
-    if (event.keyCode === 37) {
-        yspeed = 0;
-        xspeed = -1;
-    }
-    //right
-    if (event.keyCode === 39) {
-        yspeed = 0;
-        xspeed = 1;
-    }
-    else {
-        // Do nothing
-    }
-}
+};
+
+addEventListener('keydown', keyDown);
+
+
 update();
