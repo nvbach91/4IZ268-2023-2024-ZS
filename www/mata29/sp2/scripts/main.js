@@ -29,19 +29,25 @@ const Program = {
                 Program.allQuestions.forEach((question) => Program.questionCategories.add(question.category));
                 Program.allQuestions.forEach((question) => Program.questionDifficulties.add(question.difficulty));
 
-                $.each(Array.from(Program.questionCategories), function (index, category) {
-                    $("#select-category")
-                        .append($("<option>")
-                            .text(category)
-                            .prop("value", category));
-                });
+                const documentFragmentCategories = document.createDocumentFragment();
+                const documentFragmentDifficulties = document.createDocumentFragment();
 
-                $.each(Array.from(Program.questionDifficulties), function (index, difficulty) {
-                    $("#select-difficulty")
-                        .append($("<option>")
-                            .text(difficulty)
-                            .prop("value", difficulty));
-                });
+                for (category of Array.from(Program.questionCategories)) {
+                    const opt = document.createElement("option");
+                    opt.innerHTML = category;
+                    opt.setAttribute("value", category);
+                    documentFragmentCategories.appendChild(opt);
+                }
+
+                for (difficulty of Array.from(Program.questionDifficulties)) {
+                    const opt = document.createElement("option");
+                    opt.innerHTML = difficulty;
+                    opt.setAttribute("value", difficulty);
+                    documentFragmentDifficulties.appendChild(opt);
+                }
+
+                $("#select-category").append(documentFragmentCategories);
+                $("#select-difficulty").append(documentFragmentDifficulties);
 
                 Program.showQuestionSelection();
             })
@@ -189,6 +195,7 @@ const Program = {
                 correct = (userAnswers.length == 0) && (databaseAnswers.length == 0);
                 if (correct) {
                     Program.setAnsweredState(true);
+                    ++Program.currentQuestionIndex;
                 }
             } catch (err) {
                 console.log(err);
@@ -201,6 +208,7 @@ const Program = {
         let correct = $("input[name=tf-response]:checked", "#truefalse-form").val() == Program.questionsToDisplay[Program.currentQuestionIndex].answer;
         if (correct) {
             Program.setAnsweredState(true);
+            ++Program.currentQuestionIndex;
         }
         Program.showResultMessage(correct ? "correct" : "incorrect");
     },
@@ -247,7 +255,6 @@ const Program = {
 
         $("#btn-next-question").on("click", () => {
             $("#correct-message").hide(); //dirty fix to hide "correct" message immediately
-            ++Program.currentQuestionIndex;
             Program.updateQuestionViewer();
         });
 
