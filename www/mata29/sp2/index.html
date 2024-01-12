@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manest</title>
+    <link rel="icon" type="image/x-icon" href="./img/omega_no_background_small.png">
+    <link href="./styles/main.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/theme.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <span id="home-button" class="navbar-brand pointer-cursor">MANEST</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <span id="info-popup-button" class="nav-link pointer-cursor">Info</span>
+                    </li>
+                </ul>
+                <form id="light-switch-form" class="d-flex">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input pointer-cursor" type="checkbox" role="switch" id="light-switch">
+                        <label class="form-check-label" for="light-switch">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <h1>Vítejte v aplikaci MANEST</h1>
+        <h2>(Matematika nešťastně)</h2>
+    </header>
+    <main>
+        <div id="question-set-selector">
+            <h3>Zvolte si téma a obtížnost:</h3>
+            <form>
+                <div class="form-group">
+                    <label for="select-category">Téma</label>
+                    <select id="select-category" class="form-control">
+                        <option value="Vše">Vše</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="select-difficulty">Obtížnost</label>
+                    <select id="select-difficulty" class="form-control">
+                        <option value="Vše">Vše</option>
+                    </select>
+                </div>
+            </form>
+            <button id="btn-start-quiz" class="btn btn-primary" type="button">Spustit kvíz</button>
+        </div>
+        <div id="spinner">
+            <img src="./img/spinner.gif" alt="Loading...">
+        </div>
+        <div id="dialog-confirm" title="Zrušit rozpracovaný kvíz?">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Máte rozpracovaný
+                kvíz. Chcete ho zahodit?</p>
+        </div>
+        <div id="question-viewer">
+            <div>
+                <p id="question-field"></p>
+            </div>
+            <div class="answer-area">
+                <form id="shortanswer-form">
+                    <input id="shortanswer-field" type="text">
+                </form>
+            </div>
+            <div class="answer-area">
+                <form id="truefalse-form">
+                    <input id="yes" type="radio" name="tf-response" value="true">
+                    <label for="yes">Ano</label><br>
+                    <input id="no" type="radio" name="tf-response" value="false">
+                    <label for="no">Ne</label>
+                </form>
+            </div>
+            <div>
+                <p id="question-number-indicator"></p>
+            </div>
+            <div id="question-field-button-group">
+                <button id="btn-quit-quiz" class="btn btn-primary" type="button">&lt; Opustit kvíz</button>
+                <button id="btn-check-answer" class="btn btn-primary" type="button">Zkontrolovat</button>
+                <button id="btn-next-question" class="btn btn-primary" type="button">Další otázka &gt;</button>
+            </div>
+            <div>
+                <div id="correct-message" class="alert alert-success" role="alert">
+                    Správně!
+                </div>
+                <div id="incorrect-message" class="alert alert-danger" role="alert">
+                    To není úplně dobře...
+                </div>
+            </div>
+        </div>
+        <div id="no-questions-screen" class="empty-screen">
+            <h2>V zadané kategorii a obtížnosti jsme nenašli žádné otázky.</h2>
+            <button class="btn btn-primary btn-refresh" type="button">Zpět na výběr otázek</button>
+        </div>
+        <div id="finish-screen" class="empty-screen">
+            <h2>Zdá se, že máte všechny otázky hotové!</h2>
+            <button class="btn btn-primary btn-refresh" type="button">Zpět na výběr otázek</button>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@12.2.1/lib/browser/math.min.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/switch.js"></script>
+</body>
+
+</html>
