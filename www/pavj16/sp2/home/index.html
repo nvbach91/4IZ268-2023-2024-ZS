@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Webová aplikace">
+    <meta name="keywords" content="HTML, CSS, Javascript">
+    <meta name="author" content="Jan Pávek">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../pictures/favicon/png-transparent-weather-forecasting-logo-weather-blue-game-cloud.png" type="image/x-icon">
+    <style>
+    
+    </style>
+</head>
+<body>
+    <div id="dashboard">
+        <div id="charts-container">
+            <canvas id="myChart"></canvas>
+            <canvas id="forecastChart"></canvas>
+        </div>   
+        <div id="weather-container">
+            <h2>Weather App</h2>
+            <input type="text" id="city" placeholder="Enter city">
+            <button id="search-button">Search</button>
+            <button id="add-to-favorites">Add to Favorites</button>
+            <img id="weather-icon" alt="Weather Icon">
+    
+            <div id="temp-div"></div>
+    
+            <div id="weather-info"></div>
+    
+            <div id="hourly-forecast"></div>
+            
+            <div id="five-day-forecast"></div>
+            
+        </div> 
+        <div id="favorites"></div>
+    </div>
+   
+        <div id="spinner" style="display: none;">
+            <div class="loader"></div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="../js/main.js"></script>
+    </body>
+</html>
