@@ -14,7 +14,7 @@ export default function BookArea({ savedBooks, books, handleSave, handleRemove }
         <>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                 {
-                    currentBooks.map((book, i) => {
+                    currentBooks.map((book) => {
                         return <BookCard
                             savedBooks={savedBooks}
                             id={book.id}
@@ -24,7 +24,7 @@ export default function BookArea({ savedBooks, books, handleSave, handleRemove }
                             year={book.volumeInfo.publishedDate}
                             description={book.volumeInfo.description}
                             category={book.volumeInfo.categories}
-                            key={i}
+                            key={book.id}
                             handleSave={handleSave}
                             handleRemove={handleRemove}
                         />
@@ -35,6 +35,7 @@ export default function BookArea({ savedBooks, books, handleSave, handleRemove }
             <Pagination
                 totalBooks={books.length}
                 booksPerPage={booksPerPage}
+                currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
             />
         </>

@@ -4,6 +4,9 @@ import { useState } from "react"
 import axios from "axios"
 import { removeBook, saveBook } from "../utils/localStorage"
 import Spinner from "./Spinner"
+import {customAlphabet} from "nanoid"
+
+const nanoid = customAlphabet('1234567890', 12);
 
 export default function Finder({ savedBooks, setSavedBooks }) {
 
@@ -23,9 +26,11 @@ export default function Finder({ savedBooks, setSavedBooks }) {
         setErr("");
         try {
             const response = await axios.get("https://www.googleapis.com/books/v1/volumes", {
-                params: { q: search, key: APIKey }
+                params: { q: search, key: APIKey, maxResults: 20 }
             });
-            setBooks(cleanData(response.data));
+            setBooks(cleanData(response.data).sort((a,b) => {
+                return a.volumeInfo.title.localeCompare(b.volumeInfo.title)
+            }));
         } catch (error) {
             console.error("Error:", error);
             setErr(error);
@@ -57,7 +62,7 @@ export default function Finder({ savedBooks, setSavedBooks }) {
     const cleanData = (data) => {
         return data.items.map((book) => {
             if (!book.id) {
-                book.id = "000000000000";
+                book.id = nanoid();
             }
             if (!book.volumeInfo.publishedDate) {
                 book.volumeInfo.publishedDate = "0000";

@@ -16,7 +16,21 @@ export default function BookCard({ savedBooks, id, image, title, author, year, d
                 </div>
 
             </div>
-            {modalOpen && <Modal savedBooks={savedBooks} setModalOpen={setModalOpen} id={id} title={title} image={image} author={author} year={year} description={description} category={category} handleSave={handleSave} handleRemove={handleRemove} />}
+            {modalOpen &&
+                <Modal
+                    savedBooks={savedBooks}
+                    setModalOpen={setModalOpen}
+                    id={id}
+                    title={title}
+                    image={image}
+                    author={author}
+                    year={year}
+                    description={description}
+                    category={category}
+                    handleSave={handleSave}
+                    handleRemove={handleRemove}
+                />
+            }
         </>
     )
 }

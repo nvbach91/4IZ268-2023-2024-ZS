@@ -1,4 +1,4 @@
-export default function Pagination({ totalBooks, booksPerPage, setCurrentPage }) {
+export default function Pagination({ totalBooks, booksPerPage, currentPage, setCurrentPage }) {
 
     let pages = [];
 
@@ -13,7 +13,7 @@ export default function Pagination({ totalBooks, booksPerPage, setCurrentPage })
                     <button
                         key={index}
                         onClick={() => setCurrentPage(page)}
-                        className="w-10 h-10 border rounded-md bg-orange-300 text-white hover:bg-orange-400 active:scale-90 font-semibold text-lg shadow appearance-none"
+                        className={`w-10 h-10 border rounded-md ${currentPage === page ? "bg-orange-500" : "bg-orange-300"} text-white hover:bg-orange-400 active:scale-90 font-semibold text-lg shadow appearance-none`}
                     >{page}</button>
                 )
             })}

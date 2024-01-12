@@ -1,7 +1,9 @@
 import { useState } from "react";
 import logo from "../assets/images/logo.png"
 
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
+
+import { Link } from "react-router-dom"
 
 export default function Header() {
 
@@ -14,7 +16,7 @@ export default function Header() {
     return (
         <header className="border-b-2 border-black border-solid sticky shadow-md top-0 bg-orange-400">
             <div className="flex justify-between items-center my-0 mx-auto max-w-5xl py-5 px-12">
-                <Link
+                <ScrollLink
                     to="app"
                     spy={true}
                     smooth={true}
@@ -23,7 +25,7 @@ export default function Header() {
                 >
                     <img src={logo} alt="logo" className="w-12" />
                     <span className="text-3xl">Your Library</span>
-                </Link>
+                </ScrollLink>
                 <button className="md:hidden text-white text-3xl w-8 h-8 relative" id="hamburger-button" onClick={toggleMenu}>
                     <div className={`${menuOpen ? "bg-transparent w-8 h-1 rounded absolute top-4 -mt-0.5 transition-all duration-500 before:content-[''] before:bg-white before:w-8 before:h-1 before:rounded before:absolute before:-translate-x-4 before:translate-y-0 before:rotate-45 before:transition-all before:duration-500 after:content-[''] after:bg-white after:w-8 after:h-1 after:rounded after:absolute after:-translate-x-4 after:translate-y-0 after:-rotate-45 after:transition-all after:duration-500" : "bg-white w-8 h-1 rounded absolute top-4 -mt-0.5 transition-all duration-500 before:content-[''] before:bg-white before:w-8 before:h-1 before:rounded before:absolute before:-translate-x-4 before:-translate-y-3 before:transition-all before:duration-500 after:content-[''] after:bg-white after:w-8 after:h-1 after:rounded after:absolute after:-translate-x-4 after:translate-y-3 after:transition-all after:duration-500"} `}></div>
                 </button>
