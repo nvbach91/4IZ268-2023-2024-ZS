@@ -4,16 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./css/style.css">
   <title>Weather</title>
 </head>
 
 <body>
-  <div class="container">
+  <div id="container" class="container">
     <div class="search-box">
-      <i class="fa-solid fa-location-dot"></i> 
-      <input type="text" placeholder="Where Are You?">
-      <button type="button" title="button" class="fa-solid fa-magnifying-glass"></button>
+      <form id="forma" class="search">
+        <i class="fa-solid fa-location-dot"></i>
+        <input type="text" placeholder="Where Are You?">
+        <button type="button" title="button" class="fa-solid fa-magnifying-glass"></button>
+        <button type="button" title="Refresh" class="fa-solid fa-sync" id="refreshButton"></button>
+        <button type="button" title="saveButton" id="saveButton" class="fa-solid fa-save"></button>
+        <div class="city"></div>
+      </form>
+    </div>
+
+    <div class="city-container">
+      <ul id="historyList"></ul>
     </div>
 
     <div class="not-found">
@@ -28,6 +37,7 @@
     </div>
 
     <div class="weather-details">
+     
       <div class="humidity">
         <i class="fa-solid fa-tint"></i>
         <div class="text">
@@ -44,11 +54,10 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
-  <script src="./main.js"></script>
+  <script src="./js/main.js"></script>
 </body>
 
 </html>
