@@ -32,8 +32,8 @@ quizApp.muted = true;
 quizApp.progressAnimation = createProgressAnimation();
 quizApp.loadingSlider = $(".loading-slider");
 
-quizApp.correctSounds = ["correctSound1", "correctSound2", "correctSound3", "correctSound4"];
-quizApp.incorrectSounds = ["incorrectSound1", "incorrectSound2", "incorrectSound3", "incorrectSound4"];
+quizApp.correctSounds = ["#correctSound1", "#correctSound2", "#correctSound3", "#correctSound4"];
+quizApp.incorrectSounds = ["#incorrectSound1", "#incorrectSound2", "#incorrectSound3", "#incorrectSound4"];
 quizApp.currentCorrectSound = 0;
 quizApp.currentIncorrectSound = 0;
 
@@ -45,7 +45,7 @@ $(document).ready(function () {
     const homeContainer = $("#home-container");
     //vyhledani kategorii s databáze a vykresleni do home containeru
     renderCategories();
-    const introMusic = document.getElementById("introMusic");
+    const introMusic = $("#introMusic")[0];
     introMusic.volume = 0.05;
 
     //změna číselné hodnoty počtu otázek podle nastavení slideru
@@ -74,8 +74,13 @@ $(document).ready(function () {
 
     //interaktivita kategorii
     $("#selection-container").on("click", ".category-card", function (event) {
-        $(this).siblings().removeClass("active");
-        $(this).addClass("active");
+        if($(this).hasClass("active")){
+            $(this).removeClass("active");
+        }
+        else{
+            $(this).siblings().removeClass("active");
+            $(this).addClass("active");
+        }
     });
 
     //highscore btn
@@ -88,6 +93,7 @@ $(document).ready(function () {
     continueButton.on("click", function (event) {
         homeContainer.hide();
         quizContainer.css("display", "flex");
+        introMusic.pause();
     });
 
     //mute button
@@ -119,7 +125,8 @@ $(document).ready(function () {
         href: "https://eso.vse.cz/~mald10/sp2/",
       }, function(response){});*/
         if (quizApp.accessToken) {
-            publishPost();
+            //publishPost();
+            displayName();
         }
         else {
             facebookLogin();
@@ -162,7 +169,7 @@ $(document).ready(function () {
         setTimeout(function () {
             displayQuestion(quizApp.loadedQuestions[quizApp.currentQuestionIndex], shuffledAnswersObject.answers);
             $("#answer-button").prop("disabled", false);
-        }, 10);
+        }, 2000);
     });
 
     quizContainer.on("click", "#home-button", function (event) {
@@ -178,6 +185,9 @@ $(document).ready(function () {
         continueButton.prop("disabled",false);
         quizContainer.hide();
         homeContainer.css("display", "flex");
+        if(quizApp.muted === false){
+            introMusic.play();
+        }
     });
 
 });
@@ -335,6 +345,7 @@ function addQuizContainerElements() {
     if (quizApp.muted === false) {
         $("#quiz-mute-button").css("background-color", "#4caf50");
     }
+
 }
 
 // Funkce pro vykreslení hodnot formu
@@ -436,6 +447,7 @@ function showResults() {
     const points = quizApp.currentPoints;
     const totalQuestions = quizApp.loadedQuestions.length;
     const resultContent = `
+        <div id="username"></div>
         <h2>Quiz Results</h2>
         <button type="button" id="fb-share-button" class="fb-share-button">Share on Facebook</button>
         <p>Total Questions: ${totalQuestions}</p>
@@ -565,7 +577,7 @@ async function getHighScoresExistingCategoriesWithNames() {
     const storedHighScores = JSON.parse(localStorage.getItem("highScores")) || [];
     const existingCategories = [...new Set(storedHighScores.map(score => score.category))];
 
-    const categoriesFromAPI = await loadCategories();
+    const categoriesFromAPI = quizApp.loadedCategories;
 
     const categoriesMap = {};
 
@@ -720,7 +732,7 @@ function playCorrectSound() {
     if (quizApp.currentCorrectSound === 4) {
         quizApp.currentCorrectSound = 0;
     }
-    document.getElementById(quizApp.correctSounds[quizApp.currentCorrectSound]).play();
+    $(quizApp.correctSounds[quizApp.currentCorrectSound])[0].play();
     quizApp.currentCorrectSound++;
 }
 
@@ -731,14 +743,14 @@ function playIncorrectSound() {
     if (quizApp.currentIncorrectSound === 4) {
         quizApp.currentIncorrectSound = 0;
     }
-    document.getElementById(quizApp.incorrectSounds[quizApp.currentIncorrectSound]).play();
+    $(quizApp.incorrectSounds[quizApp.currentIncorrectSound])[0].play();
     quizApp.currentIncorrectSound++;
 }
 
 function facebookLogin() {
     FB.getLoginStatus(function (response) {
         if (response.status === 'connected') {
-            console.log('User is already logged in:', response.authResponse);
+            console.log('User is already logged in:', response.authResponse.accessToken);
             quizApp.accessToken = response.authResponse.accessToken;
             // Handle the case when the user is already logged in
         } else {
@@ -746,8 +758,8 @@ function facebookLogin() {
             // User is not logged in, initiate login
             FB.login(function (loginResponse) {
                 if (loginResponse.authResponse) {
-                    console.log('Login successful:', loginResponse.authResponse);
-                    quizApp.accessToken = response.authResponse.accessToken;
+                    console.log('Login successful:', loginResponse.authResponse.accessToken);
+                    quizApp.accessToken = loginResponse.authResponse.accessToken;
                     // Handle the logged-in user, e.g., send data to your server
                 } else {
                     console.log('Login cancelled.');
@@ -772,4 +784,27 @@ function publishPost(message) {
             console.log('Příspěvek byl úspěšně publikován:', response.id);
         }
     });
+}
+
+function getName(){
+    return new Promise((resolve, reject) => {
+        FB.api("/me", { fields: "first_name,last_name,email" }, function(response) {
+            if (response.error) {
+                reject(response.error);
+            } else {
+                resolve(response);
+            }
+        });
+    });
+}
+
+async function displayName(){
+    try {
+        const getNameCall = await getName();
+        const name = getNameCall.first_name;
+        const surname = getNameCall.last_name;
+        $("#username").text(name + " " + surname);
+    } catch (error) {
+        console.error('Error fetching user information:', error);
+    }
 }
