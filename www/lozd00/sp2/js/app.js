@@ -62,6 +62,13 @@ function maybeEnableButtons() {
     }
 }
 
+document.getElementById("authorize_button").addEventListener("click", handleAuthClick);
+document.getElementById("signout_button").addEventListener("click", handleSignoutClick);
+document.getElementById("deleteTaskListButton").addEventListener("click", deleteTaskList);
+document.getElementById("newTaskListButton").addEventListener("click", addTaskList);
+document.getElementById("addTaskButton").addEventListener("click", addTask);
+document.getElementById("deleteTaskButton").addEventListener("click", deleteTask);
+
 /**
  *  Tlacitko prihlaseni
  */
@@ -101,8 +108,20 @@ function handleSignoutClick() {
 
 // Vlastni kod aplikace
 
+// Loader 
+
+const loader = document.getElementById('loader')
+loader.style.display = 'none';
+function showLoader() {
+    loader.style.display = 'block';
+}
+function hideLoader() {
+    loader.style.display = 'none';
+}
+
 // Pridani noveho seznamu ukolu
 function addTaskList() {
+    showLoader();
     // Ziskat nazev seznamu z inputu
     var newListName = document.getElementById('newTaskList').value;
 
@@ -110,11 +129,14 @@ function addTaskList() {
     if (!newListName) {
         console.error("List name is not entered.");
         alert("List name is not entered.");
+        hideLoader();
         return;
     }
 
     // Volani funkce pro pridani seznamu ukolu
+
     newList(newListName);
+    hideLoader();
 }
 
 function newList(newListName) {
@@ -244,26 +266,6 @@ async function deleteTask(taskId) {
         alert("Error deleting Task: " + err.body);
         console.error("Error deleting Task", err);
     }
-}
-
-
-// Pridani noveho seznamu ukolu
-function addTaskList() {
-    var newListName = document.getElementById('newTaskList').value;
-
-    // Kontrola, zda byl zadan nazev seznamu
-    if (!newListName) {
-        console.error("List name is not entered.");
-        alert("List name is not entered.");
-        return;
-    }
-
-    // Volani funkce pro pridani seznamu ukolu
-    newList(newListName)
-        .then(function() {
-            // Obnoveni seznamu v selectu
-            loadTaskLists();
-        });
 }
 
 // Funkce pro odstraneni seznamu ukolu

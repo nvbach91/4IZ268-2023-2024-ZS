@@ -6,9 +6,6 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-        <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-        <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
-        <script src="js/app.js"></script>
 
         <header>
           <div class="header-left">
@@ -16,8 +13,8 @@
               <h1>(Not)ToDo</h1>
           </div>
           <ul class="header-right">
-              <li><button id="authorize_button" onclick="handleAuthClick()">SignIn</button></li>
-              <li><button id="signout_button" onclick="handleSignoutClick()">Sign Out</button></li>
+              <li><button id="authorize_button">SignIn</button></li>
+              <li><button id="signout_button">Sign Out</button></li>
           </ul>
       </header>
       <div class="grid-container">
@@ -25,13 +22,15 @@
         <form id="addNewListForm">
             <label for="newTaskList">New List:</label>
             <input type="text" id="newTaskList" required>
-            <button type="button" onclick="addTaskList()">Add New List</button>
+            <button type="button" id="newTaskListButton">Add New List</button>
         </form>
+
+        <div id="loader" class="loader"></div>
 
         <form id="addTaskForm">
             <label for="taskList">Task List:</label>
             <select id="taskList"></select>
-            <button type="button" onclick="deleteTaskList()">Delete Task List</button>
+            <button type="button" id="deleteTaskListButton">Delete Task List</button>
             <label for="taskName">Task Name:</label>
             <input type="text" id="taskName" required>
             <label for="taskDescription">Task Description:</label>
@@ -44,7 +43,7 @@
             </select>
             <label for="taskDueDate">Due Date:</label>
             <input type="date" id="taskDueDate">
-            <button type="button" onclick="addTask()">Add Task</button>
+            <button type="button" id="addTaskButton">Add Task</button>
         </form>
       </div>
 
@@ -55,8 +54,14 @@
         <div id="tasksContainer"></div>
         <h2>Task Details</h2>
         <div id="taskDetailsContainer"></div>
-        <button id="deleteTaskButton" onclick="deleteTask()">Delete Task</button>
+        <button id="deleteTaskButton">Delete Task</button>
       </div>
     </div>
+
+    <script src="js/app.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+        <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+        
+
 </body>
 </html>
