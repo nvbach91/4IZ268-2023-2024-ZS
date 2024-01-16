@@ -3,6 +3,10 @@ body, h1, h2, #search-group, #movie-list, .movie-details {
     background-color: lightgray;
 }
 
+.yellow-star {
+    color: yellow;
+}
+
 h1, #search-group {
     padding: 10px; 
     margin: 10px 0; 
@@ -15,6 +19,35 @@ h1, #search-group {
     padding: 10px;
     box-sizing: border-box;
     word-wrap: break-word;
+}
+
+#columns-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.column {
+    flex: 1;
+    max-width: 33%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 0 10px;
+}
+
+#poster-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#poster-container img {
+    max-width: 100%;
+    height: auto;
 }
 
 p, button, input, label {
@@ -44,5 +77,30 @@ input {
 .details-btn {
     margin-left: 10px;
 }
+
+
+.spinner {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border: 30px solid transparent;
+    border-top-color: firebrick;
+    border-bottom-color: firebrick;
+    animation: spinning 2s linear infinite;
+    transition: border-color 0.5s ease;
+  }
+  .spinner:hover {
+    border-top-color: cadetblue;
+    border-bottom-color: cadetblue;
+  }
+  @keyframes spinning {
+    from { 
+      transform: rotate(0deg); 
+    }
+    to { 
+      transform: rotate(360deg); 
+    }
+  }
 
 
