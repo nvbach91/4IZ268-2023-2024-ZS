@@ -46,6 +46,16 @@ body {
 }
 
 .map {
-  height: 500px;
+  height: 98%;
   width: 100%;
+  margin: 10px;
+}
+
+.mode-selector {
+  text-align: center;
+}
+
+.mode {
+  margin: 15px 28px 15px 28px;
+  -webkit-transform: scale(1.5);
 }
