@@ -1,9 +1,140 @@
+* {
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
 h1{
     text-align: center;
+    border-bottom: 3px solid black;
+    max-width: 300px;
+    margin: auto;
+}
+
+#tomorrow, #yesterday{
+    background-color: darkcyan;
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 5px;
+    color: white;
+    cursor: default;
+    transition: color, background-color 0.3s ease-in-out;
+}
+#tomorrow:hover, #yesterday:hover{
+    background-color: black;
+    color: white;
+    border: 1px solid darkcyan;
+}
+#today{
+    max-width: 300px;
+    padding: 20px;
+    border: 2px solid red;
+    background-color: darkgoldenrod;
+    margin: 5px;
+    color: black;
+    cursor: default;
+    transition: color, background-color 0.3s ease-in-out;
+}
+#today:hover{
+    background-color: red;
+    color: black;
+    border: 2px solid darkgoldenrod;
 }
 .center-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    background-color: #e1e1e1;
+    margin: auto;
+    max-width: 400px;
+}
+.description{
+    margin: auto;
+    text-align: center;
+    font-size: small;
+    background-color: whitesmoke;
+    max-width: 500px;
+}
+.search_find{
+    margin: auto;
+    max-width: 300px;
+    margin-top: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+    padding: 30px;
+    background-color: antiquewhite;
+}
+#search-btn{
+    background-color: darkcyan;
+    color: white;
+}
+#lang-btn{
+    background-color: darkgoldenrod;
 }
 
+footer{
+    text-align: center;
+    background-color: whitesmoke;
+    color: black;
+    padding: 20px;
+    margin-top: 100px;
+}
+
+#calendar{
+    max-width: 300px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#calendar-table th, #calendar-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+#calendar-table th {
+    background-color: #f2f2f2;
+}
+
+#calendar-table td:hover {
+    background-color: #e6e6e6;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#month-select{
+    cursor: pointer;
+}
+
+.spinner {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    border: 15px solid transparent;
+    border-top-color: darkcyan;
+    border-bottom-color: darkgoldenrod;
+    animation: spinning 5s linear infinite;
+}
+
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
