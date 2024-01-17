@@ -1,4 +1,115 @@
-input{
+* {
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.app{
+    display: flex;
+}
+header{
+    display: flex;
+    border-bottom:  rgb(124, 234, 94) solid 4px;
+    margin-bottom: 30px;
+}
+footer{
+   
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+    margin-top: 160px;
+    border-top:  rgb(124, 234, 94) solid 4px;
+}
+
+input {
     display: block;
     margin: 10px;
+    max-width: 70px;
+
+}
+button{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(167, 232, 149);
+    border: none;
+    font-size: medium;
+}
+select{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.leftPart {
+    width: 50%;
+    
+    
+    float: left;
+}
+.rightPart {
+
+    width: 50%;
+    
+    float: left;
+}
+
+.description {
+    
+    max-width: 50%;
+}
+
+.inputs {
+    
+    max-width: 50%;
+    display: flex;
+}
+
+
+.grid-container {
+    
+    align-items:  center;
+    display: grid;
+  grid-template-columns: auto auto ;
+  grid-gap: 10px;
+  
+  padding: 10px;
+}
+
+p{
+    margin-left: 5px;
+    
+}
+img{
+    max-width: 8%;
+    max-height: 8%;
+    
+}
+h1{
+    max-width: 90%;
+    font-size:40px;
+    margin-left: 20px;
+}
+
+
+.spinner {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    border: 15px solid transparent;
+    border-top-color: lightgreen;
+    border-bottom-color: lightgreen;
+    animation: spinning 3s linear infinite;
+}
+
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
