@@ -165,6 +165,8 @@ function displayTaskListsAsButtons(taskLists) {
     taskListsContainer.innerHTML = '';
 
     if (taskLists && taskLists.length > 0) {
+        let fragment = document.createDocumentFragment();
+
         for (let i = 0; i < taskLists.length; i++) {
             const option = document.createElement('option');
             option.value = taskLists[i].id;
@@ -175,9 +177,10 @@ function displayTaskListsAsButtons(taskLists) {
             listButton.innerText = taskLists[i].title;
             listButton.onclick = () => loadTasks(taskLists[i].id);
             listButton.classList.add('buttonWithPadding'); // Add the class
-            taskListsContainer.appendChild(listButton);
-            
+            fragment.appendChild(listButton);
         }
+
+        taskListsContainer.appendChild(fragment);
     }
 }
 
@@ -188,15 +191,20 @@ function displayTasksAsButtons(tasks) {
     tasksContainer.innerHTML = '';
 
     if (tasks && tasks.length > 0) {
+        let fragment = document.createDocumentFragment();
+
         for (let i = 0; i < tasks.length; i++) {
             const taskButton = document.createElement('button');
             taskButton.innerText = tasks[i].title;
             taskButton.onclick = () => loadTaskDetails(tasks[i].id);
             taskButton.classList.add('buttonWithPadding'); // Add the class
-            tasksContainer.appendChild(taskButton);
+            fragment.appendChild(taskButton);
         }
+
+        tasksContainer.appendChild(fragment);
     }
 }
+
 
 // Funkce nacitajici seznamy ukolu
 async function loadTaskLists() {
@@ -282,7 +290,7 @@ function deleteTaskList() {
     }
 
     // Zobrazení potvrzovaciho dialogu pro uzivatele
-    var userConfirmation = confirm("Do you really want to delete this TaskList?");
+    const userConfirmation = confirm("Do you really want to delete this TaskList?");
 
     // Pokud uživatel potvrdi, smaz seznam ukolu
     if (userConfirmation) {
@@ -309,64 +317,98 @@ function formatDateToRFC3339(dateString) {
     return date.toISOString();
 }
 
-// Funkce pro pridani ukolu
-function addTask() {
-    // Ziskani hodnot
-    var taskName = document.getElementById('taskName').value;
-    var taskDescription = document.getElementById('taskDescription').value;
-    var taskDueDate = document.getElementById('taskDueDate').value;
-    var taskPrioritySelect = document.getElementById('taskPriority');
-    var taskPriority = taskPrioritySelect.options[taskPrioritySelect.selectedIndex].value;
-    var taskListSelect = document.getElementById('taskList');
-    var selectedListId = taskListSelect.value;
-    var taskDueDateFormatted = formatDateToRFC3339(taskDueDate);
+var cityInfo = '';
 
-    // Kontrola, zda bylo zadano jmeno ukolu
-    if (!taskName) {
-        alert("Task name cannot be empty.");
-        return;
-    }
-
-    // Kontrola, zda byl vybrany seznam ukolu
-    if (!selectedListId) {
-        alert("No task list selected.");
-        return;
-    }
-
-    // Volani API - kontrola duplikatu
-    gapi.client.tasks.tasks.list({
-        "tasklist": selectedListId
-    })
-    .then(function(response) {
-        var existingTasks = response.result.items;
-
-        for (var i = 0; i < existingTasks.length; i++) {
-            if (existingTasks[i].title === taskName) {
-                alert("Task with the same name already exists in the selected list.");
-                return;
+// Funkce pro získání informací o městě
+function getCityInfo() {
+    return new Promise(function(resolve, reject) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+      
+        const apiKey = '22c3f08e3b578b61e2cf6ceb689b4cba';
+        const apiUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}&lang=cs`;
+      
+        fetch(apiUrl)
+          .then(function(response) {
+            // Zkontrolovat, zda je odpověď v pořádku
+            if (response.ok) {
+              // Převést odpověď na JSON
+              return response.json();
+            } else {
+              // Zobrazit chybovou zprávu, pokud se vyskytne problém
+              console.log("OpenWeather API failed: " + response.status);
+              reject("OpenWeather API failed: " + response.status);
             }
-        }
-
-        var taskDescriptionWithPriority = "Priority: " + taskPriority + "\n\n" + taskDescription;
-
-        // Volani API pro pridani ukolu
-        return gapi.client.tasks.tasks.insert({
-            "tasklist": selectedListId,
-            "resource": {
-                "title": taskName,
-                "notes": taskDescriptionWithPriority,
-                "due": taskDueDateFormatted
+          })
+          .then(function(data) {
+            // Přiřadit název města, zemi a teplotu do proměnné taskDescriptionWithPriority
+            resolve(data[0].name + ", " + data[0].country);
+          });
+      });
+    });
+  }
+  
+   // Funkce pro pridani ukolu
+  function addTask() {
+      // Ziskani hodnot
+      var taskName = document.getElementById('taskName').value;
+      var taskDescription = document.getElementById('taskDescription').value;
+      var taskDueDate = document.getElementById('taskDueDate').value;
+      var taskPrioritySelect = document.getElementById('taskPriority');
+      var taskPriority = taskPrioritySelect.options[taskPrioritySelect.selectedIndex].value;
+      var taskListSelect = document.getElementById('taskList');
+      var selectedListId = taskListSelect.value;
+      var taskDueDateFormatted = formatDateToRFC3339(taskDueDate);
+  
+      // Kontrola, zda bylo zadano jmeno ukolu
+      if (!taskName) {
+          alert("Task name cannot be empty.");
+          return;
+      }
+  
+      // Kontrola, zda byl vybrany seznam ukolu
+      if (!selectedListId) {
+          alert("No task list selected.");
+          return;
+      }
+  
+      getCityInfo().then(function(cityInfo) {
+        // Volani API - kontrola duplikatu
+        gapi.client.tasks.tasks.list({
+            "tasklist": selectedListId
+        })
+        .then(function(response) {
+            var existingTasks = response.result.items;
+  
+            for (var i = 0; i < existingTasks.length; i++) {
+                if (existingTasks[i].title === taskName) {
+                    alert("Task with the same name already exists in the selected list.");
+                    return;
+                }
             }
-        });
-    })
-    .then(
-        function(response) {
-            alert("Task successfully added.");
-            console.log("Task successfully added", response);
-        },
-        function(err) {
-            alert("Error adding Task: " + err.body);
-            console.error("Error adding Task", err);
-        }
-    );
-}
+  
+            var taskDescriptionWithPriority = "Priority: " + taskPriority + "\n\n" + taskDescription + "\n\n" + cityInfo;
+  
+            // Volani API pro pridani ukolu
+            return gapi.client.tasks.tasks.insert({
+                "tasklist": selectedListId,
+                "resource": {
+                    "title": taskName,
+                    "notes": taskDescriptionWithPriority,
+                    "due": taskDueDateFormatted
+                }
+            });
+        })
+        .then(
+            function(response) {
+                alert("Task successfully added.");
+                console.log("Task successfully added", response);
+            },
+            function(err) {
+                alert("Error adding Task: " + err.body);
+                console.error("Error adding Task", err);
+            }
+        );
+      });
+  }
