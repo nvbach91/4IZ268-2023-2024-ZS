@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotbal</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Fotbal</h1>
+    </header>
+    <nav>
+        <button id="loadCzechButton">Česká liga</button>
+        <button id="loadGermanButton">Německá liga</button>
+        <button id="loadEnglishButton">Anglická liga</button>
+        <button id="loadSpainButton">Španělská liga</button>
+    </nav>
+    <main>
+        <div class="wrapper">
+            <h2>Tabulka</h2>
+            <div class="legenda">
+                <div>Pozice</div>
+                <div>Tým</div>
+                <div>Zápasy</div>
+                <div>Góly</div>
+                <div>Body</div>
+                <div>Forma</div>
+            </div>
+            <div class="data" id="dataContainerStandings"></div>
+        </div>
+        <div class="wrapper">
+            <h2>Tabulka Střelců</h2>
+            <div class="legenda">
+                <div>Pozice</div>
+                <div>Jméno</div>
+                <div>Tým</div>
+                <div>Zápasy</div>
+                <div>Góly</div>
+            </div>
+            <div class="data" id="dataContainerTopScorers"></div>
+        </div>
+    </main>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
