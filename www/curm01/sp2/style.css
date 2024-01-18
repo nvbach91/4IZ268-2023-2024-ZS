@@ -1,0 +1,171 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;;
+}
+
+.top-panel {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px;
+}
+
+.top-panel-heading {
+    margin-top: 20px;
+    color: rgba(15,132,138);
+    font-size: 30px;
+}
+
+
+
+.main {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.row-playing, .row-date {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(15,132,138);
+    width: 400px;
+    height: auto;
+    align-content: center;
+}
+.row-date {
+    margin-top: 50px;
+}
+
+#date {
+    color: black;
+    position: absolute;
+    align-content: center;
+    margin-left: 1350px;
+    font-weight: bold;
+    margin-top: 50px;
+    font-size: 20px;
+    
+}
+
+.spot-player {
+    margin-top: 20px;
+}
+
+
+.main-tasks, .calendar {
+    border: 1px solid rgba(15,132,138);
+    border-radius: 10px;
+    margin: 20px;
+}
+.main-tasks {
+    width: 50%;
+    height: 430px;
+    background-color: rgb(232, 239, 255);
+}
+
+.calendar {
+    width: 50%;
+    height: 430px;
+}
+
+
+.authorize-div { 
+    display: none;
+}
+
+
+/* ========================= LISTS ==================== */
+
+
+
+#tasks-input, .text {
+    border-radius: 10px;
+    border: 1px solid rgba(15,132,138);
+}
+
+#tasks-addButton {
+    background-color: rgba(15,132,138);
+    border: none;
+    padding: 6px 20px;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    border-radius: 20px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#tasks-input, h2 {
+    margin-left: 10px;
+}
+
+.edit-button, .remove-button, .gapi-button {
+    background-color: rgba(15,132,138);
+    border: none;
+    padding: 6px 20px;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    border-radius: 20px;
+}
+
+#span {
+    flex-wrap: wrap;
+}
+
+.footer-main {
+    background-color: rgb(232, 239, 255);
+    padding: 10px;
+    border-radius: 100px;
+    border: 1px solid rgba(15,132,138);
+    text-align: center;
+    font-weight: bold;
+}
+
+.footer-main a{
+    text-decoration: none;
+    color: rgba(15,132,138);
+}
+
+/*---------------------------------- SPINNER ---------------------------------------*/
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f9fb;
+    transition: opacity 0.75s, visibility 0.75s;
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader::after {
+    content: "";
+    width: 75px;
+    height: 75px;
+    border: 15px solid #dddddd;
+    border-top-color: rgba(15,132,138);
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
