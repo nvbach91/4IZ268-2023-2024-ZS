@@ -6,11 +6,16 @@ const eventApiConfig = {
 };
 
 function fetchEventsByCity(cityName, successCallback, errorCallback) {
-    const url = `${eventApiConfig.apiVercelUrl}?apikey=${eventApiConfig.apiKey}&locale=*&city=${cityName}`;
+    const originalUrl = `${eventApiConfig.apiUrl}apikey=${eventApiConfig.apiKey}&locale=*&city=${cityName}`;
+    const encodedUrl = encodeURIComponent(originalUrl);
+
+    const corsProxyURL = 'https://cors-proxy.itake.cz';
+
+    const proxyUrl = `${corsProxyURL}/get?url=${encodedUrl}`;
 
     $.ajax({
         method: 'GET',
-        url: url,
+        url: proxyUrl,
         contentType: 'application/json',
         success: function (data) {
             if (data && data.page.totalElements === 0) {

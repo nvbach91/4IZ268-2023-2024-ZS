@@ -8,10 +8,15 @@ const weatherApiConfig = {
 };
 
 function fetchCurrentWeatherByCoordinates(lat, lon, successCallback, errorCallback) {
-    const url = `${weatherApiConfig.apiVercelUrl}/${weatherApiConfig.weatherUrl}?lat=${lat}&lon=${lon}&appid=${weatherApiConfig.apiKey}`;
+    const originalUrl = `${weatherApiConfig.apiUrl}${weatherApiConfig.weatherUrl}?lat=${lat}&lon=${lon}&appid=${weatherApiConfig.apiKey}`;
+    const encodedUrl = encodeURIComponent(originalUrl);
+    const corsProxyURL = 'https://cors-proxy.itake.cz';
+    const proxyUrl = `${corsProxyURL}/get?url=${encodedUrl}`;
+
+
     $.ajax({
         method: 'GET',
-        url: url,
+        url: proxyUrl,
         contentType: 'application/json',
         success: successCallback,
         error: function (jqXHR, textStatus, errorThrown) {
@@ -25,10 +30,14 @@ function fetchCurrentWeatherByCoordinates(lat, lon, successCallback, errorCallba
 }
 
 function fetchForecastWeatherByCoordinates(lat, lon, successCallback, errorCallback) {
-    const url = `${weatherApiConfig.apiVercelUrl}/${weatherApiConfig.forecastUrl}?lat=${lat}&lon=${lon}&appid=${weatherApiConfig.apiKey}`;
+    const originalUrl = `${weatherApiConfig.apiUrl}${weatherApiConfig.forecastUrl}?lat=${lat}&lon=${lon}&appid=${weatherApiConfig.apiKey}`;
+    const encodedUrl = encodeURIComponent(originalUrl);
+    const corsProxyURL = 'https://cors-proxy.itake.cz';
+    const proxyUrl = `${corsProxyURL}/get?url=${encodedUrl}`;
+
     $.ajax({
         method: 'GET',
-        url: url,
+        url: proxyUrl,
         contentType: 'application/json',
         success: successCallback,
         error: function (jqXHR, textStatus, errorThrown) {

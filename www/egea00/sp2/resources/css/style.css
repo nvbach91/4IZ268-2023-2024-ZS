@@ -215,7 +215,7 @@ body, html {
     transition: background-color 0.2s;
 }
 
-.dialog .close-button, #reload-button, #retry-button, .switch-button {
+.dialog .close-button, #reload-button, #retry-button {
     background-color: #ff6666;
 }
 
@@ -228,7 +228,7 @@ body, html {
     background-color: #3e8e41;
 }
 
-.dialog .close-button:hover, .dialog .remove-city-button:hover, #reload-button:hover, #retry-button:hover, .switch-button {
+.dialog .close-button:hover, .dialog .remove-city-button:hover, #reload-button:hover, #retry-button:hover {
     background-color: red;
 }
 
@@ -282,17 +282,15 @@ body, html {
     font-weight: bold;
     background-color: #7c0606;
 }
-
-/*.dialog .select-city-button{
-    font-weight: bold;
-    background-color: #396011;
-}*/
-.dialog .save-city-button, .dialog .info-city-button, .dialog .select-city-button {
+.switch-button{
+    background-color: #333333;
+}
+.dialog .save-city-button, .dialog .info-city-button, .dialog .select-city-button{
     font-weight: bold;
     background-color: #333333;
 }
 
-.dialog .save-city-button:hover, .dialog .info-city-button:hover {
+.dialog .save-city-button:hover, .dialog .info-city-button:hover, .switch-button:hover {
     background-color: #3e5165;
 }
 
