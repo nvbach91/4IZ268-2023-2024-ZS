@@ -3,34 +3,27 @@ body {
     background-color: rgba(240, 230, 216, 0.425);
     margin: auto;
     text-align: center;
-    display: flex;
+    width: 80%;  
     justify-content: center;
     align-items: center;
 }
-
 .title {
     font-size: 48px;
 }
-
 .space-for-definition,
 .space-for-synonyms {
     text-align: left;
-    width: 1200px;
-    height: 90px;
+    height: 120px;
 }
 
 .space-for-trials {
     font-size: 22px;
     padding-bottom: 20px;
-}
-
-.space-for-trials {
     color: darkgreen;
 }
 
 .hints {
-    width: 1200px;
-    height: 180px;
+    height: 240px;
 }
 
 .line-unrevealed {
@@ -57,7 +50,8 @@ body {
     border-bottom: 1px solid black;
 }
 
-.rules {
+.rules,
+.dictionary {
     position: fixed;
     top: 50%;
     left: 52%;
@@ -71,8 +65,6 @@ body {
 
 .keyboard {
     border: 2px solid black;
-    width: 1200px;
-    margin-left: 70px;
 }
 
 .keyboard-row {
@@ -80,8 +72,8 @@ body {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
+    height: 70px;
     width: 75%;
-    height: 70px
 }
 
 .key {
@@ -99,7 +91,8 @@ body {
 .show-rules-button,
 .show-hint-button,
 .unshow-rules-button,
-.share-facebook {
+.share-facebook,
+.dictionary-button {
     padding: 10px;
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
