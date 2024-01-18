@@ -76,6 +76,7 @@ h1{
 }
 #lang-btn{
     background-color: darkgoldenrod;
+    text-transform: uppercase;
 }
 
 footer{
@@ -137,4 +138,9 @@ footer{
     to {
         transform: rotate(360deg);
     }
+}
+
+.highlighted{
+    background-color: red;
+    font-weight: bold;
 }

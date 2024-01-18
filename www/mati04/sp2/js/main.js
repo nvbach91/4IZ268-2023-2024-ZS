@@ -4,24 +4,28 @@ const appContainer = $('#app');
 const searchContainer = $('#search');
 const leftContainer = $('#left_panel')
 moment.locale('cs');
+const loc = document.location;
 
 // Po načtení stránky odstraní spinner - knihovny se dlouho načítají
-$(appContainer).ready(() => {
-    $('.spinner').remove();
+$(document).ready(() => {
+    hideLoading();
+    const currentLang = getCurrentLanguage();
+    langButton.text(currentLang);
+    startHoliday(loc.search);
 });
 
 //Nastavení tlačítek a vstupu
-const spin = $(`<div class = "spinner"></div>`);
+const spin = $('.spinner');
 const calendarContainer = $('<div>').attr('id', 'calendar');
 const calendarTable = $('<table>').attr('id', 'calendar-table');
-const containerDiv = $('<div>').addClass('center-container');
+const containerDiv = $('<form>').addClass('center-container');
 const input = $('<input>').attr('id', 'name');
 const searchButton = $('<button>Hledat</button>').attr('id', 'search-btn');
 const langButton = $('<button>').attr('id', 'lang-btn');
 const inputDescription = $('<div class = "description">Zadejte jméno nebo datum v těchto možných formátech (DDMM, D/M, D.M)</div>')
 containerDiv.append(input, searchButton, langButton);
 appContainer.append(calendarContainer, containerDiv, inputDescription);
-const monthSelect = $("<select id = month-select ></select>");
+const monthSelect = $('<select>').attr('id', 'month-select');
 
 //zobrazování spinneru a jeho následné odstranění
 const showLoading = () => {
@@ -36,6 +40,30 @@ const showLoadingCalendar = () => {
 const hideLoading = () => {
     spin.remove();
 };
+
+//formátování datumu na DDMM kvůli API
+const parseAndFormatDate = (inputValue) => {
+    const formats = ['DDMM', 'D/M', 'D.M'];
+    const cleanedInput = inputValue.replace(/\s/g, '');
+    for (const format of formats) {
+        const parsedDate = moment(cleanedInput, format, true);
+        if (parsedDate.isValid()) {
+            return parsedDate.format('DDMM');
+        }
+    }
+    return false;
+};
+
+const startHoliday = (date) => {
+    const startIndex = date.indexOf('=') + 1;
+    const endIndex = date.length;
+    const extractedValue = date.substring(startIndex, endIndex);
+    const momentDate = parseAndFormatDate(extractedValue);
+    if(momentDate){
+        loadHoliday(momentDate);
+    }
+    
+}
 
 //nastavování select u kalendáře
 const months = [
@@ -61,12 +89,6 @@ const getCurrentLanguage = () => {
     return localStorage.getItem('lang') || 'cz';
 };
 
-//Nastavení textu v tlačítku pro jazyk při načtení aplikace
-appContainer.ready(() => {
-    const currentLang = getCurrentLanguage();
-    langButton.text(currentLang === 'sk' ? 'SK' : 'CZ');
-});
-
 //darkmode
 const options = {
     label: '🌙'
@@ -85,9 +107,8 @@ const tomorrow = moment().add(1, 'days').format('DDMM');
 const formatLeftDate = (date) => moment(date, 'DDMM').format('ll');
 
 //vypsání svátků do levého panelu
-const processDate = (date, element) => {
-    const currentLang = getCurrentLanguage();
-    const userUrl = `https://svatky.adresa.info/json?date=${date}&lang=${currentLang}`;
+const processDate = (date, element) => { // podobnost s isValidDate
+    const userUrl = forNameUrl(date);
     showLoadingLeft();
     $.getJSON(userUrl).done((data) => {
 
@@ -95,9 +116,16 @@ const processDate = (date, element) => {
         const formattedDate = formatDate(date);
         element.text(`${formattedDate} - Svátek má ${name.join(' a ')}`);
         hideLoading();
-
     })
+   
 };
+
+const forNameUrl = (dateInput) => {
+    const format = parseAndFormatDate(dateInput);
+    const lang = getCurrentLanguage();
+    const Url = `https://svatky.adresa.info/json?date=${format}&lang=${lang}`;
+    return Url;
+}
 
 //vyplnění včerejším, dnešním a zítřejším datumem a kdo má v daný den svátek
 processDate(tomorrow, tomorrowDiv);
@@ -119,7 +147,7 @@ const renderUser = (user) => {
 };
 // Vrácení jména pro datum svátku
 const renderDate = (date) => {
-    const userNames = date.map(entry => entry.name); //těžké
+    const userNames = date.map(entry => entry.name); 
     const userHtml = `<div class="search_find">${userNames.join(', ')}
     <button class="remove-button">Odstranit</button>
     </div>`;
@@ -164,11 +192,9 @@ searchButton.on('click', (e) => {
         searchContainer.empty().append('<div class="search_find">Prázdný vstup</div>');
     }
     else {
-        const searchValue = formatInput(inputValue);
-        if (isValidDate(searchValue)) {
-            const formattedDate = parseAndFormatDate(searchValue);
+        if (isValidDate(inputValue)) {
             const currentLang = getCurrentLanguage();
-            const userUrl = `https://svatky.adresa.info/json?date=${formattedDate}&lang=${currentLang}`;
+            const userUrl = forNameUrl(inputValue);
             showLoading();
             $.getJSON(userUrl).done((date) => {
                 if ($.isEmptyObject(date)) {
@@ -178,10 +204,10 @@ searchButton.on('click', (e) => {
                     renderDate(date);
                     hideLoading();
                     const stateObject = {
-                        date: searchValue,
+                        date: inputValue,
                         lang: currentLang
                     };
-                    const url = `?date=${searchValue}`;
+                    const url = `?date=${inputValue}`;
                     history.pushState(stateObject, "", url);
                 }
             }).fail(() => {
@@ -189,6 +215,7 @@ searchButton.on('click', (e) => {
                 hideLoading();
             });
         } else {
+            const searchValue = formatInput(inputValue);
             const currentLang = getCurrentLanguage();
             const userUrl = `https://svatky.adresa.info/json?name=${searchValue}&lang=${currentLang}`;
             showLoading();
@@ -228,12 +255,12 @@ const toggleLanguage = () => {
     const currentLang = getCurrentLanguage();
     const newLang = currentLang === 'sk' ? 'cz' : 'sk';
     localStorage.setItem('lang', newLang);
-    langButton.text(newLang === 'sk' ? 'SK' : 'CZ');
+    langButton.text(newLang);
 };
 
 //chyba, když uživatel zadá špatný vstup
 const handleFailure = () => {
-    searchContainer.empty().append('<div class="search_find">Nesprávný vstup</div>');
+    searchContainer.empty().append('<div class="search_find">Nenalezeno</div>');
 };
 
 // Funkce pro ověření, zda vstupní hodnota je platné datum
@@ -247,18 +274,7 @@ const isValidDate = (inputValue) => {
     }
     return false;
 };
-//formátování datumu na DDMM kvůli API
-const parseAndFormatDate = (inputValue) => {
-    const formats = ['DDMM', 'D/M', 'D.M'];
-    const cleanedInput = inputValue.replace(/\s/g, '');
-    for (const format of formats) {
-        const parsedDate = moment(cleanedInput, format, true);
 
-        if (parsedDate.isValid()) {
-            return parsedDate.format('DDMM');
-        }
-    }
-};
 
 //generování kalendáře
 const generateCalendar = (month, year) => {
@@ -277,25 +293,28 @@ const generateCalendar = (month, year) => {
     daysOfWeek.push(daysOfWeekShift);// abychom začínali pondělkem
     const thead = $('<thead>').appendTo(calendarTable);
     const row = $('<tr>').appendTo(thead);
-    daysOfWeek.forEach(day => {
-        $('<th>').text(day).appendTo(row);
-    });
+    const thElements = daysOfWeek.map(day => $('<th>').text(day));
+    row.append(...thElements);
     let currentDay = 1;
+
+    const rows = [];
     for (let i = 0; i < 6; i++) {
-        const row = $('<tr>').appendTo(calendarTable);
         const cells = [];
         for (let j = 0; j < 7; j++) {
-            const cell = $('<td>').text(currentDay);
             if (i === 0 && j < firstDay) {
-                cells.unshift($('<td>'));
-            } else if (currentDay > daysInMonth) {
-            } else {
+                cells.push($('<td>'));
+            } else if (currentDay <= daysInMonth) {
+                const cell = $('<td>').text(currentDay);
                 cells.push(cell);
                 currentDay++;
             }
         }
-        row.append(...cells);
+        const row = $('<tr>').append(...cells);//přidáváme najednou
+        rows.push(row);
     }
+
+    calendarTable.append(...rows);//přidáváme najednou
+
 };
 
 //volání kalendáře
@@ -312,6 +331,8 @@ generateCalendar(currentMonth, currentYear);//poprvé začínáme v měsíci kte
 
 //interaktivita kalendáře
 calendarTable.on('click', 'td', function () { //zde musí být function protože jinak by nefungovalo this 
+    calendarTable.find('.highlighted').removeClass('highlighted');
+    $(this).addClass('highlighted');
     const day = $(this).text();
 
     if (day !== '') {
@@ -323,7 +344,7 @@ calendarTable.on('click', 'td', function () { //zde musí být function protože
 });
 //klikání na dny v kalendáři
 const loadHoliday = (date) => {
-    const userUrl = `https://svatky.adresa.info/json?date=${date}&lang=${getCurrentLanguage()}`;
+    const userUrl = forNameUrl(date);
 
     showLoadingCalendar();
     $.getJSON(userUrl).done((holidays) => {
@@ -338,10 +359,18 @@ const loadHoliday = (date) => {
         history.pushState(stateObject, "", url);
         const existingElement = calendarContainer.find('.search_find');
         existingElement.remove();
-        const calendarClick = $(`<div class = "search_find">Dne ${formatMoment} má(mají) svátek: ${holidayNames.join(', ')}
-        <button class="remove-button">Odstranit</button>
-        </div>`);
-        calendarContainer.append(calendarClick);
+        if (holidayNames.length > 1) {
+            const calendarClick = $(`<div class = "search_find">Dne ${formatMoment} mají svátek: ${holidayNames.join(', ')}
+            <button class="remove-button">Odstranit</button>
+            </div>`);
+            calendarContainer.append(calendarClick);
+        }
+        else {
+            const calendarClick = $(`<div class = "search_find">Dne ${formatMoment} má svátek: ${holidayNames.join(', ')}
+            <button class="remove-button">Odstranit</button>
+            </div>`);
+            calendarContainer.append(calendarClick);
+        }
         calendarContainer.on('click', '.remove-button', function () { // musí být function, protože u => nefunguje this
             $(this).closest('.search_find').remove();
         });
@@ -399,12 +428,20 @@ window.onpopstate = (event) => {
 
             const existingElement = calendarContainer.find('.search_find');
             existingElement.remove();
-            const calendarClick = $(`<div class = "search_find">Dne ${moment} má(mají) svátek: ${holiday.join(', ')}
-        <button class="remove-button">Odstranit</button>
-        </div>`);
-            calendarContainer.append(calendarClick);
+            if (holiday.length > 1) {
+                const calendarClick = $(`<div class = "search_find">Dne ${moment} mají svátek: ${holiday.join(', ')}
+                <button class="remove-button">Odstranit</button>
+                </div>`);
+                calendarContainer.append(calendarClick);
+            }
+            else {
+                const calendarClick = $(`<div class = "search_find">Dne ${moment} má svátek: ${holiday.join(', ')}
+                <button class="remove-button">Odstranit</button>
+                </div>`);
+                calendarContainer.append(calendarClick);
+            }
             calendarContainer.on('click', '.remove-button', function () { // musí být function, protože u => nefunguje this
-                $(this).closest('.search_find').remove(); 
+                $(this).closest('.search_find').remove();
             });
         }
     }
