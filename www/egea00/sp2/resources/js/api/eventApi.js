@@ -1,29 +1,30 @@
-function getEvents(page) {
+const eventApiConfig = {
+    apiUrl: 'https://app.ticketmaster.com/discovery/v2/events.json?',
+    api3000Url: 'http://localhost:3000/ticketmaster/discovery/v2/events?',
+    apiKey: 'ury1bustrLLAnMLKbWaX1vkvLxWnxKfi'
+};
 
-    $('#events-panel').show();
-    $('#attraction-panel').hide();
-
-    if (page < 0) {
-        page = 0;
-        return;
-    }
-    if (page > 0) {
-        if (page > getEvents.json.page.totalPages-1) {
-            page=0;
-        }
-    }
+function fetchEventsByCity(cityName, successCallback, errorCallback) {
+    const url = `${eventApiConfig.api3000Url}apikey=${eventApiConfig.apiKey}&locale=*&city=${cityName}`;
 
     $.ajax({
-        type:"GET",
-        url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey=pLOeuGq2JL05uEGrZG7DuGWu6sh2OnMz&size=4&page="+page,
-        async:true,
-        dataType: "json",
-        success: function(json) {
-            getEvents.json = json;
-            showEvents(json);
+        method: 'GET',
+        url: url,
+        contentType: 'application/json',
+        success: function (data) {
+            if (data && data.page.totalElements === 0) {
+                errorCallback('404');
+            } else {
+                successCallback(data);
+            }
         },
-        error: function(xhr, status, err) {
-            console.log(err);
+        error: function (jqXHR, textStatus, errorThrown) {
+            if (jqXHR.status) {
+                errorCallback(jqXHR.status.toString(), textStatus);
+            } else {
+                errorCallback('network', textStatus);
+            }
         }
     });
 }
+
