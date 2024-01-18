@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="./styles/css/main.css" />
+	<link rel="icon" type="image/svg+xml" href="./styles/img/favicon.svg">
+	<title>ToDo app</title>
+</head>
+
+<body>
+	<main class="container">
+		<header class="main-header">
+			<img src="./styles/img/favicon.svg" alt="ToDo App" class="header-favicon">
+			<h2>ToDo app</h2>
+			<div id="content">
+				<h4>Welcome,<br><span id="userName"></span></h4>
+			</div>
+			<button id="signinButton" class="signin-btn">
+				<img src="./styles/img/ms-symbollockup_signin_light.png" alt="Sign in with Microsoft" />
+			</button>
+		</header>
+
+		<section>
+			<div class="input-group">
+				<input type="number" id="daysInput" class="form-control" placeholder="Enter number of days" min="1">
+				<button class="btn" type="button" id="showEventsButton">Show Events</button>
+			</div>
+
+			<div id="eventWrapper" class="d-none">
+				<p></p>
+				<ul id="events"></ul>
+			</div>
+		</section>
+
+		<section>
+
+			<h3>Task list for today</h3>
+			<div class="card">
+				<ul id="tasksList" class="list-group list-group-flush"></ul>
+			</div>
+
+			<div class="card">
+				<div class="card-header">
+					<p>Add new task</p>
+				</div>
+				<div class="card-body">
+					<form id="taskForm" class="form-group">
+						<input type="text" id="taskInput" class="form-control" placeholder="Task text" required>
+						<button type="submit" class="btn">Add</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer class="footer">
+		<p>&copy; 2024 ToDo App. All rights reserved.</p>
+	</footer>
+	<script src="https://alcdn.msauth.net/browser/2.1.0/js/msal-browser.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@microsoft/microsoft-graph-client/lib/graph-js-sdk.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="module" src="./js/index.js"></script>
+
+
+</body>
+
+</html>
