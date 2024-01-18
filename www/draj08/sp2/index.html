@@ -21,10 +21,10 @@
                 <li class="nav-logo nav-item">
                     <img src="./assets/img/logo.png" alt="">
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-home active">
                     <span>Circuit Map</span>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-fav">
                     <span>Favourites</span>
                 </li>
             </ul>
@@ -37,40 +37,68 @@
             <div class="flex-row title">
                 <h1>Main Page</h1>
             </div>
-            <div class="flex-row">
+            <div class="flex-row filters">
                 <div class="flex-row-column25">
                     <select class="select-year" name="year" placeholder="Year">
-                        <option value="" disabled selected hidden>Select Year</option>
+                        <option value="0" disabled selected hidden>Select Year</option>
                     </select>
+                    <button class="filter-clear-btn clear-year">
+                        X
+                    </button>
                 </div>
                 <div class="flex-row-column25">
-                    <select name="team">
-                        <option value="" disabled selected hidden>Select Team</option>
+                    <select class="select-team" name="team">
+                        <option value="0" disabled selected hidden>Select Team</option>
                     </select>
+                    <button class="filter-clear-btn clear-team">
+                        X
+                    </button>
                 </div>
                 <div class="flex-row-column25">
-                    <select name="driver">
-                        <option value="" disabled selected hidden>Select Driver</option>
+                    <select class="select-driver" name="driver">
+                        <option value="0" disabled selected hidden>Select Driver</option>
                     </select>
+                    <button class="filter-clear-btn clear-driver">
+                        X
+                    </button>
                 </div>
                 <div class="flex-row-column25">
 
                 </div>
             </div>
-            <div class="flex-row">
+            <div class="flex-row map-container">
                 <div id="map"></div>
+            </div>
+            <div class="flex-row button-row">
+                <div class="flex-row-column50 map-btn-container hide">
+                    <button>
+                        Get back to map
+                    </button>
+                </div>
+                <div class="flex-row-column50 favourites-btn-container hide">
+                    <button>
+                        Add to favourites
+                    </button>
+                </div>
+            </div>
+            <div class="container data-container hide">
+
             </div>
         </div>
 
     </main>
-    <footer>
-
+    <footer class="flex-row">
+        <p>Created by <a href="mailto:draj08@vse.cz">draj08</a> using the <a href="https://ergast.com/mrd/">Ergast F1
+                api</a></p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+
     <script src="./js/main.js"></script>
 </body>
 
