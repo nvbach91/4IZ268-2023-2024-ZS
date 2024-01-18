@@ -108,9 +108,20 @@ function handleSignoutClick() {
 
 // Vlastni kod aplikace
 
-// Loader 
+//Vyber elementu
+var newTaskListElement = document.getElementById('newTaskList');
+var taskListElement = document.getElementById('taskList');
+var taskListsContainerElement = document.getElementById('taskListsContainer');
+var tasksContainerElement = document.getElementById('tasksContainer');
+var taskPriorityElement = document.getElementById('taskPriority');
+var taskDueDateElement = document.getElementById('taskDueDate');
+var taskDescriptionElement = document.getElementById('taskDescription');
+var taskNameElement = document.getElementById('taskName');
+var loaderElement = document.getElementById('loader');
+var taskDetailsContainerElement = document.getElementById('taskDetailsContainer');
 
-const loader = document.getElementById('loader')
+// Loader 
+const loader = loaderElement
 loader.style.display = 'none';
 function showLoader() {
     loader.style.display = 'block';
@@ -123,7 +134,7 @@ function hideLoader() {
 function addTaskList() {
     showLoader();
     // Ziskat nazev seznamu z inputu
-    var newListName = document.getElementById('newTaskList').value;
+    var newListName = newTaskListElement.value;
 
     // Kontrola, zda byl zadán název seznamu
     if (!newListName) {
@@ -158,8 +169,8 @@ function newList(newListName) {
 
 // Funkce pro zobrazeni seznamu ukolu jako tlacitek
 function displayTaskListsAsButtons(taskLists) {
-    const taskListSelect = document.getElementById('taskList');
-    const taskListsContainer = document.getElementById('taskListsContainer');
+    const taskListSelect = taskListElement;
+    const taskListsContainer = taskListsContainerElement;
 
     taskListSelect.innerHTML = '';
     taskListsContainer.innerHTML = '';
@@ -176,7 +187,7 @@ function displayTaskListsAsButtons(taskLists) {
             const listButton = document.createElement('button');
             listButton.innerText = taskLists[i].title;
             listButton.onclick = () => loadTasks(taskLists[i].id);
-            listButton.classList.add('buttonWithPadding'); // Add the class
+            listButton.classList.add('buttonWithPadding');
             fragment.appendChild(listButton);
         }
 
@@ -186,7 +197,7 @@ function displayTaskListsAsButtons(taskLists) {
 
 // Funkce pro zobrazeni ukolu jako tlacitek
 function displayTasksAsButtons(tasks) {
-    const tasksContainer = document.getElementById('tasksContainer');
+    const tasksContainer = tasksContainerElement;
 
     tasksContainer.innerHTML = '';
 
@@ -197,14 +208,13 @@ function displayTasksAsButtons(tasks) {
             const taskButton = document.createElement('button');
             taskButton.innerText = tasks[i].title;
             taskButton.onclick = () => loadTaskDetails(tasks[i].id);
-            taskButton.classList.add('buttonWithPadding'); // Add the class
+            taskButton.classList.add('buttonWithPadding');
             fragment.appendChild(taskButton);
         }
 
         tasksContainer.appendChild(fragment);
     }
 }
-
 
 // Funkce nacitajici seznamy ukolu
 async function loadTaskLists() {
@@ -236,11 +246,11 @@ async function loadTasks(taskListId) {
 async function loadTaskDetails(taskId) {
     try {
         const response = await gapi.client.tasks.tasks.get({
-            "tasklist": document.getElementById('taskList').value,
+            "tasklist": taskListElement.value,
             "task": taskId
         });
 
-        const taskDetailsContainer = document.getElementById('taskDetailsContainer');
+        const taskDetailsContainer = taskDetailsContainerElement;
         taskDetailsContainer.innerHTML = '';
 
         const taskDetails = response.result;
@@ -265,11 +275,11 @@ async function loadTaskDetails(taskId) {
 async function deleteTask(taskId) {
     try {
         const response = await gapi.client.tasks.tasks.delete({
-            "tasklist": document.getElementById('taskList').value,
+            "tasklist": taskListElement.value,
             "task": taskId
         });
 
-        loadTasks(document.getElementById('taskList').value);
+        loadTasks(taskListElement.value);
     } catch (err) {
         alert("Error deleting Task: " + err.body);
         console.error("Error deleting Task", err);
@@ -279,9 +289,7 @@ async function deleteTask(taskId) {
 // Funkce pro odstraneni seznamu ukolu
 function deleteTaskList() {
 
-    var taskListSelect = document.getElementById('taskList');
-
-    var selectedListId = taskListSelect.value;
+    var selectedListId = taskListElement.value;
 
     // Kontrola, zda byl vybran seznam ukolu
     if (!selectedListId) {
@@ -319,7 +327,7 @@ function formatDateToRFC3339(dateString) {
 
 var cityInfo = '';
 
-// Funkce pro získání informací o městě
+// Funkce pro ziskani informaci o meste
 function getCityInfo() {
     return new Promise(function(resolve, reject) {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -331,18 +339,18 @@ function getCityInfo() {
       
         fetch(apiUrl)
           .then(function(response) {
-            // Zkontrolovat, zda je odpověď v pořádku
+            // Zkontrolovat, zda je odpoved v poradku
             if (response.ok) {
-              // Převést odpověď na JSON
+              // Prevedeni odpovedi na JSON
               return response.json();
             } else {
-              // Zobrazit chybovou zprávu, pokud se vyskytne problém
+              // Zobrazeni chybove hlasky
               console.log("OpenWeather API failed: " + response.status);
               reject("OpenWeather API failed: " + response.status);
             }
           })
           .then(function(data) {
-            // Přiřadit název města, zemi a teplotu do proměnné taskDescriptionWithPriority
+            // Prirazeni nazvu mesta a zeme
             resolve(data[0].name + ", " + data[0].country);
           });
       });
@@ -352,13 +360,11 @@ function getCityInfo() {
    // Funkce pro pridani ukolu
   function addTask() {
       // Ziskani hodnot
-      var taskName = document.getElementById('taskName').value;
-      var taskDescription = document.getElementById('taskDescription').value;
-      var taskDueDate = document.getElementById('taskDueDate').value;
-      var taskPrioritySelect = document.getElementById('taskPriority');
-      var taskPriority = taskPrioritySelect.options[taskPrioritySelect.selectedIndex].value;
-      var taskListSelect = document.getElementById('taskList');
-      var selectedListId = taskListSelect.value;
+      var taskName = taskNameElement.value;
+      var taskDescription = taskDescriptionElement.value;
+      var taskDueDate = taskDueDateElement.value;
+      var taskPriority = taskPriorityElement.options[taskPriorityElement.selectedIndex].value;
+      var selectedListId = taskListElement.value;
       var taskDueDateFormatted = formatDateToRFC3339(taskDueDate);
   
       // Kontrola, zda bylo zadano jmeno ukolu
