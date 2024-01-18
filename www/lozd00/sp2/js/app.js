@@ -139,7 +139,7 @@ function addTaskList() {
     // Kontrola, zda byl zadán název seznamu
     if (!newListName) {
         console.error("List name is not entered.");
-        alert("List name is not entered.");
+        Swal.fire("List name is not entered.");
         hideLoader();
         return;
     }
@@ -147,7 +147,6 @@ function addTaskList() {
     // Volani funkce pro pridani seznamu ukolu
 
     newList(newListName);
-    hideLoader();
 }
 
 function newList(newListName) {
@@ -159,16 +158,20 @@ function newList(newListName) {
         function(response) {
             // Zpracovani vysledku
             console.log("New List has been created", response);
+            loadTaskLists();
+            hideLoader();
         },
         function(err) {
             console.error("List creation error", err);
-            alert("List creation error");
+            Swal.fire("List creation error");
+            hideLoader();
         }
     );
 }
 
 // Funkce pro zobrazeni seznamu ukolu jako tlacitek
 function displayTaskListsAsButtons(taskLists) {
+    showLoader();
     const taskListSelect = taskListElement;
     const taskListsContainer = taskListsContainerElement;
 
@@ -193,10 +196,12 @@ function displayTaskListsAsButtons(taskLists) {
 
         taskListsContainer.appendChild(fragment);
     }
+    hideLoader();
 }
 
 // Funkce pro zobrazeni ukolu jako tlacitek
 function displayTasksAsButtons(tasks) {
+    showLoader();
     const tasksContainer = tasksContainerElement;
 
     tasksContainer.innerHTML = '';
@@ -214,22 +219,26 @@ function displayTasksAsButtons(tasks) {
 
         tasksContainer.appendChild(fragment);
     }
+    hideLoader();
 }
 
 // Funkce nacitajici seznamy ukolu
 async function loadTaskLists() {
+    showLoader();
     try {
         const response = await gapi.client.tasks.tasklists.list({});
         const taskLists = response.result.items;
         displayTaskListsAsButtons(taskLists);
     } catch (err) {
         console.error("Error loading task lists", err);
-        alert("Error loading task lists");
+        Swal.fire("Error loading task lists");
     }
+    hideLoader();
 }
 
 // Funkce nacitajici jednotlive ukoly
 async function loadTasks(taskListId) {
+    showLoader();
     try {
         const response = await gapi.client.tasks.tasks.list({
             "tasklist": taskListId
@@ -238,12 +247,14 @@ async function loadTasks(taskListId) {
         displayTasksAsButtons(tasks);
     } catch (err) {
         console.error("Error loading tasks", err);
-        alert("Error loading tasks");
+        Swal.fire("Error loading tasks");
     }
+    hideLoader();
 }
 
 // Funkce nacitajici detaily jednotlivych ukolu
 async function loadTaskDetails(taskId) {
+    showLoader();
     try {
         const response = await gapi.client.tasks.tasks.get({
             "tasklist": taskListElement.value,
@@ -267,22 +278,24 @@ async function loadTaskDetails(taskId) {
         taskDetailsContainer.appendChild(dueElement);
     } catch (err) {
         console.error("Error loading task details", err);
-        alert("Error loading task details");
+        Swal.fire("Error loading task details");
     }
+    hideLoader();
 }
 
 // Funkce pro odstraneni ukolu
 async function deleteTask(taskId) {
+    showLoader();
     try {
         const response = await gapi.client.tasks.tasks.delete({
             "tasklist": taskListElement.value,
             "task": taskId
         });
-
-        loadTasks(taskListElement.value);
+        hideLoader();
     } catch (err) {
-        alert("Error deleting Task: " + err.body);
+        Swal.fire("Error deleting Task: " + err.body);
         console.error("Error deleting Task", err);
+        hideLoader();
     }
 }
 
@@ -293,7 +306,7 @@ function deleteTaskList() {
 
     // Kontrola, zda byl vybran seznam ukolu
     if (!selectedListId) {
-        alert("No task list selected for deletion.");
+        Swal.fire("No task list selected for deletion.");
         return;
     }
 
@@ -302,18 +315,21 @@ function deleteTaskList() {
 
     // Pokud uživatel potvrdi, smaz seznam ukolu
     if (userConfirmation) {
+        showLoader();
         gapi.client.tasks.tasklists.delete({
             "tasklist": selectedListId
         })
         .then(
             function(response) {
-                alert("TaskList successfully deleted.");
+                hideLoader();
+                Swal.fire("TaskList successfully deleted.");
                 console.log("TaskList successfully deleted", response);
 
                 loadTaskLists();
             },
             function(err) {
-                alert("Error deleting TaskList: " + err.body);
+                hideLoader();
+                Swal.fire("Error deleting TaskList: " + err.body);
                 console.error("Error deleting TaskList", err);
             }
         );
@@ -358,63 +374,53 @@ function getCityInfo() {
   }
   
    // Funkce pro pridani ukolu
-  function addTask() {
-      // Ziskani hodnot
-      var taskName = taskNameElement.value;
-      var taskDescription = taskDescriptionElement.value;
-      var taskDueDate = taskDueDateElement.value;
-      var taskPriority = taskPriorityElement.options[taskPriorityElement.selectedIndex].value;
-      var selectedListId = taskListElement.value;
-      var taskDueDateFormatted = formatDateToRFC3339(taskDueDate);
-  
-      // Kontrola, zda bylo zadano jmeno ukolu
-      if (!taskName) {
-          alert("Task name cannot be empty.");
-          return;
-      }
-  
-      // Kontrola, zda byl vybrany seznam ukolu
-      if (!selectedListId) {
-          alert("No task list selected.");
-          return;
-      }
-  
-      getCityInfo().then(function(cityInfo) {
-        // Volani API - kontrola duplikatu
-        gapi.client.tasks.tasks.list({
-            "tasklist": selectedListId
-        })
-        .then(function(response) {
-            var existingTasks = response.result.items;
-  
-            for (var i = 0; i < existingTasks.length; i++) {
-                if (existingTasks[i].title === taskName) {
-                    alert("Task with the same name already exists in the selected list.");
-                    return;
-                }
+   function addTask() {
+    showLoader();
+    // Ziskani hodnot
+    var taskName = taskNameElement.value;
+    var taskDescription = taskDescriptionElement.value;
+    var taskDueDate = taskDueDateElement.value;
+    var taskPriority = taskPriorityElement.options[taskPriorityElement.selectedIndex].value;
+    var selectedListId = taskListElement.value;
+    var taskDueDateFormatted = taskDueDate ? formatDateToRFC3339(taskDueDate) : null;
+
+    // Kontrola, zda bylo zadano jmeno ukolu
+    if (!taskName) {
+        hideLoader();
+        Swal.fire("Task name cannot be empty.");
+        return;
+    }
+
+    // Kontrola, zda byl vybrany seznam ukolu
+    if (!selectedListId) {
+        hideLoader();
+        Swal.fire("No task list selected.");
+        return;
+    }
+
+    getCityInfo().then(function(cityInfo) {
+        var taskDescriptionWithPriority = "Priority: " + taskPriority + "\n\n" + taskDescription + "\n\n" + cityInfo;
+
+        // Volani API pro pridani ukolu
+        gapi.client.tasks.tasks.insert({
+            "tasklist": selectedListId,
+            "resource": {
+                "title": taskName,
+                "notes": taskDescriptionWithPriority,
+                "due": taskDueDateFormatted
             }
-  
-            var taskDescriptionWithPriority = "Priority: " + taskPriority + "\n\n" + taskDescription + "\n\n" + cityInfo;
-  
-            // Volani API pro pridani ukolu
-            return gapi.client.tasks.tasks.insert({
-                "tasklist": selectedListId,
-                "resource": {
-                    "title": taskName,
-                    "notes": taskDescriptionWithPriority,
-                    "due": taskDueDateFormatted
-                }
-            });
         })
         .then(
             function(response) {
-                alert("Task successfully added.");
+                hideLoader();
+                Swal.fire("Task successfully added.");
                 console.log("Task successfully added", response);
             },
             function(err) {
-                alert("Error adding Task: " + err.body);
+                hideLoader();
+                Swal.fire("Error adding Task: " + err.body);
                 console.error("Error adding Task", err);
             }
         );
-      });
-  }
+    });
+}
