@@ -1,0 +1,1008 @@
+/* ====================== INFO ============================ 
+Je tu pouze jedno css pro ušetření místa. Jednotlivé modifikace css najdete pod názvy stránek
+============================================================= */
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.top-panel {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    text-indent: 40px;
+    padding-right: 50px;
+
+}
+
+.top-panel span {
+    background-image: url(../images/safe.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding: 50px;
+    
+}
+
+.top-panel nav {
+    padding: 30px;
+    font-weight: 100px;
+    
+}
+
+.top-panel a {
+    text-decoration: none;
+    color: aliceblue;
+    display: inline-block;
+  
+}
+
+#footer {
+    text-decoration: none;
+    color: rgb(194, 155, 49);
+    font-weight: bold;
+}
+
+.top-panel a:hover {
+    color: rgb(194, 155, 49);
+
+}
+
+h1 {
+    color: rgb(194, 155, 49);
+    font-size: 70px;
+    padding-top: 50px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+
+form {
+    border-radius: 5px;
+    background-color: rgba(56, 55, 51, 0.705);
+    padding: 20px;
+    margin: 10px 20px;
+}
+
+footer {
+    margin: 200px 0 5px 0;
+    text-align: center;
+    color: white;
+}
+
+
+
+/* ======================= HOMEPAGE ======================== */
+
+.homepage-body {
+    background-image: url(https://eso.vse.cz/~curm01/sp1/SAFE350.jpg);
+    background-repeat: no-repeat;
+}
+
+.homepage-main {
+    padding-left: 50px;
+}
+
+.homepage-maindiv {
+    font-size: 100px;
+    font-weight: bold;
+    padding-top: 200px;
+    color: rgb(194, 155, 49);
+}
+
+.homepage-maindiv p {
+    margin: 0;
+}
+
+.homepage-button-1 {
+    background-color: rgba(0, 0, 0, 0.95);
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 30px;
+    color: rgb(194, 155, 49);
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.homepage-maindiv a {
+    text-decoration: none;
+}
+
+.homepage-button-2 {
+    background-color: rgba(255, 255, 255, 0.61);
+    color: black;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.homepage-button-2 a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.homepage-button-1:hover {
+    cursor: pointer;
+    box-shadow: 0 0px 16px 0 rgba(194, 155, 49, 0.596);
+}
+
+.homepage-button-2:hover {
+    cursor: pointer;
+    box-shadow: 0 0px 16px 0 rgba(194, 155, 49, 0.596);
+}
+
+/* =============================== ABOUT ============================== */
+.aboutpage-body {
+    background-color: rgb(31, 31, 28);
+    color: white;
+}
+
+.aboutpage-main {
+    margin: 20px auto;
+}
+
+.aboutpage-maindiv-1 {
+    font-size: 20px;
+    display: flex;
+}
+
+.aboutpage-maindiv-1 img {
+    width: 27%;
+    margin: 150px 80px;
+}
+
+.aboutpage-maindiv-1-1 {
+    padding: 20px;
+    border: 1px solid transparent;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.aboutpage-maindiv-1-1 a {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(66, 175, 33);
+}
+
+
+.aboutpage-buttons {
+    padding-left: 20px;
+    margin: -50px auto;
+}
+
+.aboutpage-buttons a {
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 100px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.aboutpage-button-1 {
+    background-color: rgba(255, 255, 255, 0.61);
+}
+
+.aboutpage-button-1 a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.aboutpage-button-2 {
+    background-color: rgba(82, 199, 28, 0.596)
+}
+
+.aboutpage-button-2 a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.aboutpage-button-3 {
+    background-color: rgba(255, 255, 255, 0.61);
+}
+
+.aboutpage-button-3 a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.aboutpage-button-1:hover {
+    cursor: pointer;
+    box-shadow: 0 0px 16px 0 rgba(194, 155, 49, 0.596);
+}
+
+.aboutpage-button-2:hover {
+    cursor: pointer;
+    box-shadow: 0 0px 16px 0 rgba(194, 155, 49, 0.596);
+}
+
+.aboutpage-button-3:hover {
+    cursor: pointer;
+    box-shadow: 0 0px 16px 0 rgba(194, 155, 49, 0.596);
+}
+
+/* --------------------- WHY ATTEND -------------------------*/
+.whyattendpage-main {
+    margin: 50px 0;
+}
+
+.whyattendpage-maindiv-1-text {
+
+    margin-top: 0 20px;
+    font-size: 20px;
+}
+
+.whyattendpage-maindiv-1-text p {
+    padding: 50px 20px;
+}
+
+
+.whyattendpage-maindiv-1-text a {
+    color: rgb(194, 155, 49);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.whyattendpage-maindiv-gallery {
+    text-align: center;
+
+}
+
+.whyattendpage-maindiv-gallery img {
+    width: 22%;
+    height: auto;
+    padding-right: 30px;
+}
+
+
+/* ----------------------- SPONSORS --------------------------*/
+.sponsorspage-body {
+    background-color: rgb(31, 31, 28);
+    color: white;
+}
+
+
+.sponsorspage-main-div-1 {
+    font-size: 20px;
+}
+
+.sponsorspage-main-div-2 {
+    text-align: center;
+}
+
+
+
+/* ---------------------- PAST EVENTS ----------------------- */
+.pasteventspage-body {
+    background-color: rgb(31, 31, 28);
+    color: white;
+}
+
+.pasteventspage-main {
+    margin: 50px auto;
+}
+
+
+.pasteventspage-maindiv {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pasteventspage-maindiv-text-1 {
+    padding: 20px;
+    margin-top: -80px;
+    font-size: 20px;
+}
+
+.pasteventspage-maindiv-text-2 {
+    padding: 20px;
+    margin-top: 80px;
+    font-size: 20px;
+}
+
+.pasteventspage-main h2 {
+    font-size: 50px;
+    margin: 10px auto;
+}
+
+.pasteventspage-maindiv-gallery {
+    text-align: center;
+}
+
+.pasteventspage-maindiv-gallery img {
+    width: 22%;
+    height: auto;
+    padding-right: 30px;
+}
+
+/* ============================ PROGRAMME ============================ */
+.programmepage-body {
+    background-color: rgb(31, 31, 28);
+    color: white;
+}
+
+.programmepage-main {
+    padding-right: 50px;
+}
+
+.programmepage-main-div {
+    display: flex;
+    width: 100%;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin: 0 0 50px 20px;
+}
+
+.programmepage-text {
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+}
+
+.programmepage-text p {
+    padding: 0 20px;
+    margin: 0;
+}
+
+.programmepage-img {
+    padding-top: 200px;
+}
+
+.programmepage-img img {
+    margin: 0 20px;
+    width: 200px;
+    height: auto;
+}
+
+.programmepage-main-div a {
+    border: none;
+    padding: 15px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 50px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.61);
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.programmepage-main-div #programmepage-href {
+    font-size: 20px;
+    color: rgb(194, 155, 49);
+    background-color: transparent;
+    padding: 0;
+}
+
+.programmepage-button-1:hover {
+    cursor: pointer;
+    box-shadow: 0 0px 16px 0 rgba(194, 155, 49, 0.596);
+}
+
+.programmepage-button-2:hover {
+    cursor: pointer;
+    box-shadow: 0 0px 16px 0 rgba(194, 155, 49, 0.596);
+}
+
+/* --------------------- SCHEDULE ----------------- */
+.schedulepage-body {
+    background-color: rgb(31, 31, 28);
+    color: white;
+}
+
+.schedulepage-timeline {
+    margin: 20px auto;
+    padding: 20px;
+}
+
+
+.schedulepage-outer {
+    border-left: 2px solid rgb(194, 155, 49);
+}
+
+
+.schedulepage-card {
+    position: relative;
+    margin: 0 0 20px 20px;
+    padding: 10px;
+    background: #333;
+    border-radius: 8px;
+    max-width: 1000px;
+}
+
+.schedulepage-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.schedulepage-title {
+    color: rgb(194, 155, 49);
+    position: relative;
+}
+
+.schedulepage-title::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 999px;
+    left: -39px;
+    border: 3px solid rgb(194, 155, 49);
+}
+
+/* ------------------------- GUESTS ------------------- */
+.guestspage-body {
+    background-color: rgb(31, 31, 28);
+    color: white;
+}
+
+.guestspage-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    gap: 5px;
+}
+
+.guestspage-item {
+    padding: 20px;
+    border: 1px solid transparent;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.guestspage-item p {
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.guestspage-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* ===================== TICKETS ======================= */
+.ticketspage-body {
+    background-color: rgb(31, 31, 28);
+    color: white;
+}
+
+.ticketspage-main-div p {
+    padding-left: 20px;
+    font-size: 20px;
+    width: 50%;
+}
+
+form {
+    width: 50%;
+}
+
+.ticketspage-main-div-1 {
+    background-color: rgba(92, 91, 86, 0.438);
+    height: 100px;
+    display: flex;
+    margin: 5px 0;
+    padding: 20px;
+    justify-content: space-between;
+    border-radius: 5px;
+
+}
+
+.ticketspage-main-div-customer {
+    color: rgb(194, 155, 49);
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.ticketspage-main-div-tickets {
+    font-size: 20px;
+    padding: 15px 0;
+}
+
+.ticketspage-main-div-price {
+    font-size: 20px;
+    padding: 15px 0;
+}
+
+/* ================= LOCATION ===================== */
+.locationpage-body {
+    background-color: rgb(31, 31, 28);
+    color: white;
+}
+
+.locationpage-main-div p,
+iframe {
+    padding-left: 20px;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.locationpage-buttons {
+    padding-left: 20px;
+    margin: 10px auto;
+}
+
+.locationpage-buttons a {
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 50px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.61);
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+
+.locationpage-button-1:hover {
+    cursor: pointer;
+    box-shadow: 0 0px 16px 0 rgba(194, 155, 49, 0.596);
+}
+
+.locationpage-button-2:hover {
+    cursor: pointer;
+    box-shadow: 0 0px 16px 0 rgba(194, 155, 49, 0.596);
+}
+
+
+/* ---------------------- VENUE -----------------------*/
+.venuepage-body {
+    background-color: rgb(31, 31, 28);
+    color: white;
+}
+
+.venuepage-main p {
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.venuepage-main-div-gallery {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.venuepage-photo {
+    padding: 5px;
+}
+
+.accommodationpage-main p {
+    font-size: 20px;
+    padding: 20px;
+}
+
+/* --------------------- ACCOMMODATION ----------------- */
+.accommodationpage-body {
+    background-color: rgb(31, 31, 28);
+    color: white;
+}
+
+.accommodationpage-main-div dt,
+dd {
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.accommodationpage-main-div dl {
+    background-color: #333333c0;
+    border-radius: 10px;
+    max-width: 600px;
+    padding: 20px 0;
+    margin-left: 20px;
+}
+
+.accommodationpage-main-div dt {
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.accommodationpage-main-div a {
+    color: rgb(194, 155, 49);
+}
+
+/* ===================== CONTACTS ===================== */
+.contactspage-body {
+    background-color: rgb(31, 31, 28);
+    color: white;
+}
+
+.contactspage-main-div p {
+    padding-left: 20px;
+    margin: 0 0 5px 0;
+    font-size: 20px;
+}
+
+.contactspage-main-div-text {
+    margin: 0 0 50px 0;
+}
+
+.contactspage-form {
+    width: 50%;
+}
+
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: bisque;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: rgb(194, 155, 49);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type=submit]:hover {
+    color: white;
+}
+
+
+/* |||||||||||||||||| RESPONSIVITY ||||||||||||||||||| */
+
+@media screen and (min-width: 800px) and (max-width: 919px) {
+    .top-panel {
+        font-size: 17px;
+        text-indent: 10px;
+        padding-right: 30px;
+    }
+
+    h1 {
+        font-size: 60px;
+        padding: 0;
+    }
+
+    form {
+        margin: 20px 0;
+        font-size: 15px;
+    }
+
+    /*----------HOMEPAGE ------------*/
+    .homepage-maindiv {
+        font-size: 50px;
+        padding-top: 100px;
+    }
+
+    .homepage-button-1 {
+        padding: 7.5px 16px;
+        font-size: 20px;
+    }
+
+    .homepage-button-2 {
+        padding: 7.5px 16px;
+        font-size: 20px;
+    }
+
+    /* ---------- ABOUT ------------ */
+    .aboutpage-main {
+        font-size: 15px;
+        padding-top: 0px;
+        display: inline-block;
+        flex-wrap: wrap;
+    }
+
+    .aboutpage-maindiv-1 {
+        flex-wrap: wrap;
+    }
+
+    .aboutpage-maindiv-1-1 p {
+        padding: 5px 0;
+        font-size: 15px;
+        text-align: left;
+    }
+
+    .aboutpage-maindiv-1 img {
+        width: 80%;
+        margin: 0 5px 70px 20px;
+    }
+
+    .aboutpage-buttons a {
+        padding: 10px 20px;
+        font-size: 15px;
+        margin: 5px;
+    }
+
+    /* --------- PROGRAMME ---------- */
+    .programmepage-main {
+        font-size: 15px;
+        padding-top: 0px;
+        display: inline-block;
+    }
+
+    .programmepage-main-div {
+        flex-wrap: wrap;
+    }
+
+    .programmepage-text {
+        width: 350px;
+    }
+
+    .programmepage-text p {
+        padding: 5px 0;
+        font-size: 15px;
+        text-align: left;
+    }
+
+    .programmepage-main-div a {
+        padding: 10px 20px;
+        font-size: 15px;
+        margin: 5px;
+    }
+
+    .programmepage-img {
+        margin-top: 100px;
+    }
+
+    /* --------- TICKETS --------- */
+    .ticketspage-main-div-1 {
+        flex-wrap: wrap;
+    }
+
+    .ticketspage-main-div {
+        padding-left: 20px;
+
+    }
+
+    .ticketspage-main-div p {
+        padding: 0;
+        font-size: 15px;
+    }
+
+    .ticketspage-main-div-customer {
+        font-size: 20px;
+        padding-top: 15px;
+    }
+
+    .ticketspage-main-div-tickets,
+    .ticketspage-main-div-price {
+        font-size: 13px;
+        padding-top: 15;
+    }
+
+    /* --------- LOCATION --------- */
+    .locationpage-main-div {
+        padding-left: 20px;
+    }
+
+    .locationpage-main-div p {
+        padding: 0;
+        font-size: 15px;
+    }
+
+    .locationpage-main-div iframe {
+        padding: 0;
+        width: 100%;
+        height: 300px;
+    }
+
+    .locationpage-buttons {
+        padding: 0;
+    }
+
+    .locationpage-buttons a {
+        padding: 10px 20px;
+        font-size: 15px;
+        margin: 5px;
+    }
+
+    /* -------------- CONTACTS ------------ */
+    .contactspage-main-div-text {
+        margin-left: 20px;
+    }
+
+    .contactspage-main-div-text p {
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 799px) {
+    .top-panel {
+        display: block;
+        font-size: 17px;
+        text-indent: 40px;
+        padding-right: 50px;
+        margin: 20px 0;
+    }
+
+    .top-panel nav {
+        margin: 30px 0;
+        padding: 30px 0;
+    }
+
+    .top-panel a {
+        text-indent: 0;
+    }
+
+    h1 {
+        font-size: 40px;
+        padding: 0;
+    }
+
+    form {
+        margin: 10px 0;
+        font-size: 15px;
+    }
+
+    footer {
+        font-size: 10px;
+    }
+
+    /*----------HOMEPAGE ------------*/
+    .homepage-maindiv {
+        font-size: 20px;
+        padding-top: 50px;
+    }
+
+    .homepage-maindiv p {
+        padding: 5px 0;
+    }
+
+    .homepage-button-1 {
+        padding: 5px 10px;
+        font-size: 15px;
+    }
+
+    .homepage-button-2 {
+        padding: 5px 10px;
+        font-size: 15px;
+    }
+
+    /* ---------- ABOUT ------------ */
+    .aboutpage-main {
+        font-size: 10px;
+        padding-top: 0px;
+        display: inline-block;
+        flex-wrap: wrap;
+    }
+
+    .aboutpage-maindiv-1 {
+        flex-wrap: wrap;
+    }
+
+    .aboutpage-maindiv-1-1 p {
+        padding: 5px 0;
+        font-size: 15px;
+        text-align: left;
+    }
+
+    .aboutpage-maindiv-1 img {
+        width: 80%;
+        margin: 0 5px 70px 20px;
+    }
+
+    .aboutpage-buttons a {
+        padding: 5px 10px;
+        font-size: 10px;
+        margin: 5px;
+    }
+
+    /* --------- PROGRAMME ---------- */
+    .programmepage-main {
+        font-size: 10px;
+        padding-top: 0px;
+        display: inline-block;
+    }
+
+    .programmepage-main-div {
+        flex-wrap: wrap;
+    }
+
+    .programmepage-text {
+        width: 250px;
+    }
+
+    .programmepage-text p {
+        padding: 5px 0;
+        font-size: 15px;
+        text-align: left;
+    }
+
+    .programmepage-main-div a {
+        padding: 5px 10px;
+        font-size: 10px;
+        margin: 5px;
+    }
+
+    /* --------- TICKETS --------- */
+    .ticketspage-main-div-1 {
+        flex-wrap: wrap;
+    }
+
+    .ticketspage-main-div {
+        padding-left: 20px;
+
+    }
+
+    .ticketspage-main-div p {
+        padding: 0;
+        font-size: 15px;
+    }
+
+    .ticketspage-main-div-customer {
+        font-size: 15px;
+        padding: 0;
+    }
+
+    .ticketspage-main-div-tickets,
+    .ticketspage-main-div-price {
+        font-size: 13px;
+        padding: 0;
+    }
+
+    /* --------- LOCATION --------- */
+    .locationpage-main-div {
+        padding-left: 20px;
+    }
+
+    .locationpage-main-div p {
+        padding: 0;
+        font-size: 15px;
+    }
+
+    .locationpage-main-div iframe {
+        padding: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .locationpage-buttons {
+        padding: 0;
+    }
+
+    .locationpage-buttons a {
+        padding: 5px 10px;
+        font-size: 10px;
+        margin: 5px;
+    }
+}
+
+@media print {
+    
+    body, main {
+        background-color: none;
+        color: black;
+        font-size: 10px;
+    }
+    h1 {
+        font-size: 30px;
+    }
+
+    nav,
+    footer {
+        display: none;
+    }
+    @page {
+        size: landscape;
+    }
+}
