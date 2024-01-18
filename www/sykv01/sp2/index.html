@@ -1,38 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Open+Sans:wght@600&family=Questrial&display=swap" rel="stylesheet">
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Spotify App</title>
+    <title>Spotify App | Your Top 3 Songs</title>
 </head>
 <body>
-    <header>
-        <h1>YOUR TOP 3 SONGS ON SPOTIFY</h1>
-    </header>    
-    <main>
-        <div class="container">
-            <button id="authenticateButton">LOG IN WITH SPOTIFY</button>
-        </div>
-        <div class="color-picker">
-            <p>PICK A COLOR:</p>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-        <div class="share-button">
-            <button id="shareButton">SHARE</button>
-        </div>
-    </main>
+    <div id="canvasContainer">
+        <header>
+            <h1>YOUR TOP 3 SONGS ON SPOTIFY</h1>
+        </header>    
+        
+        <main>
+            <div class="container">
+                <button id="authenticateButton">LOG IN WITH SPOTIFY</button>
+                
+                <div id="resultsContainer" class="results-container">
+                    <!-- results -->
+                </div>
+            </div>
+            
+            <div class="color-picker">
+                <p>PICK A COLOR:</p>
+                <span class="dot" style="background-color:#ff9e99be"></span>
+                <span class="dot" style="background-color:#f7d9c4"></span>
+                <span class="dot" style="background-color:#FAEDCB"></span>
+                <span class="dot" style="background-color:#C9E4DE"></span>
+                <span class="dot" style="background-color:#C6DEF1"></span>
+                <span class="dot" style="background-color:#DBCDF0"></span>
+                <span class="dot" style="background-color:#FFFFFF"></span>
+            </div>
+           
+            <div class="share-button">
+                <button id="shareButton">SHARE</button>
+            </div>
+        </main>
+    </div>
     
+    <div class="share-container">
+        <div class="regenerate-button">
+            <button id="regenerateButton">REGENERATE</button>
+        </div>
+
+        <div class="download-button">
+            <button id="downloadButton">DOWNLOAD</button>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <script src="./js/main.js"></script>
+    
 </body>
 </html>
