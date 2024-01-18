@@ -36,6 +36,7 @@ button{
     background-color: rgb(167, 232, 149);
     border: none;
     font-size: medium;
+    cursor: pointer;
 }
 select{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

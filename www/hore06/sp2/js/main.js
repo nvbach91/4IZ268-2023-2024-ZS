@@ -1,29 +1,24 @@
-
 const appContainer = $('#app');
 
 
 const weightInLabel = $('<label>Weight in kg:</label>');
-const weightInput = $('<input type="number" class="grid-item"  name="weight" min="40" max="130" step="1" placeholder="kg" />');
-$(weightInput).keypress(function (evt) {
-	evt.preventDefault();
-});
+const weightInput = $('<input type="number" class="grid-item"  name="weight" min="40" max="130" step="1" placeholder="kg" inputmode="numeric"/>');
+
+
 const heightInLabel = $('<label>Height in cm:</label>');
-const heightInput = $('<input type="number" class="grid-item"  name="height" min="150" max="200" step="1" placeholder="cm"  />');
-$(heightInput).keypress(function (evt) {
-	evt.preventDefault();
-});
+const heightInput = $('<input type="number" class="grid-item"  name="height" min="150" max="200" step="1" placeholder="cm" inputmode="numeric"  />');
+
+
 const genderDecs = $('<p >Gender: </p><br>')
 const genderInputMale = $('<label>Male</label><input type="radio" name="radio" id="radioMale" value="Male" placeholder="checked" />')
 const genderInputFemale = $('<label>Female</label><input type="radio" name="radio" id="radioFemale" value="Female" placeholder="checked"/>')
 const ageInLabel = $('<label>Age in years:</label>');
-const ageInput = $('<input type="number" class="grid-item"  name="age" min="0" max="80" step="1" placeholder="years"  />');
-$(ageInput).keypress(function (evt) {
-	evt.preventDefault();
-});
+const ageInput = $('<input type="number" class="grid-item"  name="age" min="0" max="80" step="1" placeholder="years"  inputmode="numeric" />');
+
 const spin = $(`<div class = "spinner"></div>`);
 
 const activitySelect = $(`<select id = 'levelSelect' title='Select your actvity level:' ></select>`);
-const actvityInLabel = $('<label>Please select your activity level:</label>')
+var actvityInLabel = $('<label>Please select your activity level:</label>')
 
 
 var levels = ["Sedentary: little or no exercise",
@@ -35,8 +30,6 @@ var levels = ["Sedentary: little or no exercise",
 const levelOptions = levels.map((level) => {
 	return `<option>${level}</option>`;
 });
-
-
 activitySelect.append(levelOptions.join(''));
 
 
@@ -44,13 +37,13 @@ activitySelect.append(levelOptions.join(''));
 
 
 
-const AllDesc = $('<p><strong>If you changed any information in the form, please click on the Calculate All button, in order to get accurate results.</strong></p>');
+const allDesc = $('<p><strong>If you changed any information in the form, please click on the Calculate All button, in order to get accurate results.</strong></p>');
 
-const AllSubmitButton = $('<button type="button" title="Calculate all fitness values.">');
-AllSubmitButton.text('Calculate all');
+const allSubmitButton = $('<button type="submit" title="Calculate all fitness values.">');
+allSubmitButton.text('Calculate all');
 
 const BMIsubmitButton = $('<button type="button" title="Calculate BMI.">');
-BMIsubmitButton.text('Calculate BMI');
+BMIsubmitButton.text("Calculate BMI");
 const BMIOutput = $('<p id=BMIOutput>');
 
 const IWsubmitButton = $('<button type="button" title="Calculate ideal weight.">');
@@ -61,12 +54,11 @@ calorieSubmitButton.text('Calculate daily recomended calorie intake');
 
 
 const grid = $('<form class="grid-container">');
-const formLabel = $('<label><strong>Before submitting, make sure all inputs fields are filled.</strong></label>')
+const formLabel = $('<label><strong>Before submitting, make sure all inputs fields are filled. Use integers only.</strong></label>')
 
 
 
-
-grid.append(weightInLabel, weightInput, heightInLabel, heightInput, ageInLabel, ageInput, genderDecs, genderInputMale, genderInputFemale, actvityInLabel, activitySelect)
+grid.append(weightInLabel, weightInput, heightInLabel, heightInput, ageInLabel, ageInput, genderDecs, genderInputMale, genderInputFemale, actvityInLabel, activitySelect, BMIsubmitButton, calorieSubmitButton, IWsubmitButton, calorieSubmitButton, allSubmitButton)
 
 const leftContainer = $('<div class="leftPart">');
 const rightContainer = $('<div class="rightPart">');
@@ -74,8 +66,8 @@ const statusOutput = $('<p id="status">');
 const idealweightOutput = $('<p id="idealWeight">');
 const calorieOutput = $('<p id="calorieOutput">');
 
-leftContainer.append(formLabel, grid, BMIsubmitButton, BMIOutput, IWsubmitButton, idealweightOutput, AllDesc, AllSubmitButton);
-rightContainer.append(calorieSubmitButton, calorieOutput, statusOutput);
+leftContainer.append(formLabel, grid, BMIOutput, idealweightOutput, allDesc);
+rightContainer.append(calorieOutput, statusOutput);
 
 const summary = $('<p>');
 
@@ -142,25 +134,25 @@ window.onload = function () {
 
 
 const getLevel = () => {
-	if ($(activitySelect).val() == "Sedentary: little or no exercise") {
-		var level = 'level_1';
+	if (activitySelect.val() == "Sedentary: little or no exercise") {
+		return 'level_1';
 	}
-	else if ($(activitySelect).val() == "Exercise 1-3 times/week") {
-		var level = 'level_2';
+	else if (activitySelect.val() == "Exercise 1-3 times/week") {
+		return 'level_2';
 	}
-	else if ($(activitySelect).val() == "Exercise 4-5 times/week") {
-		var level = 'level_3';
+	else if (activitySelect.val() == "Exercise 4-5 times/week") {
+		return 'level_3';
 	}
-	else if ($(activitySelect).val() == "Daily exercise or intense exercise 3-4 times/week") {
-		var level = "level_4";
+	else if (activitySelect.val() == "Daily exercise or intense exercise 3-4 times/week") {
+		return "level_4";
 	}
-	else if ($(activitySelect).val() == "Intense exercise 6-7 times/week") {
-		var level = "level_5";
+	else if (activitySelect.val() == "Intense exercise 6-7 times/week") {
+		return "level_5";
 	}
-	else if ($(activitySelect).val() == "Very intense exercise daily, or physical job") {
-		var level = "level_6";
+	else if (activitySelect.val() == "Very intense exercise daily, or physical job") {
+		return "level_6";
 	}
-	return level
+
 }
 
 
@@ -169,7 +161,7 @@ const getLevel = () => {
 
 const getGender = () => {
 
-	if ($("#radioMale").is(":checked")
+	if (genderInputMale.is(":checked")
 	) {
 		var gender = "male";
 	}
@@ -263,8 +255,10 @@ const getBMI = () => {
 	var age = inputs[2];
 
 
-	if (weight == 'null' || weight == 'undefined' || height == 'null' || height == 'undefined' || age == 'null' || age == 'undefined') {
-		alert('please fill out the form');
+	if (weight == 'null' || weight == 'undefined' || weight < 40 ||
+		height == 'null' || height == 'undefined' || height < 150 ||height > 200 || 
+		age == 'null' || age == 'undefined' || age < 0 ||age > 80) {
+		alert('Please fill out the form correctly.');
 		return;
 
 	}
@@ -294,17 +288,16 @@ const getBMI = () => {
 
 	$.ajax(settings).done(function (response) {
 		spin.remove();
-		$("#BMIOutput").html(`
-		
-	<div>
-	<p> Your BMI is:  ${response.data.bmi}.</p>
-	</div>
-	`);
-		$("#status").html(`
-		
-	<div>
-	<p> Your overall health status is: <strong> ${response.data.health}.</strong></p>
-	</div>
+		console.log(response);
+		$("#BMIOutput").html(
+			`<div>
+				<p> Your BMI is:  ${response.data.bmi}.</p>
+			</div>
+		`);
+		$("#status").html(
+			`<div>
+				<p> Your overall health status is: <strong> ${response.data.health}.</strong></p>
+			</div>
 	`);
 	});
 
@@ -327,16 +320,20 @@ const getBMI = () => {
 
 const getIdealWeight = () => {
 	var inputs = getValues();
-	if (inputs == 'null' || inputs == 'undefined') {
-		alert('please fill out the form');
+	var weight = inputs[0];
+	var height = inputs[1];
+	var gender = inputs[3];
+
+	if (weight == 'null' || weight == 'undefined' || weight < 40 ||height == 'null' || height == 'undefined' || height < 150 ||height > 200 ) {
+		alert('Please fill out the form correctly.');
+		return;
+
 	}
 	else {
 		leftContainer.append(spin);
 	}
 
-	var weight = inputs[0];
-	var height = inputs[1];
-	var gender = inputs[3];
+	
 
 	const urlIW = `https://fitness-calculator.p.rapidapi.com/idealweight?gender=${gender}&height=${height}`;
 
@@ -360,18 +357,17 @@ const getIdealWeight = () => {
 
 
 		if (diff > 0) {
-			$("#idealWeight").html(`
-
-			<div>
-			<p> Your ideal weight is:  ${response.data.Devine} kg, which is ${diff} kg more than your current weight. </p>
-			</div>
+			$("#idealWeight").html(
+				`<div>
+					<p> Your ideal weight is:  ${response.data.Devine} kg, which is ${diff} kg more than your current weight. </p>
+				</div>
 			`);
 		}
 		else if (diff <= 0) {
-			$("#idealWeight").html(`
-			<div>
-			<p>  Your ideal weight is: ${response.data.Devine} kg, which is ${Math.abs(diff)} kg less than your current weight. </p>
-			</div>
+			$("#idealWeight").html(
+				`<div>
+					<p>  Your ideal weight is: ${response.data.Devine} kg, which is ${Math.abs(diff)} kg less than your current weight. </p>
+				</div>
 			`);
 		}
 	});
@@ -382,19 +378,24 @@ const getCalories = () => {
 
 
 	var inputs = getValues();
-
-	if (inputs == 'null' || inputs == 'undefined') {
-		alert('please fill out the form');
-	}
-	else {
-		leftContainer.append(spin);
-	}
-
 	var weight = inputs[0];
 	var height = inputs[1];
 	var age = inputs[2];
 	var gender = inputs[3];
 	var level = inputs[4];
+
+	if (weight == 'null' || weight == 'undefined' || weight < 40 
+		||height == 'null' || height == 'undefined' || height < 150 ||height > 200 ||
+		age == 'null' || age == 'undefined' || age < 0 ||age > 80) {
+		alert('Please fill out the form correctly.');
+		return;
+
+	}
+	else {
+		leftContainer.append(spin);
+	}
+
+	
 
 
 
@@ -419,11 +420,9 @@ const getCalories = () => {
 
 
 		$("#calorieOutput").html(`
-		
 			<div>
-			
-			<p> Your recomended daily intake of calories is:  ${calories} kcal. </p>
-			<p> Your basic metabolic rate is:  ${response.data.BMR} kcal. </p>
+				<p> Your recomended daily intake of calories is:  ${calories} kcal. </p>
+				<p> Your basic metabolic rate is:  ${response.data.BMR} kcal. </p>
 			</div>
 			`);
 
@@ -448,12 +447,11 @@ calorieSubmitButton.on('click', (e) => {
 	getCalories();
 });
 
-AllSubmitButton.on('click', (e) => {
+grid.on('submit', (e) => {
+	e.preventDefault();
 	getBMI();
 	getIdealWeight();
 	getCalories();
-
-
 });
 
 
@@ -461,7 +459,7 @@ AllSubmitButton.on('click', (e) => {
 
 
 var legend = d3.select("#app").append("svg");
-var height = 300, width = 150
+var height = 300, width = 150;
 legend.append("rect").attr("x", 40).attr("y", 30).attr("width", 10).attr("height", 10).style("fill", "LightCoral")
 legend.append("rect").attr("x", 40).attr("y", 60).attr("width", 10).attr("height", 10).style("fill", "gold")
 legend.append("rect").attr("x", 40).attr("y", 90).attr("width", 10).attr("height", 10).style("fill", "Chartreuse")
@@ -475,7 +473,7 @@ legend.append("text").attr("x", 60).attr("y", 130).text("underweight").style("fo
 
 
 
-var data = [{
+const data = [{
 	height: 150, underweight: 44, normal: 14,
 	overweight: 10, obese: 62
 },
