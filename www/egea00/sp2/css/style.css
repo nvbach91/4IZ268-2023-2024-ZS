@@ -1,0 +1,299 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arimo', sans-serif;
+    background: #f2f2f2;
+    flex-direction: column;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+/*********** LOADER ***********/
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.app-loading-screen {
+    animation: fadeOut 1.25s ease-out forwards;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 9982;
+}
+
+.spinner {
+    border: 10px solid rgba(255, 255, 255, 1);
+    border-top: 10px solid #333;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    animation: spin 2s linear infinite;
+    z-index: 9981;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.app-header, .app-footer {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-height: 4rem;
+    min-height: 4rem;
+}
+
+.city-navigation {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 4rem;
+    margin-right: 1rem;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 0 10px;
+}
+
+.nav-button:hover {
+    color: rgb(143, 204, 238);
+}
+
+.selected {
+    text-decoration: underline;
+    color: rgb(143, 204, 238);
+}
+
+.logo-footer {
+    position: absolute;
+    left: 1rem;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    margin-left: 1rem;
+    padding: 0;
+    position: absolute;
+    right: 1rem;
+}
+
+.nav-item:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.documentation {
+    margin-left: auto;
+    padding-left: 1rem;
+}
+
+.add-city-btn {
+    position: absolute;
+    left: 1rem;
+}
+
+.footer-content {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.overlay, .error-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.dialog {
+    background: white;
+    padding: 30px;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 75%;
+}
+
+.saved-cities-dialog .dialog-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.saved-cities-dialog .city-result {
+    width: 100%;
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.dialog-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.error-dialog-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.default-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.dialog .close-button, .dialog .search-button, .dialog .save-city-button, .dialog .info-city-button, .dialog .remove-city-button, .dialog .select-city-button, .error-button, .default-button, .switch-button {
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.dialog .close-button, #reload-button, #retry-button, .switch-button {
+    background-color: #ff6666;
+}
+
+.dialog .search-button, #ok-button, .default-button {
+    background-color: #4CAF50;
+    margin: 1rem;
+}
+
+.dialog .search-button:hover, .dialog .select-city-button:hover, #ok-button:hover, .default-button:hover {
+    background-color: #3e8e41;
+}
+
+.dialog .close-button:hover, .dialog .remove-city-button:hover, #reload-button:hover, #retry-button:hover, .switch-button {
+    background-color: red;
+}
+
+.dialog .search-input {
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.dialog .city-result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.dialog .city-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    gap: 0.25rem;
+}
+
+.dialog .city-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.dialog .city-name:hover {
+    cursor: pointer;
+    background-color: #f4f4f4;
+
+}
+
+.dialog .city-result {
+    padding: 1rem;
+    border-bottom: #333333 solid 1px;
+}
+
+.dialog .city-result:hover {
+
+}
+
+.dialog .remove-city-button {
+    font-weight: bold;
+    background-color: #7c0606;
+}
+
+/*.dialog .select-city-button{
+    font-weight: bold;
+    background-color: #396011;
+}*/
+.dialog .save-city-button, .dialog .info-city-button, .dialog .select-city-button {
+    font-weight: bold;
+    background-color: #333333;
+}
+
+.dialog .save-city-button:hover, .dialog .info-city-button:hover {
+    background-color: #3e5165;
+}
+
+
