@@ -1,37 +1,44 @@
-function fetchLatestHTML(city) {
-    const baseUrl = "https://en.wikipedia.org/api/rest_v1";
+const wikipediaApiConfig = {
+    apiUrl: 'https://en.wikipedia.org/api/rest_v1/page/html/',
+    apiMobileUrl: 'https://en.wikipedia.org/api/rest_v1/page/mobile-html/',
+    apiSummaryUrl: 'https://en.wikipedia.org/api/rest_v1/page/summary/'
+};
 
-    const customUrl = `${baseUrl}/page/summary/${encodeURIComponent(city)}`;
+function fetchWikipediaMobilePage(title, successCallback, errorCallback) {
+    const url = `${wikipediaApiConfig.apiMobileUrl}${encodeURIComponent(title)}`;
 
-    fetch(customUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('NETWORK ERROR');
-            }
-            return response.text();
-        })
-        .then(html => {
-            console.log(html);
-        })
-        .catch(error => {
-            console.error('Fetching HTML failed:', error);
-        });
+    $.ajax({
+        method: 'GET',
+        url: url,
+        contentType: 'application/json',
+        success: successCallback,
+        error: errorCallback
+    });
+}
+
+function fetchWikipediaSummary(title, successCallback, errorCallback) {
+    const url = `${wikipediaApiConfig.apiSummaryUrl}${encodeURIComponent(title)}`;
+
+    $.ajax({
+        method: 'GET',
+        url: url,
+        contentType: 'application/json',
+        success: successCallback,
+        error: function (jqXHR, textStatus, errorThrown) {
+            errorCallback(jqXHR.status.toString());
+        }
+    });
 }
 
 
-function cityInfo(city) {
+function fetchWikipediaPage(title, successCallback, errorCallback) {
+    const url = `${wikipediaApiConfig.apiUrl}${encodeURIComponent(title)}`;
 
     $.ajax({
-        type:"GET",
-        url:"https://en.wikipedia.org/api/rest_v1/page/summary/"+city,
-        async:true,
-        dataType: "json",
-        success: function(json) {
-            getEvents.json = json;
-            showEvents(json);
-        },
-        error: function(xhr, status, err) {
-            console.log(err);
-        }
+        method: 'GET',
+        url: url,
+        contentType: 'application/json',
+        success: successCallback,
+        error: errorCallback
     });
 }
