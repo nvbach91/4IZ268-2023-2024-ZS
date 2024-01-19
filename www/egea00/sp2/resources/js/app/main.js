@@ -188,8 +188,11 @@ function buildWeatherApp() {
         const mainContent = document.getElementById('content');
         mainContent.innerHTML = '';
         if (state === 'loading') {
-            const loadingSpinner = createElement('div', {classes: ['spinner']});
-            mainContent.appendChild(loadingSpinner);
+            const loadingDiv = createElement('div', {id: 'loading-div',classes: ['loading-div']});
+            mainContent.appendChild(loadingDiv);
+            const loadingSpinner = createElement('div', {id: 'loading-spinner',classes: ['spinner-flex']});
+            loadingDiv.appendChild(loadingSpinner);
+            return;
         }
         const defaultContent = createElement('div', {id: 'default-content', classes: ['default-content']});
         mainContent.appendChild(defaultContent);
@@ -342,7 +345,8 @@ function buildWeatherApp() {
         noCitiesFound.textContent = '';
         noCitiesFound.classList.add('no-cities-found');
 
-        resultsContainer = document.createElement('div');
+
+        resultsContainer = createElement('div', {id: 'searched-results-container',classes: ['results-container']});
         resultsContainer.appendChild(noCitiesFound);
         dialog.appendChild(resultsContainer);
 
@@ -357,7 +361,15 @@ function buildWeatherApp() {
 
 
     function searchCities(query) {
+        const dialog = document.querySelector('.dialog');
+        const loadingDiv = createElement('div', {id: 'loading-div',classes: ['loading-div']});
+        dialog.appendChild(loadingDiv);
+        const loadingSpinner = createElement('div', {id: 'loading-spinner',classes: ['spinner-flex']});
+        loadingDiv.appendChild(loadingSpinner);
+
         fetchCitiesByQuery(query, function (result) {
+            loadingDiv.removeChild(loadingSpinner);
+            dialog.removeChild(loadingDiv);
             if (result && result.length > 0) {
                 noCitiesFound.textContent = '';
                 updateSearchResults(result);
@@ -378,6 +390,7 @@ function buildWeatherApp() {
             existingResults.remove();
         }
 
+        const dialog = document.querySelector('.dialog');
         resultsContainer.classList.add('search-results');
 
         cities.forEach(city => {
@@ -419,10 +432,8 @@ function buildWeatherApp() {
             searchInput.value = '';
         });
 
-        const dialog = document.querySelector('.dialog');
         dialog.appendChild(resultsContainer);
     }
-
 
     function addCityToCookie(cityData) {
         if (!savedCities.some(city => city.name === cityData.name)) {
@@ -437,6 +448,7 @@ function buildWeatherApp() {
 
     function getCitiesFromCookie() {
         const citiesCookie = document.cookie.split('; ').find(cookie => cookie.startsWith('cities='));
+        console.log(citiesCookie);
         if (citiesCookie) {
             const citiesData = citiesCookie.split('=')[1];
             try {
@@ -519,7 +531,7 @@ function buildWeatherApp() {
         dialogHeader.appendChild(subtitle);
 
         /*******BODY********/
-        resultsContainer = createElement('div', {classes: ['results-container']});
+        resultsContainer = createElement('div', {id: 'saved-results-container',classes: ['results-container']});
         dialogBody.appendChild(resultsContainer);
 
         overlay.appendChild(dialog);
@@ -583,48 +595,59 @@ function buildWeatherApp() {
 
     /************* INFO CITY DIALOG *************/
     function createInfoCityDialog(cityName, htmlContent) {
-        document.getElementsByClassName('overlay')[0].style.display = 'none';
-        const overlay = createElement('div', {id: 'info-city-overlay', classes: ['overlay', 'info-overlay']});
-        overlay.addEventListener('click', function (event) {
-            if (event.target === overlay) {
-                closeInfoCityDialog();
-            }
-        });
-        overlay.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape') {
-                event.preventDefault();
-                closeSearchCityDialog();
-            }
-        });
+        if(!htmlContent){
+            document.getElementsByClassName('overlay')[0].style.display = 'none';
+            const overlay = createElement('div', {id: 'info-city-overlay', classes: ['overlay', 'info-overlay']});
+            overlay.addEventListener('click', function (event) {
+                if (event.target === overlay) {
+                    closeInfoCityDialog();
+                }
+            });
+            overlay.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    closeSearchCityDialog();
+                }
+            });
 
 
-        const dialog = createElement('div', {classes: ['dialog', 'info-city-dialog']});
+            const dialog = createElement('div', {classes: ['dialog', 'info-city-dialog']});
 
-        const dialogHeader = createElement('div', {classes: ['dialog-header']});
-        dialog.appendChild(dialogHeader);
+            const dialogHeader = createElement('div', {classes: ['dialog-header']});
+            dialog.appendChild(dialogHeader);
 
-        const dialogBody = createElement('div', {classes: ['dialog-body']});
-        dialog.appendChild(dialogBody);
+            const dialogBody = createElement('div', {classes: ['dialog-body']});
+            dialog.appendChild(dialogBody);
 
-        /*******HEADER********/
-        const closeButton = createElement('button', {classes: ['close-button'], text: 'X'});
-        closeButton.onclick = closeInfoCityDialog;
-        dialogHeader.appendChild(closeButton);
+            /*******HEADER********/
+            const closeButton = createElement('button', {classes: ['close-button'], text: 'X'});
+            closeButton.onclick = closeInfoCityDialog;
+            dialogHeader.appendChild(closeButton);
 
-        const title = createElement('h2', {classes: ['dialog-title'], text: `${cityName} - Basic Info`});
-        dialogHeader.appendChild(title);
+            const title = createElement('h2', {classes: ['dialog-title'], text: `${cityName} - Basic Info`});
+            dialogHeader.appendChild(title);
 
-        const subtitle = createElement('h3', {classes: ['dialog-subtitle']});
-        dialogHeader.appendChild(subtitle);
+            const subtitle = createElement('h3', {classes: ['dialog-subtitle']});
+            dialogHeader.appendChild(subtitle);
 
-        /*******BODY********/
-        const infoContainer = createElement('div', {classes: ['results-container']});
-        infoContainer.innerHTML = `${htmlContent}`;
-        dialogBody.appendChild(infoContainer);
+            /*******BODY********/
+            const infoContainer = createElement('div', {id: 'info-results-container',classes: ['results-container']});
+            const loadingDiv = createElement('div', {id: 'loading-div',classes: ['loading-div']});
+            infoContainer.appendChild(loadingDiv);
+            const loadingSpinner = createElement('div', {id: 'loading-spinner',classes: ['spinner-flex']});
+            loadingDiv.appendChild(loadingSpinner);
 
-
-        overlay.appendChild(dialog);
-        document.body.appendChild(overlay);
+            dialogBody.appendChild(infoContainer);
+            overlay.appendChild(dialog);
+            document.body.appendChild(overlay);
+        }else if(htmlContent){
+            const infoContainer = document.getElementById('info-results-container');
+            const loadingDiv = document.getElementById('loading-div');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            loadingSpinner.remove();
+            infoContainer.removeChild(loadingDiv);
+            infoContainer.innerHTML = `${htmlContent}`;
+        }
     }
 
 
@@ -878,9 +901,15 @@ function buildWeatherApp() {
     }
 
     function fetchCityInfoData(cityName) {
+        createInfoCityDialog(cityName);
+
         return new Promise((resolve, reject) => {
+            //document.getElementsByClassName('overlay')[0].classList.add('lower-z-index');
+            //showAppLoadingScreen();
             fetchWikipediaSummary(cityName, data => {
+                hideAppLoadingScreen();
                 if (data && data.extract_html) {
+                    //document.getElementsByClassName('overlay')[0].classList.add('unset-z-index');
                     createInfoCityDialog(cityName, data.extract_html);
                     resolve();
                 } else {
@@ -949,7 +978,7 @@ function buildWeatherApp() {
 
         /************ FORECAST WEATHER ************/
         const weatherBody = createElement('div', {classes: ['weather-body', 'weather-box']});
-        weatherContainer.appendChild(weatherBody);
+        const forecastContainer = document.createDocumentFragment();
 
         const today = new Date();
         let firstDayProcessed = false;
@@ -960,12 +989,15 @@ function buildWeatherApp() {
             const forecastHour = forecastDateTime.getHours();
 
             if (forecastDate === today.toDateString() && !firstDayProcessed) {
-                forecastDayBox(forecast, true);
+                forecastDayBox(forecast, true, forecastContainer);
                 firstDayProcessed = true;
             } else if (forecastHour === 12) {
-                forecastDayBox(forecast, false);
+                forecastDayBox(forecast, false, forecastContainer);
             }
         });
+
+        weatherBody.appendChild(forecastContainer);
+        weatherContainer.appendChild(weatherBody);
 
         /************ NICHE CURRENT WEATHER ************/
         const currentWeirdDiv = createElement('div', {classes: ['current-weird', 'weather-box']});
@@ -1044,7 +1076,7 @@ function buildWeatherApp() {
 
         weatherContainer.appendChild(currentWeirdDiv);
 
-        function forecastDayBox(forecast) {
+        function forecastDayBox(forecast, isToday, container) {
             const dayBox = createElement('div', {classes: ['forecast-day-box']});
 
             const weatherIcon = createElement('i', {classes: ['day-weather-icon', 'bi', getWeatherIconClass(forecast.weather[0].icon)]});
@@ -1282,8 +1314,25 @@ function buildWeatherApp() {
         }
     });
 
+    function showResultsLoading() {
+        const mainContainer = document.getElementsByClassName('results-container');
+        mainContainer.innerHTML = '';
+        const loadingDiv = createElement('div', {id: 'loading-div',classes: ['loading-div']});
+        mainContainer.appendChild(loadingDiv);
+        const loadingSpinner = createElement('div', {id: 'loading-spinner',classes: ['spinner-flex']});
+        mainContainer.appendChild(loadingSpinner);
+    }
+    function hideResultsLoading() {
+        const mainContainer = document.getElementsByClassName('results-container');
+        const loadingDiv = document.getElementById('loading-div');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        mainContainer.removeChild(loadingDiv);
+        mainContainer.removeChild(loadingSpinner);
+    }
+
 
     buildWeatherAppStructure();
 }
+
 
 document.addEventListener('DOMContentLoaded', buildWeatherApp);

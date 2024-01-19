@@ -20,9 +20,15 @@ body, html {
         opacity: 0;
     }
 }
+.lower-z-index {
+    z-index: 1;
+}
+.unset-z-index {
+    z-index: unset;
+}
 
 .app-loading-screen {
-    animation: fadeOut 1.25s ease-out forwards;
+    animation: fadeOut 3s ease-out forwards;
     position: fixed;
     top: 0;
     left: 0;
@@ -42,6 +48,22 @@ body, html {
     height: 75px;
     animation: spin 2s linear infinite;
     z-index: 9981;
+}
+.loading-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.spinner-flex {
+    border: 10px solid rgba(255, 255, 255, 1);
+    border-top: 10px solid #333;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 0.5rem;
 }
 
 @keyframes spin {
@@ -165,6 +187,13 @@ body, html {
 
 .saved-cities-dialog .dialog-body {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.info-city-dialog .dialog-body{
+    text-align: justify;
     align-items: center;
     justify-content: center;
     flex-direction: column;
