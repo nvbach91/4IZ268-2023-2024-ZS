@@ -3,6 +3,29 @@ body, h1, h2, #search-group, #movie-list, .movie-details {
     background-color: lightgray;
 }
 
+.movie-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Space between movie items */
+}
+
+.movie-item > div {
+    flex: 1; /* Each child takes up equal space */
+    margin-right: 10px; /* Space between columns */
+}
+
+.movie-item > div:last-child {
+    margin-right: 0; /* Remove margin for the last column */
+}
+
+.movie-details-button,
+.movie-favorites-rating {
+    display: flex;
+    flex-direction: column; /* Stack buttons and rating vertically */
+}
+
+/* Additional styling for buttons, rating stars, and other elements */
+
 .yellow-star {
     color: yellow;
 }

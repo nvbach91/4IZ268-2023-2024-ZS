@@ -54,6 +54,7 @@ $(document).ready(function () {
     $columnsContainer.append($column1, $column2, $column3);
 
     // dropdown for sorting
+    var $sortLabel = $('<label for="sortOptions">Choose sorting option</label>');
     var $sortOptions = $('<select id="sortOptions"></select>')
         .append('<option value="title-asc">Title (A-Z)</option>')
         .append('<option value="title-desc">Title (Z-A)</option>')
@@ -61,7 +62,7 @@ $(document).ready(function () {
         .append('<option value="vote-desc">Vote Average (Highest to Lowest)</option>')
         .append('<option value="release-asc">Release Date (Oldest to Newest)</option>')
         .append('<option value="release-desc">Release Date (Newest to Oldest)</option>');
-    $searchGroup.prepend($sortOptions);
+    $searchGroup.prepend($sortLabel, $sortOptions);
 
     $('body').append($searchGroup, $columnsContainer);
 
@@ -86,7 +87,7 @@ $(document).ready(function () {
         console.log(keyword);
         hideMessage();
         $('#movies-found-title').css('background-color', 'beige');
-        $('movie-list').css('background-color', 'beige');
+        //$('#movie-list').css('background-color', 'beige');
         showLoading();
 
         $.ajax({
@@ -104,14 +105,23 @@ $(document).ready(function () {
                 }
                 let htmlToAdd = "";
                 movies.forEach(function (movie) {
-                    htmlToAdd += `<p>${movie.title} <button class="details-btn" data-movieid="${movie.id}">View details about movie</button>
-                    <button class="favorite-btn" data-movieid="${movie.id}">Save to Favorites</button>
-                    <br>
-                    <label class="rate-movie-label">Rate this movie!</label>
-                    <span class="rating" data-movieid="${movie.id}">
-                    ${[1, 2, 3, 4, 5].map(n => `<span class="star" data-rate="${n}">&#9733;</span>`).join('')}
-                    </span>
-                    <div class="movie-details" id="details-${movie.id}"></div></p>`;
+                    htmlToAdd += `
+                    <div class="movie-item">
+                        <div class="movie-title"><strong>${movie.title}</strong></div>
+                        <div class="movie-details-button">
+                            <button class="details-btn" data-movieid="${movie.id}">View details</button>
+                        </div>
+                        <div class="movie-favorites-rating">
+                            <button class="favorite-btn" data-movieid="${movie.id}">Save to Favorites</button>
+                            <div class="rating-section">
+                                <label class="rate-movie-label">Rate this movie!</label>
+                                <span class="rating" data-movieid="${movie.id}">
+                                    ${[1, 2, 3, 4, 5].map(n => `<span class="star" data-rate="${n}">&#9733;</span>`).join('')}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `;
                 });
                 $('#movie-list').append(htmlToAdd);
             },
@@ -142,25 +152,21 @@ $(document).ready(function () {
                 return movies;
         }
     }
-
+    
     //favorites
     $(document).on('click', '.favorite-btn', function () {
-        var movieTitle = $(this).parent().contents().filter(function () {
-            return this.nodeType == 3;
-        }).text().trim();
+        var movieTitle = $(this).closest('.movie-item').find('.movie-title').text().trim();
         saveMovieToFavorites(movieTitle);
     });
-
+    
     //rating stars
     $(document).on('click', '.star', function () {
-        var movieTitle = $(this).parent().parent().contents().filter(function () {
-            return this.nodeType === 3;
-        }).text().trim()
+        var movieTitle = $(this).closest('.movie-item').find('.movie-title').text().trim();
         var rating = $(this).data('rate');
         saveMovieRating(movieTitle, rating);
 
-        $(this).parent().children('.star').removeClass('yellow-star');
-        $(this).prevAll().addBack().addClass('yellow-star');
+        $(this).parent().find('.star').removeClass('yellow-star');
+        $(this).addClass('yellow-star').prevAll('.star').addClass('yellow-star');
     });
 
     function saveMovieToFavorites(movieTitle) {
@@ -211,7 +217,7 @@ $(document).ready(function () {
             type: 'GET',
             success: function (movieDetails) {
                 // Find the closest movie details container to the clicked button
-                var $detailsContainer = button.closest('p').next('.movie-details');
+                var $detailsContainer = button.closest('.movie-item').find('.movie-details-button');
                 console.log($detailsContainer.length);
                 // Create a formatted string of movie details
                 var detailsHtml = `
@@ -237,15 +243,18 @@ $(document).ready(function () {
                     $posterContainer.append($posterImage);
 
                     setTimeout(function () {
-                        var detailsTopPosition = $detailsElement.offset().top - $columnsContainer.offset().top; //postion
+                        var detailsTopPosition = $detailsContainer.offset().top - $columnsContainer.offset().top;
                         $posterContainer.css('margin-top', detailsTopPosition + 'px');
                     }, 0);
                 }
-                // Fetch and display the movie poster in the second column
-                if (movieDetails.poster_path) {
-                    var posterImageUrl = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
-                    var posterHtml = `<img src="${posterImageUrl}" alt="${movieDetails.title} poster" style="max-width:100%;height:auto;">`;
-                    $('#poster-container').html(posterHtml);
+                else {
+                    var $noPosterMessage = $('<p>No poster available for this movie</p>');
+                    $('#poster-container').empty().append($noPosterMessage);
+
+                    setTimeout(function () {
+                        var detailsTopPosition = $detailsContainer.offset().top - $columnsContainer.offset().top;
+                        $('#poster-container').css('margin-top', detailsTopPosition + 'px');
+                    }, 0);
                 }
             },
             error: function (error) {
