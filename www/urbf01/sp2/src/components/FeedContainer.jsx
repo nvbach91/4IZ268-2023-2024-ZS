@@ -18,9 +18,9 @@ export const FeedContainer = ({ activitiesData }) => {
           Latest Activities
         </Typography>
 
-        <Link to='/add'>
+        <Link to='/activities/add'>
           <Button variant='outlined' color='success' startIcon={<Add />}>
-            Add an Activity
+            Add Manual Entry
           </Button>
         </Link>
       </Box>

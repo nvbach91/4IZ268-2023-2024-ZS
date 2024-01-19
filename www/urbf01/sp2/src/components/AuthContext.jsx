@@ -16,7 +16,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('stravaAccessToken');
     localStorage.removeItem('athlete');
     localStorage.removeItem('activities');
-    localStorage.removeItem('per_page');
     setLoggedIn(false);
   };
 

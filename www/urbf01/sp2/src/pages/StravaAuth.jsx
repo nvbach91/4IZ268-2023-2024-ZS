@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useAuth } from '../components/AuthContext';
 import { stravaAuth } from '../service/apiService';
+import { Typography, Paper, Box } from '@mui/material';
 
 export const StravaAuth = () => {
   const { login } = useAuth();
@@ -20,9 +21,33 @@ export const StravaAuth = () => {
   });
 
   return (
-    <div>
-      <h1>Strava Authentication Callback</h1>
-      <p>Processing authentication...</p>
-    </div>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100vw',
+        height: '100vh ',
+        backgroundImage: 'url("/images/strarmin-cover.jpg")',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+      }}
+    >
+      <Paper
+        sx={{
+          px: 6,
+          py: 4,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          bgcolor: 'white',
+        }}
+      >
+        <Typography variant='h5' component='h1'>
+          Strava Authentication Callback
+        </Typography>
+        <Typography>Processing authentication...</Typography>
+      </Paper>
+    </Box>
   );
 };

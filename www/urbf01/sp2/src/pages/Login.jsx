@@ -5,7 +5,7 @@ const { REACT_APP_CLIENT_ID } = process.env;
 const authUrl = 'http://localhost:3000/auth';
 
 const handleLogin = () => {
-  window.location = `http://www.strava.com/oauth/authorize?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${authUrl}&approval_prompt=force&scope=read_all,activity:write,activity:read_all`;
+  window.location = `http://www.strava.com/oauth/authorize?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${authUrl}&approval_prompt=force&scope=read_all,profile:write,activity:write,activity:read_all`;
 };
 
 export const Login = () => {

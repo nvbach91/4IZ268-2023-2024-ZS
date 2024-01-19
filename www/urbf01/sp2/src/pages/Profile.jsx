@@ -1,7 +1,11 @@
 import { Box, Paper, Typography, Button } from '@mui/material';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export const Profile = () => {
+  //const [gearList, setGearList]
+  useEffect(() => {}, []);
+
   return (
     <Paper>
       <Typography variant='h4' component='h1' sx={{ mb: 2 }}>

@@ -23,7 +23,7 @@ export const PrivateRoutes = () => {
   }, []);
 
   return isLoggedIn ? (
-    <Container sx={{ py: 12, minHeight: '100vh' }}>
+    <Container sx={{ py: 8, minHeight: '100vh' }}>
       <Navbar />
       <Box
         sx={{
@@ -31,7 +31,7 @@ export const PrivateRoutes = () => {
           display: 'grid',
           alignItems: 'start',
           gridTemplateColumns: { sm: '1fr', md: '1fr 3fr' },
-          gap: { sm: 5, md: 4 },
+          gap: { sm: 4, md: 3 },
         }}
       >
         <ProfileContainer athleteData={athleteData} />

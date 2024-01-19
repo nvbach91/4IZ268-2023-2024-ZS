@@ -35,6 +35,7 @@ export const fetchAthleteData = async () => {
     });
 
     localStorage.setItem('athlete', JSON.stringify(response.data));
+    return response.data;
   } catch (error) {
     throw error;
   }
@@ -60,10 +61,55 @@ export const fetchActivitiesData = async () => {
   }
 };
 
+// GET ACTIVITY DATA
+export const fetchActivityData = async (id) => {
+  try {
+    const response = await apiService.get(`/activities/${id}`, {
+      headers: {
+        Authorization: `Bearer ${ACCESS_TOKEN}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 // POST NEW ACTIVITY
 export const postNewActivity = async (activity) => {
   try {
     const response = await apiService.post('/activities', activity, {
+      headers: {
+        Authorization: `Bearer ${ACCESS_TOKEN}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// UPDATE ACTIVITY
+export const updateActivity = async (activity) => {
+  try {
+    const response = await apiService.put(`/activities/${activity.id}`, activity, {
+      headers: {
+        Authorization: `Bearer ${ACCESS_TOKEN}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// UPDATE ATHLETE
+export const updateAthlete = async (athlete) => {
+  try {
+    const response = await apiService.put('/athlete', athlete, {
       headers: {
         Authorization: `Bearer ${ACCESS_TOKEN}`,
       },

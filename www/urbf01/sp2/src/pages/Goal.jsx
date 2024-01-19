@@ -6,6 +6,7 @@ export const Goal = () => {
       <Typography variant='h4' component='h2'>
         Goals
       </Typography>
+      <Typography>Coming soon</Typography>
     </Paper>
   );
 };

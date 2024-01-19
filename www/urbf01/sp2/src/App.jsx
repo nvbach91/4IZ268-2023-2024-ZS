@@ -5,7 +5,6 @@ import { Login } from './pages/Login';
 import { Activities } from './pages/Activities';
 import { Goal } from './pages/Goal';
 import { Statistics } from './pages/Statistics';
-import { ActivityDetail } from './pages/ActivityDetail';
 import { StravaAuth } from './pages/StravaAuth';
 import { AuthProvider } from './components/AuthContext';
 import { PrivateRoutes } from './layout/PrivateRoutes';
@@ -15,6 +14,7 @@ import { EditActivity } from './pages/EditActivity';
 import { AddActivity } from './pages/AddActivity';
 import { Profile } from './pages/Profile';
 import { Settings } from './pages/Settings';
+import { ActivityDetail } from './pages/ActivityDetail';
 
 const theme = createTheme({
   components: {
@@ -47,13 +47,13 @@ function App() {
             <Routes>
               <Route element={<PrivateRoutes />}>
                 <Route path='/' element={<Home />} />
-                <Route path='/edit/:id' element={<EditActivity />} />
-                <Route path='/add' element={<AddActivity />} />
+                <Route path='/activities/add' element={<AddActivity />} />
+                <Route path='/activities/edit/:id?' element={<EditActivity />} />
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/settings' element={<Settings />} />
-
                 <Route path='/activities' element={<Activities />} />
                 <Route path='/activities/:id' element={<ActivityDetail />} />
+
                 <Route path='/goals' element={<Goal />} />
                 <Route path='/statistics' element={<Statistics />} />
               </Route>

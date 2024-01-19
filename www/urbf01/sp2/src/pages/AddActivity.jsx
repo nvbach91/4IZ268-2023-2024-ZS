@@ -1,5 +1,5 @@
 import { Typography, Paper } from '@mui/material';
-import { ActivityForm } from '../components/ActivityForm';
+import { AddActivityForm } from '../components/AddActivityForm';
 
 export const AddActivity = () => {
   return (
@@ -8,7 +8,7 @@ export const AddActivity = () => {
         Add an Activity
       </Typography>
 
-      <ActivityForm />
+      <AddActivityForm />
     </Paper>
   );
 };

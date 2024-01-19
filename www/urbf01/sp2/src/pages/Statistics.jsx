@@ -6,6 +6,7 @@ export const Statistics = () => {
       <Typography variant='h4' component='h2'>
         Statistics
       </Typography>
+      <Typography>Coming soon</Typography>
     </Paper>
   );
 };
