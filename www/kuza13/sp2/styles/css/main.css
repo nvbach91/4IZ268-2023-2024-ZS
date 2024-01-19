@@ -1,0 +1,385 @@
+/* General Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Arial', sans-serif;
+	font-size: 16px;
+	line-height: 1.6;
+	background-color: #fadadd; /* Soft pink background */
+	color: #333; /* Dark grey text for readability */
+}
+
+/* Container */
+.container {
+	flex: 1;
+	padding: 20px;
+	overflow: auto;
+}
+
+/* Header and Titles */
+h3,
+h2,
+h4 {
+	color: #d85a7b; /* Darker pink for contrast */
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* Tasks and Lists */
+.list-group-item {
+	background-color: #fff0f5; /* Very light pink background */
+	border: 1px solid #ffc0cb; /* Light pink border */
+	border-radius: 15px;
+	margin-bottom: 10px;
+	padding: 15px;
+}
+
+.task-title {
+	font-weight: bold;
+}
+
+.task-title--done {
+	text-decoration: line-through;
+	color: #cdcdcd;
+}
+
+.task-item__buttons {
+	display: flex;
+	gap: 10px;
+}
+
+/* Buttons and Actions */
+.btn,
+.btn-action {
+	background-color: #f3b1c8; /* Bright pink */
+	color: white;
+	border: none;
+	border-radius: 15px;
+	padding: 10px 15px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin: 10px;
+}
+
+.btn:hover,
+.btn-action:hover {
+	background-color: #ff1493; /* Slightly darker pink on hover */
+}
+
+/* Input Group and Form */
+.input-group,
+.form-group {
+	margin-bottom: 20px;
+}
+
+.input-group input,
+.form-control {
+	border: 2px solid #ffb6c1; /* Light pink border */
+	border-radius: 20px;
+	padding: 10px;
+	margin: 10px;
+	background-color: white;
+}
+
+/* Additional Styles */
+.empty-list {
+	text-align: center;
+	padding: 20px;
+	color: #d85a7b;
+}
+
+.empty-list__icon {
+	color: #42be2a;
+	font-size: 32px;
+}
+
+/* Sign-in and Event Wrapper */
+#eventWrapper,
+#content {
+	text-align: center;
+	margin-top: 20px;
+	display: none;
+}
+#content span {
+	font-weight: 900;
+}
+
+#signinButton img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Event List Styles */
+#events li {
+	list-style-type: none;
+	padding: 5px 0;
+}
+
+/* Hover effect for task items */
+#tasksList .list-group-item:hover {
+	background-color: #ffe4e1; /* Slightly different background on hover */
+}
+
+/* Focus style for task items */
+#tasksList .list-group-item:focus {
+	outline: 2px solid #ff69b4; /* Pink outline for focused item */
+	background-color: #ffe4e1; /* Light pink background */
+}
+
+/* Card Styles for ToDo List */
+.card {
+	background-color: #fff; /* White background */
+	border-radius: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+	background-color: #f3b1c8;
+	color: white;
+	border-radius: 10px 20px 0 0;
+	margin: auto;
+}
+.card-header p {
+	margin: 10px;
+}
+/* Footer or Additional Sections */
+/* Footer styles */
+.footer {
+	text-align: center;
+	padding: 20px;
+	background-color: #fff0f5; /* Very light pink background */
+	border-top: 1px solid #ffc0cb; /* Light pink border */
+	position: relative;
+	bottom: 0;
+	width: 100%;
+}
+
+/* Header styles */
+.main-header {
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	padding: 20px;
+	margin: auto;
+}
+
+.header-favicon {
+	height: 75px;
+	margin: 15px;
+	margin-right: 15px;
+	border-radius: 99px;
+}
+
+#content {
+	margin: 15px 60px;
+	text-align: left;
+}
+
+/* Hover Effects */
+a:hover,
+button:hover {
+	opacity: 0.8;
+}
+
+/* Notifications */
+#notification-container {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	z-index: 1000;
+}
+
+.notification {
+	background-color: #ff919a;
+	color: #721c24;
+	padding: 15px;
+	margin: 10px 30px;
+	border-radius: 20px;
+	border: 2px solid #ee0018;
+}
+
+.notification.info {
+	background-color: #d1ecf1;
+	color: #0c5460;
+	border-color: #bee5eb;
+}
+
+/* ... Add more types if needed ... */
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+	.input-group,
+	.btn-group {
+		flex-direction: column;
+	}
+	.btn,
+	.btn-action,
+	.form-control {
+		width: 95%;
+		margin: 10px;
+	}
+
+	.container {
+		padding: 10px;
+	}
+
+	#eventWrapper {
+		padding: 10px;
+		margin: 10px 0;
+	}
+}
+
+/* Input Group Button */
+.input-group-append {
+	margin-left: -1px;
+}
+
+.input-group-append button {
+	border-radius: 0 20px 20px 0;
+}
+
+/* Adjusting SignIn Button */
+#signinButton {
+	margin: 15px;
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 10px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+/* Styling for the Main Header */
+.main {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+/* Customizing Lists */
+ul {
+	padding-left: 0;
+	list-style: none;
+}
+
+/* Undo Link Styles */
+.notification .undo-button {
+	color: #ff69b4;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.notification .undo-link:hover,
+.notification .undo-link:focus {
+	color: #ff1493; /* Slightly darker pink on hover and focus */
+	text-decoration: none; /* Remove underline on hover and focus */
+	outline: none; /* Remove outline on focus */
+}
+
+/* Task Item with Priority */
+.list-group-item {
+	/* existing styles */
+	position: relative;
+}
+
+.task-due-date {
+	font-size: 0.8em;
+	color: #6c757d;
+	margin-left: 10px;
+}
+.quick-date-links button {
+	margin-right: 10px;
+	color: #d85a7b;
+	cursor: pointer;
+	background: none;
+	border: none;
+	padding: 0;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.quick-date-links button:hover {
+	text-decoration: underline;
+}
+
+/* Label Styles */
+label {
+	display: block;
+	margin-bottom: 5px;
+	color: #d85a7b; /* Using the same pink shade as your headers for consistency */
+	font-weight: bold; /* Making the label text bold for emphasis */
+	font-size: 1.1em; /* Slightly larger font size for better visibility */
+}
+
+/* Style adjustments for label when associated with select elements */
+label + .form-control {
+	margin-top: -10px;
+}
+
+#loadingIndicator img {
+	width: 50px;
+	height: 50px;
+}
+
+/* Event wrapper styling */
+#eventWrapper {
+	background-color: #ffffff; /* White background for clarity */
+	border: 1px solid #ffc0cb; /* Light pink border to match the theme */
+	border-radius: 15px;
+	padding: 20px;
+	margin: 20px 0;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#eventWrapper ul {
+	width: 100%;
+	list-style-type: none;
+	padding: 0;
+	font-family: 'Arial', sans-serif;
+}
+
+#eventWrapper li {
+	background-color: #fff0f5; /* Very light pink, like the task items */
+	border: 1px solid #ffc0cb; /* Light pink border */
+	border-radius: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	text-align: left;
+}
+
+#eventWrapper li .event-date {
+	font-weight: bold; /* Makes the date bold */
+}
+
+/* Map - link styling */
+.maps-link {
+	color: #d85a7b; /* Darker pink for contrast */
+	cursor: pointer; /* Example: Blue color for links */
+	font-weight: bold; /* Makes the link text bold */
+	text-decoration: none; /* Removes the underline */
+	transition: color 0.3s ease; /* Smooth color transition for hover effect */
+}
+
+.maps-link:hover,
+.maps-link:focus {
+	text-decoration: underline; /* Adds underline on hover for emphasis */
+}

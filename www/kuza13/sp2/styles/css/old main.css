@@ -1,0 +1,189 @@
+/* General Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	min-height: 100vh;
+	font-family: 'Arial', sans-serif;
+	background-color: #fadadd; /* Soft pink background */
+	color: #333; /* Dark grey text for readability */
+}
+
+/* Container */
+.container {
+	padding: 20px;
+}
+
+/* Header and Titles */
+.display-4,
+.h4,
+h4 {
+	color: #d85a7b; /* Darker pink for contrast */
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* Tasks and Lists */
+.list-group-item {
+	background-color: #fff0f5; /* Very light pink background */
+	border: 1px solid #ffc0cb; /* Light pink border */
+	border-radius: 15px;
+	margin-bottom: 10px;
+	padding: 15px;
+}
+
+.task-title {
+	font-weight: bold;
+}
+
+.task-title--done {
+	text-decoration: line-through;
+	color: #cdcdcd;
+}
+
+.task-item__buttons {
+	display: flex;
+	gap: 10px;
+}
+
+/* Buttons and Actions */
+.btn,
+.btn-action {
+	background-color: #ff69b4; /* Bright pink */
+	color: white;
+	border: none;
+	border-radius: 8px;
+	padding: 10px 15px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.btn:hover,
+.btn-action:hover {
+	background-color: #ff1493; /* Slightly darker pink on hover */
+}
+
+/* Input Group and Form */
+.input-group,
+.form-group {
+	margin-bottom: 20px;
+}
+
+.input-group input,
+.form-control {
+	border: 2px solid #ffb6c1; /* Light pink border */
+	border-radius: 20px;
+	padding: 10px;
+}
+
+/* Additional Styles */
+.empty-list {
+	text-align: center;
+	padding: 20px;
+	color: #d85a7b;
+}
+
+.empty-list__icon {
+	color: #42be2a;
+	font-size: 32px;
+}
+
+/* Sign-in and Event Wrapper */
+#signin,
+#eventWrapper,
+#content {
+	text-align: center;
+	margin-top: 20px;
+}
+
+#signin img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Event List Styles */
+#events li {
+	list-style-type: none;
+	padding: 5px 0;
+}
+
+/* Card Styles for ToDo List */
+.card {
+	background-color: #fff; /* White background */
+	border-radius: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+	background-color: #ff69b4;
+	color: white;
+	border-radius: 10px 20px 0 0;
+}
+
+/* Footer or Additional Sections */
+.footer,
+.additional-section {
+	background-color: #f8c3cd;
+	padding: 20 px;
+	border-radius: 15px;
+	margin-top: 20px;
+}
+
+/* Hover Effects */
+a:hover,
+button:hover {
+	opacity: 0.8;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+	.input-group,
+	.btn-group {
+		flex-direction: column;
+	}
+	.btn,
+	.btn-action,
+	.form-control {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.container {
+		padding: 10px;
+	}
+} /* Misc Adjustments */
+#emailHelp {
+	color: #666;
+	display: block;
+	margin-bottom: 10px;
+}
+
+/* Input Group Button */
+.input-group-append {
+	margin-left: -1px;
+}
+
+.input-group-append button {
+	border-radius: 0 20px 20px 0;
+}
+
+/* Adjusting SignIn Button */
+#signin {
+	margin-top: 15px;
+}
+
+/* Styling for the Main Header */
+.main {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+/* Customizing Lists */
+ul {
+	padding-left: 0;
+	list-style: none;
+}
