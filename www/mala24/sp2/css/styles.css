@@ -25,6 +25,7 @@ form {
 
 ul {
     list-style: none;
+    padding: 5px;
 }
 
 li {
@@ -39,9 +40,18 @@ li {
     margin-left: 10px;
 }
 
+.btn-warning {
+    margin-left: 10px;
+}
+
+.form-check {
+    display: inline;
+    padding-left: 30px;
+}
+
 #st,
 #et {
-    width: 10%;
+    width: 30%;
     display: inline;
 }
 

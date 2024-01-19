@@ -31,13 +31,30 @@
                 <label>End Time</label>
                 <input type="time" name="et" id="et" class="form-control" />
             </div>
-            <button type="button" class="btn btn-info" onclick="addEvent()">Add Task</button>
+            <div class="form-group">
+                <label>Sort by:</label>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="sortOption" id="sortByDate">
+                    <label class="form-check-label" for="sortByDate">Date</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="sortOption" id="sortByTitle">
+                    <label class="form-check-label" for="sortByTitle">Title</label>
+                </div>
+            </div>
+            <button type="button" class="btn btn-info" id="addTaskButton">Add Task</button>
             <button id="singin_button" class="btn btn-secondary" onclick="handleAuthClick()">Sign in</button>
         </form>
-        <h4>Pending tasks:</h4>
-        <ul id="pendingList"></ul>
-        <h4>Completed tasks:</h4>
-        <ul id="completedList"></ul>
+        <div class="row">
+            <div class="col">
+                <h4>Pending tasks:</h4>
+                <ul id="pendingList"></ul>
+            </div>
+            <div class="col">
+                <h4>Completed tasks:</h4>
+                <ul id="completedList"></ul>
+            </div>
+        </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
