@@ -149,6 +149,11 @@ h1 {
     background-color: #e09418;
 }
 
+.free-space {
+    height: 10px;
+    background-color: black;
+}
+
 .latest-result-main {
     background-color: #f2f2f2;
     padding: 15px;
@@ -241,6 +246,69 @@ h1 {
 }
 
 
+/* edit question */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.edit-modal {
+    width: 70%;
+    max-width: 600px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.edit-modal textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 100px;
+    white-space: normal;
+    text-align: left;
+
+}
+
+.edit-modal button {
+    width: 48%;
+    padding: 10px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #4caf50;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 2%;
+}
+
+.edit-modal button:last-child {
+    margin-right: 0;
+}
+
+.edit-modal button:hover {
+    background-color: #3d8b40;
+}
+
+
+
 
 
 /* test page */
@@ -294,4 +362,29 @@ h1 {
 
 .question {
     border-bottom: #333 2px solid;
+}
+
+
+
+/* spinner */
+.spinner {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    position: absolute;
+    /* top: 50%; */
+    left: 50%;
+    padding: 1.1px;
+    background: conic-gradient(#0000 10%, #333333) content-box;
+    -webkit-mask: repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg),
+        radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 calc(100% - 9px));
+    -webkit-mask-composite: destination-in;
+    mask-composite: intersect;
+    animation: spinner-d55elj 1s infinite steps(10);
+}
+
+@keyframes spinner-d55elj {
+    to {
+        transform: rotate(1turn);
+    }
 }

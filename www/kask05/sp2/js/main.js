@@ -4,7 +4,7 @@
 // import { query, orderBy, limit, where, onSnapshot } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js"
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
-import { getDatabase, ref, push, get, set, child, onValue, remove } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-database.js";
+import { getDatabase, ref, push, get, set, child, onValue, remove, update } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-database.js";
 
 
 
@@ -93,11 +93,15 @@ function mainPage() {
     const addQuestionButton = $('<button class="questions-main-button">Přidat otázky</button>');
     const buttonsMain = $('<div class="buttons-main"></div>');
     buttonsMain.append(addQuestionButton, editQuestionButton);
+    const spinner1 = $('<div class="spinner"></div>');
+
 
     const latestResultMain = $('<div class="latest-result-main"></div>');
     latestResultMain.append('<h2>Výsledky posedního testu</h2>');
     const resultNew = $('<div id="new-result"></div>');
     const percentageResult = $('<div id="percentage-result"></div>');
+
+    latestResultMain.append(spinner1)
 
     const db = getDatabase(app);
     const scoreNodeRef = ref(db, 'score');
@@ -108,6 +112,7 @@ function mainPage() {
             const scorePerQuestion = scoreData.questionAmount || 0;
             resultNew.html('<h3>Skóre: ' + scoreData.totalScore + '/' + scorePerQuestion + '</h3>');
             percentageResult.html('<h3>Procentuální skóre: ' + percentage.toFixed(2) + '%</h3>');
+            spinner1.hide();
         } else {
             resultNew.html('<h3>Žádné skóre</h3>');
             percentageResult.html('');
@@ -229,7 +234,8 @@ function editPage() {
 
 
     const questionsContainer = $('<div class="questions-container"></div>');
-    appEditContainer.append(pageNameEdit, questionsContainer, backToMainEdit);
+    const spinner2 = $('<i class="spinner"></i>');
+    appEditContainer.append(pageNameEdit, spinner2, questionsContainer, backToMainEdit);
 
     backToMainEdit.on('click', function () {
         appEditContainer.empty();
@@ -240,10 +246,12 @@ function editPage() {
     const db = getDatabase(app);
     const questionsRef = ref(db, 'questions');
     get(questionsRef).then((snapshot) => {
+        spinner2.hide();
         const questionData = snapshot.val();
 
         if (questionData) {
             const questionsKeys = Object.keys(questionData);
+            const fragment = document.createDocumentFragment();
 
             questionsKeys.forEach((questionKey) => {
                 const question = questionData[questionKey];
@@ -252,9 +260,15 @@ function editPage() {
                 const questionEdit = $('<p>' + question.questionText + '</p>');
                 const answerEdit = $('<p>' + question.answerText + '</p>');
                 const deleteQ = $('<button class="edit-qa">Smazat otázku</button>');
+                const editButton = $('<button class="edit-qa">Upravit otázku</button>');
 
-                questionAnswer.append(questionEdit, answerEdit, deleteQ);
-                questionsContainer.append(questionAnswer);
+
+                questionAnswer.append(questionEdit, answerEdit, deleteQ, editButton);
+                fragment.appendChild(questionAnswer[0]);
+
+                editButton.on('click', function () {
+                    openEditModal(questionKey, question.questionText, question.answerText);
+                });
 
                 deleteQ.on('click', function () {
                     const questionRef = ref(db, 'questions/' + questionKey);
@@ -262,16 +276,58 @@ function editPage() {
                     remove(questionRef)
                         .then(() => {
                             console.log('Question deleted');
-                            questionsContainer.empty();
-                            editPage();
+                            // questionsContainer.empty();
+                            // editPage();
+                            questionAnswer.remove();
                         })
                         .catch((error) => {
                             console.error('Error:', error);
                         });
                 });
             });
+            questionsContainer.append(fragment);
         }
     });
-}
-// editPage();
 
+}
+
+
+function openEditModal(questionKey, questionText, answerText) {
+    const overlay = $('<div class="overlay"></div>');
+    const modal = $('<div class="edit-modal"></div>');
+    const questionInput = $('<textarea placeholder="Edit question"/>').val(questionText);
+    const answerInput = $('<textarea placeholder="Edit answer"/>').val(answerText);
+    const backButton = $('<button class="modal-button">Zpět</button>');
+    const changeButton = $('<button class="modal-button">Uložit změny</button>');
+
+    modal.append(questionInput, answerInput, backButton, changeButton);
+    // modal.append(backButton, changeButton);
+    overlay.append(modal);
+    $('body').append(overlay);
+
+    backButton.on('click', function () {
+        overlay.remove();
+    });
+
+    changeButton.on('click', function () {
+        const db = getDatabase(app);
+
+        const oldQuestionRef = ref(db, 'questions/' + questionKey);
+        remove(oldQuestionRef)
+            .then(() => {
+                const newQuestionRef = push(ref(db, 'questions'));
+                set(newQuestionRef, {
+                    questionText: questionInput.val(),
+                    answerText: answerInput.val()
+                }).then(() => {
+                    overlay.remove();
+                    editPage();
+                }).catch((error) => {
+                    console.error('Error adding new question:', error);
+                });
+            })
+            .catch((error) => {
+                console.error('Error removing old question:', error);
+            });
+    });
+}
