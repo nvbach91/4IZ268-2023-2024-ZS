@@ -58,7 +58,7 @@ nav li span {
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
-    min-height: 90px;
+    min-height: 30px;
     justify-content: center;
 }
 
@@ -178,6 +178,10 @@ th {
     margin-top: 10px;
 }
 
+.data-container {
+    justify-content: center;
+}
+
 .chart-container canvas {
     height: auto;
 }
@@ -191,7 +195,8 @@ th {
 .flex-row-column40>h3 {
     text-align: center;
 }
-.chart-title{
+
+.chart-title {
     max-height: 50px;
 }
 
@@ -204,18 +209,24 @@ th {
     position: absolute;
 }
 
-.favourites-btn-container {
+.map-btn-container {
     justify-content: end;
 }
 
+
 .button-row {
     justify-content: flex-start;
+    min-height: 60px;
+}
+
+.flex-row-column50.solo-button-container {
+    width: 100%;
+    justify-content: center;
 }
 
 footer.flex-row {
     background-color: #aa1704;
     color: white;
-
     min-height: 40px;
     padding: 10px;
     position: absolute;
@@ -225,6 +236,25 @@ footer a {
     color: wheat;
     font-weight: bold;
     text-decoration: none;
+}
+
+.remove-btn-container {
+    margin-left: 5px;
+}
+
+.remove-btn {
+    background-color: #f50000;
+}
+
+.map-back-btn {
+    padding: 20px;
+    margin: 5px;
+    min-width: 300px;
+}
+
+.visualise-btn-container {
+    justify-content: flex-end;
+    margin-right: 5px;
 }
 
 .spinner {
@@ -238,24 +268,51 @@ footer a {
     animation: spinning 5s linear infinite;
     transition: border-color 0.5s ease;
 }
-button{
+
+button {
     background-color: #008CBA;
-    color:white;
+    color: white;
     border-radius: 10px;
     border: none;
     cursor: pointer;
 }
 
-.filter-clear-btn{
+.filter-clear-btn {
     background-color: #f50000;
     border-radius: 0;
 }
-.remove-btn-container>button{
+
+.remove-btn,
+.visualise-btn {
     padding: 20px;
+    margin: 5px;
+    min-width: 300px;
 }
-.remove-btn-container{
-    padding-bottom: 5px;
-    border-bottom: 2px dotted rgba(167, 167, 167, .6);
+
+button:disabled,
+button[disabled]{
+  background-color: #767676;
+}
+
+.map-btn-container,
+.favourites-btn-container {
+    margin: 5px;
+}
+
+.container.favourite-container {
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.favourite-container+button,
+.favourite-container+button+button {
+    margin-bottom: 50px;
+}
+
+.favourite-title,
+.favourite-title>h3 {
+    min-height: 40px;
 }
 
 @keyframes spinning {
@@ -270,12 +327,14 @@ button{
 
 
 @media screen and (max-width: 1024px) {
-    .hide{
+    .hide {
         display: none;
     }
-    .container{
+
+    .container {
         width: 95%;
     }
+
     .flex-row-column10,
     .flex-row-column25,
     .flex-row-column40,
@@ -285,37 +344,46 @@ button{
         flex-wrap: wrap;
         margin: 5px 5px;
     }
-    .filters{
+
+    .filters {
         flex-wrap: wrap;
         justify-content: center;
     }
-    h2, h3{
+
+    h2,
+    h3 {
         text-align: center;
     }
-    .filters .flex-row-column25{
+
+    .filters .flex-row-column25 {
         justify-content: center;
     }
 
-    .flex-row-column40 h3{
+    .flex-row-column40 h3 {
         width: 100%;
     }
-    .table-container{
-        overflow:scroll;
+
+    .table-container {
+        overflow: scroll;
     }
-    .nav-logo{
+
+    .nav-logo {
         margin-right: 10px;
     }
-    nav li span{
+
+    nav li span {
         padding: 10px;
     }
-    .race-story{
+
+    .race-story {
         display: none;
     }
 }
-@media print{
-.button-row{
-    display: none;
 
-}
+@media print {
+    .button-row {
+        display: none;
+
+    }
 
 }
