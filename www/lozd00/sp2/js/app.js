@@ -415,6 +415,7 @@ function getCityInfo() {
                 hideLoader();
                 Swal.fire("Task successfully added.");
                 console.log("Task successfully added", response);
+                loadTasks(selectedListId);
             },
             function(err) {
                 hideLoader();
