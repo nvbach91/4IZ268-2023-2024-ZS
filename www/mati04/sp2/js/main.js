@@ -14,6 +14,32 @@ $(document).ready(() => {
     startHoliday(loc.search);
 });
 
+function notifyMe() {
+    if (!("Notification" in window)) {
+      // Check if the browser supports notifications
+      alert("This browser does not support desktop notification");
+    } else if (Notification.permission === "granted") {
+      // Check whether notification permissions have already been granted;
+      // if so, create a notification
+      const notification = new Notification("Hi there!");
+      // …
+    } else if (Notification.permission !== "denied") {
+      // We need to ask the user for permission
+      Notification.requestPermission().then((permission) => {
+        // If the user accepts, let's create a notification
+        if (permission === "granted") {
+          const notification = new Notification("Hi there!");
+          // …
+        }
+      });
+    }
+  
+    // At last, if the user has denied notifications, and you
+    // want to be respectful there is no need to bother them anymore.
+  }
+  
+
+
 //Nastavení tlačítek a vstupu
 const spin = $('.spinner');
 const calendarContainer = $('<div>').attr('id', 'calendar');
@@ -41,6 +67,7 @@ const hideLoading = () => {
     spin.remove();
 };
 
+
 //formátování datumu na DDMM kvůli API
 const parseAndFormatDate = (inputValue) => {
     const formats = ['DDMM', 'D/M', 'D.M'];
@@ -59,10 +86,10 @@ const startHoliday = (date) => {
     const endIndex = date.length;
     const extractedValue = date.substring(startIndex, endIndex);
     const momentDate = parseAndFormatDate(extractedValue);
-    if(momentDate){
+    if (momentDate) {
         loadHoliday(momentDate);
     }
-    
+
 }
 
 //nastavování select u kalendáře
@@ -117,7 +144,7 @@ const processDate = (date, element) => { // podobnost s isValidDate
         element.text(`${formattedDate} - Svátek má ${name.join(' a ')}`);
         hideLoading();
     })
-   
+
 };
 
 const forNameUrl = (dateInput) => {
@@ -147,7 +174,7 @@ const renderUser = (user) => {
 };
 // Vrácení jména pro datum svátku
 const renderDate = (date) => {
-    const userNames = date.map(entry => entry.name); 
+    const userNames = date.map(entry => entry.name);
     const userHtml = `<div class="search_find">${userNames.join(', ')}
     <button class="remove-button">Odstranit</button>
     </div>`;
@@ -155,6 +182,9 @@ const renderDate = (date) => {
     searchContainer.on('click', '.remove-button', function () { // musí být function, protože u => nefunguje this
         $(this).closest('.search_find').remove();
     });
+    if (Notification.permission === "granted"){
+    const notification = new Notification(`${userNames.join(', ')}`);
+    }
 };
 
 
@@ -185,7 +215,7 @@ const formatDate = (dateString) => {
 };
 
 //vyhledávání datumu a podle jména
-searchButton.on('click', (e) => {
+containerDiv.on('submit', (e) => {
     e.preventDefault();
     const inputValue = input.val().trim();
     if (inputValue === '') {
@@ -214,30 +244,34 @@ searchButton.on('click', (e) => {
                 handleFailure();
                 hideLoading();
             });
-        } else {
-            const searchValue = formatInput(inputValue);
-            const currentLang = getCurrentLanguage();
-            const userUrl = `https://svatky.adresa.info/json?name=${searchValue}&lang=${currentLang}`;
-            showLoading();
-            $.getJSON(userUrl).done((user) => {
-                if ($.isEmptyObject(user)) {
+        } else
+            if (/\d/.test(inputValue)) {
+                alert("Špatné číslo ve vstupu");
+            }
+            else {
+                const searchValue = formatInput(inputValue);
+                const currentLang = getCurrentLanguage();
+                const userUrl = `https://svatky.adresa.info/json?name=${searchValue}&lang=${currentLang}`;
+                showLoading();
+                $.getJSON(userUrl).done((user) => {
+                    if ($.isEmptyObject(user)) {
+                        handleFailure();
+                        hideLoading();
+                    } else {
+                        renderUser(user);
+                        hideLoading();
+                        const stateObject = {
+                            name: searchValue,
+                            lang: currentLang
+                        };
+                        const url = `?name=${searchValue}`;
+                        history.pushState(stateObject, "", url);
+                    }
+                }).fail(() => {
                     handleFailure();
                     hideLoading();
-                } else {
-                    renderUser(user);
-                    hideLoading();
-                    const stateObject = {
-                        name: searchValue,
-                        lang: currentLang
-                    };
-                    const url = `?name=${searchValue}`;
-                    history.pushState(stateObject, "", url);
-                }
-            }).fail(() => {
-                handleFailure();
-                hideLoading();
-            });
-        }
+                });
+            }
     }
 });
 
