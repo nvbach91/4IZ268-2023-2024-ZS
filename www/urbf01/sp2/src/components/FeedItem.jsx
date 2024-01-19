@@ -3,18 +3,11 @@ import { grey } from '@mui/material/colors';
 import { Link } from 'react-router-dom';
 import { Edit, KeyboardArrowRight, OpenInNew } from '@mui/icons-material/';
 import { format } from 'date-fns';
-
-const convertTime = (seconds) => {
-  const hours = Math.floor(seconds / 3600);
-  seconds -= hours * 3600;
-  const minutes = Math.floor(seconds / 60);
-  seconds -= minutes * 60;
-  return `${hours}h ${minutes}m ${seconds}s`;
-};
+import moment from 'moment';
 
 export const FeedItem = ({ activity }) => {
   const date = activity.start_date ? format(activity.start_date, 'MMMM do yyyy, H:mm') : '';
-  const elapsedTime = convertTime(activity.elapsed_time);
+  const elapsedTime = moment.utc(activity.elapsed_time * 1000).format('HH:mm:ss');
 
   return (
     <Paper

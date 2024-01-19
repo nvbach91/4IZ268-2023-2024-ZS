@@ -1,19 +1,7 @@
 import { Box, Paper, Stack, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
 import { FeedContainer } from '../components/FeedContainer';
-import { fetchActivitiesData } from '../service/apiService';
 
 export const Home = () => {
-  const [activitiesData, setActivities] = useState(null);
-
-  useEffect(() => {
-    fetchActivitiesData();
-
-    setTimeout(() => {
-      setActivities(JSON.parse(localStorage.getItem('activities')));
-    }, 1000);
-  }, []);
-
   return (
     <Box
       sx={{
@@ -23,7 +11,7 @@ export const Home = () => {
         gap: { sm: 4, md: 3 },
       }}
     >
-      <FeedContainer activitiesData={activitiesData} />
+      <FeedContainer />
 
       <Stack
         sx={{

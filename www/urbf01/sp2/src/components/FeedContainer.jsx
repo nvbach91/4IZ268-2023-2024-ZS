@@ -1,9 +1,17 @@
-import { Box, Button, Paper, Typography } from '@mui/material';
+import { Box, Button, Paper, Typography, CircularProgress, Alert } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { FeedItem } from './FeedItem';
 import { Add } from '@mui/icons-material';
+import { useQuery } from 'react-query';
+import { fetchActivitiesData } from '../service/apiService';
 
-export const FeedContainer = ({ activitiesData }) => {
+const fetchData = async () => {
+  const data = await fetchActivitiesData();
+  return data;
+};
+
+export const FeedContainer = () => {
+  const { data, status } = useQuery('fetchedActivities', fetchData);
   return (
     <Paper>
       <Box
@@ -24,20 +32,27 @@ export const FeedContainer = ({ activitiesData }) => {
           </Button>
         </Link>
       </Box>
-
-      {activitiesData ? (
+      {status === 'error' && (
+        <Alert variant='filled' severity='error' sx={{ mt: 5 }}>
+          Error fetching data.
+        </Alert>
+      )}
+      {status === 'loading' && (
+        <Box sx={{ display: 'flex', mt: 5, justifyContent: 'center' }}>
+          <CircularProgress />
+        </Box>
+      )}
+      {status === 'success' && (
         <Box
           component='ul'
           sx={{
             p: 0,
           }}
         >
-          {activitiesData.map((activity) => {
+          {data.data.map((activity) => {
             return <FeedItem activity={activity} key={activity.id} />;
           })}
         </Box>
-      ) : (
-        <Typography>Loading activities...</Typography>
       )}
     </Paper>
   );

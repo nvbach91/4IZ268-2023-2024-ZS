@@ -123,7 +123,6 @@ export const EditActivityForm = () => {
             variant='contained'
             color='success'
             disabled={formState.isSubmitting}
-            sx={{ width: '300px' }}
           >
             Save
           </Button>

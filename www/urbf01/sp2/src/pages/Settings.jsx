@@ -159,7 +159,7 @@ export const Settings = () => {
               label='Bio'
               variant='outlined'
             />
-            <Button type='submit' variant='contained'>
+            <Button type='submit' variant='contained' color='success'>
               Save Changes
             </Button>
           </Box>
@@ -195,7 +195,7 @@ export const Settings = () => {
               label='Activities per page'
               variant='outlined'
             />
-            <Button type='submit' variant='contained'>
+            <Button type='submit' variant='contained' color='success'>
               Save Changes
             </Button>
           </Box>

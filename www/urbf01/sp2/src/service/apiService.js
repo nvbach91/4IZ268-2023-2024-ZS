@@ -42,20 +42,22 @@ export const fetchAthleteData = async () => {
 };
 
 // GET ACTIVITIES DATA
-export const fetchActivitiesData = async () => {
+export const fetchActivitiesData = async (perPage = 10, page = 1) => {
   const per_page = localStorage.getItem('per_page');
 
   try {
     const response = await apiService.get('/athlete/activities', {
       params: {
-        per_page: per_page ? per_page : 10,
+        page: page,
+        per_page: perPage ? perPage : per_page,
       },
       headers: {
         Authorization: `Bearer ${ACCESS_TOKEN}`,
       },
     });
 
-    localStorage.setItem('activities', JSON.stringify(response.data));
+    localStorage.setItem('test', JSON.stringify(response));
+    return response;
   } catch (error) {
     throw error;
   }

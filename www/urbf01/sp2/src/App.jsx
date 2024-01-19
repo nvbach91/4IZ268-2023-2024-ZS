@@ -15,9 +15,17 @@ import { AddActivity } from './pages/AddActivity';
 import { Profile } from './pages/Profile';
 import { Settings } from './pages/Settings';
 import { ActivityDetail } from './pages/ActivityDetail';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 const theme = createTheme({
   components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          maxWidth: '300px',
+        },
+      },
+    },
     MuiAppBar: {
       styleOverrides: {
         root: {
@@ -38,33 +46,37 @@ const theme = createTheme({
   },
 });
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
     <AuthProvider>
-      <ThemeProvider theme={theme}>
-        <Router>
-          <div className='app'>
-            <Routes>
-              <Route element={<PrivateRoutes />}>
-                <Route path='/' element={<Home />} />
-                <Route path='/activities/add' element={<AddActivity />} />
-                <Route path='/activities/edit/:id?' element={<EditActivity />} />
-                <Route path='/profile' element={<Profile />} />
-                <Route path='/settings' element={<Settings />} />
-                <Route path='/activities' element={<Activities />} />
-                <Route path='/activities/:id' element={<ActivityDetail />} />
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <div className='app'>
+              <Routes>
+                <Route element={<PrivateRoutes />}>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/activities/add' element={<AddActivity />} />
+                  <Route path='/activities/edit/:id?' element={<EditActivity />} />
+                  <Route path='/profile' element={<Profile />} />
+                  <Route path='/settings' element={<Settings />} />
+                  <Route path='/activities' element={<Activities />} />
+                  <Route path='/activities/:id' element={<ActivityDetail />} />
 
-                <Route path='/goals' element={<Goal />} />
-                <Route path='/statistics' element={<Statistics />} />
-              </Route>
-              <Route element={<PublicRoutes />}>
-                <Route path='/login' element={<Login />} />
-                <Route path='/auth' element={<StravaAuth />} />
-              </Route>
-            </Routes>
-          </div>
-        </Router>
-      </ThemeProvider>
+                  <Route path='/goals' element={<Goal />} />
+                  <Route path='/statistics' element={<Statistics />} />
+                </Route>
+                <Route element={<PublicRoutes />}>
+                  <Route path='/login' element={<Login />} />
+                  <Route path='/auth' element={<StravaAuth />} />
+                </Route>
+              </Routes>
+            </div>
+          </Router>
+        </ThemeProvider>
+      </QueryClientProvider>
     </AuthProvider>
   );
 }

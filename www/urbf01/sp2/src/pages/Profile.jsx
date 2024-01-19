@@ -22,9 +22,15 @@ export const Profile = () => {
         Athletes Gear
       </Typography>
       <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '2rem' }}>
-        <Box>Gear Item 1</Box>
-        <Box>Gear Item 2</Box>
-        <Box>Gear Item 3</Box>
+        <Box>
+          <Typography variant='h6'>Gear Item 1</Typography>
+        </Box>
+        <Box>
+          <Typography variant='h6'>Gear Item 2</Typography>
+        </Box>
+        <Box>
+          <Typography variant='h6'>Gear Item 3</Typography>
+        </Box>
       </Box>
     </Paper>
   );

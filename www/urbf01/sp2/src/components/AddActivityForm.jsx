@@ -30,13 +30,12 @@ export const AddActivityForm = () => {
     distance: '',
   });
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setActivity((prevState) => ({
-      ...prevState,
+  function handleInputChange(event) {
+    const { value, name } = event.target;
+    setActivity({
       [name]: value,
-    }));
-  };
+    });
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -149,7 +148,7 @@ export const AddActivityForm = () => {
               multiline
             />
 
-            <Button type='submit' variant='contained' color='success' sx={{ width: '300px' }}>
+            <Button type='submit' variant='contained' color='success'>
               Create
             </Button>
           </Box>
