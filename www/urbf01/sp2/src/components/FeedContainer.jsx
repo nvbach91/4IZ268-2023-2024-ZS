@@ -5,13 +5,14 @@ import { Add } from '@mui/icons-material';
 import { useQuery } from 'react-query';
 import { fetchActivitiesData } from '../service/apiService';
 
-const fetchData = async () => {
+const fetchActivities = async () => {
   const data = await fetchActivitiesData();
   return data;
 };
 
 export const FeedContainer = () => {
-  const { data, status } = useQuery('fetchedActivities', fetchData);
+  const { data: activities, status } = useQuery('fetchedActivities', fetchActivities);
+
   return (
     <Paper>
       <Box
@@ -33,7 +34,7 @@ export const FeedContainer = () => {
         </Link>
       </Box>
       {status === 'error' && (
-        <Alert variant='filled' severity='error' sx={{ mt: 5 }}>
+        <Alert variant='filled' severity='error'>
           Error fetching data.
         </Alert>
       )}
@@ -49,7 +50,7 @@ export const FeedContainer = () => {
             p: 0,
           }}
         >
-          {data.data.map((activity) => {
+          {activities.map((activity) => {
             return <FeedItem activity={activity} key={activity.id} />;
           })}
         </Box>

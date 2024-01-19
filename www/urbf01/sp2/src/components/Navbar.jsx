@@ -41,7 +41,7 @@ export const Navbar = () => {
         <Button
           size='small'
           color='error'
-          variant='contained'
+          variant='outlined'
           disableElevation
           onClick={logout}
           startIcon={<Logout />}

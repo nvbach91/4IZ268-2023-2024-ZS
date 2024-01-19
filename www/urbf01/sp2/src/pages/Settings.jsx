@@ -87,7 +87,7 @@ export const Settings = () => {
       </Typography>
 
       {formsState.isAccountSubmitting === true && (
-        <Alert variant='outlined' severity='success' sx={{ maxWidth: 'calc(500px - 34px)' }}>
+        <Alert variant='outlined' severity='success'>
           Account was sucessfully updated.
         </Alert>
       )}
@@ -167,7 +167,7 @@ export const Settings = () => {
       </Box>
 
       {formsState.isSettingsSubmitting === true && (
-        <Alert variant='outlined' severity='success' sx={{ maxWidth: 'calc(500px - 34px)' }}>
+        <Alert variant='outlined' severity='success'>
           App Settings was sucessfully updated.
         </Alert>
       )}
@@ -176,6 +176,9 @@ export const Settings = () => {
         <Typography variant='h5' component='h3'>
           App Settings
         </Typography>
+        <Alert severity='warning' variant='outlined'>
+          Deprecated: Changing this input's value doesn't effect App's behavior.
+        </Alert>
         <form onSubmit={handleSettingsSubmit}>
           <Box
             sx={{
@@ -189,7 +192,7 @@ export const Settings = () => {
           >
             <TextField
               name='perPage'
-              value={settings.perPage}
+              value={settings.perPage ? settings.perPage : ''}
               onChange={handleInputChange}
               type='text'
               label='Activities per page'

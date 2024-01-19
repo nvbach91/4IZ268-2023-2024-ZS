@@ -16,7 +16,7 @@ export const Statistics = () => {
   }, []);
 
   // todo statistics
-  console.log(activitiesData);
+  //console.log(activitiesData);
 
   return (
     <Paper sx={{ display: 'flex', gap: 3, flexDirection: 'column' }}>

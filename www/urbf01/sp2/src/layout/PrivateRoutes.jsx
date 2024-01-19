@@ -1,26 +1,12 @@
 import { Outlet, Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { useAuth } from '../components/AuthContext';
 import { Navbar } from '../components/Navbar';
 import { AppFooter } from '../components/AppFooter';
 import { Container, Box } from '@mui/material';
 import { ProfileContainer } from '../components/ProfileContainer';
-import { fetchAthleteData } from '../service/apiService';
 
 export const PrivateRoutes = () => {
   const { isLoggedIn } = useAuth();
-
-  const [athleteData, setAthlete] = useState(null);
-
-  useEffect(() => {
-    if (!localStorage.getItem('athlete')) {
-      fetchAthleteData();
-    }
-
-    setTimeout(() => {
-      setAthlete(JSON.parse(localStorage.getItem('athlete')));
-    }, 1000);
-  }, []);
 
   return isLoggedIn ? (
     <Container sx={{ py: 8, minHeight: '100vh' }}>
@@ -34,7 +20,7 @@ export const PrivateRoutes = () => {
           gap: { sm: 4, md: 3 },
         }}
       >
-        <ProfileContainer athleteData={athleteData} />
+        <ProfileContainer />
         <Outlet />
       </Box>
       <AppFooter />

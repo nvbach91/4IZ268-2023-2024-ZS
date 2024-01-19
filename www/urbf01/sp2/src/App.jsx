@@ -33,13 +33,23 @@ const theme = createTheme({
         },
       },
     },
+    MuiAlert: {
+      styleOverrides: {
+        root: {
+          maxWidth: 'calc(500px - 34px)',
+          alignItems: 'center',
+          marginTop: '1rem',
+          marginBottom: '1rem',
+        },
+      },
+    },
     MuiPaper: {
       defaultProps: {
         elevation: '0',
       },
       styleOverrides: {
         root: {
-          padding: '18px',
+          padding: '1rem',
         },
       },
     },

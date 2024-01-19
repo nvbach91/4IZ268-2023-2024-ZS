@@ -1,7 +1,16 @@
-import { Paper, Avatar, Typography, Button } from '@mui/material';
+import { Paper, Avatar, Typography, Button, Alert, CircularProgress, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { fetchAthleteData } from '../service/apiService';
+import { useQuery } from 'react-query';
 
-export const ProfileContainer = ({ athleteData }) => {
+const fetchAthlete = async () => {
+  const data = await fetchAthleteData();
+  return data;
+};
+
+export const ProfileContainer = () => {
+  const { data: athleteData, status } = useQuery('fetchedAthlete', fetchAthlete);
+
   return (
     <Paper
       sx={{
@@ -12,7 +21,17 @@ export const ProfileContainer = ({ athleteData }) => {
         gap: 2,
       }}
     >
-      {athleteData ? (
+      {status === 'error' && (
+        <Alert variant='filled' severity='error'>
+          Error fetching data.
+        </Alert>
+      )}
+      {status === 'loading' && (
+        <Box sx={{ display: 'flex', mt: 5, justifyContent: 'center' }}>
+          <CircularProgress />
+        </Box>
+      )}
+      {status === 'success' && (
         <>
           <Avatar
             alt={athleteData.firstname + ' ' + athleteData.lastname}
@@ -31,8 +50,6 @@ export const ProfileContainer = ({ athleteData }) => {
             </Button>
           </Link>
         </>
-      ) : (
-        <Typography>Loading profile data...</Typography>
       )}
     </Paper>
   );

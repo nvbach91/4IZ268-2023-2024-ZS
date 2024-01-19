@@ -97,7 +97,13 @@ export const ActivityDetail = () => {
             }}
           >
             <Link to={`/activities/edit/${activity.id}`}>
-              <Button variant='text' color='success' size='small' endIcon={<Edit />}>
+              <Button
+                variant='outlined'
+                color='info'
+                size='small'
+                disableElevation
+                endIcon={<Edit />}
+              >
                 Edit
               </Button>
             </Link>

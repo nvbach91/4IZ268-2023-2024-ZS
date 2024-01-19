@@ -49,7 +49,7 @@ export const fetchActivitiesData = async (perPage = 10, page = 1) => {
     const response = await apiService.get('/athlete/activities', {
       params: {
         page: page,
-        per_page: perPage ? perPage : per_page,
+        per_page: per_page ? per_page : perPage,
       },
       headers: {
         Authorization: `Bearer ${ACCESS_TOKEN}`,
@@ -57,7 +57,7 @@ export const fetchActivitiesData = async (perPage = 10, page = 1) => {
     });
 
     localStorage.setItem('test', JSON.stringify(response));
-    return response;
+    return response.data;
   } catch (error) {
     throw error;
   }
