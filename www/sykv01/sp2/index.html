@@ -7,16 +7,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Spotify App | Your Top 3 Songs</title>
+    <title>Spotify App | Your Top Items</title>
 </head>
 <body>
     <div id="canvasContainer">
         <header>
-            <h1>YOUR TOP 3 SONGS ON SPOTIFY</h1>
-        </header>    
+            <h1>YOUR TOP ITEMS ON SPOTIFY</h1>
+        </header>
         
         <main>
             <div class="container">
+                
+                <div class="form-container">
+                </div>
+
+                <button id="generateButton">GENERATE</button>
+                
                 <button id="authenticateButton">LOG IN WITH SPOTIFY</button>
                 
                 <div id="resultsContainer" class="results-container">
@@ -24,19 +30,16 @@
                 </div>
             </div>
             
-            <div class="color-picker">
+            <div class="color-picker" id="colorPickerContainer">
                 <p>PICK A COLOR:</p>
-                <span class="dot" style="background-color:#ff9e99be"></span>
-                <span class="dot" style="background-color:#f7d9c4"></span>
-                <span class="dot" style="background-color:#FAEDCB"></span>
-                <span class="dot" style="background-color:#C9E4DE"></span>
-                <span class="dot" style="background-color:#C6DEF1"></span>
-                <span class="dot" style="background-color:#DBCDF0"></span>
-                <span class="dot" style="background-color:#FFFFFF"></span>
             </div>
            
             <div class="share-button">
                 <button id="shareButton">SHARE</button>
+            </div>
+            
+            <div class="back-button">
+                <button id="backButton">BACK</button>
             </div>
         </main>
     </div>

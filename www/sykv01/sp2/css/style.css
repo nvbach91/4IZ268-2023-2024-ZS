@@ -19,21 +19,38 @@ header h1 {
 }
 
 .container {
+    height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 3px solid black;
-    height: 600px;
 }
+
+.form-container select {
+    font-size: 25px;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+}
+
+
+/*TOP TRACKS*/
 
 .results-container .track-result {
     margin-top: 30px;
     margin-bottom: 40px;
+    margin-right: 100px;
     display: flex;
     align-items: center;
 }
 
 .results-container .track-result span {
+    text-align: right;
+    width: 80px;
     font-size: 80px;
     margin-right: 30px;
     margin-left: 80px;
@@ -58,7 +75,54 @@ header h1 {
 
 .results-container .track-result p {
     font-size: 25px;
-    margin-top: -5px;
+    margin-top: -10px;
+}
+
+.results-container .track-result audio {
+    height: 25px;
+    margin-top: -10px;
+}
+
+/*TOP ARTISTS*/
+
+.results-container .artist-result {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.results-container .artist-result span {
+    text-align: right;
+    width: 80px;
+    font-size: 80px;
+    margin-right: 30px;
+    margin-left: 80px;
+}
+
+.results-container .artist-result img {
+    width: 85px;
+    height: 85px;
+    margin-right: 20px;
+    border: 1px solid black;
+}
+
+.results-container .artist-result .info-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.results-container .artist-result h2 {
+    font-size: 28px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+}
+
+.results-container .artist-result p {
+    font-size: 25px;
+    margin-top: -2px;
+    width: 300px;
+    margin-right: 60px;
 }
 
 #authenticateButton {
@@ -76,6 +140,27 @@ header h1 {
 }
 
 #authenticateButton:hover {
+    background-color: #07b9074c;
+    cursor: pointer;
+}
+
+#generateButton {
+    display:none;
+    margin: 50px;
+    margin-top: 20px;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    letter-spacing: 2px;
+    font-size: 25px;
+    font-weight: 600;
+    background-color: white;
+}
+
+#generateButton:hover {
     background-color: #07b9074c;
     cursor: pointer;
 }
@@ -106,6 +191,33 @@ header h1 {
 
 .dot:hover{
     transform: scale(1.2);
+    cursor: pointer;
+}
+
+.back-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#backButton {
+    display: none;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    letter-spacing: 2px;
+    font-size: 25px;
+    font-weight: 600;
+    background-color: white;
+}
+
+#backButton:hover {
+    background-color: #07b9074c;
     cursor: pointer;
 }
 
