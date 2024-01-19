@@ -1,0 +1,156 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: rgba(240, 230, 216, 0.425);
+    margin: auto;
+    text-align: center;
+    width: 80%;  
+    justify-content: center;
+    align-items: center;
+}
+.title {
+    font-size: 48px;
+}
+.space-for-definition,
+.space-for-synonyms {
+    text-align: left;
+    height: 120px;
+}
+
+.space-for-trials {
+    font-size: 22px;
+    padding-bottom: 20px;
+    color: darkgreen;
+}
+
+.hints {
+    height: 240px;
+}
+
+.line-unrevealed {
+    user-select: none;
+    padding: 5px 15px;
+    margin: 5px;
+    font-size: 20px;
+    color: transparent;
+    width: 30px;
+    border-bottom: 1px solid black;
+}
+
+.space-for-guessed-word {
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.line-revealed {
+    padding: 5px 15px;
+    margin: 5px;
+    width: 30px;
+    font-size: 20px;
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+.rules,
+.dictionary {
+    position: fixed;
+    top: 50%;
+    left: 52%;
+    width: 840px;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: rgb(238, 237, 238);
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.keyboard {
+    border: 2px solid black;
+}
+
+.keyboard-row {
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    height: 70px;
+    width: 75%;
+}
+
+.key {
+    border: 2px solid black;
+    padding: 10px 20px;
+    width: 30px;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+    background-color: lightgray;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.start-button,
+.show-rules-button,
+.show-hint-button,
+.unshow-rules-button,
+.share-facebook,
+.dictionary-button {
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    background-color: antiquewhite;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.header,
+.space-for-guessed-word {
+    display: flex;
+    justify-content: center;
+}
+
+.right-column,
+.left-column {
+    width: 40%;
+}
+
+.unclickable {
+    border: 2px solid black;
+    padding: 10px 20px;
+    width: 30px;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+    background-color: darkgray;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.end {
+    height: 70px;
+    font-size: 55px;
+    font-weight: bold;
+}
+
+.spinner {
+    height: 100px;
+    width: 100px;
+    border: 10px solid black;
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    animation: spinning 2s linear infinite;
+}
+
+.footer {
+    margin-top: 30px;
+    color: darkgreen;
+    font-size: 20px;
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
