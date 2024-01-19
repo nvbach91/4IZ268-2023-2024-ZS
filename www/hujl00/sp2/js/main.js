@@ -12,25 +12,23 @@ const createApp = () => {
         hints.empty();
         end.empty();
         showLoading();
-        getWord();
+        startGame(words);
         gameWon = false;
         $('.unclickable').removeClass('unclickable').addClass('key');
         gamesPlayed = gamesPlayed + 1;
         countGames.text('Games played: ' + gamesPlayed);
         localStorage.setItem('hangmanGamesPlayed', gamesPlayed);
-        localStorage.setItem('hangmanPoints', points);
         numberOfTrials = 8;
         updateTrialsColor();
         trialsLeft.text('Number of trials left: ' + numberOfTrials);
-        localStorage.setItem('hangmanPoints', points);
     });
     const showRulesButton = $('<button>').addClass('show-rules-button');
     showRulesButton.attr('id', 'show-rules');
     showRulesButton.text('Game rules');
     const guessedWordsDictionary = {};
     const addWordToDictionary = (word, definition) => {
-            guessedWordsDictionary[word] = definition;
-        };
+        guessedWordsDictionary[word] = definition;
+    };
     const showDictionaryButton = $('<button>').addClass('dictionary-button');
     showDictionaryButton.text('Show dictionary of guessed words');
     const dictionary = $('<div>').addClass('dictionary');
@@ -44,9 +42,9 @@ const createApp = () => {
         for (const [word, definition] of Object.entries(guessedWordsDictionary)) {
             const guessedWordLine = $('<div>').text(`${word}: ${definition}`);
             wordsInDictionary.append(guessedWordLine);
-        } 
+        }
         dictionary.fadeIn();
-        });
+    });
     unshowDictionaryButton.click(function () {
         dictionary.fadeOut();
     });
@@ -59,11 +57,11 @@ const createApp = () => {
     unshowRulesButton.text('Close');
     rules.append(unshowRulesButton);
     showRulesButton.click(function () {
-            rules.fadeIn();
-        });
+        rules.fadeIn();
+    });
     unshowRulesButton.click(function () {
-            rules.fadeOut();
-        });
+        rules.fadeOut();
+    });
     leftColumn.append(startButton, showRulesButton, showDictionaryButton);
     const showHint1 = $('<button>').addClass('show-hint-button');
     showHint1.text('Show first hint');
@@ -92,21 +90,20 @@ const createApp = () => {
 
     const keyboard = $('<div>').addClass('keyboard');
     const letterRows = [
-        ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'], 
-        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'], 
-        ['Z', 'X', 'C', 'V', 'B', 'N', 'M'], 
-      ];
-      letterRows.forEach((row) => {
-        const keyboardRow = $('<div>').addClass('keyboard-row'); 
-    
+        ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+        ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
+    ];
+    letterRows.forEach((row) => {
+        const keyboardRow = $('<div>').addClass('keyboard-row');
+
         row.forEach((letter) => {
-            const key = $('<div>').text(letter).addClass('key'); 
+            const key = $('<div>').text(letter).addClass('key');
             keyboardRow.append(key);
         });
-    
-        keyboard.append(keyboardRow); 
+
+        keyboard.append(keyboardRow);
     });
-    
 
     let points = parseInt(localStorage.getItem('hangmanPoints')) || 0;
     const counters = $('<div>').addClass('count-points');
@@ -127,69 +124,75 @@ const createApp = () => {
     const hideLoading = () => {
         spinner.remove();
     };
-    const getWordsURL = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/111863/dictionary.txt';
-    const getWord = () => {$.get(getWordsURL, (data) => {
-        const words = data.split('\n');
-        startGame(words); 
-    });}
-    getWord();
+
+    let words = [];
+    const storedWords = localStorage.getItem('listOfWords');
+    if (storedWords) {
+        words = JSON.parse(storedWords);
+    }
+    if (words.length === 0) {
+        const getWordsURL = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/111863/dictionary.txt';
+        $.get(getWordsURL, (data) => {
+            words = data.split('\n');
+            localStorage.setItem('listOfWords', JSON.stringify(words));
+        })
+    }
+
     gamesPlayed = gamesPlayed + 1;
     countGames.text('Games played: ' + gamesPlayed);
     localStorage.setItem('hangmanGamesPlayed', gamesPlayed);
-    localStorage.setItem('hangmanPoints', points);
-    numberOfTrials = 8;
     updateTrialsColor();
     trialsLeft.text('Number of trials left: ' + numberOfTrials);
-    localStorage.setItem('hangmanPoints', points);
-    
+
     const startGame = (words) => {
         const randomIndex = Math.floor(Math.random() * words.length);
         const randomWord = words[randomIndex];
         if (randomWord.length <= 3) {
-                startGame();
+            startGame(words);
         } else {
-                const letters = randomWord.split('');
-                letters.forEach((letter) => {
-                    const line = $(`<div>${letter}</div>`);
-                    line.addClass('line-unrevealed line');
-                    spaceForWord.append(line)
-                });
-                rightColumn.append(showHint1);
-                showHint1.prop('disabled', false);
-                showHint1.on('click', () => {
+            const letters = randomWord.split('');
+            letters.forEach((letter) => {
+                const line = $(`<div>${letter}</div>`);
+                line.addClass('line-unrevealed line');
+                spaceForWord.append(line)
+            });
+            rightColumn.append(showHint1);
+            showHint1.prop('disabled', false);
+            showHint1.on('click', () => {
+                showLoading();
+                hintN1(randomWord);
+                rightColumn.append(showHint2);
+                showHint2.prop('disabled', false);
+                showHint2.on('click', () => {
                     showLoading();
-                    hintN1(randomWord);
-                    rightColumn.append(showHint2);
-                    showHint2.prop('disabled', false);
-                    showHint2.on('click', () => {
-                        showLoading();
-                        hintN2(randomWord);
-                    });
+                    hintN2(randomWord);
                 });
-                const settings = {
-                    async: true,
-                    crossDomain: true,
-                    url: 'https://wordsapiv1.p.rapidapi.com/words/' + randomWord + '/definitions',
-                    method: 'GET',
-                    headers: {
-                        'X-RapidAPI-Key': 'e8c33a1ec8msh2020509a6ffe124p105323jsnf081559fa303',
-                        'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
+            });
+            const settings = {
+                async: true,
+                crossDomain: true,
+                url: 'https://wordsapiv1.p.rapidapi.com/words/' + randomWord + '/definitions',
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': 'e8c33a1ec8msh2020509a6ffe124p105323jsnf081559fa303',
+                    'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
+                }
+            };
+            let definitions;
+            $.ajax(settings)
+                .done(function (response) {
+                    if (response.definitions && response.definitions.length > 0) {
+                        definitions = response.definitions.map(def => def.definition);
+                        definitions = definitions.join('\n');
                     }
-                };
-                let definitions;
-                $.ajax(settings)
-                    .done(function (response) {
-                        if (response.definitions && response.definitions.length > 0) {
-                            definitions = response.definitions.map(def => def.definition);
-                            definitions = definitions.join('\n');
-                        } 
-                    })
-                keyboard.off('click', '.key').on('click', '.key', function () {
-                    keyClick($(this), randomWord, definitions);
-                });
-                hideLoading();
-            }
-        };
+                })
+            keyboard.off('click', '.key').on('click', '.key', function () {
+                keyClick($(this), randomWord, definitions);
+            });
+            hideLoading();
+        }
+    };
+    startGame(words);
     const hintN1 = (randomWord) => {
         const settings = {
             async: true,
