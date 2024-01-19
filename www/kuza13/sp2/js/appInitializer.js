@@ -30,6 +30,7 @@ class AppInitializer {
 	initialize() {
 		this.eventHandler.setupEventListeners();
 		console.log('Initialization..');
+		return 'Initialized';
 	}
 }
 

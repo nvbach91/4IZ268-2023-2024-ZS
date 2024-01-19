@@ -12,7 +12,7 @@ export default class AuthManager {
 		this.#notificationManager = notificationManager;
 		this.#authProvider = this.#createAuthProvider();
 		this.msalClient = new msal.PublicClientApplication(msalConfig);
-		console.log(msalConfig);
+
 		this.#graphClient = MicrosoftGraph.Client.initWithMiddleware({
 			authProvider: this.#authProvider,
 		});
@@ -42,18 +42,28 @@ export default class AuthManager {
 			const authResult = await this.msalClient.loginPopup(this.msalRequest);
 			sessionStorage.setItem('msalAccount', authResult.account.username);
 			this.#notificationManager.showNotification('Login successful!', 'info');
+			return authResult; // Return the authResult
 		} catch (error) {
-			// Handle sign-in error
 			this.#notificationManager.showNotification(error.message, 'error');
 			console.error(error);
+			return null; // Return indication of failure
 		}
 	}
 
 	async getToken() {
 		let account = sessionStorage.getItem('msalAccount');
 
+		// Check if the account is not available and then sign in
 		if (!account) {
-			await this.signIn();
+			const authResult = await this.signIn();
+			// Ensure that the account is set after successful sign-in
+			if (authResult && authResult.account) {
+				account = authResult.account.username;
+				sessionStorage.setItem('msalAccount', account);
+			} else {
+				// Handle the case where sign-in was not successful
+				throw new Error('Sign-in was unsuccessful');
+			}
 		}
 
 		try {

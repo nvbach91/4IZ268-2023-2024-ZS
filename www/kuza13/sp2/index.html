@@ -21,6 +21,11 @@
 				<img src="./styles/img/ms-symbollockup_signin_light.png" alt="Sign in with Microsoft" />
 			</button>
 		</header>
+		<div id="loadingIndicator"
+			style=" position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
+			<img src="./styles/img/spinner.svg" alt="Loading...">
+		</div>
+
 
 		<section>
 			<div class="input-group">
@@ -28,7 +33,7 @@
 				<button class="btn" type="button" id="showEventsButton">Show Events</button>
 			</div>
 
-			<div id="eventWrapper" class="d-none">
+			<div id="eventWrapper">
 				<p></p>
 				<ul id="events"></ul>
 			</div>
@@ -36,7 +41,7 @@
 
 		<section>
 
-			<h3>Task list for today</h3>
+			<h3>Your task list:</h3>
 			<div class="card">
 				<ul id="tasksList" class="list-group list-group-flush"></ul>
 			</div>
@@ -47,9 +52,22 @@
 				</div>
 				<div class="card-body">
 					<form id="taskForm" class="form-group">
-						<input type="text" id="taskInput" class="form-control" placeholder="Task text" required>
+						<input type="text" id="taskInput" class="form-control" placeholder="Type your task here" required>
+						<label for="taskPriority">Task Priority:</label>
+						<select id="taskPriority" class="form-control">
+							<option value="low">Low</option>
+							<option value="medium">Medium</option>
+							<option value="high">High</option>
+						</select>
+						<div class="quick-date-links">
+							<label for="taskPriority">Choose the due to date:</label>
+							<input type="date" id="taskDueDate" class="form-control">
+							<button id="setTomorrow">Tomorrow</button>
+							<button id="setNextWeek">In a Week</button>
+						</div>
 						<button type="submit" class="btn">Add</button>
 					</form>
+
 				</div>
 			</div>
 		</section>

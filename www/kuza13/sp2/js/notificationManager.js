@@ -11,15 +11,15 @@ export default class NotificationManager {
 			.text(message);
 
 		if (undoCallback) {
-			const undoButton = $('<br><a href="#" class="undo-link">Undo</a>').click(
-				function (e) {
-					e.preventDefault();
-					undoCallback();
-					notification.fadeOut(50, function () {
-						$(this).remove();
-					});
-				},
-			);
+			const undoButton = $(
+				'<br><button class="undo-button">Undo</button>',
+			).click(function (e) {
+				e.preventDefault();
+				undoCallback();
+				notification.fadeOut(50, function () {
+					$(this).remove();
+				});
+			});
 			notification.append(undoButton);
 		}
 

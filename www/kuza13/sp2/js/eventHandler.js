@@ -29,6 +29,17 @@ export default class EventHandler {
 			'click',
 			this.#uiManager.displayEvents.bind(this.#uiManager),
 		);
+		// Event handler for setting date to tomorrow
+		$('#setTomorrow').click(e => {
+			e.preventDefault();
+			$('#taskDueDate').val(this.getTomorrowDate());
+		});
+
+		// Event handler for setting date to next week
+		$('#setNextWeek').click(e => {
+			e.preventDefault();
+			$('#taskDueDate').val(this.getNextWeekDate());
+		});
 	}
 
 	handleTaskSubmit(event) {
@@ -45,5 +56,25 @@ export default class EventHandler {
 	handleTaskComplete(event) {
 		const taskId = $(event.target).closest('.list-group-item').prop('id');
 		this.#taskManager.completeTask(taskId);
+	}
+
+	getTomorrowDate() {
+		const today = new Date();
+		const tomorrow = new Date(
+			today.getFullYear(),
+			today.getMonth(),
+			today.getDate() + 2,
+		);
+		return tomorrow.toISOString().split('T')[0];
+	}
+
+	getNextWeekDate() {
+		const today = new Date();
+		const nextWeek = new Date(
+			today.getFullYear(),
+			today.getMonth(),
+			today.getDate() + 8,
+		);
+		return nextWeek.toISOString().split('T')[0];
 	}
 }

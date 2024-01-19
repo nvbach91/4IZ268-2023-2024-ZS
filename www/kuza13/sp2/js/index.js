@@ -1,16 +1,17 @@
 import AppInitializer from './appInitializer.js';
-$(document).ready(function () {
-	// Any pre-initialization code can go here
-	// This might include configuring global settings,
-	// loading initial data, setting up environment variables, etc.
 
+$(document).ready(function () {
+	function getDefaultDueDate() {
+		const today = new Date();
+
+		return today.toISOString().split('T')[0]; // Format to YYYY-MM-DD
+	}
+
+	const defaultDueDate = getDefaultDueDate();
+	$('#taskDueDate').val(defaultDueDate);
 	// Initialize the application
 	AppInitializer.initialize();
 
-	// Post-initialization code can go here
-	// This could include setting up global event listeners,
-	// starting background jobs, or anything that should happen
-	// after the app has been initialized.
-
 	console.log('Application initialized successfully!');
+	$('#loadingIndicator').hide();
 });

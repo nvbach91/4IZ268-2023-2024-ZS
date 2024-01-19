@@ -8,6 +8,8 @@
 html,
 body {
 	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 	font-family: 'Arial', sans-serif;
 	font-size: 16px;
 	line-height: 1.6;
@@ -17,7 +19,9 @@ body {
 
 /* Container */
 .container {
+	flex: 1;
 	padding: 20px;
+	overflow: auto;
 }
 
 /* Header and Titles */
@@ -62,6 +66,7 @@ h4 {
 	padding: 10px 15px;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
+	margin: 10px;
 }
 
 .btn:hover,
@@ -81,6 +86,7 @@ h4 {
 	border-radius: 20px;
 	padding: 10px;
 	margin: 10px;
+	background-color: white;
 }
 
 /* Additional Styles */
@@ -151,7 +157,7 @@ h4 {
 	padding: 20px;
 	background-color: #fff0f5; /* Very light pink background */
 	border-top: 1px solid #ffc0cb; /* Light pink border */
-	position: fixed;
+	position: relative;
 	bottom: 0;
 	width: 100%;
 }
@@ -217,12 +223,17 @@ button:hover {
 	.btn,
 	.btn-action,
 	.form-control {
-		width: 100%;
+		width: 95%;
 		margin: 10px;
 	}
 
 	.container {
 		padding: 10px;
+	}
+
+	#eventWrapper {
+		padding: 10px;
+		margin: 10px 0;
 	}
 }
 
@@ -260,11 +271,16 @@ ul {
 }
 
 /* Undo Link Styles */
-.notification .undo-link {
-	color: #ff69b4; /* Pink color for the link */
-	margin-left: 10px; /* Space from the notification message */
-	text-decoration: underline; /* Underline to indicate it is clickable */
-	cursor: pointer; /* Cursor to pointer to indicate it's clickable */
+.notification .undo-button {
+	color: #ff69b4;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+	text-decoration: underline;
 }
 
 .notification .undo-link:hover,
@@ -272,4 +288,98 @@ ul {
 	color: #ff1493; /* Slightly darker pink on hover and focus */
 	text-decoration: none; /* Remove underline on hover and focus */
 	outline: none; /* Remove outline on focus */
+}
+
+/* Task Item with Priority */
+.list-group-item {
+	/* existing styles */
+	position: relative;
+}
+
+.task-due-date {
+	font-size: 0.8em;
+	color: #6c757d;
+	margin-left: 10px;
+}
+.quick-date-links button {
+	margin-right: 10px;
+	color: #d85a7b;
+	cursor: pointer;
+	background: none;
+	border: none;
+	padding: 0;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.quick-date-links button:hover {
+	text-decoration: underline;
+}
+
+/* Label Styles */
+label {
+	display: block;
+	margin-bottom: 5px;
+	color: #d85a7b; /* Using the same pink shade as your headers for consistency */
+	font-weight: bold; /* Making the label text bold for emphasis */
+	font-size: 1.1em; /* Slightly larger font size for better visibility */
+}
+
+/* Style adjustments for label when associated with select elements */
+label + .form-control {
+	margin-top: -10px;
+}
+
+#loadingIndicator img {
+	width: 50px;
+	height: 50px;
+}
+
+/* Event wrapper styling */
+#eventWrapper {
+	background-color: #ffffff; /* White background for clarity */
+	border: 1px solid #ffc0cb; /* Light pink border to match the theme */
+	border-radius: 15px;
+	padding: 20px;
+	margin: 20px 0;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#eventWrapper ul {
+	width: 100%;
+	list-style-type: none;
+	padding: 0;
+	font-family: 'Arial', sans-serif;
+}
+
+#eventWrapper li {
+	background-color: #fff0f5; /* Very light pink, like the task items */
+	border: 1px solid #ffc0cb; /* Light pink border */
+	border-radius: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	text-align: left;
+}
+
+#eventWrapper li .event-date {
+	font-weight: bold; /* Makes the date bold */
+}
+
+/* Map - link styling */
+.maps-link {
+	color: #d85a7b; /* Darker pink for contrast */
+	cursor: pointer; /* Example: Blue color for links */
+	font-weight: bold; /* Makes the link text bold */
+	text-decoration: none; /* Removes the underline */
+	transition: color 0.3s ease; /* Smooth color transition for hover effect */
+}
+
+.maps-link:hover,
+.maps-link:focus {
+	text-decoration: underline; /* Adds underline on hover for emphasis */
 }

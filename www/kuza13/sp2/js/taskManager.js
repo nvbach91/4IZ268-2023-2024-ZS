@@ -6,35 +6,28 @@ export default class TaskManager {
 		this.#loadTasks();
 	}
 
-	// Logic to load tasks from localStorage and render them
-	#loadTasks() {
-		if (localStorage.getItem('tasks')) {
-			this.#tasks = JSON.parse(localStorage.getItem('tasks'));
-			this.#tasks.forEach(task => this.#renderTask(task));
-		}
-		this.#checkEmptyList($('#tasksList'));
-	}
-
 	// Implementation for adding a task
-	addTask(event) {
+	addTask() {
 		const taskText = $('#taskForm').find('#taskInput').val();
+		const taskPriority = $('#taskForm').find('#taskPriority').val();
+		const taskDueDate = $('#taskForm').find('#taskDueDate').val();
 
 		const task = {
 			id: Date.now(),
 			text: taskText,
+			priority: taskPriority,
+			dueDate: taskDueDate,
 			done: false,
 		};
 
 		this.#renderTask(task);
 
 		this.#tasks.push(task);
-
 		TaskManager.addToLS('tasks', JSON.stringify(this.#tasks));
-
 		this.#checkEmptyList($('#tasksList'));
 
-		setTimeout(function () {
-			$('#taskInput').val('');
+		setTimeout(() => {
+			this.formRenew();
 			$('#tasksList').find('.list-group-item:first').focus();
 		}, 50);
 		this.#notificationManager.showNotification('Task added!', 'info');
@@ -94,60 +87,63 @@ export default class TaskManager {
 		this.#notificationManager.showNotification('Task completed!', 'info');
 	}
 
+	#loadTasks() {
+		if (localStorage.getItem('tasks')) {
+			this.#tasks = JSON.parse(localStorage.getItem('tasks'));
+
+			// Sort tasks by due date
+			this.#tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+
+			// Render sorted tasks
+			this.#renderAllTasks();
+		}
+		this.#checkEmptyList($('#tasksList'));
+	}
+
+	// Method to render all tasks at once
+	#renderAllTasks() {
+		const tasksHTML = this.#tasks
+			.map(task => this.#createTaskHTML(task))
+			.join('');
+		$('#tasksList').html(tasksHTML);
+	}
+
 	// Logic to render a task
 	#renderTask(task) {
-		const isDone = () => (task.done ? 'task-title--done' : 'task-title');
+		this.#tasks.push(task);
+		this.#renderAllTasks();
+	}
 
-		const $taskItem = $('<li>', {
-			id: task.id,
-			class: 'list-group-item',
-			tabindex: 0,
-		}).append(
-			$('<span>', {
-				class: isDone(),
-				text: task.text,
-			}),
-			$('<div>', {
-				class: 'task-item__buttons',
-			}).append(
-				$('<button>', {
-					type: 'button',
-					'data-action': 'done',
-					class: 'btn-action',
-				}).append(
-					$('<img>', {
-						src: './styles/img/tick.svg',
-						alt: 'Done',
-						width: 18,
-						height: 18,
-					}),
-				),
-				$('<button>', {
-					type: 'button',
-					'data-action': 'delete',
-					class: 'btn-action',
-				}).append(
-					$('<img>', {
-						src: './styles/img/cross.svg',
-						alt: 'Delete',
-						width: 18,
-						height: 18,
-					}),
-				),
-			),
-		);
+	// New method to create a task element
+	#createTaskHTML(task) {
+		const priorityColor = {
+			low: '#28a745',
+			medium: '#ffc107',
+			high: '#dc3545',
+		};
 
-		// Append the task item to the tasks list
-		$('#tasksList').append($taskItem);
+		let taskHTML = `<li id="${
+			task.id
+		}" class="list-group-item" tabindex="0" style="border-left: 4px solid ${
+			priorityColor[task.priority]
+		};">`;
+		taskHTML += `<span class="${
+			task.done ? 'task-title--done' : 'task-title'
+		}">${task.text}</span>`;
+		taskHTML += `<span class="task-due-date">Due: ${task.dueDate}</span>`;
+		taskHTML += `<div class="task-item__buttons">`;
+		taskHTML += `<button type="button" data-action="done" class="btn-action"><img src="./styles/img/tick.svg" alt="Done" width="18" height="18"></button>`;
+		taskHTML += `<button type="button" data-action="delete" class="btn-action"><img src="./styles/img/cross.svg" alt="Delete" width="18" height="18"></button>`;
+		taskHTML += `</div></li>`;
 
-		// Add task to the taskList
-		$('#tasksList').prepend($taskItem);
+		return taskHTML;
 	}
 
 	// Renews the input
-	inputRenew(input) {
-		input.value = '';
-		input.focus();
+	formRenew() {
+		$('#taskInput').val('');
+		$('#taskDueDate').val(new Date().toISOString().split('T')[0]);
+		$('#taskPriority').val('low');
 	}
 
 	// Check if the list is empty and show/hide placeholder

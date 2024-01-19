@@ -24,6 +24,23 @@ export default class GraphManager {
 		};
 	}
 
+	async fetchCategoryColors() {
+		try {
+			const categoryColors = await this.#graphClient
+				.api('/me/outlook/masterCategories')
+				.get();
+
+			return categoryColors.value.reduce((acc, category) => {
+				acc[category.displayName] = category.color;
+				console.log(acc);
+				return acc;
+			}, {});
+		} catch (error) {
+			console.error('Error fetching category colors:', error);
+			return {};
+		}
+	}
+
 	async getEventsForDays(days) {
 		console.log('Getting events...');
 		this.#authManager.ensureScope('Calendars.read');
@@ -35,7 +52,7 @@ export default class GraphManager {
 		return await this.#graphClient
 			.api('/me/calendarview')
 			.query(query)
-			.select('subject,start,end')
+			.select('subject,start,end,location,categories,bodyPreview')
 			.orderby('Start/DateTime')
 			.get();
 	}
