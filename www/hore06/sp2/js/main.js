@@ -1,3 +1,9 @@
+/*
+responce ulozit do local staroge a po stisku tlacitka dole zobrazit
+
+*/
+
+
 const appContainer = $('#app');
 
 
@@ -52,11 +58,15 @@ IWsubmitButton.text('Calculate ideal weight');
 const calorieSubmitButton = $('<button  type="button" title="Calculate daily recomended calorie intake.">');
 calorieSubmitButton.text('Calculate daily recomended calorie intake');
 
+const viewHistoryButton = $('<button  type="button" title="View measurements history">');
+viewHistoryButton.text('View history');
 
+const hideHistoryButton = $('<button  type="button" title="delete measurements history">');
+hideHistoryButton.text('Delete measurements history');
 const grid = $('<form class="grid-container">');
 const formLabel = $('<label><strong>Before submitting, make sure all inputs fields are filled. Use integers only.</strong></label>')
 
-
+const history = $('<p>');
 
 grid.append(weightInLabel, weightInput, heightInLabel, heightInput, ageInLabel, ageInput, genderDecs, genderInputMale, genderInputFemale, actvityInLabel, activitySelect, BMIsubmitButton, calorieSubmitButton, IWsubmitButton, calorieSubmitButton, allSubmitButton)
 
@@ -245,6 +255,17 @@ const getValues = () => {
 	return [weight, height, age, gender, level];
 }
 
+var addNewMeasurements = function (responce) {
+	// retrieve it (Or create a blank array if there isn't any info saved yet),
+	var history = JSON.parse(localStorage.getItem('measurmentsHistory')) || [];
+	// add to it,
+	history.push(responce.data);
+	// then put it back.
+	localStorage.setItem('measurmentsHistory', JSON.stringify(history));
+}
+
+
+
 
 
 const getBMI = () => {
@@ -256,8 +277,8 @@ const getBMI = () => {
 
 
 	if (weight == 'null' || weight == 'undefined' || weight < 40 ||
-		height == 'null' || height == 'undefined' || height < 150 ||height > 200 || 
-		age == 'null' || age == 'undefined' || age < 0 ||age > 80) {
+		height == 'null' || height == 'undefined' || height < 150 || height > 200 ||
+		age == 'null' || age == 'undefined' || age < 0 || age > 80) {
 		alert('Please fill out the form correctly.');
 		return;
 
@@ -288,7 +309,7 @@ const getBMI = () => {
 
 	$.ajax(settings).done(function (response) {
 		spin.remove();
-		console.log(response);
+		addNewMeasurements(response);
 		$("#BMIOutput").html(
 			`<div>
 				<p> Your BMI is:  ${response.data.bmi}.</p>
@@ -324,7 +345,7 @@ const getIdealWeight = () => {
 	var height = inputs[1];
 	var gender = inputs[3];
 
-	if (weight == 'null' || weight == 'undefined' || weight < 40 ||height == 'null' || height == 'undefined' || height < 150 ||height > 200 ) {
+	if (weight == 'null' || weight == 'undefined' || weight < 40 || height == 'null' || height == 'undefined' || height < 150 || height > 200) {
 		alert('Please fill out the form correctly.');
 		return;
 
@@ -333,7 +354,7 @@ const getIdealWeight = () => {
 		leftContainer.append(spin);
 	}
 
-	
+
 
 	const urlIW = `https://fitness-calculator.p.rapidapi.com/idealweight?gender=${gender}&height=${height}`;
 
@@ -349,7 +370,7 @@ const getIdealWeight = () => {
 	};
 
 	$.ajax(settings).done(function (response) {
-
+		addNewMeasurements(response);
 		spin.remove();
 		var calculatedWeight = response.data.Devine;
 		var diff = calculatedWeight - weight;
@@ -384,9 +405,9 @@ const getCalories = () => {
 	var gender = inputs[3];
 	var level = inputs[4];
 
-	if (weight == 'null' || weight == 'undefined' || weight < 40 
-		||height == 'null' || height == 'undefined' || height < 150 ||height > 200 ||
-		age == 'null' || age == 'undefined' || age < 0 ||age > 80) {
+	if (weight == 'null' || weight == 'undefined' || weight < 40
+		|| height == 'null' || height == 'undefined' || height < 150 || height > 200 ||
+		age == 'null' || age == 'undefined' || age < 0 || age > 80) {
 		alert('Please fill out the form correctly.');
 		return;
 
@@ -395,7 +416,7 @@ const getCalories = () => {
 		leftContainer.append(spin);
 	}
 
-	
+
 
 
 
@@ -413,7 +434,7 @@ const getCalories = () => {
 	};
 
 	$.ajax(settings).done(function (response) {
-
+		addNewMeasurements(response);
 		spin.remove();
 		var calories = response.data.goals['maintain weight'].toFixed(2);
 
@@ -453,6 +474,57 @@ grid.on('submit', (e) => {
 	getIdealWeight();
 	getCalories();
 });
+
+
+
+function keyByValue(appObj, value) {
+	const [key] = Object.entries(appObj).find(([key, val]) => val === value) || [];
+	return key || null;
+}
+
+
+
+viewHistoryButton.on('click', (e) => {
+	history.show();
+	const array = JSON.parse(localStorage.getItem('measurmentsHistory'));
+
+	console.log(array);
+	for (let i in array) {
+		const array2 = array[i];  //radek 
+		console.log(array2);
+
+
+		for (let j in array2) {
+			console.log(array2[j]);  //kontretni hodnoty
+			let value = array2[j];
+			history.append(`
+							<div>
+							<p> ${keyByValue(array2, array2[j])}</p>
+							<p> ${array2[j]}</p>
+							</div>
+						`);
+
+		}
+
+
+
+
+
+	}
+
+
+
+
+})
+
+
+hideHistoryButton.on('click', (e) => {
+	history.hide();
+})
+
+
+
+
 
 
 //BMI chart 
@@ -573,5 +645,5 @@ series.append("path")
 
 
 
-
+rightContainer.append(viewHistoryButton, hideHistoryButton, history);
 
