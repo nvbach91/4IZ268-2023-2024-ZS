@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple app for getting observation information about major celestial bodies in relation to observer.">
+    <meta name="author" content="Daniel Bobák">
     <title>Sky Near You</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" media="all">
+    <link rel="stylesheet" href="./css/responsive.css" media="screen">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.min.css" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -12,36 +17,57 @@
     </header>
     <div class="button-panel">
         <button class="button-usage app-button">How to use</button>
-        <button class="button-objects app-button">Objects in the sky</button>
-        <button class="button-events app-button">Events in the sky</button>
+        <button class="button-objects app-button">Major bodies</button>
+        <button class="button-deep app-button">Stars/Deep space objects</button>
         <button class="button-terms app-button">Term definitions</button>
     </div>
     <main>
         <div class="usage-popup popup">
             <div class="popup-content">
-                <button class="close-button">Close</button>
+                <button class="close-button button">Close</button>
                 <h2>Usage</h2>
+                <h3>Solar system bodies information</h3>
+                <p>This app function serves as a basic tool for both amateur and profesional astronomers to know where to look for major celestials bodies on the nightsky. By clicking on the 'Major bodies' button, you will be asked to submit information necessary in search for major celestial bodies of our solar system:</p>
+                <ul>
+                    <li><strong>Longitude:</strong> your longitude geographic coordinates.</li>
+                    <li><strong>Latitude:</strong> your latitude geographic coodinates.</li>
+                    <li><strong>Elevation:</strong> your position in meters above sea level (0 is minimum).</li>
+                    <li><strong>From date:</strong> starting day from which you are expecting to observe the sky.</li>
+                    <li><strong>To date:</strong> last day to which you are expecting to observe the sky.</li>
+                    <li><strong>Time:</strong> time of observation for each day.</li>
+                </ul>
+                <p>You can use the 'use current location' button to fill the coordinates automatically (if geolocationAPI is available in your browser).</p>
+                <p>Once you submit the form, cards containing celestial body and the constellation it's located in each day will be displayed. You may click on the 'details' button to display additional observation data for each day.</p>
+                <h3>Information about deep space objects</h3>
+                <p>This app function serves the purpose of getting information about other starts and deep space objects. Click the 'Stars/Deep space objects' button to bring up the search form. Here you have to either submit the name of the object, or it's coordinates. See Term definition for more information.</p>
             </div>
         </div>
         
         <div class="objects-popup popup">
             <div class="popup-content">
-                <button class="close-button">Close</button>
-                <h2>Object in the sky</h2>
+                <button class="close-button button">Close</button>
+                <button class="autofill-button button">Use current location</button>
+                <button class="object-submit-button button">Submit</button>
+                <h2>Major bodies</h2>
             </div>
         </div>
 
-        <div class="events-popup popup">
+        <div class="deep-popup popup">
             <div class="popup-content">
-                <button class="close-button">Close</button>
-                <h2>Events in the sky</h2>
+                <button class="close-button button">Close</button>
+                <button class="deep-submit-button button">Submit</button>
+                <h2>Stars/Deep space objects</h2>
             </div>
         </div>
-
         <div class="terms-popup popup">
             <div class="popup-content">
-                <button class="close-button">Close</button>
+                <button class="close-button button">Close</button>
                 <h2>Terms to know</h2>
+                <p><strong>Apparent magnitude =</strong> in astronomy, is a measure of the brightness of a star or other celestial body. The brighter the object, the lower the number assigned as a magnitude. Apparent magnitude is the brightness of an object as it appears to an observer on Earth. The Sun's apparent magnitude is -26.7, that of the full Moon is about -11, and that of the bright star Sirius, -1.5. The faintest objects visible through the Hubble Space Telescope are of (approximately) apparent magnitude 30.</p> <!--Britannica-->
+                <p><strong>Altitude =</strong> angular expression of a distance of the object from horizon, measured along a vertical circle. For example, if Saturn has altitude of 36°, it there is a 36° vertical angle between you, horizon and Saturn.</p> <!--https://www.e-education.psu.edu/astro801/content/l1_p2.html-->
+                <p><strong>Azimuth =</strong> angular expression of a distance of the object along horizon from North eastwards to vetical circle through object (in southern hemisphere, it's South eastwards). For example, if Saturn has an azimuth of 270°, it's directly West. Compasses usually display azimuth as well.</p>
+                <p><strong>Right ascension (RA) =</strong> the celestial equivalent of longitude. RA can be expressed in degrees, but it is more common to specify it in hours, minutes, and seconds of time: the sky appears to turn 360° in 24 hours, or 15° in one hour. So an hour of RA equals 15° of sky rotation.</p> <!--https://science.nasa.gov/learn/basics-of-space-flight/chapter2-2/-->
+                <p><strong>Declination (DEC) =</strong> the celestial sphere's equivalent of latitude and it is expressed in degrees, as is latitude. For DEC, + and - refer to north and south, respectively. The celestial equator is 0° DEC, and the poles are +90° and -90°</p>
             </div>
         </div>
         <div class="outputs-field">
@@ -54,6 +80,7 @@
         <p>2023</p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
