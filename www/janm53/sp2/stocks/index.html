@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stocks</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/stocksStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<nav class="nav">
+    <a href="../" class="buttonNav home" role="button">Home</a>
+    <a href="../stocks/" class="buttonNav investments" role="button">Investments</a>
+    <a href="../expenses/" class="buttonNav expenses" role="button">Transactions</a>
+    <a href="../settings/" class="buttonNav settings" role="button">Settings</a>
+</nav>
+<div id="stockDashboard">
+    <h1>Stock Dashboard</h1>
+    <canvas id="stockChart"></canvas>
+</div>
+<div id="investments">
+    <h1>Investments</h1>
+    <form id="stockForm">
+        <input type="text" id="stockSymbol" placeholder="Stock Symbol (e.g., VUSA)">
+        <input type="number" id="stockShares" placeholder="Number of Shares">
+        <button type="submit">Add Stock</button>
+    </form>
+    <ul id="stockList"></ul>
+</div>
+<script src="../scripts/stock.js"></script>
+</body>
+</html>
