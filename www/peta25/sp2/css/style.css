@@ -5,8 +5,76 @@ body {
     background: #fff;
 }
 
+.page-title-top {
+    font-family: 'Dawning of a New Day', cursive, 'Lato', sans-serif;
+    font-size: 80px;
+    /* Adjust the size as needed */
+    color: #000;
+    /* Black color */
+    text-align: center;
+    /* Center the title */
+    margin: 0;
+    /* Remove default margins */
+    padding-top: 10px;
+    /* Adjust as needed for spacing from the top */
+    font-weight: lighter;
+    /* Bold font weight */
+    font-style: italic;
+}
 
+.page-title-quote {
+    font-family: 'Questrial', 'Yeseva One', 'Besley', serif;
+    font-size: 13px;
+    /* Adjust the size as needed */
+    color: #ff8c00;
+    /* Gold color */
+    text-align: center;
+    /* Center the quote */
+    text-transform: uppercase;
+    /* Make the quote uppercase */
+    font-weight: bold;
+    /* Bold font weight */
+    letter-spacing: 2px;
+    /* Spacing between letters */
+    margin: 5px 0;
+    /* Space above and below the quote */
+    display: block;
+    /* Block display to fill the width of the container */
+    padding-bottom: 40px;
+}
 
+.page-title-quote span {
+    display: inline;
+    /* Inline display for the borders to fit to content */
+    position: relative;
+    /* Use relative positioning for pseudo-elements */
+}
+
+.page-title-quote span::before,
+.page-title-quote span::after {
+    content: '';
+    /* Pseudo-element content */
+    position: absolute;
+    /* Position relative to the span */
+    width: 100%;
+    /* Match the width of the span content */
+    height: 1px;
+    /* Line thickness */
+    background-color: #ff8c00;
+    /* Line color */
+    left: 0;
+    /* Align with the left edge of the span */
+}
+
+.page-title-quote span::before {
+    top: -5px;
+    /* Position the line above the span */
+}
+
+.page-title-quote span::after {
+    bottom: -5px;
+    /* Position the line below the span */
+}
 
 .image-content {
     display: flex;
@@ -24,23 +92,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: sticky;
     padding: 20px;
     background-color: #f8f8f8;
     /* Light grey background for the filter bar */
 }
 
+.row-a,
+.row-b {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+}
+
 .search-input {
-    flex-grow: 1;
-    /* Allows input to fill the available space */
+    width: 159px;
     padding: 10px;
     margin-right: 10px;
     /* Adds some space between the input and the button */
     border: 1px solid #ddd;
-    /* A subtle border */
-    border-radius: 5px;
-    /* Rounded corners */
+    border-radius: 20px;
     font-size: 1rem;
-    /* A readable font size */
+
 }
 
 .button {
@@ -48,20 +122,85 @@ body {
     background-color: #ff8c00;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 1rem;
     margin-right: 10px;
     transition: background-color 0.3s;
 }
 
-.button:hover {
+.button.drop-down {
+    width: 180px;
+}
+
+.button:hover,
+.button.active:hover,
+.button.inactive:hover {
     background-color: #000000;
 }
 
-.search-input, .button {
+.search-input,
+.button {
     font-family: inherit;
 }
+
+.button.active {
+    background-color: rgb(0, 117, 255);
+}
+
+.button.inactive {
+    background-color: #ff8c00;
+}
+
+.recipe-favorite.favorite {
+    color: #000000;
+}
+
+
+
+
+
+
+.slider-container {
+    position: relative;
+    /* For absolute positioning of labels */
+    margin-right: 10px;
+    /* Adjust as needed */
+    padding-bottom: 20px;
+    max-width: 105px;
+
+}
+
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    /* Adjust the position to be below the slider */
+}
+
+.slider-label {
+    font-size: 0.75rem;
+    /* Smaller font size for labels */
+    color: #666;
+    /* Label text color */
+}
+
+#search-type-slider {
+    height: 4px;
+    width: 100px;
+}
+
+
+
+
+
+
+
+
+
 
 
 .recipe-gallery {
@@ -72,9 +211,10 @@ body {
 }
 
 .recipe-card {
-    position: relative; /* Needed because of the absolute positioning of the star */
+    position: relative;
+    /* Needed because of the absolute positioning of the star */
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 20px;
     overflow: hidden;
 }
 
@@ -84,6 +224,7 @@ body {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .recipe-info {
@@ -91,7 +232,8 @@ body {
     text-align: left;
 }
 
-.recipe-category {
+.recipe-category,
+.recipe-area {
     color: #ff8c00;
     font-size: 1rem;
 }
@@ -100,46 +242,331 @@ body {
     font-size: 1.1rem;
     margin: 0;
     padding-top: 10px;
+    cursor: pointer;
 }
 
 .recipe-favorite {
-    color: #ff8c00; /* Or any color you prefer */
-    font-size: 1.5rem; /* Adjust the size as needed */
-    position: absolute; /* Position it relative to the card */
-    top: 230px; /* Space from the top */
-    right: 20px; /* Space from the right */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    color: #ff8c00;
+    /* Or any color you prefer */
+    font-size: 1.5rem;
+    /* Adjust the size as needed */
+    position: absolute;
+    /* Position it relative to the card */
+    top: 230px;
+    /* Space from the top */
+    right: 20px;
+    /* Space from the right */
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
     transition: color 0.3s;
 }
 
 .recipe-favorite:hover {
-    color: #000000; 
+    color: #000000;
+}
+
+.fa-star.favorite {
+    color: rgb(0, 0, 0);
+    /* Or any other style you want for favorited items */
 }
 
 
 footer {
     background-color: #f8f8f8;
-    text-align: center; /* Center the text */
-    padding: 20px; /* Add some padding */
-    display: flex; /* Use flexbox for alignment */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Align items horizontally in the center */
-    justify-content: center; /* Center items vertically */
+    text-align: center;
+    /* Center the text */
+    padding: 20px;
+    /* Add some padding */
+    display: flex;
+    /* Use flexbox for alignment */
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: center;
+    /* Align items horizontally in the center */
+    justify-content: center;
+    /* Center items vertically */
 }
 
 .social-icons {
-    margin-top: 15px;
-    display: flex; /* Align social icons in a row */
-    justify-content: center; /* Center icons in the footer */
+    /*margin-top: 15px;*/
+    display: flex;
+    /* Align social icons in a row */
+    justify-content: center;
+    /* Center icons in the footer */
 }
 
 .social-icons a {
-    color: #ff8c00; /* White color icons */
-    margin: 0 10px; /* Spacing between icons */
-    font-size: 1.5rem; /* Larger icons */
-    transition: color 0.3s; /* Smooth transition for hover effect */
+    color: #ff8c00;
+    /* White color icons */
+    margin: 0 10px;
+    /* Spacing between icons */
+    font-size: 1.5rem;
+    /* Larger icons */
+    transition: color 0.3s;
+    /* Smooth transition for hover effect */
 }
 
 .social-icons a:hover {
-    color: #000000; /* Change color on hover */
+    color: #000000;
+    /* Change color on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 50px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 650px;
+
+    max-height: 80vh;
+    /* 80% of the viewport height */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styles for printing search results */
+@media print {
+
+    /* Hide elements that don't need to be printed */
+    .header,
+    footer,
+    .nav,
+    .non-printable,
+    .filter-bar,
+    .button,
+    .fa-star.favorite {
+        display: none;
+    }
+
+    .page-title-top {
+        font-size: 35px;
+    }
+
+    .page-title-quote {
+        font-size: 5px;
+    }
+
+    .recipe-gallery {
+        /* Make sure these are displayed and take up the full page width */
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        grid-template-columns: repeat(4, minmax(120px, 1fr));
+    }
+
+    .recipe-card {
+        /* Adjust recipe card styles for printing */
+        border: 1px solid #000;
+        page-break-inside: avoid;
+        width: 160px;
+        height: 210px;
+    }
+
+    .recipe-image {
+        width: 100%;
+        /* Full width of the card */
+        height: auto;
+        /* Maintain aspect ratio */
+        max-height: 120px;
+        /* Set maximum height for the image */
+    }
+
+    .recipe-area,
+    .recipe-category,
+    .recipe-title {
+        font-size: 11px;
+    }
+
+    .recipe-info {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding: 10px;
+    }
+
+
+    /* Style recipe detail elements */
+    #recipeImage {
+        width: 50%;
+        max-width: 50%;
+        /* Responsive image width */
+        height: auto !important;
+        /* Maintain aspect ratio */
+        margin-bottom: 20px;
+        /* Space below the image */
+    }
+
+    #recipeIngredients,
+    #recipeInstructions {
+        font-size: 11px;
+        margin-top: 10px;
+    }
+
+    #recipeTitle {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    #recipeModal {
+        background-color: white;
+        border: none;
+    }
+
+    .close {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styles for smaller screens */
+@media only screen and (max-width: 805px) {
+
+    /* Adjust breakpoint as needed */
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    .row-a,
+    .row-b {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+
+    }
+
+    .row-a {
+        padding-bottom: 20px;
+    }
+
+    .slider-container {
+        padding-bottom: 20px;
+
+    }
+}
+
+@media only screen and (max-width: 500px) {
+
+    /* Adjust breakpoint as needed */
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    .row-a,
+    .row-b {
+        flex-direction: column;
+
+    }
+
+    .row-a {
+        padding: 0;
+    }
+
+
+    .search-input,
+    .button {
+        margin-bottom: 8px;
+    }
+
+    .slider-container {
+        margin-bottom: 20px;
+
+    }
+
+    .page-title-quote {
+        text-align: center; /* Center the quote in its container */
+        width: 100%;
+    }
+
+    .page-title-quote span {
+        display: inline-block; /* Changed to inline-block for proper sizing */
+        position: relative; /* Use relative positioning for pseudo-elements */
+        justify-content: center;
+        width: 90%;
+    }
+
+    .page-title-quote span::before,
+    .page-title-quote span::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: #ff8c00;
+        
+    }
+
+    .page-title-quote span::before {
+        top: -5px;
+    }
+
+    .page-title-quote span::after {
+        bottom: -5px;
+    }
+
+
 }
