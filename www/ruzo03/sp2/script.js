@@ -1,52 +1,64 @@
-const playBoard = document.querySelector(".play-board");
-const scoreElement = document.querySelector(".score");
-const highScoreElement = document.querySelector(".high-score");
-const controls = document.querySelectorAll(".controls i");
-let gameOver = false;
-let foodX, foodY;
-let snakeX = 5, snakeY = 5;
-let velocityX = 0, velocityY = 0;
-let snakeBody = [];
-let setIntervalId;
-let score = 0;
+    const playBoard = $(".play-board");
+    const scoreElement = $(".score");
+    const highScoreElement = $(".high-score");
+    const controls = $(".controls i");
+    var Chance
+    
+    let gameOver = false;
+    let foodX, foodY;
+    let snakeX = 5, snakeY = 5;
+    let velocityX = 0, velocityY = 0;
+    let snakeBody = [];
+    let setIntervalId;
+    let score = 0;
+    var my_chance = new Chance();
+    
+    // Načtení nejvyššího skóre z local storage
+    let highScore = localStorage.getItem("high-score") || 0;
+    highScoreElement.text(`High Score: ${highScore}`);
 
-// Načtení nejvyššího skóre z local storage
-let highScore = localStorage.getItem("high-score") || 0;
-highScoreElement.innerText = `High Score: ${highScore}`;
-const updateFoodPosition = () => {
-    // Náhodná hodnota pro umístění jídla
-    foodX = Math.floor(Math.random() * 90) + 1;
-    foodY = Math.floor(Math.random() * 60) + 1;
-}
-const handleGameOver = () => {
-    // Vynulování počítadla a znovunačtení stránky po prohře
-    clearInterval(setIntervalId);
-    alert("Game Over! Press OK to replay...");
-    location.reload();
-}
-const changeDirection = e => {
-    // změna směru po zmáčknutí klávesy
-    if (e.key === "ArrowUp" && velocityY != 1) {
+    const updateFoodPosition = () => {
+      // Náhodná hodnota pro umístění jídla
+      //foodX = Math.floor(Math.random() * 90) + 1;
+      //foodY = Math.floor(Math.random() * 60) + 1;
+      foodX = Math.floor(my_chance.integer({ min: 2, max: 59 }))+1 ;
+      foodY = Math.floor(my_chance.integer({ min: 2, max: 59 }))+1 ;
+    };
+
+    const handleGameOver = () => {
+      // Vynulování počítadla a znovunačtení stránky po prohře
+      clearInterval(setIntervalId);
+      alert("Game Over! Press OK to replay...");
+      location.reload();
+    };
+
+    const changeDirection = e => {
+      // změna směru po zmáčknutí klávesy
+      if (e.key === "ArrowUp" && velocityY != 1) {
         velocityX = 0;
         velocityY = -1;
-    } else if (e.key === "ArrowDown" && velocityY != -1) {
+      } else if (e.key === "ArrowDown" && velocityY != -1) {
         velocityX = 0;
         velocityY = 1;
-    } else if (e.key === "ArrowLeft" && velocityX != 1) {
+      } else if (e.key === "ArrowLeft" && velocityX != 1) {
         velocityX = -1;
         velocityY = 0;
-    } else if (e.key === "ArrowRight" && velocityX != -1) {
+      } else if (e.key === "ArrowRight" && velocityX != -1) {
         velocityX = 1;
         velocityY = 0;
-    }
-}
-// Volání changeDirection  při každém on each key click and passing key dataset value as an object
-controls.forEach(button => button.addEventListener("click", () => changeDirection({ key: button.dataset.key })));
-const initGame = () => {
-    if (gameOver) return handleGameOver();
-    let html = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
-    // Kontrola jestli Snake je nastejné pozici jako jídlo
-    if (snakeX === foodX && snakeY === foodY) {
+      }
+    };
+
+    // Volání changeDirection při každém on each key click and passing key dataset value as an object
+    controls.on("click", function() {
+      changeDirection({ key: $(this).data("key") });
+    });
+
+    const initGame = () => {
+      if (gameOver) return handleGameOver();
+      let html = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
+      
+      if (snakeX === foodX && snakeY === foodY) {
         updateFoodPosition();
         snakeBody.push([foodY, foodX]); // přidá tělo Snakovi
         score++; // přidá skóre o 1
@@ -65,7 +77,7 @@ const initGame = () => {
     }
     snakeBody[0] = [snakeX, snakeY]; // posune první část těla vpřed
     // Kontrola nárazu do zdi
-    if (snakeX <= 0 || snakeX > 90 || snakeY <= 0 || snakeY > 60) {
+    if (snakeX <= 0 || snakeX > 60 || snakeY <= 0 || snakeY > 60) {
         // nastaví konec hry
         return gameOver = true;
     }
@@ -78,8 +90,9 @@ const initGame = () => {
             gameOver = true;
         }
     }
-    playBoard.innerHTML = html;
-}
-updateFoodPosition();
-setIntervalId = setInterval(initGame, 100);
-document.addEventListener("keyup", changeDirection);
+
+      playBoard.html(html);
+    }
+    updateFoodPosition();
+    setIntervalId = setInterval(initGame, 100);
+    document.addEventListener("keyup", changeDirection);
