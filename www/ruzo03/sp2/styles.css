@@ -20,7 +20,7 @@ body {
 }
 
 .wrapper {
-  width: 150vmin;
+  width: 100vmin;
   height: 100vmin;
   display: flex;
   overflow: hidden;
@@ -41,11 +41,11 @@ body {
 }
 
 .play-board {
-  height: 100%;
+  height: 80%;
   width: 100%;
   display: grid;
   background: #dced6b;
-  grid-template: repeat(60, 1fr) / repeat(90, 1fr);
+  grid-template: repeat(60, 1fr) / repeat(60, 1fr);
 }
 
 .play-board .food {
