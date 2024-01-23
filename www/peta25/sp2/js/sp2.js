@@ -42,43 +42,32 @@ const MyRecipeApp = (function () {
         function performSearch(query, selectedCategory, selectedArea) {
             // Define the base searchUrl
             var searchUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-
-            // Check if we are searching by category or area and update the searchUrl accordingly
+        
+            // Update searchUrl based on search criteria
             if (selectedCategory && selectedCategory !== "") {
                 searchUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + selectedCategory;
             } else if (selectedArea && selectedArea !== "") {
                 searchUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=' + selectedArea;
             }
-
-            // If we have a query, append it to the searchUrl
+        
+            // Append query to searchUrl if available
             if (query) {
                 searchUrl += query;
             }
-
+        
             axios.get(searchUrl)
                 .then(function (response) {
                     $('.recipe-gallery').empty();
                     if (response.data.meals) {
                         response.data.meals.forEach(function (meal) {
-                            // If the meal already has category or area info, display it directly
-                            if (meal.strCategory || meal.strArea) {
-                                var categoryLabel = meal.strCategory || selectedCategory || 'Category';
-                                var areaLabel = meal.strArea || selectedArea || 'Area';
-                                appendMealCard(meal, categoryLabel, areaLabel);
-                            } else {
-                                // If category or area info is missing, fetch more details
-                                axios.get('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + meal.idMeal)
-                                    .then(function (detailResponse) {
-                                        var detailedMeal = detailResponse.data.meals[0];
-                                        var categoryLabel = detailedMeal.strCategory || selectedCategory || 'Category';
-                                        var areaLabel = detailedMeal.strArea || selectedArea || 'Area';
-                                        var isFavorite = favorites.includes(detailedMeal.idMeal.toString());
-                                        appendMealCard(detailedMeal, categoryLabel, areaLabel, isFavorite);
-                                    })
-                                    .catch(function (error) {
-                                        console.error('Error fetching meal details: ', error);
-                                    });
-                            }
+                            // Determine if the meal is a favorite
+                            var isFavorite = favorites.includes(meal.idMeal.toString());
+                            
+                            // Use category and area info from the meal if available, else use selectedCategory and selectedArea
+                            var categoryLabel = meal.strCategory || selectedCategory || 'Category';
+                            var areaLabel = meal.strArea || selectedArea || 'Area';
+                            
+                            appendMealCard(meal, categoryLabel, areaLabel, isFavorite);
                         });
                     } else {
                         $('.recipe-gallery').html('<div>No recipes found.</div>');
@@ -89,6 +78,7 @@ const MyRecipeApp = (function () {
                     $('.recipe-gallery').html('<div>Error fetching data.</div>');
                 });
         }
+        
 
         function appendMealCard(meal, categoryLabel, areaLabel, isFavorite) {
             var starClass = isFavorite ? 'favorite' : '';
