@@ -1,9 +1,9 @@
 window.addEventListener('load', function(){
     const canvas = document.getElementById('canvas');
     const cntx = canvas.getContext('2d');
-    canvas.width = 600;
+    canvas.width = 1200;
     canvas.height = 500;
-
+    
     class Inputs {
         constructor(game){
             this.game = game;
@@ -103,8 +103,38 @@ window.addEventListener('load', function(){
             this.fontSize = 25;
             this.fontFamily = 'Open Sans';
             this.color = 'white';
+            this.fact = null;
+            this.storedFacts = [];
         }
-        draw(context){
+        async fetchRandomFact() {
+            try {
+                const response = await fetch('https://uselessfacts.jsph.pl/api/v2/facts/random');
+                const data = await response.json();
+                this.fact = data.text;
+                console.log(data.text);
+                ////////
+                this.storedFacts.push(this.fact);
+                localStorage.setItem('storedFacts', JSON.stringify(this.storedFacts));
+
+            } catch (error) {
+                console.error('Error fetching random fact: ', error);
+            }
+        }
+        //
+        showFacts(context) {
+            const storedFacts = JSON.parse(localStorage.getItem('storedFacts')) || [];
+            if (storedFacts.length === 0) {
+                console.log('No stored facts.');
+                return;
+            }
+            context.textAlign = 'left';
+            context.fillStyle = 'white';
+            context.fillText('Stored Facts:', 10, 170);
+            for (let i = 0; i < storedFacts.length; i++) {
+                context.fillText((i + 1) + '. ' + storedFacts[i], 20, 200 + i * 30);
+            }
+        }
+        async draw(context){
             context.fillStyle = this.color;
             context.font = this.fontSize + 'px ' + this.fontFamily;
             context.fillText('Score: ' + this.game.score, 20, 40);
@@ -114,6 +144,13 @@ window.addEventListener('load', function(){
                 context.textAlign = 'center';
                 context.fillStyle = 'white';
                 context.fillText('GAME OVER, try again!', game.width/2, game.height/5);
+
+                if (!this.fact) {
+                    await this.fetchRandomFact();
+                }
+                if (this.fact) {
+                    context.fillText('Random Fact: ' + this.fact, this.game.width / 2, this.game.height / 5 + 40);
+                }
             }
         }
     }
@@ -176,19 +213,47 @@ window.addEventListener('load', function(){
                     rect1.y < rect2.y + rect2.height &&
                     rect1.height + rect1.y > rect2.y)
         }
+        resetGame() {
+            this.player = new Player(this);
+            this.keys = [];
+            this.enemies = [];
+            this.enemyTimer = 0;
+            this.gameOver = false;
+            this.score = 0;
+            this.gameTime = 0;
+            this.displayText.fetchRandomFact();
+        }
     }
 
     const game = new Game(canvas.width, canvas.height);
     let lastTime = 0;
+
+    //
+    document.addEventListener('click', function (e) {
+        if (e.target.id === 'showFactsButton') {
+            game.displayText.showFacts(cntx);
+        }
+    });
+    //bere click všeho, má brát jen touchpad  nebo myš
+    //najít si, jak funguje zápis hodnoty rychlosti
+    
     
 
-    function animate(timeStamp){
+    async function animate(timeStamp){
         const deltaTime = timeStamp - lastTime;
         lastTime = timeStamp;
         cntx.clearRect(0, 0, canvas.width, canvas.height)
         game.update(deltaTime);
         game.draw(cntx);
+        if (game.gameOver) {
+            document.getElementById('NGbutton').style.display = 'block';
+            document.getElementById('showFactsButton').style.display = 'block';
+        }
         if (!game.gameOver)requestAnimationFrame(animate);
     };
+    document.getElementById('NGbutton').addEventListener('click', function () {
+        game.resetGame();
+        animate(0);
+    });
     animate(0);
 });
