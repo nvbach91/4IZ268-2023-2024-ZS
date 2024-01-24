@@ -4,11 +4,24 @@ import { set } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-database.
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    
+    apiKey: "AIzaSyAiZQkPwesD0hqVEfM0T-Tu_oTZHFcKe0w",
+    authDomain: "sp2-vse.firebaseapp.com",
+    databaseURL: "https://sp2-vse-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "sp2-vse",
+    storageBucket: "sp2-vse.appspot.com",
+    messagingSenderId: "701589936249",
+    appId: "1:701589936249:web:21ff03ef56fc8d5dd91ca8",
+    measurementId: "G-36D51ETE99"
 };
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase();
+window.addEventListener("keydown", function (evt) {
+    // Prevent default scrolling behavior for arrow keys
+    if ([32, 37, 38, 39, 40].includes(evt.keyCode)) {
+        evt.preventDefault();
+    }
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     var COLS = 26,
@@ -76,6 +89,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     var highScoreDisplay = document.getElementById("highScoreDisplay");
+
+    var scoreDisplay = document.getElementById("score");
+
+    function updateScoreDisplay() {
+        if (scoreDisplay) {
+            scoreDisplay.textContent = "Score: " + score;
+        } else {
+            console.error("Score Display Element Not Found");
+        }
+    }
 
     function updateHighScoreDisplay() {
         if (highScoreDisplay) {
@@ -193,6 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateHighScoreDuringGame() {
         highScore = Math.max(highScore, score);
+        updateScoreDisplay();
         updateHighScoreDisplay();
     }
 
@@ -333,8 +357,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        ctx.fillStyle = "#000";
-        ctx.fillText("SCORE: " + score, 10, canvas.height - 10);
+        // ctx.fillStyle = "#000";
+        // ctx.fillText("SCORE: " + score, 10, canvas.height - 10);
 
         if (gameOver || paused) {
             ctx.fillStyle = "#000";

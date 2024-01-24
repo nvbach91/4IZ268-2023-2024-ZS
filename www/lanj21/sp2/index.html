@@ -9,8 +9,12 @@
 
 <body>
 
+	<h1>UlTiMaTe SnEk</h1>
+
 	<!-- New div for displaying high score -->
 	<div id="highScoreDisplay">High Score: 0</div>
+	<div id="score">Your Score: 0</div>
+
 	<canvas width="520" height="520"></canvas>
 
 	<script type="module">
@@ -18,10 +22,10 @@
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 		import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 		import { getDatabase, ref, push, get, set, child, onValue, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-		// TODO: Add SDKs for Firebase products that you want to use
-		// https://firebase.google.com/docs/web/setup#available-libraries
 	</script>
 	<script type="module" src="./main.js"></script>
+
+	<img src="./pic/howTo.png" alt="How to play" id="howToPlayImage">
 </body>
 
 </html>

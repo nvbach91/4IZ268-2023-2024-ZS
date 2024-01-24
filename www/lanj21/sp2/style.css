@@ -1,3 +1,11 @@
+h1 {
+    text-align: center; /* Center-align the title */
+    color: #000000; /* Change text color */
+    font-size: 36px; /* Increase font size */
+    font-family: "Impact", sans-serif; /* Change font family */
+    margin-top: 20px; /* Add margin at the top */
+}
+
 /* Styles for the canvas, serving as the game board */
 canvas {
     display: block;
@@ -14,4 +22,39 @@ body {
     background-image: url("https://webcomicms.net/sites/default/files/clipart/128543/animated-snake-128543-4655601.gif");
     background-repeat: repeat;
     background-size: 150px 224px;
+    user-select: none; /* Prevent text selection */
 }
+
+#highScoreDisplay {
+    position: absolute;
+    left: 20%; /* Horizontal center */
+    top: 15%;   /* Adjust the top position as a percentage of the height */
+    transform: translate(-50%, 0); /* Center horizontally */
+    color: #000;
+    font-size: 16px;
+    font-family: Helvetica, sans-serif;
+    margin: 10px;
+}
+
+#score {
+    position: absolute;
+    right: 20%; /* Horizontal center */
+    top: 15%;   /* Adjust the top position as a percentage of the height */
+    transform: translate(-50%, 0); /* Center horizontally */
+    color: #000;
+    font-size: 16px;
+    font-family: Helvetica, sans-serif;
+    margin: 10px;
+}
+
+#howToPlayImage {
+    position: absolute;
+    left: 50%; /* Horizontal center */
+    top: 100%; /* Adjust the top position as a percentage of the height */
+    transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+    max-width: 30%; /* Ensure the image doesn't exceed the container width */
+    margin: 0; /* Set margin to 0 */
+}
+
+
+
