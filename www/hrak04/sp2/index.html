@@ -1,21 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kateřina Hrabáčová">
+    <meta name="description" content="Bookfinder- your personal library">
     <title>Bookfinder</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./pictures/icon.svg">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
+
 <body>
-    <body>
-        <header class="header">
-            <img src="./pictures/logo.svg" alt="Company Logo" class="logo">
-            <form class="search-bar" action="#" method="get">
-                <input type="search" placeholder="Search..." id="searchInput" name="search">
-                <button type="submit" id="searchButton">Search</button>
-            </form>
-        </header>
-    </body>
+    <header class="header">
+        <div class="logo-and-button-container">
+            <a href="./" class="logo-link">
+                <img src="./pictures/logo.svg" alt="Company Logo" class="logo">
+            </a>
+            <button type="button" id="myLibraryButton" class="toggle-view">My Library</button>
+        </div>
+        <form class="search-bar" id="searchForm">
+                <div id="searchVariantContainer">
+                    <div id="searchVariantBooks">Books</div>
+                    <div class="slider-container" id="toggleSearchTypeSlider">
+                        <div class="slider-knob" id="sliderKnob"></div>
+                    </div>
+                    <div id="searchVariantAuthors">Authors</div>
+                </div>
+            <input type="search" placeholder="Search for books by title..." id="searchInput" name="search">
+            <button type="submit" id="searchButton">Search</button>          
+        </form>
+        <div id="sortContainer">
+            <select id="sortSelect">
+                <option value="default">Sorted by Added order</option>
+                <option value="reverse">Sorted by Reverse Added order</option>
+                <option value="title">Sorted by Title</option>
+                <option value="author">Sorted by Author</option>
+                <option value="year">Sorted by Year</option>
+            </select>
+        </div>
+    </header>
     
+    <div class="book-quote">
+        <p></p> 
+    </div>
+    <div id="booksContainer">
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--My script-->
+    <script src="bookfinder.js"></script>
 </body>
+
 </html>
