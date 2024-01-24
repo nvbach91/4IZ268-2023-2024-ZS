@@ -1,32 +1,229 @@
 <script setup>
+/* Global declarations block */
+//https://vuejs.org/guide/introduction.html
 import { ref, onMounted, computed, watch } from 'vue';
 
+//define indexedDB structure
 const DB_NAME = 'todoAppDB';
 const TODO_STORE_NAME = 'todos';
 const NAME_STORE_NAME = 'name';
 
+//define db connector variable
 let db;
 
+//instantiate string and object representations of internal variables
 const todos = ref([]);
 const name = ref('');
 
 const input_content = ref('');
 const input_category = ref(null);
+const input_workstation = ref(null);
+const input_date = ref('');
 
+const sortOption = ref('date'); // Default to sorting by date
+
+//define API variables 
+const CLIENT_ID = '890652597948-rbcfnkq9c4sm0a21lduqghfv50oa7ae5.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyCG0ZgwiC6kIuuzbBArtE9DH1eW98AnGm8';
+const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
+//take note that this scope is considered "sensitive" for the purposes of google API handling
+const SCOPES = 'https://www.googleapis.com/auth/calendar';
+
+let tokenClient;
+let gapiInited = false;
+let gisInited = false;
+
+/* onMounted runs after initial DOM rendering
+  loads stored data and prepares google APIs for usage
+*/
+onMounted(async () => {
+  let gapiScript = document.createElement('script')
+  gapiScript.defer = true
+  gapiScript.async = true
+  gapiScript.onreadystatechange = gapiScript.onload = function () {
+    const interval = setInterval(function () {
+      if (!gapiScript.readyState || /loaded|complete/.test(gapiScript.readyState)) {
+        clearInterval(interval)
+        if (window.gapi) {
+          gapiLoaded()
+        } else {
+          console.log('Failed to load gapi')
+        }
+      }
+    }, 100)
+  }
+  gapiScript.src = 'https://apis.google.com/js/api.js'
+  document.head.appendChild(gapiScript)
+
+  let gisScript = document.createElement('script')
+  gisScript.defer = true
+  gisScript.async = true
+  gisScript.onreadystatechange = gisScript.onload = function () {
+    const interval = setInterval(function () {
+      if (!gisScript.readyState || /loaded|complete/.test(gisScript.readyState)) {
+        clearInterval(interval)
+        if (window.google && window.google.accounts) {
+          gisLoaded()
+        } else {
+          console.log('Failed to load gis')
+        }
+      }
+    }, 100)
+  }
+  gisScript.src = 'https://accounts.google.com/gsi/client'
+  document.head.appendChild(gisScript)
+
+  name.value = localStorage.getItem('name') || '';
+
+  // Open IndexedDB
+  db = await openIndexedDB();
+
+  // Load todos from IndexedDB via auxiliary functions
+  const todosFromDB = await getAllFromIndexedDB(TODO_STORE_NAME);
+  const savedNameDB = await getSingleFromIndexedDB(NAME_STORE_NAME);
+  todos.value = todosFromDB || [];
+  if (savedNameDB === null) {
+    return;
+  }
+  name.value = savedNameDB.name || '';
+
+});
+
+/* 
+  Google APIs handling block.
+  Take note that this code is (together with parts of onMounted function)
+  build using the official google refernce and adapting it for usage in Vue
+
+  https://developers.google.com/calendar/api/quickstart/js
+  https://stackoverflow.com/questions/76337091/how-to-use-google-calendar-api-in-vue3-application 
+*/
+
+function gapiLoaded() {
+  window.gapi.load('client', initializeGapiClient);
+}
+
+async function initializeGapiClient() {
+  await window.gapi.client.init({
+    apiKey: API_KEY,
+    discoveryDocs: [DISCOVERY_DOC],
+  });
+  gapiInited = true;
+  maybeEnableButtons();
+}
+
+function gisLoaded() {
+  console.log('gisLoaded')
+  tokenClient = window.google.accounts.oauth2.initTokenClient({
+    client_id: CLIENT_ID,
+    scope: SCOPES,
+    callback: '',
+  });
+  gisInited = true;
+  maybeEnableButtons();
+}
+
+function maybeEnableButtons() {
+  if (gapiInited && gisInited) {
+    console.log('GAPI initialised')
+  }
+}
+
+function handleAuthClick() {
+  if (gapiInited && gisInited) {
+    tokenClient.callback = async (resp) => {
+      if (resp.error !== undefined) {
+        throw (resp);
+      }
+      await listUpcomingEvents();
+    };
+
+    if (window.gapi.client.getToken() === null) {
+      tokenClient.requestAccessToken({ prompt: 'consent' });
+    } else {
+      tokenClient.requestAccessToken({ prompt: '' });
+    }
+  }
+}
+
+function handleSignoutClick() {
+  const token = window.gapi.client.getToken();
+  if (token !== null) {
+    window.google.accounts.oauth2.revoke(token.access_token);
+    window.gapi.client.setToken('');
+    alert("Disconnected from Google Account");
+    return;
+  }
+  alert("No one is logged in!");
+}
+
+//take note that this function is called after successful login
+//logs (un)successful logins and lists incoming events as per calendar
+// of the user
+async function listUpcomingEvents() {
+  let response;
+  try {
+    const request = {
+      'calendarId': 'primary',
+      'timeMin': (new Date()).toISOString(),
+      'showDeleted': false,
+      'singleEvents': true,
+      'maxResults': 10,
+      'orderBy': 'startTime',
+    };
+    response = await window.gapi.client.calendar.events.list(request);
+  } catch (err) {
+    console.log('GAPI error:' + err.message)
+    return;
+  }
+
+  const events = response.result.items;
+  if (!events || events.length == 0) {
+    console.log('GAPI: No events found.')
+    return;
+  }
+  const output = events.reduce(
+    (str, event) => `${str}${event.summary} (${event.start.dateTime || event.start.date})\n`,
+    'Events:\n');
+  console.log('GAPI: ' + output)
+}
+
+/* Application native code section */
+//default sort function, sorts ascending by date of creation
 const todos_asc = computed(() =>
   todos.value.sort((a, b) => {
     return b.createdAt - a.createdAt;
   })
 );
 
+//sort decision block, calls helper function for date sorting
+//performs rudimentary sting sort otherwise
+const sortedTodos = computed(() => {
+  if (sortOption.value === 'date') {
+    return todos_asc.value; // Sort by date
+  } else if (sortOption.value === 'workstation') {
+    return todos.value.slice().sort((a, b) => {
+      return a.workstation.localeCompare(b.workstation);
+    }); // Sort by workstation
+  }
+});
+
+//adds todos to the indexedDB and the list
+//performs validation against empty fields 
 const addTodo = async () => {
-  if (input_content.value.trim() === '' || input_category === null) {
+
+  if (input_content.value.trim() === '' || input_date.value === '') {
+    return;
+  }
+
+  if (input_content.value === null || input_workstation.value === null || input_category === null) {
     return;
   }
 
   const todo = {
     content: input_content.value,
     category: input_category.value,
+    workstation: input_workstation.value,
+    due_date: input_date.value,
     done: false,
     createdAt: new Date().getTime(),
   };
@@ -35,9 +232,46 @@ const addTodo = async () => {
 
   todos.value.push(todo);
 
+  //clear inputs in between additions
   input_content.value = '';
   input_category.value = null;
+  input_workstation.value = null;
+  input_date.value = '';
 };
+
+//auxiliary function
+//sets timeout to prevent unreasonable read/write operations
+/*KNOWN ISSUE: presumably due to how todos are handled as separate objects this might prevent deletion of objects 
+when rapid clicking several delete buttons in row, possible solution is to shorten the debounce timers if proven problematic */
+const debounce = (func, wait) => {
+  let timeout;
+  return function () {
+    const context = this;
+    const args = arguments;
+    const later = function () {
+      timeout = null;
+      func.apply(context, args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
+
+//adds watches to the todo (and name) objects, this ensures that editing the values 
+//within the confines of the aplication maintains the data consistently up to date
+//take note that watch is the default Vue implementation
+watch(todos, (newVal) => {
+  // Use a debounce function to prevent multiple rapid writes to IndexedDB
+  debounce(() => {
+    updateIndexedDB(TODO_STORE_NAME, newVal);
+  }, 1000)();
+}, { deep: true });
+
+watch(name, (newVal) => {
+  debounce(() => {
+    updateNameIDB(NAME_STORE_NAME, newVal)
+  }, 1000)();
+}, { deep: true });
 
 const removeTodo = async (todo) => {
   await removeFromIndexedDB(TODO_STORE_NAME, todo.createdAt);
@@ -56,35 +290,7 @@ const removeFromIndexedDB = async (storeName, key) => {
   await store.delete(key);
 };
 
-watch(todos, (newVal) => {
-  // Use a debounce function to prevent multiple rapid writes to IndexedDB
-  debounce(() => {
-    updateIndexedDB(TODO_STORE_NAME, newVal);
-  }, 1000)();
-}, { deep: true });
-
-watch(name, (newVal) => {
-  debounce(() => {
-    updateNameIDB(NAME_STORE_NAME,newVal)
-  }, 1000)();
-}, { deep: true });
-
-onMounted(async () => {
-  name.value = localStorage.getItem('name') || '';
-
-  // Open IndexedDB
-  db = await openIndexedDB();
-
-  // Load todos from IndexedDB
-  const todosFromDB = await getAllFromIndexedDB(TODO_STORE_NAME);
-  const savedNameDB = await getSingleFromIndexedDB(NAME_STORE_NAME);
-  todos.value = todosFromDB || [];
-  if (savedNameDB === null) {
-    return;
-  }
-  name.value = savedNameDB.name || '';
-});
-
+/* Handles the "creation" of DB objects */
 const openIndexedDB = async () => {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, 1);
@@ -111,6 +317,7 @@ const openIndexedDB = async () => {
   });
 };
 
+/* Used for accessing indexedDB stores organized into objects (individual todos in this case) */
 const getAllFromIndexedDB = async (storeName) => {
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(storeName, 'readonly');
@@ -128,6 +335,7 @@ const getAllFromIndexedDB = async (storeName) => {
   });
 };
 
+/* Can be used for acessing a single entry in an indexedDB (greeting name in this case) */
 const getSingleFromIndexedDB = async (storeName) => {
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(storeName, 'readonly');
@@ -149,7 +357,7 @@ const getSingleFromIndexedDB = async (storeName) => {
     };
   });
 }
-
+// called from the watch functions to update data in indexedDB
 const updateNameIDB = async (storeName, data) => {
   const transaction = db.transaction(storeName, 'readwrite');
   const store = transaction.objectStore(storeName);
@@ -167,7 +375,7 @@ const updateNameIDB = async (storeName, data) => {
     await addToIndexedDB(storeName, parsedNameObject);
   };
 };
-
+// called from the watch functions to update data in indexedDB
 const updateIndexedDB = async (storeName, data) => {
   const transaction = db.transaction(storeName, 'readwrite');
   const store = transaction.objectStore(storeName);
@@ -196,29 +404,61 @@ const updateIndexedDB = async (storeName, data) => {
   }
 };
 
-const debounce = (func, wait) => {
-  let timeout;
-  return function () {
-    const context = this;
-    const args = arguments;
-    const later = function () {
-      timeout = null;
-      func.apply(context, args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
+/* Adds whatever is the current representation of the todoitem to
+the primary calender of the logged in user. Take note that this throws 401 on attempt to 
+add something without login, 400 in poorly parsed data and 200 on success
+Furthermore, since we work with simple date representation in the code, all
+events are created as "whole date events" (otherwise it is required to pass in
+datetime parameters for both start and stop dates)
+
+https://developers.google.com/calendar/api/v3/reference/events/insert
+*/
+const passToGc = async (todo) => {
+
+  var event = {
+    'summary': todo.content,
+    'description': todo.category + '\n requires:' + todo.workstation,
+    start: {
+      date: todo.due_date,
+      timeZone: 'UTC',
+    },
+    end: {
+      date: todo.due_date,
+      timeZone: 'UTC',
+    }
+  }
+
+  try {
+
+    var request = gapi.client.calendar.events.insert({
+      'calendarId': 'primary',
+      'resource': event
+    });
+
+    const response = await request;
+
+    console.log('Event added to Google Calendar:', response);
+    alert('Event added to Google Calendar');
+  } catch (error) {
+    console.error('Error adding event to Google Calendar:', error);
+    alert('Error adding event to Google Calendar');
+  }
 };
+
 </script>
 
 <template>
-
   <main class="app">
     <section class="greeting">
-      <h2 class="title">
-        Hello there, <input type="text" placeholder="Name here" v-model="name"/>
-      </h2>
-      
+      <div class="greeting-message">
+        <h2 class="title">
+          Hello there, <input type="text" placeholder="Name here" v-model="name" />
+        </h2>
+      </div>
+      <div class="greeting-buttons">
+        <button @click="handleAuthClick" class="button-login">Login into Google</button>
+        <button @click="handleSignoutClick" class="button-logout">Logout</button>
+      </div>
     </section>
 
     <section class="create-todo">
@@ -233,60 +473,99 @@ const debounce = (func, wait) => {
         <div class="options">
 
           <label>
-            <input type="radio" name="category" id="category1" value="work" v-model="input_category"/>
+            <input type="radio" name="category" id="category1" value="Work" v-model="input_category" />
             <span class="bubble primary"></span>
             <div>Work</div>
           </label>
 
           <label>
-            <input type="radio" name="category" id="category1" value="school" v-model="input_category"/>
-            <span class="bubble primary"></span>
+            <input type="radio" name="category" id="category1" value="School" v-model="input_category" />
+            <span class="bubble secondary"></span>
             <div>School</div>
-          </label> 
+          </label>
 
           <label>
-            <input type="radio" name="category" id="category1" value="personal" v-model="input_category"/>
-            <span class="bubble secondary"></span>
+            <input type="radio" name="category" id="category1" value="Personal" v-model="input_category" />
+            <span class="bubble auxiliary"></span>
             <div>Personal</div>
           </label>
 
-          <!-- {{ input_category }} -->
+        </div>
 
+        <div class="create-todo-row">
+          <div class="workstation">
+            <h4> Which workstation is required for the task?</h4>
+            <select class="dropdown-selector" v-model="input_workstation">
+              <option disabled selected value="">Please select one workstation</option>
+              <option>None</option>
+              <option>Pen and Paper</option>
+              <option>Laptop</option>
+              <option>Desktop</option>
+            </select>
+          </div>
+          <div class="duedate">
+            <h4> What is the due date of the task?</h4>
+            <div class="datepicker-wrapper">
+              <input type="date" v-model="input_date" class="datepicker">
+            </div>
+          </div>
         </div>
 
         <input type="submit" value="Add todo">
 
       </form>
- 
+
     </section>
 
-
-    <section class = "todo-list">
+    <section class="todo-list">
       <h3> TODO LIST</h3>
 
-      <div v-for="todo in todos_asc" :class="`todo-item ${todo.done && 'done'}`">
+      <label>
+        Sort by:
+        <select v-model="sortOption" class="dropdown-selector">
+          <option value="date">Date Created</option>
+          <option value="workstation">Workstation</option>
+        </select>
+      </label>
+
+      <div v-for="todo in sortedTodos" :class="`todo-item ${todo.done && 'done'}`">
 
         <label>
           <input type="checkbox" v-model="todo.done" />
           <span :class="`bubble ${todo.category}`"></span>
         </label>
 
-        <div class ="todo-content">
+        <div class="todo-content">
           <input type="text" v-model="todo.content">
+          <select v-model="todo.category" class="todo-item-selector">
+            <option disabled selected value="">{{ todo.category }}</option>
+            <option>Work</option>
+            <option>School</option>
+            <option>Personal</option>
+          </select>
+
+          <select v-model="todo.workstation" class="todo-item-selector">
+            <option disabled selected value="">{{ todo.workstation }}</option>
+            <option>None</option>
+            <option>Pen and Paper</option>
+            <option>Laptop</option>
+            <option>Desktop</option>
+          </select>
+
+          <input type="date" v-model="todo.due_date" class="dateswapper">
+
         </div>
 
-        <div class = "actions">
-          <button class="delete" @click="removeTodo(todo)">DELETE</button> 
+        <div class="actions">
+          <button class="button-calendar-sync" @click="passToGc(todo)">Sent to GC</button>
+          <button class="button-delete" @click="removeTodo(todo)">DELETE</button>
         </div>
 
       </div>
-    
-
 
     </section>
 
   </main>
-
 </template>
 
 

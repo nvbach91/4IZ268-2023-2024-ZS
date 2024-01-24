@@ -1,49 +1,35 @@
 /*
 color scheme
 
-#16171B -- black, background theme
-#222327  -- grey, used as backdrop for content
+#EEE -- pure white as a default
+#888 -- grey for creating less brigh backdrop when needed
+#313154 -- for texts as a contrast color 
 #C39E68 -- gold, accent
 #B1361E -- darkred, accent
 #6795DE -- lightblue, accent
 
-use white as primary content color to ensure contrast
-
-font definitions - to be changed TODO: how to package google fonts into vue?
-font-family: 'Jura', sans-serif; - headlines
-font-family: 'Ubuntu', sans-serif; -rest of the content 
--should combine techy feel with easy eye tracking, both fonts support
-czech latin extensions
+font-family: 'montserrat', sans-serif;
+-available in Vue by default, reasonably pleasing, often cited as good combination
 */
+
+/* Defines color scheme for use in App, take note that most of the stylings
+uses var() construct for quick manipulation of the whole style */
 :root {
 	--primary: #B1361E;
 	--secondary: #6795DE;
+	--auxiliary: #c39e68;
 	--light: #EEE;
 	--grey: #888;
 	--dark: #313154;
-	--danger: #B1361E;
-
-    /* --primary: var(--primary); */
-
-    /* 
-    --dark: #16171B;
-	--grey: #888;
-    --light: #EEE;
-    --dark-accented: #222327;
-    --primary-accent: #B1361E;
-    --secondary-accent: #6795DE;
-    --axuiliary-accent: #C39E68; */
-
-    /* todo, dark theme */
-
-
 
 	--shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-
-	--secondary-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
 	--primary-glow: 0px 0px 4px rgba(234, 64, 92, 0.75);
+	--secondary-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
+	--auxiliary-glow: 0px 0px 4px rgba(195, 158, 104, 0.75);
 }
 
+/* Global definition block, sets the core attributes and suppresses undesirable 
+stylings. Sets default section margins and heading styles */
 * {
 	margin: 0;
 	padding: 0;
@@ -72,17 +58,27 @@ section {
 }
 
 h3 {
-	/* color: var(--dark);  */
+	color: var(--dark); 
 	font-size: 1rem;
 	font-weight: 400;
 	margin-bottom: 0.5rem;
 }
 
 h4 {
-	/* color: var(--grey); */
+	color: var(--dark);
 	font-size: 0.875rem;
 	font-weight: 700;
 	margin-bottom: 0.5rem;
+}
+
+
+/* Stylings for the upper "greetings" bar + for google auth buttons */
+.greeting {
+	display: flex;
+}
+
+.greeting-buttons {
+	margin-left:auto;
 }
 
 .greeting .title {
@@ -102,6 +98,20 @@ h4 {
 	font-weight: 700;
 }
 
+.button-login, .button-logout {
+	padding: 5px;
+	margin-left: 3px;
+	border-radius: 5px;
+	background-color: var(--secondary);
+	color: var(--light);
+	cursor: pointer;
+}
+
+.button-logout {
+	background-color: var(--primary);
+}
+
+/* Create todo section stylings */
 .create-todo input[type="text"] {
 	display: block;
 	width: 100%;
@@ -114,12 +124,23 @@ h4 {
 	margin-bottom: 1.5rem;
 }
 
+/* sets a rudimentary grid for labels to exist within */
 .create-todo .options {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 1rem;
 	margin-bottom: 1.5rem;
 }
+
+/* Creates a new row with diffent sizings than the category labels,
+this is done to better utilise space on the page */
+.create-todo-row {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 2rem;
+	margin-bottom: 1rem;
+}
+
 
 .create-todo .options label {
 	display: flex;
@@ -138,6 +159,9 @@ input[type="checkbox"] {
 	display: none;
 }
 
+/* Take note that individual labels holding the bubbles
+use several classes at once to achieve final style, particulary in relation
+to color coding them. */
 .bubble {
 	display: flex;
 	align-items: center;
@@ -152,6 +176,16 @@ input[type="checkbox"] {
 .bubble.primary {
 	border-color: var(--primary);
 	box-shadow: var(--primary-glow);
+}
+
+.bubble.secondary {
+	border-color: var(--secondary);
+	box-shadow: var(--secondary-glow);
+}
+
+.bubble.auxiliary {
+	border-color: var(--auxiliary);
+	box-shadow: var(--auxiliary-glow);
 }
 
 .bubble::after {
@@ -171,6 +205,37 @@ input[type="checkbox"] {
 	box-shadow: var(--primary-glow);
 }
 
+.bubble.auxiliary::after {
+	background-color: var(--auxiliary);
+	box-shadow: var(--auxiliary-glow);
+}
+
+/* styles the workstation picker */
+.dropdown-selector {
+	background-color: white;
+	border-radius: 5px;
+	padding: 3px;
+	margin: 3px;
+}
+
+/* styles the due date picker */
+.datepicker-wrapper {
+	background-color: white;
+	border-radius: 5px;
+	padding: 3px;
+	margin: 3px;
+	width: fit-content;
+}
+
+/* take note that dateswapper is used in todolist itself
+ enforces max width to prevent the "calendar" logo from spanning all over the list */
+.dateswapper {
+	width: fit-content;
+	max-width: 150px;
+}
+
+/* This construct is needed to properly code and "fill" the 
+radio button instead of default radio button behavior */
 input:checked ~ .bubble::after {
 	width: 10px;
 	height: 10px;
@@ -200,6 +265,8 @@ input:checked ~ .bubble::after {
 	opacity: 0.75;
 }
 
+
+/* Styles for the todo list section */
 .todo-list .list {
 	margin: 1rem 0;
 } 
@@ -253,11 +320,42 @@ input:checked ~ .bubble::after {
 	background-color: var(--primary);
 }
 
-.todo-item .actions .delete {
-	background-color: var(--danger);
+.todo-item .actions button{
+	margin-left: 5px;
 }
 
-.todo-item.done .todo-content input {
+.todo-item .actions .button-delete {
+	background-color: var(--primary);
+}
+
+.todo-item .actions .button-calendar-sync {
+	background-color: var(--secondary);
+}
+
+/* This construct ensures that item elements are not interactive
+ when item is checked off as done (as well as providing a visual indication such thing is going on  */
+.todo-item.done .todo-content input,.todo-item.done .todo-content .todo-item-selector,.todo-item.done .button-calendar-sync {
 	text-decoration: line-through;
 	color: var(--grey);
+	cursor: not-allowed;    
+	pointer-events: none;
+}
+
+/* Overrides stylings on the interactive parts of the todo item to suppress "form"
+look */
+.todo-item-selector {
+	display: block;
+	appearance: none;
+	border: none;
+	outline: none;
+	background: none;
+	cursor: initial;
+	font-size: 1rem;
+}
+
+/* Adds a indication on hover that element can be changed (take note that dateswapper and todo.content
+provide this by default via A, changes to the cursor and B, highlighting the icon on hover */
+.todo-item-selector:hover {
+	text-decoration: underline;
+	cursor: pointer;
 }
