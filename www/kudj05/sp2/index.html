@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Workout Planner</title>
+</head>
+
+<body>
+    <div id="preloader" class="preloader">
+        <span class="loader"></span>
+    </div>
+    <header class="body_header">
+        <div class="top_panel">
+            <span class="logo">
+                W-planner
+            </span>
+        </div>
+    </header>
+    <div class="btn_wrap">
+        <div class="google_btn">
+            <div id="g_id_onload"
+                data-client_id="169767117837-crqt0jfjijrgq4apo6k7dftuf92tj8al.apps.googleusercontent.com"
+                data-context="signin" data-ux_mode="popup"
+                data-auto_prompt="false" data-callback="handleCredentialResponse">
+            </div>
+
+            <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_black"
+                data-text="signin_with" data-size="large" data-logo_alignment="left">
+            </div>
+        </div>
+    </div>
+    <main id="swup" class="body_main transition-fade1">
+        <div class="content_wrapper">
+            <div class="name_container">
+                <h1 id="workout_name" class="workout_name" contenteditable="true">Workout plan</h1>
+            </div>
+
+            <div id="added_exercises_wrapper">
+
+            </div>
+            <a class="no_decoration" href="./add_exercise/">
+                <span class="add_exercise_btn">
+                    Add Exercise
+                </span>
+            </a>
+            <button id="export_btn" class="export_btn">
+                Export Plan
+            </button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="copyright">
+            <p>Copyright 2023 © Jan Kudrlička</p>
+        </div>
+    </footer>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7be98aea9a.js" crossorigin="anonymous"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
