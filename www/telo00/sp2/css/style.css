@@ -8,9 +8,6 @@
 body{
 
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: linear-gradient(45deg,rgb(192, 124, 185) 50%, #333  50%);
 }
 .container{
@@ -24,7 +21,7 @@ body{
 }
 #input{
     height: 50px;
-    width:90%;
+    width:100%;
     outline: none;
     border: none;
     border-radius: 5px;
@@ -37,30 +34,38 @@ body{
     color:#bbb;
 
 }
-
-ul li{
+.list-group-item  li {
     background: #eee;
     color: #333;
     height: 40px;
+    line-height: 40px; 
     border-radius: 50px;
     margin: 10px 0;
-    padding: 10px;
+    padding: 10px 50px; 
     position: relative;
+    overflow: hidden; 
+    text-align: center; 
 }
-ul .fa-check, .fa-trash{
+ul .fa-check, .fa-trash {
     position: absolute;
+    top: 50%; 
+    transform: translateY(-50%); 
     cursor: pointer;
-    
 }
 
 ul .fa-check{
 
 right: 40px;
-    color: rgb(0, 0, 0);
+    color: rgb(108, 183, 47);
 
 }
-
 ul .fa-trash{
     right: 15px;
     color: rgb(0, 0, 0);
+}
+
+ul .checked{
+    background: rgb(217, 236, 199);
+    text-decoration: line-through;
+    transition: .2s;
 }
