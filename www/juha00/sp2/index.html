@@ -4,50 +4,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Anna Juhászová">
+    <meta name="description" content="Find new anime to watch and save them to your favorites.">
+    <meta name="keywords"
+        content="anime, anime series, anime movies, anime music, anime category, anime categories, search anime">
     <title>Anime Explorer</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="180x180" href="./img/favicon_180x180.png">
 </head>
 
 <body>
-    <h1>Anime Explorer</h1>
-    <form id="searchForm">
-        <label for="animeTitle">Search Anime:</label>
-        <input type="text" id="animeTitle" name="animeTitle" required>
-        <button type="button" onclick="searchAnime()">Search</button>
+    <div class="container">
+        <button type="button" class="card" id="exploreButton">Explore</button>
+        <button type="button" class="card" id="favoritesButton">Favorites</button>
+        <div class="app-box">
 
-        <button type="button" onclick="showFavorites()">Favorites</button>
+            <header>
+                <h1>Anime Explorer</h1>
+            </header>
 
-    </form>
+            <form class="form-group" id="searchForm">
+                <div class="input-group">
+                    <label for="animeText">Search Anime:</label>
+                    <input type="text" class="input-field" id="animeText" name="animeText">
+                </div>
+                <button type="button" class="button form" id="searchButton">Search</button>
+            </form>
 
-    <form id="filterForm">
-        <label for="category">Category:</label>
-        <select id="category" name="category">
-            <option value="">-- All --</option>
-            <option value="action">Action</option>
-            <option value="comedy">Comedy</option>
-            <option value="comedy">Fantasy</option>
+            <form class="form-group" id="filterForm">
+                <div class="input-group">
+                    <label for="category">Category:</label>
+                    <select class="select-field" id="category" name="category">
+                        <option value="all">-- All --</option>
+                        <option value="action">Action</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="drama">Drama</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="horror">Horror</option>
+                        <option value="mystery">Mystery</option>
+                        <option value="psychological">Psychological</option>
+                        <option value="romance">Romance</option>
+                        <option value="slice-of-life">Slice of Life</option>
+                        <option value="sports">Sports</option>
+                    </select>
+                </div>
 
-        </select>
+                <div class="input-group">
+                    <label for="episodes">Episodes:</label>
+                    <input type="number" class="input-field" id="episodes" name="episodes" min="1">
+                </div>
 
-        <label for="maxEpisodes">Max Episodes:</label>
-        <input type="number" id="maxEpisodes" name="maxEpisodes" min="1">
+                <div class="input-group">
+                    <label for="season">Season:</label>
+                    <select class="select-field" id="season" name="category">
+                        <option value="all">-- All --</option>
+                        <option value="spring">spring</option>
+                        <option value="summer">summer</option>
+                        <option value="fall">fall</option>
+                        <option value="winter">winter</option>
+                    </select>
+                </div>
+                <button type="button" class="button form" id="filterButton">Apply Filters</button>
+            </form>
 
-        <label for="season">Season:</label>
-        <select id="season" name="category">
-            <option value="">-- All --</option>
-            <option value="spring">spring</option>
-            <option value="summer">summer</option>
-            <option value="fall">fall</option>
-            <option value="winter">winter</option>
-        </select>
+            <div class="separator"></div>
 
-        <button type="button" onclick="filterAnime()">Apply Filters</button>
-    </form>
+            <div class="anime-results" id="animeResults"></div>
 
+            <div class="pagination-controls" id="paginationControls">
+                <button class="button" id="firstButton">First</button>
+                <button class="button" id="prevButton">Previous</button>
+                <span class="current-page" id="currentPageDisplay"></span>
+                <button class="button" id="nextButton">Next</button>
+                <button class="button" id="lastButton">Last</button>
+            </div>
 
-    <div id="animeResults"></div>
+            <footer class="bottom-panel">
+                <p>&copy; 2023 Anime Explorer</p>
+                <p>Made with <a href="https://kitsu.docs.apiary.io/" target="_blank">Kitsu API</a></p>
+            </footer>
+        </div>
+    </div>
 
-    <script src="./js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/main-jquery.js"></script>
 </body>
 
 </html>
