@@ -1,47 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="media/favicon.png" type="image/png">
     <title>Personal Finance Tracker</title>
+    <meta name="description" content="Web application for journaling my monthly expenses and stocks that I bought">
+    <meta name="keywords" content="finance, journal, stocks, expenses, income">
+    <meta name="author" content="Matyáš Janoš">
+    <meta name="email" content="matyas.janos@outlook.cz">
+    <meta name="copyright" content="Copyright © 2024, Matyáš Janoš">
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/indexStyle.css">
+    <!--suppress JSUnresolvedLibraryURL -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<nav class="nav">
-    <a href="./" class="buttonNav home" role="button">Home</a>
-    <a href="stocks/" class="buttonNav investments" role="button">Investments</a>
-    <a href="expenses/" class="buttonNav expenses" role="button">Transactions</a>
-    <a href="settings/" class="buttonNav settings" role="button">Settings</a>
+<div class="header">
+    <h1>Personal Finance Tracker</h1>
+</div>
+<nav class="navigation">
+    <a href="#investments" class="buttonNav investments" role="button">Investments</a>
+    <a href="#transactions" class="buttonNav expenses" role="button">Transactions</a>
+    <a href="#settings" class="buttonNav settings" role="button">Settings</a>
 </nav>
-    <div id="financeDashboard">
-        <h1>Finance Dashboard</h1>
-        <canvas id="financeChart"></canvas>
-    </div>
+
+<div class="flex-container">
     <div id="stockDashboard">
-        <h1>Stock Dashboard</h1>
+        <h2>Stock Dashboard</h2>
         <canvas id="stockChart"></canvas>
     </div>
+    <div id="financeDashboard">
+        <h2>Finance Dashboard</h2>
+        <canvas id="financeChart"></canvas>
+    </div>
+</div>
+
+<div class="flex-container">
     <div id="investments">
-        <h1>Investments</h1>
+        <h2>Investments</h2>
         <form id="stockForm">
-            <input type="text" id="stockSymbol" placeholder="Stock Symbol (e.g., VUSA)">
-            <input type="number" id="stockShares" placeholder="Number of Shares">
+            <label for="stockSymbol"></label><input type="text" id="stockSymbol" placeholder="Stock Symbol (e.g., AAPL)">
+            <label for="stockShares"></label><input type="number" id="stockShares" placeholder="Number of Shares">
             <button type="submit">Add Stock</button>
         </form>
         <ul id="stockList"></ul>
     </div>
     <div id="transactions">
-        <h1>Transactions</h1>
+        <h2>Transactions</h2>
         <form id="transactionForm">
-            <input type="text" id="expenseName" placeholder="Expense Name">
-            <input type="number" id="expenseAmount" placeholder="Amount">
+            <label for="expenseName"></label><input type="text" id="expenseName" placeholder="Expense Name">
+            <label for="expenseAmount"></label><input type="number" id="expenseAmount" placeholder="Amount">
             <button type="submit">Add Expense</button>
         </form>
+        <form id="transactionIncomeForm">
+            <label for="incomeName"></label><input type="text" id="incomeName" placeholder="Income Name">
+            <label for="incomeAmount"></label><input type="number" id="incomeAmount" placeholder="Amount">
+            <button type="submit">Add Income</button>
+        </form>
         <ul id="transactionList"></ul>
+        <ul id="incomeList"></ul>
     </div>
-    <script src="scripts/script.js"></script>
+</div>
+
+<div class="flex-container">
+    <div id="settings">
+        <h2>Settings</h2>
+        <p id="currentCurrency"></p>
+        <form id="settingsForm">
+            <label for="currencyName"></label><input type="text" id="currencyName" placeholder="Currency Name">
+            <button type="submit">Change Currency</button>
+        </form>
+        <h2>Exchange Rate:</h2>
+        <p id="exchangeRate"></p>
+        <button id="toggleDarkMode">Toggle Dark Mode</button>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; Matyas Janos 2024</p>
+</footer>
+
+
+<script src="scripts/expenses.js"></script>
+<script src="scripts/stock.js"></script>
+<script src="scripts/settings.js"></script>
+<script src="scripts/darkMode.js"></script>
+
 </body>
 </html>

@@ -1,46 +1,78 @@
-nav {
+.header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f2f2f2;
+    color: #333;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    font-size: 0.9em;
+}
+
+.header h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.navigation {
     margin-top: 20px;
-    margin-left: 20px; /* Add margin to move the nav section to the right */
+    display: flex;
+    justify-content: center;
+
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 20px;
+}
+
+.navigation a:last-child {
+    margin-right: 0;
+}
+
+.navigation a:hover {
+    color: #007bff;
 }
 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: white;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-}
-
-/* Update the IDs to match your HTML structure */
-#financeDashboard, #stockDashboard, #investments, #transactions {
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
     margin: 20px;
+}
+
+.flex-container > div {
+    flex: 1;
+    min-width: 300px;
+    margin: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .flex-container {
+        flex-direction: column;
+    }
+}
+
+#financeDashboard, #stockDashboard, #investments, #transactions, #settings {
     padding: 20px;
     border: 1px solid #ddd;
-    background-color: #f9f9f9;
+    background-color: #f2f2f2;
     border-radius: 5px;
 }
 
-/* Style the forms and input elements */
 form {
     margin-bottom: 20px;
 }
 
-input[type="text"],
-input[type="number"] {
+input[type="text"], input[type="number"] {
     padding: 10px;
     margin-right: 10px;
 }
@@ -58,7 +90,6 @@ button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* Style the lists */
 ul {
     list-style-type: none;
     padding: 0;
@@ -119,4 +150,173 @@ ul li {
     color: rgba(0, 0, 0, 0.65);
     transform: translateY(0);
 
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f2f2f2;
+    color: #333;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    align-items: center;
+    background-color: black;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+}
+
+button:hover,
+button:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+
+}
+
+/* Přidání stylování pro tmavý režim */
+.dark-mode {
+    background-color: #333;
+    color: #f2f2f2;
+}
+
+.dark-mode nav,
+.dark-mode .header,
+.dark-mode footer {
+    background-color: #444;
+    color: #fff;
+}
+
+.dark-mode .navigation {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.dark-mode .navigation a {
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.dark-mode .navigation a:last-child {
+    margin-right: 0;
+}
+
+.dark-mode a {
+    color: #fff;
+}
+
+.dark-mode button {
+    background-color: #fff;
+    color: #555;
+    border-radius: .25rem;
+}
+
+.dark-mode input,
+.dark-mode button {
+    border: 1px solid #777;
+}
+
+.dark-mode #financeDashboard, .dark-mode #stockDashboard, .dark-mode #investments, .dark-mode #transactions, .dark-mode #settings {
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #555;
+    border-radius: 5px;
+    color: white;
+}
+
+.dark-mode ul li {
+    background-color: #ddd;
+    color: black;
+}
+
+.dark-mode button[type="submit"] {
+    background-color: #ddd;
+    color: black;
+}
+
+.dark-mode button[type="submit"]:hover {
+    background-color: #fff;
+}
+
+.dark-mode .buttonNav {
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+}
+
+.dark-mode .buttonNav:hover,
+.dark-mode .buttonNav:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.dark-mode nav {
+    background-color: #333;
 }
