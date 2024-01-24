@@ -1,0 +1,65 @@
+@media print {
+    h1 {
+        font-size: 3vh;
+    }
+
+    #artistName,
+    #albumSelect {
+        text-indent: 20%;
+    }
+
+    .search-title {
+        width: 20%;
+    }
+
+    .search-title h2 {
+        font-size: 1.2vh;
+    }
+
+    #findBtn {
+        font-size: 1.5vh;
+    }
+
+    .name {
+        font-size: 2vh;
+    }
+
+    .listeners {
+        font-size: 1.2vh;
+        padding-bottom: 0vh;
+    }
+
+    .tl-album-name {
+        display: none
+    }
+
+    #selectIcon {
+        width: 15%;
+    }
+
+    #artistText {
+        margin-left: 1.594888178913738vh;
+    }
+
+    #resetBtn,
+    #downloadBtn {
+        display: none
+    }
+
+    .track-item button {
+        display: none
+    }
+
+    .track-item h2 {
+        display: none;
+    }
+
+    .track-item span {
+        font-size: 1.3vh;
+        width: 50%;
+    }
+
+    strong {
+        display: flex;
+    }
+}
