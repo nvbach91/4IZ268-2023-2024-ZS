@@ -9,9 +9,42 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6gs3pBHes5nvkDg32CqUtxfOHBfi8gWw&libraries=places&callback=initMap" defer></script>
 </head>
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <div class="search-wrapper">
+            <div class="place-search">
+                <label for="p-search">Search for place</label>
+                <input type="text" class="p-search" id="p-search">
+                <button id="place-button" class="place-button">Clear place</button>
+                <button id="geolocation-button" class="geolocation-button">Find me!</button>
+            </div>
+            <div class="route-search" id="route-search">
+                <label for="origin">Origin</label>
+                <input type="text" class="origin" id="origin">
+                <label for="final">Destination</label>
+                <input type="text" class="final" id="final">
+                <div id="mode-selector" class="mode-selector">
+                    <div class="mode mode-walking">
+                        <label for="changemode-walking">Walking</label>
+                        <input type="radio" id="changemode-walking" class="input walking" name="type">
+                    </div>
+                    <div class="mode mode-driving">
+                        <label for="changemode-driving">Driving</label>
+                        <input type="radio" id="changemode-driving" class="input driving" checked name="type">
+                    </div>
+                    <div class="mode mode-transit">
+                        <label for="changemode-transit">Transit</label>
+                        <input type="radio" id="changemode-transit" class="input transit" name="type">
+                    </div>
+                </div>
+                <button id="route-button" class="route-button">Clear route</button>
+                <button id="waypoint-button" class="waypoint-button">Add waypoint</button>
+                
+            </div>
+        </div>
+        <div class="map" id="map"></div>
+    </div>
     
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
     <script src="./js/main.js"></script>
