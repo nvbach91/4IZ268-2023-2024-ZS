@@ -2,52 +2,111 @@
 <html lang="en">
 
 <head>
+  <link rel="icon" href="./images/favicon.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Oskar Bikmukhametov">
   <meta name="description" content="Recipies page.">
-  <title>Home</title>
-  <link href="./css/style.css" rel="stylesheet">
-  <link rel="icon" href="./globals/images/favicon.png" type="image/x-icon">
+  <title>Search Recipes</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://bootswatch.com/4/quartz/bootstrap.css">
+  <link href="./css/styles.css" rel="stylesheet">
 </head>
 
 <body>
+  <h1>Search Recipes</h1>
+  <button type="button" id="show-liked-recipes" class="btn btn-primary">Show Liked Recipes</button>
 
-  <div class="quiz-area">
-    <h2>Find a Recipe for You</h2>
-    <select id="cuisine">
-      <option value="">Select Cuisine</option>
-      <option value="italian">Italian</option>
-      <option value="mexican">Mexican</option>
-    </select>
+  <label for="cuisine">Cuisine:</label>
+  <select name="cuisine" id="cuisine">
+    <option value="Any"></option>
+    <option value="African">African</option>
+    <option value="Asian">Asian</option>
+    <option value="American">American</option>
+    <option value="British">British</option>
+    <option value="Cajun">Cajun</option>
+    <option value="Caribbean">Caribbean</option>
+    <option value="Chinese">Chinese</option>
+    <option value="Eastern European">Eastern European</option>
+    <option value="European">European</option>
+    <option value="French">French</option>
+    <option value="German">German</option>
+    <option value="Greek">Greek</option>
+    <option value="Indian">Indian</option>
+    <option value="Irish">Irish</option>
+    <option value="Italian">Italian</option>
+    <option value="Japanese">Japanese</option>
+    <option value="Jewish">Jewish</option>
+    <option value="Korean">Korean</option>
+    <option value="Latin American">Latin American</option>
+    <option value="Mediterranean">Mediterranean</option>
+    <option value="Mexican">Mexican</option>
+    <option value="Middle Eastern">Middle Eastern</option>
+    <option value="Nordic">Nordic</option>
+    <option value="Southern">Southern</option>
+    <option value="Spanish">Spanish</option>
+    <option value="Thai">Thai</option>
+    <option value="Vietnamese">Vietnamese</option>
+  </select>
 
-    <select id="diet">
-      <option value="">Select Diet</option>
-      <option value="vegetarian">Vegetarian</option>
-      <option value="vegan">Vegan</option>
-    </select>
+  <label for="diet">Diet:</label>
+  <select id="diet">
+    <option value="">Any</option>
+    <option value="vegetarian">Vegetarian</option>
+    <option value="vegan">Vegan</option>
+    <option value="gluten free">Gluten Free</option>
+    <option value="ketogenic">Ketogenic</option>
+  </select>
+  <label for="intolerances">Intolerances:</label>
+  <select id="intolerances">
+    <option value="">None</option>
+    <option value="dairy">Dairy</option>
+    <option value="egg">Egg</option>
+    <option value="gluten">Gluten</option>
+  </select>
 
-    <select id="ingredients">
-      <option value="">Select Key Ingredient</option>
-      <option value="chicken">Chicken</option>
-      <option value="beef">Beef</option>
-    </select>
+  <label for="maxReadyTime">Max Ready Time (minutes):</label>
+  <input type="number" id="maxReadyTime" placeholder="e.g., 30">
+  <button id="search-recipes" class="btn btn-primary">Search Recipes</button>
 
+  <div id="recipe-container"></div>
+  <div id="recipe-spinner" class="spinner-border hidden"></div>
 
-    <button type="button" onclick="findRecipes()">Find Recipes</button>
+  <div id="recipe-template" class="hidden">
+    <div class="recipe-content">
+      <h1 class="recipe-title"></h1>
+      <button class="btn btn-success like-button"></button>
+      <div class="recipe-upper">
+        <img class="recipe-image">
+        <div class="ingredients-container">
+          <h2>Ingredients:</h2>
+          <ul class="ingredients-list"></ul>
+        </div>
+      </div>
+      <div class="recipe-instructions">
+        <h2>Instructions:</h2>
+        <ol></ol>
+      </div>
+    </div>
   </div>
 
-  <script>
-    function findRecipes() {
-      var cuisine = document.getElementById('cuisine').value;
-      var diet = document.getElementById('diet').value;
-      var ingredients = document.getElementById('ingredients').value;
-
-      console.log(cuisine, diet, ingredients);
-
-      window.location.href = 'recipes.html?cuisine=' + cuisine + '&diet=' + diet + '&ingredients=' + ingredients;
-    }
-  </script>
+  <div id="liked-recipes-container" class="hidden">
+    <h2>Liked Recipes</h2>
+    <div id="liked-recipes">
+      <div class="recipe-item">
+        <h1 class="recipe-title"></h1>
+        <img class="recipe-image">
+        <button class="btn btn-success unlike-button">Unlike</button>
+        <div class="recipe-instructions">
+          <h2>Instructions:</h2>
+          <ol></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./js/main.js"></script>
 
 </body>
 
