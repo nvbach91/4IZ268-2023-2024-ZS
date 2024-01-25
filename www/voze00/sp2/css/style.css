@@ -1,40 +1,110 @@
-body {
-    font-family: 'Montserrat', sans-serif;
-    padding-top: 100px;
-    background-color: #f8f9fa;
-    text-align: center;
-}
-
-.container {
-    max-width: 500px;
+.spinner {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
     margin: 0 auto;
+    border: 30px solid transparent;
+    border-top-color: #78c2ad;
+    border-bottom-color: #78c2ad;
+    animation: spinning 2s linear infinite;
+    transition: border-color 0.5s ease;
 }
 
-.quiz-header {
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.quiz-row {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
+.spinner:hover {
+    border-top-color: cadetblue;
+    border-bottom-color: cadetblue;
 }
 
 .quiz-button {
-    background-color: #d7a35c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 20px 40px;
-    margin: 0 10px;
+    display: block;
+    margin: 5px auto;
+    padding: 20px;
+    width: 30%;
     cursor: pointer;
-    flex: 1;
-    text-align: center;
-    max-width: 300px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.quiz-button:hover {
-    background-color: #a6660c;
+#options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movie {
+    text-align: center;
+    margin: 10px;
+    width: 300px;
+    overflow: hidden;
+}
+
+.movie h5 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+    max-height: 4.8rem;
+    height: 2.8em;
+}
+
+.save-movie,
+.remove-saved-movie {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.movie-poster {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.hidden {
+    display: none;
+}
+
+.quiz-button.hidden {
+    display: none;
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .quiz-button {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .movie {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .movie-list {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .movie-poster {
+        width: 100%;
+        height: auto;
+    }
 }

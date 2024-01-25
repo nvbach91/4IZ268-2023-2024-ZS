@@ -7,32 +7,64 @@
     <meta name="author" content="Ekaterina Vozhdaeva">
     <meta name="description" content="Film Advisor app.">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@300&family=Roboto+Slab:wght@200;400&display=swap"
-        rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://bootswatch.com/4/minty/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <title>Film Advisor</title>
     <link type="image/png" sizes="32x32" rel="icon" href="./css/images/icon-movie-32.png">
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Film Advisor</a>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#" id="retake-button">Retake Quiz</a>
+            <a class="nav-item nav-link" href="#" id="view-saved-movies">View Saved Movies</a>
+        </div>
+    </nav>
     <div class="container">
-        <div class="quiz-header">
-            <h2>Which genre do you want to watch today?</h2>
+        <div id="question-container" class="text-center">
+            <h2 id="question-text"></h2>
         </div>
-        <div class="quiz-row">
-            <button type="button" class="quiz-button">Comedy</button>
-            <button type="button" class="quiz-button">Horror</button>
-            <button type="button" class="quiz-button">Drama</button>
+        <div id="options" class="quiz-row">
+            <!-- Question 1 Options -->
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="0">Action</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden"
+                data-index="1">Adventure</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden"
+                data-index="2">Animation</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="3">Comedy</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden"
+                data-index="4">Documentary</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="5">Family</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="6">Fantasy</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="7">History</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="8">Horror</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="9">Music</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="10">Mystery</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="11">Science
+                Fiction</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="12">TV
+                Movie</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden"
+                data-index="13">Thriller</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="14">War</button>
+            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="15">Western</button>
+            <!-- Question 2 Options -->
+            <button type="button" class="btn btn-primary quiz-button question-2 hidden" data-index="0">Published in the last 3 years</button>
+            <button type="button" class="btn btn-primary quiz-button question-2 hidden" data-index="1">Published in the last 5 years</button>
+            <button type="button" class="btn btn-primary quiz-button question-2 hidden" data-index="2">Published in the last 10 years</button>
+            <button type="button" class="btn btn-primary quiz-button question-2 hidden" data-index="3">Published in the last 20 years</button>
+            <button type="button" class="btn btn-primary quiz-button question-2 hidden" data-index="4">Doesn't matter</button>
         </div>
-        <div class="quiz-row">
-            <button type="button" class="quiz-button">Fantasy</button>
-            <button type="button" class="quiz-button">Romance</button>
-            <button type="button" class="quiz-button">Action</button>
+        <div id="movie-recommendations" class="hidden">
+            <h2 id="recommendations-text" class="text-center"></h2>
+            <div class="movie-list"></div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/main.js"></script>
 </body>
 
