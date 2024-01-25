@@ -1,31 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
     <title>Spotify Artist Tierlist</title>
+    <link
+        href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png"
+        rel="icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" media="print" href="./css/print.css">
 </head>
+
 <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./js/main.js"></script>
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
     <div class="container">
-        <div class="left-side">
+        <div id="leftSide">
             <h1>Find Your Artist</h1>
             <div class="search-bar">
-                <div><h2>Artist</h2></div>
-                <input class="input-artist">
+                <div class="search-title">
+                    <h2>Artist</h2>
+                </div>
+                <input type="text" id="artistName" placeholder="Enter artist name">
+                <button id="findBtn">Find</button>
             </div>
             <div class="search-bar">
-                <div><h2>Release</h2></div>
-                <input class="input-release">
+                <div class="search-title">
+                    <h2>Release</h2>
+                </div>
+                <select id="albumSelect">
+                    <option>Select an album</option>
+                </select>
+                <div id="selectIcon">
+                    <i class="fa fa-caret-down"></i>
+                </div>
             </div>
-        <button class="button-search">Search</button>
+            <div id="tracks"></div>
         </div>
-        <div class="right-side"></div>
+        <div id="rightSide">
+            <h1 id="tlTitle">Tierlist</h1>
+            <div id="artistInfo">
+            </div>
+            <div id="tierlist"></div>
+        </div>
     </div>
+
+    <footer>
+        <span>Created by Filip Kadlec</span>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="./js/main.js"></script>
+
 </body>
+
 </html>
