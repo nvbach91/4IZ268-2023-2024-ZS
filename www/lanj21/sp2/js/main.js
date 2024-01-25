@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const data = snapshot.val();
                 highScore = data ? data : 0;
                 console.log("High score loaded:", highScore);
-                resolve();
+                resolve(highScore);
             }).catch(error => {
                 console.error("Error loading high score:", error);
                 reject(error);
