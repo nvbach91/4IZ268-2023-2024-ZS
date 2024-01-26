@@ -6,7 +6,8 @@ const batchSize = 10;
 const storageKeys = {
     workoutName: "workout_name",
     workoutExercises: "workout_exercises",
-    updateDay: "update_day"
+    updateDay: "update_day",
+    googleToken: 'google_token'
 };
 
 const settings = {

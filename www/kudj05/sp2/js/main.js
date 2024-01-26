@@ -4,11 +4,51 @@ const swup = new Swup({
     })]
   });
 
-function handleCredentialResponse(_) {
-    sessionStorage.setItem('loggedIn', true);
+
+function handleCredentialResponse(response) {
+    localStorage.setItem(storageKeys.googleToken, response.credential);
     $('.body_main').css('display', 'block');
     $('.btn_wrap').css('display', 'none');
+    showUser();
 };
+
+const showUser = () => {
+    const googleName = $('#google_name');
+    const googleEmail = $('#google_email');
+    const googleImgContainer= $('#google_img_container');
+    googleName.text(getGoogleInfo().name);
+    googleEmail.text(getGoogleInfo().email);
+    if (googleImgContainer.children().length === 0 ) {
+        googleImgContainer.append(`<img src="${getGoogleInfo().picUrl}" alt="profile_picture" class="google_img">`);
+   }
+};
+
+const getGoogleInfo = () => {
+    const responsePayload = decodeJwtResponse(localStorage.getItem(storageKeys.googleToken));
+    const google_info = {
+        name: responsePayload.name,
+        email: responsePayload.email,
+        picUrl: responsePayload.picture
+    }
+
+    return google_info;
+};
+
+
+const decodeJwtResponse = (token) => {
+    var base64Url = token.split(".")[1];
+    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    var jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+
+    return JSON.parse(jsonPayload);
+  }
 
 const todaysDate = () => {
     const date = new Date();
@@ -291,8 +331,17 @@ const getExercisesSettings = () => {
     return exercisesSettings;
 };
 
+const loadMoreExercises = (startIndex, batchSize) => {
+    const exercises = $('.add_active');
+    const endIndex = Math.min(startIndex + batchSize, exercises.length);
+    exercises.slice(startIndex, endIndex).show();
+};
+
 const init = () => {
     $('#preloader').css('display', 'none');
+
+    let currentIndex = batchSize;
+
     const workoutNameInput = $('#workout_name');
     if (localStorage.getItem(storageKeys.workoutName) === null) {
         localStorage.setItem(storageKeys.workoutName, workoutNameInput.text());
@@ -314,6 +363,7 @@ const init = () => {
     setChangeEffect(repsValues);
 
     const exportBtn = $('#export_btn');
+    const exportPng = $('#export_png');
 
     const searchBar = $('#searchBar');
     const exercisesWrapper = $('#exercises_wrapper');
@@ -341,9 +391,10 @@ const init = () => {
         const exercises = $('.add_active');
         setAddEffect(exercises);
         exercises.slice(batchSize).hide();
+        currentIndex = batchSize;
     });
 
-    searchBar.on('keydown', (e) => {
+    searchBar.on('keypress', (e) => {
         if (e.key === "Enter") {
             // Hide the keyboard
             e.target.blur();
@@ -359,6 +410,7 @@ const init = () => {
         const exercises = $('.add_active');
         setAddEffect(exercises);
         exercises.slice(batchSize).hide();
+        currentIndex = batchSize;
     });
 
     // Event listener for the equipment form
@@ -371,6 +423,7 @@ const init = () => {
         const exercises = $('.add_active');
         setAddEffect(exercises);
         exercises.slice(batchSize).hide();
+        currentIndex = batchSize;
     });
 
     exportBtn.on('click', () => {
@@ -382,10 +435,17 @@ const init = () => {
         }
     });
 
+    exportPng.on('click', () => {
+    html2canvas(addedExercisesWrapper[0]).then(canvas => {
+        Canvas2Image.saveAsPNG(canvas);
+    }).catch(error => {
+        console.error('Error in html2canvas:', error);
+    });
+});
+
     const loadMoreBtn = $('#load_more_btn');
 
     const exercises = $('.add_active');
-    let currentIndex = batchSize;
 
     // Initially hide all exercises beyond the first batch
     exercises.slice(batchSize).hide();
@@ -396,15 +456,11 @@ const init = () => {
         currentIndex += batchSize;
     });
 
-    const loadMoreExercises = (startIndex, batchSize) => {
-        const endIndex = Math.min(startIndex + batchSize, exercises.length);
-        exercises.slice(startIndex, endIndex).show();
-    };
-
     setAddEffect(exercises);
-    if (sessionStorage.getItem('loggedIn')){
+    if (localStorage.getItem(storageKeys.googleToken)){
         $('.body_main').css('display', 'block');
         $('.btn_wrap').css('display', 'none');
+        showUser();
     }
 };
 

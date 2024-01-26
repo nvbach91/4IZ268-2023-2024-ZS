@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
     <link rel="icon" type="image/x-icon" href="./img/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,10 +18,17 @@
         <span class="loader"></span>
     </div>
     <header class="body_header">
-        <div class="top_panel">
+        <div class="top_panel" id="top_panel">
             <span class="logo">
                 W-planner
             </span>
+            <div class="google_info">
+                <div class="google_text_column">
+                    <span id="google_name" class="google_name"></span>
+                    <span id="google_email" class="google_email"></span>
+                </div>
+                <div id="google_img_container" class="google_img_container"></div>
+            </div>
         </div>
     </header>
     <div class="btn_wrap">
@@ -32,12 +40,12 @@
             </div>
 
             <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_black"
-                data-text="signin_with" data-size="large" data-logo_alignment="left">
+                data-text="signin_with" data-size="large" data-logo_alignment="left" data-onsuccess="onSignIn">
             </div>
         </div>
     </div>
     <main id="swup" class="body_main transition-fade1">
-        <div class="content_wrapper">
+        <div class="content_wrapper" id="content_wrapper">
             <div class="name_container">
                 <h1 id="workout_name" class="workout_name" contenteditable="true">Workout plan</h1>
             </div>
@@ -51,7 +59,10 @@
                 </span>
             </a>
             <button id="export_btn" class="export_btn">
-                Export Plan
+                Export csv
+            </button>
+            <button id="export_png" class="export_btn">
+                Export png
             </button>
         </div>
     </main>
@@ -66,6 +77,8 @@
     <script src="https://unpkg.com/@swup/head-plugin@2"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/7be98aea9a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas2image@1.0.5/canvas2image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./js/config.js"></script>
     <script src="./js/main.js"></script>
 </body>

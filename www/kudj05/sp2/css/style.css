@@ -104,6 +104,28 @@ th {
     font-weight: 700;
 }
 
+.google_info{
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.google_text_column {
+    width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.google_name,
+.google_email {
+    width: 100%
+}
+
+.google_img {
+    border-radius: 50%;
+}
+
 .transition-fade1,
 .transition-fade2 {
     opacity: 1;
