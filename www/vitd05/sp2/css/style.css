@@ -10,6 +10,14 @@ body h1 {
     text-align: center;
 }
 
+div { 
+    padding: 5px 5px;
+    font-family: 'VT323', monospace;
+    font-size: 25px; 
+    width: 130px;
+    height: 50px;
+} 
+
 #canvas {
     position: absolute;
     max-width: 100%;

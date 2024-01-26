@@ -68,8 +68,12 @@ window.addEventListener('load', function(){
             this.bullets = this.bullets.filter(bullet => !bullet.tbDeleted);
         }
         draw(context){
-            context.fillStyle = 'grey';
+            context.fillStyle = 'darkgray';
             context.fillRect(this.x, this.y, this.width, this.height);
+            
+            context.fillStyle = 'grey';
+            context.fillRect(this.x + 5, this.y + 5, this.width - 10, this.height - 10);
+
             this.bullets.forEach(bullet => {
                 bullet.draw(context);
             });
@@ -136,9 +140,9 @@ window.addEventListener('load', function(){
             }
             context.textAlign = 'left';
             context.fillStyle = 'white';
-            context.fillText('Stored Facts:', 10, 170);
+            context.fillText('Stored Facts:', 10, 180);
             for (let i = 0; i < storedFacts.length; i++) {
-                context.fillText((i + 1) + '. ' + storedFacts[i], 20, 200 + i * 30);
+                context.fillText((i + 1) + '. ' + storedFacts[i], 20, 210 + i * 30);
             }
         }
         async draw(context){
@@ -175,7 +179,7 @@ window.addEventListener('load', function(){
             this.gameOver = false;
             this.score = 0;
             this.gameTime = 0;
-            this.displayTextY = 30;
+            this.displayTextY = 60;
             /*
             this.highestScore = localStorage.getItem('highestScore') || 0;
             this.bestTime = localStorage.getItem('bestTime') || 0;
@@ -235,12 +239,26 @@ window.addEventListener('load', function(){
             const highestScore = localStorage.getItem('highestScore') || 0;
             const bestTime = localStorage.getItem('bestTime') || 0;
             if (this.score > highestScore) {
+                //const highestScore = this.score;
                 localStorage.setItem('highestScore', this.score);
-                localStorage.setItem('bestTime', this.bestTime);
+                localStorage.setItem('bestTime', this.gameTime);
+                console.log('I have a problem here somewhere');
+                const topScore = this.score;
+                const topTime = this.gameTime;
+                document.getElementById('highestScore').innerText = "Highest Score: " + topScore;
+                document.getElementById('bestTime').innerText = "Best Time: " + (topTime / 1000).toFixed(2) + "seconds";    
+            } else {
+                document.getElementById('highestScore').innerText = "Highest Score: " + highestScore;
+                document.getElementById('bestTime').innerText = "Best Time: " + (bestTime / 1000).toFixed(2) + "seconds";
+            
             }
-            console.log('Nejlepší dosažené skóre: ' + (localStorage.getItem('highestScore') || 0));
-            console.log('Jeho čas: ' + (localStorage.getItem('bestTime') || 0));
-
+            //
+            console.log('Nejlepší dosažené score: ' + (localStorage.getItem('highestScore') || 0));
+            console.log('Jeho čas: ' + (localStorage.getItem('bestTime') / 1000).toFixed(2) + ' sekundy');
+            /*
+            document.getElementById('highestScore').innerText = "Highest Score: " + highestScore;
+            document.getElementById('bestTime').innerText = "Best Time: " + (bestTime / 1000).toFixed(2) + "seconds";
+            */
             this.score = 0;
             this.gameTime = 0;
             this.displayText.fetchRandomFact();
