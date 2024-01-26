@@ -1,10 +1,20 @@
-$(document).ready(function () {
-    var searchType = 'books';
+$(document).ready(() => {
+    //Global declaration of the button
+    let searchType = 'books';
+    //const bookQuoteParagraph = $('.book-quote p');
 
+    const searchViewContainer = $('#searchViewContainer');
+    const libraryViewContainer = $('#libraryViewContainer');
+    //const bookQuote = $('.book-quote');
+    const booksContainer = $('#booksContainer');
+    const myLibraryButton = $('#myLibraryButton');
+    const searchInput = $("#searchInput");
+    const sliderKnob = $("#sliderKnob");
+    const sortSelect = $("#sortSelect");
 
     // Refactored quote generation into a function
-    function generateRandomQuote() {
-        var quotes = [
+    /*const generateRandomQuote = () => {
+        const quotes = [
             "“A room without books is like a body without a soul.” ― Marcus Tullius Cicero",
             "“So many books, so little time.” ― Frank Zappa",
             "“A book is a dream that you hold in your hand.” ― Neil Gaiman",
@@ -15,54 +25,49 @@ $(document).ready(function () {
             "“There is no friend as loyal as a book.” ― Ernest Hemingway"
         ];
 
-        var randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        $('.book-quote p').text(randomQuote);
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        bookQuoteParagraph.text(randomQuote);
     }
 
     // Initial call to display a random quote
-    generateRandomQuote();
+    generateRandomQuote();*/
 
 
     // Use jQuery for event handling
-    $('#sliderKnob').click(function () {
+    sliderKnob.click(() => {
         searchType = searchType === 'books' ? 'authors' : 'books';
         updateSearchTypeUI();
     });
 
+
     //change between my library and searching
-    $('#myLibraryButton').click(function () {
-        var isLibraryView = $(this).text() === 'My Library';
+    myLibraryButton.click(function () {
+        const isLibraryView = $(this).text() === 'My Library';
 
         // Toggle between Library view and Search view
         if (isLibraryView) {
-            // Switching to Library view
-            $('.search-bar').children().not('#myLibraryButton').hide();
-            $(this).text('Back to Search');
             showLibrary();
-            $('.book-quote').hide();
-            $('#sortContainer').show();
-            $('#booksContainer').addClass('library-mode');
+            $(this).text('Back to Search');
+            searchViewContainer.hide(); // Hide the search view
+            libraryViewContainer.show(); // Show the library view
         } else {
-            // Switching to Search view
-            $('.search-bar').children().show();
+            booksContainer.empty();
             $(this).text('My Library');
-            hideLibrary();
-            generateRandomQuote();
-            $('.book-quote').show();
-            $('#sortContainer').hide();
-            $('#booksContainer').removeClass('library-mode');
+            libraryViewContainer.hide(); // Hide the library view
+            searchViewContainer.show(); // Show the search view
         }
     });
 
 
+
     //change for search UI (title or author)
-    function updateSearchTypeUI() {
+    const updateSearchTypeUI = () => {
         if (searchType === 'books') {
-            $('#sliderKnob').removeClass('active');
-            $('#searchInput').attr('placeholder', 'Search for books by title...');
+            sliderKnob.removeClass('active');
+            searchInput.attr('placeholder', 'Search for books by title...');
         } else {
-            $('#sliderKnob').addClass('active');
-            $('#searchInput').attr('placeholder', 'Search for books by authors name...');
+            sliderKnob.addClass('active');
+            searchInput.attr('placeholder', 'Search for books by authors name...');
         }
     }
 
@@ -70,76 +75,111 @@ $(document).ready(function () {
     updateSearchTypeUI();
 
     // Handling the form submission
-    $('#searchForm').submit(function (e) {
+    $('#searchForm').submit((e) => {
         e.preventDefault();
-        var query = $('#searchInput').val().trim();
+        let query = searchInput.val().trim();
 
         if (query !== '') {
             query = searchType === 'books' ? `intitle:${query}` : `inauthor:${query}`;
-            fetchBooks(query);
-            $('#searchInput').val('');
+
+            // Fetch books and then clear the input
+            fetchBooks(query)
+                .then(data => {
+                    searchInput.val('');
+                    displayBooks(data);
+                })
+                .catch(error => {
+                    console.error(error.message);
+                });
         }
     });
 
     //Get books from API
-    function fetchBooks(query, maxResults = 30) {
-        var apiKey = 'AIzaSyB8EdrnIfKOlfahpFbsUlWVP5dNusUszA4';
-        var formattedQuery = encodeURIComponent(query);
-        var apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${formattedQuery}&maxResults=${maxResults}&key=${apiKey}`;
+    const fetchBooks = (query, maxResults = 30) => {
+        const apiKey = 'AIzaSyB8EdrnIfKOlfahpFbsUlWVP5dNusUszA4';
+        const formattedQuery = encodeURIComponent(query);
+        const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${formattedQuery}&maxResults=${maxResults}&key=${apiKey}`;
 
-        $.ajax({
-            url: apiUrl,
-            method: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                displayBooks(data);
-            },
-            error: function () {
-                console.error('Error: Unable to fetch data');
-            }
+        const loadingIndicator = $('<div class="loading-indicator">Loading...</div>');
+        //bookQuoteParagraph.hide();
+        booksContainer.append(loadingIndicator);
+
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: apiUrl,
+                method: 'GET',
+                dataType: 'json',
+                success: (data) => {
+                    loadingIndicator.remove();
+                    resolve(data);
+                },
+                error: () => {
+                    loadingIndicator.remove();
+                    reject(new Error('Error: Unable to fetch data'));
+                }
+            });
         });
     }
 
     //Fuction for displaying each books
-    function displayBooks(data) {
-        var booksContainer = $('#booksContainer');
-        $('.book-quote').hide();
+    const displayBooks = (data) => {
+        //bookQuote.hide();
         booksContainer.empty();
 
         if (data.items && data.items.length > 0) {
-            var row = $('<div class="row">');
-            data.items.forEach(function (book) {
-                row.append(createBookCard(book));
+            const row = $('<div class="row">');
+            data.items.forEach((book) => {
+                row.append(bookAtributes(book, false));
             });
-            booksContainer.append(row);
+            booksContainer.empty().append(row)
         } else {
             displayNoResultsMessage(booksContainer);
         }
     }
 
+    //fuction for extracting atributes from local storage or api
+    const bookAtributes = (book, isFromLocalStorage = false) => {
+        const title = isFromLocalStorage ? book.title : book.volumeInfo.title || 'Unknown Title';
+        const author = isFromLocalStorage ? (book.authors ? book.authors.join(', ') : 'Unknown Author') : (book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown Author');
+        const publishedYear = isFromLocalStorage ? (book.year || 'Unknown Year') : (book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate.substring(0, 4) : 'Unknown Year');
+        const coverImage = isFromLocalStorage ? (book.coverImage || '') : (book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail ? book.volumeInfo.imageLinks.thumbnail : '');
+        const description = isFromLocalStorage ? (book.description || 'No description available.') : (book.volumeInfo.description || 'No description available.');
+        const publisher = isFromLocalStorage ? (book.publisher || 'Unknown Publisher') : (book.volumeInfo.publisher || 'Unknown Publisher');
+        const language = isFromLocalStorage ? (book.language || 'Unknown Language') : (book.volumeInfo.language || 'Unknown Language');
+        const isbn = isFromLocalStorage ? (book.isbn || 'Unknown ISBN') : (book.volumeInfo.industryIdentifiers && book.volumeInfo.industryIdentifiers[0].identifier ? book.volumeInfo.industryIdentifiers[0].identifier : 'Unknown ISBN');
+
+        return createBookCard(title, author, publishedYear, coverImage, book, description, publisher, language, isbn);
+    }
+
+
+
     //Creates the book's card with all information
-    function createBookCard(book) {
-        var title = book.volumeInfo.title;
-        var author = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown Author';
-        var publishedYear = book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate.substring(0, 4) : 'Unknown Year';
-        var coverImage = book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail
-            ? book.volumeInfo.imageLinks.thumbnail
-            : './pictures/placeholder.svg';
-        var col = $('<div class="col-md-2 mb-4">');
-        var card = $('<div class="card">');
-        var cardBody = $('<div class="card-body">');
-        var cardFooter = $('<div class="card-footer">');
-        var addToFavBtn = $('<button class="btn">');
-        var bookTitle = $('<h5 class="card-title book-title">').text(title + ' (' + publishedYear + ')');
-        var bookAuthor = $('<p class="card-text">').text('by ' + author);
-        var favourites = JSON.parse(localStorage.getItem('favouriteBooks')) || [];
-        var bookAlreadyFavourited = favourites.some(favBook => favBook.id === book.id);
-        var cardImage = $('<img class="card-img-top" src="' + coverImage + '" alt="Cover Image">');
+    const createBookCard = (title, author, publishedYear, coverImage, book, description, publisher, language, isbn) => {
+        const col = $('<div class="col-md-2 mb-4">');
+        const card = $('<div class="card">');
+        const cardBody = $('<div class="card-body">');
+        const cardFooter = $('<div class="card-footer">');
+        const addToFavBtn = $('<button class="btn">');
+        const bookTitle = $('<h5 class="card-title book-title ellipsis">').text(`${title}`);
+        const bookAuthor = $('<p class="card-text">').text('by ' + author);
+        const bookPublishedYear = $('<p class="card-text">').text('Year: ' + publishedYear);
+        const favourites = JSON.parse(localStorage.getItem('favouriteBooks')) || [];
+        const bookAlreadyFavourited = favourites.some(favBook => favBook.id === book.id);
+
+        if (coverImage === '') {
+            const noCoverText = $('<p class="no-cover-text">').text('No Cover Available');
+            cardImage = noCoverText;
+        } else {
+            cardImage = $('<img class="card-img-top" src="' + coverImage + '" alt="Cover Image">');
+        }
 
         //contition to determinate what text should button in card footer have
         if (bookAlreadyFavourited) {
-            addToFavBtn.addClass('btn-success').text($('#myLibraryButton').text() === 'Back to Search' ? 'Remove from Library' : 'In Your Library');
+            // Book is already favorited, so set the button text accordingly
+            addToFavBtn.addClass('btn-success');
+            addToFavBtn.text('In Your Library');
         } else {
+            // Book is not favorited, set the button text for adding it to favorites
             addToFavBtn.addClass('btn-primary').text('Add to Favourite');
         }
 
@@ -148,36 +188,71 @@ $(document).ready(function () {
             toggleFavourite(book, this);
         });
 
-        cardBody.append(bookTitle, bookAuthor);
+        cardBody.append(bookTitle, bookAuthor, bookPublishedYear);
         cardFooter.append(addToFavBtn);
         card.append(cardImage, cardBody, cardFooter);
         col.append(card);
+
+        //Opening modal window 
+        cardImage.click(() => {
+            openModal(title, author, publishedYear, coverImage, description, publisher, language, isbn);
+        });
+
+        cardBody.click(() => {
+            openModal(title, author, publishedYear, coverImage, description, publisher, language, isbn);
+        });
+
 
         return col;
     }
 
     //Error display for no results
-    function displayNoResultsMessage(container) {
-        var noResultsMsg = $('<div class="alert alert-warning" role="alert">')
+    const displayNoResultsMessage = (container) => {
+        const noResultsMsg = $('<div class="alert alert-warning" role="alert">')
             .text('No results found. Please try a different search.');
         container.append(noResultsMsg);
     }
 
+    // Function to extract necessary book attributes
+    const extractBookData = (book) => ({
+        id: book.id,
+        title: book.volumeInfo.title,
+        authors: book.volumeInfo.authors,
+        coverImage: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : '',
+        description: book.volumeInfo.description || 'No description available.',
+        year: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate.substring(0, 4) : 'Unknown Year',
+        publisher: book.volumeInfo.publisher || 'Unknown Publisher',
+        language: book.volumeInfo.language || 'Unknown Language',
+        isbn: getIsbn(book.volumeInfo.industryIdentifiers) || 'Unknown ISBN'
+    });
+
+    // Function to extract ISBN from industryIdentifiers
+    const getIsbn = (industryIdentifiers) => {
+        if (industryIdentifiers) {
+            const isbnObj = industryIdentifiers.find(identifier => identifier.type === 'ISBN_13');
+            if (isbnObj) {
+                return isbnObj.identifier;
+            }
+        }
+        return 'Unknown ISBN';
+    }
+
+
     //Change for display between Mylibrary and Search
-    function toggleFavourite(book, buttonElement) {
-        var favourites = JSON.parse(localStorage.getItem('favouriteBooks')) || [];
-        var bookAlreadyFavourited = favourites.some(favBook => favBook.id === book.id);
+    const toggleFavourite = (book, buttonElement) => {
+        let favourites = JSON.parse(localStorage.getItem('favouriteBooks')) || [];
+        let bookAlreadyFavourited = favourites.some(favBook => favBook.id === book.id);
 
         if (bookAlreadyFavourited) {
             // Remove the book from favourites
             favourites = favourites.filter(favBook => favBook.id !== book.id);
             localStorage.setItem('favouriteBooks', JSON.stringify(favourites));
 
-            if ($('#myLibraryButton').text() === 'Back to Search') {
+            if ($(myLibraryButton).text() === 'Back to Search') {
                 if (favourites.length == 0) {
-                    var noFavouritesMsg = $('<div class="alert alert-info" role="alert">')
+                    const noFavouritesMsg = $('<div class="alert alert-info" role="alert">')
                         .text('Your library is empty. Add some books to your favourites!');
-                    $('#booksContainer').append(noFavouritesMsg);
+                    booksContainer.append(noFavouritesMsg);
                 }
                 $(buttonElement).closest('.col-md-2').remove();
             } else {
@@ -185,7 +260,8 @@ $(document).ready(function () {
             }
         } else {
             // Add the book to favourites
-            favourites.push(book);
+            const bookData = extractBookData(book); // Extract only necessary data
+            favourites.push(bookData);
             localStorage.setItem('favouriteBooks', JSON.stringify(favourites));
             $(buttonElement).text('In Your Library').addClass('btn-success').removeClass('btn-primary');
         }
@@ -193,35 +269,30 @@ $(document).ready(function () {
 
 
     //Display books stored locally
-    function showLibrary(sortBy = 'default') {
-        var favourites = JSON.parse(localStorage.getItem('favouriteBooks')) || [];
+    const showLibrary = (sortBy = 'default') => {
+        let favourites = JSON.parse(localStorage.getItem('favouriteBooks')) || [];
         favourites = sortFavourites(favourites, sortBy);
 
-        $('#booksContainer').empty();
+        booksContainer.empty();
 
         if (favourites.length > 0) {
-            var row = $('<div class="row">');
-            favourites.forEach(function (book) {
+            let row = $('<div class="row">');
+            favourites.forEach((book) => {
                 // Use the createBookCard function to create the HTML for the book card
-                var bookCard = createBookCard(book);
+                const bookCard = bookAtributes(book, true);
                 row.append(bookCard);
             });
             // Append the row of favourite book cards to the booksContainer
-            $('#booksContainer').append(row);
+            booksContainer.empty().append(row)
         } else {
-            var noFavouritesMsg = $('<div class="alert alert-info" role="alert">')
+            const noFavouritesMsg = $('<div class="alert alert-info" role="alert">')
                 .text('Your library is empty. Add some books to your favourites!');
-            $('#booksContainer').append(noFavouritesMsg);
+            booksContainer.append(noFavouritesMsg);
         }
     }
 
-    //hide books stored locally
-    function hideLibrary() {
-        $('#booksContainer').empty();
-    }
-
-
-    function sortFavourites(favourites, sortBy) {
+    //sort by given input
+    const sortFavourites = (favourites, sortBy) => {
         switch (sortBy) {
             case 'title':
                 return favourites.sort((a, b) => a.volumeInfo.title.localeCompare(b.volumeInfo.title));
@@ -240,7 +311,58 @@ $(document).ready(function () {
         }
     }
 
-    $('#sortSelect').change(function () {
-        showLibrary(this.value);
+    //Sort by given input show in library
+    sortSelect.change((event) => {
+        const selectedSortBy = event.target.value;
+        showLibrary(selectedSortBy);
     });
+
+
+    const openModal = (title, author, publishedYear, coverImage, description, publisher, language, isbn) => {
+        const modal = $('#bookModal');
+        const modalBody = $('#modalBody');
+        modalBody.empty();
+
+        const flexContainer = $('<div class="flex-container"></div>');
+
+        // Create a div for the text content
+        const textContent = $('<div class="text-content"></div>');
+        textContent.append(`<h2>${title}</h2>`);
+        textContent.append(`<p><b>Author:</b> ${author}</p>`);
+        textContent.append(`<p><b>Published Year:</b> ${publishedYear}</p>`);
+        textContent.append(`<p><b>Publisher:</b> ${publisher}</p>`);
+        textContent.append(`<p><b>Language:</b> ${language}</p>`);
+        textContent.append(`<p><b>ISBN:</b> ${isbn}</p>`);
+        textContent.append(`<p><b>Short description of the plot:</b> ${description} </p>`);
+
+        // Append the text content div to the flex container
+        flexContainer.append(textContent);
+
+        // Only add the image if it exists
+        if (coverImage) {
+            const imageContent = $('<div class="image-content"></div>');
+            imageContent.append(`<img src="${coverImage}" alt="${title} Cover" class="modal-book-cover"/>`);
+            // Append the image div to the flex container
+            flexContainer.append(imageContent);
+        }
+
+        // Append the flex container to the modal body
+        modalBody.append(flexContainer);
+
+        modal.show();
+    }
+
+
+    // Close the modal when the user clicks on <span> (x)
+    $('.close').click(() => {
+        $('#bookModal').hide();
+    });
+
+    // Close the modal when the user clicks anywhere outside of the modal
+    $(window).click(event => {
+        if ($(event.target).is('#bookModal')) {
+            $('#bookModal').hide();
+        }
+    });
+
 });

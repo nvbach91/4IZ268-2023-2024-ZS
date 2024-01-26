@@ -24,6 +24,19 @@ html {
     margin-right: 20px;
 }
 
+#searchViewContainer {
+    flex-grow: 1;
+    margin-left: 20px;
+    justify-content: center;
+    display: flex;
+}
+
+#libraryViewContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 .search-bar {
     display: flex;
     align-items: center;
@@ -35,8 +48,7 @@ html {
     padding: 8px 15px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    margin-right: 10px;
-    width: 500px;
+    margin-right: 5px;
     flex-grow: 1;
 }
 
@@ -127,6 +139,11 @@ html {
     height: 100%;
 }
 
+.card-body:hover,
+.card-img-top:hover {
+    cursor: pointer;
+}
+
 .card-img-top {
     height: 300px;
     object-fit: cover;
@@ -145,7 +162,7 @@ html {
 }
 
 #sortContainer {
-    display: none;
+    display: flex;
     margin: 10px 0;
     padding: 5px;
     background-color: #f8f8f8;
@@ -173,6 +190,101 @@ html {
     border-color: #888;
     outline: none;
 }
+
+.loading-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+
+.no-cover-text {
+    height: 300px;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+    height: 100%;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.image-content {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    max-height: 400px;
+}
+
+.modal-book-cover {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+
+
+
 
 
 @media screen and (max-width: 1024px) {

@@ -20,7 +20,8 @@
             </a>
             <button type="button" id="myLibraryButton" class="toggle-view">My Library</button>
         </div>
-        <form class="search-bar" id="searchForm">
+        <div id="searchViewContainer">
+            <form class="search-bar" id="searchForm">
                 <div id="searchVariantContainer">
                     <div id="searchVariantBooks">Books</div>
                     <div class="slider-container" id="toggleSearchTypeSlider">
@@ -28,22 +29,26 @@
                     </div>
                     <div id="searchVariantAuthors">Authors</div>
                 </div>
-            <input type="search" placeholder="Search for books by title..." id="searchInput" name="search">
-            <button type="submit" id="searchButton">Search</button>          
-        </form>
-        <div id="sortContainer">
-            <select id="sortSelect">
-                <option value="default">Sorted by Added order</option>
-                <option value="reverse">Sorted by Reverse Added order</option>
-                <option value="title">Sorted by Title</option>
-                <option value="author">Sorted by Author</option>
-                <option value="year">Sorted by Year</option>
-            </select>
+                <input type="search" placeholder="Search for books by title..." id="searchInput" name="search">
+                <button type="submit" id="searchButton">Search</button>
+            </form>
+        </div>
+
+        <div id="libraryViewContainer" style="display: none;">
+            <div id="sortContainer">
+                <select id="sortSelect">
+                    <option value="default">Sorted by Added order</option>
+                    <option value="reverse">Sorted by Reverse Added order</option>
+                    <option value="title">Sorted by Title</option>
+                    <option value="author">Sorted by Author</option>
+                    <option value="year">Sorted by Year</option>
+                </select>
+            </div>
         </div>
     </header>
-    
+
     <div class="book-quote">
-        <p></p> 
+        <p></p>
     </div>
     <div id="booksContainer">
     </div>
@@ -55,6 +60,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!--My script-->
     <script src="bookfinder.js"></script>
+
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
 </body>
 
 </html>
