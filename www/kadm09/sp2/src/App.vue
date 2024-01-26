@@ -2,6 +2,9 @@
 /* Global declarations block */
 //https://vuejs.org/guide/introduction.html
 import { ref, onMounted, computed, watch } from 'vue';
+import Swal from 'sweetalert2'
+
+
 
 //define indexedDB structure
 const DB_NAME = 'todoAppDB';
@@ -135,6 +138,10 @@ function handleAuthClick() {
         throw (resp);
       }
       await listUpcomingEvents();
+      Swal.fire({
+        icon: 'success',
+        text: 'Login successful!'
+      })
     };
 
     if (window.gapi.client.getToken() === null) {
@@ -150,10 +157,17 @@ function handleSignoutClick() {
   if (token !== null) {
     window.google.accounts.oauth2.revoke(token.access_token);
     window.gapi.client.setToken('');
-    alert("Disconnected from Google Account");
+    Swal.fire({
+      icon: 'info',
+      text: 'Disconnected from Google Account'
+    })
+
     return;
   }
-  alert("No one is logged in!");
+  Swal.fire({
+    icon: 'warning',
+    text: 'No one is logged in!'
+  })
 }
 
 //take note that this function is called after successful login
@@ -188,44 +202,96 @@ async function listUpcomingEvents() {
 }
 
 /* Application native code section */
-//default sort function, sorts ascending by date of creation
-const todos_asc = computed(() =>
-  todos.value.sort((a, b) => {
-    return b.createdAt - a.createdAt;
-  })
-);
-
-//sort decision block, calls helper function for date sorting
-//performs rudimentary sting sort otherwise
+// Updated sortedTodos computed property to use the selected sort option
+// Uses compartmentalised sorting helper functions for the options given
 const sortedTodos = computed(() => {
   if (sortOption.value === 'date') {
     return todos_asc.value; // Sort by date
   } else if (sortOption.value === 'workstation') {
-    return todos.value.slice().sort((a, b) => {
-      return a.workstation.localeCompare(b.workstation);
-    }); // Sort by workstation
+    return todosByWorkstation.value; // Sort by workstation
+  } else if (sortOption.value === 'category') {
+    return todosByCategory.value; // Sort by category
+  } else if (sortOption.value === 'due') {
+    return todosByDueDate.value; // Sort by due date
+  } else if (sortOption.value === 'done') {
+    return todosByDone.value; // Sort by done attribute
   }
 });
+
+//default sort function, sorts ascending by date of creation
+const todos_asc = computed(() =>
+  todos.value.sort((a, b) => {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+    // return b.createdAt - a.createdAt;
+  })
+);
+
+
+// Auxiliary function to sort by workstation
+const todosByWorkstation = computed(() =>
+  todos.value.slice().sort((a, b) => {
+    return a.workstation.localeCompare(b.workstation);
+  })
+);
+
+// Auxiliary function to sort by category
+const todosByCategory = computed(() =>
+  todos.value.slice().sort((a, b) => {
+    return a.category.localeCompare(b.category);
+  })
+);
+
+// Auxiliary function to sort by due date
+const todosByDueDate = computed(() =>
+  todos.value.slice().sort((a, b) => {
+    return new Date(a.due_date) - new Date(b.due_date);
+  })
+);
+
+// Auxiliary function to sort by done attribute
+const todosByDone = computed(() =>
+  todos.value.slice().sort((a, b) => {
+    return a.done - b.done;
+  })
+);
 
 //adds todos to the indexedDB and the list
 //performs validation against empty fields 
 const addTodo = async () => {
 
-  if (input_content.value.trim() === '' || input_date.value === '') {
+  if (input_content.value.trim() === '' || input_content.value === null) {
+    Swal.fire({
+      icon: 'error',
+      text: 'Please fill in the content of the todo (What needs to get done?)'
+    });
     return;
   }
 
-  if (input_content.value === null || input_workstation.value === null || input_category === null) {
+
+  if (input_workstation.value === null || input_category === null) {
+    Swal.fire({
+      icon: 'error',
+      text: 'Please fill in the category and workstation of the todo.'
+    });
     return;
   }
+
+  if (input_date.value === '') {
+    Swal.fire({
+      icon: 'error',
+      text: 'Please fill in the Due Date of the todo.'
+    });
+    return;
+  }
+
 
   const todo = {
-    content: input_content.value,
+    content: input_content.value.trim(),
     category: input_category.value,
     workstation: input_workstation.value,
     due_date: input_date.value,
     done: false,
-    createdAt: new Date().getTime(),
+    createdAt: new Date().toISOString()
   };
 
   await addToIndexedDB(TODO_STORE_NAME, todo);
@@ -430,7 +496,8 @@ const passToGc = async (todo) => {
 
   try {
 
-    var request = gapi.client.calendar.events.insert({
+    // formerly var
+    const request = gapi.client.calendar.events.insert({
       'calendarId': 'primary',
       'resource': event
     });
@@ -438,10 +505,17 @@ const passToGc = async (todo) => {
     const response = await request;
 
     console.log('Event added to Google Calendar:', response);
-    alert('Event added to Google Calendar');
+
+    Swal.fire({
+      icon: 'success',
+      text: 'Event added to Google Calendar'
+    })
   } catch (error) {
     console.error('Error adding event to Google Calendar:', error);
-    alert('Error adding event to Google Calendar');
+    Swal.fire({
+      icon: 'error',
+      text: 'Error adding event to Google Calendar'
+    })
   }
 };
 
@@ -461,109 +535,98 @@ const passToGc = async (todo) => {
       </div>
     </section>
 
-    <section class="create-todo">
-      <h3>Create a todo</h3>
-
-      <form @submit.prevent="addTodo">
-        <h4>What needs to get done?</h4>
-        <input type="text" placeholder="eg. shoot a hole in the surface of mars" v-model="input_content">
-
-        <h4>Pick a category</h4>
-
-        <div class="options">
-
-          <label>
-            <input type="radio" name="category" id="category1" value="Work" v-model="input_category" />
-            <span class="bubble primary"></span>
-            <div>Work</div>
-          </label>
-
-          <label>
-            <input type="radio" name="category" id="category1" value="School" v-model="input_category" />
-            <span class="bubble secondary"></span>
-            <div>School</div>
-          </label>
-
-          <label>
-            <input type="radio" name="category" id="category1" value="Personal" v-model="input_category" />
-            <span class="bubble auxiliary"></span>
-            <div>Personal</div>
-          </label>
-
-        </div>
-
-        <div class="create-todo-row">
-          <div class="workstation">
-            <h4> Which workstation is required for the task?</h4>
-            <select class="dropdown-selector" v-model="input_workstation">
-              <option disabled selected value="">Please select one workstation</option>
-              <option>None</option>
-              <option>Pen and Paper</option>
-              <option>Laptop</option>
-              <option>Desktop</option>
-            </select>
+    <div class="main-wrapper">
+      <section class="create-todo column-form">
+        <h3>Create a todo</h3>
+        <form @submit.prevent="addTodo">
+          <h4>What needs to get done?</h4>
+          <input type="text" placeholder="eg. shoot a hole in the surface of mars" v-model="input_content">
+          <h4>Pick a category</h4>
+          <div class="options">
+            <label>
+              <input type="radio" name="category" id="category1" value="Work" v-model="input_category" />
+              <span class="bubble primary"></span>
+              <div>Work</div>
+            </label>
+            <label>
+              <input type="radio" name="category" id="category1" value="School" v-model="input_category" />
+              <span class="bubble secondary"></span>
+              <div>School</div>
+            </label>
+            <label>
+              <input type="radio" name="category" id="category1" value="Personal" v-model="input_category" />
+              <span class="bubble auxiliary"></span>
+              <div>Personal</div>
+            </label>
           </div>
-          <div class="duedate">
-            <h4> What is the due date of the task?</h4>
-            <div class="datepicker-wrapper">
-              <input type="date" v-model="input_date" class="datepicker">
+          <div class="create-todo-row">
+            <div class="workstation">
+              <h4> Which workstation is required for the task?</h4>
+              <select class="dropdown-selector" v-model="input_workstation">
+                <option disabled selected value="">Please select one workstation</option>
+                <option>None</option>
+                <option>Pen and Paper</option>
+                <option>Laptop</option>
+                <option>Desktop</option>
+              </select>
+            </div>
+            <div class="duedate">
+              <h4> What is the due date of the task?</h4>
+              <div class="datepicker-wrapper">
+                <input type="date" v-model="input_date" class="datepicker">
+              </div>
             </div>
           </div>
-        </div>
+          <input type="submit" value="Add todo">
+        </form>
+      </section>
 
-        <input type="submit" value="Add todo">
-
-      </form>
-
-    </section>
-
-    <section class="todo-list">
-      <h3> TODO LIST</h3>
-
-      <label>
-        Sort by:
-        <select v-model="sortOption" class="dropdown-selector">
-          <option value="date">Date Created</option>
-          <option value="workstation">Workstation</option>
-        </select>
-      </label>
-
-      <div v-for="todo in sortedTodos" :class="`todo-item ${todo.done && 'done'}`">
-
+      <section class="todo-list column-content">
+        <h3> TODO LIST</h3>
         <label>
-          <input type="checkbox" v-model="todo.done" />
-          <span :class="`bubble ${todo.category}`"></span>
+          Sort by:
+          <select v-model="sortOption" class="dropdown-selector">
+            <option value="date">Date Created</option>
+            <option value="workstation">Workstation</option>
+            <option value="category">Category</option>
+            <option value="due">Due Date</option>
+            <option value="done">Done</option>
+          </select>
         </label>
+        <div class="column-content-todos">
 
-        <div class="todo-content">
-          <input type="text" v-model="todo.content">
-          <select v-model="todo.category" class="todo-item-selector">
-            <option disabled selected value="">{{ todo.category }}</option>
-            <option>Work</option>
-            <option>School</option>
-            <option>Personal</option>
-          </select>
-
-          <select v-model="todo.workstation" class="todo-item-selector">
-            <option disabled selected value="">{{ todo.workstation }}</option>
-            <option>None</option>
-            <option>Pen and Paper</option>
-            <option>Laptop</option>
-            <option>Desktop</option>
-          </select>
-
-          <input type="date" v-model="todo.due_date" class="dateswapper">
+          <div v-for="todo in sortedTodos" :class="`todo-item ${todo.done && 'done'}`">
+            <label>
+              <input type="checkbox" v-model="todo.done" />
+              <span :class="`bubble ${todo.category}`"></span>
+            </label>
+            <div class="todo-content">
+              <input type="text" v-model="todo.content">
+              <select v-model="todo.category" class="todo-item-selector">
+                <option disabled selected value="">{{ todo.category }}</option>
+                <option>Work</option>
+                <option>School</option>
+                <option>Personal</option>
+              </select>
+              <select v-model="todo.workstation" class="todo-item-selector">
+                <option disabled selected value="">{{ todo.workstation }}</option>
+                <option>None</option>
+                <option>Pen and Paper</option>
+                <option>Laptop</option>
+                <option>Desktop</option>
+              </select>
+              <input type="date" v-model="todo.due_date" class="dateswapper">
+            </div>
+            <div class="actions">
+              <button class="button-calendar-sync" @click="passToGc(todo)">Sent to GC</button>
+              <button class="button-delete" @click="removeTodo(todo)">DELETE</button>
+            </div>
+          </div>
 
         </div>
+      </section>
 
-        <div class="actions">
-          <button class="button-calendar-sync" @click="passToGc(todo)">Sent to GC</button>
-          <button class="button-delete" @click="removeTodo(todo)">DELETE</button>
-        </div>
-
-      </div>
-
-    </section>
+    </div>
 
   </main>
 </template>

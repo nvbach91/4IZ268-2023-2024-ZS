@@ -111,6 +111,26 @@ h4 {
 	background-color: var(--primary);
 }
 
+.main-wrapper {
+	display: flex;
+	gap: 10px;
+	max-height: 600px;
+}
+
+.column-form {
+	width: 30%;
+	min-width: 300px;
+}
+
+.column-content {
+	width: 65%;
+}
+
+.column-content-todos {
+	max-height: 500px;
+	overflow-y: auto;
+}
+
 /* Create todo section stylings */
 .create-todo input[type="text"] {
 	display: block;
@@ -279,6 +299,7 @@ input:checked ~ .bubble::after {
 	border-radius: 0.5rem;
 	box-shadow: var(--shadow);
 	margin-bottom: 1rem;
+	margin-right: 10px;
 }
 
 .todo-item label {
