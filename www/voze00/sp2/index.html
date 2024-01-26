@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ekaterina Vozhdaeva">
+    <meta name="description" content="Film Advisor app.">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://bootswatch.com/4/minty/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <title>Film Advisor</title>
+    <link type="image/png" sizes="32x32" rel="icon" href="./css/images/icon-movie-32.png">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Film Advisor</a>
+        <div class="navbar-nav">
+            <button class="nav-item nav-link btn btn-link" id="retake-button">Retake Quiz</button>
+            <button class="nav-item nav-link btn btn-link" id="view-saved-movies">View Saved Movies</button>
+        </div>
+        <form id="search-form" class="form-inline my-2 my-lg-0 hidden">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Movie Title" aria-label="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+    <div class="container">
+        <div id="question-container" class="text-center">
+            <h2 id="question-text"></h2>
+        </div>
+        <div id="options" class="quiz-row"></div>
+        <div id="movie-recommendations" class="hidden">
+            <h2 id="recommendations-text" class="text-center"></h2>
+            <div class="movie-list"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
