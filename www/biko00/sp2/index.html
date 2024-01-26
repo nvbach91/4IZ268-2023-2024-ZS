@@ -17,57 +17,18 @@
   <h1>Search Recipes</h1>
   <button type="button" id="show-liked-recipes" class="btn btn-primary">Show Liked Recipes</button>
 
-  <label for="cuisine">Cuisine:</label>
-  <select name="cuisine" id="cuisine">
-    <option value="Any"></option>
-    <option value="African">African</option>
-    <option value="Asian">Asian</option>
-    <option value="American">American</option>
-    <option value="British">British</option>
-    <option value="Cajun">Cajun</option>
-    <option value="Caribbean">Caribbean</option>
-    <option value="Chinese">Chinese</option>
-    <option value="Eastern European">Eastern European</option>
-    <option value="European">European</option>
-    <option value="French">French</option>
-    <option value="German">German</option>
-    <option value="Greek">Greek</option>
-    <option value="Indian">Indian</option>
-    <option value="Irish">Irish</option>
-    <option value="Italian">Italian</option>
-    <option value="Japanese">Japanese</option>
-    <option value="Jewish">Jewish</option>
-    <option value="Korean">Korean</option>
-    <option value="Latin American">Latin American</option>
-    <option value="Mediterranean">Mediterranean</option>
-    <option value="Mexican">Mexican</option>
-    <option value="Middle Eastern">Middle Eastern</option>
-    <option value="Nordic">Nordic</option>
-    <option value="Southern">Southern</option>
-    <option value="Spanish">Spanish</option>
-    <option value="Thai">Thai</option>
-    <option value="Vietnamese">Vietnamese</option>
-  </select>
-
-  <label for="diet">Diet:</label>
-  <select id="diet">
-    <option value="">Any</option>
-    <option value="vegetarian">Vegetarian</option>
-    <option value="vegan">Vegan</option>
-    <option value="gluten free">Gluten Free</option>
-    <option value="ketogenic">Ketogenic</option>
-  </select>
-  <label for="intolerances">Intolerances:</label>
-  <select id="intolerances">
-    <option value="">None</option>
-    <option value="dairy">Dairy</option>
-    <option value="egg">Egg</option>
-    <option value="gluten">Gluten</option>
-  </select>
-
-  <label for="maxReadyTime">Max Ready Time (minutes):</label>
-  <input type="number" id="maxReadyTime" placeholder="e.g., 30">
+  <form id="search-recipes-form" class="recipe-search-form">
+    <label for="cuisine">Cuisine:</label>
+    <label for="diet">Diet:</label>
+    <label for="intolerances">Intolerances:</label>
+    <label for="maxReadyTime">Max Ready Time (minutes):</label>
+    <input type="number" id="maxReadyTime" placeholder="e.g., 30" min="5" max="300">
+    <label for="amountRecipes">Amount of recipies:</label>
+    <input type="number" id="amountRecipes" placeholder="e.g., 3" , min="1" max="10">
+  </form>
+  
   <button id="search-recipes" class="btn btn-primary">Search Recipes</button>
+
 
   <div id="recipe-container"></div>
   <div id="recipe-spinner" class="spinner-border hidden"></div>
@@ -90,21 +51,26 @@
     </div>
   </div>
 
-  <div id="liked-recipes-container" class="hidden">
-    <h2>Liked Recipes</h2>
-    <div id="liked-recipes">
-      <div class="recipe-item">
-        <h1 class="recipe-title"></h1>
-        <img class="recipe-image">
-        <button class="btn btn-success unlike-button">Unlike</button>
-        <div class="recipe-instructions">
-          <h2>Instructions:</h2>
-          <ol></ol>
+
+  <div id="liked-recipes-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Liked Recipes</h2>
+      <div id="modal-liked-recipes"></div>
+      <!-- <div id="liked-recipes">
+        <div class="recipe-item">
+          <h1 class="recipe-title"></h1>
+          <img class="recipe-image">
+          <button class="btn btn-success unlike-button">Unlike</button>
+          <div class="recipe-instructions">
+            <h2>Instructions:</h2>
+            <ol></ol>
+          </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
-  
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="./js/main.js"></script>
 
