@@ -19,45 +19,19 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Film Advisor</a>
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#" id="retake-button">Retake Quiz</a>
-            <a class="nav-item nav-link" href="#" id="view-saved-movies">View Saved Movies</a>
+            <button class="nav-item nav-link btn btn-link" id="retake-button">Retake Quiz</button>
+            <button class="nav-item nav-link btn btn-link" id="view-saved-movies">View Saved Movies</button>
         </div>
+        <form id="search-form" class="form-inline my-2 my-lg-0 hidden">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Movie Title" aria-label="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
     </nav>
     <div class="container">
         <div id="question-container" class="text-center">
             <h2 id="question-text"></h2>
         </div>
-        <div id="options" class="quiz-row">
-            <!-- Question 1 Options -->
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="0">Action</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden"
-                data-index="1">Adventure</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden"
-                data-index="2">Animation</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="3">Comedy</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden"
-                data-index="4">Documentary</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="5">Family</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="6">Fantasy</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="7">History</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="8">Horror</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="9">Music</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="10">Mystery</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="11">Science
-                Fiction</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="12">TV
-                Movie</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden"
-                data-index="13">Thriller</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="14">War</button>
-            <button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="15">Western</button>
-            <!-- Question 2 Options -->
-            <button type="button" class="btn btn-primary quiz-button question-2 hidden" data-index="0">Published in the last 3 years</button>
-            <button type="button" class="btn btn-primary quiz-button question-2 hidden" data-index="1">Published in the last 5 years</button>
-            <button type="button" class="btn btn-primary quiz-button question-2 hidden" data-index="2">Published in the last 10 years</button>
-            <button type="button" class="btn btn-primary quiz-button question-2 hidden" data-index="3">Published in the last 20 years</button>
-            <button type="button" class="btn btn-primary quiz-button question-2 hidden" data-index="4">Doesn't matter</button>
-        </div>
+        <div id="options" class="quiz-row"></div>
         <div id="movie-recommendations" class="hidden">
             <h2 id="recommendations-text" class="text-center"></h2>
             <div class="movie-list"></div>

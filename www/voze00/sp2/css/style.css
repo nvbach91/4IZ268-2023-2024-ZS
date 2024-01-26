@@ -73,6 +73,10 @@
     display: none;
 }
 
+.form-inline.hidden {
+    display: none;
+}
+
 @keyframes spinning {
     from {
         transform: rotate(0deg);

@@ -1,8 +1,17 @@
 $(document).ready(() => {
+    const movieRecommendations = $('#movie-recommendations');
+    const movieList = $('.movie-list');
+    const recommendationsText = $('#recommendations-text');
+    const optionsDiv = $('#options');
+    const searchForm = $('#search-form');
+    const retakeButton = $('#retake-button');
+    const questionContainer = $('#question-container');
+    const viewSavedMoviesButton = $('#view-saved-movies');
+
     /* Loading spinner logic */
     const loadingSpinner = $(`<div class="spinner"></div>`);
     const showLoading = () => {
-        $('#movie-recommendations').append(loadingSpinner);
+        movieRecommendations.append(loadingSpinner);
     };
     const hideLoading = () => {
         loadingSpinner.remove();
@@ -25,9 +34,24 @@ $(document).ready(() => {
         }
     ];
 
+    /* Buttons for the 1st question */
+    const question1Buttons = [
+        'Action', 'Adventure', 'Animation', 'Comedy', 'Crime', 'Documentary', 'Drama',
+        'Family', 'History', 'Horror', 'Music', 'Mystery', 'Science Fiction', 'TV Movie',
+        'Thriller', 'War', 'Western'
+    ].map((genre, index) => `<button type="button" class="btn btn-primary quiz-button question-1 hidden" data-index="${index}">${genre}</button>`);
+    /* Buttons for the 2nd question */
+    const question2Buttons = [
+        'Published in the last 3 years', 'Published in the last 5 years',
+        'Published in the last 10 years', 'Published in the last 20 years',
+        'Doesn\'t matter'
+    ].map((timeoption, index) => `<button type="button" class="btn btn-primary quiz-button question-2 hidden" data-index="${index}">${timeoption}</button>`);
+    optionsDiv.append(question1Buttons.join(''));
+    optionsDiv.append(question2Buttons.join(''));
+
     /* Start with the first question and show the first question */
     let currentQuestionIndex = 0;
-    $('#movie-recommendations').addClass('hidden');
+    movieRecommendations.addClass('hidden');
     showQuestion(0);
     let userChoices = [];
 
@@ -40,7 +64,7 @@ $(document).ready(() => {
     }
 
     /* Quiz button (quiz options) click */
-    $('#options').on('click', '.quiz-button', function () {
+    optionsDiv.on('click', '.quiz-button', function () {
         const optionText = $(this).text();
         userChoices[currentQuestionIndex] = optionText;
 
@@ -54,17 +78,46 @@ $(document).ready(() => {
     });
 
     /* Retake button click -> Restart everything */
-    $('#retake-button').click(function () {
+    retakeButton.click(function () {
         currentQuestionIndex = 0;
         userChoices = [];
         showQuestion(currentQuestionIndex);
-        $('#movie-recommendations').addClass('hidden');
-        $('#question-container').show();
-        $('#options').show();
+        movieList.empty();
+        movieRecommendations.addClass('hidden');
+        searchForm.addClass('hidden');
+        questionContainer.show();
+        optionsDiv.show();
+    });
+
+    /**The search form submition click */
+    searchForm.submit(function (event) {
+        event.preventDefault();
+        const searchQuery = $(this).find('input[type="search"]').val();
+        searchMoviesByTitle(searchQuery);
+    });
+
+    /* Search through each movie to match what we are looking for */
+    function searchMoviesByTitle(title) {
+        const searchTitleLower = title.toLowerCase();
+        $('.movie').each(function () {
+            const movieTitle = $(this).find('h5').text().toLowerCase();
+            if (movieTitle.includes(searchTitleLower)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    }
+
+    /* Clear the search */
+    $('#search-form input[type="search"]').on('input', function () {
+        if ($(this).val() === '') {
+            $('.movie').show();
+        }
     });
 
     /* Fetch movies from TMDB API, used to display recommendations */
-    function fetchMovies(genre, releaseYear, title) {
+    function fetchMovies(genre, releaseYear) {
         showLoading();
         const apiKey = 'd7f6d223d530ebf74f615df009b1b301';
         let url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genre}&sort_by=vote_count.desc&vote_count.gte=300`;
@@ -77,7 +130,7 @@ $(document).ready(() => {
             url: url,
             type: 'GET',
             success: function (response) {
-                displayMovies(response.results.slice(0, 3), title);
+                displayMovies(response.results);
             },
             error: function () {
                 Swal.fire({
@@ -99,7 +152,7 @@ $(document).ready(() => {
         const apiKey = 'd7f6d223d530ebf74f615df009b1b301';
         const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
 
-        $.ajax({
+        return $.ajax({
             url: url,
             type: 'GET',
             success: function (movie) {
@@ -120,14 +173,19 @@ $(document).ready(() => {
     }
 
     /* Display movies in the recommendations area */
-    function displayMovies(movies, title) {
-        const movieList = $('.movie-list');
+    function displayMovies(movies) {
         movieList.empty();
 
-        $('#recommendations-text').text(title);
+        const selectedGenre = userChoices[0];
+        const selectedYear = userChoices[1];
+        const title = 'Here are your movie recommendations';
+        const subtitle = `You've selected ${selectedGenre} movies, ${selectedYear}.`;
 
+        recommendationsText.html(`<h2>${title}</h2><p class="lead">${subtitle}</p>`);
+
+        let allMovieElements = '';
         movies.forEach(movie => {
-            const movieElement = `
+            allMovieElements += `
                 <div class="movie">
                     <h5>${movie.title}</h5>
                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="movie-poster">
@@ -135,26 +193,13 @@ $(document).ready(() => {
                     <button class="btn btn-primary save-movie" data-movie-id="${movie.id}">Save to favorites</button>
                 </div>
             `;
-            movieList.append(movieElement);
         });
+        movieList.append(allMovieElements);
 
-        $('question-container').hide();
-        $('options').hide();
-        $('#movie-recommendations').removeClass('hidden');
-    }
-
-    /* Display saved movies */
-    function displaySavedMovie(movie) {
-        const movieList = $('.movie-list');
-        const movieElement = `
-            <div class="movie" id="movie-${movie.id}">
-                <h5>${movie.title}</h5>
-                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="movie-poster">
-                <p>Rating: ${movie.vote_average}</p>
-                <button class="btn btn-danger remove-saved-movie" data-movie-id="${movie.id}">Remove</button>
-            </div>
-        `;
-        movieList.append(movieElement);
+        questionContainer.hide();
+        optionsDiv.hide();
+        movieRecommendations.removeClass('hidden');
+        searchForm.removeClass('hidden');
     }
 
     /* Function to save the movie by id */
@@ -176,26 +221,39 @@ $(document).ready(() => {
             icon: 'success',
             confirmButtonText: 'Ok'
         });
+        $(this).prop('disabled', true);
     });
 
     /* Function to remove movie from the saved by id */
     function removeSavedMovie(movieId) {
-        let savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [];
-        savedMovies = savedMovies.filter(id => id !== movieId);
+        let savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || []; //Try to retrive data from local storage
+        savedMovies = savedMovies.filter(id => id !== movieId); //Create new array that has all the original movie IDs except the one that matches movieId 
         localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
-
         $(`#movie-${movieId}`).remove();
     }
 
     /* Remove movie button click */
     $(document).on('click', '.remove-saved-movie', function () {
         const movieId = $(this).data('movie-id');
-        removeSavedMovie(movieId);
         Swal.fire({
-            title: 'Removed!',
-            text: 'Movie removed from your favorites.',
-            icon: 'success',
-            confirmButtonText: 'Ok'
+            title: 'Are you sure?',
+            text: 'Do you really want to remove this movie from your saved?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#78c2ad',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, remove it!',
+            cancelButtonText: 'No, keep it'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                removeSavedMovie(movieId);
+                Swal.fire({
+                    title: 'Removed!',
+                    text: 'Movie removed from your favorites.',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                });
+            }
         });
     });
 
@@ -227,12 +285,12 @@ $(document).ready(() => {
 
         const releaseYear = calculateReleaseYear(userChoices[1]);
 
-        $('#question-container').hide();
-        $('#options').hide();
+        questionContainer.hide();
+        optionsDiv.hide();
 
-        const title = 'Here are your movie recommendations';
-        fetchMovies(tmdbGenreId, releaseYear, title);
-        $('#movie-recommendations').removeClass('hidden');
+        fetchMovies(tmdbGenreId, releaseYear);
+
+        movieRecommendations.removeClass('hidden');
     }
 
     /* Function with the logic to calculate the desired release year for the movie */
@@ -256,16 +314,24 @@ $(document).ready(() => {
     function showSavedMovies() {
         let savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [];
         if (savedMovies.length > 0) {
-            $('#question-container').hide();
-            $('#options').hide();
-            $('#movie-recommendations').removeClass('hidden');
-            $('#recommendations-text').text('Your Saved Movies');
+            questionContainer.hide();
+            optionsDiv.hide();
+            movieRecommendations.removeClass('hidden');
+            recommendationsText.text('Your Saved Movies');
 
-            const movieList = $('.movie-list');
             movieList.empty();
 
-            savedMovies.forEach(movieId => {
-                fetchMovieById(movieId);
+            const fetchPromises = savedMovies.map(movieId => fetchMovieById(movieId));
+
+            Promise.all(fetchPromises).then(() => {
+            }).catch(error => {
+                console.error('Error fetching movies:', error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Error fetching movies! Try again.",
+                    confirmButtonText: 'Ok'
+                });
             });
         } else {
             Swal.fire({
@@ -276,6 +342,19 @@ $(document).ready(() => {
         }
     }
 
+    /* Display saved movies - create movie elements and append them to the movie*/
+    function displaySavedMovie(movie) {
+        const movieElement = `
+                <div class="movie" id="movie-${movie.id}">
+                    <h5>${movie.title}</h5>
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="movie-poster">
+                    <p>Rating: ${movie.vote_average}</p>
+                    <button class="btn btn-danger remove-saved-movie" data-movie-id="${movie.id}">Remove</button>
+                </div>
+            `;
+        movieList.append(movieElement);
+    }
+
     /*View saved movies button click */
-    $('#view-saved-movies').click(showSavedMovies);
+    viewSavedMoviesButton.click(showSavedMovies);
 });
