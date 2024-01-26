@@ -155,9 +155,6 @@ $(document).ready(() => {
         return $.ajax({
             url: url,
             type: 'GET',
-            success: function (movie) {
-                displaySavedMovie(movie);
-            },
             error: function () {
                 Swal.fire({
                     icon: "error",
@@ -203,10 +200,13 @@ $(document).ready(() => {
     }
 
     /* Function to save the movie by id */
-    function saveMovie(movieId) {
+    function saveMovie(movieId, genre) {
         let savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [];
-        if (!savedMovies.includes(movieId)) {
-            savedMovies.push(movieId);
+        if (!savedMovies.some(movie => movie.id === movieId)) {
+            savedMovies.push({
+                id: movieId,
+                genre: genre
+            });
             localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
         }
     }
@@ -214,7 +214,8 @@ $(document).ready(() => {
     /* Save movie button click */
     $(document).on('click', '.save-movie', function () {
         const movieId = $(this).data('movie-id');
-        saveMovie(movieId);
+        const genre = $(this).data('genre');
+        saveMovie(movieId, genre);
         Swal.fire({
             title: 'Saved!',
             text: 'Movie saved to your favorites.',
@@ -224,12 +225,33 @@ $(document).ready(() => {
         $(this).prop('disabled', true);
     });
 
+    function countMoviesByGenre() {
+        const savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [];
+        const genreCounts = {};
+
+        for (let i = 0; i < savedMovies.length; i++) {
+            const genre = savedMovies[i].genre;
+            if (!genreCounts[genre]) {
+                genreCounts[genre] = 0;
+            }
+            genreCounts[genre]++;
+        }
+
+        return genreCounts;
+    }
+
     /* Function to remove movie from the saved by id */
     function removeSavedMovie(movieId) {
-        let savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || []; //Try to retrive data from local storage
-        savedMovies = savedMovies.filter(id => id !== movieId); //Create new array that has all the original movie IDs except the one that matches movieId 
+        let savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [];
+        savedMovies = savedMovies.filter(movie => movie.id !== movieId);
         localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
-        $(`#movie-${movieId}`).remove();
+
+        const movieElement = document.getElementById(`movie-${movieId}`);
+        if (movieElement) {
+            movieElement.remove();
+        } else {
+            console.log(`Element with ID movie-${movieId} not found`);
+        }
     }
 
     /* Remove movie button click */
@@ -311,20 +333,25 @@ $(document).ready(() => {
     }
 
     /* Function to show saved movies */
-    function showSavedMovies() {
+    async function showSavedMovies() {
         let savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [];
         if (savedMovies.length > 0) {
             questionContainer.hide();
             optionsDiv.hide();
             movieRecommendations.removeClass('hidden');
             recommendationsText.text('Your Saved Movies');
-
             movieList.empty();
 
-            const fetchPromises = savedMovies.map(movieId => fetchMovieById(movieId));
-
-            Promise.all(fetchPromises).then(() => {
-            }).catch(error => {
+            try {
+                const movieHTMLElements = [];
+                for (const movie of savedMovies) {
+                    const movieData = await fetchMovieById(movie.id);
+                    if (movieData) {
+                        movieHTMLElements.push(displaySavedMovie(movieData));
+                    }
+                }
+                movieList.append(movieHTMLElements);
+            } catch (error) {
                 console.error('Error fetching movies:', error);
                 Swal.fire({
                     icon: "error",
@@ -332,7 +359,7 @@ $(document).ready(() => {
                     text: "Error fetching movies! Try again.",
                     confirmButtonText: 'Ok'
                 });
-            });
+            }
         } else {
             Swal.fire({
                 text: 'You do not have any saved movies yet.',
@@ -352,7 +379,8 @@ $(document).ready(() => {
                     <button class="btn btn-danger remove-saved-movie" data-movie-id="${movie.id}">Remove</button>
                 </div>
             `;
-        movieList.append(movieElement);
+        return movieElement;
+        //movieList.append(movieElement);
     }
 
     /*View saved movies button click */
