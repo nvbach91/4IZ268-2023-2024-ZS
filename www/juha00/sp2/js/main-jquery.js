@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(() => {
 
     const animeText = $('#animeText');
     const category = $('#category');
@@ -20,8 +20,8 @@ $(document).ready(function () {
 
 
     episodes.on('input', function () {
-        var value = $(this).val();
-        var validInputRegex = /^(?:[1-9]\d*|)$/;
+        const value = $(this).val();
+        const validInputRegex = /^(?:[1-9]\d*|)$/;
         if (!validInputRegex.test(value)) {
             $(this).val('');
         }
@@ -43,20 +43,20 @@ $(document).ready(function () {
     const loadingSpinner = $(`<div class="spinner">`);
 
     // Zobrazení loading spinneru
-    function showLoading() {
+    const showLoading = () => {
         resultsContainer.append(loadingSpinner);
     };
 
     // Odstranění loading spinneru
-    function hideLoading() {
+    const hideLoading = () => {
         loadingSpinner.remove();
     };
 
     // Funkce fetch
-    function fetchAnime(url) {
+    const fetchAnime = (url) => {
         showLoading();
         axios.get(url)
-            .then(function (response) {
+            .then(response => {
                 hideLoading();
                 animeList = response.data.data;
                 const offsetParam = new URL(url).searchParams.get('page[offset]');
@@ -79,16 +79,16 @@ $(document).ready(function () {
 
                 displayResults(animeList);
             })
-            .catch(function (error) {
+            .catch(error => {
                 hideLoading();
                 console.error('Error:', error);
             });
     }
 
     // Funkce pro výpočet a přesunutí se na poslední stranu
-    function lastPage() {
+    const lastPage = () => {
         axios.get(baseURL)
-            .then(function (response) {
+            .then(response => {
                 const totalItems = response.data.meta.count;
                 const totalPages = Math.ceil(totalItems / limit);
                 const lastPageOffset = calculateOffset(totalPages);
@@ -96,13 +96,13 @@ $(document).ready(function () {
                 const actualLastPageURL = `${baseURL}page[limit]=${limit}&page[offset]=${lastPageOffset}`;
                 fetchAnime(actualLastPageURL);
             })
-            .catch(function (error) {
+            .catch(error => {
                 console.error('Error:', error);
             });
     }
 
     // Přesun na první stranu
-    function firstPage() {
+    const firstPage = () => {
         currentPage = 1;
         const firstPageURL = `${baseURL}page[limit]=${limit}&page[offset]=9`;
         fetchAnime(firstPageURL);
@@ -110,27 +110,94 @@ $(document).ready(function () {
 
 
     // Limit délky popisu na anime kartě, odkaz Show more
-    function getShortSynopsis(synopsis) {
+    const getShortSynopsis = (synopsis) => {
         const maxLength = 100;
         if (synopsis.length > maxLength) {
-            return $('<p>').html(`${synopsis.substring(0, maxLength)}... <a href="#" class="show-more">Show more</a>`);
+            return $('<p>').html(`Synopsis: ${synopsis.substring(0, maxLength)}... <a href="#" class="show-more">Show more</a>`);
         } else {
-            return $('<p>').text(synopsis);
+            return $('<p>').text(`Synopsis: ${synopsis}`);
         }
     }
 
+    // Zobrazení modálního okna (po kliknutí na obrázek)
+    const showVideoInModal = (youtubeVideoId) => {
+        if (youtubeVideoId) {
+            const videoUrl = `https://www.youtube.com/embed/${youtubeVideoId}`;
+            const modalWindow = `<div class="modal" id="videoModal">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <iframe src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; gyroscope; picture-in-picture;" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>`;
+            $('body').append(modalWindow);
+            $('#videoModal').show();
+        } else {
+            Swal.fire({
+                title: 'No Trailer Available',
+                text: 'Seems like there is no trailer for this anime.',
+                icon: 'info',
+                confirmButtonText: 'OK'
+            });
+        }
+    }
+
+    // Zavření modálního okna pokud je kliknuto na tlačítko close (class)
+    $('body').on('click', '.close', () => {
+        $('#videoModal').hide();
+        $('#videoModal').remove();
+    });
 
     // Funkce pro zobrazení výsledků/karet anime
-    function displayResults(animeList) {
+    const displayResults = (animeList) => {
         const animeCards = []; // Pole pro ukládání anime karet
 
         if (animeList && animeList.length > 0) {
-            animeList.forEach(function (anime) {
+            animeList.forEach(anime => {
                 const animeCard = $('<div>').addClass('anime-card');
-                const animeTitle = $('<h2>').text(anime.attributes.canonicalTitle);
+                const animeTitle = $('<h3>').text(anime.attributes.canonicalTitle);
 
+                const animeImageContainer = $('<div>').addClass('anime-image-container');
                 const animeImage = $('<img>').attr('src', anime.attributes.posterImage.medium)
                     .attr('alt', anime.attributes.canonicalTitle);
+
+                animeImageContainer.append(animeImage);
+                if (anime.attributes.youtubeVideoId) {
+                    const youtubeIcon = $('<i>').addClass('fab fa-youtube yt-icon');
+                    animeImageContainer.append(youtubeIcon);
+                    youtubeIcon.on('click', () => {
+                        showVideoInModal(anime.attributes.youtubeVideoId);
+                    });
+                }
+
+                // Alternativní názvy
+                const titlesContainer = $('<div>');
+                const animeTitles = anime.attributes.titles;
+                const uniqueTitles = new Set(Object.values(animeTitles));
+                if (uniqueTitles.size > 1) {
+                    uniqueTitles.delete(anime.attributes.canonicalTitle);
+                    titlesContainer.append($('<p>').text('Alternative Titles: '));
+                    uniqueTitles.forEach(title => {
+
+                        const titleKey = Object.keys(animeTitles).find(key => animeTitles[key] === title);
+
+                        // Druhá část, země
+                        let titleKeyPart = titleKey.includes('_') ? titleKey.split('_').pop() : titleKey;
+
+                        // Pro flags api
+                        if (titleKeyPart === 'en') {
+                            titleKeyPart = 'us';
+                        }
+
+                        titlesContainer.append($('<p>').html(`<img src="https://flagsapi.com/${titleKeyPart.toUpperCase()}/shiny/24.png"></img> ${title}`).addClass('alternative-titles'));
+                    });
+                }
+
 
                 const animeSynopsis = getShortSynopsis(anime.attributes.synopsis || 'No synopsis available.');
                 // Event pro "Show more" u delších popisů
@@ -163,7 +230,7 @@ $(document).ready(function () {
                     $(this).html(`Added <i class='fas fa-heart'></i>`).removeClass('button').addClass('button-added');
                 });
 
-                animeCard.append(animeTitle, animeImage, animeSynopsis, episodeCount, showType, airDate, favoriteButton);
+                animeCard.append(animeTitle, animeImageContainer, titlesContainer, animeSynopsis, episodeCount, showType, airDate, favoriteButton);
                 animeCards.push(animeCard);
             });
         } else {
@@ -190,7 +257,7 @@ $(document).ready(function () {
     }
 
     // Funkce pro načtení oblíbených anime z localStorage
-    function loadFavorites() {
+    const loadFavorites = () => {
         const favoritesJSON = localStorage.getItem('favoriteAnime');
         if (favoritesJSON) {
             return JSON.parse(favoritesJSON);
@@ -200,22 +267,31 @@ $(document).ready(function () {
     }
 
     // Funkce pro uložení oblíbených anime do localStorage
-    function saveFavorites(favorites) {
+    const saveFavorites = (favorites) => {
         const favoritesJSON = JSON.stringify(favorites);
         localStorage.setItem('favoriteAnime', favoritesJSON);
     }
 
     let favoriteAnime = loadFavorites();
 
-    // Funkce pro přidání anime do oblíbených
-    function addToFavorites(animeId, animeList) {
-        const animeToAdd = animeList.find(function (anime) {
-            return anime.id === animeId;
-        });
-        if (animeToAdd && !favoriteAnime.some(function (favAnime) {
-            return favAnime.id === animeId;
-        })) {
-            favoriteAnime.push(animeToAdd);
+    // Funkce pro přidání anime do oblíbených (již neukládá celý JSON)
+    const addToFavorites = (animeId, animeList) => {
+        const animeToAdd = animeList.find(anime => anime.id === animeId);
+
+        if (animeToAdd && !favoriteAnime.some(favAnime => favAnime.id === animeId)) {
+            const favoriteAnimeData = {
+                id: animeToAdd.id,
+                canonicalTitle: animeToAdd.attributes.canonicalTitle,
+                posterImage: animeToAdd.attributes.posterImage.medium,
+                titles: animeToAdd.attributes.titles,
+                synopsis: animeToAdd.attributes.synopsis,
+                episodeCount: animeToAdd.attributes.episodeCount,
+                startDate: animeToAdd.attributes.startDate,
+                endDate: animeToAdd.attributes.endDate,
+                youtubeVideoId: animeToAdd.attributes.youtubeVideoId
+            };
+
+            favoriteAnime.push(favoriteAnimeData);
             saveFavorites(favoriteAnime); // Uložit oblíbená anime do localStorage
 
             Swal.fire({
@@ -225,32 +301,49 @@ $(document).ready(function () {
                 showConfirmButton: false,
                 timer: 1500
             });
-
         }
     }
+
 
     // Funkce pro odstranění (konkrétního) anime z oblíbených
-    function removeFromFavorites(animeId) {
-        const indexToRemove = favoriteAnime.findIndex(function (anime) {
-            return anime.id === animeId;
-        });
-        if (indexToRemove !== -1) {
-            const removedAnime = favoriteAnime.splice(indexToRemove, 1)[0];
-            saveFavorites(favoriteAnime); // Uložit aktualizovaný seznam oblíbených do localStorage
-            showFavorites(); // Aktualizovat zobrazení oblíbených po odstranění
+    const removeFromFavorites = (animeId) => {
+        const indexToRemove = favoriteAnime.findIndex(anime => anime.id === animeId);
 
+        if (indexToRemove !== -1) {
             Swal.fire({
-                title: 'Removed from Favorites',
-                text: `${removedAnime.attributes.canonicalTitle} has been removed from your favorites.`,
-                icon: 'info',
-                showConfirmButton: false,
-                timer: 1500
+                title: "Do you want to remove this anime?",
+                showDenyButton: true,
+                confirmButtonText: "Remove",
+                denyButtonText: `Cancel`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const removedAnime = favoriteAnime.splice(indexToRemove, 1)[0];
+                    saveFavorites(favoriteAnime); // Uložit aktualizovaný seznam oblíbených do localStorage
+                    showFavorites(); // Aktualizovat zobrazení oblíbených po odstranění
+                    Swal.fire({
+                        title: 'Removed from Favorites',
+                        text: `${removedAnime.canonicalTitle} has been removed from your favorites.`,
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                } else if (result.isDenied) {
+                    Swal.fire({
+                        title: 'Removing cancelled',
+                        icon: 'info',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
             });
+
         }
     }
 
+
     // Funkce pro zobrazení seznamu oblíbených anime
-    function showFavorites() {
+    const showFavorites = () => {
         resultsContainer.empty();
 
         searchForm.hide();
@@ -265,27 +358,64 @@ $(document).ready(function () {
 
             let animeCards = [];
 
-            favoriteAnime.forEach(function (anime) {
+            favoriteAnime.forEach(anime => {
                 const animeCard = $('<div>').addClass('anime-card');
-                const animeTitle = $('<h2>').text(anime.attributes.canonicalTitle);
-                const animeImage = $('<img>').attr('src', anime.attributes.posterImage.medium).attr('alt', anime.attributes.canonicalTitle);
-                const animeSynopsis = getShortSynopsis(anime.attributes.synopsis || 'No synopsis available.');
+                const animeTitle = $('<h3>').text(anime.canonicalTitle);
+
+                const animeImageContainer = $('<div>').addClass('anime-image-container');
+                const animeImage = $('<img>').attr('src', anime.posterImage)
+                    .attr('alt', anime.canonicalTitle);
+
+                animeImageContainer.append(animeImage);
+                if (anime.youtubeVideoId) {
+                    const youtubeIcon = $('<i>').addClass('fab fa-youtube yt-icon');
+                    animeImageContainer.append(youtubeIcon);
+                    youtubeIcon.on('click', () => {
+                        showVideoInModal(anime.youtubeVideoId);
+                    });
+                }
+
+
+                // Alternativní názvy
+                const titlesContainer = $('<div>');
+                const animeTitles = anime.titles;
+                const uniqueTitles = new Set(Object.values(animeTitles));
+                if (uniqueTitles.size > 1) {
+                    uniqueTitles.delete(anime.canonicalTitle);
+                    titlesContainer.append($('<p>').text('Alternative Titles: '));
+                    uniqueTitles.forEach(title => {
+
+                        const titleKey = Object.keys(animeTitles).find(key => animeTitles[key] === title);
+
+                        // Druhá část, země
+                        let titleKeyPart = titleKey.includes('_') ? titleKey.split('_').pop() : titleKey;
+
+                        // Pro flags api
+                        if (titleKeyPart === 'en') {
+                            titleKeyPart = 'us';
+                        }
+
+                        titlesContainer.append($('<p>').html(`<img src="https://flagsapi.com/${titleKeyPart.toUpperCase()}/shiny/24.png"></img> ${title}`).addClass('alternative-titles'));
+                    });
+                }
+
+                const animeSynopsis = getShortSynopsis(anime.synopsis || 'No synopsis available.');
                 // Event pro "Show more" u delších popisů
                 animeSynopsis.find('.show-more').on('click', function (event) {
                     event.preventDefault();
-                    $(this).parent().text(anime.attributes.synopsis);
+                    $(this).parent().text(anime.synopsis);
                 });
 
-                const episodeCount = $('<p>').text(`Episodes: ${anime.attributes.episodeCount || 'Unknown'}`);
-                const showType = $('<p>').text(`Type: ${anime.attributes.showType || 'Unknown'}`);
-                const airDateText = displayAirDate(anime.attributes.startDate, anime.attributes.endDate);
+                const episodeCount = $('<p>').text(`Episodes: ${anime.episodeCount || 'Unknown'}`);
+                const showType = $('<p>').text(`Type: ${anime.showType || 'Unknown'}`);
+                const airDateText = displayAirDate(anime.startDate, anime.endDate);
                 const airDate = $('<p>').text(airDateText);
 
-                const removeButton = $('<button>').text('Remove').addClass('button').on('click', function () {
+                const removeButton = $('<button>').text('Remove').addClass('button').on('click', () => {
                     removeFromFavorites(anime.id);
                 });
 
-                animeCard.append(animeTitle, animeImage, animeSynopsis, episodeCount, showType, airDate, removeButton);
+                animeCard.append(animeTitle, animeImageContainer, titlesContainer, animeSynopsis, episodeCount, showType, airDate, removeButton);
                 animeCards.push(animeCard);
             });
 
@@ -296,27 +426,44 @@ $(document).ready(function () {
 
         exploreButton.removeClass('active').addClass('inactive');
         favoritesButton.removeClass('inactive').addClass('active');
-        paginationControls.removeClass('show'); //todo
+        paginationControls.removeClass('show');
     }
 
-    // Funkce pro odstranění všech oblíbených
-    function removeAllFavorites() {
-        favoriteAnime = [];
-        saveFavorites(favoriteAnime);
-        $('.remove-all').remove(); // Remove all už se nebude zobrazovat
-        showFavorites();
 
+    // Funkce pro odstranění všech oblíbených
+    const removeAllFavorites = () => {
         Swal.fire({
-            title: 'Removed All',
-            text: 'All your favorites have been removed.',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1500
+            title: "Do you want to remove all anime?",
+            showDenyButton: true,
+            confirmButtonText: "Remove All",
+            denyButtonText: `Cancel`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                favoriteAnime = [];
+                saveFavorites(favoriteAnime);
+                $('.remove-all').remove(); // Remove all už se nebude zobrazovat
+                showFavorites();
+                Swal.fire({
+                    title: 'Removed All',
+                    text: 'All your favorites have been removed.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: 'Removing cancelled',
+                    icon: 'info',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
         });
     }
 
     // Funkce pro zobrazování data vysílání
-    function displayAirDate(startDate, endDate) {
+    const displayAirDate = (startDate, endDate) => {
         if (startDate && endDate) {
             if (startDate === endDate) {
                 return `Aired: ${startDate}`;
@@ -330,7 +477,7 @@ $(document).ready(function () {
     }
 
     // Funkce pro zobrazení pro vyhledávání
-    function showExplore() {
+    const showExplore = () => {
         searchForm.show();
         filterForm.show();
 
@@ -341,7 +488,6 @@ $(document).ready(function () {
 
 
         $('.remove-all').remove(); // Remove all už se nebude zobrazovat
-        //todo
         paginationControls.removeClass('show');
     }
 
@@ -349,7 +495,7 @@ $(document).ready(function () {
     let baseURL = '';
 
     // Funkce pro vyhledávání anime
-    function searchAnime() {
+    const searchAnime = () => {
         currentPage = 1;
         const animeTextVal = animeText.val().trim();
 
@@ -370,7 +516,7 @@ $(document).ready(function () {
     }
 
     // Vyhledávání pomocí filtrů
-    function filterAnime() {
+    const filterAnime = () => {
         currentPage = 1;
 
         const animeTextVal = animeText.val().trim();
@@ -415,7 +561,7 @@ $(document).ready(function () {
     }
 
     // Načtení další stránky
-    function nextPage() {
+    const nextPage = () => {
         if (nextPageURL) {
             currentPage++;
             fetchAnime(nextPageURL);
@@ -423,7 +569,7 @@ $(document).ready(function () {
     }
 
     // Načtení předchozí stránky
-    function previousPage() {
+    const previousPage = () => {
         if (currentPage > 1) {
             currentPage--;
             const prevPageOffset = calculateOffset(currentPage);
@@ -434,21 +580,27 @@ $(document).ready(function () {
 
 
     // Kalkulace offsetu
-    function calculateOffset(pageNum) {
+    const calculateOffset = (pageNum) => {
         return (pageNum * limit);
     }
 
 
     // Zjištění oblíbeného anime
-    function isFavorite(animeId) {
-        return favoriteAnime.some(function (favAnime) {
-            return favAnime.id === animeId;
-        });
+    const isFavorite = (animeId) => {
+        return favoriteAnime.some(favAnime => favAnime.id === animeId);
     }
 
 
-    $('#searchButton').click(searchAnime);
-    $('#filterButton').click(filterAnime);
+    searchForm.on('submit', (event) => {
+        event.preventDefault();
+        searchAnime();
+    });
+
+    filterForm.on('submit', (event) => {
+        event.preventDefault();
+        filterAnime();
+    });
+
     nextButton.click(nextPage);
     prevButton.click(previousPage);
     lastButton.click(lastPage);
