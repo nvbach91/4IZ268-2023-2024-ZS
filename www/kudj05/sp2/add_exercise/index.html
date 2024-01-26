@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Workout Planner</title>
+</head>
+
+<body>
+    <div id="preloader" class="preloader">
+        <span class="loader"></span>
+    </div>
+
+    <header class="body_header">
+        <div class="top_panel">
+            <span class="logo">
+                W-planner
+            </span>
+            <div class="google_info">
+                <div class="google_text_column">
+                    <span id="google_name" class="google_name"></span>
+                    <span id="google_email" class="google_email"></span>
+                </div>
+                <div id="google_img_container" class="google_img_container"></div>
+            </div>
+        </div>
+    </header>
+    <div class="btn_wrap">
+        <div class="google_btn">
+            <div id="g_id_onload"
+                data-client_id="169767117837-crqt0jfjijrgq4apo6k7dftuf92tj8al.apps.googleusercontent.com"
+                data-context="signin" data-ux_mode="popup"
+                data-auto_prompt="false" data-callback="handleCredentialResponse">
+            </div>
+
+            <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_black"
+                data-text="signin_with" data-size="large" data-logo_alignment="left">
+            </div>
+        </div>
+    </div>
+    <main id="swup" class="body_main transition-fade2">
+        <div class="content_wrapper">
+            <a class="no_decoration" href="../">
+                <span id="go_back_btn" class="go_back_btn">
+                    <i class="fa fa-arrow-left go_back_icon" aria-hidden="true"></i>
+                </span>
+            </a>
+            <h1 class="main_heading">Add exercise</h1>
+
+            <input type="text" class="searchBar" id="searchBar" placeholder="Search...">
+            <h2 class="heading">
+                Body part:
+            </h2>
+            <select id="body_part_form" class="select_form">
+            </select>
+            <h2 class="heading">
+                Equipment:
+            </h2>
+            <select id="equipment_form" class="select_form">
+            </select>
+            <div id="exercises_wrapper">
+
+            </div>
+            <button id="load_more_btn" class="load_more_btn">Load More</button>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="copyright">
+            <p>Copyright 2023 © Jan Kudrlička</p>
+        </div>
+    </footer>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7be98aea9a.js" crossorigin="anonymous"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+
+</html>
