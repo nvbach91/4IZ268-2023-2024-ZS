@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+body h1 {
+    font-family: 'VT323', monospace;
+    font-size: 40px;
+    text-align: center;
+}
+
 #canvas {
     position: absolute;
     max-width: 100%;

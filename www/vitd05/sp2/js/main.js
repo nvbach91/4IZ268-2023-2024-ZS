@@ -1,7 +1,7 @@
 window.addEventListener('load', function(){
     const canvas = document.getElementById('canvas');
     const cntx = canvas.getContext('2d');
-    canvas.width = 1200;
+    canvas.width = 1000;
     canvas.height = 500;
     
     class Inputs {
@@ -52,6 +52,8 @@ window.addEventListener('load', function(){
             this.speedY = 0;
             this.maxSpeed = 5;
             this.bullets = [];
+            this.lastShoot = 0;
+            this.shootInterval = 100;
         }
         update(){
             if (this.game.keys.includes('ArrowUp')) this.speedY = -this.maxSpeed;
@@ -73,7 +75,11 @@ window.addEventListener('load', function(){
             });
         }
         shoot(){
-            this.bullets.push(new Bullet(this.game, this.x + 100, this.y + 50));
+            const currentTime = performance.now();
+            if (currentTime - this.lastShoot > this.shootInterval) {
+                this.bullets.push(new Bullet(this.game, this.x + 100, this.y + 50));
+                this.lastShoot = currentTime;
+            }
         }
     }
     class Enemies {
@@ -93,15 +99,18 @@ window.addEventListener('load', function(){
             if (this.x + this.width < 0) this.tbDeleted = true;
         }
         draw(context){
-            context.fillStyle = 'red';
+            context.fillStyle = 'darkred';
             context.fillRect(this.x, this.y, this.width, this.height);
+            
+            context.fillStyle = 'red';
+            context.fillRect(this.x + 5, this.y + 5, this.width - 10, this.height - 10);
         }
     }
     class DisplayText {
         constructor(game){
             this.game = game;
-            this.fontSize = 25;
-            this.fontFamily = 'Open Sans';
+            this.fontSize = 35;
+            this.fontFamily = 'VT323';
             this.color = 'white';
             this.fact = null;
             this.storedFacts = [];
@@ -112,7 +121,6 @@ window.addEventListener('load', function(){
                 const data = await response.json();
                 this.fact = data.text;
                 console.log(data.text);
-                ////////
                 this.storedFacts.push(this.fact);
                 localStorage.setItem('storedFacts', JSON.stringify(this.storedFacts));
 
@@ -120,7 +128,6 @@ window.addEventListener('load', function(){
                 console.error('Error fetching random fact: ', error);
             }
         }
-        //
         showFacts(context) {
             const storedFacts = JSON.parse(localStorage.getItem('storedFacts')) || [];
             if (storedFacts.length === 0) {
@@ -137,9 +144,9 @@ window.addEventListener('load', function(){
         async draw(context){
             context.fillStyle = this.color;
             context.font = this.fontSize + 'px ' + this.fontFamily;
-            context.fillText('Score: ' + this.game.score, 20, 40);
+            context.fillText('Score: ' + this.game.score, game.displayTextY, 40);
             const format = (this.game.gameTime * 0.001).toFixed(2);
-            context.fillText('Time: ' + format, 20, 70);
+            context.fillText('Time: ' + format, game.displayTextY, 70);
             if (game.gameOver) {
                 context.textAlign = 'center';
                 context.fillStyle = 'white';
@@ -168,6 +175,11 @@ window.addEventListener('load', function(){
             this.gameOver = false;
             this.score = 0;
             this.gameTime = 0;
+            this.displayTextY = 30;
+            /*
+            this.highestScore = localStorage.getItem('highestScore') || 0;
+            this.bestTime = localStorage.getItem('bestTime') || 0;
+            */
         }
         update(deltaTime){
             if (!this.gameOver) this.gameTime += deltaTime;
@@ -219,6 +231,16 @@ window.addEventListener('load', function(){
             this.enemies = [];
             this.enemyTimer = 0;
             this.gameOver = false;
+            
+            const highestScore = localStorage.getItem('highestScore') || 0;
+            const bestTime = localStorage.getItem('bestTime') || 0;
+            if (this.score > highestScore) {
+                localStorage.setItem('highestScore', this.score);
+                localStorage.setItem('bestTime', this.bestTime);
+            }
+            console.log('Nejlepší dosažené skóre: ' + (localStorage.getItem('highestScore') || 0));
+            console.log('Jeho čas: ' + (localStorage.getItem('bestTime') || 0));
+
             this.score = 0;
             this.gameTime = 0;
             this.displayText.fetchRandomFact();
@@ -227,19 +249,17 @@ window.addEventListener('load', function(){
 
     const game = new Game(canvas.width, canvas.height);
     let lastTime = 0;
+    let animationId;
 
-    //
+    function startAnimation() {
+        animationId = requestAnimationFrame(animate);
+    }
     document.addEventListener('click', function (e) {
         if (e.target.id === 'showFactsButton') {
             game.displayText.showFacts(cntx);
         }
     });
-    //bere click všeho, má brát jen touchpad  nebo myš
-    //najít si, jak funguje zápis hodnoty rychlosti
-    
-    
-
-    async function animate(timeStamp){
+    function animate(timeStamp){
         const deltaTime = timeStamp - lastTime;
         lastTime = timeStamp;
         cntx.clearRect(0, 0, canvas.width, canvas.height)
@@ -248,12 +268,21 @@ window.addEventListener('load', function(){
         if (game.gameOver) {
             document.getElementById('NGbutton').style.display = 'block';
             document.getElementById('showFactsButton').style.display = 'block';
+            /*
+            document.getElementById('highestScore').innerText = "Highest Score: " + game.highestScore;
+            document.getElementById('bestTime').innerText = "Best Time: " + (game.bestTime / 1000).toFixed(2) + " seconds";
+            */
+            cancelAnimationFrame(animationId);
+        } else {
+            startAnimation();
         }
-        if (!game.gameOver)requestAnimationFrame(animate);
     };
+    startAnimation();
+
     document.getElementById('NGbutton').addEventListener('click', function () {
-        game.resetGame();
-        animate(0);
+        if (game.gameOver) {
+            game.resetGame();
+            startAnimation();
+        }
     });
-    animate(0);
 });

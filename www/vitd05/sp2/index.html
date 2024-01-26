@@ -3,18 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="game, aliens, starship, shooter">
+    <meta name="keywords" content="game, starship, pixel, shooter">
     <meta name="author" content="Daniel Vít">
-    <title>2D game</title>
+    <title>PIXEL shooter</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Open+Sans&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
         rel="stylesheet">
+    
+    <style> 
+        button { 
+            background-image: url('./img/button.png'); 
+            background-size: cover;
+            padding: 0px 0px;
+            font-family: 'VT323', monospace;
+            font-size: 25px; 
+            width: 130px;
+            height: 50px;
+        } 
+    </style>
 </head>
 <body>
+    <h1>Pixel Shooter</h1>
     <canvas id="canvas"></canvas>
 
     <button id="NGbutton">New game</button>
-    <button id="showFactsButton">Show facts button</button>
+    <button id="showFactsButton">Show facts</button>
 
     <script src="./js/main.js"></script>
 </body>
