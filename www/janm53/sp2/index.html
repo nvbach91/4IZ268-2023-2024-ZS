@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="media/favicon.png" type="image/png">
+    <title>Personal Finance Tracker</title>
+    <meta name="description" content="Web application for journaling my monthly expenses and stocks that I bought">
+    <meta name="keywords" content="finance, journal, stocks, expenses, income">
+    <meta name="author" content="Matyáš Janoš">
+    <meta name="email" content="matyas.janos@outlook.cz">
+    <meta name="copyright" content="Copyright © 2024, Matyáš Janoš">
+    <link rel="stylesheet" href="styles/style.css">
+    <!--suppress JSUnresolvedLibraryURL -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="header">
+    <h1>Personal Finance Tracker</h1>
+</div>
+<nav class="navigation">
+    <a href="#investments" class="buttonNav investments" role="button">Investments</a>
+    <a href="#transactions" class="buttonNav expenses" role="button">Transactions</a>
+    <a href="#settings" class="buttonNav settings" role="button">Settings</a>
+</nav>
+
+<div id="content"></div>
+
+<footer>
+    <p>&copy; Matyas Janos 2024</p>
+</footer>
+
+
+<script defer src="scripts/main.js"></script>
+<script defer src="scripts/expenses.js"></script>
+<script defer src="scripts/stock.js"></script>
+<script defer src="scripts/settings.js"></script>
+<script defer src="scripts/darkMode.js"></script>
+
+</body>
+</html>
