@@ -1,71 +1,76 @@
-
 @media screen and (max-width: 1366px) {
-    
-    .object-inputWrap, .deep-inputWrap {
+
+    .object-inputWrap,
+    .deep-inputWrap {
         width: 100%;
         display: flex;
     }
 
-    .object-inputWrap input, .object-inputWrap label  {
+    .object-inputWrap input,
+    .object-inputWrap label {
         margin: 5px auto;
         text-align: left;
     }
 
-    .output-deep-space table{
+    .output-deep-space table {
         padding: 40px;
-     }
+    }
 
 }
 
 
 @media screen and (max-width: 800px) {
- 
-     header h1 {
-         font-size: 30px;
-         width: 50%;
-         text-align: center;
-     }
+
+    header h1 {
+        font-size: 30px;
+        width: 50%;
+        text-align: center;
+    }
 
     .popup-content {
         width: 80%;
     }
 
-     .app-button {
+    .app-button {
         border: 5px solid white;
         font-size: 16px;
-     }
+    }
 
     .button {
         font-size: 14px;
     }
 
-     .bodycard {
+    .bodycard {
         width: 50%;
         padding: 10px;
-     }
+    }
 
-    .object-inputWrap input, .object-inputWrap label {
+    .object-inputWrap input,
+    .object-inputWrap label {
         margin: 2px auto;
         text-align: left;
         font-size: 18px;
     }
-    .deep-inputWrap input, .deep-inputWrap label {
+
+    .deep-inputWrap input,
+    .deep-inputWrap label {
         font-size: 18px;
         text-align: left;
     }
-     .bodycard table {
-        font-size: 16px;
-     }
 
-     .output-deep-space table{
+    .bodycard table {
+        font-size: 16px;
+    }
+
+    .output-deep-space table {
         padding: 20px;
         font-size: 14px;
-     }
-     
-     footer {
-         font-size: 16px;
-     }
- }
+    }
+
+    footer {
+        font-size: 16px;
+    }
+}
 
 
 @media screen and (max-width: 480px) {
@@ -94,11 +99,15 @@
         border: 2px solid white;
     }
 
-    .object-inputWrap, .deep-inputWrap {
+    .object-inputWrap,
+    .deep-inputWrap {
         flex-wrap: wrap;
     }
-    
-    .object-inputWrap input, .object-inputWrap label, .deep-inputWrap input, .deep-inputWrap label {
+
+    .object-inputWrap input,
+    .object-inputWrap label,
+    .deep-inputWrap input,
+    .deep-inputWrap label {
         font-size: 20px;
         width: 100%;
     }
@@ -116,10 +125,10 @@
         overflow-y: scroll;
     }
 
-    .output-deep-space table{
+    .output-deep-space table {
         padding: 5px;
         font-size: 12px;
-     }
+    }
 
     footer {
         font-size: 14px;

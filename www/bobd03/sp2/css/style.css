@@ -17,6 +17,9 @@ header h1 {
     border-radius: 20px;
 }
 
+body {
+    font-family: 'Dosis', sans-serif;
+}
 
 main {
     min-height: 420px;
@@ -46,6 +49,7 @@ main {
     position: fixed;
     z-index: 1;
     padding-top: 20px;
+    top: 0;
     left: 0;
     right: 0;
     width: 100%;
@@ -54,37 +58,50 @@ main {
 }
 
 .popup-content {
-    padding: 40px 20px;
-    margin: auto;
+    padding: 20px 10px;
+    margin: 0 auto;
     background-color: white;
     border: 5px black solid;
     border-radius: 20px;
-    width: 60%;
-    max-height: 380px;
-    overflow: scroll;
-    overflow-x: hidden;
+    width: 80%;
+    text-align: center;
+}
+
+.popup-content table, .popup-content ul{
+    margin: 0 auto;
+    text-align: left;
+}
+
+.popup-content p {
+    text-align: justify;
 }
 
 .popup-content form {
     display: flex;
     flex-wrap: wrap;
     padding: 0 20px;
+    margin: 0 auto;
+    width: 60%;
 }
 
-.object-inputWrap, .deep-inputWrap {
+.object-inputWrap,
+.deep-inputWrap {
     width: 50%;
 }
 
-.object-inputWrap label, .deep-inputWrap label {
+.object-inputWrap label,
+.deep-inputWrap label {
     min-width: 200px;
     padding: 10px;
     display: inline-block;
-    text-align: right;
+    text-align: left;
 }
 
-.object-inputWrap input, .deep-inputWrap input {
+.object-inputWrap input,
+.deep-inputWrap input {
     display: inline-block;
     width: 120px;
+    text-align: right;
 }
 
 .button {
@@ -92,6 +109,7 @@ main {
     border-radius: 10px;
     background-color: purple;
     color: white;
+    margin: 5px auto;
 }
 
 .button:hover {
@@ -171,12 +189,14 @@ main {
     padding: 20px;
 }
 
-.bodycard h2, .details-popup h2 {
+.bodycard h2,
+.details-popup h2 {
     text-align: center;
     text-shadow: 2px 2px 4px gray;
 }
 
-.bodycard table, .details-popup table {
+.bodycard table,
+.details-popup table {
     margin: 0 auto;
     border: 2px solid;
     border-radius: 5px;
@@ -187,7 +207,7 @@ main {
     margin: 0 auto;
 }
 
-.output-deep-space table{
+.output-deep-space table {
     margin: 20px auto;
     border: 5px solid;
     border-radius: 10px;
@@ -196,7 +216,8 @@ main {
     background-color: rgb(211, 211, 211);
 }
 
-.output-deep-space table td, .output-deep-space table th{
+.output-deep-space table td,
+.output-deep-space table th {
     padding: 5px;
     border: 2px solid;
 }
