@@ -19,6 +19,12 @@ class Nickname {
 
         element.addListener('click');
 
+        let username = localStorage.getItem('username');
+        let usernameElement = document.querySelector('#username');
+        if (username && usernameElement) {
+            usernameElement.value = username;
+        }
+
         //define what happens when the button is clicked
         element.on('click', (event) => {
             if (event.target.name === 'loginButton') {

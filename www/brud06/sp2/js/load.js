@@ -10,7 +10,8 @@ class Load {
         });
 
         this.load.image('coin', 'assets/coin.png');
-        this.load.image('enemy', 'assets/bomb.png')
+        this.load.image('enemy', 'assets/bomb.png');
+        this.load.image('powerup','assets/star.png');
         this.load.image('background', 'assets/background.png');
         this.load.image('wallV', 'assets/wallVertical.png');
         this.load.image('wallH', 'assets/wallHorizontal.png');
@@ -26,9 +27,13 @@ class Load {
         });
 
     }
-    //when everything loads - nickname scene is started
+    //when everything loads - nickname or menu scene is started
     create() {
-        this.scene.start('nickname');
+            //if(localStorage.getItem('username') === null) {
+                this.scene.start('nickname');
+            //} else {
+                //this.scene.start('menu');
+            //}
     }
 
 

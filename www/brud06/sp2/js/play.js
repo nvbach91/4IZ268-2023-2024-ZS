@@ -5,20 +5,29 @@ class Play {
         this.player.body.gravity.y = 500;
         this.arrow = this.input.keyboard.createCursorKeys();
         this.coin = this.physics.add.sprite(60, 130, 'coin');
+        this.powerup = this.physics.add.sprite(740, 130, 'powerup');
         this.score = 0;
         this.scoreLabel = this.add.text(30, 25, 'Score: ' + this.score, { font: '18px Arial', fill: '#fff' });
         this.enemies = this.physics.add.group();
         this.jumpSound = this.sound.add('jump');
         this.coinSound = this.sound.add('coin');
         this.deadSound = this.sound.add('dead');
+        this.velocityRight = 200;
+        this.velocityLeft = -200;
 
         this.nextEnemy = 0;
-
-        /*this.time.addEvent({
-            delay: 2200,
-            callback: () => this.addEnemy(),
-            loop: true,
-        });*/
+        this.spawnArea = {
+            x: { min: 30, max: this.sys.game.config.width - 30 },
+            y: { min: 30, max: this.sys.game.config.height - 30 }
+        };
+        //this.positions=[
+        //{ x: 100, y: 60 },
+        //{ x: 600, y: 60 },
+        //{ x: 60, y: 140 },
+        //{ x: 40, y: 40 },
+        //{ x: 130, y: 400 },
+        //{ x: 370, y: 400 },
+    //];
 
         //Animations for character movement
         this.anims.create({
@@ -46,7 +55,10 @@ class Play {
         this.physics.collide(this.walls, this.enemies);
         //this.player.angle++;
         this.movePlayer();
-        if (this.player.y < 0 || this.player.y > 600) {
+        if(this.player.y < 0){
+            this.bouncePlayerBack();
+        }
+        if (this.player.y > 600) {
             this.playerDie();
         }
         if (this.physics.overlap(this.player, this.coin)) {
@@ -55,16 +67,19 @@ class Play {
         if (this.physics.overlap(this.player, this.enemies)) {
             this.playerDie();
         }
+        if (this.physics.overlap(this.player, this.powerup)) {
+            this.takePowerup();
+        }
         this.updateEnemySpawn();
 
     }
     movePlayer() {
         if (this.arrow.left.isDown) {
-            this.player.body.velocity.x = -200;
+            this.player.body.velocity.x = this.velocityLeft;
             this.player.anims.play('left', true);
         }
         else if (this.arrow.right.isDown) {
-            this.player.body.velocity.x = 200;
+            this.player.body.velocity.x = this.velocityRight;
             this.player.anims.play('right', true);
         }
         else {
@@ -125,22 +140,37 @@ class Play {
             yoyo: true,
         });
     }
-    //Fixed coin positions to prevent it from spawning in walls
     updateCoinPosition() {
-        let positions = [
-            { x: 100, y: 60 },
-            { x: 600, y: 60 },
-            { x: 60, y: 140 },
-            { x: 40, y: 40 },
-            { x: 130, y: 400 },
-            { x: 370, y: 400 },
-        ];
-
-        positions = positions.filter(coin => coin.x !== this.coin.x);
-
-        let newPosition = Phaser.Math.RND.pick(positions);
-
+        const newPosition = {
+            x: Phaser.Math.Between(this.spawnArea.x.min, this.spawnArea.x.max),
+            y: Phaser.Math.Between(this.spawnArea.y.min, this.spawnArea.y.max)
+        };
         this.coin = this.physics.add.sprite(newPosition.x, newPosition.y, 'coin');
+    }
+    //Fixed coin positions to prevent it from spawning in walls
+    //updateCoinPosition() {
+        //let positions = this.positions.filter(coin => coin.x !== this.coin.x);
+
+        //let newPosition = Phaser.Math.RND.pick(positions);
+
+        //this.coin = this.physics.add.sprite(newPosition.x, newPosition.y, 'coin');
+    //}
+    takePowerup() {
+        this.velocityLeft *=2;
+        this.velocityRight *=2;
+        this.powerup.destroy();
+        this.time.delayedCall(10000, this.updatePowerupPosition, [], this);
+        this.time.delayedCall(5000, () => {
+            this.velocityLeft /= 2;
+            this.velocityRight /= 2;
+        }, [], this);
+    }
+    updatePowerupPosition() {
+        const newPosition = {
+            x: Phaser.Math.Between(this.spawnArea.x.min, this.spawnArea.x.max),
+            y: Phaser.Math.Between(this.spawnArea.y.min, this.spawnArea.y.max)
+        };
+        this.powerup = this.physics.add.sprite(newPosition.x, newPosition.y, 'powerup');
     }
     addEnemy() {
         let enemy = this.enemies.create(400, 10, 'enemy');
@@ -168,5 +198,9 @@ class Play {
             this.nextEnemy = now + delay;
         }
     }
-
+    bouncePlayerBack(){
+        this.player.body.velocity.y = this.player.body.velocity.y * -1;
+        this.player.y += 10;
+    }
+    
 }

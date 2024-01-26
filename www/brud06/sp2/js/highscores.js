@@ -23,8 +23,12 @@ class Highscores {
                 console.log('Fetched high scores:', data);
                 // Sorting highscores
                 data.sort((a, b) => b.highscore - a.highscore);
+                // Get highest score for a nickname
+                const uniqueData = data.filter((value, index, self) => {
+                    return self.findIndex(obj => obj.nickname === value.nickname) === index;
+                });
                 // Only displaying 10 best scores from db
-                const topScores = data.slice(0, 10);
+                const topScores = uniqueData.slice(0, 10);
 
                 const fixedX = 300;
                 const maxNicknameLength = 10;
