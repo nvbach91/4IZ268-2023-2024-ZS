@@ -216,6 +216,23 @@ button:active {
 
 }
 
+/* CSS pro animaci nabíhajících teček */
+.loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 2s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
 /* Přidání stylování pro tmavý režim */
 .dark-mode {
     background-color: #333;
