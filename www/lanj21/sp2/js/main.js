@@ -342,9 +342,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     0 > ny || ny > grid.height - 1 ||
                     grid.get(nx, ny) === SNAKE
                 ) {
+                    if (gameOver === false){
+                        updateHighScoreInDatabase(highScore);
+                    } 
                     gameOver = true;
                     gameOverMessage = "Game Over! Press Space to Restart";
-                    updateHighScoreInDatabase(highScore);
+                    
                     return;
                 }
 
