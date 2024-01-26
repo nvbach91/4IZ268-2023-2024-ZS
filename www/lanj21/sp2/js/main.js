@@ -177,12 +177,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function init() {
     try {
-        if(gameOver === false){
-            console.log("fetch high score from database");
-            const fetchedHighScore = await getHighScoreFromDatabase();
-
-        }
-      
+      console.log("fetch high score from database");
+      const fetchedHighScore = await getHighScoreFromDatabase();
       // Use the retrieved high score to update the game state
       if (typeof fetchedHighScore === "number") {
         highScore = fetchedHighScore;
