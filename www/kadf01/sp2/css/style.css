@@ -1,0 +1,626 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.7vh;
+}
+
+/* pop-up */
+.artist-results {
+    display: flex;
+    align-items: center;
+}
+
+.artist-results:hover {
+    background-color: rgb(243, 243, 243);
+}
+
+.artist-results span {
+    font-size: 1.7vh;
+    text-align: left;
+    width: 70%;
+}
+
+.artist-results img {
+    width: 2vh;
+    height: 2vh;
+    margin-right: 1vh;
+}
+
+.artist-button {
+    margin-left: auto;
+    border: 0;
+    background-color: #1db954;
+    color: white;
+    height: 2vh;
+    width: 20%;
+    margin-top: 0.2vh;
+    margin-bottom: 0.2vh;
+    transition: 0.1s;
+    font-size: 1.5vh;
+    color: white;
+    font-weight: 500;
+}
+
+.artist-button:hover {
+    cursor: pointer;
+    background-color: #189f47;
+    transition: 0.1s;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    background-color: #189f47;
+    height: 5vh;
+    width: 100%;
+    background-color: #189f47;
+    display: flex;
+}
+
+footer span {
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+.loader-container {
+    position: absolute;
+    width: 100%;
+    height: 2vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.show {
+    display: flex;
+}
+
+.loader {
+    height: 5px;
+    width: 50%;
+    --c: no-repeat linear-gradient(#1db954 0 0);
+    background: var(--c), var(--c), rgb(224, 224, 224);
+    background-size: 60% 100%;
+    animation: l10 3s infinite;
+}
+
+@keyframes l10 {
+    0% {
+        background-position: -150% 0, -150% 0
+    }
+
+    50% {
+        background-position: 250% 0, -150% 0
+    }
+
+    100% {
+        background-position: 250% 0, 250% 0
+    }
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto 0 auto;
+    padding-top: 2vh;
+    display: flex;
+    flex: 1 0 auto;
+}
+
+#leftSide {
+    width: 48.5%;
+}
+
+#rightSide {
+    width: 48.5%;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+
+h1 {
+    font-size: 5vh;
+    font-weight: 800;
+}
+
+.search-bar {
+    width: 100%;
+    background-color: rgb(243, 243, 243);
+    height: 5vh;
+    margin-bottom: 3vh;
+    border-radius: 1vh;
+    position: relative;
+    display: flex;
+}
+
+.search-title {
+    background-color: #1d1414;
+    height: 100%;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+}
+
+
+.search-title h2 {
+    text-align: center;
+    font-size: 2vh;
+    margin: auto;
+    color: white;
+}
+
+#findBtn {
+    height: 100%;
+    width: 15%;
+    border: 0;
+    position: absolute;
+    right: 0;
+    transition: 0.1s;
+    background-color: #1db954;
+    font-size: 2vh;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 3vh;
+}
+
+#findBtn:hover {
+    cursor: pointer;
+    background-color: #189f47;
+    transition: 0.1s;
+}
+
+#tlTitle {
+    display: none
+}
+
+#artistName,
+#albumSelect {
+    border: 0;
+    background-color: inherit;
+    width: 100%;
+    font-size: 2vh;
+    padding-left: 1vh;
+    appearance: none;
+    text-indent: 16%;
+}
+
+#artistName:focus,
+#albumSelect:focus {
+    outline: none;
+}
+
+#selectIcon {
+    height: 100%;
+    width: 6%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    pointer-events: none;
+    background-color: rgb(243, 243, 243);
+}
+
+#selectIcon i {
+    font-size: 3vh;
+    margin: auto;
+    color: #1db954;
+    font-weight: 500;
+}
+
+#albumSelect:hover {
+    cursor: pointer;
+}
+
+/* tracklist */
+#tracks {
+    background-color: rgb(243, 243, 243);
+    width: 100%;
+    margin-bottom: 3vh;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    background-color: rgb(247, 247, 247);
+    height: 5vh;
+    position: relative;
+    z-index: 2;
+}
+
+.track-item:hover {
+    background-color: rgb(226, 226, 226);
+}
+
+.track-item img {
+    width: 4vh;
+    height: 4vh;
+    margin-left: 0.5vh;
+    pointer-events: none;
+}
+
+.track-item span {
+    margin-left: 1vh;
+    pointer-events: none;
+}
+
+#tracks .track-item span {
+    width: 70%;
+}
+
+.track-item h2 {
+    position: absolute;
+    right: 3vh;
+    pointer-events: none;
+    font-size: 2vh;
+    color: rgb(247, 247, 247);
+    font-weight: 500;
+    z-index: 1;
+    pointer-events: none;
+
+}
+
+.track-item button {
+    margin-left: auto;
+    border: 0;
+    background-color: #1db954;
+    color: white;
+    height: 5vh;
+    width: 13%;
+    transition: 0.1s;
+    font-size: 2vh;
+    color: white;
+    font-weight: 500;
+    opacity: 0;
+    z-index: 2;
+}
+
+.track-item button:hover {
+    background-color: #189f47;
+    opacity: 1;
+    width: 15%;
+    cursor: pointer;
+}
+
+/* artist info */
+#artistInfo {
+    display: none;
+    margin-bottom: 3vh;
+    align-items: center;
+    background-color: rgb(247, 247, 247);
+    height: 13vh;
+}
+
+#artistImg {
+    width: 13vh;
+    height: 13vh;
+}
+
+#artistText {
+    margin-left: 3vh;
+}
+
+h3 {
+    margin: 0;
+}
+
+.name {
+    font-size: 4.5vh;
+    font-weight: 800;
+    margin-right: 0.5vh;
+    line-height: 4vh;
+
+}
+
+.listeners {
+    font-weight: 400;
+    font-style: italic;
+    padding-top: 0.8vh
+}
+
+#buttonDiv {
+    height: 100%;
+    width: 15%;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#resetBtn,
+#downloadBtn {
+    transition: 0.1s;
+    background-color: #1db954;
+    font-size: 2vh;
+    color: white;
+    font-weight: 500;
+    border: 0;
+    height: 50%;
+    width: 100%;
+    margin-left: auto;
+}
+
+#resetBtn:hover,
+#downloadBtn:hover {
+    cursor: pointer;
+    background-color: #189f47;
+    transition: 0.1s;
+    width: 95%;
+}
+
+/* tierlist */
+
+#tierlist {
+    background-color: rgb(243, 243, 243);
+    width: 100%;
+    margin-bottom: 3.7vh;
+}
+
+.tl-album-name {
+    color: rgb(170, 170, 170);
+    width: 30%;
+    font-size: 1.1vh;
+}
+
+.tl-track-name {
+    width: 37%;
+    font-size: 1.7vh;
+}
+
+.draggable {
+    cursor: move;
+}
+
+.draggable {
+    width: 100%;
+}
+
+strong {
+    margin: auto 0.5vh auto 1vh;
+    border-radius: 0%;
+    background-color: rgb(226, 226, 226);
+    text-align: center;
+    color: white;
+    pointer-events: none;
+    width: 3vh;
+    height: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1700px) {
+    .tl-track-name {
+        width: 32%;
+        margin-right: 1vh;
+    }
+}
+
+@media only screen and (max-width: 1550px) {
+    .search-title h2 {
+        font-size: 1.8vh;
+    }
+
+    #findBtn {
+        font-size: 1.8vh;
+    }
+
+    .name {
+        font-size: 4.389776357827476vh;
+    }
+
+    #selectIcon {
+        width: 10%;
+    }
+
+    .tl-track-name {
+        width: 30%;
+        margin-right: 0.5vh;
+        font-size: 1.3vh;
+    }
+
+    #buttonDiv {
+        width: 18%;
+    }
+
+    .track-item button {
+        width: 13%;
+        font-size: 1.7299254526091587vh;
+    }
+
+    .track-item button:hover {
+        width: 15%;
+    }
+
+    .track-item h2 {
+        font-size: 1.7299254526091587vh;
+    }
+
+    #tracks .track-item span {
+        font-size: 1.3vh;
+    }
+
+}
+
+@media only screen and (max-width: 1250px) {
+    .search-title h2 {
+        font-size: 1.5vh;
+    }
+
+    #findBtn {
+        font-size: 1.5vh;
+    }
+
+    .name {
+        font-size: 3.389776357827476vh;
+    }
+
+    .tl-track-name {
+        width: 65%;
+        margin-right: 0;
+    }
+
+    .tl-album-name {
+        display: none
+    }
+
+    #resetBtn,
+    #downloadBtn {
+        font-size: 1.8vh;
+    }
+
+    .track-item button {
+        width: 13%;
+        font-size: 1.7299254526091587vh;
+    }
+
+    .track-item button:hover {
+        width: 15%;
+    }
+
+    .track-item h2 {
+        font-size: 1.7299254526091587vh;
+    }
+
+    strong {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 1100px) {
+    .container {
+        flex-direction: column;
+    }
+
+    #leftSide {
+        width: 100%;
+    }
+
+    #rightSide {
+        width: 100%;
+    }
+
+    .search-title h2 {
+        font-size: 2vh;
+    }
+
+    #findBtn {
+        font-size: 2vh;
+    }
+
+    .name {
+        font-size: 4.5vh;
+
+    }
+
+    #resetBtn,
+    #downloadBtn {
+        font-size: 2vh;
+    }
+
+    #buttonDiv {
+        width: 15%;
+    }
+
+    .track-item h2 {
+        font-size: 2vh;
+    }
+
+    .track-item button {
+        font-size: 2vh;
+    }
+
+    .track-item button:hover {
+        width: 15%;
+    }
+
+    strong {
+        display: flex;
+    }
+
+    #tracks .track-item span {
+        font-size: 1.7vh;
+    }
+
+    .tl-album-name {
+        width: 19vh;
+        font-size: 0.9vh;
+        display: block;
+        font-size: 1.3vh;
+    }
+
+    .tl-track-name {
+        width: 40%;
+        margin-right: 2vh;
+        font-size: 1.7vh;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+    .tl-track-name {
+        width: 32%;
+        margin-right: 1vh;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .search-title h2 {
+        font-size: 1.5vh;
+    }
+
+    #findBtn {
+        font-size: 1.5vh;
+    }
+
+    .name {
+        font-size: 3.3vh;
+    }
+
+    .listeners {
+        padding-bottom: 0vh;
+        padding-right: 1vh
+    }
+
+    .tl-track-name {
+        width: 65%;
+        margin-right: 0;
+    }
+
+    .tl-album-name {
+        display: none
+    }
+
+    #resetBtn,
+    #downloadBtn {
+        font-size: 1.8vh;
+    }
+
+    #buttonDiv {
+        width: 20%;
+    }
+
+    .track-item button {
+        width: 19%;
+        font-size: 1.7vh;
+    }
+
+    .track-item button:hover {
+        width: 21%;
+    }
+
+    .track-item h2 {
+        font-size: 1.7vh;
+    }
+
+    strong {
+        display: none;
+    }
+}
