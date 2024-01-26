@@ -50,23 +50,38 @@
                 </div>
             </div>
 
-            <input type="text" id="filter" class="search-input" placeholder="Search for recipes">
+            <!--<input type="text" id="filter" class="search-input" placeholder="Search for recipes">-->
+            <form id="search-form">
+                <input type="text" id="filter" class="search-input" placeholder="Search for recipes">
+                <select id="area-select" class="button drop-down">
+                    <option value="" disabled selected>Select area</option>
+                </select>
+                <select id="category-select" class="button drop-down">
+                    <option value="" disabled selected>Select category</option>
+                </select>
+                <button type="submit" id="search-button" class="button active">Search</button>
+            </form>
 
+            <!--
             <select id="area-select" class="button drop-down" style="display: none;">
                 <option value="">Select Area</option>
-                <!-- Area options will be populated here -->
+                
             </select>
             <select id="category-select" class="button drop-down" style="display: none;">
                 <option value="">Select Category</option>
-                <!-- Category options will be populated here -->
+                
             </select>
+            
             <button id="search-button" class="button active">Search &nbsp;<i class="fa fa-search"></i></button>
+            -->
         </div>
 
 
         <div class="row-b">
             <button id="favorites-button" class="button inactive">Favourites &nbsp;<i class="fa fa-star"></i></button>
             <button id="clear-favorites-button" class="button">Clear All Favorites</button>
+            <div id="favorite-counter" class="favorite-counter">X</div>
+
         </div>
     </div>
 
@@ -82,10 +97,11 @@
             <img id="recipeImage"
                 src="https://st3.depositphotos.com/17828278/33150/v/450/depositphotos_331503262-stock-illustration-no-image-vector-symbol-missing.jpg"
                 alt="Recipe Image" style="max-width:100%;">
-            <h3>Ingredients</h3>
+            <h3 class="detail-indetails">Ingredients</h3>
             <ul id="recipeIngredients"></ul>
-            <h3>Instructions</h3>
+            <h3 class="detail-indetails">Instructions</h3>
             <p id="recipeInstructions"></p>
+            <!--add iFrame here-->
         </div>
     </div>
 
