@@ -1,0 +1,292 @@
+body {
+    /*font-family: Arial, sans-serif;*/
+    font-family: 'Work Sans', sans-serif;
+    margin: 20px;
+    background-color: #c3c3c3;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.app-box {
+    background-color: white;
+    border: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 20px;
+}
+
+.card {
+    border: none;
+    border-radius: 8px 8px 0 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.card.active {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    cursor: default;
+}
+
+.card.inactive {
+    background-color: black;
+    color: white;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.input-field,
+.select-field {
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.pagination-controls {
+    display: none;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-controls.show {
+    display: flex;
+}
+
+.button,
+.button-added {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+}
+
+.button {
+    background-color: black;
+    cursor: pointer;
+}
+
+.button.form {
+    margin-top: 20px;
+}
+
+.button-added {
+    background-color: #3c9f3c;
+    cursor: default;
+}
+
+.button:hover {
+    background-color: #b7b7b7;
+    color: white;
+}
+
+.button:disabled {
+    background-color: #eee;
+    color: #b7b7b7;
+    border: none;
+    cursor: default;
+}
+
+.button.remove-all {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.current-page {
+    padding: 5px 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.anime-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.anime-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.anime-card img {
+    max-width: 100%;
+    border-radius: 5px;
+    /*cursor: pointer;*/
+}
+
+.anime-card button {
+    float: right;
+}
+
+.anime-card h3 {
+    white-space: nowrap;
+    width: 290px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.anime-card h3:hover {
+    overflow: visible;
+    white-space: normal;
+    height: auto;
+}
+
+/* p - no results */
+.no-results {
+    flex: 1;
+    text-align: center;
+}
+
+.show-more {
+    color: #2948a5;
+}
+
+.show-more:hover {
+    color: #b7b7b7;
+}
+
+.separator {
+    display: block;
+    width: 70%;
+    border-top: 1px solid #ccc;
+    margin: 20px auto;
+}
+
+.bottom-panel {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.bottom-panel a {
+    color: #b7b7b7;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.bottom-panel a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.spinner {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border: 20px solid transparent;
+    border-top-color: black;
+    border-bottom-color: black;
+    animation: spinning 2s linear infinite;
+    transition: border-color 0.5s ease;
+}
+
+.spinner:hover {
+    border-top-color: #b7b7b7;
+    border-bottom-color: #b7b7b7;
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Modální okno */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 10px 20px 20px 20px;
+    border-radius: 8px;
+    max-width: 560px;
+}
+
+.close {
+    color: #909090;
+    float: right;
+    border: none;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: transparent;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modal-body iframe {
+    width: 100%;
+    height: 315px;
+    border-radius: 8px;
+}
+
+.alternative-titles img {
+    cursor: default !important;
+}
+
+.anime-image-container {
+    position: relative;
+}
+
+.yt-icon {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 24px;
+    color: rgb(142, 0, 0);
+}
+
+.yt-icon:hover {
+    cursor: pointer;
+}
