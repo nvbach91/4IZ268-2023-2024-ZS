@@ -1,4 +1,3 @@
-// CurrencyRow.js
 import React from "react";
 import { Row, Col, Form } from "react-bootstrap";
 
