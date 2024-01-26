@@ -1,36 +1,15 @@
 $(document).ready(() => {
     //Global declaration of the button
     let searchType = 'books';
-    //const bookQuoteParagraph = $('.book-quote p');
+    let isLibraryMode = false;
 
     const searchViewContainer = $('#searchViewContainer');
     const libraryViewContainer = $('#libraryViewContainer');
-    //const bookQuote = $('.book-quote');
     const booksContainer = $('#booksContainer');
     const myLibraryButton = $('#myLibraryButton');
     const searchInput = $("#searchInput");
     const sliderKnob = $("#sliderKnob");
     const sortSelect = $("#sortSelect");
-
-    // Refactored quote generation into a function
-    /*const generateRandomQuote = () => {
-        const quotes = [
-            "“A room without books is like a body without a soul.” ― Marcus Tullius Cicero",
-            "“So many books, so little time.” ― Frank Zappa",
-            "“A book is a dream that you hold in your hand.” ― Neil Gaiman",
-            "“Good friends, good books, and a sleepy conscience: this is the ideal life.” ― Mark Twain",
-            "“Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten.” ― Neil Gaiman, Coraline",
-            "“Outside of a dog, a book is man's best friend. Inside of a dog it's too dark to read.” ― Groucho Marx, The Essential Groucho: Writings For By And About Groucho Marx",
-            "“You can never get a cup of tea large enough or a book long enough to suit me.” ― C.S. Lewis",
-            "“There is no friend as loyal as a book.” ― Ernest Hemingway"
-        ];
-
-        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        bookQuoteParagraph.text(randomQuote);
-    }
-
-    // Initial call to display a random quote
-    generateRandomQuote();*/
 
 
     // Use jQuery for event handling
@@ -40,7 +19,7 @@ $(document).ready(() => {
     });
 
 
-    //change between my library and searching
+    //change between my library and searching, funtion should be there cuz it has to be executed on click
     myLibraryButton.click(function () {
         const isLibraryView = $(this).text() === 'My Library';
 
@@ -48,14 +27,17 @@ $(document).ready(() => {
         if (isLibraryView) {
             showLibrary();
             $(this).text('Back to Search');
-            searchViewContainer.hide(); // Hide the search view
-            libraryViewContainer.show(); // Show the library view
+            searchViewContainer.hide();
+            libraryViewContainer.show();
         } else {
             booksContainer.empty();
             $(this).text('My Library');
-            libraryViewContainer.hide(); // Hide the library view
-            searchViewContainer.show(); // Show the search view
+            libraryViewContainer.hide();
+            searchViewContainer.show();
         }
+
+        // Update the mode of the application (Search mode or Library mode)
+        isLibraryMode = isLibraryView;
     });
 
 
@@ -76,14 +58,16 @@ $(document).ready(() => {
 
     // Handling the form submission
     $('#searchForm').submit((e) => {
-        e.preventDefault();
+        e.preventDefault(); //prevent reloading the page
         let query = searchInput.val().trim();
+        const maxResults = $('#maxResultsSelect').val();
+        const language = $('#languageSelect').val();
 
         if (query !== '') {
             query = searchType === 'books' ? `intitle:${query}` : `inauthor:${query}`;
 
             // Fetch books and then clear the input
-            fetchBooks(query)
+            fetchBooks(query, maxResults, language)
                 .then(data => {
                     searchInput.val('');
                     displayBooks(data);
@@ -95,13 +79,16 @@ $(document).ready(() => {
     });
 
     //Get books from API
-    const fetchBooks = (query, maxResults = 30) => {
+    const fetchBooks = (query, maxResults, language) => {
         const apiKey = 'AIzaSyB8EdrnIfKOlfahpFbsUlWVP5dNusUszA4';
         const formattedQuery = encodeURIComponent(query);
-        const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${formattedQuery}&maxResults=${maxResults}&key=${apiKey}`;
+        let apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${formattedQuery}&maxResults=${maxResults}&key=${apiKey}`;
+        if (language) {
+            apiUrl += `&langRestrict=${language}`;
+        }
+        apiUrl += `&key=${apiKey}`;
 
         const loadingIndicator = $('<div class="loading-indicator">Loading...</div>');
-        //bookQuoteParagraph.hide();
         booksContainer.append(loadingIndicator);
 
         return new Promise((resolve, reject) => {
@@ -123,7 +110,6 @@ $(document).ready(() => {
 
     //Fuction for displaying each books
     const displayBooks = (data) => {
-        //bookQuote.hide();
         booksContainer.empty();
 
         if (data.items && data.items.length > 0) {
@@ -160,7 +146,11 @@ $(document).ready(() => {
         const cardBody = $('<div class="card-body">');
         const cardFooter = $('<div class="card-footer">');
         const addToFavBtn = $('<button class="btn">');
-        const bookTitle = $('<h5 class="card-title book-title ellipsis">').text(`${title}`);
+
+        const bookTitle = $('<h5 class="card-title book-title ellipsis">').text(title);
+        const tooltip = $('<div class="custom-tooltip">').text(title).hide();
+
+
         const bookAuthor = $('<p class="card-text">').text('by ' + author);
         const bookPublishedYear = $('<p class="card-text">').text('Year: ' + publishedYear);
         const favourites = JSON.parse(localStorage.getItem('favouriteBooks')) || [];
@@ -188,23 +178,31 @@ $(document).ready(() => {
             toggleFavourite(book, this);
         });
 
-        cardBody.append(bookTitle, bookAuthor, bookPublishedYear);
+        cardBody.append(bookTitle, tooltip, bookAuthor, bookPublishedYear);
         cardFooter.append(addToFavBtn);
         card.append(cardImage, cardBody, cardFooter);
         col.append(card);
 
+
+        card.hover(
+            function () { tooltip.show(); },
+            function () { tooltip.hide(); }
+        );
+
         //Opening modal window 
-        cardImage.click(() => {
+        const openModalHandler = () => {
+            tooltip.hide(); // Hide the tooltip
             openModal(title, author, publishedYear, coverImage, description, publisher, language, isbn);
-        });
+        };
 
-        cardBody.click(() => {
-            openModal(title, author, publishedYear, coverImage, description, publisher, language, isbn);
-        });
+        cardImage.click(openModalHandler);
 
+        cardBody.click(openModalHandler);
 
         return col;
     }
+
+
 
     //Error display for no results
     const displayNoResultsMessage = (container) => {
@@ -295,13 +293,13 @@ $(document).ready(() => {
     const sortFavourites = (favourites, sortBy) => {
         switch (sortBy) {
             case 'title':
-                return favourites.sort((a, b) => a.volumeInfo.title.localeCompare(b.volumeInfo.title));
+                return favourites.sort((a, b) => a.title.localeCompare(b.title));
             case 'author':
-                return favourites.sort((a, b) => a.volumeInfo.authors[0].localeCompare(b.volumeInfo.authors[0]));
+                return favourites.sort((a, b) => a.authors[0].localeCompare(b.authors[0]));
             case 'year':
                 return favourites.sort((a, b) => {
-                    const yearA = a.volumeInfo.publishedDate ? parseInt(a.volumeInfo.publishedDate.substring(0, 4)) : 0;
-                    const yearB = b.volumeInfo.publishedDate ? parseInt(b.volumeInfo.publishedDate.substring(0, 4)) : 0;
+                    const yearA = a.publishedDate ? parseInt(a.publishedDate.substring(0, 4)) : 0;
+                    const yearB = b.publishedDate ? parseInt(b.publishedDate.substring(0, 4)) : 0;
                     return yearA - yearB;
                 });
             case 'reverse':
@@ -334,6 +332,11 @@ $(document).ready(() => {
         textContent.append(`<p><b>Language:</b> ${language}</p>`);
         textContent.append(`<p><b>ISBN:</b> ${isbn}</p>`);
         textContent.append(`<p><b>Short description of the plot:</b> ${description} </p>`);
+
+        if (isbn) {
+            const googlePlayLink = `https://play.google.com/store/books/details?id=${isbn}`;
+            textContent.append(`<p><a href="${googlePlayLink}" target="_blank">View on Google Play</a></p>`);
+        }
 
         // Append the text content div to the flex container
         flexContainer.append(textContent);

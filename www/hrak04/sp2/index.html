@@ -30,6 +30,26 @@
                     <div id="searchVariantAuthors">Authors</div>
                 </div>
                 <input type="search" placeholder="Search for books by title..." id="searchInput" name="search">
+
+                <div class="dropdowns-container">
+                    <select id="maxResultsSelect" name="maxResults">
+                        <option value="5">5 Results</option>
+                        <option value="10">10 Results</option>
+                        <option value="15">15 Results</option>
+                        <option value="20">20 Results</option>
+                        <option value="25">25 Results</option>
+                        <option value="30">30 Results</option>
+                    </select>
+
+                    <select id="languageSelect" name="language">
+                        <option value="">Select Language (Optional)</option>
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="cs">Czech</option>
+                    </select>
+                </div>
+
                 <button type="submit" id="searchButton">Search</button>
             </form>
         </div>
@@ -53,6 +73,12 @@
     <div id="booksContainer">
     </div>
 
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -60,13 +86,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!--My script-->
     <script src="bookfinder.js"></script>
-
-    <div id="bookModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modalBody"></div>
-        </div>
-    </div>
 </body>
 
 </html>
