@@ -1,7 +1,50 @@
 * {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    font-size: 1.703940362087327vh;
+    font-size: 1.7vh;
+}
+
+/* pop-up */
+.artist-results {
+    display: flex;
+    align-items: center;
+}
+
+.artist-results:hover {
+    background-color: rgb(243, 243, 243);
+}
+
+.artist-results span {
+    font-size: 1.7vh;
+    text-align: left;
+    width: 70%;
+}
+
+.artist-results img {
+    width: 2vh;
+    height: 2vh;
+    margin-right: 1vh;
+}
+
+.artist-button {
+    margin-left: auto;
+    border: 0;
+    background-color: #1db954;
+    color: white;
+    height: 2vh;
+    width: 20%;
+    margin-top: 0.2vh;
+    margin-bottom: 0.2vh;
+    transition: 0.1s;
+    font-size: 1.5vh;
+    color: white;
+    font-weight: 500;
+}
+
+.artist-button:hover {
+    cursor: pointer;
+    background-color: #189f47;
+    transition: 0.1s;
 }
 
 body {
@@ -14,7 +57,7 @@ body {
 
 footer {
     background-color: #189f47;
-    height: 5.324813631522897vh;
+    height: 5vh;
     width: 100%;
     background-color: #189f47;
     display: flex;
@@ -65,7 +108,7 @@ footer span {
 .container {
     width: 90%;
     margin: 0 auto 0 auto;
-    padding-top: 2.1299254526091587vh;
+    padding-top: 2vh;
     display: flex;
     flex: 1 0 auto;
 }
@@ -82,16 +125,16 @@ footer span {
 }
 
 h1 {
-    font-size: 5.324813631522897vh;
+    font-size: 5vh;
     font-weight: 800;
 }
 
 .search-bar {
     width: 100%;
     background-color: rgb(243, 243, 243);
-    height: 5.324813631522897vh;
-    margin-bottom: 3.194888178913738vh;
-    border-radius: 1.597444089456869vh;
+    height: 5vh;
+    margin-bottom: 3vh;
+    border-radius: 1vh;
     position: relative;
     display: flex;
 }
@@ -109,7 +152,7 @@ h1 {
 
 .search-title h2 {
     text-align: center;
-    font-size: 2.1299254526091587vh;
+    font-size: 2vh;
     margin: auto;
     color: white;
 }
@@ -122,10 +165,10 @@ h1 {
     right: 0;
     transition: 0.1s;
     background-color: #1db954;
-    font-size: 2.1299254526091587vh;
+    font-size: 2vh;
     color: white;
     font-weight: 500;
-    margin-bottom: 3.7273695420660276vh;
+    margin-bottom: 3vh;
 }
 
 #findBtn:hover {
@@ -143,8 +186,8 @@ h1 {
     border: 0;
     background-color: inherit;
     width: 100%;
-    font-size: 2.1299254526091587vh;
-    padding-left: 1.0649627263045793vh;
+    font-size: 2vh;
+    padding-left: 1vh;
     appearance: none;
     text-indent: 16%;
 }
@@ -166,7 +209,7 @@ h1 {
 }
 
 #selectIcon i {
-    font-size: 3.194888178913738vh;
+    font-size: 3vh;
     margin: auto;
     color: #1db954;
     font-weight: 500;
@@ -180,39 +223,31 @@ h1 {
 #tracks {
     background-color: rgb(243, 243, 243);
     width: 100%;
-    margin-bottom: 3.7273695420660276vh;
+    margin-bottom: 3vh;
 }
 
 .track-item {
     display: flex;
     align-items: center;
     background-color: rgb(247, 247, 247);
-    height: 5.324813631522897vh;
+    height: 5vh;
     position: relative;
     z-index: 2;
-}
-
-.selected {
-    background-color: rgb(157, 157, 157);
 }
 
 .track-item:hover {
     background-color: rgb(226, 226, 226);
 }
 
-.selected:hover {
-    background-color: rgb(157, 157, 157);
-}
-
 .track-item img {
-    width: 4.259850905218317vh;
-    height: 4.259850905218317vh;
-    margin-left: 0.5324813631522897vh;
+    width: 4vh;
+    height: 4vh;
+    margin-left: 0.5vh;
     pointer-events: none;
 }
 
 .track-item span {
-    margin-left: 1.0649627263045793vh;
+    margin-left: 1vh;
     pointer-events: none;
 }
 
@@ -222,9 +257,9 @@ h1 {
 
 .track-item h2 {
     position: absolute;
-    right: 3.194888178913738vh;
+    right: 3vh;
     pointer-events: none;
-    font-size: 2.1299254526091587vh;
+    font-size: 2vh;
     color: rgb(247, 247, 247);
     font-weight: 500;
     z-index: 1;
@@ -237,10 +272,10 @@ h1 {
     border: 0;
     background-color: #1db954;
     color: white;
-    height: 5.324813631522897vh;
+    height: 5vh;
     width: 13%;
     transition: 0.1s;
-    font-size: 2.1299254526091587vh;
+    font-size: 2vh;
     color: white;
     font-weight: 500;
     opacity: 0;
@@ -257,19 +292,19 @@ h1 {
 /* artist info */
 #artistInfo {
     display: none;
-    margin-bottom: 3.194888178913738vh;
+    margin-bottom: 3vh;
     align-items: center;
     background-color: rgb(247, 247, 247);
-    height: 13.194888178913738vh;
+    height: 13vh;
 }
 
 #artistImg {
-    width: 13.194888178913738vh;
-    height: 13.194888178913738vh;
+    width: 13vh;
+    height: 13vh;
 }
 
 #artistText {
-    margin-left: 3.194888178913738vh;
+    margin-left: 3vh;
 }
 
 h3 {
@@ -302,7 +337,7 @@ h3 {
 #downloadBtn {
     transition: 0.1s;
     background-color: #1db954;
-    font-size: 2.1299254526091587vh;
+    font-size: 2vh;
     color: white;
     font-weight: 500;
     border: 0;
@@ -324,7 +359,7 @@ h3 {
 #tierlist {
     background-color: rgb(243, 243, 243);
     width: 100%;
-    margin-bottom: 3.7273695420660276vh;
+    margin-bottom: 3.7vh;
 }
 
 .tl-album-name {
@@ -335,7 +370,7 @@ h3 {
 
 .tl-track-name {
     width: 37%;
-    font-size: 1.703940362087327vh;
+    font-size: 1.7vh;
 }
 
 .draggable {
@@ -347,14 +382,14 @@ h3 {
 }
 
 strong {
-    margin: auto 0.5324813631522897vh auto 1.0649627263045793vh;
+    margin: auto 0.5vh auto 1vh;
     border-radius: 0%;
     background-color: rgb(226, 226, 226);
     text-align: center;
     color: white;
     pointer-events: none;
-    width: 3.194888178913738vh;
-    height: 3.194888178913738vh;
+    width: 3vh;
+    height: 3vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -487,7 +522,7 @@ strong {
 
     #resetBtn,
     #downloadBtn {
-        font-size: 2.1299254526091587vh;
+        font-size: 2vh;
     }
 
     #buttonDiv {
@@ -495,11 +530,11 @@ strong {
     }
 
     .track-item h2 {
-        font-size: 2.1299254526091587vh;
+        font-size: 2vh;
     }
 
     .track-item button {
-        font-size: 2.1299254526091587vh;
+        font-size: 2vh;
     }
 
     .track-item button:hover {
@@ -511,7 +546,7 @@ strong {
     }
 
     #tracks .track-item span {
-        font-size: 1.703940362087327vh;
+        font-size: 1.7vh;
     }
 
     .tl-album-name {
@@ -523,8 +558,8 @@ strong {
 
     .tl-track-name {
         width: 40%;
-        margin-right: 2.1299254526091587vh;
-        font-size: 1.703940362087327vh;
+        margin-right: 2vh;
+        font-size: 1.7vh;
     }
 
 }
@@ -546,7 +581,7 @@ strong {
     }
 
     .name {
-        font-size: 3.389776357827476vh;
+        font-size: 3.3vh;
     }
 
     .listeners {
@@ -574,7 +609,7 @@ strong {
 
     .track-item button {
         width: 19%;
-        font-size: 1.7299254526091587vh;
+        font-size: 1.7vh;
     }
 
     .track-item button:hover {
@@ -582,7 +617,7 @@ strong {
     }
 
     .track-item h2 {
-        font-size: 1.7299254526091587vh;
+        font-size: 1.7vh;
     }
 
     strong {
