@@ -4,15 +4,190 @@
     font-family: 'Montserrat', serif;
 }
 
-main{
+main {
+    width: 100%;
+}
+
+a {
+    color: black;
+}
+
+.purple {
+    color: purple;
+}
+.white{
+    color:white;
+}
+.red {
+    color: red;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+}
+.subbtn{
+    background-color: purple;
+    color:white;
+    padding: 5px;
+
+}
+.subbtn:hover{
+    background-color: white;
+    color:purple;
+
+
+}
+.todayDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+    background-color: purple;
+}
+.cfContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height:85%;
+    justify-content: space-evenly;
+    padding-top: 7%;
+}
+.contentDiv {
+    width:30%;
+}
+.searchDiv {
+    font-size: 1.2em;
+    height: 35%;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.resultDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.favContainer{
+    height: 40%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.favDiv{
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+.favDiv .row{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width:100%;
 }
+.favDiv .row:first-child{
+    padding-top:10px;
+    padding-bottom: 5px;
 
-main h1{
-    margin-top: 20px;
-    text-align: center;
+}
+.favDiv .row:last-child{
+    padding-top: 5px;
+    padding-bottom:10px;
+}
+.favDiv > *:not(:first-child):not(:last-child) {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+  }
+
+.favDiv .row span{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.favDiv .row span:first-child{
+    margin-left:5%;
 }
 
-.purple{
-    color: purple;
+.favDiv .row span:nth-child(1){
+    color:purple;
+}
+.favDiv .row a{
+    font-size: 0.8em;
+}
+footer {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 100%;
+    height: 5%;
+    background-color: purple;
+    color: white;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .cfContainer{
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0%;
+
+    }
+    .searchDiv{
+        height: 70%;
+    }
+    .contentDiv{
+        width: 60%;
+    }
+    .favContainer{
+        width: 60%;
+    }
+    .searchResult{
+        font-size: 1.1em;
+    }
+    .addToFav{
+        font-size: 0.9em;
+    }
+    .favDiv .row span{
+        font-size: 1.1em;
+    }
+    h2{
+        font-size: 1.2em;
+    }
+}
+@media only screen and (max-height: 800px) and (orientation: landscape){
+    .searchResult{
+        font-size: 0.9em;
+    }
+    .addToFav{
+        font-size: 0.9em;
+    }
+    .favDiv .row span{
+        font-size: 0.9em;
+    }
+    .searchDiv{
+        height: 50%;
+    }
+    .favContainer{
+        height: 50%;
+
+    }
+    .favDiv .row span{
+        font-size: 0.9em;
+    }
+    h2{
+        font-size: 1.2em;
+    }
 }
