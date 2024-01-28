@@ -1,0 +1,66 @@
+body {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding-top: 30px;
+}
+
+h1 {
+    padding-bottom: 20px;
+}
+
+.container-md {
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-group {
+    padding-top: 5px;
+}
+
+form {
+    padding-bottom: 30px;
+}
+
+ul {
+    list-style: none;
+    padding: 5px;
+}
+
+li {
+    padding-bottom: 15px;
+}
+
+.btn-success {
+    margin-left: 10px;
+}
+
+.btn-danger {
+    margin-left: 10px;
+}
+
+.btn-warning {
+    margin-left: 10px;
+}
+
+.form-check {
+    display: inline;
+    padding-left: 30px;
+}
+
+#st,
+#et {
+    width: 30%;
+    display: inline;
+}
+
+@media (max-width: 576px) {
+
+    #st,
+    #et {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+    }
+}
