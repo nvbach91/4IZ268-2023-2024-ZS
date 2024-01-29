@@ -1,8 +1,7 @@
-*{
-  
-  font-family: 'Roboto', sans-serif;;
+* {
+  font-family: 'Roboto', sans-serif;
 }
- 
+
 html,
 body {
   height: 100%;
@@ -110,7 +109,6 @@ body {
   border: black 3px solid;
 }
 
-
 .mode-selector {
   text-align: justify;
   display: flex;
@@ -152,7 +150,7 @@ body {
 .waypoint-input {
   max-height: 100%;
   font-size: 25px;
-  max-width:  70%;
+  max-width: 70%;
   margin-right: 5px;
   border: black 3px solid;
 }
@@ -182,26 +180,33 @@ body {
   border-radius: 0;
 }
 
-.spinner {
+.center {
+  position: absolute;
+  left: 12%;
+  top: 95%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.circle {
+  background-color: white;
+  display: block;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin: 0 auto;
-  border: 30px solid transparent;
-  border-top-color: firebrick;
-  border-bottom-color: firebrick;
-  animation: spinning 2s linear infinite;
-  transition: border-color 0.5s ease;
 }
-.spinner:hover {
-  border-top-color: cadetblue;
-  border-bottom-color: cadetblue;
+
+.circle-1 {
+  width: 80px;
+  height: 80px;
+  border: 2px solid black;
+  position: relative;
 }
-@keyframes spinning {
-  from { 
-    transform: rotate(0deg); 
-  }
-  to { 
-    transform: rotate(360deg); 
-  }
+
+.circle-2 {
+  width: 23px;
+  height: 23px;
+  border: none;
+  background: black;
+  position: absolute;
+  top: 4%;
+  left: 55%;
+  margin: -16px 0 0 -16px;
 }
