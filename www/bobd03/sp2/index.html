@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Simple app for getting observation information about major celestial bodies in relation to observer.">
+    <meta name="author" content="Daniel Bobák">
+    <title>Sky Near You</title>
+    <link rel="stylesheet" href="./css/style.css" media="all">
+    <link rel="stylesheet" href="./css/responsive.css" media="screen">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>SKY NEAR YOU</h1>
+    </header>
+    <div class="button-panel">
+        <button class="button-usage app-button">How to use</button>
+        <button class="button-objects app-button">Major bodies</button>
+        <button class="button-deep app-button">Stars/Deep space objects</button>
+        <button class="button-terms app-button">Term definitions</button>
+    </div>
+    <main>
+
+        <div class="objects-popup popup">
+            <div class="popup-content">
+                <button class="close-button button">Close</button>
+                <button class="autofill-button button">Use current location</button>
+                <h2>Major bodies</h2>
+            </div>
+        </div>
+
+        <div class="deep-popup popup">
+            <div class="popup-content">
+                <button class="close-button button">Close</button>
+                <h2>Stars/Deep space objects</h2>
+            </div>
+        </div>
+        <div class="outputs-field">
+            <!-- Place for output of the searches for objects and events in the sky. -->
+        </div>
+    </main>
+    <footer>
+        <p>App made as a seminar project for <strong>4IZ260 - Web Technologies</strong> subject at FIS, VŠE.</p>
+        <p>Author: Daniel Bobák</p>
+        <p>2024</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.all.min.js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+
+</html>

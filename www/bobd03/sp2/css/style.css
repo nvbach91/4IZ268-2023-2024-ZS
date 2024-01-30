@@ -1,0 +1,231 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background-image: linear-gradient(purple, rgb(75, 75, 249));
+    width: 100%;
+    display: flex;
+}
+
+header h1 {
+    display: inline;
+    color: white;
+    margin: 0 auto 0 auto;
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+body {
+    font-family: 'Dosis', sans-serif;
+}
+
+main {
+    min-height: 420px;
+}
+
+.button-panel {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: black solid 2px;
+}
+
+.app-button {
+    width: 25%;
+    padding: 5px;
+    color: white;
+    background-color: blueviolet;
+    border: white 10px solid;
+    border-radius: 20px;
+}
+
+.app-button:hover {
+    background-color: indigo;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 20px;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.popup-content {
+    padding: 20px 10px;
+    margin: 0 auto;
+    background-color: white;
+    border: 5px black solid;
+    border-radius: 20px;
+    width: 80%;
+    text-align: center;
+}
+
+.popup-content table, .popup-content ul{
+    margin: 0 auto;
+    text-align: left;
+}
+
+.popup-content p {
+    text-align: justify;
+}
+
+.popup-content form {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    margin: 0 auto;
+    width: 60%;
+}
+
+.object-inputWrap,
+.deep-inputWrap {
+    width: 50%;
+}
+
+.object-inputWrap label,
+.deep-inputWrap label {
+    min-width: 200px;
+    padding: 10px;
+    display: inline-block;
+    text-align: left;
+}
+
+.object-inputWrap input,
+.deep-inputWrap input {
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+}
+
+.button {
+    padding: 5px;
+    border-radius: 10px;
+    background-color: purple;
+    color: white;
+    margin: 5px auto;
+}
+
+.button:hover {
+    background-color: blueviolet
+}
+
+.close-button {
+    color: white;
+    background-color: black;
+}
+
+.close-button:hover {
+    background-color: rgb(96, 96, 96);
+}
+
+.loading-icon {
+    display: block;
+    margin: auto;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    top: 150px
+}
+
+.loading-icon div {
+    display: inline-block;
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background-color: purple;
+    animation: pulse 1s ease-in alternate infinite;
+}
+
+.loading-icon div:nth-child(1) {
+    left: 10px;
+    animation-delay: -0.2s;
+}
+
+.loading-icon div:nth-child(2) {
+    left: 40px;
+    animation-delay: -0.1s;
+}
+
+.loading-icon div:nth-child(3) {
+    left: 70px;
+    animation-delay: -0.05s;
+}
+
+.loading-icon div:nth-child(4) {
+    left: 100px;
+    animation-delay: 0;
+}
+
+@keyframes pulse {
+    0% {
+        top: 10px;
+        height: 80px;
+    }
+
+    50% {
+        top: 60px;
+        height: 40px;
+    }
+}
+
+.outputs {
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bodycard {
+    background-color: rgb(211, 211, 211);
+    border: solid white 4px;
+    border-radius: 10px;
+    width: calc(100% / 3);
+    padding: 20px;
+}
+
+.bodycard h2,
+.details-popup h2 {
+    text-align: center;
+    text-shadow: 2px 2px 4px gray;
+}
+
+.bodycard table,
+.details-popup table {
+    margin: 0 auto;
+    border: 2px solid;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.details-popup table {
+    margin: 0 auto;
+}
+
+.output-deep-space table {
+    margin: 20px auto;
+    border: 5px solid;
+    border-radius: 10px;
+    text-align: left;
+    padding: 50px;
+    background-color: rgb(211, 211, 211);
+}
+
+.output-deep-space table td,
+.output-deep-space table th {
+    padding: 5px;
+    border: 2px solid;
+}
+
+footer {
+    width: 100%;
+    background-image: linear-gradient(purple, rgb(75, 75, 249));
+    text-align: center;
+    color: white;
+    padding: 10px 0;
+}
