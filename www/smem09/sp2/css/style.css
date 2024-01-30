@@ -1,0 +1,14 @@
+body {
+    background-color: lightgray;
+    font-family: 'Roboto Condensed', sans-serif;
+font-family: 'Rubik', sans-serif;
+}
+
+.autocomplete-css {
+    width: auto;
+    
+}
+
+.custom-height {
+    min-height: 800px; /* or any height you desire */
+  }
