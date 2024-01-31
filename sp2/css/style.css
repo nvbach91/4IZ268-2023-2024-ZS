@@ -1,0 +1,178 @@
+body {
+    background-color: #121212;
+    color: #fefefe;
+    display: flex;
+    flex-direction: column;
+}
+
+#welcome {
+    margin-bottom: 100px;
+}
+
+h1,
+h3 {
+    text-align: center;
+}
+
+.btn.btn-primary {
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+.btn.btn-info {
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+.btn.btn-secondary {
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+.btn.btn-light {
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+.btn.btn-danger {
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+.btn.btn-warning {
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+.btn.btn-success {
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+#subjects {
+    text-align: center;
+}
+
+.border.border-white.rounded {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+}
+
+.border.border-white.rounded.qtext {
+    margin-top: 10px;
+}
+
+.btn.btn-danger.error-message {
+    margin: 0;
+    width: 100%;
+}
+
+table {
+    width: 75%;
+    border: 1px solid #fefefe;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+th,
+tr,
+td {
+    border: 1px solid #fefefe;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#statistics_mid {
+    margin-bottom: 10px;
+}
+
+#stat_button_area {
+    min-height: 100px;
+    margin-bottom: 100px;
+}
+
+#ready {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.spinner-grow.text-light {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+
+footer {
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+div,
+footer {
+    text-align: center;
+}
+
+@media screen and (min-width: 720px) {
+
+    #menu_layout_mid_container {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
+    .menu_layout_mid_hidden {
+        width: 30%;
+        margin: 10px;
+        text-align: center;
+        visibility: hidden;
+    }
+
+    .menu_layout_mid_visible {
+        width: 30%;
+        margin: 10px;
+        text-align: center;
+    }
+
+    #statistics {
+        float: right;
+        width: 50%;
+    }
+
+    .btn.btn-primary {
+        width: 30%;
+        margin: 10px;
+    }
+
+    .btn.btn-secondary {
+        width: 75%;
+        margin: 10px;
+    }
+
+    .border.border-white.rounded {
+        width: 75%;
+    }
+
+    .question_and_answers {
+        width: 60%;
+        float: left;
+    }
+
+    .question_navigation {
+        margin-top: 9px;
+        width: 40%;
+        float: right;
+    }
+
+    .question_container {
+        margin-top: 10px;
+    }
+}
