@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hudebni knihovna</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <header>
-            <h1>Hudební knihovna</h1>
-        </header>
-        
-        <main>
-            <!-- Input -->
-            <div id="search-container">
-                <input type="text" id="search-input" placeholder="Vyhledst hudebníka, album nebo skladbu">
-                <button onclick="search()">Vyhledat</button>
-            </div>
-    
-            <!-- Dynamically generated search results  -->
-            <div id="results-container"></div>
-    
-            <!-- User's library -->
-            <div id="library-container">
-                <h2>Moje knihovna</h2>
-                <ul id="library-list"></ul>
-            </div>
-        </main>
-    
-        <!-- JQuery link -->
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    
+<!DOCTYPE html>
+<html lang="en">
 
-        <script src="main.js"></script>
-    </body>
-    </html>
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hudebni knihovna</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://eso.vse.cz/~elcs00/sp2/music.svg">
+</head>
 
+<body>
+    <header>
+        <h1>Hudební knihovna</h1>
+    </header>
+
+    <main>
+        <!-- Input -->
+        <div id="search-container">
+            <i class="fas fa-book" onclick="goHome()"></i>
+            <input type="text" id="search-input" placeholder="Vyhledat hudebníka, album nebo skladbu">
+            <button onclick="search()">Vyhledat</button>
+        </div>
+
+        <div id="message-container"></div>
+
+        <!-- Dynamically generated search results  -->
+        <div id="results-container"></div>
+
+        <!-- User's library -->
+        <div id="library-container">
+            <h2>Moje knihovna</h2>
+            <ul id="library-list"></ul>
+        </div>
+    </main>
+
+    <!-- JQuery link -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
