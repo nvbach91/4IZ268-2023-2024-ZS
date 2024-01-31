@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/bg.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+body,
+button {
+    font-family: 'Montserrat';
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.logo img {
+    width: 80px;
+    padding-right: 10px;
+}
+
+.logo h1 {
+    font-size: 3em;
+    height: auto;
+    color: #363636;
+    font-weight: 500;
+    letter-spacing: -4px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #363636;
+    font-weight: 800;
+    letter-spacing: -3px;
+    text-align: left;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 100px;
+    padding-right: 40px;
+}
+
+.subtitle {
+    font-size: 1em;
+    color: rgb(100, 100, 100);
+    margin-top: 5px;
+    letter-spacing: 3px;
+    font-weight: 500;
+}
+
+.title {
+    margin-bottom: 10px;
+    /* Menší odstup mezi nadpisem a vyhledávacím polem */
+    color: #363636;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.dog-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 5%;
+    text-align: center;
+}
+
+.dog-search-box {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Uprostřed vyhledávacího boxu */
+}
+
+.dog-search {
+    text-align: center;
+    /* Upravuje zarovnání textu */
+    padding-top: 20px;
+    /* Přidává vnější odsazení pro lepší vizuální efekt */
+    margin-top: 30px;
+}
+
+.search-control,
+.search-btn {
+    width: 100%;
+}
+
+#searchForm {
+    display: flex;
+    align-items: center;
+}
+
+.search-control {
+    padding: 10px 15px;
+    font-size: 1.2em;
+    font-family: inherit;
+    border: none;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    background-color: #fff;
+}
+
+.search-control::placeholder {
+    color: rgb(100, 100, 100);
+}
+
+.search-control:focus {
+    outline: 1px solid #363636;
+}
+
+.search-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    background: #363636;
+    color: #fff;
+    border: none;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.dog-search-box form {
+    width: 100%;
+    /* Roztáhnout formulář na 100% šířky rodičovského kontejneru */
+}
+
+.search-btn:hover {
+    background: rgb(100, 100, 100);
+}
+
+.dog-result,
+.fav-result {
+    margin-top: 30px;
+}
+
+.dog,
+.fav {
+    margin: 15px 0;
+}
+
+.dog-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px -10px rgba(0, 0, 0, 0.79);
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.dogImage {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.dogImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.dogName {
+    padding: 20px 10px;
+
+}
+
+.dogName h3 {
+    font-size: 1.3em;
+}
+
+.infoButton {
+    text-decoration: none;
+    color: #fff;
+    background: #363636;
+    font-weight: 500;
+    padding: 10px 0;
+    display: block;
+    width: 80%;
+    margin: 15px auto -7px auto;
+    border: none;
+    border-radius: 100px;
+    transition: 0.3s;
+    font-size: 1em;
+}
+
+.favoriteButton {
+    text-decoration: none;
+    background: #791a740c;
+    color: #8f388a;
+    font-weight: 500;
+    padding: 10px 0;
+    display: block;
+    width: 175px;
+    margin: 15px auto;
+    border: 1px solid #8f388a;
+    border-radius: 100px;
+    transition: 0.3s;
+    font-size: 1em;
+}
+
+.removeButton {
+    text-decoration: none;
+    background: #bd272715;
+    color: #bd2727;
+    font-weight: 500;
+    padding: 10px 0;
+    display: block;
+    width: 175px;
+    margin: 15px auto;
+    border: 1px solid #bd2727;
+    border-radius: 100px;
+    transition: 0.3s;
+    font-size: 1em;
+}
+
+.infoButton:hover {
+    background: rgb(100, 100, 100);
+}
+
+.favoriteButton:hover {
+    background: white;
+}
+
+.removeButton:hover {
+    background: white;
+}
+
+
+.dog-details {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    background: #363636;
+    border-radius: 10px;
+    width: 90%;
+    height: 70%;
+    overflow-y: scroll;
+    display: none;
+    padding: 50px 20px;
+}
+
+.info-info {
+    margin-top: 5%;
+}
+
+.info-info h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.info-info p {
+    padding-bottom: 5%;
+}
+
+.dog-details::-webkit-scrollbar {
+    width: 10px;
+}
+
+.dog-details::-webkit-scrollbar-thumb {
+    background: #f0f0f0;
+    border-radius: 2rem;
+}
+
+.showInfo {
+    display: block;
+}
+
+.info-close-btn {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    font-size: 1.5em;
+    background: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    color: #363636;
+}
+
+.info-close-btn:hover {
+    background: rgb(180, 180, 180);
+}
+
+.info-title {
+    padding-bottom: 30px;
+    color: white;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.info-dog-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.info-dog-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.info-link {
+    margin: 1.4rem 0;
+}
+
+.loaderBox {
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+
+@media screen and (min-width: 600px) {
+    .searchForm {
+        width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .fav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .dog {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .fav {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .dogImage {
+        height: 100px;
+    }
+
+    .dog-item {
+        margin: 0;
+    }
+
+    .dog-details {
+        width: 700px;
+    }
+
+    .infoButton,
+    .favoriteButton,
+    .removeButton {
+        padding: 7px 0;
+        display: block;
+        width: 40%;
+    }
+
+    .fav .infoButton,
+    .fav .favoriteButton,
+    .fav .removeButton {
+        padding: 7px 0;
+        display: block;
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .fav {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .dogName h3 {
+        font-size: 0.9em;
+    }
+
+    .dogImage {
+        height: 200px;
+    }
+
+    .infoButton,
+    .favoriteButton,
+    .removeButton {
+        padding: 7px 0;
+        display: block;
+        width: 40%;
+    }
+
+    .dog {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .fav .infoButton,
+    .fav .favoriteButton,
+    .fav .removeButton {
+        padding: 7px 0;
+        display: block;
+        width: 80%;
+    }
+}
+
+.loader {
+    border: 8px solid #363636;
+    border-top: 8px solid #e06b1d;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    display: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
