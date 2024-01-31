@@ -21,7 +21,8 @@ body {
     text-align: center;
 }
 
-.input-group, .form-control {
+.input-group,
+.form-control {
     min-height: 50px;
     margin-right: 10px;
 }
@@ -36,16 +37,17 @@ body {
 
 .autocomplete-css {
     width: auto;
-
 }
 
-.row, .favourite-container {
+.row,
+.favourite-container {
     margin-top: 25px;
     padding-left: 8px;
     padding-right: 8px;
 }
 
-.img-fluid, .favourite-container {
+.img-fluid,
+.favourite-container {
     min-height: 100%;
 }
 
@@ -53,7 +55,10 @@ body {
     min-height: 79vh;
 }
 
-.details-class, .favourite-container, .img-class, .recipe-class {
+.details-class,
+.favourite-container,
+.img-class,
+.recipe-class {
     padding: 25px;
     background-color: rgba(128, 128, 128, 0.486);
 }
@@ -63,17 +68,20 @@ body {
     justify-content: space-between;
 }
 
-
-.favouriteDrinks li {
+.favourite-drinks li,
+.drinks-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
     list-style-type: none;
     font-size: large;
+    padding-top: 10px;
 }
 
-.favouriteDrinks li:hover {
+.favourite-drinks li:hover,
+.drinks-list li:hover,
+.page-copyright p {
     font-weight: 700
 }
 
@@ -88,6 +96,7 @@ body {
     min-height: 5vh;
 }
 
-.page-copyright p {
-    font-weight: 700
+.spinner-border {
+    margin-top: 50%;
+    margin-left: 50%;
 }

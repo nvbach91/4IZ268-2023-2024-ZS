@@ -1,3 +1,17 @@
+const loadingSpinner = $(`  <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>`);
+
+const showLoading = () => {
+    $(colSm8FirstRow).empty();
+    $(colSm8SecondRow).empty();
+    $(colSm8FirstRow).append(loadingSpinner);
+};
+
+const hideLoading = () => {
+    loadingSpinner.remove();
+};
+
 const header = $('<h1>').addClass('page-header').text('Drinkopedia')
 
 const searchGroup = $('<div>').addClass('input-group mb-3');
@@ -74,14 +88,17 @@ searchButton.on('click', function () {
 });
 
 function searchForDrinkByName(searchTerm) {
+    showLoading();
     $.ajax({
         url: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`,
         method: 'GET',
         success: function (data) {
             if (data.drinks) {
+                hideLoading();
                 const drink = data.drinks[0];
                 displayDrinkDetails(drink);
             } else {
+                hideLoading();
                 displayErrorMessage('Drink not found!');
             }
         },
@@ -93,13 +110,16 @@ function searchForDrinkByName(searchTerm) {
 }
 
 function searchForDrinksByIngredient(searchTerm) {
+    showLoading();
     $.ajax({
         url: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchTerm}`,
         method: 'GET',
         success: function (data) {
             if (data.drinks) {
-                displayDrinkList(data.drinks);
+                hideLoading();
+                displayDrinkList(data.drinks, searchTerm);
             } else {
+                hideLoading();
                 displayErrorMessage('No drinks found with the specified ingredient!');
             }
         },
@@ -110,11 +130,14 @@ function searchForDrinksByIngredient(searchTerm) {
     });
 }
 
-function displayDrinkList(drinks) {
+function displayDrinkList(drinks, searchTerm) {
     colSm8FirstRow.empty();
-    recipeContainer.empty();
+    colSm6Img.empty();
+    recipeContainer.remove();
 
-    const drinksList = $('<ul>');
+    const favoritesTitle = $('<h2>').text(`Drinks with ${searchTerm}`);
+
+    const drinksList = $('<ul>').addClass('drinks-list');;
 
     drinks.forEach(function (drink) {
         const drinkItem = $('<li>').text(drink.strDrink);
@@ -126,7 +149,8 @@ function displayDrinkList(drinks) {
         drinksList.append(drinkItem);
     });
 
-    colSm8FirstRow.append(drinksList);
+    colSm6Img.append(favoritesTitle, drinksList);
+    colSm8FirstRow.append(colSm6Img);
 }
 
 function displayDrinkDetails(drink) {
@@ -188,7 +212,7 @@ function updateFavoritesList() {
     const favoritesTitle = $('<h2>').text('Favorite Drinks');
 
     if (favorites.length > 0) {
-        const favoritesList = $('<ul>').addClass('favouriteDrinks');
+        const favoritesList = $('<ul>').addClass('favourite-drinks');
 
         favorites.forEach(function (favorite) {
             const favoriteItem = $('<li>').text(favorite.strDrink);
@@ -223,7 +247,7 @@ function removeFromFavorites(drink) {
 function displayErrorMessage(message) {
     searchInput.val(message);
 
-    setTimeout(function() {
+    setTimeout(function () {
         searchInput.val('');
     }, 2000);
 }
@@ -233,7 +257,7 @@ searchButton.click();
 updateFavoritesList();
 
 const pageFooter = $('<div>').addClass('page-footer container')
-const pageFooterText = $('<p>').addClass('page-copyright').text('Marek Smetana 2023 ©')
+const pageFooterText = $('<p>').addClass('page-copyright').text('4IZ268 - Marek Smetana 2024 ©')
 
 pageFooter.append(pageFooterText);
 
