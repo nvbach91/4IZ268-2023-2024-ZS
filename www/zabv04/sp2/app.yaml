@@ -1,0 +1,5 @@
+runtime: nodejs18
+env: standard
+
+manual_scaling:
+  instances: 1
