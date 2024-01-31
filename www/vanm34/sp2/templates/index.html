@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Emails Application</title>
+</head>
+
+<body>
+    <div class="nav-container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Best mailer ever</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="/">Home</a>
+                    <a class="nav-item nav-link" href="/local-storage">Local storage</a>
+                    <a class="nav-item nav-link" href="/send-email">Send Mail</a>
+                    <a class="nav-item nav-link" href="/api-key">API Key</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div id="header">
+            <div id="logo">
+                <H1>Best email messaging app ever</H1>
+            </div>
+        </div>
+
+        <div id="welcomeSection" class="p-3">
+            <p>Welcome text</p>
+        </div>
+
+        <div class="action-buttons">
+            <button onclick="location.href='/send-email'" class="btn btn-primary">Create New Email</button>
+            <button onclick="location.href='/local-storage'" class="btn btn-secondary">
+                Emails Saved in Local Storage
+            </button>
+            <button onclick="location.href='/api-key'" class="btn btn-secondary">
+                Enter the API key
+            </button>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
