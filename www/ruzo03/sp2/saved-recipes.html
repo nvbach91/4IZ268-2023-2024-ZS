@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved recipes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" />
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="./assets/js/global.js" type="module"></script>
+  <script src="./assets/js/saved_recipes.js" type="module"></script>
+  <script src="./assets/js/theme.js"></script>
+
+</head>
+
+<body>
+  <header class="header" data-header>
+    <nav class="navbar">
+      <ul class="navbar-list">
+      
+        <li>
+          <a href="./index.html" class="navbar-link title-small has-state">Recipes</a>
+        </li>
+      </ul>
+    </nav>
+    <a href="./saved-recipes.html" class="btn btn-primary has-icon">
+      <span class="material-symbols-outlined" aria-hidden="true">book</span>
+
+      <span class="span">Saved Recipes</span>
+    </a>
+
+  </header>
+
+  <main>
+    <article class="article container saved-recipe-page" data-saved-recipe-container></article>
+  </main>
+
+  <footer class="footer">
+    <a href="https://www.edamam.com/" target="_blank" class="edamam">
+      <img src="./assets/images/edamam.svg" width="200" height="40" loading="lazy" alt="edamam free recipe api">
+    </a>
+  </footer>
+
+</body>
+
+</html>
