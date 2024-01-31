@@ -1,14 +1,93 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+}
+
 body {
+    background-color: rgb(243, 238, 238);
+}
+
+.container {
     background-color: lightgray;
-    font-family: 'Roboto Condensed', sans-serif;
-font-family: 'Rubik', sans-serif;
+    padding-top: 20px;
+    min-height: 95vh;
+    align-items: center;
+}
+
+.page-header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-group, .form-control {
+    min-height: 50px;
+    margin-right: 10px;
+}
+
+.type-switch {
+    max-width: 15%;
+}
+
+.btn {
+    min-width: 15%;
 }
 
 .autocomplete-css {
     width: auto;
-    
+
+}
+
+.row, .favourite-container {
+    margin-top: 25px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.img-fluid, .favourite-container {
+    min-height: 100%;
 }
 
 .custom-height {
-    min-height: 800px; /* or any height you desire */
-  }
+    min-height: 79vh;
+}
+
+.details-class, .favourite-container, .img-class, .recipe-class {
+    padding: 25px;
+    background-color: rgba(128, 128, 128, 0.486);
+}
+
+.fisrt-row-class {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.favouriteDrinks li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    list-style-type: none;
+    font-size: large;
+}
+
+.favouriteDrinks li:hover {
+    font-weight: 700
+}
+
+.remove-button {
+    background-color: red;
+}
+
+.page-footer {
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    min-height: 5vh;
+}
+
+.page-copyright p {
+    font-weight: 700
+}
