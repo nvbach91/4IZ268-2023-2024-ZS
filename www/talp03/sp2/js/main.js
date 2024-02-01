@@ -28,6 +28,8 @@ async function initMap() {
   let originPlace = '';
   let finalPlace = '';
   const waypointPlace = [];
+  const routeSearch = $('#route-search');
+  let finalBoolean = false;
 
   //Loading animation
   const spinner = $(`<div class="center">
@@ -39,7 +41,7 @@ async function initMap() {
                       </div>`);
 
   const showLoading = () => {
-    $('#route-search').append(spinner[0]);
+    routeSearch.append(spinner[0]);
     anime({
       targets: '.orbit',
       rotate: 360,
@@ -78,11 +80,15 @@ async function initMap() {
   originAutocomplete.addListener('place_changed', () => {
     const place = originAutocomplete.getPlace();
     originPlace = place.place_id;
+    if (finalBoolean) {
+      route();
+    }
   });
 
   finalAutocomplete.addListener('place_changed', () => {
     const place = finalAutocomplete.getPlace();
     finalPlace = place.place_id;
+    finalBoolean = true;
     route();
   });
 
@@ -133,7 +139,9 @@ async function initMap() {
   const route = () => {
     if (!originPlace || !finalPlace) {
       window.swal('Fill in the place you want to find.');
-      return destinationInput.value = '';
+      destinationInput.value = '';
+      finalBoolean = false;
+      return;
     };
     showLoading();
     directionsService.route(
@@ -174,6 +182,7 @@ async function initMap() {
     $('#waypoint-button').show();
     directionsRenderer.setMap(null);
     infoWindowRoute.close();
+    finalBoolean = false;
   }
 
   const setInfoWindowRoutes = (response) => {
@@ -194,7 +203,7 @@ async function initMap() {
                           <input id='waypoint-input' class='waypoint-input' type='text'>
                           <button id='clear-waypoint' class='clear-waypoint'>X</button>
                         </div>`)
-    $('#route-search').append(waypoint);
+    routeSearch.append(waypoint);
     const waypointAutocomplete = new google.maps.places.Autocomplete(
       $('#waypoint-input')[0],
       { fields: ['place_id'] }
