@@ -29,13 +29,17 @@ const App = {
             let searchInput = document.getElementById("searchInput").value.trim();
 
             if (searchInput.length < 50 && /^[\p{L} ]+$/u.test(searchInput)) {
+                loader.show();
                 App.fetchDateByName(searchInput)
                     .then((resp) => {
+                    loader.hide();
                         searchResult.innerHTML = "<span class='purple' id='nameSpan'>" + searchInput + "</span> má svátek <span class='purple' id='dateSpan'>" + App.getFormattedDate(resp[0].date) + "</span>";
                         addToFav.style.display = "block";
                         App.checkIfFav()
                     })
                     .catch((error) => {
+                    loader.hide();
+
                         searchResult.innerHTML = "<span class='red'> Špatně zadané jméno!</span>";
                         addToFav.style.display = "none";
 
@@ -47,6 +51,7 @@ const App = {
 
 
         } else if (searchType === "by-date") {//search by date
+            loader.show();
             const datePicker = new Date(document.getElementById("datePicker").value);
             const day = String(datePicker.getDate()).padStart(2, '0');
             const month = String(datePicker.getMonth() + 1).padStart(2, '0');
@@ -54,11 +59,13 @@ const App = {
 
             App.fetchNameByDate(pickedDate)
                 .then((resp) => {
+                    loader.hide();
                     searchResult.innerHTML = "<span class='purple' id='dateSpan'>" + App.getFormattedDate(pickedDate) + "</span> má svátek <span class='purple' id='nameSpan'>" + resp[0].name + "</span>";
                     addToFav.style.display = "block";
                     App.checkIfFav()
                 })
                 .catch((error) => {
+                    loader.hide();
                     searchResult.innerHTML = "<span class='red'> Špatně zadané datum!</span>";
                     addToFav.style.display = "none";
 
@@ -150,10 +157,11 @@ const App = {
                 let spanKey = document.createElement("span");
                 spanKey.textContent = key;
 
-                let anchor = document.createElement("a");
-                anchor.href = "";
-                anchor.textContent = "Odebrat";
-                anchor.addEventListener("click", function (event) {
+                let button = document.createElement("button");
+                button.classList.add("buttonUnderlined")
+                button.href = "";
+                button.textContent = "Odebrat";
+                button.addEventListener("click", function (event) {
                     event.preventDefault();
                     App.removeFav(key);
                     this.parentNode.remove();
@@ -162,7 +170,7 @@ const App = {
                 // Append the span elements and anchor element to the div
                 div.appendChild(spanValue);
                 div.appendChild(spanKey);
-                div.appendChild(anchor);
+                div.appendChild(button);
 
                 // Append the div to the document body or any other container element
                 fragment.appendChild(div);
@@ -194,9 +202,9 @@ const App = {
 
 //Startup START
 let searchTypeEl = document.getElementById("searchType")
-searchTypeEl.addEventListener('change', function() {
+searchTypeEl.addEventListener('change', function () {
     App.handleSearchTypeChange();
-  });
+});
 document.getElementById("searchForm").addEventListener("submit", function (event) {
     event.preventDefault();
     App.handleSubmit();
@@ -209,6 +217,8 @@ addToFav.addEventListener("click", function (event) {
     App.addToFav();
 });
 
+let loader = $('#loader');
+loader.hide();
 const todaysDateSpan = document.getElementById("todaysDate"); // variable for todays date
 const todaysDate = App.getTodaysDate(); //get todays date in DDMM format
 const formattedTodaysDate = App.getFormattedDate(todaysDate); // format date from DDMM to "(D)D. (M)M.""

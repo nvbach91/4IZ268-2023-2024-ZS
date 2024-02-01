@@ -126,6 +126,14 @@ a {
 .favDiv .row a{
     font-size: 0.8em;
 }
+.buttonUnderlined{
+    border: none;
+    text-decoration: underline;
+    color: gray;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+}
 footer {
     display: flex; 
     align-items: center; 
@@ -136,7 +144,26 @@ footer {
     color: white;
     margin: 0 auto;
 }
-
+.loader {
+    border: 3px solid gray;
+    border-radius: 50%;
+    border-top: 3px solid purple;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 @media only screen and (max-width: 500px) {
 
     .cfContainer{
