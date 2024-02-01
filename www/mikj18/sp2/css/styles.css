@@ -1,110 +1,339 @@
-/* Reset default margin and padding */
-body, h1, p, form {
-    margin: 0;
-    padding: 0;
-}
-
-/* Body styles */
+/* Reset and Base Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Verdana', Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
+/* Container Styles */
 .container {
-    text-align: center;
+    max-width: 95%;
+    margin: 10px auto;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    position: relative;
 }
 
-/* Form styles */
+/* Weather Box Styles */
+.weather-box {
+    margin: 20px;
+}
+
+/* Common Styles for Current Weather, Forecast, and Icons Containers */
+.current-weather,
+.forecast-container,
+.weather-icons-container {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    position: relative;
+    animation: slideIn 1s ease-in-out;
+}
+
+/* Form Styles */
 .form {
     margin-bottom: 20px;
 }
 
 .label {
     display: block;
-    margin-bottom: 5px;
-    color: #555;
+    margin: 0 0 5px 0;
 }
 
 .input-group {
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+/* Weather Container Styles */
+#weatherInfo {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    border-radius: 5px;
+}
+
+/* Weather Icons Container Styles */
+#weatherIconsContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px 0 0 0;
+    padding: 20px 5px 0 5px;
+}
+
+.weather-icon-container {
+    text-align: center;
+    width: calc(17% - 20px);
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.weather-icon {
+    font-size: 3em;
+    color: rgb(33, 150, 243);
+}
+
+.weather-label {
+    margin-top: 10px;
+}
+
+/* Input and Button Styles */
 .input {
-    padding: 10px;
-    margin: 0;
-    border: none;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    flex: 1;
+    padding: 12px;
+    border-radius: 5px 0 0 5px;
+    border: 0px solid #c4c4c4;
+    background-color: rgb(239, 239, 239);
+    transition: border-color 0.3s ease;
 }
 
 .button {
-    padding: 10px 20px;
+    padding: 12px 20px;
     margin: 0;
     border: none;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background-color: #3498db;
-    color: white;
+    background-color: rgb(33, 150, 243);
+    color: #fff;
+    border-radius: 0 5px 5px 0;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
 }
 
 .button:hover {
     background-color: #2980b9;
+    transform: scale(1.05);
 }
 
-/* Weather container styles */
-.weather-container {
-    width: 300px;
-    padding: 20px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.button:focus {
+    outline: none;
+    transform: scale(1);
 }
 
-/* Weather info styles */
+/* Current Weather Styles */
+.current-weather {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
 .weather-info {
-    font-size: 18px;
-    margin-bottom: 10px;
+    margin: 10px 5px;
 }
 
-/* Forecast container styles */
-.forecast-container {
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+.weather-icon {
+    font-size: 35px;
 }
 
+/* Forecast Styles */
 .forecast-heading {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #333;
+    margin: 0;
 }
 
-.chart-container {
-    width: 400px; /* Set a fixed width */
-    height: 100px; /* Set a fixed height */
-    margin: 20px auto; /* Adjust margin as needed */
-    border: 1px solid #ccc; /* Optional: Add border for visualization */
-    overflow: hidden; /* Prevent content from overflowing */
+.forecast-chart-container {
+    margin-top: 20px;
 }
 
-/* Style the canvas to fill its container */
-canvas {
+/* Animation Styles */
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1000px) {
+    .current-weather {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #currentWeatherIcon {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-size: 100px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 10px; /* Adjust padding to prevent overflow */
+    }
+
+    .weather-icon-container {
+        width: calc(100% - 20px); /* Adjust the width to full width minus margins */
+        box-sizing: border-box;
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .current-weather {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .input,
+    .button {
+        flex: 100%;
+        border-radius: 5px;
+    }
+
+    .button {
+        margin-top: 10px;
+    }
+
+    #currentWeatherIcon {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-size: 60px;
+    }
+
+    .weather-info {
+        margin-left: 0;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+/* Loading Overlay Styles */
+#overlay {
+    position: fixed;
     width: 100%;
     height: 100%;
-    display: block;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid rgb(33, 150, 243);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Additional Adjustments for small screens */
+@media screen and (max-width: 300px) {
+    #currentWeatherIcon {
+        font-size: 0;
+    }
+}
+
+/* Button and Title Bar Styles */
+.button {
+    padding: 12px 20px;
+    margin: 0;
+    border: none;
+    background-color: rgb(33, 150, 243);
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.button:focus {
+    outline: none;
+    transform: scale(1);
+}
+
+.current-weather-titleBar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.weather-heading {
+    margin: 0;
+    margin-right: 10px; /* Adjust the margin to your preference */
+}
+
+#refreshButton {
+    padding: 6px 12px;
+    border: none;
+    background-color: rgb(33, 150, 243);
+    color: #fff;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+#refreshButton:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+#refreshButton:focus {
+    outline: none;
+    transform: scale(1);
+}
+
+.title-bar-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.refresh-text {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #555; /* Adjust the color as needed */
+}
+
+.current-weather-titleBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Adjustments for small screens */
+@media screen and (max-width: 600px) {
+    
+
+    .refresh-text {
+        margin-left: 5px;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+    .button {
+        flex: 100%;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+    .current-weather-titleBar {
+        margin: 0;
+    }
 }

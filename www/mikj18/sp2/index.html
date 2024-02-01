@@ -1,33 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Weather App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather around the world</title>
+    <link rel="icon" type="image/png" href="./img/sun-ico.png"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress/nprogress.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"> 
 </head>
 <body>
     <div class="container">
         <div id="weatherInfo" class="weather-container">
-
             <form id="locationForm" class="form">
                 <label for="locationInput" class="label">Enter location:</label>
                 <div class="input-group">
                     <input type="text" id="locationInput" name="location" class="input" placeholder="Enter city name">
-                    <button type="submit" class="button">Get Weather</button>
+                    <button type="submit" class="button" id="getWeatherButton">Get Weather</button>
                 </div>
-            </form>
-
-        
+            </form>     
+            <section class="current-weather-titleBar">     
+    <h3 class="weather-heading">Current Weather</h3>
+    <div class="title-bar-buttons">
+        <button id="refreshButton" class="button">
+            <i id="refresh-icon" class="wi wi-refresh"></i>
+        </button>
+        <p id="refreshText" class="refresh-text">Refresh local weather</p>
+    </div>
+</section> 
+            <div class="current-weather">     
                 <p id="location" class="weather-info"></p>
                 <p id="temperature" class="weather-info"></p>
                 <p id="description" class="weather-info"></p>
-            </div>
-
-            <div id="forecast" class="forecast-container">
-                <h2 class="forecast-heading">5-Day Forecast</h2>
-                <canvas id="forecastChart" width="1200" height="300"></canvas>
+                <p id="humidity" class="weather-info"></p>
+                <p id="precipitation" class="weather-info"></p>
+                <p id="pressure" class="weather-info"></p>
+                <p id="wind" class="weather-info"></p>
+                <i id="currentWeatherIcon" class="weather-icon wi"></i>
             </div>
         </div>
+       
+        <div id="forecast" class="forecast-container">
+            <h3 class="forecast-heading">5-Day Forecast</h3>
+            <div class="forecast-chart-container">
+                <canvas id="forecastChart"></canvas>
+            </div>
+        </div>
+        <div id="weatherIconsContainer" class="weather-icons-container"></div>
+    </div> 
+    <div id="overlay">
+            <div class="loader"></div>
+          </div>
+          
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
