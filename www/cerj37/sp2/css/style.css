@@ -1,40 +1,63 @@
 body {
     text-align: center;
     font-family: Calibri;
-    background-image: url(https://juliemarieeats.com/wp-content/uploads/2023/01/Bakery-Style-Chocolate-Chip-Cookies-14-scaled.jpg);
+    background-image: url(https://wallpapercave.com/wp/wp7667538.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
 }
 
-.game_ui {
-    background-color: green;
-}
-.achievement_ui{
-    background-color: gold;
+.achievement_ui {
+    background-color: rgba(250, 235, 215, 0.4);
     display: inline-block;
     height: 800px;
     width: 30%;
     border: 3px solid burlywood;
+    overflow: scroll;
 }
-.cookie_ui{
-    background-color: antiquewhite;
+
+.banner {
+    height: 100px;
+    background-color: rgba(3, 3, 65, 0.76);
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.title {
+    display: block;
+    color: white;
+}
+
+.cookie_ui {
+    background-color: rgba(250, 235, 215, 0.4);
     vertical-align: top;
     display: inline-block;
     height: 800px;
     width: 33%;
     border: 3px solid burlywood;
 }
-.upgrades_shop{
-    background-color: blueviolet;
+
+.upgrades_shop {
+    background-color: rgba(250, 235, 215, 0.4);
     vertical-align: top;
     display: inline-block;
     height: 800px;
     width: 33%;
     border: 3px solid burlywood;
+    overflow: scroll;
 }
-button {
+
+.main-button {
+    background-color: beige;
+}
+
+.cookie-button {
+    height: 400px;
+
+}
+
+.button_upgrade {
     background-color: beige;
     color: black;
     border: 2px solid burlywood;
@@ -44,14 +67,13 @@ button {
 }
 
 button:hover {
-    background-color: brown;
-    color: #ffffff;
+    background-color: beige;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
 
-.divider {
-    color: blueviolet;
-    height: 5px;
-    width: 60px;
+button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }

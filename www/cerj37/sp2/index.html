@@ -5,26 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookie clicker</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 </head>
 
 <body onload="update_count()">
+    <div class="banner">
+        <h1 class="title">Honzův Cookie clicker</h1>
+    </div>
     <div class="game_ui">
         <div class="achievement_ui">
             <h2>Ocenění</h2>
+            <div id="achievements"></div>
         </div>
         <div class="cookie_ui">
             <h1 id="cookie">Máte 0 sušenek</h1>
-            <button onclick="clicker.cookie++">Klikni pro sušenku</button>
-            <div class="divider"></div>
+            <button clas="main-button" onclick="clicker.cookie++"><img class="cookie-button"
+                    src="https://clipart-library.com/image_gallery2/Cookie-PNG-File.png"></button>
         </div>
         <div class="upgrades_shop">
             <h2>Obchod</h2>
             <div id="upgrades"></div>
         </div>
     </div>
-    <script src="/jscript/script.js"></script>
+    <script src="jscript/script.js"></script>
+
 </body>
 
 </html>
