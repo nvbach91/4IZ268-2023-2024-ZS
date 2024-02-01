@@ -65,6 +65,9 @@ $(function () {
         },
         open: function () {
             $(this).autocomplete('widget').addClass('autocomplete-css')
+        },
+        select: function (event, ui) {
+            searchForDrinkByName(ui.item.value);
         }
     });
 });
@@ -103,6 +106,7 @@ function searchForDrinkByName(searchTerm) {
             }
         },
         error: function (error) {
+            hideLoading();
             console.error('Error searching for drink: ', error);
             displayErrorMessage('An error occurred while searching for the drink.');
         }
@@ -124,6 +128,7 @@ function searchForDrinksByIngredient(searchTerm) {
             }
         },
         error: function (error) {
+            hideLoading();
             console.error('Error searching for drinks by ingredient: ', error);
             displayErrorMessage('An error occurred while searching for drinks by ingredient.');
         }
@@ -186,8 +191,8 @@ function displayDrinkDetails(drink) {
     colSm6Details.append(drinkName, drinkGlass, ingredientsTitle, ingredientsList, addToFavoritesButton);
     colSm8FirstRow.append(colSm6Img, colSm6Details);
 
-    const Instructions = $('<h4>').text('Instructions');
-    recipeContainer.append(Instructions, drinkInstructions);
+    const instructions = $('<h4>').text('Instructions');
+    recipeContainer.append(instructions, drinkInstructions);
     colSm8SecondRow.append(recipeContainer);
 }
 
@@ -196,15 +201,18 @@ function saveFavoritesToLocalStorage() {
 }
 
 function addToFavorites(drink) {
-    if (!isFavorite(drink)) {
-        favorites.push(drink);
+    const drinkId = drink.idDrink;
+    const drinkName = drink.strDrink;
+
+    if (!isFavorite(drinkId)) {
+        favorites.push({ id: drinkId, name: drinkName });
         updateFavoritesList();
         saveFavoritesToLocalStorage();
     }
 }
 
-function isFavorite(drink) {
-    return favorites.some(favorite => favorite.idDrink === drink.idDrink);
+function isFavorite(drinkId) {
+    return favorites.some(favorite => favorite.id === drinkId);
 }
 
 function updateFavoritesList() {
@@ -215,31 +223,58 @@ function updateFavoritesList() {
         const favoritesList = $('<ul>').addClass('favourite-drinks');
 
         favorites.forEach(function (favorite) {
-            const favoriteItem = $('<li>').text(favorite.strDrink);
+            const favoriteItem = $('<li>').text(favorite.name);
 
             const removeFromFavoritesButton = $('<button>').text('Remove').addClass('btn btn-primary remove-button');
             removeFromFavoritesButton.on('click', function (event) {
                 event.stopPropagation();
-                removeFromFavorites(favorite);
+                removeFromFavorites(favorite.idDrink);
             });
 
             favoriteItem.append(removeFromFavoritesButton);
 
             favoriteItem.on('click', function () {
-                displayDrinkDetails(favorite);
-            });
 
+                showLoading();
+
+                const favoriteItemName = $(this).contents().filter(function () {
+                    return this.nodeType === 3;
+                }).text().trim();
+
+                const favoriteItemId = favorites.find(fav => fav.name === favoriteItemName);
+
+                if (favorite) {
+                    const favoriteDrinkId = favoriteItemId.id;
+
+                    $.ajax({
+                        url: `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${favoriteDrinkId}`,
+                        method: 'GET',
+                        success: function (data) {
+                            if (data.drinks) {
+                                const drink = data.drinks[0];
+                                hideLoading();
+                                displayDrinkDetails(drink);
+                            } else {
+                                displayErrorMessage('Drink not found!');
+                            }
+                        },
+                        error: function (error) {
+                            console.error('Error fetching drink details: ', error);
+                            displayErrorMessage('An error occurred while fetching drink details.');
+                        }
+                    });
+                }
+            });
             favoritesList.append(favoriteItem);
         });
-
         favoritesContainer.append(favoritesTitle, favoritesList);
     } else {
         favoritesContainer.append(favoritesTitle);
     }
 }
 
-function removeFromFavorites(drink) {
-    favorites = favorites.filter(favorite => favorite.idDrink !== drink.idDrink);
+function removeFromFavorites(drinkId) {
+    favorites = favorites.filter(favorite => favorite.id !== drinkId);
     updateFavoritesList();
     saveFavoritesToLocalStorage();
 }
