@@ -13,7 +13,7 @@
 
 </head>
 
-<body onload="update_count()">
+<body>
     <div class="banner">
         <h1 class="title">Honzův Cookie clicker</h1>
     </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="cookie_ui">
             <h1 id="cookie">Máte 0 sušenek</h1>
-            <button clas="main-button" onclick="clicker.cookie++"><img class="cookie-button"
+            <button id="main-button"><img class="cookie-button"
                     src="https://clipart-library.com/image_gallery2/Cookie-PNG-File.png"></button>
         </div>
         <div class="upgrades_shop">
@@ -32,6 +32,14 @@
             <div id="upgrades"></div>
         </div>
     </div>
+    <form id="form1">
+        <label for="jmeno">Uživatelské jméno:</label><br />
+        <input type="text" id="jmeno" name="jmeno" /><br />
+        <label for="prijmeni">Heslo:</label><br />
+        <input type="password" id="prijmeni" name="prijmeni" /><br />
+
+        <button type="submit">Submit</button> <br />
+    </form>
     <script src="jscript/script.js"></script>
 
 </body>

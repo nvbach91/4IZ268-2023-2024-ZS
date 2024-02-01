@@ -1,4 +1,4 @@
-var clicker = {
+let clicker = {
     cookie: 0,
     upgrades: {
         click_power: {
@@ -79,6 +79,21 @@ var sfx = {
         src: ["/sounds/Woosh-Mark_DiAngelo-4778593.mp3"]
     })
 }
+const formE1 = document.querySelector("#form1");
+formE1.addEventListener("submit", event => {
+    event.preventDefault();
+    const formData = new FormData(formE1);
+    const data = Object.fromEntries(formData);
+    fetch("https://reqres.in/api/users", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(data => console.log(data))
+        .catch(error => console.log(error));
+})
 var delay = 0;
 function item_clicked(item) {
     if (clicker.upgrades[item].cost <= clicker.cookie) {
@@ -95,6 +110,11 @@ function update_upgrades() {
         document.querySelector("#upgrades").innerHTML += `<br> <button class="button_upgrade" onclick = "item_clicked('${o}')">${clicker.upgrades[o].name}: ${clicker.upgrades[o].title}</button> máš ${clicker.upgrades[o].amount}. Cena: ${clicker.upgrades[o].cost}<br>`;
     }
 }
+
+function cookie_clicked() {
+    clicker.cookie++
+}
+document.getElementById("main-button").addEventListener("click", cookie_clicked);
 function update_count() {
     var clicker1;
 
@@ -137,3 +157,4 @@ function update_count() {
         }
     }, 50);
 }
+onload = update_count();
