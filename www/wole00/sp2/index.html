@@ -25,11 +25,11 @@
                 <div class="contentDiv">
                     <h2>Hledání</h2>
                     <div class="searchDiv">
-                        <form onsubmit="App.handleSubmit(); return false;">
+                        <form id="searchForm">
                             <label for="searchType">Hledat dle:</label>
-                            <select id="searchType" name="searchType"  onchange="App.handleSearchTypeChange()">
-                                <option value="Jmena">Jména</option>
-                                <option value="Data">Data</option>
+                            <select id="searchType" name="searchType">
+                                <option value="by-name">Jména</option>
+                                <option value="by-date">Data</option>
                             </select>
                             <br>
                             <br>
@@ -51,7 +51,7 @@
                         <h1 id="searchResult" class="searchResult">
                            
                         </h1>
-                        <a id="addToFav" class="addToFav" href="" onclick="App.addToFav();return false" style="display: none;">Přidat do oblíbených</a>
+                        <a id="addToFav" class="addToFav" href="" style="display: none;">Přidat do oblíbených</a>
                     </div>
     
     

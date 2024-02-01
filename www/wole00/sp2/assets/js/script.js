@@ -1,21 +1,20 @@
 const App = {
     handleSearchTypeChange: () => { // triggered by the select input in html form, displays the date input instead of text input and vice versa
 
-        let searchType = document.getElementById("searchType").value;
-
+        let searchType = searchTypeEl.value;
         let searchInputContainer = document.getElementById("searchInputContainer");
         let datePickerContainer = document.getElementById("datePickerContainer");
 
         let searchInput = document.getElementById("searchInput");
         let datePicker = document.getElementById("datePicker");
 
-        if (searchType === "Jmena") {
+        if (searchType === "by-name") {
             searchInputContainer.style.display = "block";
             datePickerContainer.style.display = "none";
             datePicker.removeAttribute('required');
             searchInput.setAttribute('required', '');
 
-        } else if (searchType === "Data") {
+        } else if (searchType === "by-date") {
             searchInputContainer.style.display = "none";
             datePickerContainer.style.display = "block";
             datePicker.setAttribute('required', '');
@@ -24,30 +23,36 @@ const App = {
     },
 
     handleSubmit: () => { //handle the html form
-        let searchType = document.getElementById("searchType").value;
-        let addToFav = document.getElementById("addToFav");
+        let searchType = searchTypeEl.value;
 
-        if (searchType === "Jmena") { //search by name
-            let searchInput = document.getElementById("searchInput").value;
-            App.getDate(searchInput)
-                .then((resp) => {
-                    searchResult.innerHTML = "<span class='purple' id='nameSpan'>" + searchInput + "</span> má svátek <span class='purple' id='dateSpan'>" + App.getFormattedDate(resp[0].date) + "</span>";
-                    addToFav.style.display = "block";
-                    App.checkIfFav()
-                })
-                .catch((error) => {
-                    searchResult.innerHTML = "<span class='red'> Špatně zadané jméno!</span>";
-                    addToFav.style.display = "none";
+        if (searchType === "by-name") { //search by name
+            let searchInput = document.getElementById("searchInput").value.trim();
 
-                });
+            if (searchInput.length < 50 && /^[\p{L} ]+$/u.test(searchInput)) {
+                App.fetchDateByName(searchInput)
+                    .then((resp) => {
+                        searchResult.innerHTML = "<span class='purple' id='nameSpan'>" + searchInput + "</span> má svátek <span class='purple' id='dateSpan'>" + App.getFormattedDate(resp[0].date) + "</span>";
+                        addToFav.style.display = "block";
+                        App.checkIfFav()
+                    })
+                    .catch((error) => {
+                        searchResult.innerHTML = "<span class='red'> Špatně zadané jméno!</span>";
+                        addToFav.style.display = "none";
 
-        } else if (searchType === "Data") {//search by date
+                    });
+            } else {
+                searchResult.innerHTML = "<span class='red'> Špatně zadané jméno!</span>";
+                addToFav.style.display = "none";
+            }
+
+
+        } else if (searchType === "by-date") {//search by date
             const datePicker = new Date(document.getElementById("datePicker").value);
             const day = String(datePicker.getDate()).padStart(2, '0');
             const month = String(datePicker.getMonth() + 1).padStart(2, '0');
             const pickedDate = day + month;
 
-            App.getName(pickedDate)
+            App.fetchNameByDate(pickedDate)
                 .then((resp) => {
                     searchResult.innerHTML = "<span class='purple' id='dateSpan'>" + App.getFormattedDate(pickedDate) + "</span> má svátek <span class='purple' id='nameSpan'>" + resp[0].name + "</span>";
                     addToFav.style.display = "block";
@@ -69,7 +74,7 @@ const App = {
         return day + month;
     },
 
-    getName: (date) => { //returns promise with a response containing the name, takes date in DDMM format as argument
+    fetchNameByDate: (date) => { //returns promise with a response containing the name, takes date in DDMM format as argument
         return new Promise((resolve, reject) => {
             $.ajax({
                 method: 'GET',
@@ -83,7 +88,7 @@ const App = {
             });
         });
     },
-    getDate: (name) => { //returns promise with a response containing the date, takes name as argument
+    fetchDateByName: (name) => { //returns promise with a response containing the date, takes name as argument
         return new Promise((resolve, reject) => {
             $.ajax({
                 method: 'GET',
@@ -130,6 +135,8 @@ const App = {
         }
 
         let favDiv = document.getElementById("favDiv");
+        let fragment = document.createDocumentFragment(); //fragment to store divs created from looping localstorage
+
         favDiv.innerHTML = ""
         for (const key in localStorage) {
             if (localStorage.hasOwnProperty(key)) {
@@ -146,7 +153,11 @@ const App = {
                 let anchor = document.createElement("a");
                 anchor.href = "";
                 anchor.textContent = "Odebrat";
-                anchor.setAttribute("onclick", `App.removeFav('${key}');this.parentNode.remove();return false`);
+                anchor.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    App.removeFav(key);
+                    this.parentNode.remove();
+                });
 
                 // Append the span elements and anchor element to the div
                 div.appendChild(spanValue);
@@ -154,9 +165,10 @@ const App = {
                 div.appendChild(anchor);
 
                 // Append the div to the document body or any other container element
-                document.getElementById("favDiv").appendChild(div);
+                fragment.appendChild(div);
             }
         }
+        favDiv.appendChild(fragment);
 
     },
     removeFav: (key) => { // removes chosen name from favorites
@@ -166,7 +178,7 @@ const App = {
 
     },
     checkIfFav: () => { //checks if current searched for name is already in favorites, displays/hides the add to favorite button accordingly
-        nameSpan = document.getElementById("nameSpan");
+        let nameSpan = document.getElementById("nameSpan");
         if (nameSpan) { //checks if there even is an element to check exist to prevent site crash
             if (localStorage.getItem(nameSpan.textContent) !== null) {
                 addToFav.style.display = "none";
@@ -181,6 +193,21 @@ const App = {
 
 
 //Startup START
+let searchTypeEl = document.getElementById("searchType")
+searchTypeEl.addEventListener('change', function() {
+    App.handleSearchTypeChange();
+  });
+document.getElementById("searchForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    App.handleSubmit();
+});
+
+
+let addToFav = document.getElementById("addToFav");
+addToFav.addEventListener("click", function (event) {
+    event.preventDefault();
+    App.addToFav();
+});
 
 const todaysDateSpan = document.getElementById("todaysDate"); // variable for todays date
 const todaysDate = App.getTodaysDate(); //get todays date in DDMM format
@@ -190,7 +217,7 @@ todaysDateSpan.textContent = formattedTodaysDate;
 const todaysNameSpan = document.getElementById("todaysName"); // variable for todays name
 const searchResult = document.getElementById("searchResult");
 
-App.getName(todaysDate)
+App.fetchNameByDate(todaysDate)
     .then((todaysName) => {
         todaysNameSpan.textContent = todaysName[0].name
     })
