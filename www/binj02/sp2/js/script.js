@@ -30,25 +30,25 @@ addColorEventListener();
 
 // Velikost a okraje
 
-const velikostSlider = document.querySelector('#velikost');
-const velikostValue = document.querySelector('#velikost-value');
+const sizeSlider = document.querySelector('#size');
+const sizeValue = document.querySelector('#size-value');
 
-const okrajeSlider = document.querySelector('#okraje');
-const okrajeValue = document.querySelector('#okraje-value');
+const marginSlider = document.querySelector('#margin');
+const marginValue = document.querySelector('#margin-value');
 
-const updateVelikost = e => {
+const updateSize = e => {
     const value = e.target.value;
-    velikostValue.innerText = `${value} x ${value}`;
+    sizeValue.innerText = `${value} x ${value}`;
 };
 
-const updateOkraje = e => {
+const updateMargin = e => {
     const value = e.target.value;
-    okrajeValue.innerText = `${value} px`;
+    marginValue.innerText = `${value} px`;
 };
 
 const addSliderEventListeners = () => {
-    velikostSlider.addEventListener('change', updateVelikost);
-    okrajeSlider.addEventListener('change', updateOkraje);
+    sizeSlider.addEventListener('change', updateSize);
+    marginSlider.addEventListener('change', updateMargin);
 };
 
 addSliderEventListeners();
@@ -96,7 +96,7 @@ const displayQrCode = imgUrl => {
 //ziskani qr
 const getQrCode = parameters => {
     const urlParameters = new URLSearchParams(parameters).toString();
-    const url = 'http://api.qrserver.com/v1/create-qr-code/';
+    const url = 'https://api.qrserver.com/v1/create-qr-code/';
 
     const fullUrl = `${url}?${urlParameters}`
 
@@ -118,8 +118,8 @@ const onSubmit = () => {
 
     const color = mainColor.value;
     const bgcolor = backgroundColor.value;
-    const size = velikostSlider.value;
-    const qzone = okrajeSlider.value;
+    const size = sizeSlider.value;
+    const qzone = marginSlider.value;
 
     const parameters = prepareParameters({ data, color, bgcolor, size, qzone });
 
