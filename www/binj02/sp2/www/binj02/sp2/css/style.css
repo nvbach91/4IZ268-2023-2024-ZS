@@ -1,0 +1,198 @@
+body {
+    background-color: rgb(243, 242, 242);
+    padding: 0 2rem;
+    font-family: "Work Sans";
+    font-weight: 400;
+}
+
+h1 {
+    text-align: center;
+    border-bottom: 2px solid rgb(29, 29, 29);
+    padding: 0 2rem 1rem 0;
+    font-family: "Josefin Sans";
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: white;
+    border-radius: 0.5rem;
+    min-width: 350px;
+    width: 50%;
+    max-width: 500px;
+    min-height: 620px;
+    padding: 0 2rem;
+    margin-top: 6rem;
+
+    transition: all 1s ease;
+    position: absolute;
+    top: 0;
+    backface-visibility: hidden;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+}
+
+.container-front.flipped {
+    transform: rotateY(-180deg);
+}
+
+.container-back {
+    transform: rotateY(180deg);
+}
+
+.container-back.flipped {
+    transform: rotateY(0);
+}
+
+.container header {
+    text-align: center;
+}
+
+.container header h2 {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.container header h3 {
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: rgb(150, 150, 150);
+    margin: 0 auto;
+}
+
+.label-text {
+    font-size: 1rem;
+    color: rgb(150, 150, 150);
+    margin: 0.5rem 0;
+}
+
+.nastaveni {
+    margin: 2rem 0 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Neselectnuté pole */
+input[type="text"] {
+    border: 1px solid rgb(24, 24, 24);
+    padding: 0.5rem 0.3rem;
+    line-height: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 4px;
+    font-family: "Work Sans";
+}
+
+/* Selectnuté pole */
+input[type="text"]:focus {
+    outline: none;
+    border: 2px solid #2978f9;
+    border-radius: 2px;
+}
+
+.barvy {
+    display: flex;
+    justify-content: space-around;
+}
+
+.barvy .nastaveni {
+    align-items: center;
+    text-align: center;
+}
+
+/* Neselectnuté pole */
+input[type="color"] {
+    background: none;
+    border: 1px solid black;
+    height: 50px;
+    width: 50px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+/* Selectnuté pole */
+input[type="color"]:focus {
+    outline: none;
+    border: 2px solid #2978f9;
+    border-radius: 4px;
+}
+
+/* slider */
+input[type="range"] {
+    width: 100%;
+    height: 5px;
+    border-radius: 4px;
+    background: #cfcece;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.cta {
+    display: flex;
+}
+
+button {
+    background-color: #2978f9;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+    border-radius: 4px;
+    margin: 1rem auto 1.5rem;
+    border: 2px solid #2978f9;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+button:hover {
+    transition: all 0.15s ease-in-out;
+    transform: translateY(-5px);
+}
+
+button:active {
+    background-color: #dea764;
+    transition: all 0.15s ease-in-out;
+    border: 2px solid #dea764;
+}
+
+button:focus {
+    outline: none;
+    border: 2px solid #dea764;
+}
+
+button:disabled {
+    outline: none;
+    transition: none;
+    transform: none;
+    cursor: not-allowed;
+}
+
+input.error {
+    border: 2px solid #de8064;
+}
+
+.info {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.qr {
+    display: block;
+    margin: 0 auto;
+}
+
+footer {
+    margin-top: 45rem;
+    text-align: center;
+}
+
+li {
+    list-style-type: none;
+}
