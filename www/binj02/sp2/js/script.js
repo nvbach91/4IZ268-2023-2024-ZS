@@ -1,9 +1,7 @@
-console.log('QR gen js loaded')
+console.log('js loaded')
 
 // Text
 const dataInput = document.querySelector('#data');
-
-
 
 // Barvy
 const mainColor = document.querySelector('#barva');
@@ -95,6 +93,7 @@ const displayQrCode = imgUrl => {
     qrCodeImage.setAttribute('src', imgUrl);
 }
 
+//ziskani qr
 const getQrCode = parameters => {
     const urlParameters = new URLSearchParams(parameters).toString();
     const url = 'http://api.qrserver.com/v1/create-qr-code/';

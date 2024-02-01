@@ -5,64 +5,63 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>QR Code Generátor</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="./css/style.css" rel="stylesheet">
-    <!-- Přidat favicon -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Work+Sans:wght@200;400&display=swap" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./css/style.css" rel="stylesheet" />
+    <link href="./favicon/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Work+Sans:wght@200;400&display=swap"
+        rel="stylesheet" />
 </head>
 
 <body>
-    <h1> QR generátor</h1>
-    <h2><a href="./scanner/scanner.html"> QR skener</a></h2>
+    <h1>QR generátor</h1>
     <main>
         <section class="container container-front" id="qr-nastaveni">
             <header>
-                <h3>Generování QR kódu</h3>
-                <h4>Nastav si jak má QR kód vypadat</h4>
+                <h2>Generování QR kódu</h2>
+                <h3>Nastav si jak má QR kód vypadat</h3>
             </header>
 
             <div>
                 <div class="nastaveni">
                     <label for="data"> Text/URL </label>
-                    <span class="label-text"> Vložte text nebo URL na které bude QR kód odkazovat</span>
-                    <input type="text" name="data" min="0" max="900" required id="data">
+                    <span class="label-text">
+                        Vložte text nebo URL na které bude QR kód odkazovat</span>
+                    <input type="text" name="data" min="0" max="900" required id="data" />
                 </div>
 
                 <div class="barvy">
                     <div class="nastaveni">
                         <label for="barva"> Hlavní barva </label>
-                        <input type="color" value="#000000" id="barva">
-                        <span class="label-text" id="barva-value">#000000</span> 
+                        <input type="color" value="#000000" id="barva" />
+                        <span class="label-text" id="barva-value">#000000</span>
                     </div>
 
                     <div class="nastaveni">
                         <label for="bg-barva"> Barva pozadí </label>
-                        <input type="color" value="#FFFFFF" id="bg-barva">
-                        <span class="label-text" id="bg-barva-value">#FFFFFF</span> 
+                        <input type="color" value="#FFFFFF" id="bg-barva" />
+                        <span class="label-text" id="bg-barva-value">#FFFFFF</span>
                     </div>
                 </div>
 
                 <div class="nastaveni">
                     <label for="Velikost">Velikost</label>
                     <span class="label-text" id="velikost-value">200 x 200</span>
-                    <input type="range" name="velikost" min="100" max="500" value="200" step="100" id="velikost">
+                    <input type="range" name="velikost" min="100" max="500" value="200" step="100" id="velikost" />
                 </div>
 
                 <div class="nastaveni">
                     <label for="Okraje">Okraje</label>
                     <span class="label-text" id="okraje-value">1px</span>
-                    <input type="range" name="okraje" min="0" max="20" value="1" step="1" id="okraje">
+                    <input type="range" name="okraje" min="0" max="20" value="1" step="1" id="okraje" />
                 </div>
 
                 <div class="cta">
-                    <button type="submit" id="cta" disabled> Generovat QR kód</button>
+                    <button type="submit" id="cta" disabled>Generovat QR kód</button>
                 </div>
-
             </div>
-
         </section>
 
         <section class="container container-back" id="qr-ukazat">
@@ -71,21 +70,19 @@
             </header>
 
             <div class="nasteveni">
-                <img src="" alt="qr-kod" id="qr-kod-image">
+                <img src="" alt="qr-kod" id="qr-kod-image" class="qr" />
             </div>
-            
+
             <div class="info">
-                <p>Klini pravým na obrazek a zvol <b>"Uložit obrázek jako..."</b> ke stáhnutí obrázku
+                <p>
+                    Klikni pravým na obrázek a zvol <b>"Uložit obrázek jako..."</b> ke
+                    stáhnutí obrázku
                 </p>
 
-                <p>Změnit QR kód</p>
-
                 <div class="cta">
-                    <button id="edit" type="submit">
-                        Go back</button>
+                    <button id="edit" type="submit">Zpět</button>
                 </div>
             </div>
-
         </section>
     </main>
 

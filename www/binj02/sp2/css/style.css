@@ -1,29 +1,15 @@
 body {
     background-color: rgb(243, 242, 242);
     padding: 0 2rem;
-    font-family: 'Work Sans';
+    font-family: "Work Sans";
     font-weight: 400;
 }
 
 h1 {
+    text-align: center;
     border-bottom: 2px solid rgb(29, 29, 29);
-    display: inline-block;
     padding: 0 2rem 1rem 0;
-    font-family: 'Josefin Sans';
-}
-
-h2 {
-    display: inline-block;
-    padding: 0 2rem 1rem 0;
-    font-family: 'Josefin Sans';
-    color: #b6b4b4;
-    font-size: 1.2rem;
-}
-
-a {
-    cursor: pointer;
-    text-decoration: none;
-    color: #b6b4b4;
+    font-family: "Josefin Sans";
 }
 
 main {
@@ -40,8 +26,7 @@ main {
     max-width: 500px;
     min-height: 620px;
     padding: 0 2rem;
-    margin-top: 5rem;
-  
+    margin-top: 6rem;
 
     transition: all 1s ease;
     position: absolute;
@@ -67,19 +52,18 @@ main {
     text-align: center;
 }
 
-.container header h3 {
+.container header h2 {
     margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-weight: bold;
     font-size: 1.5rem;
 }
 
-.container header h4 {
+.container header h3 {
     font-weight: 500;
     font-size: 1.2rem;
     color: rgb(150, 150, 150);
     margin: 0 auto;
 }
-
 
 .label-text {
     font-size: 1rem;
@@ -94,18 +78,18 @@ main {
 }
 
 /* Neselectnuté pole */
-input[type='text'] {
+input[type="text"] {
     border: 1px solid rgb(24, 24, 24);
     padding: 0.5rem 0.3rem;
     line-height: 1rem;
     font-size: 1rem;
     font-weight: 400;
     border-radius: 4px;
-    font-family: 'Work Sans';
+    font-family: "Work Sans";
 }
 
 /* Selectnuté pole */
-input[type='text']:focus {
+input[type="text"]:focus {
     outline: none;
     border: 2px solid #2978f9;
     border-radius: 2px;
@@ -143,7 +127,7 @@ input[type="range"] {
     width: 100%;
     height: 5px;
     border-radius: 4px;
-    background: #cfcece ;
+    background: #cfcece;
     outline: none;
     padding: 0;
     margin: 0;
@@ -158,7 +142,7 @@ button {
     background-color: #2978f9;
     padding: 0.5rem 1.2rem;
     font-size: 1rem;
-    font-family: 'Work Sans', sans-serif;
+    font-family: "Work Sans", sans-serif;
     font-weight: 500;
     border-radius: 4px;
     margin: 1rem auto 1.5rem;
@@ -199,15 +183,14 @@ input.error {
     margin: 0 auto;
 }
 
-.nastaveni img {
-    max-width: 200px;
-    width: 90%;
+.qr {
+    display: block;
     margin: 0 auto;
 }
 
 footer {
-    margin: 2rem 0;
-    align-items: flex-end;
+    margin-top: 45rem;
+    text-align: center;
 }
 
 li {
