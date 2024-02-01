@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Google maps but worse</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/jpg" sizes="180x180" href="./img/favicon.png">
 
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6gs3pBHes5nvkDg32CqUtxfOHBfi8gWw&libraries=places&callback=initMap"
@@ -13,8 +14,8 @@
 </head>
 
 <body>
-    <div id="app">
-        <div class="search-wrapper">
+    <main id="app">
+        <aside class="search-wrapper">
             <div class="place-search">
                 <label for="p-search">Search for place</label>
                 <input type="text" class="p-search" id="p-search">
@@ -43,9 +44,9 @@
                 <button id="route-button" class="route-button">Clear route</button>
                 <button id="waypoint-button" class="waypoint-button">Add waypoint</button>
             </div>
-        </div>
+        </aside>
         <div class="map" id="map"></div>
-    </div>
+    </main>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

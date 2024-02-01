@@ -133,7 +133,7 @@ async function initMap() {
   const route = () => {
     if (!originPlace || !finalPlace) {
       window.swal('Fill in the place you want to find.');
-      return $('#final')[0].value = '';
+      return destinationInput.value = '';
     };
     showLoading();
     directionsService.route(
