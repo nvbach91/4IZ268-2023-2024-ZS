@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Forecast</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- přidana složka css -->
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
@@ -13,9 +15,12 @@
 
 <body>
     <div class="card">
-        <div class="search">
+        <!-- upraveno na form -->
+        <form class="search">
             <input type="text" class="search-bar" placeholder="Enter Your City" spellcheck="false">
-            <button> <img src="src/search.png" alt="search-btn"></button>
+            <button type="submit"> <img src="src/search.png" alt="search-btn"></button>
+        </form>
+        <div class="unit-buttons">
         </div>
         <div class="error">
             <p>This city name doesn't exist</p>
@@ -23,27 +28,30 @@
         <div class="weather visit">
             <div class="col">
                 <h3>Weather in</h3>
-                <h2 class="city">Prague</h2>
-                <h1 class="temp">7°C</h1>
+                <button class="favorite-icon"> <img src="src/star.png"> </button>
+                <h2 class="city"></h2>
+                <h1 class="temp"></h1>
                 <div class="details">
                     <div class="row">
                         <img src="src/mist icon.png" class="weather-icon" alt="weather-icon">
-                        <p class="description">Mist</p>
+                        <p class="description"></p>
                     </div>
                     <div class="row">
-                        <p class="humidity">Humidity: 50%</p>
+                        <p class="humidity"></p>
                     </div>
                     <div class="row">
-                        <p class="wind">Wind Speed: 10 km/h</p>
+                        <p class="wind"></p>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <img src="src/mist.png" class="weather-picture" alt="weather-picture">
+                <img class="weather-picture" alt="weather-picture">
             </div>
         </div>
+        <div class="favorites-list"></div>
     </div>
-    <script src="main.js" defer></script>
+    <!-- přidana složka js -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
