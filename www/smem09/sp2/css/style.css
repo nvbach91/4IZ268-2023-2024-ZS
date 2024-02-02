@@ -35,6 +35,11 @@ body {
     min-width: 15%;
 }
 
+.details-btn {
+    width: 60%;
+    margin-bottom: 5px;
+}
+
 .autocomplete-css {
     width: auto;
 }
@@ -46,7 +51,7 @@ body {
     padding-right: 8px;
 }
 
-.img-fluid,
+
 .favourite-container {
     min-height: 100%;
 }

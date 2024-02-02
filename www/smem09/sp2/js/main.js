@@ -14,7 +14,7 @@ const hideLoading = () => {
 
 const header = $('<h1>').addClass('page-header').text('Drinkopedia')
 
-const searchGroup = $('<div>').addClass('input-group mb-3');
+const searchGroup = $('<form>').addClass('input-group mb-3');
 const searchInput = $('<input>')
     .attr('type', 'text')
     .attr('id', 'searchInput')
@@ -77,9 +77,12 @@ searchTypes.forEach(type => {
     searchTypeSelect.append($('<option>', { value: type, text: type }));
 });
 
-searchButton.on('click', function () {
+searchGroup.on('submit', (e) => {
+    e.preventDefault();
     const searchTerm = searchInput.val().trim();
     const searchType = searchTypeSelect.val();
+
+    searchInput.val('');
 
     if (searchTerm !== '') {
         if (searchType === 'Name') {
@@ -94,53 +97,41 @@ function searchForDrinkByName(searchTerm) {
     showLoading();
     $.ajax({
         url: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`,
-        method: 'GET',
-        success: function (data) {
+        method: 'GET'
+    }).always(hideLoading)
+        .done(function (data) {
             if (data.drinks) {
-                hideLoading();
                 const drink = data.drinks[0];
                 displayDrinkDetails(drink);
             } else {
-                hideLoading();
                 displayErrorMessage('Drink not found!');
             }
-        },
-        error: function (error) {
-            hideLoading();
+        }).fail(function (error) {
             console.error('Error searching for drink: ', error);
             displayErrorMessage('An error occurred while searching for the drink.');
-        }
-    });
+        });
 }
 
 function searchForDrinksByIngredient(searchTerm) {
     showLoading();
     $.ajax({
         url: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchTerm}`,
-        method: 'GET',
-        success: function (data) {
+        method: 'GET'
+    }).always(hideLoading)
+        .done(function (data) {
             if (data.drinks) {
-                hideLoading();
-                displayDrinkList(data.drinks, searchTerm);
+                displayDrinkList(data.drinks);
             } else {
-                hideLoading();
                 displayErrorMessage('No drinks found with the specified ingredient!');
             }
-        },
-        error: function (error) {
-            hideLoading();
+        }).fail(function (error) {
             console.error('Error searching for drinks by ingredient: ', error);
             displayErrorMessage('An error occurred while searching for drinks by ingredient.');
-        }
-    });
+        });
 }
 
-function displayDrinkList(drinks, searchTerm) {
-    colSm8FirstRow.empty();
-    colSm6Img.empty();
-    recipeContainer.remove();
-
-    const favoritesTitle = $('<h2>').text(`Drinks with ${searchTerm}`);
+function displayDrinkList(drinks) {
+    const title = $('<h2>').text(`List of Drinks`);
 
     const drinksList = $('<ul>').addClass('drinks-list');;
 
@@ -154,21 +145,40 @@ function displayDrinkList(drinks, searchTerm) {
         drinksList.append(drinkItem);
     });
 
-    colSm6Img.append(favoritesTitle, drinksList);
+    colSm8FirstRow.empty();
+    colSm6Img.empty();
+    recipeContainer.remove();
+
+    colSm6Img.append(title, drinksList);
     colSm8FirstRow.append(colSm6Img);
 }
 
-function displayDrinkDetails(drink) {
+function loadSameCategoryDrinks(drinkCategory) {
+    showLoading();
+    $.ajax({
+        url: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`,
+        method: 'GET'
+    }).always(hideLoading)
+        .done(function (data) {
+            if (data.drinks) {
+                displayDrinkList(data.drinks);
+            } else {
+                displayErrorMessage('No drinks found with the specified ingredient!');
+            }
+        }).fail(function (error) {
+            console.error('Error searching for drinks by ingredient: ', error);
+            displayErrorMessage('An error occurred while searching for drinks by ingredient.');
+        });
+}
 
-    colSm8FirstRow.empty();
-    colSm6Img.empty();
-    colSm6Details.empty();
-    recipeContainer.empty();
+function displayDrinkDetails(drink) {
 
     const drinkName = $('<h3>').text(drink.strDrink);
     const drinkImage = $('<img>').attr('src', drink.strDrinkThumb).attr('alt', drink.strDrink).addClass('img-fluid');
     const drinkInstructions = $('<p>').text(drink.strInstructions);
     const drinkGlass = $('<p>').text(`Glass: ${drink.strGlass || 'N/A'}`);
+    const drinkTags = $('<p>').text(`Tags: ${drink.strTags || 'N/A'}`);
+    const drinkCategory = $('<p>').text(`Category: ${drink.strCategory || 'N/A'}`);
 
     const ingredientsTitle = $('<h4>').text('Ingredients');
     const ingredientsList = $('<ul>');
@@ -182,13 +192,23 @@ function displayDrinkDetails(drink) {
         }
     }
 
-    const addToFavoritesButton = $('<button>').text('Add to Favorites').addClass('btn btn-primary');
+    const addToFavoritesButton = $('<button>').text('Add to Favorites').addClass('btn btn-primary details-btn');
     addToFavoritesButton.on('click', function () {
         addToFavorites(drink);
     });
 
+    const showSameCategoryDrinksButton = $('<button>').text('Same category drinks').addClass('btn btn-primary details-btn');
+    showSameCategoryDrinksButton.on('click', function () {
+        loadSameCategoryDrinks(drink.strCategory);
+    });
+
+    colSm8FirstRow.empty();
+    colSm6Img.empty();
+    colSm6Details.empty();
+    recipeContainer.empty();
+
     colSm6Img.append(drinkImage);
-    colSm6Details.append(drinkName, drinkGlass, ingredientsTitle, ingredientsList, addToFavoritesButton);
+    colSm6Details.append(drinkName, drinkGlass, drinkTags, drinkCategory, ingredientsTitle, ingredientsList, addToFavoritesButton, showSameCategoryDrinksButton);
     colSm8FirstRow.append(colSm6Img, colSm6Details);
 
     const instructions = $('<h4>').text('Instructions');
@@ -216,7 +236,7 @@ function isFavorite(drinkId) {
 }
 
 function updateFavoritesList() {
-    favoritesContainer.empty();
+
     const favoritesTitle = $('<h2>').text('Favorite Drinks');
 
     if (favorites.length > 0) {
@@ -225,10 +245,16 @@ function updateFavoritesList() {
         favorites.forEach(function (favorite) {
             const favoriteItem = $('<li>').text(favorite.name);
 
-            const removeFromFavoritesButton = $('<button>').text('Remove').addClass('btn btn-primary remove-button');
+            const removeFromFavoritesButton = $('<button>')
+                .text('Remove')
+                .addClass('btn btn-primary remove-button')
+                .data('drink-name', favorite.name);
+
             removeFromFavoritesButton.on('click', function (event) {
                 event.stopPropagation();
-                removeFromFavorites(favorite.idDrink);
+
+                const favoriteItemName = $(this).data('drink-name');
+                removeFromFavorites(favoriteItemName);
             });
 
             favoriteItem.append(removeFromFavoritesButton);
@@ -267,14 +293,16 @@ function updateFavoritesList() {
             });
             favoritesList.append(favoriteItem);
         });
+        favoritesContainer.empty();
         favoritesContainer.append(favoritesTitle, favoritesList);
     } else {
+        favoritesContainer.empty();
         favoritesContainer.append(favoritesTitle);
     }
 }
 
-function removeFromFavorites(drinkId) {
-    favorites = favorites.filter(favorite => favorite.id !== drinkId);
+function removeFromFavorites(drinkName) {
+    favorites = favorites.filter(favorite => favorite.name !== drinkName);
     updateFavoritesList();
     saveFavoritesToLocalStorage();
 }
@@ -287,8 +315,8 @@ function displayErrorMessage(message) {
     }, 2000);
 }
 
-searchInput.val('mojito');
-searchButton.click();
+searchInput.val('margarita');
+searchGroup.submit();
 updateFavoritesList();
 
 const pageFooter = $('<div>').addClass('page-footer container')
