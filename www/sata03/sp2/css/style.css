@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Questrial', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3C3C3C;
+}
+
+.card {
+    width: 90%;
+    max-width: 620px;
+    border-radius: 38px;
+    background: linear-gradient(352deg, #623AFA, #D548EC);
+    color: #fff;
+    margin: 100px auto 0;
+    padding: 40px 35px;
+}
+
+.weather {
+    margin: 20px 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col {
+    width: 50%;
+}
+
+.temp {
+    font-size: 64px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 18px;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search input {
+    border: 0;
+    outline: 0;
+    color: #fff;
+    background: #C263ED;
+    padding: 10px 25px;
+    height: 60px;
+    border-radius: 34px;
+    flex: 1;
+    margin-right: 16px;
+    font-size: 18px;
+}
+
+::placeholder {
+    color: #fff;
+    opacity: 1;
+  }
+
+.search button {
+    border: 0;
+    outline: 0;
+    background: #C263ED;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.search button img {
+    width: 22px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.weather.visit {
+    visibility: hidden;
+    max-height: 5px;
+    position: relative;
+}
+
+.weather.visit:after {
+    visibility: visible;
+    position: absolute;
+}
+
+.weather-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.weather-picture {
+    width: 200px;
+    height: 200px;
+}
+
+.details {
+    text-transform: capitalize;
+}
+
+.description {
+    padding-left: 5px;
+}
+
+.error {
+    text-align: left;
+    font-size: 14px;
+    margin: 10px;
+    font-weight: bold;
+    display: none;
+}
+
+.favorite-icon {
+    height: 30px;
+    width: 30px;
+    border: 0;
+    outline: 0;
+    background: #C263ED;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.favorite-icon img {
+    height: 25px;
+    width: 25px;
+}
