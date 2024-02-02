@@ -5,15 +5,56 @@ document.addEventListener('DOMContentLoaded', getWeather);
 const apiKey = '5267dd9a85d394226df9c47fe6ff176a';
 
 const refreshButton = document.getElementById('refreshButton');
-    refreshButton.addEventListener('click', function () {
-        NProgress.start(); // Show loading spinner
-        fetchWeatherByBrowserLocation();
-    });
+refreshButton.addEventListener('click', function () {
+    NProgress.start(); // Show loading spinner
+    fetchWeatherByBrowserLocation();
+});
 
 // DOM elements
 const overlay = document.getElementById('overlay');
 const locationForm = document.getElementById('locationForm');
 const locationInput = document.getElementById('locationInput');
+// DOM elements for weather information
+const locationElement = document.getElementById('location');
+const temperatureElement = document.getElementById('temperature');
+const descriptionElement = document.getElementById('description');
+const humidityElement = document.getElementById('humidity');
+const precipitationElement = document.getElementById('precipitation');
+const pressureElement = document.getElementById('pressure');
+const windElement = document.getElementById('wind');
+const weatherIconElement = document.getElementById('currentWeatherIcon');
+const weatherIconsContainer = document.getElementById('weatherIconsContainer');
+
+//Default unit
+let temperatureUnit = 'metric';
+let weatherUnit = '°C';
+
+// Function to change the weather unit
+function changeWeatherUnit() {
+    if (temperatureUnit === 'metric') {
+        weatherUnit = '°C';
+    }
+    if (temperatureUnit === 'imperial') {
+        weatherUnit = '°F';
+    }
+    if (temperatureUnit === 'standard') {
+        weatherUnit = '°K';
+    }
+}
+
+// Temperature Unit Switcher
+const temperatureSwitcher = document.getElementById('temperatureSwitcher');
+temperatureSwitcher.addEventListener('change', function (event) {
+    temperatureUnit = event.target.value;
+    changeWeatherUnit(); // Change the weather unit
+
+    // Fetch weather based on the entered location
+    if (locationInput.value.trim() !== '') {
+        fetchWeatherByLocation(locationInput.value.trim());
+    } else {
+        fetchWeatherByBrowserLocation();
+    }
+});
 
 // Function to initiate the weather application
 function getWeather() {
@@ -28,7 +69,7 @@ function getWeather() {
 }
 
 // Event listener for form submission
-locationForm.addEventListener('submit', function(event) {
+locationForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const enteredLocation = locationInput.value.trim();
 
@@ -59,7 +100,7 @@ function handleFormSubmit(event) {
 
 // Function to fetch weather data by location
 function fetchWeatherByLocation(location) {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&appid=${apiKey}`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&units=${temperatureUnit}&appid=${apiKey}`;
     NProgress.start(); // Show loading spinner
     fetchWeather(apiUrl);
 }
@@ -93,7 +134,7 @@ function getCurrentLocationUrl() {
             navigator.geolocation.getCurrentPosition(
                 position => {
                     const { latitude, longitude } = position.coords;
-                    const apiUrlLatLon = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+                    const apiUrlLatLon = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${temperatureUnit}&appid=${apiKey}`;
                     resolve(apiUrlLatLon);
                 },
                 error => {
@@ -104,9 +145,9 @@ function getCurrentLocationUrl() {
         } else {
         }
     })
-    .finally(() => {
-        overlay.style.display = 'none'; // Hide overlay
-    });
+        .finally(() => {
+            overlay.style.display = 'none'; // Hide overlay
+        });
 }
 
 // Function to fetch weather data from the provided API URL
@@ -138,19 +179,10 @@ function fetchWeather(apiUrl) {
 
 // Function to display weather information on the UI
 function displayWeather(data) {
-    // DOM elements for weather information
-    const locationElement = document.getElementById('location');
-    const temperatureElement = document.getElementById('temperature');
-    const descriptionElement = document.getElementById('description');
-    const humidityElement = document.getElementById('humidity');
-    const precipitationElement = document.getElementById('precipitation');
-    const pressureElement = document.getElementById('pressure');
-    const windElement = document.getElementById('wind');
-    const weatherIconElement = document.getElementById('currentWeatherIcon');
 
     // Extracted data from the API response
     const location = data.name + ', ' + data.sys.country;
-    const temperature = (data.main.temp - 273.15).toFixed(2) + '°C';
+    const temperature = Math.round(data.main.temp) + ' ' + weatherUnit;
     const description = data.weather[0].description;
     const humidity = data.main.humidity + '%';
     let precipitation = '0 mm'; // Assume no precipitation initially
@@ -196,7 +228,7 @@ function displayForecastChart(data) {
     }
 
     // Extract temperature and timestamp data for the chart
-    const temperatures = data.list.map(item => (item.main.temp - 273.15).toFixed(2));
+    const temperatures = data.list.map(item => Math.round(item.main.temp));
     const timestamps = data.list.map(item => item.dt * 1000); // Timestamps in milliseconds
 
     // Format timestamps as dates and times
@@ -211,7 +243,7 @@ function displayForecastChart(data) {
         data: {
             labels: datesAndTimes,
             datasets: [{
-                label: 'Temperature (°C)',
+                label: 'Temperature' + weatherUnit,
                 data: temperatures,
                 fill: true,
                 borderColor: 'rgba(33, 150, 243, 1)',
@@ -267,7 +299,7 @@ function displayForecastChart(data) {
 
 // Function to fetch 5-day forecast data by location
 function fetch5DayForecastByLocation(location) {
-    const apiUrlPrediction = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(location)}&cnt=40&appid=${apiKey}`;
+    const apiUrlPrediction = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(location)}&units=${temperatureUnit}&cnt=40&appid=${apiKey}`;
 
     // Fetch 5-day forecast data
     fetch(apiUrlPrediction)
@@ -295,7 +327,6 @@ function fetch5DayForecastByLocation(location) {
 
 // Function to display weather icons for the 5-day forecast
 function displayWeatherIcons(data) {
-    const weatherIconsContainer = document.getElementById('weatherIconsContainer');
     weatherIconsContainer.innerHTML = ''; // Clear previous content
 
     // Group forecast data by day
@@ -314,9 +345,9 @@ function displayWeatherIcons(data) {
         const iconClass = getWeatherIconClassFromId(weatherId);
         const date = new Date(item[0].dt * 1000);
         const dayOfWeek = getDayOfWeek(date.getDay());
-        const maxTemperature = Math.max(...item.map(i => i.main.temp_max - 273.15)).toFixed(2);
-        const minTemperature = Math.min(...item.map(i => i.main.temp_min - 273.15)).toFixed(2);
-        const averageTemperature = ((parseFloat(maxTemperature) + parseFloat(minTemperature)) / 2).toFixed(2);
+        const maxTemperature = Math.max(...item.map(i => Math.round(i.main.temp_max)));
+        const minTemperature = Math.min(...item.map(i => Math.round(i.main.temp_min)));
+        const averageTemperature = Math.round((parseFloat(maxTemperature) + parseFloat(minTemperature)) / 2);
 
         return `
             <div class="weather-icon-container">
@@ -325,11 +356,11 @@ function displayWeatherIcons(data) {
                     <div class="date">${date.toLocaleDateString()}</div>
                     <div class="day">${dayOfWeek}</div>
                     <div class="temperature">
-                        <span class="temperature-max">${maxTemperature}°C</span>
+                        <span class="temperature-max">${maxTemperature} ${weatherUnit}</span>
                         <span class="temperature-separator"> / </span>
-                        <span class="temperature-min">${minTemperature}°C</span>
+                        <span class="temperature-min">${minTemperature} ${weatherUnit}</span>
                     </div>
-                    <div class="temperature-average">Průměr: ${averageTemperature}°C</div>
+                    <div class="temperature-average">Average: ${averageTemperature} ${weatherUnit}</div>
                 </div>
             </div>
         `;
