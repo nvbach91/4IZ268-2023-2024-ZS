@@ -19,6 +19,7 @@ async function initMap() {
   const infoWindowRoute = new google.maps.InfoWindow();
   const directionsService = new google.maps.DirectionsService();
   const directionsRenderer = new google.maps.DirectionsRenderer();
+  const geocoder = new google.maps.Geocoder();
   let travelMode = google.maps.TravelMode.DRIVING;
 
   //Local variables
@@ -29,7 +30,9 @@ async function initMap() {
   let finalPlace = '';
   const waypointPlace = [];
   const routeSearch = $('#route-search');
+  const routeList = $('#route-list');
   let finalBoolean = false;
+  let routeOptions = []
 
   //Loading animation
   const spinner = $(`<div class="center">
@@ -117,15 +120,85 @@ async function initMap() {
     hideLoading();
   }
 
+  const codeAddress = (placeLatLng) => {
+    geocoder.geocode({'location': placeLatLng}, (results, status) => {
+      if (status === 'OK') {
+        originInput.value = results[0].formatted_address;
+        originPlace = results[0].place_id;
+        console.log(results[0].address_components[3].short_name);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    })
+  }
+
+  const saveRoute = async() => {
+    routeOptions = [originPlace, finalPlace,];
+    if (waypointPlace[0]) {
+      routeOptions.push(waypointPlace[0].location.placeId)
+    }
+    const routeOptionsName = [];
+    for (let i = 0; i < routeOptions.length; i++) {
+      const response = await geocoder.geocode({'placeId': routeOptions[i]})
+        if (response) {
+          routeOptionsName.push(response.results[0].formatted_address);
+          
+          localStorage.setItem('routeNames', JSON.stringify(routeOptionsName));
+          localStorage.setItem('route', JSON.stringify(routeOptions));
+        } else {
+          alert('Geocode was not successful for the following reason: ');
+        }
+    }
+
+    //routeOptions.push(travelMode);
+    console.log(routeOptionsName);
+    console.log(routeOptions);
+    createList();
+  }
+
+  const clickOnList = () => {
+    routeOptions.push(travelMode);
+    localStorage.setItem('route', JSON.stringify(routeOptions));
+    originPlace = JSON.parse(localStorage.getItem('route'))[0];
+    finalPlace = JSON.parse(localStorage.getItem('route'))[1];
+    if (JSON.parse(localStorage.getItem('route')).length === 4) {
+      travelMode = JSON.parse(localStorage.getItem('route'))[3]
+      waypointPlace.push({
+        location: { placeId: JSON.parse(localStorage.getItem('route'))[2] },
+        stopover: true,
+      });
+    } else {
+      travelMode = JSON.parse(localStorage.getItem('route'))[2]
+    }
+    route();
+
+  }
+
+  const createList = () => {
+    const listElement = $(`<li id="saved-route">
+    <div id="saved-route1">Origin: ${JSON.parse(localStorage.getItem('routeNames'))[0]}</div>
+    <div>Destination: ${JSON.parse(localStorage.getItem('routeNames'))[1]}</div>
+    </li>`).on('click', () => {
+      clickOnList();
+      console.log('das')
+    })
+    routeList.append(listElement);
+  }
+
   const geolocation = () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         const placeLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
         setMarker(placeLatLng);
         infoWindowPlace.close();
+        codeAddress(placeLatLng);
+      }, (error) => {
+        if (error.code == error.PERMISSION_DENIED) {
+          window.swal('We are not able to locate your position', '', 'error');
+        }
       })
     } else {
-      window.swal('We are not able to locate your position', '', 'error')
+      window.swal('We are not able to locate your position', '', 'error');
     }
   }
 
@@ -249,4 +322,7 @@ async function initMap() {
   $('#place-button').on('click', clearPlace);
   $('#route-button').on('click', clearRoute);
   $('#waypoint-button').on('click', addWaypoint);
+  $('#save-button').on('click', () => {
+    saveRoute();
+  });
 };
