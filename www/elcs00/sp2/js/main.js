@@ -1,6 +1,8 @@
 //API KEY
 const LASTFM_API_KEY = 'cce566cc0c09dd3c1bf3b4e902f8292c';
 
+
+
 //Check the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -14,7 +16,24 @@ document.addEventListener('DOMContentLoaded', function() {
     var searchButton = document.getElementById('searchButton');
 
     // Go to search function after search button is clicked
-    searchButton.addEventListener('click', search);
+    //searchButton.addEventListener('click', search);
+
+
+    //folrmular
+    const form = document.getElementById('formular')
+
+    /*const func = function(event) {
+        event.preventDefault();
+        search();
+    };*/
+
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        search();
+    })
+
+    
 
     // Display library after loading
     displayLibrary();
@@ -37,6 +56,8 @@ function search() {
             url: apiUrl,
             method: 'GET',
             success: function(data) {
+
+                console.log(data)
                 // Check if the response contains artists
                 const artists = data.results?.artistmatches?.artist;
 
@@ -89,6 +110,9 @@ function displayResults(artists) {
     } else {
         artists.forEach(artist => {
 
+            const ifInLibrary = isInLibrary(artist.name);
+            //console.log('IsinLibrary', ifInLibrary);
+
             //Create an artist card
             const artistCard = document.createElement('div');
             artistCard.className = 'artist-card';
@@ -97,29 +121,56 @@ function displayResults(artists) {
             const artistName = document.createElement('h3');
             artistName.textContent = artist.name;
         
-            // Anchor element for the artist URL
+            // Anchor element for the artist URL, open in new Window
+            /*const artistLink = document.createElement('a');
+            artistLink.href = artist.url;
+            artistLink.textContent = 'Navštívit stránku umělce';*/
+
             const artistLink = document.createElement('a');
             artistLink.href = artist.url;
-            artistLink.textContent = 'Visit Artist Page';
+            artistLink.textContent = 'Navštívit stránku umělce';
+            artistLink.target = '_blank';
             
             //Create an image and alt text
             const artistImg = document.createElement('img');
-            artistImg.src = artist.imgUrl;
-            artistImg.alt = artist.name;
 
+            //artistImg.src = artist.imgUrl
+            console.log(artist)
+
+            artistImg.src = artist.imgUrl || 'https://w7.pngwing.com/pngs/166/766/png-transparent-musical-note-song-melody-music-emoji-angle-rectangle-monochrome.png';
+            artistImg.width = 50;
+
+            artistImg.alt = artist.name;
 
             //Create a button
             const saveButton = document.createElement('button');
             saveButton.textContent = 'Uložit';
-            saveButton.addEventListener('click', function() {
-                saveToLibrary(artist.name);
-            });
+
+            //Create a saved indicator
+            const saveInd = document.createElement('h5');
+            saveInd.textContent = 'Umělec je uložen';
+
+            /*saveButton.addEventListener('click', function() {
+                saveToLibrary(artist.name, saveButton, saveInd);
+            });*/
+
+            if (ifInLibrary) {
+                saveButton.style.display = 'none';
+            } else {
+                saveButton.addEventListener('click', function() {
+                    saveToLibrary(artist.name, saveButton, saveInd);
+                });
+            }
         
         
             artistCard.appendChild(artistImg);
             artistCard.appendChild(artistName);
             artistCard.appendChild(artistLink);
             artistCard.appendChild(saveButton);
+            artistCard.appendChild(saveInd);
+            
+
+            saveInd.style.display = 'none';
         
             resultsContainer.appendChild(artistCard);
         });
@@ -128,21 +179,30 @@ function displayResults(artists) {
 }
 
 // Save an artist to the library
-function saveToLibrary(artistName) {
+function saveToLibrary(artistName, saveButton, saveInd) {
 
     const library = getLibrary();
 
+
     // Check if the artist is already in the library
     if (isInLibrary(artistName)) {
-        showMessage('Tento umělěc již je ve knihovně', 'error');
+        
+        saveButton.style.display = 'none';
+        saveInd.style.display = 'block';
+        showMessage('Umělěc byl úspěšně přidán do knihovny', 'success');
+        //showMessage('Tento umělěc již je ve knihovně', 'error');
+
     } else {
         // Artist is not in the library, add it
         library.push(artistName);
         localStorage.setItem('library', JSON.stringify(library));
         //displayLibrary();
-
+        saveButton.style.display = 'none';
+        saveInd.style.display = 'block';
         // Show success message
         showMessage('Umělěc byl úspěšně přidán do knihovny', 'success');
+        
+
     }
 }
 
