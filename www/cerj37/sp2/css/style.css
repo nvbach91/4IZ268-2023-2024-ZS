@@ -8,6 +8,30 @@ body {
     background-size: cover;
 }
 
+#loader {
+    border: 12px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 12px solid #009fbb;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+}
+
+.center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .achievement_ui {
     background-color: rgba(250, 235, 215, 0.4);
     display: inline-block;
@@ -48,22 +72,14 @@ body {
     overflow: scroll;
 }
 
-.main-button {
-    background-color: beige;
-}
-
-.cookie-button {
-    height: 400px;
-
-}
-
-.button_upgrade {
+button {
     background-color: beige;
     color: black;
     border: 2px solid burlywood;
     margin: 5px;
     height: 50px;
     font-size: medium;
+    margin-bottom: 20px;
 }
 
 button:hover {
@@ -76,4 +92,31 @@ button:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+}
+
+#main-button {
+    background-color: beige;
+    height: 400px;
+}
+
+#main-button:hover {
+    background-color: beige;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+#main-button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.cookie-button {
+    height: 400px;
+
+}
+
+#btn {
+    background-color: whitesmoke;
+    height: 22px;
 }

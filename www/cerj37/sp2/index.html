@@ -10,10 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 
 </head>
 
 <body>
+    <div id="loader" class="center"></div>
     <div class="banner">
         <h1 class="title">Honzův Cookie clicker</h1>
     </div>
@@ -32,14 +34,16 @@
             <div id="upgrades"></div>
         </div>
     </div>
-    <form id="form1">
-        <label for="jmeno">Uživatelské jméno:</label><br />
-        <input type="text" id="jmeno" name="jmeno" /><br />
-        <label for="prijmeni">Heslo:</label><br />
-        <input type="password" id="prijmeni" name="prijmeni" /><br />
-
-        <button type="submit">Submit</button> <br />
-    </form>
+    <form id="form1" action="http://localhost:3000/send-email" method="post">
+        <div>Chcete vědět své statistiky?</div>
+        <label for="name">Jméno:</label>
+        <input type="text" id="name" name="name" required autocomplete="off"><br>
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required autocomplete="off"><br>
+    
+        <button id="btn" type="submit">Submit</button>
+      </form>
     <script src="jscript/script.js"></script>
 
 </body>

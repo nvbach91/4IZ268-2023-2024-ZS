@@ -1,71 +1,6 @@
 let clicker = {
     cookie: 0,
-    upgrades: {
-        click_power: {
-            amount: 0,
-            cost: 5,
-            cost_multiplier: 3,
-            gen_p_sec: 1.5,
-            name: "Zlaté ručičky",
-            title: "Jsi více zkušený v pečení sušenek, a proto ti to jde lépe od ruky."
-        },
-        rolling_pins: {
-            amount: 0,
-            cost: 10,
-            cost_multiplier: 0.3,
-            gen_p_sec: 1,
-            name: "Kvalitní válečky",
-            title: "Lepší válečky, které se jen tak neopotřebují."
-        },
-        caffeine: {
-            amount: 0,
-            cost: 100,
-            cost_multiplier: 0.3,
-            gen_p_sec: 5,
-            name: "Dávka kofeinu",
-            title: "Teď můžeš péct sušenky celý den!"
-        },
-        materials: {
-            amount: 0,
-            cost: 250,
-            cost_multiplier: 0.3,
-            gen_p_sec: 25,
-            name: "Donáška surovin",
-            title: "Už nemusíš chodit do obchodů, jen péct... a občas jíst."
-        },
-        grandmas: {
-            amount: 0,
-            cost: 1000,
-            cost_multiplier: 0.3,
-            gen_p_sec: 200,
-            name: "Osamělé babičky",
-            title: "Osamělé babičky z nedalekého domovu důchodců, které ti rády pomůžou s pečením."
-        },
-        pills: {
-            amount: 0,
-            cost: 2500,
-            cost_multiplier: 0.3,
-            gen_p_sec: 450,
-            name: "Podivuhodné pilulky",
-            title: "Zvláštní pilulky, po kterých se cítíš podezřele dobře a plný energie."
-        },
-        ritual: {
-            amount: 0,
-            cost: 6666,
-            cost_multiplier: 0.3,
-            gen_p_sec: 666,
-            name: "Temný rituál",
-            title: "O tvých sušenkách se dozvěděla místní sekta. Vyvolávají pekelný oheň pro tvé pečení."
-        },
-        cosmic_power: {
-            amount: 0,
-            cost: 1000000,
-            cost_multiplier: 0.3,
-            gen_p_sec: 3000,
-            name: "Kosmická síla",
-            title: "Bytosti z celého vesmíru létají do tvé kuchyně a přinášejí ti suroviny z jiných planet."
-        }
-    },
+    upgrades: {},
     achievments: [{ req: "clicker.cookie>0", gotten: false, text: "Upekl si první sušenku!" },
     { req: "clicker.cookie>100", gotten: false, text: "Upekl si sto sušenek!" },
     { req: "clicker.cookie>10000", gotten: false, text: "Upekl si deset tisíc sušenek!" },
@@ -79,42 +14,86 @@ var sfx = {
         src: ["/sounds/Woosh-Mark_DiAngelo-4778593.mp3"]
     })
 }
-const formE1 = document.querySelector("#form1");
-formE1.addEventListener("submit", event => {
-    event.preventDefault();
-    const formData = new FormData(formE1);
-    const data = Object.fromEntries(formData);
-    fetch("https://reqres.in/api/users", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    }).then(res => res.json())
-        .then(data => console.log(data))
-        .catch(error => console.log(error));
-})
+document.onreadystatechange = function () {
+    if (document.readyState !== "complete") {
+        document.querySelector("body").style.visibility = "hidden";
+        document.querySelector("#loader").style.visibility = "visible";
+    } else {
+        document.querySelector("#loader").style.display = "none";
+        document.querySelector("body").style.visibility = "visible";
+    }
+};
+let numAch = 0;
+
+var start = performance.now();
+
+
+var submit = document.getElementById("form1")
+submit.addEventListener("submit", function (e) {
+    var stop = performance.now();
+    e.preventDefault();
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var achievsGotten = numAch;
+    var timer = (stop - start) / 1000;
+    var body = "name " + name + '<br/> email: ' + email + '<br/> Získaných ocenění: ' + achievsGotten + '<br/> Hrál si: ' + timer;
+    console.log(body);
+    Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "cerj37@vse.cz",
+        Password: "D873B2A230CEFF8B84DE84DB0D5108E1C21A",
+        SecureToken: "5115a0bb-6218-4015-8dd8-d816ca97ba95",
+        To: 'cerj37@vse.cz',
+        From: "jcerny03@gmail.com",
+        Subject: "Statistiky:",
+        Body: body
+    }).then(
+        message => alert(message)
+    );
+});
 var delay = 0;
-function item_clicked(item) {
-    if (clicker.upgrades[item].cost <= clicker.cookie) {
-        clicker.cookie -= clicker.upgrades[item].cost;
-        clicker.upgrades[item].amount++;
-        clicker.upgrades[item].cost += Math.round(clicker.upgrades[item].cost * clicker.upgrades[item].cost_multiplier)
+function upgrade_clicked(upgrade_key) {
+    if (clicker.upgrades[upgrade_key].cost <= clicker.cookie) {
+        clicker.cookie -= clicker.upgrades[upgrade_key].cost;
+        clicker.upgrades[upgrade_key].amount++;
+        clicker.upgrades[upgrade_key].cost += Math.round(clicker.upgrades[upgrade_key].cost * clicker.upgrades[upgrade_key].cost_multiplier)
         update_upgrades();
     }
     sfx.click.play();
 }
+//function update_upgrades() {
+//    document.querySelector("#upgrades").innerHTML = "";
+//    for (o in clicker.upgrades) {
+//        document.querySelector("#upgrades").innerHTML += `<br> <button class="button_upgrade" onclick = "item_clicked('${o}')">${clicker.upgrades[o].name}: ${clicker.upgrades[o].title}</button> máš ${clicker.upgrades[o].amount}. Cena: ${clicker.upgrades[o].cost}<br>`;
+//    }
+//}
 function update_upgrades() {
-    document.querySelector("#upgrades").innerHTML = "";
-    for (o in clicker.upgrades) {
-        document.querySelector("#upgrades").innerHTML += `<br> <button class="button_upgrade" onclick = "item_clicked('${o}')">${clicker.upgrades[o].name}: ${clicker.upgrades[o].title}</button> máš ${clicker.upgrades[o].amount}. Cena: ${clicker.upgrades[o].cost}<br>`;
+    const upgradesContainer = document.querySelector("#upgrades");
+    upgradesContainer.innerHTML = "";
+
+    for (const upgrade_key in clicker.upgrades) {
+        console.log(upgrade_key);
+        const upgrade = clicker.upgrades[upgrade_key];
+        const button = document.createElement("button");
+        //button.className = "button_upgrade";
+        button.textContent = `${upgrade.name}: ${upgrade.title} máš ${upgrade.amount}. Cena: ${upgrade.cost}`;
+        button.addEventListener("click", function () {
+            upgrade_clicked(upgrade_key);
+        });
+
+        const br = document.createElement("br");
+
+        upgradesContainer.appendChild(button);
+        upgradesContainer.appendChild(br);
     }
 }
-
 function cookie_clicked() {
     clicker.cookie++
 }
 document.getElementById("main-button").addEventListener("click", cookie_clicked);
+
+const logAchievments = document.querySelector("#achievements");
+
 function update_count() {
     var clicker1;
 
@@ -129,7 +108,6 @@ function update_count() {
         for (i in clicker.achievments) {
             if (clicker1.achievments[i] == null || clicker.achievments[i].text != clicker1.achievments[i].text) {
                 clicker1.achievments[i] = clicker.achievments[i]
-
             }
         }
     } else {
@@ -146,15 +124,30 @@ function update_count() {
             var a = new Function('return ' + clicker.achievments[i].req)
             if (a() && !clicker.achievments[i].gotten) {
                 clicker.achievments[i].gotten = true;
-                document.querySelector("#achievements").innerHTML += `<br>ZÍSKAL JSI OCENĚNÍ<br>${clicker.achievments[i].text}`;
+                logAchievments.innerHTML += `<br>ZÍSKAL JSI OCENĚNÍ<br>${clicker.achievments[i].text}`;
+                numAch++;
             }
         }
         document.querySelector("#cookie").innerHTML = "Máš " + String(clicker.cookie).split(".")[0] + " sušenek";
         delay++;
         if (delay >= 40) {
-            Cookies.set("clicker", JSON.stringify(clicker), { expires: 1000 });
+            Cookies.set("clicker", JSON.stringify(clicker), { expires: 10000 });
             delay = 0;
         }
     }, 50);
 }
-onload = update_count();
+
+function fetchUpgrades() {
+    fetch('https://johns-cookies-default-rtdb.firebaseio.com/upgrades.json')
+        .then(response => response.json())
+        .then(data => {
+            clicker.upgrades = data;
+            update_upgrades();
+        })
+        .catch(error => console.error('Error fetching upgrades:', error));
+}
+
+onload = () => {
+    update_count();
+    fetchUpgrades();
+};
