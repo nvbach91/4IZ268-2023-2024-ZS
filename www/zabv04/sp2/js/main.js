@@ -28,7 +28,7 @@ async function initializeGapiClient() {
     gapiInited = true;
     maybeEnableButtons();
 }
- 
+
 function gisLoaded() {
     tokenClient = google.accounts.oauth2.initTokenClient({
         client_id: CLIENT_ID,
@@ -66,7 +66,7 @@ function handleAuthClick() {
         const inputFileElement = $('#myFile');
         inputFileElement.prop('disabled', false);
     };
- 
+
     if (gapi.client.getToken() === null) {
         tokenClient.requestAccessToken({ prompt: 'consent' });
     } else {
@@ -79,7 +79,7 @@ function handleSignoutClick() {
     if (token !== null) {
         google.accounts.oauth2.revoke(token.access_token);
         gapi.client.setToken('');
-        
+
         const signinElement = $('.signin');
         signinElement.css("display", 'block');
         const signoutElement = $('.signout');
@@ -104,6 +104,8 @@ function init() {
 
 function setupSiteSceleton() {
     const mainContainer = $('#mainContainer');
+    //OPRAVA 1 reworkid using detach
+    mainContainer.detach();
 
     const authContainer = $('<div>').addClass('auth-buttons');
     const signinElement = $('<button>').addClass('signin').text('Sign In');
@@ -153,6 +155,9 @@ function setupSiteSceleton() {
     frameContainer.append(topItemsContainer, filesContainer);
     authContainer.append(signinElement, signoutElement);
     mainContainer.append(authContainer, frameContainer, overlaySpinnerContainer);
+
+    //OPRAVA 1 reworked using detach
+    $('body').append(mainContainer);
 }
 
 function setupEvents() {
@@ -195,7 +200,7 @@ function setupEvents() {
 
     // Events for file reupload
     const reloadButtonElement = $('.reload-button');
-    $(reloadButtonElement).click( () => showExistingFiles());
+    $(reloadButtonElement).click(() => showExistingFiles());
 
     // Auth events
     const signinElement = $('.signin');
@@ -242,6 +247,8 @@ async function getFolderId() {
     if (files && files.length > 0) {
         for (let i = 0; i < files.length; i++) {
             const folderId = files[i].id;
+            console.log(folderId);
+
             return folderId;
         }
     } else {
@@ -283,11 +290,28 @@ async function processFiles(inputFileElement) {
         savedFilesStr += ', ' + files[i].name;
     }
     alert(`Files ${savedFilesStr} saved successfully`);
+
+    //OPRAVA 2 impossible to upload another files after speciality check
+    inputFileElement.val("");
 }
 
 async function saveFilesOnDrive(files) {
     const now = new Date(); // Get date now
-    const filesList = await getFilesListOnDrive();
+    // const filesList = await getFilesListOnDrive();
+
+    //OPRAVA 3 get files from html instead of direct drive
+    const filesList = []
+    const fileContainer = $('.files-list');
+    const fileContainerList = fileContainer.children();
+
+    for (let i = 0; i < fileContainerList.length; i++) {
+        const fileElement = fileContainerList.eq(i);
+        filesList.push({
+            originalName: fileElement.find('.file-name').text()
+        });
+    }
+
+
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
         let fileExist = filesList.find(driveFile => driveFile.originalName === file.name);
