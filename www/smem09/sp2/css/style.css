@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+}
+
+body {
+    background-color: rgb(243, 238, 238);
+}
+
+.container {
+    background-color: lightgray;
+    padding-top: 20px;
+    min-height: 95vh;
+    align-items: center;
+}
+
+.page-header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-group,
+.form-control {
+    min-height: 50px;
+    margin-right: 10px;
+}
+
+.type-switch {
+    max-width: 15%;
+}
+
+.btn {
+    min-width: 15%;
+}
+
+.details-btn {
+    width: 60%;
+    margin-bottom: 5px;
+}
+
+.autocomplete-css {
+    width: auto;
+}
+
+.row,
+.favourite-container {
+    margin-top: 25px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+.favourite-container {
+    min-height: 100%;
+}
+
+.custom-height {
+    min-height: 79vh;
+}
+
+.details-class,
+.favourite-container,
+.img-class,
+.recipe-class {
+    padding: 25px;
+    background-color: rgba(128, 128, 128, 0.486);
+}
+
+.fisrt-row-class {
+    display: flex;
+    justify-content: space-between;
+}
+
+.favourite-drinks li,
+.drinks-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    list-style-type: none;
+    font-size: large;
+    padding-top: 10px;
+}
+
+.favourite-drinks li:hover,
+.drinks-list li:hover,
+.page-copyright p {
+    font-weight: 700
+}
+
+.remove-button {
+    background-color: red;
+}
+
+.page-footer {
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    min-height: 5vh;
+}
+
+.spinner-border {
+    margin-top: 50%;
+    margin-left: 50%;
+}
