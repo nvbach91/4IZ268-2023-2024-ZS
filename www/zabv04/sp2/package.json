@@ -1,0 +1,18 @@
+{
+  "name": "sp2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "nodemon": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "googleapis": "^131.0.0",
+    "multer": "^1.4.5-lts.1"
+  }
+}
