@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DogBreedWiki | kvaj02</title>
+    <link rel="icon" href="./assets/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="dog-wrapper">
+            <header class="header">
+                <div class="logo">
+                    <img src="./assets/img/logo.png" alt="Dog Breed Wiki Logo">
+                    <h1><strong>Dog Breed</strong> Wiki</h1>
+                </div>
+                <h2 class="subtitle">by Jakub Kvasnička</h2>
+            </header>
+
+            <div class="fav-result">
+                <h2>Favorite</h2>
+                <div class="fav" id="favorites"></div>
+            </div>
+
+            <div class="dog-search">
+                <p class="title">please enter the name of the dog's breed...</p>
+                <div class="dog-search-box">
+                    <form id="searchForm">
+                        <input type="text" id="searchInput" class="search-control"
+                            placeholder="e.g., Australian Shepherd">
+                        <button type="submit" class="search-btn btn" id="searchButton"><i
+                                class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="loaderBox">
+                    <div class="loader" id="loader"></div>
+                </div>
+            </div>
+
+            <div class="dog-result">
+                <div class="dog" id="searchResults"></div>
+            </div>
+
+            <div class="dog-details">
+                <button type="button" class="btn info-close-btn" id="info-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="dog-details-content"></div>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
