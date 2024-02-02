@@ -1,7 +1,6 @@
 //API KEY
 const LASTFM_API_KEY = 'cce566cc0c09dd3c1bf3b4e902f8292c';
 
-
 //Check the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -81,7 +80,6 @@ function hideSpinner() {
 }
 
 // Representation of the API's results
-// Representation of the API's results
 function displayResults(artists) {
     const resultsContainer = document.getElementById('results-container');
     resultsContainer.innerHTML = '';
@@ -90,57 +88,44 @@ function displayResults(artists) {
         resultsContainer.innerHTML = '<p>Nebyly nalezeny žádné výsledky :(</p>';
     } else {
         artists.forEach(artist => {
-            // Create a container for each artist card
+
+            //Create an artist card
             const artistCard = document.createElement('div');
             artistCard.className = 'artist-card';
-
-            // Create a container for the image (on the left)
-            const imageContainer = document.createElement('div');
-            imageContainer.className = 'image-container';
-
-            // Create the image element
+            
+            //Create an element for artist name
+            const artistName = document.createElement('h3');
+            artistName.textContent = artist.name;
+        
+            // Anchor element for the artist URL
+            const artistLink = document.createElement('a');
+            artistLink.href = artist.url;
+            artistLink.textContent = 'Visit Artist Page';
+            
+            //Create an image and alt text
             const artistImg = document.createElement('img');
             artistImg.src = artist.imgUrl;
             artistImg.alt = artist.name;
 
-            // Append the image to its container
-            imageContainer.appendChild(artistImg);
 
-            // Create a container for the artist information (on the right)
-            const infoContainer = document.createElement('div');
-            infoContainer.className = 'info-container';
-
-            // Create elements for the artist name
-            const artistName = document.createElement('h3');
-            artistName.textContent = artist.name;
-
-            // Create elements for the link
-            const artistLink = document.createElement('a');
-            artistLink.href = artist.url;
-            artistLink.textContent = 'Navštívit stránku umělce';
-
-            // Append the name and link to the info container
-            infoContainer.appendChild(artistName);
-            infoContainer.appendChild(artistLink);
-
-            // Create the save button
+            //Create a button
             const saveButton = document.createElement('button');
             saveButton.textContent = 'Uložit';
             saveButton.addEventListener('click', function() {
-                saveToLibrary(artist);
+                saveToLibrary(artist.name);
             });
-
-            // Append the image container, info container, and save button to the artist card
-            artistCard.appendChild(imageContainer);
-            artistCard.appendChild(infoContainer);
+        
+        
+            artistCard.appendChild(artistImg);
+            artistCard.appendChild(artistName);
+            artistCard.appendChild(artistLink);
             artistCard.appendChild(saveButton);
-
-            // Append the artist card to the results container
+        
             resultsContainer.appendChild(artistCard);
         });
+        
     }
 }
-
 
 // Save an artist to the library
 function saveToLibrary(artistName) {
@@ -213,8 +198,6 @@ function displayLibrary() {
             // Artist's name
             const artistNameDiv = document.createElement('div');
             artistNameDiv.textContent = artist;
-
-        
 
             // Delete button container
             const deleteButtonDiv = document.createElement('div');
