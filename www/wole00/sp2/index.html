@@ -14,17 +14,31 @@
     <main>
         <div class="container">
             <div class="todayDiv">
+                <h3>Včera měl svátek <span class="white" id="yesterdaysName"></span></h2>
                 <h2>
                     Dnes
                     <span class="white" id="todaysDate"></span>
                     má svátek
                     <span class="white" id="todaysName"></span>
                 </h2>
+                <h3>Zítra má svátek <span class="white" id="tomorrowsName"></span></h2>
+
             </div>
             <div class="cfContainer">
                 <div class="contentDiv">
                     <h2>Hledání</h2>
+                    <br>
+                    <div class="buttonRow">
+                        <button value="-2" class="subbtn dayButton" type="">Předevčírem</button>
+                        <button value="-1" class="subbtn dayButton" type="">Včera</button>
+                        <button value="0" class="subbtn dayButton" type="">Dnes</button>
+                        <button value="1" class="subbtn dayButton" type="">Zítra</button>
+                        <button value="2" class="subbtn dayButton" type="">Pozítří</button>
+
+                    </div>
+                    <br>
                     <div class="searchDiv">
+                        
                         <form id="searchForm">
                             <label for="searchType">Hledat dle:</label>
                             <select id="searchType" name="searchType">

@@ -44,7 +44,7 @@ a {
 .todayDiv {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     height: 10%;
     width: 100%;
     background-color: purple;

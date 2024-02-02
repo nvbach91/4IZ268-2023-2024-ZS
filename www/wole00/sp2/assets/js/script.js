@@ -27,18 +27,21 @@ const App = {
 
         if (searchType === "by-name") { //search by name
             let searchInput = document.getElementById("searchInput").value.trim();
+            let firstLetter = searchInput.slice(0, 1).toUpperCase()
+            let rest = searchInput.slice(1).toLowerCase()
+            searchInput = firstLetter + rest;
 
             if (searchInput.length < 50 && /^[\p{L} ]+$/u.test(searchInput)) {
                 loader.show();
                 App.fetchDateByName(searchInput)
                     .then((resp) => {
-                    loader.hide();
+                        loader.hide();
                         searchResult.innerHTML = "<span class='purple' id='nameSpan'>" + searchInput + "</span> má svátek <span class='purple' id='dateSpan'>" + App.getFormattedDate(resp[0].date) + "</span>";
                         addToFav.style.display = "block";
                         App.checkIfFav()
                     })
                     .catch((error) => {
-                    loader.hide();
+                        loader.hide();
 
                         searchResult.innerHTML = "<span class='red'> Špatně zadané jméno!</span>";
                         addToFav.style.display = "none";
@@ -74,8 +77,9 @@ const App = {
 
     },
 
-    getTodaysDate: () => { //returns todays date in DDMM format
+    getTodaysDate: (alter) => { //returns todays date in DDMM format
         const today = new Date();
+        today.setDate(today.getDate() + alter);
         const day = String(today.getDate()).padStart(2, '0');
         const month = String(today.getMonth() + 1).padStart(2, '0'); // months are zero based; january = 0
         return day + month;
@@ -159,7 +163,6 @@ const App = {
 
                 let button = document.createElement("button");
                 button.classList.add("buttonUnderlined")
-                button.href = "";
                 button.textContent = "Odebrat";
                 button.addEventListener("click", function (event) {
                     event.preventDefault();
@@ -201,17 +204,17 @@ const App = {
 
 
 //Startup START
-let searchTypeEl = document.getElementById("searchType")
+const searchTypeEl = document.getElementById("searchType")
 searchTypeEl.addEventListener('change', function () {
     App.handleSearchTypeChange();
 });
-document.getElementById("searchForm").addEventListener("submit", function (event) {
+document.getElementById("searchForm").addEventListener("submit", (event) => {
     event.preventDefault();
     App.handleSubmit();
 });
 
 
-let addToFav = document.getElementById("addToFav");
+const addToFav = document.getElementById("addToFav");
 addToFav.addEventListener("click", function (event) {
     event.preventDefault();
     App.addToFav();
@@ -220,7 +223,7 @@ addToFav.addEventListener("click", function (event) {
 let loader = $('#loader');
 loader.hide();
 const todaysDateSpan = document.getElementById("todaysDate"); // variable for todays date
-const todaysDate = App.getTodaysDate(); //get todays date in DDMM format
+const todaysDate = App.getTodaysDate(0); //get todays date in DDMM format
 const formattedTodaysDate = App.getFormattedDate(todaysDate); // format date from DDMM to "(D)D. (M)M.""
 todaysDateSpan.textContent = formattedTodaysDate;
 
@@ -237,6 +240,61 @@ App.fetchNameByDate(todaysDate)
 
 
 App.loadFavorites(true)
+
+
+const yesterdaysNameSpan = document.getElementById("yesterdaysName"); // variable for yesterdays name span
+const yesterdaysDate = App.getTodaysDate(-1);
+App.fetchNameByDate(yesterdaysDate)
+    .then((yesterdaysName) => {
+        yesterdaysNameSpan.textContent = yesterdaysName[0].name
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
+const tomorrowsNameSpan = document.getElementById("tomorrowsName"); // variable for yesterdays name span
+const tomorrowsDate = App.getTodaysDate(1);
+App.fetchNameByDate(tomorrowsDate)
+    .then((tomorrowsName) => {
+        tomorrowsNameSpan.textContent = tomorrowsName[0].name
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
+let elements = document.getElementsByClassName("dayButton");
+for (let element of elements) {
+    let toInt = parseInt(element.value, 10);
+
+    let desiredDate = App.getTodaysDate(toInt)
+
+    let formattedDesiredDate = App.getFormattedDate(desiredDate);
+    element.innerText += " " + formattedDesiredDate;
+
+    element.addEventListener("click", (event) => {
+        event.preventDefault();
+        /*let toInt = parseInt(element.value, 10);
+
+        let desiredDate = App.getTodaysDate(toInt)*/
+
+        App.fetchNameByDate(desiredDate)
+            .then((resp) => {
+                loader.hide();
+                searchResult.innerHTML = "<span class='purple' id='dateSpan'>" + App.getFormattedDate(desiredDate) + "</span> má svátek <span class='purple' id='nameSpan'>" + resp[0].name + "</span>";
+                addToFav.style.display = "block";
+                App.checkIfFav()
+            })
+            .catch((error) => {
+                loader.hide();
+                searchResult.innerHTML = "<span class='red'> Špatně zadané datum!</span>";
+                addToFav.style.display = "none";
+
+            });
+    });
+}
+
+
+
 
 //Startup END
 
