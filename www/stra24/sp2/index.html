@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Play as the legendary Robot Gravity Man!">
+    <meta name="author" content="Artur Straka">
+    <title>Robot Gravity Man</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <body>
+        <h1>Robot Gravity Man</h1>
+        <div id="game-container">
+        </div>
+        <div class="ui">
+            <div class="player-info">
+                <div>
+                    <p>Player:</p>
+                    <input type="text" id="player-name" placeholder="ENTER NAME">
+                </div>
+                <div>
+                    <p>Score:</p>
+                    <p id="score">0</p>
+                </div>
+                <button id="enter-score-button">Enter</button>
+            </div>
+            <div class="leader-board">
+                <div class="lds-facebook"><div></div><div></div><div></div></div>
+                <ul id="leader-board-list">
+                </ul>
+            </div>
+        </div>
+        <script src="js/game.js"></script>
+    </body>
+</body>
+
+</html>

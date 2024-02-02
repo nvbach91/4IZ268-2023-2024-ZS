@@ -1,0 +1,145 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    text-rendering: unset;
+}
+
+.ui {
+    width: 800px;
+    display: flex;
+    margin: 0 auto;
+}
+
+#game-container {
+    width: 800px;
+    height: 600px;
+    margin: 20px auto;
+    background-color: #ffffff;
+}
+
+.player-info {
+    color: #ffffff;
+    width: 65%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+p {
+    margin-right: 5px;
+}
+
+.player-info div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#enter-score-button {
+    display: none;
+    margin-top: 20px;
+    color: rgb(0, 255, 89);
+    font-size: 30px;
+    border: none;
+    background-color: transparent;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#player-name {
+    color: white;
+    border: none;
+    background-color: transparent;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#enter-score-button:hover {
+    color: rgb(255, 255, 255);
+}
+
+
+.leader-board {
+    font-family: 'Press Start 2P', cursive;
+    border: 1px solid #000;
+    position: relative;
+    color: white;
+    padding: 10px;
+    max-width: 300px;
+    width: 35%;
+}
+
+#leader-board-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.list-item {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.blink {
+    animation: blink-animation 1s infinite;
+}
+
+.lds-facebook {
+    display: inline-block;
+    position: absolute;
+    margin: auto auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #fff;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  }
+  .lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+  }
+  .lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+  }
+  .lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+  }
+  @keyframes lds-facebook {
+    0% {
+      top: 8px;
+      height: 64px;
+    }
+    50%, 100% {
+      top: 24px;
+      height: 32px;
+    }
+  }
+  
+@keyframes blink-animation {
+
+    0%,
+    49.9%,
+    100% {
+        opacity: 0;
+    }
+
+    50%,
+    99.9% {
+        opacity: 1;
+    }
+}
