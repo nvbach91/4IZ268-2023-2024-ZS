@@ -1,4 +1,6 @@
+import React from 'react';
 import MenuButton from "./MenuButton";
+import PropTypes from "prop-types";
 
 const Menu = ({goToSelection, goToQuizHistory, goToAbout}) => {
     return (
@@ -8,6 +10,12 @@ const Menu = ({goToSelection, goToQuizHistory, goToAbout}) => {
             <MenuButton text="About" onClick={goToAbout}/>
         </div>
     )
+}
+
+Menu.propTypes = {
+    goToSelection: PropTypes.func.isRequired,
+    goToQuizHistory: PropTypes.func.isRequired,
+    goToAbout: PropTypes.func.isRequired,
 }
 
 export default Menu

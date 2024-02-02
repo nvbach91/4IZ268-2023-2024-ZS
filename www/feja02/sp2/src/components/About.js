@@ -1,4 +1,6 @@
+import React from 'react';
 import BackToMenuButton from "./BackToMenuButton";
+import PropTypes from "prop-types";
 
 const About = ({goToMenu}) => {
     return (
@@ -8,6 +10,10 @@ const About = ({goToMenu}) => {
             <BackToMenuButton goToMenu={goToMenu}/>
         </div>
     )
+}
+
+About.propTypes = {
+    goToMenu: PropTypes.func.isRequired,
 }
 
 export default About

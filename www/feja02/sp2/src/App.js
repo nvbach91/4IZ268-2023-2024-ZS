@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from 'react';
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -23,10 +23,11 @@ const App = () => {
     const beginLoading = () => setLoading(true);
     const doneLoading = () => setLoading(false);
 
-    const apiKey = "HVEpfepicx3OFEsfxQqgJIGUNRpGVHsgL0U0Td8B"
+    const apiKey = "apikey"
 
     const fetchQuestions = async (category, difficulty) => {
         beginLoading();
+        let statusCode = 404;
         try {
             let url = `https://quizapi.io/api/v1/questions?apiKey=${apiKey}&limit=10`;
 
@@ -41,22 +42,55 @@ const App = () => {
             }
 
             const response = await fetch(url);
-            if (!response.ok) throw new Error('Network response was not ok');
-            const data = await response.json();
-            setQuestions(data);
+            statusCode = response.status
+            if (!response.ok) {
+                if (statusCode === 401) {
+                    setErrorMessage("Error: invalid or missing API key")
+                } else if (statusCode === 404) {
+                    setErrorMessage("Error: no questions found")
+                } else {
+                    setErrorMessage("An unknown error occured")
+                }
+                setQuestions([])
+            } else {
+                setErrorMessage("")
+
+                const rawQuestions = await response.json()
+
+                const transformedQuestions = rawQuestions.map(q => {
+                    const answers = Object.entries(q.answers)
+                        .filter(([key, value]) => value !== null)
+                        .map(([key, value]) => ({
+                            answerText: value,
+                            isCorrect: q.correct_answers[`${key}_correct`] === "true",
+                        }));
+                    return {
+                        question: q.question,
+                        answers: answers,
+                        category: q.category,
+                        difficulty: q.difficulty
+                    }
+                })
+
+                setQuestions(transformedQuestions);
+            }
         } catch (error) {
             console.error("Failed to fetch questions:", error);
-            setQuestions([]);
         } finally {
             doneLoading();
         }
+        return statusCode;
     };
 
     const handleSelectionComplete = async (category, difficulty) => {
-        await fetchQuestions(category, difficulty);
+        const statusCode = await fetchQuestions(category, difficulty);
         setSelectedCategory(category);
         setSelectedDifficulty(difficulty);
-        setCurrentView("quiz");
+        if (statusCode === 200) {
+            setCurrentView("quiz")
+        } else {
+            setCurrentView("selection");
+        }
     };
 
     return (
@@ -68,7 +102,7 @@ const App = () => {
                     <Menu goToSelection={goToSelection} goToQuizHistory={goToQuizHistory} goToAbout={goToAbout}/>}
                 {!loading && currentView === "selection" &&
                     <Selection goToMenu={goToMenu} beginLoading={beginLoading} doneLoading={doneLoading}
-                               onSelectionComplete={handleSelectionComplete}/>}
+                               onSelectionComplete={handleSelectionComplete} errorMessage={errorMessage}/>}
                 {!loading && currentView === "quiz" &&
                     <Quiz goToMenu={goToMenu} questions={questions} selectedCategory={selectedCategory}
                           selectedDifficulty={selectedDifficulty}/>}
