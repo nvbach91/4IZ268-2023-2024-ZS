@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat">
+    <title>Svátky</title>
+    <link rel="icon" href="assets/imgs/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="todayDiv">
+                <h3>Včera měl svátek <span class="white" id="yesterdaysName"></span></h2>
+                <h2>
+                    Dnes
+                    <span class="white" id="todaysDate"></span>
+                    má svátek
+                    <span class="white" id="todaysName"></span>
+                </h2>
+                <h3>Zítra má svátek <span class="white" id="tomorrowsName"></span></h2>
+
+            </div>
+            <div class="cfContainer">
+                <div class="contentDiv">
+                    <h2>Hledání</h2>
+                    <br>
+                    <div class="buttonRow">
+                        <button value="-2" class="subbtn dayButton" type="">Předevčírem</button>
+                        <button value="-1" class="subbtn dayButton" type="">Včera</button>
+                        <button value="0" class="subbtn dayButton" type="">Dnes</button>
+                        <button value="1" class="subbtn dayButton" type="">Zítra</button>
+                        <button value="2" class="subbtn dayButton" type="">Pozítří</button>
+
+                    </div>
+                    <br>
+                    <div class="searchDiv">
+                        
+                        <form id="searchForm">
+                            <label for="searchType">Hledat dle:</label>
+                            <select id="searchType" name="searchType">
+                                <option value="by-name">Jména</option>
+                                <option value="by-date">Data</option>
+                            </select>
+                            <br>
+                            <br>
+                            <!-- Text Input Container -->
+                            <div id="searchInputContainer" style="display: block;">
+                                <input type="text" id="searchInput" name="searchInput" required>
+                            </div>
+    
+                            <!-- Date Picker Container -->
+                            <div id="datePickerContainer" style="display: none;">
+                                <input type="date" id="datePicker" name="datePicker" >
+                            </div>
+                            <br>
+                            <button class="subbtn" type="submit">Submit</button>
+                        </form>
+                    </div>
+                    <br>
+                    <div class="resultDiv">
+                        <div id="loader" class="loader"></div>
+                        <h1 id="searchResult" class="searchResult">
+                           
+                        </h1>
+                        <a id="addToFav" class="addToFav" href="" style="display: none;">Přidat do oblíbených</a>
+                    </div>
+    
+    
+    
+                </div>
+                <div class="favContainer">
+                    <h2>Oblíbené</h2>
+    
+                    <table class="favDiv" id="favDiv">
+                    </table>
+                </div>
+            </div>
+            
+            
+            <footer>Eduard Wolf, 2024</footer>
+        </div>
+
+
+
+
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
