@@ -3,22 +3,22 @@
 /* ------------------------------- DATE -------------------------------------------*/
 
 function updateDate() {
-    const currentDate = new Date();
-    const currentDateTime = currentDate.toLocaleString();
-    document.querySelector('#date').textContent = currentDateTime;
+	const currentDate = new Date();
+	const currentDateTime = currentDate.toLocaleString();
+	document.querySelector('#date').textContent = currentDateTime;
 }
 setInterval(updateDate, 1000);
 
 /*------------------------------------ SPINNER --------------------------------------*/
 
 window.addEventListener("load", () => {
-    const loader = document.querySelector(".loader");
+	const loader = document.querySelector(".loader");
 
-    loader.classList.add("loader-hidden");
+	loader.classList.add("loader-hidden");
 
-    loader.addEventListener("transitionend", () => {
-        document.body.removeChild("loader");
-    })
+	loader.addEventListener("transitionend", () => {
+		document.body.removeChild("loader");
+	})
 })
 
 /*------------------------------------- TASK LIST ----------------------------------------------*/
@@ -26,22 +26,47 @@ window.addEventListener("load", () => {
 window.addEventListener('load', () => {
 	const taskForm = document.querySelector("#tasks-form");
 	const taskInput = document.querySelector("#tasks-input");
+	const taskDateInput = document.querySelector("#tasks-datepicker");
 	const tasksElement = document.querySelector("#tasks");
+
+	// Load tasks from localStorage on page load
+	const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+	storedTasks.forEach(storedTask => {
+		const taskElement = createTaskElement(storedTask.task, storedTask.date);
+		tasksElement.appendChild(taskElement);
+	});
 
 	taskForm.addEventListener('submit', (e) => {
 		e.preventDefault();
 
 		const task = taskInput.value.trim().toUpperCase();
 		if (task === '') {
-			return false
+			return false;
 		}
 
+		const date = taskDateInput.value;
+		if (date === '') {
+			return false;
+		}
+
+		const taskElement = createTaskElement(task, date);
+		tasksElement.appendChild(taskElement);
+
+		taskInput.value = '';
+
+		// Save tasks to localStorage after adding a new task
+		saveTasksToLocalStorage();
+
+
+	});
+
+	// Function to create task element
+	function createTaskElement(task, date) {
 		const taskElement = document.createElement('div');
 		taskElement.classList.add('task');
 
 		const taskContent = document.createElement('div');
 		taskContent.classList.add('task-content');
-
 		taskElement.appendChild(taskContent);
 
 		const inputElement = document.createElement('input');
@@ -50,12 +75,18 @@ window.addEventListener('load', () => {
 		inputElement.value = task;
 		inputElement.setAttribute('readonly', 'readonly');
 		inputElement.setAttribute('size', '50');
-
 		taskContent.appendChild(inputElement);
+
+		const inputDateElement = document.createElement('input');
+		inputDateElement.classList.add('taskItemDate');
+		inputDateElement.type = 'date';
+		inputDateElement.value = date;
+		inputDateElement.setAttribute('readonly', 'readonly');
+		taskContent.appendChild(inputDateElement);
 
 		const buttonsElement = document.createElement('div');
 		buttonsElement.classList.add('buttons');
-		
+
 		const editButton = document.createElement('button');
 		editButton.classList.add('edit-button');
 		editButton.innerText = 'Edit';
@@ -64,151 +95,98 @@ window.addEventListener('load', () => {
 		removeButton.classList.add('remove-button');
 		removeButton.innerText = 'Remove';
 
+		const sendButton = document.createElement('button');
+		sendButton.classList.add('send-button');
+		sendButton.innerText = 'Send';
+
 		buttonsElement.appendChild(editButton);
 		buttonsElement.appendChild(removeButton);
+		buttonsElement.appendChild(sendButton);
 
 		taskElement.appendChild(buttonsElement);
 
-		tasksElement.appendChild(taskElement);
+		// Event listeners for editButton, removeButton, and sendButton
+		editButton.addEventListener('click', () => handleEditTask(inputElement, inputDateElement, editButton));
+		removeButton.addEventListener('click', () => handleRemoveTask(taskElement));
+		sendButton.addEventListener('click', () => handleSendTask(inputElement.value, inputDateElement.value));
 
-		taskInput.value = '';
+		return taskElement;
+	}
 
-		editButton.addEventListener('click', (e) => {
-			if (editButton.innerText.toLowerCase() == "edit") {
-				editButton.innerText = "Save";
-				inputElement.removeAttribute("readonly");
-				inputElement.focus();
-			} else {
-				editButton.innerText = "Edit";
-				inputElement.setAttribute("readonly", "readonly");
+	// Function to save tasks to localStorage
+	function saveTasksToLocalStorage() {
+		const tasks = Array.from(tasksElement.children).map(taskElement => {
+			const inputElement = taskElement.querySelector('.text');
+			const inputDateElement = taskElement.querySelector('.taskItemDate');
+			return { task: inputElement.value, date: inputDateElement.value };
+		});
+
+		localStorage.setItem('tasks', JSON.stringify(tasks));
+	}
+
+	// Function to handle editing a task
+	function handleEditTask(inputElement, inputDateElement, editButton) {
+		if (editButton.innerText.toLowerCase() === "edit") {
+			editButton.innerText = "Save";
+			inputElement.removeAttribute("readonly");
+			inputDateElement.removeAttribute("readonly");
+			inputElement.focus();
+		} else {
+			editButton.innerText = "Edit";
+			inputElement.setAttribute("readonly", "readonly");
+			saveTasksToLocalStorage(); // Save tasks after editing
+		}
+	}
+
+	// Function to handle removing a task
+	function handleRemoveTask(taskElement) {
+		tasksElement.removeChild(taskElement);
+		saveTasksToLocalStorage(); // Save tasks after removing
+	}
+
+	// Function to handle sending a task (example function, replace with your own logic)
+	function handleSendTask(taskContent, taskDate) {
+		console.log("Sending task:", taskContent, "on date:", taskDate);
+
+
+		// JSON representation events in calendar
+		var event = {
+			'summary': taskContent, // event name
+
+			start: {
+				date: taskDate,
+				timeZone: 'UTC',
+			},
+
+			end: {
+				date: taskDate,
+				timeZone: 'UTC',
 			}
+		}
+
+		//sends request to google API
+		const request = gapi.client.calendar.events.insert({
+			'calendarId': 'primary', //primary = personal calendar of user
+			'resource': event // event content in google calendar
 		});
 
-		removeButton.addEventListener('click', (e) => {
-			tasksElement.removeChild(taskElement);
+		// processing request, logging output
+		request.execute(function (event) {
+			console.log(event)
 		});
-	});
+
+	}
 });
+
+
+
 
 /* ---------------------------------- geolocation ------------------------------------- */
 
 if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position);
-    });
+	navigator.geolocation.getCurrentPosition((position) => {
+		console.log(position);
+	});
 } else {
-    console.log('geolocation is not available');
+	console.log('geolocation is not available');
 }
-
-/* ----------------------------- AJAX ------------------------------------------- */ 
-/* 
-.___ = function() {
-	.append();
-	$.ajax({
-	  url: url,
-	  data: {
-	  },
-	}).done(function() {
-	  });
-	  .append(); 
-*/
-
-/* ============================== CALENDAR API ======================================*/
-
-
-/* =================================== google ==================== 
-const CLIENT_ID = '592978563326-1lb16k4lf5bd1c3rdecbnfg866pflcvt.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyDMrS6TtnTMpEpr7rr4gnNV54DNui7lIEw';
-const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
-const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
-const authorizeButton = document.querySelector('#signIn');
-
-function handleClientLoad() {
-    gapi.load('client:auth2', initClient);
-  }
-  
-  function initClient() {
-    gapi.client.init({
-      apiKey: API_KEY,
-      clientId: CLIENT_ID,
-      discoveryDocs: DISCOVERY_DOCS,
-      scope: SCOPES
-    }).then(function () {
-
-      gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-      updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-      authorizeButton.addEventListener('click', handleSignInClick);
-    }).catch(function(error) {
-      console.error('Client initialization error:', error);
-    });
-  }
-  
-  function updateSigninStatus(isSignedIn) {
-    if (isSignedIn) {
-      authorizeButton.style.display = 'none';
-      listUpcomingEvents();
-    } else {
-      authorizeButton.style.display = 'block';
-    }
-  }
-  
-  function handleSignInClick() {
-    const authInstance = gapi.auth2.getAuthInstance();
-    if (authInstance) {
-      authInstance.signIn().then(() => {
-        listUpcomingEvents();
-      });
-    } else {
-      console.error('Auth2 client is not initialized correctly.');
-    }
-  }
-  
-  function handleSignOutClick() {
-    gapi.auth2.getAuthInstance().signOut();
-  }
-  
-  function authorizeAndLoadCalendar() {
-    const authInstance = gapi.auth2.getAuthInstance();
-    if (authInstance) {
-      authInstance.signIn().then(() => {
-        listUpcomingEvents();
-      });
-    } else {
-      console.error('Auth2 client is not initialized correctly.');
-    }
-  }
-  
-  function listUpcomingEvents() {
-    gapi.client.calendar.events.list({
-      'calendarId': 'primary',
-      'timeMin': (new Date()).toISOString(),
-      'showDeleted': false,
-      'singleEvents': true,
-      'maxResults': 10,
-      'orderBy': 'startTime'
-    }).then(function (response) {
-      const events = response.result.items;
-      const eventsContainer = document.getElementById('events');
-		
-      if (events.length > 0) {
-        eventsContainer.innerHTML = '<h2>Upcoming events:</h2>';
-        for (const event of events) {
-          const when = event.start.dateTime || event.start.date;
-          eventsContainer.innerHTML += `<div>${event.summary} - ${when}</div>`;
-        }
-      } else {
-        eventsContainer.innerHTML = 'No upcoming events found.';
-      }
-    });
-  }
-  eventsContainer.appendChild(events);
-
-  
-
-  document.addEventListener('DOMContentLoaded', handleClientLoad);
-
-  app.use((req, res, next) => {
-    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
-    next();
-  });
-  */
